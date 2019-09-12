@@ -1,0 +1,821 @@
+body{
+    background-color: #ECEFF1;
+    font-family: 'Muli', 'Cabin', sans-serif;
+}
+
+body.sign-in{
+    background-image: url(../images/wood_tile/blue.jpg);
+    font-family: 'Cabin', 'Muli', sans-serif;
+    height: 500px;
+}
+
+textarea{
+    resize: none;
+}
+
+.sign-in-logo{
+    font-family: 'Oswald', sans-serif;
+    color: white;
+    font-size: 47px;
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    letter-spacing: -1px;
+    font-weight: bolder;
+    //text-shadow: 0px 0px 1px #5b7375;
+}
+
+.sign-in-form{
+    padding: 15px;
+}
+
+.sign-in-field{
+    text-align: center;
+    background-color: whitesmoke;
+}
+
+.register-field{
+    padding-left: 3px;
+    padding-right: 3px;
+}
+
+.sign-in-div{
+    background-color: white;
+    border-radius: 2px;
+    //box-shadow: 0px 0px 50px black;
+    padding: 0px;
+}
+
+.sign-in-content{
+    width: 60%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.sign-in-header{
+    text-align: center;
+    font-family: 'Oswald', sans-serif;
+}
+
+.navbar-font{
+    font-family: 'Cabin', sans-serif;
+}
+
+.search-div{
+    position: absolute;
+    right: 0px;
+}
+
+.nav-prof-pic{
+    position: relative;
+    float: left;
+    bottom: 5px;
+    margin-right: 5px;
+    height: 30px;
+    width: 30px;
+}
+
+.nav-left-end{
+    margin-left: 50px;
+}
+
+.nav-right-end{
+    margin-right: 30px;
+}
+
+.page{
+    margin-top: 65px;
+    margin-bottom: 50px;
+}
+
+.home-sidebar{
+    padding: 10px;
+    margin-left: 10px;
+    margin-top: 7px;
+}
+
+.home-create-btn{
+    float: right;
+    margin-top: 8px;
+    margin-right: 10px;
+    padding: 5px;
+    width: 30%;
+    font-size: 12px;
+}
+
+.home-username{
+    margin-bottom: 0px;
+    padding: 3px;
+    font-size: 16px;
+}
+
+.home-user-text{
+    margin-left: 5px;
+    margin-top: 5px;
+    padding: 0px;
+}
+
+.home-dropdown{
+    display: inline-block;
+}
+
+.post-pic{
+    width: 75px;
+    height: 75px;
+    margin-bottom: 10px;
+}
+
+.reply-pic{
+    width: 45px; 
+    height: 45px; 
+    margin-left: 10px; 
+    margin-top: 10px;
+}
+
+.comment-pic{
+    width: 45px;
+    margin-bottom: 10px;
+}
+
+.sidebar-topic-div{
+    background-color: #FAFAFA;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    margin-bottom: 10px;
+    height: 250px;
+    overflow-y: auto;
+    //border: 1px solid #90A4AE;
+}
+
+.home-prof-pic{
+    padding: 0px;
+    margin-left: 25px;
+    width: 45px;
+    height: 45px;
+    border-radius: 4px;
+}
+
+.home-content-container{
+    background-color: white;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    border: 1px solid #CFD8DC;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.content-container{
+    background-color: white;
+    margin-bottom: 2px;
+    border-radius: 4px;
+    padding: 10px;
+
+    border: 1px solid #CFD8DC;
+}
+
+.post-preview{
+     height: 230px; 
+     overflow-y: auto;
+}
+
+#edit-topic-btn, #cancel-topic-btn{
+    margin-top: 5px;
+}
+
+.home-content-header{
+    background-color: #F5F5F5;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    border-bottom: 1px #CFD8DC solid; 
+    padding: 3px;
+    padding-left: 10px;
+}
+
+.home-content-header-link{
+    padding: 0px;
+    font-weight: bolder;
+}
+
+.home-container{
+    margin-top: 3px;
+    padding: 0px;
+}
+
+.post-container{
+    border: 1px solid #EEEEEE;
+    border-radius: 2px; 
+    margin-bottom: 5px;
+    padding: 0px;
+}
+
+.home-content-body{
+    margin-top: 5px;
+    padding-right: 10px;
+    text-align: justify; 
+    text-justify: inter-word;
+}
+
+.home-content-body-username{
+    padding: 0px;
+    font-size: 14px;
+}   
+
+.home-content-body-date{
+    color: #78909C;
+    font-size: 11px;
+}
+
+.topic-list-div{
+    background-color: white;
+}
+
+.home-attachments-header{
+    background-color: gray;
+    color : white;
+    margin: 0px;
+}
+
+.header-arrow{
+    font-size: 16px;
+    line-height: 1px;
+    color: #78909C;
+}
+
+.search-text{
+    font-family: sans-serif, FontAwesome;
+    border-radius: 20px;    
+}
+
+.list-entry{
+    text-align: left; 
+    margin-bottom: 3px;
+    padding: 8px 20px;
+}
+
+.list-entry > strong{
+    color: #008080;
+}
+
+.post-content{
+    text-align: justify;
+    word-wrap: break-word;
+    text-justify: inter-word;
+    font-size: 13px;
+}
+
+.topic-preview-div{
+    height: 300px;
+}
+
+.topic-description-div{
+    height: 195px;
+    padding: 5px;
+    margin-bottom: 0px;
+}
+
+.topic-no-preview{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+.topic-no-preview span > h3{
+    line-height: 300px;
+    text-align: center;
+    color: #90A4AE;
+}
+
+.topic-post-list{
+    background-color: #ECEFF1; 
+    border-radius: 4px;
+    margin-top: 10px;
+    height: 455px;
+    overflow-y: auto;
+}
+
+.user-profile-img{
+    margin-right: 15px;
+}
+
+.user-topic-div{
+    height: 400px;
+    background-color: white;
+    overflow-y: auto;
+}
+
+.user-topic-header{
+    background-color: #26A69A;
+    color: white;
+    margin-top: 0px;
+    padding: 5px;
+}
+
+.topic-intro-header{
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+}
+
+.topic-intro-content{
+    height: 65%;
+    border-top-left-radius: 0px;
+    margin-bottom: 5px;
+    border-top-right-radius: 0px;
+}
+
+#edit-topic-text{
+    font-size: 12px;
+}
+
+#desc-edit{
+    margin-top: 5px;
+}
+
+.user-topic-container{
+    background-color: #ECEFF1;
+    padding: 0px;
+    margin-top: 30px;
+    border: 1px solid #90A4AE;
+}
+
+.user-post-heading{
+    background-color: #E0E0E0;
+    padding-left: 10px;
+    color: #757575;
+    //border-top: 1px solid #F5F5F5;
+}
+
+.user-post-footer{
+    background-color: #E0E0E0;
+    color: white;
+    margin-top: 0px;
+}
+
+.btn-topic-header {
+    background-color: #ffffff;
+    border-color: #ffffff;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    padding: 10px 5px;
+}
+
+.btn-topic-header:hover,
+.btn-topic-header:focus,
+.btn-topic-header:active,
+.btn-topic-header.active {
+    background-color: #f2f2f2;
+    border-color: #e6e6e6;
+}
+
+.btn-user-post-heading {
+    background-color: transparent;
+    color: #E0F2F1;
+}
+.btn-user-post-heading:hover,
+.btn-user-post-heading:focus,
+.btn-user-post-heading:active,
+.btn-user-post-heading.active {
+    background-color: transparent;
+    color: white;
+}
+
+.btn-user-post-footer {
+    background-color: transparent;
+    color: #757575;
+    border-radius: 0px;
+}
+.btn-user-post-footer:hover,
+.btn-user-post-footer:focus,
+.btn-user-post-footer:active,
+.btn-user-post-footer.active {
+    background-color: white;
+    color: #757575;
+}
+
+.btn-gray {
+    background-color: #ECEFF1;
+    color: #757575;
+}
+.btn-gray:hover{
+    background-color: #B0BEC5;
+    color: white;
+}
+
+.user-post-content{
+    background-color: white;
+    padding: 5px;
+}
+
+.user-activities-div{
+    height: 500px;
+    background-color: white;
+    margin-top: 0px;
+    overflow-y: auto;
+    padding: 10px;
+}
+
+.user-activities-header{
+    background-color: #26A69A;
+    color: white;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding: 5px;    
+}
+
+.no-margin{
+    margin: 0px;
+}
+
+.no-padding{
+    padding: 0px;
+}
+
+.no-left-right-pad{
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.no-up-down-pad{
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+.btn:focus{
+    outline: none;
+}
+
+p{
+    font-size: 13px;
+}
+
+.vote-text{
+    font-size: 17px;
+    color: #757575;
+}
+
+.thread-attachment-header{
+    padding: 10px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+}
+
+.modal-heading{
+    background-color: #26A69A; 
+    padding-bottom: 5px; 
+    padding-top: 5px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    color: white;
+    font-weight: bolder;
+}
+
+.admin-list-item{
+    background-color: #fafafa; 
+    padding: 15px; 
+    padding-top: 5px;
+    margin-bottom: 2px;
+}
+
+.admin-list-name{
+    display: inline-block; 
+    margin-bottom: 5px; 
+    padding-left: 5px;
+}
+
+.admin-list-btn{
+    margin-top: 5px;
+}
+
+.admin-user-list{
+    margin-top: 10px;
+    height: 500px;
+    overflow-y: auto;
+}
+
+/*
+CHAT
+*/
+#chat-area
+{
+    width:auto;
+    height:75px;
+    bottom:0;
+    position:fixed;
+    padding:25px 40px 10px 30px;
+    margin:0 -15px;
+    z-index:1000;
+    right:-5px;
+}
+#chat-area > div
+{
+    width:auto;
+    height:40px;
+    float:right;
+    background:white;
+    border-radius:4px;
+}
+
+#chat-area > div:not(:first-child)
+{
+    margin-right:5px;
+}
+#chat-area .dropdown-menu
+{
+    min-width:200px;
+    margin-bottom:-10px;
+    max-height:150px;
+    left:initial;
+}
+#contacts .dropdown-menu
+{
+    right:40px;
+    overflow-y:auto;
+}
+#chat-area .dropdown-menu li
+{
+    line-height:40px;
+}
+#chat-area .chat .dropdown-menu li
+{
+    padding:0 5px;
+}
+#chat-area .btn-default
+{
+    height:100%;
+    background:#FFF;
+    padding:3px 12px;
+    font-size:25px;
+    line-height:25px;
+}
+#chat-area .chat .messages 
+{
+    overflow-y:scroll;
+    margin:0 0 75px;
+    width:302px;
+}
+#chat-area.consultation .chat .messages
+{
+    margin:0 0 114px;
+}
+#chat-area .message-input
+{
+    padding:0;
+    width:300px;
+    background:#FFF;
+    margin:0 0 -15px 1px;
+    overflow:hidden;
+    height:auto;
+    border-radius:0 0 4px 4px;
+    border:none;
+    z-index:999999;
+}
+#chat-area .messages
+{
+    border-radius:4px 4px 0 0;
+    min-height:80px;
+}
+#chat-area .message-input textarea
+{
+    line-height:14px;
+    resize:none;
+    width:100%;
+    height:50px;
+}
+#chat-area .message-input.dropdown-menu li
+{
+    padding:0;
+}
+#chat-area .message-input.dropdown-menu .send-button a,
+#chat-area .message-input.dropdown-menu .share-button a
+{
+    line-height:34px;
+    text-align:center;
+    font-weight:bold;
+    padding:4px 20px;
+}
+#chat-area .message-input.dropdown-menu .share-button a
+{
+    border-top:1px solid #cccccc;
+}
+#chat-area .chat .divider
+{
+    margin-bottom:0;
+}
+#chat-area .chat-name
+{
+    border-radius:4px 0 0 4px;
+}
+#chat-area .chat-close
+{
+    border-radius:0 4px 4px 0;
+    margin-left:-5px;
+}
+#contacts .badge
+{
+    line-height:15px;
+    font-size:16px;
+    top:-3px;
+    padding:5px 9px 5px 8px;
+}
+#chat-area .dropdown-menu li > a
+{
+    line-height:initial;
+    padding:3px 20px 20px;
+}
+#chat-area .message-input li:first-child
+{
+    border-bottom:1px solid rgba(0, 0, 0, 0.15);
+}
+#chat-area .btn:focus
+{
+    outline-color:transparent;
+}
+.sender:before
+{
+    content: "me: ";
+}
+
+.offline
+{
+    float:left;
+    width:100%;
+    margin-top:-20px;
+}
+
+/*
+END CHAT
+*/
+
+.sidebar-header-btn{
+    background-color: #26A69A;
+    margin: 0px;
+    margin-top: 5px;
+    color: white;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+}
+
+.sidebar-header-btn:hover{
+    background-color: #00897B;
+    color: white;
+}
+
+#nav-logo{
+    height: 25px;
+    width: auto;
+}
+
+.wrap{
+    word-wrap: break-word;
+    white-space: normal;
+}
+
+.user-topic-item:hover{
+    background-color: #E0E0E0 !important;
+}
+
+.follower-label{
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.btn:focus,.btn:active {
+    outline: none !important;
+}
+
+.upvote-text{
+    color: #81C784;   
+}
+
+.downvote-text{
+    color: #E57373;   
+}
+
+.ellipsis{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.user-list-entry{
+    height: 55px;
+}
+
+.reply-header{
+    font-weight: bolder; 
+    background-color: #CFD8DC; 
+    color: #455A64; 
+    padding: 5px; 
+    font-size: 15px; 
+    margin-top: 10px; 
+    margin-bottom: 4px; 
+    border-radius: 4px;
+}
+
+.label-badge{
+    border-radius: 1em;
+}
+
+.post-header-title{
+    display: inline-block; 
+    margin-top: 10px; 
+    padding: 2px; 
+    color: #757575;
+    word-wrap: break-word;
+}
+
+.topic-members-container{
+    height: 270px; 
+    overflow-y: auto;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.topic-member-name{
+    width: 150px; 
+    text-align: left;
+}
+
+.notif-modal-overflow{
+    height: 300px; 
+    overflow-y: auto;
+}
+
+.notif-btn{
+    padding-bottom: 3px;
+    font-size: 12px;
+}
+
+.notif-item{
+    padding: 5px 10px; 
+    height: 60px;
+    text-align: left;
+}
+
+.image-display-container{
+    height: 250px;
+    vertical-align: middle;
+    background-color: #FAFAFA;
+    width: 100%;
+}
+
+.image-attach-display{
+    max-height: 100%;  
+    max-width: 100%; 
+    position: absolute;  
+    top: 0;
+    bottom: 0;  
+    padding: 10px;
+    left: 0;  
+    right: 0;  
+    margin: auto;
+}
+
+.image-attach-grid{
+    width: 70px;
+    height: 70px;
+}
+
+.image-attach-container{
+    overflow-x: scroll;
+    overflow-y: hidden;
+    width: auto;
+    white-space: nowrap;
+    height: 100px;
+}
+
+.notif-pic{
+    width: 40px; 
+    height: 40px; 
+    margin-right: 10px;
+}
+
+.record-tab{
+    padding: 20px;
+}
+
+#thread-attachment-btn{
+    margin-top: 10px; 
+    margin-right: 20px;
+}
+
+.attach-btn-text{
+    padding: 0px;
+    margin: 0px;
+    font-size: 12px;
+}
+
+#attachment-preview, #edit-attachment-preview{
+    height: 60px;
+}
+
+#topic-list{
+    margin-top: 10px;
+}
+
+#interaction-network{
+    height: 500px;
+    width: 100%;
+}
