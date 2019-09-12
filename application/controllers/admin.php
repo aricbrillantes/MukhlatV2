@@ -13,7 +13,22 @@
  */
 class Admin extends CI_Controller {
 
-    public function view_user() {
+    // $this->load->library('user_agent');
+    // global $mobile;
+    // $mobile=$this->agent->is_mobile();
+
+    // if(!$mobile)
+    // {
+    //     echo "<script type='text/javascript'>alert('desktop');</script>";
+    // }   
+
+    // else
+    // {
+    //     echo "<script type='text/javascript'>alert('mobile');</script>";
+    // }
+
+    public function view_user() 
+    {
         $user_id = $this->uri->segment(3);
 
         $this->load->model('user_model', 'users');
@@ -22,11 +37,13 @@ class Admin extends CI_Controller {
         $this->load->view('modals/user_record_modal', $data);
     }
 
-    public function network() {
+    public function network() 
+    {
         $this->load->view('pages/network_page');
     }
 
-    public function load_network() {
+    public function load_network() 
+    {
         $this->load->model('network_model', 'net');
         $this->load->model('topic_model', 'topics');
         $topics = $this->topics->get_topics();

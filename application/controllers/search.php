@@ -20,6 +20,20 @@ class Search extends CI_Controller {
         $data['users'] = $this->users->search_users($keyword, false);
         $data['topics'] = $this->topics->search_topics($keyword, 0);
         $this->load->view('pages/search_page', $data);
+
+        $this->load->library('user_agent');
+        global $mobile;
+        $mobile=$this->agent->is_mobile();
+
+        if(!$mobile)
+        {
+            // echo "<script type='text/javascript'>alert('topic desktop');</script>";
+        }   
+
+        else
+        {
+            // echo "<script type='text/javascript'>alert('topic mobile');</script>";
+        }
     }
 
     public function topic() {

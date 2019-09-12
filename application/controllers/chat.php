@@ -16,6 +16,19 @@ class Chat extends MY_Controller
     
     function index()
     {
+        $this->load->library('user_agent');
+        global $mobile;
+        $mobile=$this->agent->is_mobile();
+
+        if(!$mobile)
+        {
+            // echo "<script type='text/javascript'>alert('desktop');</script>";
+        }   
+
+        else
+        {
+            // echo "<script type='text/javascript'>alert('mobile');</script>";
+        }
     }
     
     function online()

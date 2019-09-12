@@ -10,12 +10,12 @@ class Home extends CI_Controller
 
         if(!$mobile)
         {
-            //echo "<script type='text/javascript'>alert('desktop');</script>";
+            // echo "<script type='text/javascript'>alert('desktop');</script>";
         }   
 
         else
         {
-            //echo "<script type='text/javascript'>alert('mobile');</script>";
+            // echo "<script type='text/javascript'>alert('mobile');</script>";
         }
 
 

@@ -21,6 +21,20 @@ class Notifications extends CI_Controller {
 
             $this->notifs->update_user_notifs($logged_user);
         }
+
+        $this->load->library('user_agent');
+        global $mobile;
+        $mobile=$this->agent->is_mobile();
+
+        if(!$mobile)
+        {
+            // echo "<script type='text/javascript'>alert('topic desktop');</script>";
+        }   
+
+        else
+        {
+            // echo "<script type='text/javascript'>alert('topic mobile');</script>";
+        }
     }
 
     public function read() {

@@ -23,6 +23,20 @@ class Invite extends CI_Controller {
         }
         //change
         redirect(base_url('topic/view/' . $topic->topic_id));
+
+        $this->load->library('user_agent');
+        global $mobile;
+        $mobile=$this->agent->is_mobile();
+
+        if(!$mobile)
+        {
+            // echo "<script type='text/javascript'>alert('desktop');</script>";
+        }   
+
+        else
+        {
+            // echo "<script type='text/javascript'>alert('mobile');</script>";
+        }
     }
 
     public function share() {

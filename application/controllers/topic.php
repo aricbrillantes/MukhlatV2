@@ -23,6 +23,20 @@ class Topic extends CI_Controller {
         } else {
             echo 'ERROR!';
         }
+
+        $this->load->library('user_agent');
+        global $mobile;
+        $mobile=$this->agent->is_mobile();
+
+        if(!$mobile)
+        {
+            // echo "<script type='text/javascript'>alert('topic desktop');</script>";
+        }   
+
+        else
+        {
+            // echo "<script type='text/javascript'>alert('topic mobile');</script>";
+        }
     }
 
     public function view() {

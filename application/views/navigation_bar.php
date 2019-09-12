@@ -1,22 +1,6 @@
 <?php
-$logged_user = $_SESSION['logged_user'];
-$unanswered = $logged_user->unanswered_invites + $logged_user->unanswered_requests;
-
-    $this->load->library('user_agent');
-    global $mobile;
-    $mobile=$this->agent->is_mobile();    
-
-    if(!$mobile)
-    {
-        // echo "<script type='text/javascript'>alert('desktop');</script>";
-        // echo "desktop";
-    }   
-
-    else
-    {
-        // echo "<script type='text/javascript'>alert('mobile');</script>";
-        echo "mobile";
-    }
+    $logged_user = $_SESSION['logged_user'];
+    $unanswered = $logged_user->unanswered_invites + $logged_user->unanswered_requests;
 ?>
 
 <!-- scale to device resolution -->

@@ -2,8 +2,22 @@
 
 class User extends CI_Controller {
 
-    public function index() {
+    public function index() 
+    {
         $this->load->view('pages/user_page');
+        $this->load->library('user_agent');
+        global $mobile;
+        $mobile=$this->agent->is_mobile();
+
+        if(!$mobile)
+        {
+            // echo "<script type='text/javascript'>alert('topic desktop');</script>";
+        }   
+
+        else
+        {
+            // echo "<script type='text/javascript'>alert('topic mobile');</script>";
+        }
     }
 
     public function profile() {
