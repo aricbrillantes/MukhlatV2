@@ -4,7 +4,7 @@ include(APPPATH . 'views/header.php');
 <body class = "sign-in">
     <div class = "container-fluid">
         <!-- Logo -->
-        <div class = "row sign-in-logo"><img src = "<?php echo base_url('images/logo/logo-white.png'); ?>"></div>
+        <div class = "row sign-in-logo"><img src = "<?php echo base_url('images/logo/mukhlatlogo1.png'); ?>"></div>
 
         <!-- Content -->
         <div class = "row sign-in-content">
