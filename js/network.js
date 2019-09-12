@@ -1,6 +1,6 @@
 //global variables for vis
 var nodes, edges, options, container, data, network, isUser, userTitle, userId;
-var BASE = window.location.origin + '/GetTogetherBeta/';
+var BASE = window.location.origin + '/MukhlatV2/';
 $(document).ready(function () {
     initializeNetwork();
 
@@ -100,7 +100,7 @@ function loadDefaultNetwork() {
     $("#filter-tools").remove();
 
     //load the network data
-    $.get(window.location.origin + '/GetTogetherBeta/admin/load_network', function (result) {
+    $.get(window.location.origin + '/MukhlatV2/admin/load_network', function (result) {
         network_data = JSON.parse(result);
         var users = network_data.users;
         var topics = network_data.topics;
@@ -180,7 +180,7 @@ function loadUserNetwork(user_id, filter) {
 
     var user_data = "[";
     var topic_data = "";
-    $.get(window.location.origin + '/GetTogetherBeta/admin/user_network/' + user_id, function (result) {
+    $.get(window.location.origin + '/MukhlatV2/admin/user_network/' + user_id, function (result) {
         var map;
         var user = JSON.parse(result);
         var user_nodes = [];
@@ -350,7 +350,7 @@ function loadTopicNetwork(topic_id, filter) {
     var user_data = "[";
     var topic_data = "";
 
-    $.get(window.location.origin + '/GetTogetherBeta/admin/topic_network/' + topic_id, function (result) {
+    $.get(window.location.origin + '/MukhlatV2/admin/topic_network/' + topic_id, function (result) {
         var map;
         var topic = JSON.parse(result);
         var user_nodes = [];
@@ -494,7 +494,7 @@ function loadUserTopic(user_id, topic_id) {
     nodes.clear();
     edges.clear();
     var user_data = "[";
-    $.get(window.location.origin + '/GetTogetherBeta/admin/user_topic/' + user_id + '/' + topic_id, function (result) {
+    $.get(window.location.origin + '/MukhlatV2/admin/user_topic/' + user_id + '/' + topic_id, function (result) {
         var map;
         var user = JSON.parse(result);
         var user_nodes = [];
@@ -579,7 +579,7 @@ function loadWithinTopic(topic_id) {
     //clear network
     nodes.clear();
     edges.clear();
-    $.get(window.location.origin + '/GetTogetherBeta/admin/within_topic/' + topic_id, function (result) {
+    $.get(window.location.origin + '/MukhlatV2/admin/within_topic/' + topic_id, function (result) {
         var topic = JSON.parse(result);
         var users = topic.users;
         //change UI

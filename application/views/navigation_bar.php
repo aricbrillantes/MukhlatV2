@@ -1,7 +1,26 @@
 <?php
 $logged_user = $_SESSION['logged_user'];
 $unanswered = $logged_user->unanswered_invites + $logged_user->unanswered_requests;
+
+    $this->load->library('user_agent');
+    global $mobile;
+    $mobile=$this->agent->is_mobile();    
+
+    if(!$mobile)
+    {
+        // echo "<script type='text/javascript'>alert('desktop');</script>";
+        // echo "desktop";
+    }   
+
+    else
+    {
+        // echo "<script type='text/javascript'>alert('mobile');</script>";
+        echo "mobile";
+    }
 ?>
+
+<!-- scale to device resolution -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- Nav Bar -->
 <nav class = "navbar navbar-default navbar-font navbar-fixed-top" style = "box-shadow: 0px 1px 2px #ccc;">

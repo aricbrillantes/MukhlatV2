@@ -11,7 +11,7 @@ $(document).ready(function () {
         var post_id = $(this).val();
 
         $.ajax({
-            url: window.location.origin + "/GetTogetherBeta/topic/load_post/edit",
+            url: window.location.origin + "/MukhlatV2/topic/load_post/edit",
             type: "POST",
             dataType: "json",
             data: {post_id: post_id},
@@ -20,7 +20,7 @@ $(document).ready(function () {
                 $("#post-content").val($('<textarea/>').html(data.edit_post.post_content).text());
                 $("#edit-post-topic").html("<strong>Edit your post in " + data.edit_post.topic_name + "</strong>");
                 $("#edit-confirm-topic").html("<strong>Save changes made to your post in " + data.edit_post.topic_name + "</strong>");
-                $("#edit-post-form").attr("action", window.location.origin + "/GetTogetherBeta/topic/edit_post/" + data.edit_post.post_id);
+                $("#edit-post-form").attr("action", window.location.origin + "/MukhlatV2/topic/edit_post/" + data.edit_post.post_id);
                 if (!(data.edit_post.attachments[0] == null)) {
                     $("#edit-attachment-message").remove();
                     $("#edit-attachment-details").remove();
@@ -108,7 +108,7 @@ $(document).ready(function () {
 
     $(".delete-btn").on("click", function () {
         var val = $(this).val();
-        $("#delete-post-form").attr("action", window.location.origin + "/GetTogetherBeta/topic/delete_post/" + val);
+        $("#delete-post-form").attr("action", window.location.origin + "/MukhlatV2/topic/delete_post/" + val);
 
         $("#post-delete-confirm").modal("show");
     });
@@ -117,7 +117,7 @@ $(document).ready(function () {
         var val = $(this).val();
 
         $.ajax({
-            url: window.location.origin + "/GetTogetherBeta/upload/load_post_attachments/" + val + "/1",
+            url: window.location.origin + "/MukhlatV2/upload/load_post_attachments/" + val + "/1",
             type: "POST",
             success: function (html) {
                 $("#attachment-modal-container").remove();
@@ -132,7 +132,7 @@ $(document).ready(function () {
         var val = $(this).val();
 
         $.ajax({
-            url: window.location.origin + "/GetTogetherBeta/upload/load_post_attachments/" + val + "/0",
+            url: window.location.origin + "/MukhlatV2/upload/load_post_attachments/" + val + "/0",
             type: "POST",
             success: function (html) {
                 $("#attachment-modal-container").remove();
@@ -147,11 +147,11 @@ $(document).ready(function () {
         var val = $(this).val();
 
         $.ajax({
-            url: window.location.origin + "/GetTogetherBeta/upload/get_attachment_url/" + val,
+            url: window.location.origin + "/MukhlatV2/upload/get_attachment_url/" + val,
             type: "POST",
             dataType: "json",
             success: function (data) {
-                $("#image-attachment").attr('src', window.location.origin + "/GetTogetherBeta/" + data.url);
+                $("#image-attachment").attr('src', window.location.origin + "/MukhlatV2/" + data.url);
                 $("#image-modal").modal("show");
             }
         });
@@ -161,11 +161,11 @@ $(document).ready(function () {
         var val = $(this).val();
 
         $.ajax({
-            url: window.location.origin + "/GetTogetherBeta/upload/get_attachment_url/" + val,
+            url: window.location.origin + "/MukhlatV2/upload/get_attachment_url/" + val,
             type: "POST",
             dataType: "json",
             success: function (data) {
-                $("#audio-attachment").attr('src', window.location.origin + "/GetTogetherBeta/" + data.url);
+                $("#audio-attachment").attr('src', window.location.origin + "/MukhlatV2/" + data.url);
                 $("#audio-modal").modal("show");
             }
         });
@@ -175,11 +175,11 @@ $(document).ready(function () {
         var val = $(this).val();
 
         $.ajax({
-            url: window.location.origin + "/GetTogetherBeta/upload/get_attachment_url/" + val,
+            url: window.location.origin + "/MukhlatV2/upload/get_attachment_url/" + val,
             type: "POST",
             dataType: "json",
             success: function (data) {
-                $("#video-attachment").attr('src', window.location.origin + "/GetTogetherBeta/" + data.url);
+                $("#video-attachment").attr('src', window.location.origin + "/MukhlatV2/" + data.url);
                 $("#video-modal").modal("show");
             }
         });
@@ -192,7 +192,7 @@ function vote(vote_btn, vote_type) {
     var count = vote_btn.siblings(".vote-count");
     var trophy = "<i class = \"fa fa-trophy\"></i>";
     $.ajax({
-        url: window.location.origin + "/GetTogetherBeta/topic/vote/" + post_id,
+        url: window.location.origin + "/MukhlatV2/topic/vote/" + post_id,
         type: "POST",
         data: data,
         success: function (data) {

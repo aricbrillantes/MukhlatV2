@@ -80,7 +80,7 @@ $(document).ready(function () {
         });
 
         //get post preview
-        $.post(window.location.origin + "/GetTogetherBeta/topic/preview/" + post_id,
+        $.post(window.location.origin + "/MukhlatV2/topic/preview/" + post_id,
                 function (html) {
                     $(html).hide().prependTo("#preview-div").show("slow");
                 }
@@ -93,7 +93,7 @@ $(document).ready(function () {
         var topic_id = follow_btn.val();
         $(".follow-label").remove();
         $.ajax({
-            url: window.location.origin + "/GetTogetherBeta/topic/follow/" + topic_id,
+            url: window.location.origin + "/MukhlatV2/topic/follow/" + topic_id,
             type: "POST",
             success: function () {
                 if (follow_btn.hasClass("btn-primary")) {
@@ -115,14 +115,14 @@ $(document).ready(function () {
     $(".reply-btn").on("click", function () {
         var post_id = $(this).val();
         $.ajax({
-            url: window.location.origin + "/GetTogetherBeta/topic/load_post/reply",
+            url: window.location.origin + "/MukhlatV2/topic/load_post/reply",
             type: "POST",
             dataType: "json",
             data: {post_id: post_id},
             success: function (data) {
                 $("#reply-user").html("<strong>Reply to " + data.first_name + "</strong>");
                 $("#send-reply-user").html("<strong>Send reply to " + data.first_name + "</strong>");
-                $("#create-reply-form").attr("action", window.location.origin + "/GetTogetherBeta/topic/reply/" + data.post_id);
+                $("#create-reply-form").attr("action", window.location.origin + "/MukhlatV2/topic/reply/" + data.post_id);
                 $("#create-reply-modal").modal("show");
             }
         });
@@ -180,7 +180,7 @@ $(document).ready(function () {
         var id = $(this).val();
         var desc = $("#edit-topic-text").val();
         $.ajax({
-            url: window.location.origin + '/GetTogetherBeta/topic/edit_topic/' + id,
+            url: window.location.origin + '/MukhlatV2/topic/edit_topic/' + id,
             type: 'POST',
             data: {topic_description: desc},
             success: function (data) {
@@ -206,7 +206,7 @@ $(document).ready(function () {
 
         if (apply_btn.hasClass("btn-primary")) {
             $.ajax({
-                url: window.location.origin + '/GetTogetherBeta/topic/apply',
+                url: window.location.origin + '/MukhlatV2/topic/apply',
                 success: function () {
                     apply_btn.removeClass("btn-primary");
                     apply_btn.addClass("btn-gray");
@@ -215,7 +215,7 @@ $(document).ready(function () {
             });
         } else {
             $.ajax({
-                url: window.location.origin + '/GetTogetherBeta/topic/apply',
+                url: window.location.origin + '/MukhlatV2/topic/apply',
                 success: function () {
                     apply_btn.removeClass("btn-danger");
                     apply_btn.removeClass("btn-gray");
@@ -245,7 +245,7 @@ $(document).ready(function () {
     $(".remove-follower-btn").on("click", function () {
         var val = $(this).val();
         $.ajax({
-            url: window.location.origin + '/GetTogetherBeta/topic/load_remove/' + val + "/1",
+            url: window.location.origin + '/MukhlatV2/topic/load_remove/' + val + "/1",
             success: function (html) {
                 $('#remove-member-confirm').remove();
                 $('#topic-page').append(html);
@@ -257,7 +257,7 @@ $(document).ready(function () {
     $(".remove-mod-btn").on("click", function () {
         var val = $(this).val();
         $.ajax({
-            url: window.location.origin + '/GetTogetherBeta/topic/load_remove/' + val + "/2",
+            url: window.location.origin + '/MukhlatV2/topic/load_remove/' + val + "/2",
             success: function (html) {
                 $('#remove-member-confirm').remove();
                 $('#topic-page').append(html);
@@ -269,7 +269,7 @@ $(document).ready(function () {
     $(".remove-creator-btn").on("click", function () {
         var val = $(this).val();
         $.ajax({
-            url: window.location.origin + '/GetTogetherBeta/topic/load_remove/' + val + "/3",
+            url: window.location.origin + '/MukhlatV2/topic/load_remove/' + val + "/3",
             success: function (html) {
                 $('#remove-member-confirm').remove();
                 $('#topic-page').append(html);
@@ -281,23 +281,23 @@ $(document).ready(function () {
     $(document).on('click', '#remove-follower-proceed', function () {
         var val = $('#remove-follower-proceed').val();
         $.ajax({
-            url: window.location.origin + '/GetTogetherBeta/topic/remove_member/' + val + "/1",
+            url: window.location.origin + '/MukhlatV2/topic/remove_member/' + val + "/1",
         });
     });
 
     $(document).on('click', '#remove-moderator-proceed', function () {
         var val = $('#remove-moderator-proceed').val();
         $.ajax({
-            url: window.location.origin + '/GetTogetherBeta/topic/remove_member/' + val + "/2",
+            url: window.location.origin + '/MukhlatV2/topic/remove_member/' + val + "/2",
         });
     });
 
     $(document).on('click', '#remove-creator-proceed', function () {
         var val = $('#remove-creator-proceed').val();
         $.ajax({
-            url: window.location.origin + '/GetTogetherBeta/topic/remove_member/' + val + "/3",
+            url: window.location.origin + '/MukhlatV2/topic/remove_member/' + val + "/3",
             success: function () {
-                window.location = window.location.origin + '/GetTogetherBeta/topic/';
+                window.location = window.location.origin + '/MukhlatV2/topic/';
             }
         });
     });
@@ -452,7 +452,7 @@ $(document).ready(function () {
     $('#sort-dropdown li a').click(function () {
         var sort_type = $(this).data('value');
         $.ajax({
-            url: window.location.origin + '/GetTogetherBeta/topic/sort',
+            url: window.location.origin + '/MukhlatV2/topic/sort',
             type: 'POST',
             data: {sort_type: sort_type, keyword: $('#search-topic-list').val()},
             success: function (html) {
