@@ -2,6 +2,9 @@
 Mukhlat V2
 ###################
 
+Mukhlat is a private social media website for children aged 6 to 8. It will serve as an educational sandbox environment wherein they will learn about the safe, healthy and productive use of a social media website. The website will be used by children, their parents/guardians and teachers. Parents will be monitoring their children’s activity and will be notified of any alarming events, where they will have to be the ones to confront their children about the problem. Teachers will act as moderators of the website and will observe the children’s activity and behavior. They will inform the children’s parents of any alarming events that involve their children. They can also use their observations of the children’s activity as a start-off point for their discussions in class. As part of the sandbox experience, parents and teachers cannot directly interact with the children within the website. 
+
+
 ###################
 What is CodeIgniter
 ###################
