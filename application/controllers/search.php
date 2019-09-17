@@ -10,7 +10,8 @@ class Search extends CI_Controller {
     public function index() {
         $this->load->model("user_model", "users");
         $this->load->model("topic_model", "topics");
-        $keyword = utf8_encode(htmlspecialchars($this->input->get("search-key")));
+        $keyword = utf8_encode(htmlspecialchars(str_replace('\'',' ',$this->input->get("search-key"))));
+
         $data['keyword'] = $keyword;
         $data['users'] = $this->users->search_users($keyword, false);
         $data['topics'] = $this->topics->search_topics($keyword, 0);

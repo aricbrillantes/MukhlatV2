@@ -2,6 +2,8 @@
 
 class Home extends CI_Controller 
 {
+
+
     public function index() 
     {
         $logged_user = $_SESSION['logged_user'];
@@ -32,6 +34,35 @@ class Home extends CI_Controller
             header("Location: $homeURL");
         }
 
+
+        $this->load->model('user_model', 'user');
+
+        $usertimes = $this->user->get_usertimes(39);
+        // echo print_r($usertimes->result());
+
+        if ($usertimes) 
+        {
+            echo "<br><br><br><b>Successful query!</b><br><br><b>Allowed times:</b>";
+            
+            foreach ($usertimes->result() as $row)
+            {
+                echo "<br>" . $row->time_start . "-" . $row->time_end;
+            }
+
+            //set default timezone to Manila
+            date_default_timezone_set('Asia/Manila');
+            // echo "<br><br>The current server timezone is: " . date_default_timezone_get();
+            // echo "<br>Date/time is " . date('m/d/Y h:i:s a', time()) . "<br>";
+
+            //current timestamp based on Manila timezone
+            echo "<br><br><b>Current time:</b> " . date("G") . ": " . date("i") . ": " . date("s") ;
+        } 
+
+        else
+        {
+            echo 0;
+        }
+        
         $this->load->library('user_agent');
         global $mobile;
         $mobile=$this->agent->is_mobile();

@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.4.1deb2ubuntu2
--- http://www.phpmyadmin.net
+-- version 4.9.0.1
+-- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Jan 09, 2018 at 03:00 AM
--- Server version: 5.7.20-0ubuntu0.16.04.1
--- PHP Version: 7.0.22-0ubuntu0.16.04.1
+-- Host: 127.0.0.1
+-- Generation Time: Sep 17, 2019 at 08:53 AM
+-- Server version: 5.7.17-log
+-- PHP Version: 7.1.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -17,13 +19,12 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `mukhlatv2` based on gettogether.sql
+-- Database: `mukhlatv2`
 --
 
 DROP DATABASE IF EXISTS mukhlatv2;
 CREATE DATABASE mukhlatv2;
 USE mukhlatv2;
-
 
 -- --------------------------------------------------------
 
@@ -1166,6 +1167,27 @@ INSERT INTO `tbl_users` (`user_id`, `email`, `password`, `first_name`, `last_nam
 (39, 'aric_brillantes@dlsu.edu.ph', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', 'Aric', 'Brillantes', '1999-09-30', 2, 1, NULL, 'uploads/user_profiles/9845565f1dced5ee8e6f64b9b3b4fd68.jpg', NULL, NULL),
 (40, 'klaudia_borromeo@dlsu.edu.ph', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', 'Gaia', 'Borromeo', '1997-09-01', 2, 1, NULL, 'uploads/user_profiles/9845565f1dced5ee8e6f64b9b3b4fd68.jpg', NULL, NULL);
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_usertimes`
+--
+
+CREATE TABLE `tbl_usertimes` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `time_start` int(24) NOT NULL DEFAULT '800',
+  `time_end` int(24) NOT NULL DEFAULT '2000'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tbl_usertimes`
+--
+
+INSERT INTO `tbl_usertimes` (`id`, `user_id`, `time_start`, `time_end`) VALUES
+(1, 39, 700, 1100),
+(2, 39, 1300, 2200);
+
 --
 -- Indexes for dumped tables
 --
@@ -1243,6 +1265,12 @@ ALTER TABLE `tbl_users`
   ADD PRIMARY KEY (`user_id`);
 
 --
+-- Indexes for table `tbl_usertimes`
+--
+ALTER TABLE `tbl_usertimes`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -1251,36 +1279,50 @@ ALTER TABLE `tbl_users`
 --
 ALTER TABLE `tbl_attachments`
   MODIFY `attachment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
+
 --
 -- AUTO_INCREMENT for table `tbl_moderator_invite`
 --
 ALTER TABLE `tbl_moderator_invite`
   MODIFY `invite_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT for table `tbl_moderator_request`
 --
 ALTER TABLE `tbl_moderator_request`
   MODIFY `request_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
 --
 -- AUTO_INCREMENT for table `tbl_notifications`
 --
 ALTER TABLE `tbl_notifications`
   MODIFY `notification_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=313;
+
 --
 -- AUTO_INCREMENT for table `tbl_posts`
 --
 ALTER TABLE `tbl_posts`
   MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=184;
+
 --
 -- AUTO_INCREMENT for table `tbl_topics`
 --
 ALTER TABLE `tbl_topics`
   MODIFY `topic_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+
 --
 -- AUTO_INCREMENT for table `tbl_users`
 --
 ALTER TABLE `tbl_users`
   MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+
+--
+-- AUTO_INCREMENT for table `tbl_usertimes`
+--
+ALTER TABLE `tbl_usertimes`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

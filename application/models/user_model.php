@@ -43,6 +43,18 @@ class User_model extends CI_Model {
         return $user;
     }
 
+    public function get_usertimes($user_id) {
+
+        $this->db->select('tbl_usertimes.time_start, tbl_usertimes.time_end');
+        $this->db->from('tbl_users');
+        $this->db->join('tbl_usertimes', 'tbl_usertimes.user_id = tbl_users.user_id');
+        $this->db->where(array('tbl_usertimes.user_id' => $user_id));
+        
+        $query = $this->db->get();
+        
+        return $query;
+    }
+
     public function get_topic_users($topic_id) {
         $users = $this->db->query('SELECT result.user_id, result.first_name, result.last_name, result.profile_url FROM (select u.user_id, '
                         . 'u.first_name, u.last_name, u.profile_url from tbl_posts p '

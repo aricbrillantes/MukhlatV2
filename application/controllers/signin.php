@@ -29,9 +29,9 @@ class Signin extends CI_Controller {
             );
             $this->db->insert('tbl_users', $data);
             
-            echo 1;
+            // echo 1;
         } else{
-            echo 0;
+            // echo 0;
         }
     }
 
