@@ -1,6 +1,15 @@
 <?php
-include(APPPATH . 'views/header.php');
-$c_topic = $_SESSION['current_topic'];
+    include(APPPATH . 'views/header.php');
+    $c_topic = $_SESSION['current_topic'];
+
+    
+    $logged_user = $_SESSION['logged_user'];
+    if($logged_user->role_id != 2 || $logged_user == null)
+    {
+        $homeURL = base_url('home');
+        header("Location: $homeURL");
+    }
+
 ?>
 <body>
     <?php

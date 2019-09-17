@@ -4,22 +4,8 @@ class Home extends CI_Controller
 {
     public function index() 
     {
-        $this->load->library('user_agent');
-        global $mobile;
-        $mobile=$this->agent->is_mobile();
-
-        if(!$mobile)
-        {
-            // echo "<script type='text/javascript'>alert('desktop');</script>";
-        }   
-
-        else
-        {
-            // echo "<script type='text/javascript'>alert('mobile');</script>";
-        }
-
-
         $logged_user = $_SESSION['logged_user'];
+
         if (!empty($logged_user)) 
         {
             if ($logged_user->role_id === '1') //Admin login
@@ -41,9 +27,27 @@ class Home extends CI_Controller
 
         else 
         {
-            //change error - not logged in
-            $this->load->view('errors/html/error_general');
+            //formerly $this->load->view('errors/html/error_general');
+            $homeURL = base_url('');
+            header("Location: $homeURL");
         }
+
+        $this->load->library('user_agent');
+        global $mobile;
+        $mobile=$this->agent->is_mobile();
+
+        if(!$mobile)
+        {
+            // echo "<script type='text/javascript'>alert('desktop');</script>";
+        }   
+
+        else
+        {
+            // echo "<script type='text/javascript'>alert('mobile');</script>";
+        }
+
+
+        
     }
 
     /* ADMIN FUNCTIONS */

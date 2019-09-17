@@ -873,7 +873,8 @@ CREATE TABLE `tbl_roles` (
 
 INSERT INTO `tbl_roles` (`role_id`, `role_name`) VALUES
 (1, 'Administrator'),
-(2, 'User');
+(2, 'User'),
+(3, 'Parent');
 
 -- --------------------------------------------------------
 

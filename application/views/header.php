@@ -11,7 +11,7 @@ and open the template in the editor.
         <title>Mukhlat</title> 
 
         <!-- scale to device resolution -->
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+        <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0">  --> 
 
         <!-- browser tab icon -->
         <link rel="icon" href="<?php echo base_url('./images/logo/mukhlatlogo_NoText.png'); ?>" sizes="32x32"> 

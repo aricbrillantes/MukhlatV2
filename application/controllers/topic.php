@@ -6,22 +6,25 @@
  * and open the template in the editor.
  */
 
-/**
- * Description of topic
- *
- * @author Arces
- */
 class Topic extends CI_Controller {
 
-    public function index() {
+    public function index() 
+    {
         $logged_user = $_SESSION['logged_user'];
-        if (!empty($logged_user)) {
+        
+        if (!empty($logged_user)) 
+        {
             $this->load->model('topic_model', 'topics');
             $_SESSION['sort_type'] = 1;
             $data['topics'] = $this->topics->search_topics('', 1);
             $this->load->view('pages/topic_list_page', $data);
-        } else {
-            echo 'ERROR!';
+        } 
+
+        else 
+        {
+            //formerly $this->load->view('errors/html/error_general');
+            $homeURL = base_url('home');
+            header("Location: $homeURL");
         }
 
         $this->load->library('user_agent');

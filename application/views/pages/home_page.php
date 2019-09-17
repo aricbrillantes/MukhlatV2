@@ -1,12 +1,18 @@
 <?php
-include(APPPATH . 'views/header.php');
+    include(APPPATH . 'views/header.php');
+    
+    $logged_user = $_SESSION['logged_user'];
+    
+    //if user is logged out, redirect to sign in page
+    if($logged_user == null)
+    {
+        $homeURL = base_url('');
+        header("Location: $homeURL");
+        die();
+    }
 ?>
 <body>
-    <?php
-    include(APPPATH . 'views/navigation_bar.php');
-    $logged_user = $_SESSION['logged_user'];
-    ?>
-
+    <?php include(APPPATH . 'views/navigation_bar.php');?>
     <div class = "container page">
         <div class = "row">
             <div class = "col-md-9 home-container">

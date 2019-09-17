@@ -1,6 +1,14 @@
 <?php
-include(APPPATH . 'views/header.php');
-$logged_user = $_SESSION['logged_user'];
+    include(APPPATH . 'views/header.php');
+    $logged_user = $_SESSION['logged_user'];
+
+    if($logged_user->role_id != 1 || $logged_user == null)
+    {
+        
+        $homeURL = base_url('home');
+        header("Location: $homeURL");
+        // die();
+    }
 ?>
 <body class = "sign-in">
     <div id = "admin-page" class = "container" style = "margin-top: 30px;">

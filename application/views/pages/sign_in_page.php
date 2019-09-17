@@ -1,5 +1,15 @@
 <?php
-include(APPPATH . 'views/header.php');
+    include(APPPATH . 'views/header.php');
+
+    //added an '@' to disable errors
+    @$logged_user = $_SESSION['logged_user']; 
+    if(!empty($logged_user))
+    {
+        $homeURL = base_url('home');
+        header("Location: $homeURL");
+    }
+
+
 ?>
 <body class = "sign-in">
     <div class = "container-fluid">

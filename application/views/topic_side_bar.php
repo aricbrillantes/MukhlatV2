@@ -1,5 +1,12 @@
 <?php
-$logged_user = $_SESSION['logged_user'];
+
+    $logged_user = $_SESSION['logged_user'];
+    if($logged_user->role_id != 2 || $logged_user == null)
+    {
+        $homeURL = base_url('home');
+        header("Location: $homeURL");
+    }
+
 ?>
 <!-- Sidebar -->
 <div class="col-md-3" style = "padding-left: 0px;">

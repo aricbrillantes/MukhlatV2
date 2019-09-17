@@ -1,6 +1,12 @@
 <?php
     $logged_user = $_SESSION['logged_user'];
     $unanswered = $logged_user->unanswered_invites + $logged_user->unanswered_requests;
+
+    if($logged_user->role_id != 2 || $logged_user == null)
+    {
+        $homeURL = base_url('home');
+        header("Location: $homeURL");
+    }
 ?>
 
 <!-- scale to device resolution -->

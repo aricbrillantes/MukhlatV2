@@ -1,11 +1,17 @@
 <?php
-include(APPPATH . 'views/header.php');
-?>
-<body>
-    <?php
+    include(APPPATH . 'views/header.php');
     include(APPPATH . 'views/navigation_bar.php');
+    
     $logged_user = $_SESSION['logged_user'];
-    ?>
+    if($logged_user->role_id != 2 || $logged_user == null)
+    {
+        $homeURL = base_url('home');
+        header("Location: $homeURL");
+    }
+?>
+
+<body>
+    <?php ?>
 
     <div class = "container page">
         <div class = "row">
