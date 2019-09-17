@@ -6,11 +6,6 @@
  * and open the template in the editor.
  */
 
-/**
- * Description of admin
- *
- * @author Arces
- */
 class Admin extends CI_Controller {
 
     // $this->load->library('user_agent');

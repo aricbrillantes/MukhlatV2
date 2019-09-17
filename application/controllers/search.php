@@ -6,11 +6,6 @@
  * and open the template in the editor.
  */
 
-/**
- * Description of search
- *
- * @author Arces
- */
 class Search extends CI_Controller {
     public function index() {
         $this->load->model("user_model", "users");

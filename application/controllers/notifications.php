@@ -6,11 +6,6 @@
  * and open the template in the editor.
  */
 
-/**
- * Description of notifications
- *
- * @author Arces
- */
 class Notifications extends CI_Controller {
 
     public function index() {

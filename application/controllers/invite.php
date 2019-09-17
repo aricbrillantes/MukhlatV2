@@ -6,11 +6,6 @@
  * and open the template in the editor.
  */
 
-/**
- * Description of invite
- *
- * @author Arces
- */
 class Invite extends CI_Controller {
 
     public function index() {

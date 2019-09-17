@@ -6,11 +6,6 @@
  * and open the template in the editor.
  */
 
-/**
- * Description of upload
- *
- * @author Arces
- */
 class Upload extends CI_Controller {
 
     public function index() {
