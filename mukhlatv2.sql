@@ -1176,17 +1176,19 @@ INSERT INTO `tbl_users` (`user_id`, `email`, `password`, `first_name`, `last_nam
 CREATE TABLE `tbl_usertimes` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `time_start` int(24) NOT NULL DEFAULT '800',
-  `time_end` int(24) NOT NULL DEFAULT '2000'
+  `start_hour` varchar(255) NOT NULL DEFAULT '08',
+  `start_minute` varchar(255) NOT NULL DEFAULT '00',
+  `end_hour` varchar(255) NOT NULL DEFAULT '20',
+  `end_minute` varchar(255) NOT NULL DEFAULT '00'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tbl_usertimes`
 --
 
-INSERT INTO `tbl_usertimes` (`id`, `user_id`, `time_start`, `time_end`) VALUES
-(1, 39, 700, 1100),
-(2, 39, 1300, 2200);
+INSERT INTO `tbl_usertimes` (`id`, `user_id`, `start_hour`, `start_minute`, `end_hour`, `end_minute`) VALUES
+(1, 39, '07', '00', '11', '30'),
+(2, 39, '13', '00', '20', '00');
 
 --
 -- Indexes for dumped tables

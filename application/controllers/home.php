@@ -39,6 +39,7 @@ class Home extends CI_Controller
 
         $usertimes = $this->user->get_usertimes(39);
         // echo print_r($usertimes->result());
+        date_default_timezone_set('Asia/Manila');
 
         if ($usertimes) 
         {
@@ -46,16 +47,34 @@ class Home extends CI_Controller
             
             foreach ($usertimes->result() as $row)
             {
-                echo "<br>" . $row->time_start . "-" . $row->time_end;
+                echo "<br>" . (int) $row->start_hour . ":" . $row->start_minute . "-" . $row->end_hour . ":" . $row->end_minute;
+                
+                if
+                (
+                    ((int) date("G") > (int) $row->start_hour && (int) date("G") < (int) $row->end_hour) ||
+                    ((int) date("G") == (int) $row->start_hour && (int) date("i") > (int) $row->start_minute) ||
+                    ((int) date("G") == (int) $row->end_hour && (int) date("i") < (int) $row->end_minute)
+                )
+                {
+                    echo "<br> You can use<br>";
+                }
+
+                else
+                {
+                    
+                    echo "<br> You shouldn't be allowed<br>";
+                }
+                
             }
 
+            echo "<br><br><b>Current time:</b> " . (int) date("G") . ": " . date("i")  ;
             //set default timezone to Manila
-            date_default_timezone_set('Asia/Manila');
+            
             // echo "<br><br>The current server timezone is: " . date_default_timezone_get();
             // echo "<br>Date/time is " . date('m/d/Y h:i:s a', time()) . "<br>";
 
             //current timestamp based on Manila timezone
-            echo "<br><br><b>Current time:</b> " . date("G") . ": " . date("i") . ": " . date("s") ;
+            
         } 
 
         else
