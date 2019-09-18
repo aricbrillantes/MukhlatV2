@@ -22,6 +22,31 @@ class Parents extends CI_Controller {
     //     echo "<script type='text/javascript'>alert('mobile');</script>";
     // }
 
+    // public function view_child() 
+    // {
+    //     $logged_user = $_SESSION['logged_user'];
+    //     $parent_id = $logged_user->user_id;
+    //     $child_id;
+
+    //     $query = $this->db->select('user_id, first_name, last_name, profile_url')
+    //             ->from('tbl_users')
+    //             ->where('parent', $parent_id);
+
+    //     return $query->get()->result();
+
+    //     // $usertimes = $this->user->get_usertimes($logged_user->user_id);
+    //     //         // echo print_r($usertimes->result());
+    //     //         date_default_timezone_set('Asia/Manila');
+
+    //     //         if ($usertimes) 
+    //     //         {
+    //     //             $restrict = 0;
+
+    //     //             // echo "<b>Successful query!</b><br><b>Allowed times:</b>";
+    //     //             foreach ($usertimes->result() as $row)
+    //     //             {
+    // }
+
     public function view_user() 
     {
         $user_id = $this->uri->segment(3);
@@ -32,9 +57,9 @@ class Parents extends CI_Controller {
         $this->load->view('modals/user_record_modal', $data);
     }
 
-    public function network() 
+    public function activity() 
     {
-        $this->load->view('pages/parent_network_page');
+        $this->load->view('pages/child_activity');
     }
 
     public function load_network() 

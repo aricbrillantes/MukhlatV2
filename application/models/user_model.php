@@ -43,6 +43,20 @@ class User_model extends CI_Model {
         return $user;
     }
 
+    public function view_child($parent_id) 
+    {
+        echo $parent_id . "<br>";
+        
+        $query = $this->db->select('user_id, first_name, last_name, parent')
+                ->from('tbl_users')
+                ->where('parent', $parent_id);
+
+        $query = $this->db->get();
+        
+        // echo print_r($query->result());
+        return $query;
+    }
+
     public function get_usertimes($user_id) 
     {
 
@@ -53,6 +67,7 @@ class User_model extends CI_Model {
         
         $query = $this->db->get();
         
+
         return $query;
     }
 

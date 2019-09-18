@@ -1115,10 +1115,9 @@ CREATE TABLE `tbl_users` (
   `last_name` varchar(25) NOT NULL,
   `birthdate` date DEFAULT NULL,
   `role_id` int(11) DEFAULT NULL,
+  `parent` int(11) DEFAULT NULL,
   `is_enabled` int(1) NOT NULL,
-  `is_online` binary(1) DEFAULT NULL,
   `profile_url` varchar(100) DEFAULT NULL,
-  `session_id` varchar(45) DEFAULT NULL,
   `description` varchar(75) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -1126,46 +1125,47 @@ CREATE TABLE `tbl_users` (
 -- Dumping data for table `tbl_users`
 --
 
-INSERT INTO `tbl_users` (`user_id`, `email`, `password`, `first_name`, `last_name`, `birthdate`, `role_id`, `is_enabled`, `is_online`, `profile_url`, `session_id`, `description`) VALUES
-(1, 'arces@admin.com', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', 'Administrator', 'Arces', '1996-12-28', 1, 1, NULL, NULL, NULL, NULL),
-(2, 'edward@admin.com', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', 'Edward', 'Tiro', '1996-12-25', 1, 1, NULL, NULL, NULL, NULL),
-(3, 'arcestalavera@gmail.com', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', 'Arces', 'Talavera', '1996-12-28', 2, 1, NULL, 'uploads/user_profiles/9845565f1dced5ee8e6f64b9b3b4fd68.jpg', NULL, NULL),
-(5, 'dssssss@gmail.com', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', 'Mike', 'Dayupay', '1991-04-16', 2, 1, NULL, NULL, NULL, NULL),
-(6, 'dward@tiro.com', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', 'Edward', 'Tiro', '1996-11-29', 2, 1, NULL, NULL, NULL, NULL),
-(7, 'zedrick@ty.com', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', 'Lourde', 'N. Savor', '2002-04-06', 2, 1, NULL, NULL, NULL, 'bio'),
-(8, 'jim@valentin.com', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', '.', '.', '1998-12-29', 2, 1, NULL, 'uploads/user_profiles/9845565f1dced5ee8e6f64b9b3b4fd68.jpg', NULL, NULL),
-(9, 'macx@isip.com', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', 'Lowrd', '&amp; Savor', '2002-04-25', 2, 1, NULL, 'uploads/user_profiles/9845565f1dced5ee8e6f64b9b3b4fd68.jpg', NULL, NULL),
-(10, 'luis@villadarez.com', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', 'Louwrd N', 'Savor', '1998-12-19', 2, 1, NULL, 'uploads/user_profiles/9845565f1dced5ee8e6f64b9b3b4fd68.jpg', NULL, NULL),
-(11, 'franc@calma.com', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', 'Franc', 'Calma', '1981-08-18', 1, 0, NULL, NULL, NULL, NULL),
-(12, 'eulo@peneyra.com', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', 'Eulo', 'Peneyra', '2001-12-02', 2, 1, NULL, NULL, NULL, NULL),
-(13, 'redjamesmanalili@gmail.com', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', 'Red', 'Manalili', '2001-07-17', 1, 0, NULL, NULL, NULL, NULL),
-(14, 'atasuke@kanegawa.com', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', 'Atasuke', 'Kanegawa', '1946-08-05', 1, 0, NULL, NULL, NULL, NULL),
-(15, 'red@manalili.com', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', 'Red', 'Manalili', '2001-07-17', 1, 0, NULL, NULL, NULL, NULL),
-(16, 'vincenzo@cortez.com', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', 'Vincenzo', 'Cortez', '2001-08-27', 2, 1, NULL, NULL, NULL, NULL),
-(17, 'francine@calma.com', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', 'Francine', 'Calma', '1981-08-18', 2, 1, NULL, 'uploads/user_profiles/9845565f1dced5ee8e6f64b9b3b4fd68.jpg', NULL, NULL),
-(18, 'james@manalili.com', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', 'You don\'t', 'Know me', '2001-07-17', 2, 1, NULL, 'uploads/user_profiles/9845565f1dced5ee8e6f64b9b3b4fd68.jpg', NULL, NULL),
-(19, 'edward@gmail.com', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', 'Edward', 'Tiro', '1996-02-11', 2, 1, NULL, NULL, NULL, NULL),
-(20, 'ymer@samson.com', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', 'Ymer', 'Samson', '1996-01-17', 2, 1, NULL, 'uploads/user_profiles/9845565f1dced5ee8e6f64b9b3b4fd68.jpg', NULL, NULL),
-(21, 'joserizal@gmail.com', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', 'Jose', 'Rizal', '1961-06-19', 2, 1, NULL, NULL, NULL, NULL),
-(22, 'arrenstark@winterfell.ws', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', 'Arren', 'Stark', '1997-05-14', 2, 1, NULL, 'uploads/user_profiles/9845565f1dced5ee8e6f64b9b3b4fd68.gif', NULL, NULL),
-(23, 'hs@sw.com', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', 'Han', 'Sibs', '1996-10-05', 2, 1, NULL, 'uploads/user_profiles/9845565f1dced5ee8e6f64b9b3b4fd68.gif', NULL, NULL),
-(24, 'wat@gmail.com', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', 'Jet', 'Destroyer', '2017-07-19', 2, 1, NULL, NULL, NULL, ''),
-(25, 'jeruel_trinidad@dlsu.edu.ph', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', 'Jj', 'Trinidad', '1998-02-13', 2, 1, NULL, NULL, NULL, NULL),
-(26, 'samuel_marquez@dlsu.edu.ph', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', 'Samuel', 'Marquez', '1996-09-02', 2, 1, NULL, NULL, NULL, NULL),
-(27, 'maynard_si@dlsu.edu.ph', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', 'Maynard John', 'Si', '1997-10-12', 2, 1, NULL, NULL, NULL, NULL),
-(28, 'rigel_5656@yahoo.com', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', 'Rigel', '#de #castro', '1997-03-16', 2, 1, NULL, 'uploads/user_profiles/9845565f1dced5ee8e6f64b9b3b4fd68.jpg', NULL, NULL),
-(29, 'reynaldo_bayeta@dlsu.edu.ph', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', 'RJ', 'Bayeta', '1995-05-23', 2, 1, NULL, 'uploads/user_profiles/9845565f1dced5ee8e6f64b9b3b4fd68.jpg', NULL, NULL),
-(30, 'rgee_gallega@dlsu.edu.ph', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', 'Rgee', 'Gallega', '1997-12-22', 2, 1, NULL, NULL, NULL, NULL),
-(31, 'fake@account', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', 'Fake', 'Account', '2017-07-20', 2, 1, NULL, NULL, NULL, NULL),
-(32, 'cyrus_vatandoostkakhki@dlsu.edu.ph', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', 'Cyrus', 'Vatandoost', '1997-12-08', 2, 1, NULL, NULL, NULL, NULL),
-(33, 'kristian_sisayan@dlsu.edu.ph', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', 'Kristian ', 'Sisayan', '1996-07-23', 2, 1, NULL, NULL, NULL, NULL),
-(34, 'nikki.ebora@gmail.com', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', 'Nikki', 'Ebora', '2017-03-30', 2, 1, NULL, NULL, NULL, NULL),
-(35, 'missjeng@te3dhouse.com', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', 'Miss Jeng', 'Gendrano', '2017-09-26', 1, 1, NULL, NULL, NULL, NULL),
-(36, 'roskiecruz@gmail.com', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', 'Kristoffer Ross', 'Cruz', '1993-09-03', 2, 1, NULL, NULL, NULL, NULL),
-(37, 'hello@miguelambrosio.me', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', 'Miguel', 'Ambrosio', '1986-09-18', 2, 1, NULL, NULL, NULL, NULL),
-(38, 'talaveraarces@gmail.com', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', 'Arces', 'Talavera', '1996-12-28', 2, 1, NULL, NULL, NULL, NULL),
-(39, 'aric_brillantes@dlsu.edu.ph', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', 'Aric', 'Brillantes', '1999-09-30', 2, 1, NULL, 'uploads/user_profiles/9845565f1dced5ee8e6f64b9b3b4fd68.jpg', NULL, NULL),
-(40, 'klaudia_borromeo@dlsu.edu.ph', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', 'Gaia', 'Borromeo', '1997-09-01', 2, 1, NULL, 'uploads/user_profiles/9845565f1dced5ee8e6f64b9b3b4fd68.jpg', NULL, NULL);
+INSERT INTO `tbl_users` (`user_id`, `email`, `password`, `first_name`, `last_name`, `birthdate`, `role_id`, `parent`, `is_enabled`, `profile_url`, `description`) VALUES
+(1, 'aric@admin.com', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', 'Aric', 'Admin', '1996-12-28', 1, NULL, 1, NULL, NULL),
+(2, 'gaia@admin.com', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', 'Gaia', 'Admin', '1996-12-25', 1, NULL, 1, NULL, NULL),
+(3, 'arcestalavera@gmail.com', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', 'Arces', 'Talavera', '1996-12-28', 2, NULL, 1, 'uploads/user_profiles/9845565f1dced5ee8e6f64b9b3b4fd68.jpg', NULL),
+(5, 'dssssss@gmail.com', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', 'Mike', 'Dayupay', '1991-04-16', 2, NULL, 1, NULL, NULL),
+(6, 'dward@tiro.com', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', 'Edward', 'Tiro', '1996-11-29', 2, NULL, 1, NULL, NULL),
+(7, 'zedrick@ty.com', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', 'Lourde', 'N. Savor', '2002-04-06', 2, NULL, 1, NULL, 'bio'),
+(8, 'jim@valentin.com', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', '.', '.', '1998-12-29', 2, NULL, 1, 'uploads/user_profiles/9845565f1dced5ee8e6f64b9b3b4fd68.jpg', NULL),
+(9, 'macx@isip.com', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', 'Lowrd', '&amp; Savor', '2002-04-25', 2, NULL, 1, 'uploads/user_profiles/9845565f1dced5ee8e6f64b9b3b4fd68.jpg', NULL),
+(10, 'luis@villadarez.com', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', 'Louwrd N', 'Savor', '1998-12-19', 2, NULL, 1, 'uploads/user_profiles/9845565f1dced5ee8e6f64b9b3b4fd68.jpg', NULL),
+(11, 'franc@calma.com', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', 'Franc', 'Calma', '1981-08-18', 1, NULL, 0, NULL, NULL),
+(12, 'eulo@peneyra.com', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', 'Eulo', 'Peneyra', '2001-12-02', 2, NULL, 1, NULL, NULL),
+(13, 'redjamesmanalili@gmail.com', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', 'Red', 'Manalili', '2001-07-17', 1, NULL, 0, NULL, NULL),
+(14, 'atasuke@kanegawa.com', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', 'Atasuke', 'Kanegawa', '1946-08-05', 1, NULL, 0, NULL, NULL),
+(15, 'red@manalili.com', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', 'Red', 'Manalili', '2001-07-17', 1, NULL, 0, NULL, NULL),
+(16, 'vincenzo@cortez.com', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', 'Vincenzo', 'Cortez', '2001-08-27', 2, NULL, 1, NULL, NULL),
+(17, 'francine@calma.com', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', 'Francine', 'Calma', '1981-08-18', 2, NULL, 1, 'uploads/user_profiles/9845565f1dced5ee8e6f64b9b3b4fd68.jpg', NULL),
+(18, 'james@manalili.com', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', 'You don\'t', 'Know me', '2001-07-17', 2, NULL, 1, 'uploads/user_profiles/9845565f1dced5ee8e6f64b9b3b4fd68.jpg', NULL),
+(19, 'edward@gmail.com', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', 'Edward', 'Tiro', '1996-02-11', 2, NULL, 1, NULL, NULL),
+(20, 'ymer@samson.com', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', 'Ymer', 'Samson', '1996-01-17', 2, NULL, 1, 'uploads/user_profiles/9845565f1dced5ee8e6f64b9b3b4fd68.jpg', NULL),
+(21, 'joserizal@gmail.com', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', 'Jose', 'Rizal', '1961-06-19', 2, NULL, 1, NULL, NULL),
+(22, 'arrenstark@winterfell.ws', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', 'Arren', 'Stark', '1997-05-14', 2, NULL, 1, 'uploads/user_profiles/9845565f1dced5ee8e6f64b9b3b4fd68.gif', NULL),
+(23, 'hs@sw.com', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', 'Han', 'Sibs', '1996-10-05', 2, NULL, 1, 'uploads/user_profiles/9845565f1dced5ee8e6f64b9b3b4fd68.gif', NULL),
+(24, 'wat@gmail.com', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', 'Jet', 'Destroyer', '2017-07-19', 2, NULL, 1, NULL, ''),
+(25, 'jeruel_trinidad@dlsu.edu.ph', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', 'Jj', 'Trinidad', '1998-02-13', 2, NULL, 1, NULL, NULL),
+(26, 'samuel_marquez@dlsu.edu.ph', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', 'Samuel', 'Marquez', '1996-09-02', 2, NULL, 1, NULL, NULL),
+(27, 'maynard_si@dlsu.edu.ph', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', 'Maynard John', 'Si', '1997-10-12', 2, NULL, 1, NULL, NULL),
+(28, 'rigel_5656@yahoo.com', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', 'Rigel', '#de #castro', '1997-03-16', 2, NULL, 1, 'uploads/user_profiles/9845565f1dced5ee8e6f64b9b3b4fd68.jpg', NULL),
+(29, 'reynaldo_bayeta@dlsu.edu.ph', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', 'RJ', 'Bayeta', '1995-05-23', 2, NULL, 1, 'uploads/user_profiles/9845565f1dced5ee8e6f64b9b3b4fd68.jpg', NULL),
+(30, 'rgee_gallega@dlsu.edu.ph', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', 'Rgee', 'Gallega', '1997-12-22', 2, NULL, 1, NULL, NULL),
+(31, 'fake@account', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', 'Fake', 'Account', '2017-07-20', 2, NULL, 1, NULL, NULL),
+(32, 'cyrus_vatandoostkakhki@dlsu.edu.ph', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', 'Cyrus', 'Vatandoost', '1997-12-08', 2, NULL, 1, NULL, NULL),
+(33, 'kristian_sisayan@dlsu.edu.ph', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', 'Kristian ', 'Sisayan', '1996-07-23', 2, NULL, 1, NULL, NULL),
+(34, 'nikki.ebora@gmail.com', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', 'Nikki', 'Ebora', '2017-03-30', 2, NULL, 1, NULL, NULL),
+(35, 'missjeng@te3dhouse.com', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', 'Miss Jeng', 'Gendrano', '2017-09-26', 1, NULL, 1, NULL, NULL),
+(36, 'roskiecruz@gmail.com', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', 'Kristoffer Ross', 'Cruz', '1993-09-03', 2, NULL, 1, NULL, NULL),
+(37, 'hello@miguelambrosio.me', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', 'Miguel', 'Ambrosio', '1986-09-18', 2, NULL, 1, NULL, NULL),
+(38, 'talaveraarces@gmail.com', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', 'Arces', 'Talavera', '1996-12-28', 2, NULL, 1, NULL, NULL),
+(39, 'aric_brillantes@dlsu.edu.ph', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', 'Aric', 'Child', '1999-09-30', 2, 42, 1, 'uploads/user_profiles/9845565f1dced5ee8e6f64b9b3b4fd68.jpg', NULL),
+(40, 'klaudia_borromeo@dlsu.edu.ph', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', 'Gaia', 'Child', '1997-09-01', 2, 42, 1, 'uploads/user_profiles/9845565f1dced5ee8e6f64b9b3b4fd68.jpg', NULL),
+(42, 'aric30@gmail.com', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', 'Aric', 'Parent', '1999-09-30', 3, NULL, 1, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1316,7 +1316,7 @@ ALTER TABLE `tbl_topics`
 -- AUTO_INCREMENT for table `tbl_users`
 --
 ALTER TABLE `tbl_users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT for table `tbl_usertimes`
@@ -1328,3 +1328,4 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
