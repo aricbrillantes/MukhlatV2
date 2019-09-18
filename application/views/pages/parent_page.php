@@ -2,7 +2,7 @@
     include(APPPATH . 'views/header.php');
     $logged_user = $_SESSION['logged_user'];
 
-    if($logged_user->role_id != 1 || $logged_user == null)
+    if($logged_user->role_id != 3 || $logged_user == null)
     {
         
         $homeURL = base_url('home');
@@ -20,7 +20,7 @@
             </div>
             
             <div class = "col-md-8 col-md-offset-2 content-container">
-                <a href = "<?php echo base_url('admin/network'); ?>" class = "btn btn-primary btn-block"><i class = "fa fa-globe"></i> View Interaction Network of Mukhlat</a>
+                <a href = "<?php echo base_url('parents/network'); ?>" class = "btn btn-primary btn-block"><i class = "fa fa-globe"></i> View Interaction Network of Mukhlat</a>
             </div>
             
             <!-- Admin Content -->
@@ -38,15 +38,13 @@
                             <li class = "list-group-item admin-list-item">
                                 <img src = "<?php echo $user->profile_url ? base_url($user->profile_url) : base_url('images/default.jpg') ?>" class = "no-padding pull-left img-circle" width = "45px" height = "45px"/> 
                                 <h4 class = "no-padding admin-list-name"><?php echo $user->first_name . " " . $user->last_name ?> 
-                                    <!-- ADMIN -->
-                                    <?php if ($user->role_id === '1'): ?>
-                                        <i class = "text-muted btn-sm no-padding">Administrator <?php echo ($logged_user->user_id === $user->user_id) ? '(You)' : '' ?></i>
+                                
                                         <!-- USERS //put modal -->
-                                    <?php elseif ($user->role_id === '2'): ?>
+                                    <?php if ($user->role_id === '2'): ?>
                                         <button value = "<?php echo $user->user_id ?>" class = "record-view-btn btn btn-link btn-xs"><i class = "fa fa-question-circle-o"></i> <i>Record of <?php echo $user->first_name ?></i></button>
                                     <?php endif ?>
                                 </h4>
-                                <?php
+                                <!-- <?php
                                 if ($logged_user->user_id !== $user->user_id):
                                     if ($user->is_enabled):
                                         ?>
@@ -57,7 +55,7 @@
                                     endif;
                                 endif;
                                 ?>
-                            </li>
+                            </li> -->
                         <?php endforeach; ?>
                     </ul>
                 </div>

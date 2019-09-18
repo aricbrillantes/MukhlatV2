@@ -9,8 +9,11 @@
         header("Location: $homeURL");
     }
 
-
 ?>
+
+<!-- browser tab icon -->
+<link rel="icon" href="<?php echo base_url('./images/logo/mukhlatlogo_icon.png'); ?>" sizes="32x32"> 
+
 <body class = "sign-in">
     <div class = "container-fluid">
         <!-- Logo -->
@@ -44,7 +47,7 @@
             <div class = "col-md-10 col-md-offset-1">
                 <div id = "sign-up-container" class = "col-md-12 content-container no-padding">
                     <div class = "col-md-12 sign-in-div">
-                        <h3 class = "sign-in-header"><strong>Sign Up for GetTogether!</strong></h3>
+                        <h3 class = "sign-in-header"><strong>Sign Up for Mukhlat!</strong></h3>
                         <div class = "sign-in-form">
                             <form id = "sign-up-form" onsubmit = "return sign_up()" method = "post">
                                 <div class = "col-xs-6 form-group register-field">

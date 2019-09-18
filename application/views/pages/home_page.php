@@ -11,6 +11,10 @@
         die();
     }
 ?>
+
+<!-- browser tab icon -->
+<link rel="icon" href="<?php echo base_url('./images/logo/mukhlatlogo_icon.png'); ?>" sizes="32x32"> 
+
 <body>
     <?php include(APPPATH . 'views/navigation_bar.php');?>
     <div class = "container page">
@@ -31,7 +35,7 @@
                                     <i class="caret"></i></button>
                                 <ul class="dropdown-menu">
                                     <li><a href="home">Home</a></li>
-                                    <li><a href="topic">Topic</a></li>
+                                    <li><a href="topic">Topics</a></li>
                                 </ul>
                             </div>
                         </div>

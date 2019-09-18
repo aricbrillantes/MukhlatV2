@@ -23,6 +23,13 @@ class Home extends CI_Controller
                 $data['posts'] = $this->posts->get_home_posts($logged_user->user_id);
                 $this->load->view('pages/home_page', $data);
             }
+            
+            else if ($logged_user->role_id === '3') //Parent login
+            { 
+                $this->load->model('user_model', 'users');
+                $data['users'] = $this->users->get_users();
+                $this->load->view('pages/parent_page', $data);
+            } 
 
 
         } 
@@ -43,11 +50,13 @@ class Home extends CI_Controller
 
         if ($usertimes) 
         {
-            echo "<br><br><br><b>Successful query!</b><br><br><b>Allowed times:</b>";
-            
+            // echo "<b>Successful query!</b><br><b>Allowed times:</b>";
+            $restrict = 0;
+
             foreach ($usertimes->result() as $row)
             {
-                echo "<br>" . (int) $row->start_hour . ":" . $row->start_minute . "-" . $row->end_hour . ":" . $row->end_minute;
+                $restrict = 0;
+                // echo "<br>" . (int) $row->start_hour . ":" . $row->start_minute . "-" . $row->end_hour . ":" . $row->end_minute;
                 
                 if
                 (
@@ -56,18 +65,23 @@ class Home extends CI_Controller
                     ((int) date("G") == (int) $row->end_hour && (int) date("i") < (int) $row->end_minute)
                 )
                 {
-                    echo "<br> You can use<br>";
+                    $restrict = 0;
+                    break;
                 }
 
                 else
                 {
-                    
-                    echo "<br> You shouldn't be allowed<br>";
+                    $restrict = 1;
+                    echo "<br> You cannot use<br>";
+                    break;
                 }
+
+                
+                    
                 
             }
 
-            echo "<br><br><b>Current time:</b> " . (int) date("G") . ": " . date("i")  ;
+            echo "<br><b>Current time:</b> " . (int) date("G") . ": " . date("i")  ;
             //set default timezone to Manila
             
             // echo "<br><br>The current server timezone is: " . date_default_timezone_get();

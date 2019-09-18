@@ -95,7 +95,7 @@ function loadDefaultNetwork() {
     edges.clear();
 
     //change UI
-    $("#network-header").html("Interaction Network within GetTogether");
+    $("#network-header").html("Interaction Network within Mukhlat");
     $("#topic-tools").remove();
     $("#filter-tools").remove();
 

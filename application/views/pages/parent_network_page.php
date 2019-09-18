@@ -2,7 +2,7 @@
     include(APPPATH . 'views/header.php');
     
     $logged_user = $_SESSION['logged_user'];
-    if($logged_user->role_id != 1 || $logged_user == null)
+    if($logged_user->role_id != 3 || $logged_user == null)
     {
         $homeURL = base_url('home');
         header("Location: $homeURL");
