@@ -7,7 +7,7 @@
         $homeURL = base_url('home');
         header("Location: $homeURL");
     }
-    
+
 ?>
 <body class = "sign-in">
     <div class = "container" style = "margin-top: 30px;">
@@ -23,10 +23,6 @@
                 <h3 class = "text-info no-margin" style = "display: inline-block; padding-left: 10px; margin-top: 5px; padding-top: 10px;"><strong><?php echo $logged_user->first_name . " " . $logged_user->last_name ?></strong></h3>
                 <a href = "<?php echo base_url('signin/logout'); ?>" class = "pull-right btn btn-primary btn-md" style = "margin-right: 20px; margin-top: 10px;">Log Out</a>
             </div>
-
-            <!-- <div class = "col-md-8 col-md-offset-2 content-container">
-                <a href = "<?php echo base_url('parents/activity'); ?>" class = "btn btn-primary btn-block"><i class = "fa fa-globe"></i> View child's posts</a>
-            </div> -->
 
             <div class = "col-md-8 col-md-offset-2 content-container" style = "margin-bottom: 5px;">
                 <div class = "col-sm-12 text-center" style = "margin-bottom: 10px;"><h3 id = "network-header" class = "no-margin">Interaction Network Map of your child</h3></div>
