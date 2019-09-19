@@ -8,12 +8,32 @@
         header("Location: $homeURL");
     }
 
+    $CI =&get_instance();
+    $CI->load->model('user_model');
+
+    $id = $this->uri->segment(3);
+
+    if(!$id)
+    {
+        $homeURL = base_url('home');
+        header("Location: $homeURL");
+    }
+
+    $children = $CI->user_model->view_specific_child($id);
+
 ?>
+
 <body class = "sign-in">
+    <?php foreach ($children->result() as $child): 
+
+        $data['user'] = $CI->user_model->get_user(true, true, array('user_id' => $child->user_id));
+
+
+    ?>
     <div class = "container" style = "margin-top: 30px;">
         <div class = "row">
             <div class = "col-md-8 col-md-offset-2 content-container no-padding" style = "margin-bottom: 5px;">
-                <a class = "pull-left btn btn-topic-header" style = "display: inline-block; margin-right: 5px;" href="<?php echo base_url('home') ?>">
+                <a class = "pull-left btn btn-topic-header" style = "display: inline-block; margin-right: 5px;" href="<?php echo base_url('parents/activity/' . $child->user_id) ?>">
                     <h3 class = "pull-left" style = "margin-top: 3px; margin-bottom: 0px; padding: 2px;">
                         <strong class = "text-info"><i class = "fa fa-chevron-left"></i> 
                             Back
@@ -25,7 +45,7 @@
             </div>
 
             <div class = "col-md-8 col-md-offset-2 content-container" style = "margin-bottom: 5px;">
-                <div class = "col-sm-12 text-center" style = "margin-bottom: 10px;"><h3 id = "network-header" class = "no-margin">Interaction Network Map of your child</h3></div>
+                <div class = "col-sm-12 text-center" style = "margin-bottom: 10px;"><h3 class = "no-margin">Interactions of <?php echo $child->first_name ?></h3></div>
                 <div id = "network-tools" class = "col-sm-12" style = "margin-bottom: 10px;">
                     <div class = "col-xs-8 col-md-offset-2">
                         <button id = "reset-map" class = "btn btn-block btn-primary">Reset Interaction Map</button>
@@ -35,6 +55,7 @@
             </div>
         </div>
     </div>
+    <?php endforeach; ?>
 
     <script type="text/javascript" src="<?php echo base_url('assets/vis/vis.js'); ?>"></script>
     <script type="text/javascript" src="<?php echo base_url('/js/network.js'); ?>"></script>

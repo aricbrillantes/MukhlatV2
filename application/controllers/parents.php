@@ -34,6 +34,11 @@ class Parents extends CI_Controller {
 
     public function activity() 
     {
+        $this->load->view('pages/child_activity');
+    }
+
+    public function network() 
+    {
         $this->load->view('pages/child_network');
     }
 

@@ -57,6 +57,18 @@ class User_model extends CI_Model {
         return $query;
     }
 
+    public function view_specific_child($user_id) 
+    {        
+        $query = $this->db->select('user_id, first_name, last_name, parent, email, description')
+                ->from('tbl_users')
+                ->where('user_id', $user_id);
+
+        $query = $this->db->get();
+        
+        // echo print_r($query->result());
+        return $query;
+    }
+
     public function get_child_records($user_id) 
     {
         $this->load->model('topic_model', 'topics');
