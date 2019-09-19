@@ -79,20 +79,19 @@ class Home extends CI_Controller
                 // echo print_r($children);
 
                 
-                    // echo "<b>Successful query!</b><br><br><b>Children:</b>";
-                foreach ($children->result() as $row)
-                {
-                    // $restrict = 0;
-                    echo "<br>" . $row->first_name . " " . $row->last_name ;
+                // echo "<b>Successful query!</b><br><br><b>Children:</b>";
+                // foreach ($children->result() as $row)
+                // {
+                //     // $restrict = 0;
+                //     echo "<br>" . $row->first_name . " " . $row->last_name ;
                     
-                    
-                }
+                // }
 
-                    // echo "<br><b>Current time:</b> " . (int) date("G") . ": " . date("i")  ;
-                    //set default timezone to Manila
-                    
-                    // echo "<br><br>The current server timezone is: " . date_default_timezone_get();
-                    // echo "<br>Date/time is " . date('m/d/Y h:i:s a', time()) . "<br>";
+                // echo "<br><b>Current time:</b> " . (int) date("G") . ": " . date("i")  ;
+                //set default timezone to Manila
+                
+                // echo "<br><br>The current server timezone is: " . date_default_timezone_get();
+                // echo "<br>Date/time is " . date('m/d/Y h:i:s a', time()) . "<br>";
                
             } 
 

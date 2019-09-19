@@ -45,9 +45,9 @@ class User_model extends CI_Model {
 
     public function view_child($parent_id) 
     {
-        echo $parent_id . "<br>";
+        // echo $parent_id . "<br>";
         
-        $query = $this->db->select('user_id, first_name, last_name, parent')
+        $query = $this->db->select('user_id, first_name, last_name, parent, email, description')
                 ->from('tbl_users')
                 ->where('parent', $parent_id);
 
@@ -55,6 +55,54 @@ class User_model extends CI_Model {
         
         // echo print_r($query->result());
         return $query;
+    }
+
+    public function get_child_records($user_id) 
+    {
+        $this->load->model('topic_model', 'topics');
+        $this->load->model('post_model', 'posts');
+        $this->load->model('record_model', 'records');
+        $record = new stdClass();
+
+        // number of topics 
+        $record->topic_count = $this->topics->get_topic_count($user_id);
+
+       // number of topics followed
+        $record->followed_topic_count = $this->topics->get_followed_topic_count($user_id);
+
+       // number of topics moderated
+        $record->moderated_topic_count = $this->topics->get_moderated_topic_count($user_id);
+
+        //  number of posts 
+        $record->post_count = $this->posts->get_root_post_count($user_id);
+
+        // points 
+        $record->points = $this->posts->get_vote_points($user_id);
+
+        // number of upvotes given 
+        $record->upvote_count = $this->posts->get_vote_type_count($user_id, 1);
+
+        // number of downvotes given 
+        $record->downvote_count = $this->posts->get_vote_type_count($user_id, -1);
+
+       // number of replies 
+        $record->reply_count = $this->posts->get_reply_count($user_id);
+
+        //upvotes
+        $record->upvotes = $this->records->get_user_upvotes($user_id);
+
+        //downvotes
+        $record->downvotes = $this->records->get_user_downvotes($user_id);
+
+        //posts started
+        $record->post_start = $this->records->get_post_start($user_id);
+
+        //posts published
+        $record->post_published = $this->records->get_post_published($user_id);
+
+        //replies
+        $record->replies = $this->records->get_user_replies($user_id);
+        return $record;
     }
 
     public function get_usertimes($user_id) 
