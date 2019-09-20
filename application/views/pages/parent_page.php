@@ -1,6 +1,9 @@
 <?php
     include(APPPATH . 'views/header.php');
     
+    //check if current user is parent or logged in
+    //if current user is not a parent, redirect to home
+    //if current user is not logged in, redirect to sign in
     $logged_user = $_SESSION['logged_user'];
     if($logged_user->role_id != 3 || $logged_user == null)
     {
@@ -43,6 +46,7 @@
 
                 $CI =&get_instance();
                 $CI->load->model('topic_model');
+
                 $user_topics = $CI->topic_model->get_user_topics($child->user_id);
                 $user_moderated_topics = $CI->topic_model->get_moderated_topics($child->user_id);
                 $user_followed_topics = $CI->topic_model->get_followed_topics($child->user_id);

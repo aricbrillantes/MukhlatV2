@@ -1,6 +1,9 @@
 <?php
     include(APPPATH . 'views/header.php');
     
+    //check if current user is parent or logged in
+    //if user is not a parent, redirect to home
+    //if user is not logged in, redirect to sign in
     $logged_user = $_SESSION['logged_user'];
     if($logged_user->role_id != 3 || $logged_user == null)
     {
@@ -8,23 +11,27 @@
         header("Location: $homeURL");
     }
 
+    //load user model
     $CI =&get_instance();
     $CI->load->model('user_model');
 
+    //get user ID of child being monitored (from the URL)
     $id = $this->uri->segment(3);
 
-    if(!$id)
+    if(!$id) //if there is no user ID in the URL, redirect to home page
     {
         $homeURL = base_url('home');
         header("Location: $homeURL");
     }
 
+    //get data of child being monitored
     $children = $CI->user_model->view_specific_child($id);
 
+    //load topic model
     $CI =&get_instance();
     $CI->load->model('topic_model');
-
 ?>
+
 <body class = "sign-in">
     <div class = "container" style = "margin-top: 30px;">
         <div class = "row">
@@ -40,10 +47,16 @@
                 <a href = "<?php echo base_url('signin/logout'); ?>" class = "pull-right btn btn-primary btn-md" style = "margin-right: 20px; margin-top: 10px;">Log Out</a>
             </div>
 
+
             <?php foreach ($children->result() as $child): 
 
+                //read data of child 
+                //note: foreach is needed even though only one child is being fetched
+
+                //store user data in array
                 $data['user'] = $CI->user_model->get_user(true, true, array('user_id' => $child->user_id));
                 
+                //get topic data
                 $user_topics = $CI->topic_model->get_user_topics($child->user_id);
                 $user_moderated_topics = $CI->topic_model->get_moderated_topics($child->user_id);
                 $user_followed_topics = $CI->topic_model->get_followed_topics($child->user_id);

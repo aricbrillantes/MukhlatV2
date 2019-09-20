@@ -1,14 +1,14 @@
 <?php
     include(APPPATH . 'views/header.php');
-    
+        
+    //check if current user is child or logged in
+    //if user is not a child, redirect to home
+    //if user is not logged in, redirect to sign in
     $logged_user = $_SESSION['logged_user'];
-    
-    //if user is logged out, redirect to sign in page
-    if($logged_user == null)
+    if($logged_user->role_id != 2 || $logged_user == null)
     {
         $homeURL = base_url('');
         header("Location: $homeURL");
-        die();
     }
 ?>
 

@@ -43,6 +43,7 @@ class User_model extends CI_Model {
         return $user;
     }
 
+    //function for getting parents' children's data
     public function view_child($parent_id) 
     {
         // echo $parent_id . "<br>";
@@ -52,11 +53,12 @@ class User_model extends CI_Model {
                 ->where('parent', $parent_id);
 
         $query = $this->db->get();
-        
         // echo print_r($query->result());
+
         return $query;
     }
 
+    //function for getting specific child's data
     public function view_specific_child($user_id) 
     {        
         $query = $this->db->select('user_id, first_name, last_name, parent, email, description')

@@ -1,6 +1,9 @@
 <?php
     include(APPPATH . 'views/header.php');
     
+    //check if current user is parent or logged in
+    //if user is not a parent, redirect to home
+    //if user is not logged in, redirect to sign in
     $logged_user = $_SESSION['logged_user'];
     if($logged_user->role_id != 3 || $logged_user == null)
     {
@@ -8,17 +11,20 @@
         header("Location: $homeURL");
     }
 
+    //load user model
     $CI =&get_instance();
     $CI->load->model('user_model');
 
+    //get user ID of child being monitored (from the URL)
     $id = $this->uri->segment(3);
 
-    if(!$id)
+    if(!$id) //if there is no user ID in the URL, redirect to home page
     {
         $homeURL = base_url('home');
         header("Location: $homeURL");
     }
 
+    //get data of child being monitored
     $children = $CI->user_model->view_specific_child($id);
 
 ?>

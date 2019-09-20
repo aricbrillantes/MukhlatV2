@@ -94,8 +94,6 @@ class Home extends CI_Controller
                 // echo "<br>Date/time is " . date('m/d/Y h:i:s a', time()) . "<br>";
                
             } 
-
-
         } 
 
         else 
@@ -103,6 +101,7 @@ class Home extends CI_Controller
             //formerly $this->load->view('errors/html/error_general');
             $homeURL = base_url('');
             header("Location: $homeURL");
+            die();
         }
 
         

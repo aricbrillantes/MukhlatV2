@@ -2,6 +2,9 @@
     include(APPPATH . 'views/header.php');
     include(APPPATH . 'views/navigation_bar.php');
     
+    //check if current user is child or logged in
+    //if current user is not a child, redirect to home
+    //if current user is not logged in, redirect to sign in
     $logged_user = $_SESSION['logged_user'];
     if($logged_user->role_id != 2 || $logged_user == null)
     {
@@ -11,8 +14,6 @@
 ?>
 
 <body>
-    <?php ?>
-
     <div class = "container page">
         <div class = "row">
             <div class = "col-md-12 content-container" style = "padding-top: 20px;">

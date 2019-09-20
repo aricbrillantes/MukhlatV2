@@ -1,6 +1,10 @@
 <?php
     include(APPPATH . 'views/header.php');
     
+    //check if current user is admin or logged in
+    //if user is not an admin, redirect to home
+    //if user is not logged in, redirect to sign in
+    
     $logged_user = $_SESSION['logged_user'];
     if($logged_user->role_id != 1 || $logged_user == null)
     {
