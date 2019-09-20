@@ -57,6 +57,15 @@
                         
                         <p class = "wrap text-muted" style = "font-size: 12px;"><i><?php echo $child->description ? $child->description : 'Hello World!'; ?></i></p>
                     </div>
+
+                    <div class = "col-xs-6 no-padding no-margin" style="float: right">
+                        <a class = "pull-right btn " style = "display: inline-block; float: right: 5px;" href="<?php echo base_url('parents/settings/' . $child->user_id) ?>">
+                            <h3 class = "no-padding text-info" style = "margin-bottom: 0px; float: right"><strong><i class = "glyphicon glyphicon-cog"></i></strong></h3>
+                        </strong>
+                    </h3>
+                </a>
+                        
+                    </div>
                 </div>    
 
 
