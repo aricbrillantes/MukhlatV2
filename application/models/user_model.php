@@ -71,6 +71,87 @@ class User_model extends CI_Model {
         return $query;
     }
 
+    public function get_usertimes($user_id) 
+    {
+
+        $this->db->select('start_hour, start_minute, end_hour, end_minute');
+        $this->db->from('tbl_users');
+        $this->db->join('tbl_usertimes', 'tbl_usertimes.user_id = tbl_users.user_id');
+        $this->db->where(array('tbl_usertimes.user_id' => $user_id));
+        
+        $query = $this->db->get();
+        
+        return $query;
+    }
+
+    public function set_usertimes($user_id) 
+    {        
+        if($user_id)
+        {
+            echo $user_id . "<br>";
+            echo htmlspecialchars($_COOKIE["selectedHour2"]);
+        }
+
+        $start_hour = htmlspecialchars($_COOKIE["selectedHour1"]);
+        $end_hour = htmlspecialchars($_COOKIE["selectedHour2"]);
+
+        $start_meridian = htmlspecialchars($_COOKIE["selectedMeridian1"]);
+        $end_meridian = htmlspecialchars($_COOKIE["selectedMeridian2"]);
+
+        if($start_meridian == "PM")
+        {
+            switch($start_hour)
+            {
+                case "01": $start_hour="13"; break;
+                case "02": $start_hour="14"; break;
+                case "03": $start_hour="15"; break;
+                case "04": $start_hour="16"; break;
+                case "05": $start_hour="17"; break;
+                case "06": $start_hour="18"; break;
+                case "07": $start_hour="19"; break;
+                case "08": $start_hour="20"; break;
+                case "09": $start_hour="21"; break;
+                case "10": $start_hour="22"; break;
+                case "11": $start_hour="23"; break;
+                case "12": $start_hour="24"; break;
+            }
+        }
+
+
+        if($end_meridian == "PM")
+        {
+            switch($end_hour)
+            {
+                case "01": $end_hour="13"; break;
+                case "02": $end_hour="14"; break;
+                case "03": $end_hour="15"; break;
+                case "04": $end_hour="16"; break;
+                case "05": $end_hour="17"; break;
+                case "06": $end_hour="18"; break;
+                case "07": $end_hour="19"; break;
+                case "08": $end_hour="20"; break;
+                case "09": $end_hour="21"; break;
+                case "10": $end_hour="22"; break;
+                case "11": $end_hour="23"; break;
+                case "12": $end_hour="24"; break;
+            }
+        }
+
+        $data = array
+        (
+            'user_id'=>$user_id,
+            'start_hour'=> $start_hour,
+            'end_hour'=> $end_hour,
+            'start_minute'=>htmlspecialchars($_COOKIE["selectedMinute1"]),
+            'end_minute'=>htmlspecialchars($_COOKIE["selectedMinute2"])
+        );
+
+        $this->db->insert('tbl_usertimes',$data);
+
+        
+        
+    }
+
     public function get_child_records($user_id) 
     {
         $this->load->model('topic_model', 'topics');
@@ -119,25 +200,7 @@ class User_model extends CI_Model {
         return $record;
     }
 
-    public function get_usertimes($user_id) 
-    {
 
-        $this->db->select('start_hour, start_minute, end_hour, end_minute');
-        $this->db->from('tbl_users');
-        $this->db->join('tbl_usertimes', 'tbl_usertimes.user_id = tbl_users.user_id');
-        $this->db->where(array('tbl_usertimes.user_id' => $user_id));
-        
-        $query = $this->db->get();
-        
-
-        return $query;
-    }
-
-    public function set_usertimes($user_id) 
-    {
-
-        //insert code here
-    }
 
     public function get_topic_users($topic_id) {
         $users = $this->db->query('SELECT result.user_id, result.first_name, result.last_name, result.profile_url FROM (select u.user_id, '
