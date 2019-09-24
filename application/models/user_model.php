@@ -95,6 +95,9 @@ class User_model extends CI_Model {
         $start_hour = htmlspecialchars($_COOKIE["selectedHour1"]);
         $end_hour = htmlspecialchars($_COOKIE["selectedHour2"]);
 
+        $start_minute = htmlspecialchars($_COOKIE["selectedMinute1"]);
+        $end_minute = htmlspecialchars($_COOKIE["selectedMinute2"]);
+
         $start_meridian = htmlspecialchars($_COOKIE["selectedMeridian1"]);
         $end_meridian = htmlspecialchars($_COOKIE["selectedMeridian2"]);
 
@@ -142,14 +145,12 @@ class User_model extends CI_Model {
             'user_id'=>$user_id,
             'start_hour'=> $start_hour,
             'end_hour'=> $end_hour,
-            'start_minute'=>htmlspecialchars($_COOKIE["selectedMinute1"]),
-            'end_minute'=>htmlspecialchars($_COOKIE["selectedMinute2"])
+            'start_minute'=>$start_minute,
+            'end_minute'=>$end_minute
         );
 
-        $this->db->insert('tbl_usertimes',$data);
+        $this->db->insert('tbl_usertimes',$data);  
 
-        
-        
     }
 
     public function get_child_records($user_id) 

@@ -34,8 +34,40 @@
 
     $data['user'] = $CI->user_model->get_user(true, true, array('user_id' => $child->user_id));
 
+
+    //testing allowed times
+    date_default_timezone_set('Asia/Manila');
+    $usertimes = $CI->user_model->get_usertimes($id);
+
+    if ($usertimes) 
+    {
+        // echo "<b>Successful query!</b><br><b>Allowed times:</b>";
+        foreach ($usertimes->result() as $row)
+        {
+            echo "<p style='color:white;'>" . $row->start_hour . ":" . $row->start_minute . "-" . $row->end_hour . ":" . $row->end_minute . "</p>";
+        }
+
+        echo "<p style='color:white;'><b>Current time:</b> " . (int) date("G") . ": " . date("i") . "</p> " ;
+    } 
+
+    $num=-1;
+
 ?>
 <script type="text/javascript" src="<?php echo base_url("/js/user.js"); ?>"></script>
+
+<script>
+    // document.cookie = "selectedHour1=" + "08" + ";" + ";path=/";   
+    // document.cookie = "selectedMinute1=" + "00" + ";" + ";path=/"; 
+    // document.cookie = "selectedMeridian1=" + "AM" + ";" + ";path=/"; 
+
+    // document.cookie = "selectedHour2=" + "08" + ";" + ";path=/";   
+    // document.cookie = "selectedMinute2=" + "00" + ";" + ";path=/"; 
+    // document.cookie = "selectedMeridian2=" + "PM" + ";" + ";path=/";  
+    document.cookie = "updatetime=0;path=/";
+
+    var ctr = 0;
+</script>
+
 <body class = "sign-in">
     <div class = "container" style = "margin-top: 30px;">
         <div class = "row">
@@ -54,17 +86,45 @@
                 <a href = "<?php echo base_url('signin/logout'); ?>" class = "pull-right btn btn-primary btn-md" style = "margin-right: 20px; margin-top: 10px;">Log Out</a>
             </div>
 
-            <div class = "col-md-8 col-md-offset-2 content-container" style = "margin-bottom: 5px;">
-                <br>
+            <div class = "col-md-8 col-md-offset-2 content-container" style = "margin-bottom: 5px;"><br>
                 
+                <?php foreach ($usertimes->result() as $row): 
+                    
+                    $num++;
+                    $row_meridian = "AM";
+
+                    if((int) $row->start_hour > 12)
+                    {
+                        switch($row->start_hour)
+                        {
+                            case "01": $row->start_hour="13"; break;
+                            case "02": $row->start_hour="14"; break;
+                            case "03": $row->start_hour="15"; break;
+                            case "04": $row->start_hour="16"; break;
+                            case "05": $row->start_hour="17"; break;
+                            case "06": $row->start_hour="18"; break;
+                            case "07": $row->start_hour="19"; break;
+                            case "08": $row->start_hour="20"; break;
+                            case "09": $row->start_hour="21"; break;
+                            case "10": $row->start_hour="22"; break;
+                            case "11": $row->start_hour="23"; break;
+                            case "12": $row->start_hour="24"; break;
+                        }
+                        $row_meridian = "PM";
+                    }
+
+                ?>
+
+                <script> ctr++; </script>
+
                 <div class = "col-xs-7 form-group register-field" style = "font-size:14px;">
                     <h3 class = "no-padding text-info"style = "margin-bottom: 5px; margin-top: 0px;">From</h3>
 
                     <input style="height:50px;display:none;" type = "date" required name = "change-time" class = "form-control sign-in-field" id="time-form"><br>
 
-                    <select style="width:120px;height:30px" id="time-hour1" onclick="choosetime()">
-                        <option value="<?php echo $_COOKIE["selectedHour1"] ?>">
-                            <?php echo $_COOKIE["selectedHour1"] ?>
+                    <select style="width:120px;height:30px" id="time-hour1-<?php echo $num; ?>">" onclick="choosetime()">
+                        <option value="<?php echo $row->start_hour ?>">
+                            <?php echo $row->start_hour ?>
                         </option>
                         <option value="12">12</option>
                         <option value="01">01</option>
@@ -80,9 +140,9 @@
                         <option value="11">11</option>
                     </select>
 
-                    <select style="width:100px;height:30px" id="time-minute1" onclick="choosetime()">
-                        <option value="<?php echo $_COOKIE["selectedMinute1"] ?>">
-                            <?php echo $_COOKIE["selectedMinute1"] ?>
+                    <select style="width:100px;height:30px" id="time-minute1-<?php echo $num; ?>" onclick="choosetime()">
+                        <option value="<?php echo $row->start_minute ?>">
+                            <?php echo $row->start_minute ?>
                         </option>
                         <option value="00">00</option>
                         <option value="01">01</option>
@@ -146,23 +206,24 @@
                         <option value="59">59</option>
                     </select>
 
-                    <select style="width:100px;height:30px" id="time-meridian1" onclick="choosetime()">
-                        <option value="<?php echo $_COOKIE["selectedMeridian1"] ?>">
-                            <?php echo $_COOKIE["selectedMeridian1"] ?>
+                    <select style="width:100px;height:30px" id="time-meridian1-<?php echo $num; ?>" onclick="choosetime()">
+                        <option value="<?php echo $row_meridian; ?>">
+                            <?php echo $row_meridian; ?>
                         </option>
                         <option value="AM">AM</option>
                         <option value="PM">PM</option>
                     </select>
 
                 </div>
+
                 <div class = "col-xs-7 form-group register-field" style = "font-size:14px;">
                     <h3 class = "no-padding text-info"style = "margin-bottom: 5px; margin-top: 0px;"><br>To</h3>
 
                     <input style="height:50px;display:none;" type = "date" required name = "change-time" class = "form-control sign-in-field" id="time-form"><br>
 
-                    <select style="width:120px;height:30px" id="time-hour2" onclick="choosetime()">
-                        <option value="<?php echo $_COOKIE["selectedHour2"] ?>">
-                            <?php echo $_COOKIE["selectedHour2"] ?>
+                    <select style="width:120px;height:30px" id="time-hour2-<?php echo $num; ?>" onclick="choosetime()">
+                        <option value="<?php echo $row->end_hour ?>">
+                            <?php echo $row->end_hour ?>
                         </option>
                         <option value="12">12</option>
                         <option value="01">01</option>
@@ -178,9 +239,9 @@
                         <option value="11">11</option>
                     </select>
 
-                    <select style="width:100px;height:30px" id="time-minute2" onclick="choosetime()">
-                        <option value="<?php echo $_COOKIE["selectedMinute2"] ?>">
-                            <?php echo $_COOKIE["selectedMinute2"] ?>
+                    <select style="width:100px;height:30px" id="time-minute2-<?php echo $num; ?>" onclick="choosetime()">
+                        <option value="<?php echo $row->end_hour ?>">
+                            <?php echo $row->end_minute ?>
                         </option>
                         <option value="M">Minute</option>
                         <option value="00">00</option>
@@ -245,15 +306,21 @@
                         <option value="59">59</option>
                     </select>
 
-                    <select style="width:100px;height:30px" id="time-meridian2" onclick="choosetime()">
-                        <option value="<?php echo $_COOKIE["selectedMeridian2"] ?>">
-                                <?php echo $_COOKIE["selectedMeridian2"] ?>
+                    <select style="width:100px;height:30px" id="time-meridian2-<?php echo $num; ?>" onclick="choosetime()">
+                        <option value="<?php echo $row_meridian; ?>">
+                            <?php echo $row_meridian; ?>
                         </option>
                         <option value="AM">AM</option>
                         <option value="PM">PM</option>
                     </select>
-
+                    <br><br><br>
                 </div>
+
+                
+
+            <?php  endforeach; ?>
+
+                
 
                 <div class = "text-center">
                     <button onclick="alerttime()" class = "btn btn-success" style="width:50%; font-size:24px; margin-top: 10px; margin-bottom: 10px">Save settings</button>
@@ -270,6 +337,14 @@
 <?php endforeach; ?>
 
 <script>
+    var i;
+    var time_array;
+    for(i = 0; i < ctr; i++)
+    {
+        
+    }
+    // alert(i);
+
     function choosetime()
     {
         var hour1 = document.getElementById("time-hour1");
@@ -296,14 +371,23 @@
         document.cookie = "selectedMinute2=" + selectedMinute2 + ";" + ";path=/"; 
         document.cookie = "selectedMeridian2=" + selectedMeridian2 + ";" + ";path=/";                          
     }
-    
+
     function alerttime()
     {
-         document.write(' <?php 
-            $CI->user_model->set_usertimes($child->user_id);
-            ?> ');
+        var i;
+        for(i = 0; i < ctr; i++)
+        {
+            alert(i);
+        }
 
+
+        document.cookie = "updatetime=1;path=/";
         location.reload();
+
+        <?php 
+            if($_COOKIE["updatetime"])  
+                echo $CI->user_model->set_usertimes($child->user_id);
+        ?>
     }
 
 </script>
