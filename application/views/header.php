@@ -30,6 +30,7 @@ and open the template in the editor.
 
         <!-- load bootstrap and CSS -->
         <script src="<?php echo base_url("assets/js/jQuery-3.1.1.js"); ?>"></script>
+        <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> -->
         <script src="<?php echo base_url("assets/js/bootstrap.js"); ?>"></script>
 
         <!-- load themes -->

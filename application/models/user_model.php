@@ -84,73 +84,85 @@ class User_model extends CI_Model {
         return $query;
     }
 
-    public function set_usertimes($user_id) 
+    public function set_usertimes($user_id,$count) 
     {        
-        if($user_id)
+        $i = 0;
+
+        $this->db->delete('tbl_usertimes', array('user_id' => $user_id));
+
+        for($i = 0; $i <= $count; $i++) 
         {
-            echo $user_id . "<br>";
-            echo htmlspecialchars($_COOKIE["selectedHour2"]);
-        }
+            $hour1 = "selectedHour1-" . $i;
+            $hour2 = "selectedHour2-" . $i;
 
-        $start_hour = htmlspecialchars($_COOKIE["selectedHour1"]);
-        $end_hour = htmlspecialchars($_COOKIE["selectedHour2"]);
+            $minute1 = "selectedMinute1-" . $i;
+            $minute2 = "selectedMinute2-" . $i;
 
-        $start_minute = htmlspecialchars($_COOKIE["selectedMinute1"]);
-        $end_minute = htmlspecialchars($_COOKIE["selectedMinute2"]);
+            $meridian1 = "selectedMeridian1-" . $i;
+            $meridian2 = "selectedMeridian2-" . $i;
 
-        $start_meridian = htmlspecialchars($_COOKIE["selectedMeridian1"]);
-        $end_meridian = htmlspecialchars($_COOKIE["selectedMeridian2"]);
+            $start_hour = htmlspecialchars($_COOKIE[$hour1]);
+            $end_hour = htmlspecialchars($_COOKIE[$hour2]);
 
-        if($start_meridian == "PM")
-        {
-            switch($start_hour)
+            $start_minute = htmlspecialchars($_COOKIE[$minute1]);
+            $end_minute = htmlspecialchars($_COOKIE[$minute2]);
+
+            $start_meridian = htmlspecialchars($_COOKIE[$meridian1]);
+            $end_meridian = htmlspecialchars($_COOKIE[$meridian2]);
+
+            if($start_meridian == "PM")
             {
-                case "01": $start_hour="13"; break;
-                case "02": $start_hour="14"; break;
-                case "03": $start_hour="15"; break;
-                case "04": $start_hour="16"; break;
-                case "05": $start_hour="17"; break;
-                case "06": $start_hour="18"; break;
-                case "07": $start_hour="19"; break;
-                case "08": $start_hour="20"; break;
-                case "09": $start_hour="21"; break;
-                case "10": $start_hour="22"; break;
-                case "11": $start_hour="23"; break;
-                case "12": $start_hour="24"; break;
+                switch($start_hour)
+                {
+                    case "01": $start_hour="13"; break;
+                    case "02": $start_hour="14"; break;
+                    case "03": $start_hour="15"; break;
+                    case "04": $start_hour="16"; break;
+                    case "05": $start_hour="17"; break;
+                    case "06": $start_hour="18"; break;
+                    case "07": $start_hour="19"; break;
+                    case "08": $start_hour="20"; break;
+                    case "09": $start_hour="21"; break;
+                    case "10": $start_hour="22"; break;
+                    case "11": $start_hour="23"; break;
+                    case "12": $start_hour="24"; break;
+                }
             }
-        }
 
 
-        if($end_meridian == "PM")
-        {
-            switch($end_hour)
+            if($end_meridian == "PM")
             {
-                case "01": $end_hour="13"; break;
-                case "02": $end_hour="14"; break;
-                case "03": $end_hour="15"; break;
-                case "04": $end_hour="16"; break;
-                case "05": $end_hour="17"; break;
-                case "06": $end_hour="18"; break;
-                case "07": $end_hour="19"; break;
-                case "08": $end_hour="20"; break;
-                case "09": $end_hour="21"; break;
-                case "10": $end_hour="22"; break;
-                case "11": $end_hour="23"; break;
-                case "12": $end_hour="24"; break;
+                switch($end_hour)
+                {
+                    case "01": $end_hour="13"; break;
+                    case "02": $end_hour="14"; break;
+                    case "03": $end_hour="15"; break;
+                    case "04": $end_hour="16"; break;
+                    case "05": $end_hour="17"; break;
+                    case "06": $end_hour="18"; break;
+                    case "07": $end_hour="19"; break;
+                    case "08": $end_hour="20"; break;
+                    case "09": $end_hour="21"; break;
+                    case "10": $end_hour="22"; break;
+                    case "11": $end_hour="23"; break;
+                    case "12": $end_hour="24"; break;
+                }
             }
-        }
 
-        $data = array
-        (
-            'user_id'=>$user_id,
-            'start_hour'=> $start_hour,
-            'end_hour'=> $end_hour,
-            'start_minute'=>$start_minute,
-            'end_minute'=>$end_minute
-        );
 
-        $this->db->insert('tbl_usertimes',$data);  
+            $data = array
+            (
+                'user_id'=>$user_id,
+                'start_hour'=> $start_hour,
+                'end_hour'=> $end_hour,
+                'start_minute'=>$start_minute,
+                'end_minute'=>$end_minute
+            );
 
+             
+            $this->db->insert('tbl_usertimes',$data);   
+            echo "location.reload();";
+        }       
     }
 
     public function get_child_records($user_id) 
