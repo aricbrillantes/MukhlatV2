@@ -1,0 +1,33 @@
+IF-ELSE IN HTML :
+
+<?php if(): ?> 
+	<!-- do something -->
+<?php else: ?>
+	<!-- do something -->
+
+<?php endif; ?> 
+
+
+CHECK IF MOBILE:
+<?php 
+
+    //checks if client is mobile
+    //this doesn't need to be in every file, but it ensures consistency
+    
+	$this->load->library('user_agent');
+	
+    global $mobile; //global var to ensure consistency
+	
+    $mobile=$this->agent->is_mobile();
+
+    if($mobile) //if client is mobile
+	{
+		//do something
+	}
+	
+
+    else
+    {
+        //do something else
+    }
+?>

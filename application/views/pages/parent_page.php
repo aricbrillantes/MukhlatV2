@@ -14,22 +14,30 @@
     $this->load->model('user_model', 'users');
     $children = $this->users->view_child($logged_user->user_id);
 
-    // $this->load->model('topic_model', 'topics');
+    $CI =&get_instance();
+    $CI->load->library('user_agent');
 
-    // $data['user'] = $this->users->get_user(true, true, array('user_id' => $logged_user->user_id));
-    // echo print_r($data);
-    
-    // echo "<b>Successful query!</b><br><br><b>Children:</b>";
-    // foreach ($children->result() as $child)
-    //     echo "<br>" . $child->first_name . " " . $child->last_name ;
+    $mobile=$CI->agent->is_mobile();
+
+    if(!$mobile)
+    {
+        // echo "<script type='text/javascript'>alert('desktop');</script>";
+    }   
+
+    else
+    {
+        // echo "<script type='text/javascript'>alert('mobile');</script>";
+    }
 ?>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <body class = "sign-in">
-    <div class = "container" style = "margin-top: 30px;">
+    <div class = "container" style = "margin-top: 2%;">
+    <div class = "container" style = "margin-top: 2%;">
         <div class = "row">
             <div class = "col-md-8 col-md-offset-2 content-container no-padding" style = "margin-bottom: 5px;">
                 <a style = "display: inline-block; margin-right: 5px;" >
-                    <h3 class = "pull-left" style = "margin-top: 10px; margin-left: 10px; margin-bottom: 0px; padding: 2px;">
-                        <strong class = "text-info"><!-- <i class = "fa fa-chevron-left"></i>  -->
+                    <h3 class = "pull-left" style = "margin-top: 12%; margin-left: 11px; margin-bottom: 0%; ">
+                        <strong class = "text-info">
                             <?php echo $logged_user->first_name . " " . $logged_user->last_name ?>
                         </strong>
                     </h3>

@@ -28,7 +28,7 @@
     $children = $CI->user_model->view_specific_child($id);
 
 ?>
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <body class = "sign-in">
     <?php foreach ($children->result() as $child): 
 

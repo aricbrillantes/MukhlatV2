@@ -30,21 +30,50 @@
     //load topic model
     $CI =&get_instance();
     $CI->load->model('topic_model');
-?>
 
+
+    $CI->load->library('user_agent');
+
+    $mobile=$CI->agent->is_mobile();
+
+    if(!$mobile)
+    {
+        // echo "<script type='text/javascript'>alert('desktop');</script>";
+    }   
+
+    else
+    {
+        // echo "<script type='text/javascript'>alert('mobile');</script>";
+    }
+?>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <body class = "sign-in">
-    <div class = "container" style = "margin-top: 30px;">
+    <div class = "container" style = "margin-top: 2%;">
         <div class = "row">
             <div class = "col-md-8 col-md-offset-2 content-container no-padding" style = "margin-bottom: 5px;">
-                <a class = "pull-left btn btn-topic-header" style = "display: inline-block; margin-right: 5px;" href="<?php echo base_url('home') ?>">
-                    <h3 class = "pull-left" style = "margin-top: 3px; margin-bottom: 0px; padding: 2px;">
-                        <strong class = "text-info"><i class = "fa fa-chevron-left"></i> 
-                            Back
-                        </strong>
-                    </h3>
-                </a>
-                <h3 class = "text-info no-margin" style = "display: inline-block; padding-left: 10px; margin-top: 5px; padding-top: 10px;"><strong><?php echo $logged_user->first_name . " " . $logged_user->last_name ?></strong></h3>
-                <a href = "<?php echo base_url('signin/logout'); ?>" class = "pull-right btn btn-primary btn-md" style = "margin-right: 20px; margin-top: 10px;">Log Out</a>
+                
+                <?php if(!$mobile): ?> 
+                    <a class = "pull-left btn" style = "display: margin-right: 1%;" href="<?php echo base_url('home') ?>">
+                        <h3 class = "pull-left" style = "margin-top: 10%; margin-bottom: 20%; ">
+                            <strong class = "text-info"><i class = "fa fa-chevron-left"></i> 
+                                Back
+                            </strong>
+                        </h3>
+                    </a>
+
+                <?php else: ?>
+                    <a class = "pull-left btn" style = "display:  margin-right: 1%;" href="<?php echo base_url('home') ?>">
+                        <h3 class = "pull-left" style = "margin-top: 10%; margin-bottom: %; ">
+                            <strong class = "text-info"><i class = "fa fa-chevron-left"></i> 
+                                Back
+                            </strong>
+                        </h3>
+                    </a>
+
+                <?php endif; ?> 
+
+                <h3 class = "text-info no-margin" style = "display: inline-block; padding-left: 10px; margin-top: 0.5%; padding-top: 10px;"><strong><?php echo $logged_user->first_name . " " . $logged_user->last_name ?></strong></h3>
+                <a href = "<?php echo base_url('signin/logout'); ?>" class = "pull-right btn btn-primary btn-md" style = "margin-right: 2%; margin-top: 1.5%;">Log Out</a>
             </div>
 
 
@@ -62,13 +91,13 @@
                 $user_followed_topics = $CI->topic_model->get_followed_topics($child->user_id);
 
                 ?>
-                <div class = "col-md-8 col-md-offset-2 content-container" style = "margin-bottom: 5px;">
+                <div class = "col-md-8 col-md-offset-2 content-container" style = "margin-bottom: 1%; margin-top: 1%;">
                     <div class = "col-xs-6 no-padding no-margin">
                         
-                        <h3 class = "no-padding text-info" style = "margin-bottom: 0px;"><strong><?php echo $child->first_name . " " . $child->last_name ?></strong></h3>
+                        <h3 class = "no-padding text-info" style = "margin-bottom: 0%;"><strong><?php echo $child->first_name . " " . $child->last_name ?></strong></h3>
                         <small class = "no-padding no-margin"><?php echo $child->email ?></small>
                         
-                        <p class = "wrap text-muted" style = "font-size: 12px;"><i><?php echo $child->description ? $child->description : 'Hello World!'; ?></i></p>
+                        <p class = "wrap text-muted" style = "font-size: 12%;"><i><?php echo $child->description ? $child->description : 'Hello World!'; ?></i></p>
                     </div>
 
                     <div class = "col-xs-6 no-padding no-margin" style="float: right">
@@ -81,9 +110,16 @@
                     </div>
                 </div>    
 
+                <?php if(!$mobile): ?> 
+                    <div class = "col-md-8 col-md-offset-2 content-container" style = "margin-bottom: 5px;">
+                        <h3 class = "text-info text-center user-topic-header"><strong><?php echo $child->first_name ?>'s Activity</strong></h3>
 
-                <div class = "col-md-8 col-md-offset-2 content-container" style = "margin-bottom: 5px;">
-                    <h3 class = "text-info text-center user-topic-header"><strong><?php echo $child->first_name ?>'s Activity</strong></h3>
+                <?php else: ?>
+                    <div class = " col-md-offset-2 content-container" style = "margin-bottom: 10%;">
+                        <h5 class = " user-topic-header"><strong><?php echo $child->first_name ?>'s Activity</strong></h3>
+                <?php endif; ?> 
+
+                
 
                     <a href = "<?php echo base_url('parents/network/' . $child->user_id); ?>" class = "btn btn-primary btn-block" style = "margin-bottom: 10px;"><i class = "fa fa-globe"></i> View <?php echo $child->first_name ?>'s activity network</a>
 
@@ -156,9 +192,9 @@
         </div>
     </div>
 
-    <script type="text/javascript" src="<?php echo base_url('assets/vis/vis.js'); ?>"></script>
+    <!-- <script type="text/javascript" src="<?php echo base_url('assets/vis/vis.js'); ?>"></script>
     <script type="text/javascript" src="<?php echo base_url('/js/network.js'); ?>"></script>
-    <link rel="stylesheet" href="<?php echo base_url("assets/vis/vis.css"); ?>" />
+    <link rel="stylesheet" href="<?php echo base_url("assets/vis/vis.css"); ?>" /> -->
 
     <?php
     include(APPPATH . 'views/modals/network_view_modal.php');
