@@ -897,7 +897,7 @@ CREATE TABLE `tbl_topics` (
 --
 
 INSERT INTO `tbl_topics` (`topic_id`, `creator_id`, `topic_name`, `topic_description`, `date_created`, `is_cancelled`) VALUES
-(1, 3, 'Welcome To GetTogether!', 'Welcome to GetTogether guys! Feel free to talk about anything in here!', '2017-06-21 01:34:03', 1),
+(1, 3, 'Welcome To MukhlatV2!', 'Welcome to MukhlatV2 guys! Feel free to talk about anything in here!', '2017-06-21 01:34:03', 1),
 (2, 5, 'chmod and chown', 'how to chmod and chown', '2017-06-21 06:04:02', 0),
 (3, 5, 'Other Topics', 'Topics with the desire to reach out to other schools or communities.\r\n', '2017-06-22 05:31:11', 1),
 (10, 12, 'Steam Sale', 'Cheap games', '2017-06-23 04:40:19', 0),

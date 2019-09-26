@@ -27,6 +27,7 @@
             <ul class = "nav navbar-nav">
                 <li><a href="<?php echo base_url('home') ?>"><strong>Home</strong></a></li>
                 <li><a href="<?php echo base_url('topic') ?>"><strong>Topics</strong></a></li>
+                <li><a href="<?php echo base_url('chat') ?>"><strong>Chat</strong></a></li>
             </ul>
             <div class = "search-div nav-right-end">
                 <form action = "<?php echo base_url('search'); ?>" class="navbar-form navbar-left" role = "search" method = "GET">

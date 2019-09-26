@@ -1,139 +1,51 @@
 <?php
-if (!defined('BASEPATH'))
-    exit('No direct script access allowed');
 
-//use OpenTok\OpenTok;
-
-class Chat extends MY_Controller
+class Chat extends CI_Controller
 {
+    public function __constructor()
+    {
+        parent::__construct();
+        
+       
+    }
 
-    function __construct($error = false)
+    public function index() 
     {
-        parent::__construct($error);
-        $this->load->model('users_model', 'users');
-//        $this->load->model('messages_model', 'messages');
-    }
-    
-    function index()
-    {
-        $this->load->library('user_agent');
-        global $mobile;
-        $mobile=$this->agent->is_mobile();
+        
+        // if (!empty($logged_user)) 
+        // {
+            $logged_user = $_SESSION['logged_user'];
+            
+            $this->view_data['chat_id']= 1;
+            
+            //  echo "<script type='text/javascript'>alert('');</script>";
 
-        if(!$mobile)
-        {
-            // echo "<script type='text/javascript'>alert('desktop');</script>";
-        }   
+            $this->view_data['sender_id']= $logged_user->user_id;
+            $this->load->view('chat/viewchat', $this->view_data);
+            
 
-        else
-        {
-            // echo "<script type='text/javascript'>alert('mobile');</script>";
-        }
+            
+        // }
+        // else 
+        // {
+        //     //formerly $this->load->view('errors/html/error_general');
+        //     $homeURL = base_url('');
+        //     header("Location: $homeURL");
+        //     die();
+        // }
     }
+
     
-    function online()
+    
+    public function ajax_add_chat_message()
     {
-        $this->users->update(array (
-            'user_id' => $_SESSION['user']->user_id,
-            'online' => 1
-        ));
+        $this->load->model('chat_model','chatmodel');
+        $chat_id = $this->input->post('chat_id');
+        $sender_id = $this->input->post('sender_id');
+        $chat_message = $this->input->post('chat_message', TRUE);
+
+        $this->chatmodel->add_chat_message($chat_id,$sender_id,$chat_message);
     }
-    
-    function offline()
-    {
-        $this->users->update(array (
-            'user_id' => $_SESSION['user']->user_id,
-            'online' => 0
-        ));
-    }
-    
-//    function token()
-//    {
-//        $this->openTok = new OpenTok(config_item('tokbox_api_key'), config_item('tokbox_api_secret'));
-//        echo $this->openTok->generateToken($this->input->post('session_id'));
-//        exit();
-//    }
-    
-    function send()
-    {
-        if ($_SESSION['user']->role_id == 2)
-        {
-            $post = $this->input->post();
-            $post['sender_id'] = $_SESSION['user']->user_id;
-            $post['message'] = strip_tags($post['message']);
-            $result = $this->messages->create($post);
-        }
-        else
-        {
-            $result = 0;
-        }
-        echo json_encode($result);
-        exit();
-    }
-    
-    function messages($recipient_id = 0, $offset = 0)
-    {
-        echo json_encode($this->messages->read(array(
-            'sender_id' => $_SESSION['user']->user_id,
-            'recipient_id' => $recipient_id,
-            'limit' => 10,
-            'offset' => $offset,
-            'order_by' => 'message_id',
-            'order' => 'desc'
-        )));
-        exit();
-    }
-    
-    function online_list()
-    {
-        $user = $_SESSION['logged_user'];
-//        $online_doctors = $this->users->read(array (
-//            'role_id' => 2,
-//            'online' => 1,
-//            'deleted' => 0,
-//            'order_by' => 'last_name,first_name'
-//        ));
-//
-//        $offline_doctors = $this->users->read(array (
-//            'role_id' => 2,
-//            'online' => 0,
-//            'deleted' => 0,
-//            'order_by' => 'last_name,first_name'
-//        ));
-//        
-//        if (!empty($offline_doctors))
-//        {
-//            foreach ($offline_doctors as $index => $offline_doctor)
-//            {
-//                if ($offline_doctor->user_id == $user->user_id)
-//                {
-//                    unset($offline_doctors[$index]);
-//                    break;
-//                }
-//            }
-//            $offline_doctors = array_values($offline_doctors);
-//        }
-//        
-//        if (!empty($online_doctors))
-//        {
-//            foreach ($online_doctors as $index => $online_doctor)
-//            {
-//                if ($online_doctor->user_id == $user->user_id)
-//                {
-//                    unset($online_doctors[$index]);
-//                    break;
-//                }
-//            }
-//            $online_doctors = array_values($online_doctors);
-//        }
-//        
-//        echo json_encode(array (
-//            'online' => $online_doctors,
-//            'offline' => $offline_doctors
-//        ));
-//        exit();
-    }
+
+
 }
-
-/* End of file chat.php */
-/* Location: ./application/controllers/chat.php */

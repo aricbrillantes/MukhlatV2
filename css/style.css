@@ -819,3 +819,8 @@ END CHAT
     height: 500px;
     width: 100%;
 }
+
+#chat_viewport{
+    min-height: 500px;
+    border : 1px solid black;
+}

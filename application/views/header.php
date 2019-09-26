@@ -31,6 +31,11 @@ and open the template in the editor.
         <!-- load bootstrap and CSS -->
         <script src="<?php echo base_url("assets/js/jQuery-3.1.1.js"); ?>"></script>
         <script src="<?php echo base_url("assets/js/bootstrap.js"); ?>"></script>
+        
+        
+        <script type="text/javascript">
+        var base_url = "<?php echo base_url();?>";
+        </script>
 
         <!-- load themes -->
         <script type="text/javascript" src="<?php echo base_url("assets/js/fusioncharts/fusioncharts.js"); ?>"></script>
