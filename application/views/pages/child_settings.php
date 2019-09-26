@@ -54,18 +54,11 @@
 
 ?>
 <script type="text/javascript" src="<?php echo base_url("/js/user.js"); ?>"></script>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <script>
-	// document.cookie = "selectedHour1-" + i + "=" + selectedHour1 + ";path=/";   
- //   document.cookie = "selectedMinute1-" + i + "=" + selectedMinute1 + ";path=/"; 
- //   document.cookie = "selectedMeridian1-" + i + "=" + selectedMeridian1 + ";path=/"; 
+    document.cookie = "updatetime=0;path=/";
 
- //   document.cookie = "selectedHour2-" + i + "=" + selectedHour2 + ";path=/";   
- //   document.cookie = "selectedMinute2-" + i + "=" + selectedMinute2 + ";path=/"; 
- //   document.cookie = "selectedMeridian2-" + i + "=" + selectedMeridian2 + ";path=/";   
- 	document.cookie = "updatetime=0;path=/";
-
-    var ctr = -1;
+    var ctr = 0;
 </script>
 
 <body class = "sign-in">
@@ -86,258 +79,262 @@
                 <a href = "<?php echo base_url('signin/logout'); ?>" class = "pull-right btn btn-primary btn-md" style = "margin-right: 20px; margin-top: 10px;">Log Out</a>
             </div>
 
-            <div class = "col-md-8 col-md-offset-2 content-container" style = "margin-bottom: 5px;">
-             	<div id="add-timeslot"><br>
+            <div class = "col-md-8 col-md-offset-2 content-container" style = "margin-bottom: 5px;"><br>
+                
+             	<?php foreach ($usertimes->result() as $row): 
+                    
+	              	$num++;
 
-						<button id="btnAddtoList">
-							Add to list
-						</button>
+	              	$row_meridian1 = "AM";
+	              	$row_meridian2 = "AM";
+	              	
+	              	if(((int) $row->start_hour) > 12)
+              		{
+              			switch($row->start_hour)
+		               {
+								case "13": $row->start_hour="01"; break;
+								case "14": $row->start_hour="02"; break;
+								case "15": $row->start_hour="03"; break;
+								case "16": $row->start_hour="04"; break;
+								case "17": $row->start_hour="05"; break;
+								case "18": $row->start_hour="06"; break;
+								case "19": $row->start_hour="07"; break;
+								case "20": $row->start_hour="08"; break;
+								case "21": $row->start_hour="09"; break;
+								case "22": $row->start_hour="10"; break;
+								case "23": $row->start_hour="11"; break;
+		               }
 
-						<button id="btnRemovefromList">
-							Remove from list
-						</button>
+		               $row_meridian1 = "PM";
+              		}
 
-						<?php foreach ($usertimes->result() as $row): 
-						   
-						   $num++;
-						   $row_meridian = "AM";
+              		if(((int) $row->end_hour) > 12 )
+              		{
+		               switch($row->end_hour)
+		               {
+								case "13": $row->end_hour="01"; break;
+								case "14": $row->end_hour="02"; break;
+								case "15": $row->end_hour="03"; break;
+								case "16": $row->end_hour="04"; break;
+								case "17": $row->end_hour="05"; break;
+								case "18": $row->end_hour="06"; break;
+								case "19": $row->end_hour="07"; break;
+								case "20": $row->end_hour="08"; break;
+								case "21": $row->end_hour="09"; break;
+								case "22": $row->end_hour="10"; break;
+								case "23": $row->end_hour="11"; break;
+		               }
 
-						   if((int) $row->start_hour > 12)
-						   {
-								switch($row->start_hour)
-								{
-									case "01": $row->start_hour="13"; break;
-									case "02": $row->start_hour="14"; break;
-									case "03": $row->start_hour="15"; break;
-									case "04": $row->start_hour="16"; break;
-									case "05": $row->start_hour="17"; break;
-									case "06": $row->start_hour="18"; break;
-									case "07": $row->start_hour="19"; break;
-									case "08": $row->start_hour="20"; break;
-									case "09": $row->start_hour="21"; break;
-									case "10": $row->start_hour="22"; break;
-									case "11": $row->start_hour="23"; break;
-									case "12": $row->start_hour="24"; break;
-					       	}
-					       	$row_meridian = "PM";
-						   }
-						?>
+		               $row_meridian2 = "PM";
+              		} 	      
+             	?>
 
-							<script> ctr++; </script>
+                <script> ctr++; </script>
 
-							<?php if($num-1): ?> 
-								<div id="new-timeslot-first">
+                <div class = "col-xs-7 form-group register-field" style = "font-size:14px;">
+                    <h3 class = "no-padding text-info"style = "margin-bottom: 5px; margin-top: 0px;">From</h3>
 
-							<?php else: ?>
-								<div id="new-timeslot">
+                    <input style="height:50px;display:none;" type = "date" required name = "change-time" class = "form-control sign-in-field" id="time-form"><br>
 
-							<?php endif; ?> 
+                    <select style="width:120px;height:30px" id="time-hour1-<?php echo $num; ?>">" onclick="">
+                        <option value="<?php echo $row->start_hour ?>">
+                            <?php echo $row->start_hour ?>
+                        </option>
+                        <option value="12">12</option>
+                        <option value="01">01</option>
+                        <option value="02">02</option>
+                        <option value="03">03</option>
+                        <option value="04">04</option>
+                        <option value="05">05</option>
+                        <option value="06">06</option>
+                        <option value="07">07</option>
+                        <option value="08">08</option>
+                        <option value="09">09</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                    </select>
 
-						  	<div class = "col-xs-7 form-group register-field" style = "font-size:14px;">
-						      <h3 class = "no-padding text-info"style = "margin-bottom: 5px; margin-top: 0px;">From</h3>
+                    <select style="width:100px;height:30px" id="time-minute1-<?php echo $num; ?>" onclick="">
+                        <option value="<?php echo $row->start_minute?>">
+                            <?php echo $row->start_minute ?>
+                        </option>
+                        <option value="00">00</option>
+                        <option value="01">01</option>
+                        <option value="02">02</option>
+                        <option value="03">03</option>
+                        <option value="04">04</option>
+                        <option value="05">05</option>
+                        <option value="06">06</option>
+                        <option value="07">07</option>
+                        <option value="08">08</option>
+                        <option value="09">09</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                        <option value="13">13</option>
+                        <option value="14">14</option>
+                        <option value="15">15</option>
+                        <option value="16">16</option>
+                        <option value="17">17</option>
+                        <option value="18">18</option>
+                        <option value="19">19</option>
+                        <option value="20">20</option>
+                        <option value="21">21</option>
+                        <option value="22">22</option>
+                        <option value="23">23</option>
+                        <option value="24">24</option>
+                        <option value="25">25</option>
+                        <option value="26">26</option>
+                        <option value="27">27</option>
+                        <option value="28">28</option>
+                        <option value="29">29</option>
+                        <option value="30">30</option>
+                        <option value="31">31</option>
+                        <option value="32">32</option>
+                        <option value="33">33</option>
+                        <option value="34">34</option>
+                        <option value="35">35</option>
+                        <option value="36">36</option>
+                        <option value="37">37</option>
+                        <option value="38">38</option>
+                        <option value="39">39</option>
+                        <option value="40">40</option>
+                        <option value="41">41</option>
+                        <option value="42">42</option>
+                        <option value="43">43</option>
+                        <option value="44">44</option>
+                        <option value="45">45</option>
+                        <option value="46">46</option>
+                        <option value="47">47</option>
+                        <option value="48">48</option>
+                        <option value="49">49</option>
+                        <option value="50">50</option>
+                        <option value="51">51</option>
+                        <option value="52">52</option>
+                        <option value="53">53</option>
+                        <option value="54">54</option>
+                        <option value="55">55</option>
+                        <option value="56">56</option>
+                        <option value="57">57</option>
+                        <option value="58">58</option>
+                        <option value="59">59</option>
+                    </select>
 
-						      <input style="height:50px;display:none;" type = "date" required name = "change-time" class = "form-control sign-in-field" id="time-form"><br>
+                    <select style="width:100px;height:30px" id="time-meridian1-<?php echo $num; ?>" onclick="">
+                        <option value="<?php echo $row_meridian1; ?>">
+                            <?php echo $row_meridian1; ?>
+                        </option>
+                        <option value="AM">AM</option>
+                        <option value="PM">PM</option>
+                    </select>
 
-						      <select style="width:120px;height:30px" id="time-hour1-<?php echo $num; ?>">
-						          <option value="<?php echo $row->start_hour ?>">
-						              <?php echo $row->start_hour ?>
-						          </option>
-						          <option value="12">12</option>
-						          <option value="01">01</option>
-						          <option value="02">02</option>
-						          <option value="03">03</option>
-						          <option value="04">04</option>
-						          <option value="05">05</option>
-						          <option value="06">06</option>
-						          <option value="07">07</option>
-						          <option value="08">08</option>
-						          <option value="09">09</option>
-						          <option value="10">10</option>
-						          <option value="11">11</option>
-						      </select>
+                </div>
 
-						      <select style="width:100px;height:30px" id="time-minute1-<?php echo $num; ?>" >
-						          <option value="<?php echo $row->start_minute?>">
-						              <?php echo $row->start_minute ?>
-						          </option>
-						          <option value="00">00</option>
-						          <option value="01">01</option>
-						          <option value="02">02</option>
-						          <option value="03">03</option>
-						          <option value="04">04</option>
-						          <option value="05">05</option>
-						          <option value="06">06</option>
-						          <option value="07">07</option>
-						          <option value="08">08</option>
-						          <option value="09">09</option>
-						          <option value="10">10</option>
-						          <option value="11">11</option>
-						          <option value="12">12</option>
-						          <option value="13">13</option>
-						          <option value="14">14</option>
-						          <option value="15">15</option>
-						          <option value="16">16</option>
-						          <option value="17">17</option>
-						          <option value="18">18</option>
-						          <option value="19">19</option>
-						          <option value="20">20</option>
-						          <option value="21">21</option>
-						          <option value="22">22</option>
-						          <option value="23">23</option>
-						          <option value="24">24</option>
-						          <option value="25">25</option>
-						          <option value="26">26</option>
-						          <option value="27">27</option>
-						          <option value="28">28</option>
-						          <option value="29">29</option>
-						          <option value="30">30</option>
-						          <option value="31">31</option>
-						          <option value="32">32</option>
-						          <option value="33">33</option>
-						          <option value="34">34</option>
-						          <option value="35">35</option>
-						          <option value="36">36</option>
-						          <option value="37">37</option>
-						          <option value="38">38</option>
-						          <option value="39">39</option>
-						          <option value="40">40</option>
-						          <option value="41">41</option>
-						          <option value="42">42</option>
-						          <option value="43">43</option>
-						          <option value="44">44</option>
-						          <option value="45">45</option>
-						          <option value="46">46</option>
-						          <option value="47">47</option>
-						          <option value="48">48</option>
-						          <option value="49">49</option>
-						          <option value="50">50</option>
-						          <option value="51">51</option>
-						          <option value="52">52</option>
-						          <option value="53">53</option>
-						          <option value="54">54</option>
-						          <option value="55">55</option>
-						          <option value="56">56</option>
-						          <option value="57">57</option>
-						          <option value="58">58</option>
-						          <option value="59">59</option>
-						      </select>
+                <div class = "col-xs-7 form-group register-field" style = "font-size:14px;">
+                    <h3 class = "no-padding text-info"style = "margin-bottom: 5px; margin-top: 0px;"><br>To</h3>
 
-						      <select style="width:100px;height:30px" id="time-meridian1-<?php echo $num; ?>">
-						          <option value="<?php echo $row_meridian; ?>">
-						              <?php echo $row_meridian; ?>
-						          </option>
-						          <option value="AM">AM</option>
-						          <option value="PM">PM</option>
-						      </select>
+                    <input style="height:50px;display:none;" type = "date" required name = "change-time" class = "form-control sign-in-field" id="time-form"><br>
 
-						  </div>
+                    <select style="width:120px;height:30px" id="time-hour2-<?php echo $num; ?>" onclick="">
+                        <option value="<?php echo $row->end_hour ?>">
+                            <?php echo $row->end_hour ?>
+                        </option>
+                        <option value="12">12</option>
+                        <option value="01">01</option>
+                        <option value="02">02</option>
+                        <option value="03">03</option>
+                        <option value="04">04</option>
+                        <option value="05">05</option>
+                        <option value="06">06</option>
+                        <option value="07">07</option>
+                        <option value="08">08</option>
+                        <option value="09">09</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                    </select>
 
-						  <div class = "col-xs-7 form-group register-field" style = "font-size:14px;">
-						      <h3 class = "no-padding text-info"style = "margin-bottom: 5px; margin-top: 0px;"><br>To</h3>
+                    <select style="width:100px;height:30px" id="time-minute2-<?php echo $num; ?>" onclick="">
+                        <option value="<?php echo $row->end_minute ?>">
+                            <?php echo $row->end_minute ?>
+                        </option>
+                        <option value="00">00</option>
+                        <option value="01">01</option>
+                        <option value="02">02</option>
+                        <option value="03">03</option>
+                        <option value="04">04</option>
+                        <option value="05">05</option>
+                        <option value="06">06</option>
+                        <option value="07">07</option>
+                        <option value="08">08</option>
+                        <option value="09">09</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                        <option value="13">13</option>
+                        <option value="14">14</option>
+                        <option value="15">15</option>
+                        <option value="16">16</option>
+                        <option value="17">17</option>
+                        <option value="18">18</option>
+                        <option value="19">19</option>
+                        <option value="20">20</option>
+                        <option value="21">21</option>
+                        <option value="22">22</option>
+                        <option value="23">23</option>
+                        <option value="24">24</option>
+                        <option value="25">25</option>
+                        <option value="26">26</option>
+                        <option value="27">27</option>
+                        <option value="28">28</option>
+                        <option value="29">29</option>
+                        <option value="30">30</option>
+                        <option value="31">31</option>
+                        <option value="32">32</option>
+                        <option value="33">33</option>
+                        <option value="34">34</option>
+                        <option value="35">35</option>
+                        <option value="36">36</option>
+                        <option value="37">37</option>
+                        <option value="38">38</option>
+                        <option value="39">39</option>
+                        <option value="40">40</option>
+                        <option value="41">41</option>
+                        <option value="42">42</option>
+                        <option value="43">43</option>
+                        <option value="44">44</option>
+                        <option value="45">45</option>
+                        <option value="46">46</option>
+                        <option value="47">47</option>
+                        <option value="48">48</option>
+                        <option value="49">49</option>
+                        <option value="50">50</option>
+                        <option value="51">51</option>
+                        <option value="52">52</option>
+                        <option value="53">53</option>
+                        <option value="54">54</option>
+                        <option value="55">55</option>
+                        <option value="56">56</option>
+                        <option value="57">57</option>
+                        <option value="58">58</option>
+                        <option value="59">59</option>
+                    </select>
 
-						      <input style="height:50px;display:none;" type = "date" required name = "change-time" class = "form-control sign-in-field" id="time-form"><br>
+                    <select style="width:100px;height:30px" id="time-meridian2-<?php echo $num; ?>" onclick="">
+                        <option value="<?php echo $row_meridian2; ?>">
+                            <?php echo $row_meridian2; ?>
+                        </option>
+                        <option value="AM">AM</option>
+                        <option value="PM">PM</option>
+                    </select>
+                    <br><br><br>
+                </div>
 
-						      <select style="width:120px;height:30px" id="time-hour2-<?php echo $num; ?>">
-						          <option value="<?php echo $row->end_hour ?>">
-						              <?php echo $row->end_hour ?>
-						          </option>
-						          <option value="12">12</option>
-						          <option value="01">01</option>
-						          <option value="02">02</option>
-						          <option value="03">03</option>
-						          <option value="04">04</option>
-						          <option value="05">05</option>
-						          <option value="06">06</option>
-						          <option value="07">07</option>
-						          <option value="08">08</option>
-						          <option value="09">09</option>
-						          <option value="10">10</option>
-						          <option value="11">11</option>
-						      </select>
+            <?php  endforeach; ?>
 
-						      <select style="width:100px;height:30px" id="time-minute2-<?php echo $num; ?>">
-						          <option value="<?php echo $row->end_minute ?>">
-						              <?php echo $row->end_minute ?>
-						          </option>
-						          <option value="M">Minute</option>
-						          <option value="00">00</option>
-						          <option value="01">01</option>
-						          <option value="02">02</option>
-						          <option value="03">03</option>
-						          <option value="04">04</option>
-						          <option value="05">05</option>
-						          <option value="06">06</option>
-						          <option value="07">07</option>
-						          <option value="08">08</option>
-						          <option value="09">09</option>
-						          <option value="10">10</option>
-						          <option value="11">11</option>
-						          <option value="12">12</option>
-						          <option value="13">13</option>
-						          <option value="14">14</option>
-						          <option value="15">15</option>
-						          <option value="16">16</option>
-						          <option value="17">17</option>
-						          <option value="18">18</option>
-						          <option value="19">19</option>
-						          <option value="20">20</option>
-						          <option value="21">21</option>
-						          <option value="22">22</option>
-						          <option value="23">23</option>
-						          <option value="24">24</option>
-						          <option value="25">25</option>
-						          <option value="26">26</option>
-						          <option value="27">27</option>
-						          <option value="28">28</option>
-						          <option value="29">29</option>
-						          <option value="30">30</option>
-						          <option value="31">31</option>
-						          <option value="32">32</option>
-						          <option value="33">33</option>
-						          <option value="34">34</option>
-						          <option value="35">35</option>
-						          <option value="36">36</option>
-						          <option value="37">37</option>
-						          <option value="38">38</option>
-						          <option value="39">39</option>
-						          <option value="40">40</option>
-						          <option value="41">41</option>
-						          <option value="42">42</option>
-						          <option value="43">43</option>
-						          <option value="44">44</option>
-						          <option value="45">45</option>
-						          <option value="46">46</option>
-						          <option value="47">47</option>
-						          <option value="48">48</option>
-						          <option value="49">49</option>
-						          <option value="50">50</option>
-						          <option value="51">51</option>
-						          <option value="52">52</option>
-						          <option value="53">53</option>
-						          <option value="54">54</option>
-						          <option value="55">55</option>
-						          <option value="56">56</option>
-						          <option value="57">57</option>
-						          <option value="58">58</option>
-						          <option value="59">59</option>
-						      </select>
+                <div class = "text-center">
+                    <button onclick="changeTimeSettings()" class = "btn btn-success" style="width:50%; font-size:24px; margin-top: 10px; margin-bottom: 10px">Save settings</button>
+                </div>
 
-						      <select style="width:100px;height:30px" id="time-meridian2-<?php echo $num; ?>">
-						          <option value="<?php echo $row_meridian; ?>">
-						              <?php echo $row_meridian; ?>
-						          </option>
-						          <option value="AM">AM</option>
-						          <option value="PM">PM</option>
-						      </select>
-						      <br><br><br>
-						  </div>
-						</div>
-						<?php  endforeach; ?>
-
-						</div>
-						<div class = "text-center">
-						<button onclick="alerttime()" class = "btn btn-success" style="width:50%; font-size:24px; margin-top: 10px; margin-bottom: 10px">Save settings</button>
-						</div>
             </div>
         </div>    
     </div>
@@ -349,42 +346,9 @@
 <?php endforeach; ?>
 
 <script>
-    
-    $(function() 
-    {
-        $('#btnAddtoList').click(function()
-        {
-            ctr++;
-            // alert(ctr);        		
-
-            var newDiv = 
-            $('<div id="new-timeslot" class = "col-xs-7 form-group register-field" style = "font-size:14px;"><h3 class = "no-padding text-info"style = "margin-bottom: 5px; margin-top: 0px;">Time'+ ctr +'</h3></div>');
-          	
-            $('#add-timeslot').append(newDiv);
-        });
-    });
-
-    $(function()
-    {
-        $('#btnRemovefromList').click(function()
-        {
-        		// alert(ctr); 
-
-        		if(ctr>0)
-            {
-            	ctr--;
-	        		document.getElementById('new-timeslot').remove();
-
-	        		// document.getElementById("new-timeslot").lastChild.remove();
-
-        		  	// var select = document.getElementById('add-timeslot');
-  					// select.removeChild(select.lastChild);
-        		}    
-        });
-    });
-
-    function alerttime()
-    {
+	 function changeTimeSettings()
+	 {
+        // if(<?php echo $num; ?> == "-1")
         var hour1, minute1, meridian1;
         var hour2, minute2, meridian2;
 
@@ -414,21 +378,21 @@
             // alert("i=" + i + " " + selectedHour1 + ":" + selectedMinute1 + " " + selectedMeridian1);
             // alert("i=" + i + " " + selectedHour2 + ":" + selectedMinute2 + " " + selectedMeridian2);
 
-            document.cookie = "selectedHour1-" + i + "=" + selectedHour1 + ";path=/";   
-            document.cookie = "selectedMinute1-" + i + "=" + selectedMinute1 + ";path=/"; 
-            document.cookie = "selectedMeridian1-" + i + "=" + selectedMeridian1 + ";path=/"; 
+            document.cookie = "selectedHour1-" + i + "=" + selectedHour1 + ";" + ";path=/";   
+            document.cookie = "selectedMinute1-" + i + "=" + selectedMinute1 + ";" + ";path=/"; 
+            document.cookie = "selectedMeridian1-" + i + "=" + selectedMeridian1 + ";" + ";path=/"; 
 
-            document.cookie = "selectedHour2-" + i + "=" + selectedHour2 + ";path=/";   
-            document.cookie = "selectedMinute2-" + i + "=" + selectedMinute2 + ";path=/"; 
-            document.cookie = "selectedMeridian2-" + i + "=" + selectedMeridian2 + ";path=/";   
+            document.cookie = "selectedHour2-" + i + "=" + selectedHour2 + ";" + ";path=/";   
+            document.cookie = "selectedMinute2-" + i + "=" + selectedMinute2 + ";" + ";path=/"; 
+            document.cookie = "selectedMeridian2-" + i + "=" + selectedMeridian2 + ";" + ";path=/";   
         }
 
-        document.cookie = "updatetime=1;path=/";
         location.reload();
 
+        document.cookie = "updatetime=1;path=/";
         <?php 
             if($_COOKIE["updatetime"])
-                echo $CI->user_model->set_usertimes($child->user_id,$num);
+                echo $CI->user_model->set_usertimes($child->user_id, 0); //set to $num once adding again
         ?>
     }
 

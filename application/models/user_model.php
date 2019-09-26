@@ -125,7 +125,7 @@ class User_model extends CI_Model {
                     case "09": $start_hour="21"; break;
                     case "10": $start_hour="22"; break;
                     case "11": $start_hour="23"; break;
-                    case "12": $start_hour="24"; break;
+                    case "12": $start_hour="12"; break;
                 }
             }
 
@@ -161,8 +161,7 @@ class User_model extends CI_Model {
 
              
             $this->db->insert('tbl_usertimes',$data);   
-            // $homeURL = base_url('home') ;
-            // header("Location: $homeURL");
+            header("Refresh:0");
         }       
     }
 
