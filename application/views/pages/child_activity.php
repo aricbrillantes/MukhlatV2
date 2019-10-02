@@ -30,7 +30,11 @@
     //load topic model
     $CI =&get_instance();
     $CI->load->model('topic_model');
+    $CI->load->model('post_model');
 
+
+    $user_activity = $CI->user_model->get_child_records($id);
+    $activities = $CI->post_model->get_user_activities($id,$id);
 
     $CI->load->library('user_agent');
 
@@ -90,54 +94,67 @@
                 $user_moderated_topics = $CI->topic_model->get_moderated_topics($child->user_id);
                 $user_followed_topics = $CI->topic_model->get_followed_topics($child->user_id);
 
-                ?>
-                <div class = "col-md-8 col-md-offset-2 content-container" style = "margin-bottom: 1%; margin-top: 1%;">
-                    <div class = "col-xs-6 no-padding no-margin">
-                        
-                        <h3 class = "no-padding text-info" style = "margin-bottom: 0%;"><strong><?php echo $child->first_name . " " . $child->last_name ?></strong></h3>
+            ?>
+
+                <div class = "col-md-8 col-md-offset-2 content-container" style = "margin-bottom: 0.8vw; margin-top: 0.5vw;">
+                    <div class = "col-xs-6 no-padding no-margin"> 
+                        <h3 class = "no-padding text-info" style = "margin-bottom: 0vw;"><strong><?php echo $child->first_name . " " . $child->last_name ?></strong></h3>
                         <small class = "no-padding no-margin"><?php echo $child->email ?></small>
                         
-                        <p class = "wrap text-muted" style = "font-size: 12%;"><i><?php echo $child->description ? $child->description : 'Hello World!'; ?></i></p>
+                        <p class = "wrap text-muted" style = "font-size: 0.8vw;"><i><?php echo $child->description ? $child->description : 'Hello World!'; ?></i></p>
                     </div>
 
                     <div class = "col-xs-6 no-padding no-margin" style="float: right">
                         <a class = "pull-right btn " style = "display: inline-block; float: right: 5px;" href="<?php echo base_url('parents/settings/' . $child->user_id) ?>">
-                            <h3 class = "no-padding text-info" style = "margin-bottom: 0px; float: right"><strong><i class = "glyphicon glyphicon-cog"></i></strong></h3>
-                        </strong>
-                    </h3>
-                </a>
+                            <h3 class = "no-padding text-info" style = "margin-bottom: 0px; float: right">
+                                <strong><i class = "glyphicon glyphicon-cog"></i></strong>
+                            </h3> 
+                        </a>
                         
                     </div>
                 </div>    
 
-                <?php if(!$mobile): ?> 
-                    <div class = "col-md-8 col-md-offset-2 content-container" style = "margin-bottom: 5px;">
-                        <h3 class = "text-info text-center user-topic-header"><strong><?php echo $child->first_name ?>'s Activity</strong></h3>
+                <!-- User Topics -->
+                <div class = "col-md-6" >
+                    <h3 class = "text-info text-center user-activities-header">
+                        <strong>Topics of <?php echo $child->first_name; ?></strong>
+                    </h3>
 
-                <?php else: ?>
-                    <div class = " col-md-offset-2 content-container" style = "margin-bottom: 10%;">
-                        <h5 class = " user-topic-header"><strong><?php echo $child->first_name ?>'s Activity</strong></h3>
-                <?php endif; ?> 
+                    <div class = "col-sm-12 user-activities-div">
+                        <ul class="nav nav-pills nav-justified">
+                            <li class="active"><a data-toggle="pill" href="#user-topic-created">Created Topics</a></li>
+                            <li><a data-toggle="pill" href="#user-topic-moderated">Moderated Topics</a></li>
+                            <li><a data-toggle="pill" href="#user-topic-followed">Followed Topics</a></li>
+                        </ul>
+                        <br>
 
-                
-
-                    <a href = "<?php echo base_url('parents/network/' . $child->user_id); ?>" class = "btn btn-primary btn-block" style = "margin-bottom: 10px;"><i class = "fa fa-globe"></i> View <?php echo $child->first_name ?>'s activity network</a>
-
-                    <ul class="nav nav-pills nav-justified">
-                        <li class="active"><a data-toggle="pill" href="#user-topic-created">Created Topics</a></li>
-                        <li><a data-toggle="pill" href="#user-topic-moderated">Moderated Topics</a></li>
-                        <li><a data-toggle="pill" href="#user-topic-followed">Followed Topics</a></li>
-                    </ul>
-                    <br>
-                    <div class="tab-content">
-                        <div id="user-topic-created" class="tab-pane fade in active">
-                            <div class = "col-sm-12 no-padding">
+                        <div class="tab-content">
+                            <div id="user-topic-created" class="tab-pane fade in active">
+                                <div class = "col-sm-12 no-padding">
+                                    <div class = "user-header">
+                                        <h4 class = "text-center"><strong>Topics Created by <?php echo $child->first_name; ?></strong></h4>
+                                    </div>
+                                    <div class = "user-topic-div">
+                                        <ul class="nav">
+                                            <?php foreach ($user_topics as $topic): ?>
+                                                <li>
+                                                    <a class = "user-topic-item" href="<?php echo base_url('topic/view/' . $topic->topic_id); ?>" style = "padding: 5px 30px;">
+                                                        <h4 class = "no-padding no-margin" style = "display: inline-block;"><?php echo utf8_decode($topic->topic_name); ?></h4>
+                                                        <span class = "pull-right label label-info follower-label"><i class = "fa fa-group"></i> <?php echo $topic->followers ? count($topic->followers) : '0' ?></span>
+                                                    </a>
+                                                </li>
+                                            <?php endforeach; ?>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="user-topic-moderated" class="tab-pane fade">
                                 <div class = "user-header">
-                                    <h4 class = "text-center"><strong>Topics Created by <?php echo $child->first_name; ?></strong></h4>
+                                    <h4 class = "text-center"><strong>Topics Moderated by <?php echo $child->first_name; ?></strong></h4>
                                 </div>
                                 <div class = "user-topic-div">
                                     <ul class="nav">
-                                        <?php foreach ($user_topics as $topic): ?>
+                                        <?php foreach ($user_moderated_topics as $topic): ?>
                                             <li>
                                                 <a class = "user-topic-item" href="<?php echo base_url('topic/view/' . $topic->topic_id); ?>" style = "padding: 5px 30px;">
                                                     <h4 class = "no-padding no-margin" style = "display: inline-block;"><?php echo utf8_decode($topic->topic_name); ?></h4>
@@ -148,46 +165,79 @@
                                     </ul>
                                 </div>
                             </div>
-                        </div>
-                        <div id="user-topic-moderated" class="tab-pane fade">
-                            <div class = "user-header">
-                                <h4 class = "text-center"><strong>Topics Moderated by <?php echo $child->first_name; ?></strong></h4>
-                            </div>
-                            <div class = "user-topic-div">
-                                <ul class="nav">
-                                    <?php foreach ($user_moderated_topics as $topic): ?>
-                                        <li>
-                                            <a class = "user-topic-item" href="<?php echo base_url('topic/view/' . $topic->topic_id); ?>" style = "padding: 5px 30px;">
-                                                <h4 class = "no-padding no-margin" style = "display: inline-block;"><?php echo utf8_decode($topic->topic_name); ?></h4>
-                                                <span class = "pull-right label label-info follower-label"><i class = "fa fa-group"></i> <?php echo $topic->followers ? count($topic->followers) : '0' ?></span>
-                                            </a>
-                                        </li>
-                                    <?php endforeach; ?>
-                                </ul>
-                            </div>
-                        </div>
-                        <div id="user-topic-followed" class="tab-pane fade">
-                            <div class = "col-sm-12 no-padding">
-                                <div class = "user-header">
-                                    <h4 class = "text-center"><strong>Topics Followed by <?php echo $child->first_name; ?></strong></h4>
-                                </div>
-                                <div class = "user-topic-div">
-                                    <ul class="nav">
-                                        <?php foreach ($user_followed_topics as $topic): ?>
-                                            <li>
-                                                <a class = "user-topic-item" href="<?php echo base_url('topic/view/' . $topic->topic_id); ?>" style = "padding: 5px 30px;">
-                                                    <h4 class = "no-padding no-margin" style = "display: inline-block;"><?php echo utf8_decode($topic->topic_name); ?></h4>
-                                                    <span class = "pull-right label label-info follower-label"><i class = "fa fa-group"></i> <?php echo $topic->followers ? count($topic->followers) : '0' ?></span>
-                                                </a>
-                                            </li>
-                                        <?php endforeach; ?>
-                                    </ul>
+                            <div id="user-topic-followed" class="tab-pane fade">
+                                <div class = "col-sm-12 no-padding">
+                                    <div class = "user-header">
+                                        <h4 class = "text-center"><strong>Topics Followed by <?php echo $child->first_name; ?></strong></h4>
+                                    </div>
+                                    <div class = "user-topic-div">
+                                        <ul class="nav">
+                                            <?php foreach ($user_followed_topics as $topic): ?>
+                                                <li>
+                                                    <a class = "user-topic-item" href="<?php echo base_url('topic/view/' . $topic->topic_id); ?>" style = "padding: 5px 30px;">
+                                                        <h4 class = "no-padding no-margin" style = "display: inline-block;"><?php echo utf8_decode($topic->topic_name); ?></h4>
+                                                        <span class = "pull-right label label-info follower-label"><i class = "fa fa-group"></i> <?php echo $topic->followers ? count($topic->followers) : '0' ?></span>
+                                                    </a>
+                                                </li>
+                                            <?php endforeach; ?>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            <?php endforeach; ?>
+
+                <div class = "col-md-6">
+                    <h3 class = "text-info text-center user-activities-header">
+                        <strong>Activities of <?php echo $child->first_name; ?></strong>
+                    </h3>
+                    
+                    <div class = "col-sm-12 user-activities-div">
+                        <!-- POST PREVIEW -->
+                        <?php foreach ($activities as $post): ?> 
+                            <div class = "col-xs-12 no-padding post-container" style = "margin-bottom: 10px;">
+                                <div class = "user-post-heading no-margin">
+                                    
+                                    <?php if (empty($post->parent)): ?>
+                                        <span>posted in</span> 
+
+                                    <?php else: ?>
+                                        <span>commented in</span> 
+
+                                    <?php endif; ?>
+                                    
+                                    <strong><?php echo utf8_decode($post->topic_name); ?></strong>
+                                    <span class = "text-muted"> <i style = "font-size: 11px"><?php echo date("M-d-y", strtotime($post->date_posted)); ?></i></span>
+                                   
+                                    <?php if (!empty($post->parent)): ?>
+                                        <span class = "text-muted" style = "font-size: 1vw;">( <i class = "fa fa-reply"></i> <i>in reply to <?php echo $post->parent->user->first_name . " " . $post->parent->user->last_name; ?> )</i></span>
+                                    <?php endif; ?>
+                                    :
+                                </div>
+                                <div class = "col-xs-12 user-post-content no-padding">
+                                    
+                                    <div class = "col-xs-10 no-padding" style = "margin-top: 1vw; margin-left: 1vw;">
+                                        <?php if (!empty($post->post_title)): ?>
+                                            <h5 class = "no-padding no-margin text-muted wrap"><strong><?php echo utf8_decode($post->post_title); ?></strong></h5>
+                                            
+                                        <?php else: ?>
+                                            <h5 class = "no-padding no-margin text-muted wrap"><a class = "btn btn-link no-padding no-margin"><strong><?php echo $post->first_name . " " . $post->last_name; ?></strong></a></h5>
+
+                                        <?php endif; ?>
+                                        
+                                        <p class = "home-content-body" style = "border-right: none;"><?php echo utf8_decode($post->post_content); ?></p>
+
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+        </div>
+        <?php endforeach; ?>
+
 
         </div>
     </div>
