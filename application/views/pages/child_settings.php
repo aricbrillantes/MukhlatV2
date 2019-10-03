@@ -24,15 +24,23 @@
         header("Location: $homeURL");
     }
 
+    if($CI->user_model->isParent($logged_user->user_id,$id) == 999)
+    {
+        $homeURL = base_url('home');
+        header("Location: $homeURL");
+    }
+
     //get data of child being monitored
     $children = $CI->user_model->view_specific_child($id);
-    // $usertimes = $CI->user_model->set_usertimes($logged_user->user_id);
+  
 
     //read data of child 
     //note: foreach is needed even though only one child is being fetched
     foreach ($children->result() as $child): 
 
     $data['user'] = $CI->user_model->get_user(true, true, array('user_id' => $child->user_id));
+
+
 
 
     //testing allowed times
@@ -221,6 +229,26 @@
                     <br><br><br>
                 </div>
 
+                <h3 class = "no-padding text-info"style = "margin-bottom: 5px; margin-top: 0px;">Warning</h3>
+                <input style="height:50px;display:none;" type = "date" required name = "change-warning" class = "form-control sign-in-field" id="time-form"><br>
+                    <select style="width:120px;height:30px" id="time-warning" onclick="">
+                        
+                        <?php if($row->warning != 0 &&$row->warning != 60): ?>
+                            <option value="<?php echo $row->warning; ?>"><?php echo $row->warning; ?> minutes</option>
+                        <?php endif; ?>
+
+                        <?php if($row->warning == 60): ?>
+                            <option value="<?php echo $row->warning; ?>">1 hour</option>
+                        <?php endif; ?>
+
+                        <option value="0">None</option>
+                        <option value="15">15 minutes</option>
+                        <option value="30">30 minutes</option>
+                        <option value="45">45 minutes</option>
+                        <option value="60">1 hour</option>
+                    </select>
+                </input>
+
             <?php  endforeach; ?>
             	<!-- <a id = "notif-btn" href="#notif-modal" data-toggle = "modal">sasasa</a> -->
             	<?php include(APPPATH . 'views/modals/confirm_modal.php'); ?>
@@ -244,14 +272,20 @@
         // if(<?php echo $num; ?> == "-1")
         var hour1, minute1, meridian1;
         var hour2, minute2, meridian2;
+        var warning;
 
         var selectedHour1, selectedMinute1, selectedMeridian1;
         var selectedHour2, selectedMinute2, selectedMeridian2;
+        var selectedWarning;
 
         var i;
 
         for(i = 0; i < ctr; i++)
         {
+            warning = document.getElementById("time-warning");
+
+            selectedWarning = warning.options[warning.selectedIndex].value;
+
             hour1 = document.getElementById("time-hour1-" + i);
             minute1 = document.getElementById("time-minute1-" + i);
             meridian1 = document.getElementById("time-meridian1-" + i);
@@ -270,6 +304,8 @@
 
             // alert("i=" + i + " " + selectedHour1 + ":" + selectedMinute1 + " " + selectedMeridian1);
             // alert("i=" + i + " " + selectedHour2 + ":" + selectedMinute2 + " " + selectedMeridian2);
+
+            document.cookie = "selectedWarning=" + selectedWarning + ";path=/";   
 
             document.cookie = "selectedHour1-" + i + "=" + selectedHour1 + ";" + ";path=/";   
             document.cookie = "selectedMinute1-" + i + "=" + selectedMinute1 + ";" + ";path=/"; 

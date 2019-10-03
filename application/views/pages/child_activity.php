@@ -24,6 +24,12 @@
         header("Location: $homeURL");
     }
 
+    if($CI->user_model->isParent($logged_user->user_id,$id) == 999)
+    {
+        $homeURL = base_url('home');
+        header("Location: $homeURL");
+    }
+
     //get data of child being monitored
     $children = $CI->user_model->view_specific_child($id);
 
@@ -138,7 +144,7 @@
                                         <ul class="nav">
                                             <?php foreach ($user_topics as $topic): ?>
                                                 <li>
-                                                    <a class = "user-topic-item" href="<?php echo base_url('topic/view/' . $topic->topic_id); ?>" style = "padding: 5px 30px;">
+                                                    <a class = "user-topic-item" href="#" style = "padding: 5px 30px;">
                                                         <h4 class = "no-padding no-margin" style = "display: inline-block;"><?php echo utf8_decode($topic->topic_name); ?></h4>
                                                         <span class = "pull-right label label-info follower-label"><i class = "fa fa-group"></i> <?php echo $topic->followers ? count($topic->followers) : '0' ?></span>
                                                     </a>

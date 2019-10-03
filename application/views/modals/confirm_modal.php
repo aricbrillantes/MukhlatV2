@@ -14,7 +14,7 @@
                         <ul class="nav nav-pills nav-justified" style = "margin-bottom: 10px;">
                             <li class = "active text-center"><button onclick="changeTimeSettings()" class = "btn btn-success" style="width:50%; font-size:24px; margin-top: 10px; margin-bottom: 10px">Yes</button></li>
                             
-                            <li class = "active text-center"><button data-dismiss="modal" class = "btn btn-success" style="width:50%; font-size:24px; margin-top: 10px; margin-bottom: 10px">Cancel</button></li>
+                            <li class = "active text-center"><button data-dismiss="modal" class = "" style="width:50%; font-size:24px; margin-top: 10px; margin-bottom: 10px">Cancel</button></li>
                         </ul>
                     </div>
                     

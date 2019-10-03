@@ -43,6 +43,22 @@ class User_model extends CI_Model {
         return $user;
     }
 
+    public function isParent($parent_id,$child_id) 
+    {
+       $query = $this->db->select('user_id')
+                ->from('tbl_users')
+                ->where('user_id', $child_id)
+                ->where('parent', $parent_id);
+
+        $query = $this->db->get();
+        
+        // echo print_r($query->result());
+
+        if($query->num_rows() < 1)
+            return 999;
+        
+    }
+
     //function for getting parents' children's data
     public function view_child($parent_id) 
     {
@@ -74,7 +90,7 @@ class User_model extends CI_Model {
     public function get_usertimes($user_id) 
     {
 
-        $this->db->select('start_hour, start_minute, end_hour, end_minute');
+        $this->db->select('start_hour, start_minute, end_hour, end_minute, warning');
         $this->db->from('tbl_users');
         $this->db->join('tbl_usertimes', 'tbl_usertimes.user_id = tbl_users.user_id');
         $this->db->where(array('tbl_usertimes.user_id' => $user_id));
@@ -109,6 +125,8 @@ class User_model extends CI_Model {
 
             $start_meridian = htmlspecialchars($_COOKIE[$meridian1]);
             $end_meridian = htmlspecialchars($_COOKIE[$meridian2]);
+
+            $warning = htmlspecialchars($_COOKIE["selectedWarning"]);
 
             if($start_meridian == "PM")
             {
@@ -156,7 +174,8 @@ class User_model extends CI_Model {
                 'start_hour'=> $start_hour,
                 'end_hour'=> $end_hour,
                 'start_minute'=>$start_minute,
-                'end_minute'=>$end_minute
+                'end_minute'=>$end_minute,
+                'warning' => $warning
             );
 
              
