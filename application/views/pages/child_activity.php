@@ -57,31 +57,33 @@
     }
 ?>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<body class = "sign-in">
-    <div class = "container" style = "margin-top: 2%;">
-        <div class = "row">
+
+<!-- Nav Bar -->
+<nav class = "navbar navbar-default navbar-font navbar-fixed-top" style = "border-bottom: 1px solid #CFD8DC;">
+    <div class = "container-fluid">
+        <a class = "pull-left btn btn-topic-header" style = "display: inline-block; margin-right: 5px; border:0" href="<?php echo base_url('home') ?>">
+            <h3 class = "pull-left" style = "margin-top: 3px; margin-bottom: 0px; padding: 2px;">
+                <strong class = "text-info"><i class = "fa fa-chevron-left"></i> 
+                    Back
+                </strong>
+            </h3>
+        </a>
             
-            <div class = "col-xs-16 col-md-8 col-md-offset-2 content-container no-padding container-fluid" style = "margin-bottom: 5px;">
-                
-                <a class = "pull-left btn" style = "display:  margin-right: 1%;" href="<?php echo base_url('home') ?>">
-                    <h3 class = "pull-left" style = "margin-top: 10%; margin-bottom: %; ">
-                        <strong class = "text-info"><i class = "fa fa-chevron-left"></i> 
-                            Back
-                        </strong>
-                    </h3>
-                </a>
+            
+        <a href = "<?php echo base_url('signin/logout'); ?>" class = "pull-right btn btn-primary btn-md" style = "margin-right: 20px; margin-top: 10px; margin-bottom: 10px;">Log Out</a>
 
-                <a style = "display: inline-block; margin-right: 5px;" >
-                    <h3 class = "pull-left" style = "margin-top: 12%; margin-left: 11px; margin-bottom: 0%; ">
-                        <strong class = "text-info">
-                            <?php echo $logged_user->first_name . " " . $logged_user->last_name ?>
-                        </strong>
-                    </h3>
-                </a>
-                
-                <a href = "<?php echo base_url('signin/logout'); ?>" class = "pull-right btn btn-primary btn-md" style = "margin-right: 20px; margin-top: 10px; margin-bottom: 10px;">Log Out</a>
-            </div>
+        
+    </div>
+</nav>
+<br><br><br>
 
+
+<!-- Nav Bar Script -->
+<script type="text/javascript" src="<?php echo base_url("/js/nav_bar.js"); ?>"></script>
+
+<body class = "sign-in">
+    <div class = "container" style = "">
+        <div class = "row">
 
             <?php foreach ($children->result() as $child): 
 
@@ -126,7 +128,7 @@
                         <strong>Topics of <?php echo $child->first_name; ?></strong>
                     </h3>
 
-                    <div class = "col-sm-12 user-activities-div">
+                    <div class = "col-sm-12 user-activities-div ">
                         <ul class="nav nav-pills nav-justified">
                             <li class="active"><a data-toggle="pill" href="#user-topic-created">Created Topics</a></li>
                             <li><a data-toggle="pill" href="#user-topic-moderated">Moderated Topics</a></li>
@@ -194,12 +196,12 @@
                     </div>
                 </div>
 
-                <div class = "col-xs-6">
+                <div class = "col-xs-6 ">
                     <h3 class = "text-info text-center user-activities-header">
                         <strong>Activities of <?php echo $child->first_name; ?></strong>
                     </h3>
                     
-                    <div class = "col-sm-12 user-activities-div">
+                    <div class = "col-sm-12 user-activities-div ">
                         <!-- POST PREVIEW -->
                         <?php foreach ($activities as $post): ?> 
                             <div class = "col-xs-12 no-padding post-container" style = "margin-bottom: 10px;">

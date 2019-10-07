@@ -20,10 +20,10 @@
         <div class = "row sign-in-logo"><img src = "<?php echo base_url('images/logo/mukhlatlogo1.png'); ?>"></div>
 
         <!-- Content -->
-        <div class = "row sign-in-content">
+        <div class = "row sign-in-content container-fluid">
             <!--Sign In-->
-            <div class = "col-md-10 col-md-offset-1" style = "margin-bottom: 30px;">
-                <div id = "sign-in-container" class = "col-md-12 content-container no-padding">
+            <div class = "col-md-10 col-md-offset-1 container-fluid" style = "margin-bottom: 30px;">
+                <div id = "sign-in-container" class = "col-md-12 content-container no-padding container-fluid">
                     <form class = "form-inline" id = "log-in-form" onsubmit = "return log_in()" method = "post">
                         <div class ="form-group">
                             <h3 class = "sign-in-header no-padding no-margin" style = "margin-left: 40px; padding: 10px;"><strong>Log In</strong></h3>
@@ -44,8 +44,8 @@
             </div>
 
             <!--Registration-->
-            <div class = "col-md-10 col-md-offset-1">
-                <div id = "sign-up-container" class = "col-md-12 content-container no-padding">
+            <div class = "col-md-10 col-md-offset-1 container-fluid">
+                <div id = "sign-up-container" class = "col-md-12 content-container no-padding container-fluid">
                     <div class = "col-md-12 sign-in-div">
                         <h3 class = "sign-in-header"><strong>Sign Up for Mukhlat!</strong></h3>
                         <div class = "sign-in-form">

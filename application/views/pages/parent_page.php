@@ -30,11 +30,26 @@
     }
 ?>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Nav Bar -->
+<nav class = "navbar navbar-default navbar-font navbar-fixed-top" style = "border-bottom: 1px solid #CFD8DC;">
+    <div class = "container-fluid">
+        
+        <a class = "navbar-brand" href = "<?php echo base_url('home') ?>"><img id = "nav-logo" src = "<?php echo base_url('images/logo/logo-blue.png'); ?>"/></a>
+            
+        <a href = "<?php echo base_url('signin/logout'); ?>" class = "pull-right btn btn-primary btn-md" style = "margin-right: 20px; margin-top: 10px; margin-bottom: 10px;">Log Out</a>
+
+    </div>
+</nav>
+<br>
+<br>
+<br>
+
 <body class = "sign-in">
 
-    <div class = "container" style = "margin-top: 2%;">
+    <div class = "container" style = "">
         <div class = "row">
-            <div class = "col-md-8 col-md-offset-2 content-container no-padding " style = "margin-bottom: 5px;">
+<!--             <div class = "col-md-8 col-md-offset-2 content-container no-padding " style = "margin-bottom: 5px;">
                 <a style = "display: inline-block; margin-right: 5px;" >
                     <h3 class = "pull-left" style = "margin-top: 12%; margin-left: 11px; margin-bottom: 0%; ">
                         <strong class = "text-info">
@@ -44,7 +59,7 @@
                 </a>
                 
                 <a href = "<?php echo base_url('signin/logout'); ?>" class = "pull-right btn btn-primary btn-md" style = "margin-right: 20px; margin-top: 10px; margin-bottom: 10px;">Log Out</a>
-            </div>
+            </div> -->
 
             <?php foreach ($children->result() as $child): 
 

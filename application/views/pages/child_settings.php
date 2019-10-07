@@ -1,6 +1,6 @@
 <?php
     include(APPPATH . 'views/header.php');
-    
+
     //check if current user is parent or logged in
     //if user is not a parent, redirect to home
     //if user is not logged in, redirect to sign in
@@ -66,28 +66,45 @@
     var ctr = 0;
 </script>
 
-<body class = "sign-in">
-    <div class = "container" style = "margin-top: 30px;">
-
-        <div class = "col-xs-16 col-md-8 col-md-offset-2 content-container no-padding container-fluid" style = "margin-bottom: 5px;">
-            <a class = "pull-left btn btn-topic-header" style = "display: inline-block; margin-right: 5px;" href="<?php echo base_url('parents/activity/' . $child->user_id) ?>">
+<!-- Nav Bar -->
+<nav class = "navbar navbar-default navbar-font navbar-fixed-top" style = "border-bottom: 1px solid #CFD8DC;">
+    <div class = "container-fluid">
+        
+        <a class = "pull-left btn btn-topic-header" style = "display: inline-block; margin-right: 5px; border:0" href="<?php echo base_url('parents/activity/' . $child->user_id) ?>">
                 <h3 class = "pull-left" style = "margin-top: 3px; margin-bottom: 0px; padding: 2px;">
                     <strong class = "text-info"><i class = "fa fa-chevron-left"></i> 
                         Back
                     </strong>
                 </h3>
             </a>
-            <h3 class = "text-info no-margin" style = "display: inline-block; padding-left: 10px; margin-top: 5px; padding-top: 10px;">Settings for</h4>
 
-            <h3 class = "text-info no-margin" style = "display: inline-block; padding-left: 5px; margin-top: 5px; padding-top: 10px;"><strong><?php echo $child->first_name . " " . $child->last_name ?></strong></h3>
+        <!-- <a class = "navbar-brand" href = "<?php echo base_url('home') ?>"><img id = "nav-logo" src = "<?php echo base_url('images/logo/logo-blue.png'); ?>"/></a> -->
+            
+            
+        <a href = "<?php echo base_url('signin/logout'); ?>" class = "pull-right btn btn-primary btn-md" style = "margin-right: 20px; margin-top: 10px; margin-bottom: 10px;">Log Out</a>
 
-            <a href = "<?php echo base_url('signin/logout'); ?>" class = "pull-right btn btn-primary btn-md" style = "margin-right: 20px; margin-top: 10px;">Log Out</a>
-        </div>
+    </div>
+</nav>
+<br><br><br>
 
+<!-- Nav Bar Script -->
+<script type="text/javascript" src="<?php echo base_url("/js/nav_bar.js"); ?>"></script>
+
+<body class = "sign-in">
+    <div class = "container" style = "">
         <div class = "row">
 
-            <div class = "col-md-8 col-md-offset-2 content-container" style = "margin-bottom: 5px;"><br>
-                
+            <div class = "col-md-8 col-md-offset-2 content-container container-fluid" style = "margin-bottom: 6px;"><br>
+
+                <div class = "col-xs-12 form-group register-field" style = "">
+                    <h3 class = "no-padding text-info"style = "margin-bottom: 0px; margin-top: 0px;">Settings for <strong><?php echo $child->first_name . " " . $child->last_name ?></strong></h3>
+
+                </div>
+            </div>
+
+
+            <div class = "col-md-8 col-md-offset-2 content-container" style = "margin-bottom: 1vw;"><br>
+
              	<?php foreach ($usertimes->result() as $row): 
                     
 	              	$num++;
@@ -138,7 +155,7 @@
 
                 <script> ctr++; </script>
 
-                <div class = "col-xs-7 form-group register-field" style = "font-size:14px;">
+                <div class = "col-xs-12 form-group register-field" style = "font-size:14px;">
                     <h3 class = "no-padding text-info"style = "margin-bottom: 5px; margin-top: 0px;">From</h3>
 
                     <input style="height:50px;display:none;" type = "date" required name = "change-time" class = "form-control sign-in-field" id="time-form"><br>
@@ -182,7 +199,7 @@
 
                 </div>
 
-                <div class = "col-xs-7 form-group register-field" style = "font-size:14px;">
+                <div class = "col-xs-12 form-group register-field" style = "font-size:14px;">
                     <h3 class = "no-padding text-info"style = "margin-bottom: 5px; margin-top: 0px;"><br>To</h3>
 
                     <input style="height:50px;display:none;" type = "date" required name = "change-time" class = "form-control sign-in-field" id="time-form"><br>
@@ -228,31 +245,35 @@
                     <br><br><br>
                 </div>
 
-                <h3 class = "no-padding text-info"style = "margin-bottom: 5px; margin-top: 0px;">Warning</h3>
-                <input style="height:50px;display:none;" type = "date" required name = "change-warning" class = "form-control sign-in-field" id="time-form"><br>
-                    <select style="width:120px;height:30px" id="time-warning" onclick="">
-                        
-                        <?php if($row->warning != 0 &&$row->warning != 60): ?>
-                            <option value="<?php echo $row->warning; ?>"><?php echo $row->warning; ?> minutes</option>
-                        <?php endif; ?>
 
-                        <?php if($row->warning == 60): ?>
-                            <option value="<?php echo $row->warning; ?>">1 hour</option>
-                        <?php endif; ?>
+                <div class = "col-xs-12 form-group register-field" style = "font-size:14px;">
+                    <h3 class = "no-padding text-info"style = "margin-bottom: 5px; margin-top: 0px;">Warning</h3>
+                    <input style="height:50px;display:none;" type = "date" required name = "change-warning" class = "form-control sign-in-field" id="time-form"><br>
+                        <select style="width:120px;height:30px" id="time-warning" onclick="">
+                            
+                            <?php if($row->warning != 0 &&$row->warning != 60): ?>
+                                <option value="<?php echo $row->warning; ?>"><?php echo $row->warning; ?> minutes</option>
+                            <?php endif; ?>
 
-                        <option value="0">None</option>
-                        <option value="15">15 minutes</option>
-                        <option value="30">30 minutes</option>
-                        <option value="45">45 minutes</option>
-                        <option value="60">1 hour</option>
-                    </select>
-                </input>
+                            <?php if($row->warning == 60): ?>
+                                <option value="<?php echo $row->warning; ?>">1 hour</option>
+                            <?php endif; ?>
+
+                            <option value="0">None</option>
+                            <option value="15">15 minutes</option>
+                            <option value="30">30 minutes</option>
+                            <option value="45">45 minutes</option>
+                            <option value="60">1 hour</option>
+                        </select>
+                    </input>
+                    <br>
+                </div>
 
             <?php  endforeach; ?>
             	<!-- <a id = "notif-btn" href="#notif-modal" data-toggle = "modal">sasasa</a> -->
             	<?php include(APPPATH . 'views/modals/confirm_modal.php'); ?>
              	<div class = "text-center">
-                 	<button href="#notif-modal" data-toggle = "modal" class = "btn btn-success" style="width:50%; font-size:24px; margin-top: 10px; margin-bottom: 10px">Save Changes</button>
+                 	<button href="#notif-modal" data-toggle = "modal" class = "btn btn-success container-fluid" style="font-size:24px; margin-top: 10px; margin-bottom: 10px">Save Changes</button>
              	</div>
 
             </div>
