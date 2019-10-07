@@ -57,15 +57,39 @@
 
     $num=-1;
 
-?>
+    $CI =&get_instance();
+    $CI->load->library('user_agent');
+
+    $mobile=$CI->agent->is_mobile();
+
+    if($mobile):?>
+    <!-- <script>alert('mobile!');</script> -->
+    <style>
+
+        body.sign-in
+        {
+            background-image: none;
+            background-color: #f9f9f9;
+            font-family: 'Cabin', 'Muli', sans-serif;
+            height: 500px;
+        }
+
+
+        div.content-container{
+            border:0px;
+            background-color: #f9f9f9;
+        }
+
+    </style>
+<?php endif; ?>
+<style>div.content-container{border:0px;}</style>
+
 <script type="text/javascript" src="<?php echo base_url("/js/user.js"); ?>"></script>
 
 <script>
     document.cookie = "updatetime=0;path=/";
-
     var ctr = 0;
 </script>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- Nav Bar -->
 <nav class = "navbar navbar-default navbar-font navbar-fixed-top" style = "border-bottom: 1px solid #CFD8DC;">
@@ -85,8 +109,7 @@
         <a href = "<?php echo base_url('signin/logout'); ?>" class = "pull-right btn btn-primary btn-md" style = "margin-right: 20px; margin-top: 10px; margin-bottom: 10px;">Log Out</a>
 
     </div>
-</nav>
-<br><br><br>
+</nav><br><br><br>
 
 <!-- Nav Bar Script -->
 <script type="text/javascript" src="<?php echo base_url("/js/nav_bar.js"); ?>"></script>

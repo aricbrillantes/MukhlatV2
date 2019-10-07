@@ -42,20 +42,31 @@
     $user_activity = $CI->user_model->get_child_records($id);
     $activities = $CI->post_model->get_user_activities($id,$id);
 
+    $CI =&get_instance();
     $CI->load->library('user_agent');
 
     $mobile=$CI->agent->is_mobile();
 
-    if(!$mobile)
-    {
-        // echo "<script type='text/javascript'>alert('desktop');</script>";
-    }   
+    if($mobile):?>
+    <!-- <script>alert('mobile!');</script> -->
+    <style>
+        body.sign-in
+        {
+            background-image: none;
+            background-color: #f9f9f9;
+            font-family: 'Cabin', 'Muli', sans-serif;
+            height: 500px;
+        }
 
-    else
-    {
-        // echo "<script type='text/javascript'>alert('mobile');</script>";
-    }
-?>
+        div.content-container{
+            border:0px;
+            background-color: #f9f9f9;
+        }
+    </style>
+
+<?php endif; ?>
+
+<style>div.content-container{border:0px;}</style>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- Nav Bar -->
@@ -74,9 +85,7 @@
 
         
     </div>
-</nav>
-<br><br><br>
-
+</nav><br><br><br>
 
 <!-- Nav Bar Script -->
 <script type="text/javascript" src="<?php echo base_url("/js/nav_bar.js"); ?>"></script>
@@ -120,13 +129,14 @@
                 </div>    
             </div>                 
 
+            <div class = "content-container container-fluid" >
                 <!-- User Topics -->
-                <div class = "col-xs-12 col-md-6 content-container container-fluid" style = "margin-bottom: 5px margin-left: 0px">
+                <div class = "col-xs-12 col-md-6 content-container container-fluid" style = "margin-bottom: 0px margin-left: 0px">
                     <h3 class = "text-info text-center user-activities-header">
-                        <strong>Topics of <?php echo $child->first_name; ?></strong>
+                        <strong>Topics of <?php echo $child->first_name; ?></strong><br>
                     </h3>
-
-                    <div class = "col-sm-12 user-activities-div ">
+                    <br>
+                    <div class = "col-sm-12 " style = "margin-bottom: 40px">
                         <ul class="nav nav-pills nav-justified">
                             <li class="active"><a data-toggle="pill" href="#user-topic-created">Created Topics</a></li>
                             <li><a data-toggle="pill" href="#user-topic-moderated">Moderated Topics</a></li>
@@ -140,7 +150,7 @@
                                     <div class = "user-header">
                                         <h4 class = "text-center"><strong>Topics Created by <?php echo $child->first_name; ?></strong></h4>
                                     </div>
-                                    <div class = "user-topic-div">
+                                    <div class = "">
                                         <ul class="nav">
                                             <?php foreach ($user_topics as $topic): ?>
                                                 <li>
@@ -158,7 +168,7 @@
                                 <div class = "user-header">
                                     <h4 class = "text-center"><strong>Topics Moderated by <?php echo $child->first_name; ?></strong></h4>
                                 </div>
-                                <div class = "user-topic-div">
+                                <div class = "">
                                     <ul class="nav">
                                         <?php foreach ($user_moderated_topics as $topic): ?>
                                             <li>
@@ -176,7 +186,7 @@
                                     <div class = "user-header">
                                         <h4 class = "text-center"><strong>Topics Followed by <?php echo $child->first_name; ?></strong></h4>
                                     </div>
-                                    <div class = "user-topic-div">
+                                    <div class = "">
                                         <ul class="nav">
                                             <?php foreach ($user_followed_topics as $topic): ?>
                                                 <li>
@@ -200,10 +210,10 @@
                         <strong>Activities of <?php echo $child->first_name; ?></strong>
                     </h3>
                     
-                    <div class = "col-sm-12 user-activities-div ">
+                    <div class = "col-sm-12 " style = "margin-bottom: 40px">
                         <!-- POST PREVIEW -->
                         <?php foreach ($activities as $post): ?> 
-                            <div class = "col-xs-12 no-padding post-container" style = "margin-bottom: 10px;">
+                            <div class = "col-xs-12 no-padding post-container" style = "margin-top: 10px;">
                                 <div class = "user-post-heading no-margin">
                                     
                                     <?php if (empty($post->parent)): ?>
@@ -242,6 +252,7 @@
                         <?php endforeach; ?>
                     </div>
                 </div>
+            </div>
         </div>
         <?php endforeach; ?>
 

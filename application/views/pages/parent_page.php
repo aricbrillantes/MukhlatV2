@@ -19,47 +19,47 @@
 
     $mobile=$CI->agent->is_mobile();
 
-    if(!$mobile)
-    {
-        // echo "<script type='text/javascript'>alert('desktop');</script>";
-    }   
+    if($mobile):?>
+    <!-- <script>alert('mobile!');</script> -->
+    <style>
 
-    else
-    {
-        // echo "<script type='text/javascript'>alert('mobile');</script>";
-    }
-?>
+        body.sign-in
+        {
+            background-image: none;
+            background-color: #f9f9f9;
+            font-family: 'Cabin', 'Muli', sans-serif;
+            height: 500px;
+        }
+
+
+        div.content-container{
+            border:0px;
+            background-color: #f9f9f9;
+        }
+
+    </style>
+<?php endif; ?>
+
+
+
+<style>div.content-container{border:0px;}</style>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- Nav Bar -->
 <nav class = "navbar navbar-default navbar-font navbar-fixed-top" style = "border-bottom: 1px solid #CFD8DC;">
     <div class = "container-fluid">
         
-        <a class = "navbar-brand" href = "<?php echo base_url('home') ?>"><img id = "nav-logo" src = "<?php echo base_url('images/logo/logo-blue.png'); ?>"/></a>
+        <a class = "navbar-brand" href = "<?php echo base_url('home') ?>"><img id = "nav-logo" src = "<?php echo base_url('images/logo/mukhlatlogo_side_basic.png'); ?>"/></a>
             
         <a href = "<?php echo base_url('signin/logout'); ?>" class = "pull-right btn btn-primary btn-md" style = "margin-right: 20px; margin-top: 10px; margin-bottom: 10px;">Log Out</a>
 
     </div>
-</nav>
-<br>
-<br>
-<br>
+</nav><br><br><br>
 
 <body class = "sign-in">
 
     <div class = "container" style = "">
         <div class = "row">
-<!--             <div class = "col-md-8 col-md-offset-2 content-container no-padding " style = "margin-bottom: 5px;">
-                <a style = "display: inline-block; margin-right: 5px;" >
-                    <h3 class = "pull-left" style = "margin-top: 12%; margin-left: 11px; margin-bottom: 0%; ">
-                        <strong class = "text-info">
-                            <?php echo $logged_user->first_name . " " . $logged_user->last_name ?>
-                        </strong>
-                    </h3>
-                </a>
-                
-                <a href = "<?php echo base_url('signin/logout'); ?>" class = "pull-right btn btn-primary btn-md" style = "margin-right: 20px; margin-top: 10px; margin-bottom: 10px;">Log Out</a>
-            </div> -->
 
             <?php foreach ($children->result() as $child): 
 
@@ -91,14 +91,6 @@
 
         </div>
     </div>
-
-    <script type="text/javascript" src="<?php echo base_url('assets/vis/vis.js'); ?>"></script>
-    <script type="text/javascript" src="<?php echo base_url('/js/network.js'); ?>"></script>
-    <link rel="stylesheet" href="<?php echo base_url("assets/vis/vis.css"); ?>" />
-
-    <?php
-    // include(APPPATH . 'views/modals/network_view_modal.php');
-    ?>
 
 </body>
 </html>
