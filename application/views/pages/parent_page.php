@@ -31,10 +31,10 @@
 ?>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <body class = "sign-in">
-    <div class = "container" style = "margin-top: 2%;">
+
     <div class = "container" style = "margin-top: 2%;">
         <div class = "row">
-            <div class = "col-md-8 col-md-offset-2 content-container no-padding" style = "margin-bottom: 5px;">
+            <div class = "col-md-8 col-md-offset-2 content-container no-padding " style = "margin-bottom: 5px;">
                 <a style = "display: inline-block; margin-right: 5px;" >
                     <h3 class = "pull-left" style = "margin-top: 12%; margin-left: 11px; margin-bottom: 0%; ">
                         <strong class = "text-info">
@@ -61,7 +61,7 @@
 
                 ?>
                 <div class = "col-md-8 col-md-offset-2 content-container" style = "margin-bottom: 5px;">
-                    <div class = "col-xs-6 no-padding no-margin">
+                    <div class = "no-padding no-margin">
                         
                         <h3 class = "no-padding text-info" style = "margin-bottom: 0px;"><strong><?php echo $child->first_name . " " . $child->last_name ?></strong></h3>
                         <small class = "no-padding no-margin"><?php echo $child->email ?></small>
