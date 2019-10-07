@@ -1,6 +1,6 @@
 <?php
     include(APPPATH . 'views/header.php');
-    
+
     //check if current user is parent or logged in
     //if current user is not a parent, redirect to home
     //if current user is not logged in, redirect to sign in
@@ -75,15 +75,17 @@
                 $user_followed_topics = $CI->topic_model->get_followed_topics($child->user_id);
 
                 ?>
-                <div class = "col-md-8 col-md-offset-2 content-container" style = "margin-bottom: 5px;">
-                    <div class = "no-padding no-margin">
+                <div class = "col-xs-16 col-md-8 col-md-offset-2 content-container container-fluid" style = "margin-bottom: 5px;">
+                     <div class = "col-xs-16 col-md-12 col-md-offset-0 content-container container-fluid" style = "margin-bottom: 5px; border:0">
                         
                         <h3 class = "no-padding text-info" style = "margin-bottom: 0px;"><strong><?php echo $child->first_name . " " . $child->last_name ?></strong></h3>
                         <small class = "no-padding no-margin"><?php echo $child->email ?></small>
                         
-                        <p class = "wrap text-muted" style = "font-size: 12px;"><i><?php echo $child->description ? $child->description : 'Hello World!'; ?></i></p>
+                        <p class = "wrap text-muted" style = ""><i><?php echo $child->description ? $child->description : 'Hello World!'; ?></i></p>
                         <a href = "<?php echo base_url('parents/activity/' . $child->user_id); ?>" class = "btn btn-primary btn-block" style = "margin-bottom: 10px; "><i class = "fa fa-globe"></i> View <?php echo $child->first_name ?>'s activity</a>
                     </div>
+
+                   
                 </div>    
             <?php endforeach; ?>
 

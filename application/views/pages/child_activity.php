@@ -1,6 +1,6 @@
 <?php
     include(APPPATH . 'views/header.php');
-    
+
     //check if current user is parent or logged in
     //if user is not a parent, redirect to home
     //if user is not logged in, redirect to sign in
@@ -83,7 +83,7 @@
 
 <body class = "sign-in">
     <div class = "container" style = "">
-        <div class = "row">
+        <div class = "row" >
 
             <?php foreach ($children->result() as $child): 
 
@@ -100,30 +100,28 @@
 
             ?>
 
-                 <div class = "col-xs-16 col-md-8 col-md-offset-2 content-container container-fluid " style = "margin-bottom: 5px;">
-                    <div class = "col-xs-16 col-md-16 col-md-offset-0 content-container container-fluid" style="border:0vw">
-                        <div class = "col-xs-6 no-padding no-margin"> 
-                            <h3 class = "no-padding text-info" style = "margin-bottom: 0vw;"><strong><?php echo $child->first_name . " " . $child->last_name ?></strong></h3>
-                            <small class = "no-padding no-margin"><?php echo $child->email ?></small>
-                            
-                            <p class = "wrap text-muted" style = "font-size: 0.8vw;"><i><?php echo $child->description ? $child->description : 'Hello World!'; ?></i></p>
-                        </div>
+             <div class = "col-xs-16 col-md-8 col-md-offset-2 content-container container-fluid " style = "margin-bottom: 5px;">
+                <div class = "col-xs-16 col-md-16 col-md-offset-0 content-container container-fluid" style="border:0px; margin-bottom: 0px;">
+                    <div class = "col-xs-6 no-padding no-margin"> 
+                        <h3 class = "no-padding text-info" style = "margin-top: 5px; margin-bottom: 5px; "><strong><?php echo $child->first_name . " " . $child->last_name ?></strong></h3>
+                        <small class = "no-padding no-margin"><?php echo $child->email ?></small>
+                        
+                        <p class = "wrap text-muted" style = ""><i><?php echo $child->description ? $child->description : 'Hello World!'; ?></i></p>
+                    </div>
 
-                        <div class = "col-xs-6 no-padding no-margin" style="float: right">
-                            <a class = "pull-right btn " style = "display: inline-block; float: right: 5px;" href="<?php echo base_url('parents/settings/' . $child->user_id) ?>">
-                                <h3 class = "no-padding text-info" style = "margin-bottom: 0px; float: right">
-                                    <strong><i class = "glyphicon glyphicon-cog"></i></strong>
-                                </h3> 
-                            </a>
-                            
-                        </div>
-                    </div>    
-                </div> 
-
-                
+                    <div class = "col-xs-6 no-padding no-margin" style="float: right; margin-bottom: 0px;">
+                        <a class = "pull-right btn " style = "display: inline-block; float: right: 5px;" href="<?php echo base_url('parents/settings/' . $child->user_id) ?>">
+                            <h3 class = "no-padding text-info" style = "margin-bottom: 0px; float: right">
+                                <strong><i class = "glyphicon glyphicon-cog"></i></strong>
+                            </h3> 
+                        </a>
+                        
+                    </div>
+                </div>    
+            </div>                 
 
                 <!-- User Topics -->
-                <div class = "col-xs-6" >
+                <div class = "col-xs-12 col-md-6 content-container container-fluid" style = "margin-bottom: 5px margin-left: 0px">
                     <h3 class = "text-info text-center user-activities-header">
                         <strong>Topics of <?php echo $child->first_name; ?></strong>
                     </h3>
@@ -196,7 +194,8 @@
                     </div>
                 </div>
 
-                <div class = "col-xs-6 ">
+                <!-- Activity -->
+                <div class = "col-xs-12 col-md-6 content-container container-fluid" style = "margin-bottom: 5px; margin-left: 0px">
                     <h3 class = "text-info text-center user-activities-header">
                         <strong>Activities of <?php echo $child->first_name; ?></strong>
                     </h3>

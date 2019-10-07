@@ -4,7 +4,8 @@ body{
 }
 
 body.sign-in{
-    background-image: url(../images/wood_tile/blue.jpg);
+    /*background-image: url(../images/wood_tile/blue.jpg);*/
+    background-image: url(../images/wood_tile/light-blue.jpg);
     font-family: 'Cabin', 'Muli', sans-serif;
     height: 500px;
 }

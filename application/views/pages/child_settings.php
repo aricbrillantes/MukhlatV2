@@ -65,6 +65,7 @@
 
     var ctr = 0;
 </script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- Nav Bar -->
 <nav class = "navbar navbar-default navbar-font navbar-fixed-top" style = "border-bottom: 1px solid #CFD8DC;">
@@ -94,7 +95,7 @@
     <div class = "container" style = "">
         <div class = "row">
 
-            <div class = "col-md-8 col-md-offset-2 content-container container-fluid" style = "margin-bottom: 6px;"><br>
+            <div class = "col-md-8 col-md-offset-2 content-container container-fluid" style = "margin-bottom: 4.5px;"><br>
 
                 <div class = "col-xs-12 form-group register-field" style = "">
                     <h3 class = "no-padding text-info"style = "margin-bottom: 0px; margin-top: 0px;">Settings for <strong><?php echo $child->first_name . " " . $child->last_name ?></strong></h3>
