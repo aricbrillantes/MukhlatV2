@@ -112,28 +112,28 @@
     document.cookie = "basicTime1=0;path=/"; 
     document.cookie = "basicTime2=0;path=/";
 
-    // document.cookie = "1_sunTime1=0;path=/"; 
-    // document.cookie = "1_sunTime2=0;path=/";
+    document.cookie = "1_sunTime1=0;path=/"; 
+    document.cookie = "1_sunTime2=0;path=/";
 
-    // document.cookie = "2_monTime1=0;path=/"; 
-    // document.cookie = "2_monTime2=0;path=/";
+    document.cookie = "2_monTime1=0;path=/"; 
+    document.cookie = "2_monTime2=0;path=/";
 
-    // document.cookie = "3_tueTime1=0;path=/"; 
-    // document.cookie = "3_tueTime2=0;path=/";
+    document.cookie = "3_tueTime1=0;path=/"; 
+    document.cookie = "3_tueTime2=0;path=/";
 
-    // document.cookie = "4_wedTime1=0;path=/"; 
-    // document.cookie = "4_wedTime2=0;path=/";
+    document.cookie = "4_wedTime1=0;path=/"; 
+    document.cookie = "4_wedTime2=0;path=/";
 
-    // document.cookie = "5_thuTime1=0;path=/"; 
-    // document.cookie = "5_thuTime2=0;path=/";
+    document.cookie = "5_thuTime1=0;path=/"; 
+    document.cookie = "5_thuTime2=0;path=/";
 
-    // document.cookie = "6_friTime1=0;path=/"; 
-    // document.cookie = "6_friTime2=0;path=/";
+    document.cookie = "6_friTime1=0;path=/"; 
+    document.cookie = "6_friTime2=0;path=/";
 
-    // document.cookie = "7_satTime1=0;path=/"; 
-    // document.cookie = "7_satTime2=0;path=/";
+    document.cookie = "7_satTime1=0;path=/"; 
+    document.cookie = "7_satTime2=0;path=/";
 </script>
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- Nav Bar -->
 <nav class = "navbar navbar-default navbar-font navbar-fixed-top" style = "border-bottom: 1px solid #CFD8DC;">
     <div class = "container-fluid">
@@ -165,12 +165,19 @@
 
                 <div class = "col-xs-12 form-group register-field" style = "">
 
-                    <h3 class = "col-xs-4 col-md-4 no-padding text-info pull-left"style = "margin-bottom: 0px; margin-top: 0px;">Settings for <strong><?php echo $child->first_name . " " . $child->last_name ?></strong></h3>
+                    <h3 class = "col-xs-16 col-sm-4 col-md-4 no-padding text-info "style = "margin-bottom: 0px; margin-top: 0px;">Settings for <strong><?php echo $child->first_name . " " . $child->last_name ?></strong></h3>
 
                     <a href="<?php echo base_url('parents/advanced/' . $child->user_id) ?>">
-                        <h3 class = "col-xs-4 col-md-4 no-padding text-info pull-right"style = "margin-bottom: 0px; margin-top: 0px;">Advanced Settings</strong></h3>
+                    
+                    <?php if ($mobile): ?>
+                        <br><br><h3 class = "col-xs-8 col-sm-4 col-md-4 no-padding text-info"style = "margin-bottom: 0px; margin-top: 0px;"><u>Advanced Settings</u></strong></h3>
+                         
+                    <?php else: ?>
+                        <h3 class = "col-xs-8 col-sm-4 col-md-4 no-padding text-info pull-right"style = "margin-bottom: 0px; margin-top: 0px;"><u>Advanced Settings</u></strong></h3>
+                        
+                    <?php endif; ?>
+                    
                     </a>
-
                 </div>
 
             </div>

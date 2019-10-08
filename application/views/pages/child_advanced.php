@@ -89,11 +89,44 @@
 
 <script>
     document.cookie = "updatetime=0;path=/";
+    document.cookie = "selectedWarning=0;path=/";   
     var ctr = 0;
+
+    document.cookie = "selectedHour1-0=0;path=/";   
+    document.cookie = "selectedMinute1-0=0;path=/"; 
+    document.cookie = "selectedMeridian1-0=0;path=/"; 
+
+    document.cookie = "selectedHour2-0=0;path=/";   
+    document.cookie = "selectedMinute2-0=0;path=/"; 
+    document.cookie = "selectedMeridian2-0=0;path=/";   
+
+    document.cookie = "basicTime1=0;path=/"; 
+    document.cookie = "basicTime2=0;path=/";
+
+    document.cookie = "1_sunTime1=0;path=/"; 
+    document.cookie = "1_sunTime2=0;path=/";
+
+    document.cookie = "2_monTime1=0;path=/"; 
+    document.cookie = "2_monTime2=0;path=/";
+
+    document.cookie = "3_tueTime1=0;path=/"; 
+    document.cookie = "3_tueTime2=0;path=/";
+
+    document.cookie = "4_wedTime1=0;path=/"; 
+    document.cookie = "4_wedTime2=0;path=/";
+
+    document.cookie = "5_thuTime1=0;path=/"; 
+    document.cookie = "5_thuTime2=0;path=/";
+
+    document.cookie = "6_friTime1=0;path=/"; 
+    document.cookie = "6_friTime2=0;path=/";
+
+    document.cookie = "7_satTime1=0;path=/"; 
+    document.cookie = "7_satTime2=0;path=/";
 </script>
 
 <!-- Nav Bar -->
-<nav class = "navbar navbar-default navbar-font navbar-fixed-top" style = "border-bottom: 1px solid;">
+<nav class = "navbar navbar-default navbar-font navbar-fixed-top" style = "border-bottom: 1px solid #CFD8DC;">
     <div class = "container-fluid">
         
         <a class = "pull-left btn btn-topic-header" style = "display: inline-block; margin-right: 5px; border:0" href="<?php echo base_url('parents/settings/' . $child->user_id) ?>">
@@ -109,6 +142,8 @@
     </div>
 </nav><br><br><br>
 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <!-- Nav Bar Script -->
 <script type="text/javascript" src="<?php echo base_url("/js/nav_bar.js"); ?>"></script>
 
@@ -120,7 +155,7 @@
 
                 <div class = "col-xs-12 form-group register-field" style = "">
 
-                    <h3 class = "col-xs-4 col-md-4 no-padding text-info pull-left"style = "margin-bottom: 0px; margin-top: 0px;">Advanced Settings</strong></h3>
+                    <h3 class = "col-xs-12 col-md-4 no-padding text-info pull-left"style = "margin-bottom: 0px; margin-top: 0px;">Advanced Settings</strong></h3>
 
                     <!-- <a href="<?php echo base_url('parents/activity/' . $child->user_id) ?>">
                         <h3 class = "col-xs-4 col-md-4 no-padding text-info pull-right"style = "margin-bottom: 0px; margin-top: 0px;">Advanced Settings</strong></h3>
@@ -153,12 +188,12 @@
 
                 <ul class="nav nav-pills nav-justified">
                     <li class="active"><a class="col-xs-4 col-md-12 col-sm-9" data-toggle="pill" href="#sunday-setting" style="border-radius: 6px;">Sunday</a></li>
-                    <li><a class="col-xs-4 col-md-12 col-sm-9" data-toggle="pill" href="#monday-setting" style="border-radius: 6px;">Monday</a></li>
-                    <li><a class="col-xs-4 col-md-12 col-sm-9" data-toggle="pill" href="#tuesday-setting" style="border-radius: 6px;">Tuesday</a></li>
-                    <li><a class="col-xs-4 col-md-12 col-sm-9" data-toggle="pill" href="#wednesday-setting" style="border-radius: 6px;">Wednesday</a></li>
-                    <li><a class="col-xs-4 col-md-12 col-sm-9" data-toggle="pill" href="#thursday-setting" style="border-radius: 6px;">Thursday</a></li>
-                    <li><a class="col-xs-4 col-md-12 col-sm-9" data-toggle="pill" href="#friday-setting" style="border-radius: 6px;">Friday</a></li>
-                    <li><a class="col-xs-4 col-md-12 col-sm-9" data-toggle="pill" href="#saturday-setting" style="border-radius: 6px;">Saturday</a></li>
+                    <li><a class="col-xs-4 col-md-12 col-sm-10" data-toggle="pill" href="#monday-setting" style="border-radius: 6px;">Monday</a></li>
+                    <li><a class="col-xs-4 col-md-12 col-sm-10" data-toggle="pill" href="#tuesday-setting" style="border-radius: 6px;">Tuesday</a></li>
+                    <li><a class="col-xs-4 col-md-12 col-sm-10" data-toggle="pill" href="#wednesday-setting" style="border-radius: 6px;">Wednesday</a></li>
+                    <li><a class="col-xs-4 col-md-12 col-sm-10" data-toggle="pill" href="#thursday-setting" style="border-radius: 6px;">Thursday</a></li>
+                    <li><a class="col-xs-4 col-md-12 col-sm-10" data-toggle="pill" href="#friday-setting" style="border-radius: 6px;">Friday</a></li>
+                    <li><a class="col-xs-4 col-md-12 col-sm-10" data-toggle="pill" href="#saturday-setting" style="border-radius: 6px;">Saturday</a></li>
                 </ul>
                 <br><br>
 
