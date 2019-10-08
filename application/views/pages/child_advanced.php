@@ -146,321 +146,6 @@
                     parse_str(str_replace("amp;","",$row->thu_time));
                     parse_str(str_replace("amp;","",$row->fri_time));
                     parse_str(str_replace("amp;","",$row->sat_time));
-
-	      //         	$row_meridian1_1 = "AM";
-	      //         	$row_meridian1_2 = "AM";
-       //              $row_meridian2_1 = "AM";
-       //              $row_meridian2_2 = "AM";
-       //              $row_meridian3_1 = "AM";
-       //              $row_meridian3_2 = "AM";
-       //              $row_meridian4_1 = "AM";
-       //              $row_meridian4_2 = "AM";
-       //              $row_meridian5_1 = "AM";
-       //              $row_meridian5_2 = "AM";
-       //              $row_meridian6_1 = "AM";
-       //              $row_meridian6_2 = "AM";
-       //              $row_meridian7_1 = "AM";
-       //              $row_meridian7_2 = "AM";
-
-                    
-	      //         	// print($query['startminute1']);
-       //              // print_r($query);
-
-       //              print($starthour1);
-
-       //              //sunday
-	      //         	if(((int) $starthour1) > 12)
-       //        		{
-       //    			   switch($starthour1)
-		     //           {
-							// case "13": $starthour1="01"; break;
-							// case "14": $starthour1="02"; break;
-							// case "15": $starthour1="03"; break;
-							// case "16": $starthour1="04"; break;
-							// case "17": $starthour1="05"; break;
-							// case "18": $starthour1="06"; break;
-							// case "19": $starthour1="07"; break;
-							// case "20": $starthour1="08"; break;
-							// case "21": $starthour1="09"; break;
-							// case "22": $starthour1="10"; break;
-							// case "23": $starthour1="11"; break;
-		     //           }
-
-		     //           $row_meridian1_1 = "PM";
-       //                 print($row_meridian1_1);
-       //        		}
-
-       //        		if(((int) $endhour1) > 12 )
-       //        		{
-       //                  switch($endhour1)
-       //                  {
-							// case "13": $endhour1="01"; break;
-							// case "14": $endhour1="02"; break;
-							// case "15": $endhour1="03"; break;
-							// case "16": $endhour1="04"; break;
-							// case "17": $endhour1="05"; break;
-							// case "18": $endhour1="06"; break;
-							// case "19": $endhour1="07"; break;
-							// case "20": $endhour1="08"; break;
-							// case "21": $endhour1="09"; break;
-							// case "22": $endhour1="10"; break;
-							// case "23": $endhour1="11"; break;
-		     //           }
-
-		     //           $row_meridian1_2 = "PM";
-       //        		} 	      
-
-
-       //              //monday
-       //              if(((int) $starthour2) > 12)
-       //              {
-       //                 switch($starthour2)
-       //                 {
-       //                      case "13": $starthour2="01"; break;
-       //                      case "14": $starthour2="02"; break;
-       //                      case "15": $starthour2="03"; break;
-       //                      case "16": $starthour2="04"; break;
-       //                      case "17": $starthour2="05"; break;
-       //                      case "18": $starthour2="06"; break;
-       //                      case "19": $starthour2="07"; break;
-       //                      case "20": $starthour2="08"; break;
-       //                      case "21": $starthour2="09"; break;
-       //                      case "22": $starthour2="10"; break;
-       //                      case "23": $starthour2="11"; break;
-       //                 }
-
-       //                 $row_meridian2_1 = "PM";
-       //              }
-
-       //              if(((int) $endhour2) > 12 )
-       //              {
-       //                  switch($endhour2)
-       //                  {
-       //                      case "13": $endhour2="01"; break;
-       //                      case "14": $endhour2="02"; break;
-       //                      case "15": $endhour2="03"; break;
-       //                      case "16": $endhour2="04"; break;
-       //                      case "17": $endhour2="05"; break;
-       //                      case "18": $endhour2="06"; break;
-       //                      case "19": $endhour2="07"; break;
-       //                      case "20": $endhour2="08"; break;
-       //                      case "21": $endhour2="09"; break;
-       //                      case "22": $endhour2="10"; break;
-       //                      case "23": $endhour2="11"; break;
-       //                 }
-
-       //                 $row_meridian2_2 = "PM";
-       //              }
-
-
-       //              //tuesday
-       //              if(((int) $starthour3) > 12)
-       //              {
-       //                 switch($starthour3)
-       //                 {
-       //                      case "13": $starthour3="01"; break;
-       //                      case "14": $starthour3="02"; break;
-       //                      case "15": $starthour3="03"; break;
-       //                      case "16": $starthour3="04"; break;
-       //                      case "17": $starthour3="05"; break;
-       //                      case "18": $starthour3="06"; break;
-       //                      case "19": $starthour3="07"; break;
-       //                      case "20": $starthour3="08"; break;
-       //                      case "21": $starthour3="09"; break;
-       //                      case "22": $starthour3="10"; break;
-       //                      case "23": $starthour3="11"; break;
-       //                 }
-
-       //                 $row_meridian3_1 = "PM";
-       //              }
-
-       //              if(((int) $endhour3) > 12 )
-       //              {
-       //                  switch($endhour3)
-       //                  {
-       //                      case "13": $endhour3="01"; break;
-       //                      case "14": $endhour3="02"; break;
-       //                      case "15": $endhour3="03"; break;
-       //                      case "16": $endhour3="04"; break;
-       //                      case "17": $endhour3="05"; break;
-       //                      case "18": $endhour3="06"; break;
-       //                      case "19": $endhour3="07"; break;
-       //                      case "20": $endhour3="08"; break;
-       //                      case "21": $endhour3="09"; break;
-       //                      case "22": $endhour3="10"; break;
-       //                      case "23": $endhour3="11"; break;
-       //                 }
-
-       //                 $row_meridian3_2 = "PM";
-       //              }
-
-
-       //              //wednesday
-       //              if(((int) $starthour4) > 12)
-       //              {
-       //                 switch($starthour4)
-       //                 {
-       //                      case "13": $starthour4="01"; break;
-       //                      case "14": $starthour4="02"; break;
-       //                      case "15": $starthour4="03"; break;
-       //                      case "16": $starthour4="04"; break;
-       //                      case "17": $starthour4="05"; break;
-       //                      case "18": $starthour4="06"; break;
-       //                      case "19": $starthour4="07"; break;
-       //                      case "20": $starthour4="08"; break;
-       //                      case "21": $starthour4="09"; break;
-       //                      case "22": $starthour4="10"; break;
-       //                      case "23": $starthour4="11"; break;
-       //                 }
-
-       //                 $row_meridian4_1 = "PM";
-       //              }
-
-       //              if(((int) $endhour4) > 12 )
-       //              {
-       //                  switch($endhour4)
-       //                  {
-       //                      case "13": $endhour4="01"; break;
-       //                      case "14": $endhour4="02"; break;
-       //                      case "15": $endhour4="03"; break;
-       //                      case "16": $endhour4="04"; break;
-       //                      case "17": $endhour4="05"; break;
-       //                      case "18": $endhour4="06"; break;
-       //                      case "19": $endhour4="07"; break;
-       //                      case "20": $endhour4="08"; break;
-       //                      case "21": $endhour4="09"; break;
-       //                      case "22": $endhour4="10"; break;
-       //                      case "23": $endhour4="11"; break;
-       //                 }
-
-       //                 $row_meridian4_2 = "PM";
-       //              }
-
-
-       //              //thursday
-       //              if(((int) $starthour5) > 12)
-       //              {
-       //                 switch($starthour5)
-       //                 {
-       //                      case "13": $starthour5="01"; break;
-       //                      case "14": $starthour5="02"; break;
-       //                      case "15": $starthour5="03"; break;
-       //                      case "16": $starthour5="04"; break;
-       //                      case "17": $starthour5="05"; break;
-       //                      case "18": $starthour5="06"; break;
-       //                      case "19": $starthour5="07"; break;
-       //                      case "20": $starthour5="08"; break;
-       //                      case "21": $starthour5="09"; break;
-       //                      case "22": $starthour5="10"; break;
-       //                      case "23": $starthour5="11"; break;
-       //                 }
-
-       //                 $row_meridian5_1 = "PM";
-       //              }
-
-       //              if(((int) $endhour5) > 12 )
-       //              {
-       //                  switch($endhour5)
-       //                  {
-       //                      case "13": $endhour5="01"; break;
-       //                      case "14": $endhour5="02"; break;
-       //                      case "15": $endhour5="03"; break;
-       //                      case "16": $endhour5="04"; break;
-       //                      case "17": $endhour5="05"; break;
-       //                      case "18": $endhour5="06"; break;
-       //                      case "19": $endhour5="07"; break;
-       //                      case "20": $endhour5="08"; break;
-       //                      case "21": $endhour5="09"; break;
-       //                      case "22": $endhour5="10"; break;
-       //                      case "23": $endhour5="11"; break;
-       //                 }
-
-       //                 $row_meridian5_2 = "PM";
-       //              }
-
-
-       //              //friday
-       //              if(((int) $starthour6) > 12)
-       //              {
-       //                 switch($starthour6)
-       //                 {
-       //                      case "13": $starthour6="01"; break;
-       //                      case "14": $starthour6="02"; break;
-       //                      case "15": $starthour6="03"; break;
-       //                      case "16": $starthour6="04"; break;
-       //                      case "17": $starthour6="05"; break;
-       //                      case "18": $starthour6="06"; break;
-       //                      case "19": $starthour6="07"; break;
-       //                      case "20": $starthour6="08"; break;
-       //                      case "21": $starthour6="09"; break;
-       //                      case "22": $starthour6="10"; break;
-       //                      case "23": $starthour6="11"; break;
-       //                 }
-
-       //                 $row_meridian6_1 = "PM";
-       //              }
-
-       //              if(((int) $endhour6) > 12 )
-       //              {
-       //                  switch($endhour6)
-       //                  {
-       //                      case "13": $endhour6="01"; break;
-       //                      case "14": $endhour6="02"; break;
-       //                      case "15": $endhour6="03"; break;
-       //                      case "16": $endhour6="04"; break;
-       //                      case "17": $endhour6="05"; break;
-       //                      case "18": $endhour6="06"; break;
-       //                      case "19": $endhour6="07"; break;
-       //                      case "20": $endhour6="08"; break;
-       //                      case "21": $endhour6="09"; break;
-       //                      case "22": $endhour6="10"; break;
-       //                      case "23": $endhour6="11"; break;
-       //                 }
-
-       //                 $row_meridian6_2 = "PM";
-       //              }
-
-
-       //              //saturday
-       //              if(((int) $starthour7) > 12)
-       //              {
-       //                 switch($starthour7)
-       //                 {
-       //                      case "13": $starthour7="01"; break;
-       //                      case "14": $starthour7="02"; break;
-       //                      case "15": $starthour7="03"; break;
-       //                      case "16": $starthour7="04"; break;
-       //                      case "17": $starthour7="05"; break;
-       //                      case "18": $starthour7="06"; break;
-       //                      case "19": $starthour7="07"; break;
-       //                      case "20": $starthour7="08"; break;
-       //                      case "21": $starthour7="09"; break;
-       //                      case "22": $starthour7="10"; break;
-       //                      case "23": $starthour7="11"; break;
-       //                 }
-
-       //                 $row_meridian7_1 = "PM";
-       //              }
-
-       //              if(((int) $endhour7) > 12 )
-       //              {
-       //                  switch($endhour7)
-       //                  {
-       //                      case "13": $endhour7="01"; break;
-       //                      case "14": $endhour7="02"; break;
-       //                      case "15": $endhour7="03"; break;
-       //                      case "16": $endhour7="04"; break;
-       //                      case "17": $endhour7="05"; break;
-       //                      case "18": $endhour7="06"; break;
-       //                      case "19": $endhour7="07"; break;
-       //                      case "20": $endhour7="08"; break;
-       //                      case "21": $endhour7="09"; break;
-       //                      case "22": $endhour7="10"; break;
-       //                      case "23": $endhour7="11"; break;
-       //                 }
-
-       //                 $row_meridian7_2 = "PM";
-       //              }
                     
              	?>
 
@@ -1105,7 +790,7 @@
                 </div>
 
 
-                <div class = "form-group register-field container-fluid">
+                <!-- <div class = "form-group register-field container-fluid">
                     <div class = "col-xs-12 col-md-4 form-group register-field" style = "font-size:14px;">
                         <h3 class = "no-padding text-info"style = "margin-bottom: 5px; margin-top: 0px;">Warning</h3>
                         <div class="checkbox">
@@ -1116,8 +801,31 @@
                         </div>
                         <br>
                     </div>
-                </div>
+                </div> -->
                 
+
+                <div class = "col-xs-12 form-group register-field" style = "font-size:14px;">
+                    <h3 class = "no-padding text-info"style = "margin-bottom: 5px; margin-top: 0px;">Warning</h3>
+                    <input style="height:50px;display:none;" type = "date" required name = "change-warning" class = "form-control sign-in-field" id="time-form"><br>
+                        <select style="width:120px;height:30px" id="time-warning" onclick="">
+                            
+                            <?php if($row->warning != 0 &&$row->warning != 60): ?>
+                                <option value="<?php echo $row->warning; ?>"><?php echo $row->warning; ?> minutes</option>
+                            <?php endif; ?>
+
+                            <?php if($row->warning == 60): ?>
+                                <option value="<?php echo $row->warning; ?>">1 hour</option>
+                            <?php endif; ?>
+
+                            <option value="0">None</option>
+                            <option value="15">15 minutes</option>
+                            <option value="30">30 minutes</option>
+                            <option value="45">45 minutes</option>
+                            <option value="60">1 hour</option>
+                        </select>
+                    </input>
+                    <br><br><br>
+                </div>
 
             <?php  endforeach; ?>
             	<!-- <a id = "notif-btn" href="#notif-modal" data-toggle = "modal">sasasa</a> -->
@@ -1200,8 +908,8 @@
         {
             warning = document.getElementById("time-warning");
 
-            // selectedWarning = warning.options[warning.selectedIndex].value;
-            selectedWarning = "30";
+            selectedWarning = warning.options[warning.selectedIndex].value;
+            // selectedWarning = "30";
 
             hour1 = document.getElementById("time-hour1-1");
             minute1 = document.getElementById("time-minute1-1");
