@@ -92,19 +92,16 @@
 </script>
 
 <!-- Nav Bar -->
-<nav class = "navbar navbar-default navbar-font navbar-fixed-top" style = "border-bottom: 1px solid #CFD8DC;">
+<nav class = "navbar navbar-default navbar-font navbar-fixed-top" style = "border-bottom: 1px solid;">
     <div class = "container-fluid">
         
-        <a class = "pull-left btn btn-topic-header" style = "display: inline-block; margin-right: 5px; border:0" href="<?php echo base_url('parents/activity/' . $child->user_id) ?>">
+        <a class = "pull-left btn btn-topic-header" style = "display: inline-block; margin-right: 5px; border:0" href="<?php echo base_url('parents/settings/' . $child->user_id) ?>">
             <h3 class = "pull-left" style = "margin-top: 3px; margin-bottom: 0px; padding: 2px;">
                 <strong class = "text-info"><i class = "fa fa-chevron-left"></i> 
                     Back
                 </strong>
             </h3>
         </a>
-
-        <!-- <a class = "navbar-brand" href = "<?php echo base_url('home') ?>"><img id = "nav-logo" src = "<?php echo base_url('images/logo/logo-blue.png'); ?>"/></a> -->
-            
             
         <a href = "<?php echo base_url('signin/logout'); ?>" class = "pull-right btn btn-primary btn-md" style = "margin-right: 20px; margin-top: 10px; margin-bottom: 10px;">Log Out</a>
 
@@ -122,65 +119,66 @@
 
                 <div class = "col-xs-12 form-group register-field" style = "">
 
-                    <h3 class = "col-xs-4 col-md-4 no-padding text-info pull-left"style = "margin-bottom: 0px; margin-top: 0px;">Settings for <strong><?php echo $child->first_name . " " . $child->last_name ?></strong></h3>
+                    <h3 class = "col-xs-4 col-md-4 no-padding text-info pull-left"style = "margin-bottom: 0px; margin-top: 0px;">Advanced Settings</strong></h3>
 
-                    <a href="<?php echo base_url('parents/advanced/' . $child->user_id) ?>">
+                    <!-- <a href="<?php echo base_url('parents/activity/' . $child->user_id) ?>">
                         <h3 class = "col-xs-4 col-md-4 no-padding text-info pull-right"style = "margin-bottom: 0px; margin-top: 0px;">Advanced Settings</strong></h3>
-                    </a>
+                    </a> -->
 
                 </div>
 
             </div>
 
+
             <div class = "col-md-8 col-md-offset-2 content-container container-fluid" style = "margin-bottom: 1vw;"><br>
 
-                <?php foreach ($usertimes->result() as $row): 
+             	<?php foreach ($usertimes->result() as $row): 
                     
-                    $num++;
+	              	$num++;
 
-                    $row_meridian1 = "AM";
-                    $row_meridian2 = "AM";
-                    
-                    if(((int) $row->start_hour) > 12)
-                    {
-                        switch($row->start_hour)
-                       {
-                                case "13": $row->start_hour="01"; break;
-                                case "14": $row->start_hour="02"; break;
-                                case "15": $row->start_hour="03"; break;
-                                case "16": $row->start_hour="04"; break;
-                                case "17": $row->start_hour="05"; break;
-                                case "18": $row->start_hour="06"; break;
-                                case "19": $row->start_hour="07"; break;
-                                case "20": $row->start_hour="08"; break;
-                                case "21": $row->start_hour="09"; break;
-                                case "22": $row->start_hour="10"; break;
-                                case "23": $row->start_hour="11"; break;
-                       }
+	              	$row_meridian1 = "AM";
+	              	$row_meridian2 = "AM";
+	              	
+	              	if(((int) $row->start_hour) > 12)
+              		{
+              			switch($row->start_hour)
+		               {
+								case "13": $row->start_hour="01"; break;
+								case "14": $row->start_hour="02"; break;
+								case "15": $row->start_hour="03"; break;
+								case "16": $row->start_hour="04"; break;
+								case "17": $row->start_hour="05"; break;
+								case "18": $row->start_hour="06"; break;
+								case "19": $row->start_hour="07"; break;
+								case "20": $row->start_hour="08"; break;
+								case "21": $row->start_hour="09"; break;
+								case "22": $row->start_hour="10"; break;
+								case "23": $row->start_hour="11"; break;
+		               }
 
-                       $row_meridian1 = "PM";
-                    }
+		               $row_meridian1 = "PM";
+              		}
 
-                    if(((int) $row->end_hour) > 12 )
-                    {
-                       switch($row->end_hour)
-                       {
-                                case "13": $row->end_hour="01"; break;
-                                case "14": $row->end_hour="02"; break;
-                                case "15": $row->end_hour="03"; break;
-                                case "16": $row->end_hour="04"; break;
-                                case "17": $row->end_hour="05"; break;
-                                case "18": $row->end_hour="06"; break;
-                                case "19": $row->end_hour="07"; break;
-                                case "20": $row->end_hour="08"; break;
-                                case "21": $row->end_hour="09"; break;
-                                case "22": $row->end_hour="10"; break;
-                                case "23": $row->end_hour="11"; break;
-                       }
+              		if(((int) $row->end_hour) > 12 )
+              		{
+		               switch($row->end_hour)
+		               {
+								case "13": $row->end_hour="01"; break;
+								case "14": $row->end_hour="02"; break;
+								case "15": $row->end_hour="03"; break;
+								case "16": $row->end_hour="04"; break;
+								case "17": $row->end_hour="05"; break;
+								case "18": $row->end_hour="06"; break;
+								case "19": $row->end_hour="07"; break;
+								case "20": $row->end_hour="08"; break;
+								case "21": $row->end_hour="09"; break;
+								case "22": $row->end_hour="10"; break;
+								case "23": $row->end_hour="11"; break;
+		               }
 
-                       $row_meridian2 = "PM";
-                    }         
-                ?>
+		               $row_meridian2 = "PM";
+              		} 	      
+             	?>
 
                 <script> ctr++; </script>
 
@@ -276,39 +274,26 @@
                     <br><br><br>
                 </div>
 
-                <div class = "col-xs-12 form-group register-field" style = "font-size:14px;">
+                <div class = "col-xs-12 col-md-4 form-group register-field" style = "font-size:14px;">
                     <h3 class = "no-padding text-info"style = "margin-bottom: 5px; margin-top: 0px;">Warning</h3>
-                    <input style="height:50px;display:none;" type = "date" required name = "change-warning" class = "form-control sign-in-field" id="time-form"><br>
-                        <select style="width:120px;height:30px" id="time-warning" onclick="">
-                            
-                            <?php if($row->warning != 0 &&$row->warning != 60): ?>
-                                <option value="<?php echo $row->warning; ?>"><?php echo $row->warning; ?> minutes</option>
-                            <?php endif; ?>
-
-                            <?php if($row->warning == 60): ?>
-                                <option value="<?php echo $row->warning; ?>">1 hour</option>
-                            <?php endif; ?>
-
-                            <option value="0">None</option>
-                            <option value="15">15 minutes</option>
-                            <option value="30">30 minutes</option>
-                            <option value="45">45 minutes</option>
-                            <option value="60">1 hour</option>
-                        </select>
-                    </input>
-                    <br><br><br>
+                    <div class="checkbox">
+                        <label><input type="checkbox" value="">Option 1</label>
+                    </div>
+                    <div class="checkbox">
+                        <label><input type="checkbox" value="">Option 2</label>
+                    </div>
+                    <br>
                 </div>
                 
 
             <?php  endforeach; ?>
-                <!-- <a id = "notif-btn" href="#notif-modal" data-toggle = "modal">sasasa</a> -->
-                <?php include(APPPATH . 'views/modals/confirm_modal.php'); ?>
-                <div class = "text-center">
-                    <button href="#notif-modal" data-toggle = "modal" class = "btn btn-success container-fluid col-xs-12" style="font-size:24px; margin-top: 10px; margin-bottom: 10px">Save Changes</button>
-                </div>
+            	<!-- <a id = "notif-btn" href="#notif-modal" data-toggle = "modal">sasasa</a> -->
+            	<?php include(APPPATH . 'views/modals/confirm_modal.php'); ?>
+             	<div class = "text-center">
+                 	<button href="#notif-modal" data-toggle = "modal" class = "btn btn-success container-fluid col-xs-12" style="font-size:24px; margin-top: 10px; margin-bottom: 10px">Save Changes</button>
+             	</div>
 
             </div>
-
             
         </div>    
     </div>
