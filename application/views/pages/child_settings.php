@@ -82,6 +82,15 @@
 
     </style>
 <?php endif; ?>
+
+
+<?php 
+   
+    // parse_str(htmlspecialchars($_COOKIE["sunTime"]));
+    // echo $hour;
+
+?>
+
 <style>div.content-container{border:0px;}</style>
 
 <script type="text/javascript" src="<?php echo base_url("/js/user.js"); ?>"></script>
@@ -89,6 +98,40 @@
 <script>
     document.cookie = "updatetime=0;path=/";
     var ctr = 0;
+
+    document.cookie = "selectedWarning=0;path=/";   
+
+    document.cookie = "selectedHour1-0=0;path=/";   
+    document.cookie = "selectedMinute1-0=0;path=/"; 
+    document.cookie = "selectedMeridian1-0=0;path=/"; 
+
+    document.cookie = "selectedHour2-0=0;path=/";   
+    document.cookie = "selectedMinute2-0=0;path=/"; 
+    document.cookie = "selectedMeridian2-0=0;path=/";   
+
+    document.cookie = "basicTime1=0;path=/"; 
+    document.cookie = "basicTime2=0;path=/";
+
+    // document.cookie = "1_sunTime1=0;path=/"; 
+    // document.cookie = "1_sunTime2=0;path=/";
+
+    // document.cookie = "2_monTime1=0;path=/"; 
+    // document.cookie = "2_monTime2=0;path=/";
+
+    // document.cookie = "3_tueTime1=0;path=/"; 
+    // document.cookie = "3_tueTime2=0;path=/";
+
+    // document.cookie = "4_wedTime1=0;path=/"; 
+    // document.cookie = "4_wedTime2=0;path=/";
+
+    // document.cookie = "5_thuTime1=0;path=/"; 
+    // document.cookie = "5_thuTime2=0;path=/";
+
+    // document.cookie = "6_friTime1=0;path=/"; 
+    // document.cookie = "6_friTime2=0;path=/";
+
+    // document.cookie = "7_satTime1=0;path=/"; 
+    // document.cookie = "7_satTime2=0;path=/";
 </script>
 
 <!-- Nav Bar -->
@@ -136,50 +179,58 @@
 
                 <?php foreach ($usertimes->result() as $row): 
                     
+                    // echo print_r($row);
+
                     $num++;
 
-                    $row_meridian1 = "AM";
-                    $row_meridian2 = "AM";
+                    parse_str(str_replace("amp;","",$row->sun_time));
+
+                    $row_meridian1_1 = "AM";
+                    $row_meridian1_2 = "AM";
                     
-                    if(((int) $row->start_hour) > 12)
+                    //sunday
+                    if(((int) $starthour1) > 12)
                     {
-                        switch($row->start_hour)
+                       switch($starthour1)
                        {
-                                case "13": $row->start_hour="01"; break;
-                                case "14": $row->start_hour="02"; break;
-                                case "15": $row->start_hour="03"; break;
-                                case "16": $row->start_hour="04"; break;
-                                case "17": $row->start_hour="05"; break;
-                                case "18": $row->start_hour="06"; break;
-                                case "19": $row->start_hour="07"; break;
-                                case "20": $row->start_hour="08"; break;
-                                case "21": $row->start_hour="09"; break;
-                                case "22": $row->start_hour="10"; break;
-                                case "23": $row->start_hour="11"; break;
+                            case "13": $starthour1="01"; break;
+                            case "14": $starthour1="02"; break;
+                            case "15": $starthour1="03"; break;
+                            case "16": $starthour1="04"; break;
+                            case "17": $starthour1="05"; break;
+                            case "18": $starthour1="06"; break;
+                            case "19": $starthour1="07"; break;
+                            case "20": $starthour1="08"; break;
+                            case "21": $starthour1="09"; break;
+                            case "22": $starthour1="10"; break;
+                            case "23": $starthour1="11"; break;
                        }
 
-                       $row_meridian1 = "PM";
+                       $row_meridian1_1 = "PM";
                     }
 
-                    if(((int) $row->end_hour) > 12 )
+                    if(((int) $endhour1) > 12 )
                     {
-                       switch($row->end_hour)
-                       {
-                                case "13": $row->end_hour="01"; break;
-                                case "14": $row->end_hour="02"; break;
-                                case "15": $row->end_hour="03"; break;
-                                case "16": $row->end_hour="04"; break;
-                                case "17": $row->end_hour="05"; break;
-                                case "18": $row->end_hour="06"; break;
-                                case "19": $row->end_hour="07"; break;
-                                case "20": $row->end_hour="08"; break;
-                                case "21": $row->end_hour="09"; break;
-                                case "22": $row->end_hour="10"; break;
-                                case "23": $row->end_hour="11"; break;
+                        switch($endhour1)
+                        {
+                            case "13": $endhour1="01"; break;
+                            case "14": $endhour1="02"; break;
+                            case "15": $endhour1="03"; break;
+                            case "16": $endhour1="04"; break;
+                            case "17": $endhour1="05"; break;
+                            case "18": $endhour1="06"; break;
+                            case "19": $endhour1="07"; break;
+                            case "20": $endhour1="08"; break;
+                            case "21": $endhour1="09"; break;
+                            case "22": $endhour1="10"; break;
+                            case "23": $endhour1="11"; break;
                        }
 
-                       $row_meridian2 = "PM";
-                    }         
+                       $row_meridian1_2 = "PM";
+                    }       
+
+                    // print($starthour1);
+                    // print($startminute1);
                 ?>
 
                 <script> ctr++; </script>
@@ -189,9 +240,9 @@
 
                     <input style="height:50px;display:none;" type = "date" required name = "change-time" class = "form-control sign-in-field" id="time-form"><br>
 
-                    <select style="width:120px;height:30px" id="time-hour1-<?php echo $num; ?>">" onclick="">
-                        <option value="<?php echo $row->start_hour ?>">
-                            <?php echo $row->start_hour ?>
+                    <select style="width:120px;height:30px" id="time-hour1">
+                        <option value="<?php echo $starthour1  ?>">
+                            <?php echo $starthour1 ?>
                         </option>
                         <option value="12">12</option>
                         <option value="01">01</option>
@@ -207,9 +258,9 @@
                         <option value="11">11</option>
                     </select>
 
-                    <select style="width:100px;height:30px" id="time-minute1-<?php echo $num; ?>" onclick="">
-                        <option value="<?php echo $row->start_minute?>">
-                            <?php echo $row->start_minute ?>
+                    <select style="width:100px;height:30px" id="time-minute1" onclick="">
+                        <option value="<?php echo $startminute1 ?>">
+                            <?php echo $startminute1 ?>
                         </option>
                         <option value="00">00</option>
                         <option value="15">15</option>
@@ -218,9 +269,9 @@
                  
                     </select>
 
-                    <select style="width:100px;height:30px" id="time-meridian1-<?php echo $num; ?>" onclick="">
-                        <option value="<?php echo $row_meridian1; ?>">
-                            <?php echo $row_meridian1; ?>
+                    <select style="width:100px;height:30px" id="time-meridian1" onclick="">
+                        <option value="<?php echo $row_meridian1_1; ?>">
+                            <?php echo $row_meridian1_1; ?>
                         </option>
                         <option value="AM">AM</option>
                         <option value="PM">PM</option>
@@ -235,9 +286,9 @@
 
                     <input style="height:50px;display:none;" type = "date" required name = "change-time" class = "form-control sign-in-field" id="time-form"><br>
 
-                    <select style="width:120px;height:30px" id="time-hour2-<?php echo $num; ?>" onclick="">
-                        <option value="<?php echo $row->end_hour ?>">
-                            <?php echo $row->end_hour ?>
+                    <select style="width:120px;height:30px" id="time-hour2">
+                        <option value="<?php echo $endhour1  ?>">
+                            <?php echo $endhour1 ?>
                         </option>
                         <option value="12">12</option>
                         <option value="01">01</option>
@@ -253,12 +304,9 @@
                         <option value="11">11</option>
                     </select>
 
-                    <select style="width:100px;height:30px" id="time-minute2-<?php echo $num; ?>" onclick="">
-                        <option value="<?php echo $row->end_minute ?>">
-                            <?php echo $row->end_minute ?>
-                        </option>
-                        <option value="<?php echo $row->start_minute?>">
-                            <?php echo $row->start_minute ?>
+                    <select style="width:100px;height:30px" id="time-minute2" onclick="">
+                        <option value="<?php echo $endminute1 ?>">
+                            <?php echo $endminute1 ?>
                         </option>
                         <option value="00">00</option>
                         <option value="15">15</option>
@@ -266,9 +314,9 @@
                         <option value="45">45</option>
                     </select>
 
-                    <select style="width:100px;height:30px" id="time-meridian2-<?php echo $num; ?>" onclick="">
-                        <option value="<?php echo $row_meridian2; ?>">
-                            <?php echo $row_meridian2; ?>
+                    <select style="width:100px;height:30px" id="time-meridian2" onclick="">
+                        <option value="<?php echo $row_meridian1_2; ?>">
+                            <?php echo $row_meridian1_2; ?>
                         </option>
                         <option value="AM">AM</option>
                         <option value="PM">PM</option>
@@ -313,8 +361,8 @@
         </div>    
     </div>
     
-    <script type="text/javascript" src="<?php echo base_url('assets/vis/vis.js'); ?>"></script>
-    <link rel="stylesheet" href="<?php echo base_url("assets/vis/vis.css"); ?>" />
+    <!-- <script type="text/javascript" src="<?php echo base_url('assets/vis/vis.js'); ?>"></script> -->
+    <!-- <link rel="stylesheet" href="<?php echo base_url("assets/vis/vis.css"); ?>"/> -->
 
 </body>
 <?php endforeach; ?>
@@ -339,13 +387,13 @@
 
             selectedWarning = warning.options[warning.selectedIndex].value;
 
-            hour1 = document.getElementById("time-hour1-" + i);
-            minute1 = document.getElementById("time-minute1-" + i);
-            meridian1 = document.getElementById("time-meridian1-" + i);
+            hour1 = document.getElementById("time-hour1");
+            minute1 = document.getElementById("time-minute1");
+            meridian1 = document.getElementById("time-meridian1");
 
-            hour2 = document.getElementById("time-hour2-" + i);
-            minute2 = document.getElementById("time-minute2-" + i);
-            meridian2 = document.getElementById("time-meridian2-" + i);
+            hour2 = document.getElementById("time-hour2");
+            minute2 = document.getElementById("time-minute2");
+            meridian2 = document.getElementById("time-meridian2");
 
             selectedHour1 = hour1.options[hour1.selectedIndex].value;
             selectedMinute1 = minute1.options[minute1.selectedIndex].value;
@@ -367,6 +415,30 @@
             document.cookie = "selectedHour2-" + i + "=" + selectedHour2 + ";" + ";path=/";   
             document.cookie = "selectedMinute2-" + i + "=" + selectedMinute2 + ";" + ";path=/"; 
             document.cookie = "selectedMeridian2-" + i + "=" + selectedMeridian2 + ";" + ";path=/";   
+
+            document.cookie = "basicTime1=" + "hour="+ selectedHour1 + "&minute="+  selectedMinute1 + "&meridian="+selectedMeridian1+";path=/"; 
+            document.cookie = "basicTime2=" + "hour="+ selectedHour2 + "&minute="+  selectedMinute2 + "&meridian="+selectedMeridian2+";path=/";
+
+            document.cookie = "1_sunTime1=" + "starthour1="+ selectedHour1 + "&startminute1="+  selectedMinute1 + "&startmeridian1="+selectedMeridian1+";path=/"; 
+            document.cookie = "1_sunTime2=" + "endhour1="+ selectedHour2 + "&endminute1="+  selectedMinute2 + "&endmeridian1="+selectedMeridian1+";path=/";
+
+            document.cookie = "2_monTime1=" + "starthour2="+ selectedHour1 + "&startminute2="+  selectedMinute1 + "&startmeridian2="+selectedMeridian1+";path=/"; 
+            document.cookie = "2_monTime2=" + "endhour2="+ selectedHour2 + "&endminute2="+  selectedMinute2 + "&endmeridian2="+selectedMeridian2+";path=/";
+
+            document.cookie = "3_tueTime1=" + "starthour3="+ selectedHour1 + "&startminute3="+  selectedMinute1 + "&startmeridian3="+selectedMeridian1+";path=/"; 
+            document.cookie = "3_tueTime2=" + "endhour3="+ selectedHour2 + "&endminute3="+  selectedMinute2 + "&endmeridian3="+selectedMeridian2+";path=/";
+
+            document.cookie = "4_wedTime1=" + "starthour4="+ selectedHour1 + "&startminute4="+  selectedMinute1 + "&startmeridian4="+selectedMeridian1+";path=/"; 
+            document.cookie = "4_wedTime2=" + "endhour4="+ selectedHour2 + "&endminute4="+  selectedMinute2 + "&endmeridian4="+selectedMeridian2+";path=/";
+
+            document.cookie = "5_thuTime1=" + "starthour5="+ selectedHour1 + "&startminute5="+  selectedMinute1 + "&startmeridian5="+selectedMeridian1+";path=/"; 
+            document.cookie = "5_thuTime2=" + "endhour5="+ selectedHour2 + "&endminute5="+  selectedMinute2 + "&endmeridian5="+selectedMeridian2+";path=/";
+
+            document.cookie = "6_friTime1=" + "starthour6="+ selectedHour1 + "&startminute6="+  selectedMinute1 + "&startmeridian6="+selectedMeridian1+";path=/"; 
+            document.cookie = "6_friTime2=" + "endhour6="+ selectedHour2 + "&endminute6="+  selectedMinute2 + "&endmeridian6="+selectedMeridian2+";path=/";
+
+            document.cookie = "7_satTime1=" + "starthour7="+ selectedHour1 + "&startminute7="+  selectedMinute1 + "&startmeridian7="+selectedMeridian1+";path=/"; 
+            document.cookie = "7_satTime2=" + "endhour7="+ selectedHour2 + "&endminute7="+  selectedMinute2 + "&endmeridian7="+selectedMeridian2+";path=/";
         }
 
         location.reload();
@@ -375,6 +447,7 @@
         <?php 
             if($_COOKIE["updatetime"])
                 echo $CI->user_model->set_usertimes($child->user_id, 0); //set to $num once adding again
+
         ?>
     }
 

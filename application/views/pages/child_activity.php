@@ -66,6 +66,44 @@
 
 <?php endif; ?>
 
+<script>
+    document.cookie = "updatetime=0;path=/";
+    
+    document.cookie = "selectedWarning=0;path=/";   
+
+    document.cookie = "selectedHour1-0=0;path=/";   
+    document.cookie = "selectedMinute1-0=0;path=/"; 
+    document.cookie = "selectedMeridian1-0=0;path=/"; 
+
+    document.cookie = "selectedHour2-0=0;path=/";   
+    document.cookie = "selectedMinute2-0=0;path=/"; 
+    document.cookie = "selectedMeridian2-0=0;path=/";   
+
+    document.cookie = "basicTime1=0;path=/"; 
+    document.cookie = "basicTime2=0;path=/";
+
+    document.cookie = "1_sunTime1=0;path=/"; 
+    document.cookie = "1_sunTime2=0;path=/";
+
+    document.cookie = "2_monTime1=0;path=/"; 
+    document.cookie = "2_monTime2=0;path=/";
+
+    document.cookie = "3_tueTime1=0;path=/"; 
+    document.cookie = "3_tueTime2=0;path=/";
+
+    document.cookie = "4_wedTime1=0;path=/"; 
+    document.cookie = "4_wedTime2=0;path=/";
+
+    document.cookie = "5_thuTime1=0;path=/"; 
+    document.cookie = "5_thuTime2=0;path=/";
+
+    document.cookie = "6_friTime1=0;path=/"; 
+    document.cookie = "6_friTime2=0;path=/";
+
+    document.cookie = "7_satTime1=0;path=/"; 
+    document.cookie = "7_satTime2=0;path=/";
+</script>
+
 <style>div.content-container{border:0px;}</style>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
