@@ -147,319 +147,320 @@
                     parse_str(str_replace("amp;","",$row->fri_time));
                     parse_str(str_replace("amp;","",$row->sat_time));
 
-	              	$row_meridian1_1 = "AM";
-	              	$row_meridian1_2 = "AM";
-                    $row_meridian2_1 = "AM";
-                    $row_meridian2_2 = "AM";
-                    $row_meridian3_1 = "AM";
-                    $row_meridian3_2 = "AM";
-                    $row_meridian4_1 = "AM";
-                    $row_meridian4_2 = "AM";
-                    $row_meridian5_1 = "AM";
-                    $row_meridian5_2 = "AM";
-                    $row_meridian6_1 = "AM";
-                    $row_meridian6_2 = "AM";
-                    $row_meridian7_1 = "AM";
-                    $row_meridian7_2 = "AM";
+	      //         	$row_meridian1_1 = "AM";
+	      //         	$row_meridian1_2 = "AM";
+       //              $row_meridian2_1 = "AM";
+       //              $row_meridian2_2 = "AM";
+       //              $row_meridian3_1 = "AM";
+       //              $row_meridian3_2 = "AM";
+       //              $row_meridian4_1 = "AM";
+       //              $row_meridian4_2 = "AM";
+       //              $row_meridian5_1 = "AM";
+       //              $row_meridian5_2 = "AM";
+       //              $row_meridian6_1 = "AM";
+       //              $row_meridian6_2 = "AM";
+       //              $row_meridian7_1 = "AM";
+       //              $row_meridian7_2 = "AM";
 
                     
-	              	// print($query['startminute1']);
-                    // print_r($query);
+	      //         	// print($query['startminute1']);
+       //              // print_r($query);
 
-                    print($startminute1);
+       //              print($starthour1);
 
-                    //sunday
-	              	if(((int) $starthour1) > 12)
-              		{
-          			   switch($starthour1)
-		               {
-							case "13": $starthour1="01"; break;
-							case "14": $starthour1="02"; break;
-							case "15": $starthour1="03"; break;
-							case "16": $starthour1="04"; break;
-							case "17": $starthour1="05"; break;
-							case "18": $starthour1="06"; break;
-							case "19": $starthour1="07"; break;
-							case "20": $starthour1="08"; break;
-							case "21": $starthour1="09"; break;
-							case "22": $starthour1="10"; break;
-							case "23": $starthour1="11"; break;
-		               }
+       //              //sunday
+	      //         	if(((int) $starthour1) > 12)
+       //        		{
+       //    			   switch($starthour1)
+		     //           {
+							// case "13": $starthour1="01"; break;
+							// case "14": $starthour1="02"; break;
+							// case "15": $starthour1="03"; break;
+							// case "16": $starthour1="04"; break;
+							// case "17": $starthour1="05"; break;
+							// case "18": $starthour1="06"; break;
+							// case "19": $starthour1="07"; break;
+							// case "20": $starthour1="08"; break;
+							// case "21": $starthour1="09"; break;
+							// case "22": $starthour1="10"; break;
+							// case "23": $starthour1="11"; break;
+		     //           }
 
-		               $row_meridian1_1 = "PM";
-              		}
+		     //           $row_meridian1_1 = "PM";
+       //                 print($row_meridian1_1);
+       //        		}
 
-              		if(((int) $endhour1) > 12 )
-              		{
-                        switch($endhour1)
-                        {
-							case "13": $endhour1="01"; break;
-							case "14": $endhour1="02"; break;
-							case "15": $endhour1="03"; break;
-							case "16": $endhour1="04"; break;
-							case "17": $endhour1="05"; break;
-							case "18": $endhour1="06"; break;
-							case "19": $endhour1="07"; break;
-							case "20": $endhour1="08"; break;
-							case "21": $endhour1="09"; break;
-							case "22": $endhour1="10"; break;
-							case "23": $endhour1="11"; break;
-		               }
+       //        		if(((int) $endhour1) > 12 )
+       //        		{
+       //                  switch($endhour1)
+       //                  {
+							// case "13": $endhour1="01"; break;
+							// case "14": $endhour1="02"; break;
+							// case "15": $endhour1="03"; break;
+							// case "16": $endhour1="04"; break;
+							// case "17": $endhour1="05"; break;
+							// case "18": $endhour1="06"; break;
+							// case "19": $endhour1="07"; break;
+							// case "20": $endhour1="08"; break;
+							// case "21": $endhour1="09"; break;
+							// case "22": $endhour1="10"; break;
+							// case "23": $endhour1="11"; break;
+		     //           }
 
-		               $row_meridian1_2 = "PM";
-              		} 	      
-
-
-                    //monday
-                    if(((int) $starthour2) > 12)
-                    {
-                       switch($starthour2)
-                       {
-                            case "13": $starthour2="01"; break;
-                            case "14": $starthour2="02"; break;
-                            case "15": $starthour2="03"; break;
-                            case "16": $starthour2="04"; break;
-                            case "17": $starthour2="05"; break;
-                            case "18": $starthour2="06"; break;
-                            case "19": $starthour2="07"; break;
-                            case "20": $starthour2="08"; break;
-                            case "21": $starthour2="09"; break;
-                            case "22": $starthour2="10"; break;
-                            case "23": $starthour2="11"; break;
-                       }
-
-                       $row_meridian2_1 = "PM";
-                    }
-
-                    if(((int) $endhour2) > 12 )
-                    {
-                        switch($endhour2)
-                        {
-                            case "13": $endhour2="01"; break;
-                            case "14": $endhour2="02"; break;
-                            case "15": $endhour2="03"; break;
-                            case "16": $endhour2="04"; break;
-                            case "17": $endhour2="05"; break;
-                            case "18": $endhour2="06"; break;
-                            case "19": $endhour2="07"; break;
-                            case "20": $endhour2="08"; break;
-                            case "21": $endhour2="09"; break;
-                            case "22": $endhour2="10"; break;
-                            case "23": $endhour2="11"; break;
-                       }
-
-                       $row_meridian2_2 = "PM";
-                    }
+		     //           $row_meridian1_2 = "PM";
+       //        		} 	      
 
 
-                    //tuesday
-                    if(((int) $starthour3) > 12)
-                    {
-                       switch($starthour3)
-                       {
-                            case "13": $starthour3="01"; break;
-                            case "14": $starthour3="02"; break;
-                            case "15": $starthour3="03"; break;
-                            case "16": $starthour3="04"; break;
-                            case "17": $starthour3="05"; break;
-                            case "18": $starthour3="06"; break;
-                            case "19": $starthour3="07"; break;
-                            case "20": $starthour3="08"; break;
-                            case "21": $starthour3="09"; break;
-                            case "22": $starthour3="10"; break;
-                            case "23": $starthour3="11"; break;
-                       }
+       //              //monday
+       //              if(((int) $starthour2) > 12)
+       //              {
+       //                 switch($starthour2)
+       //                 {
+       //                      case "13": $starthour2="01"; break;
+       //                      case "14": $starthour2="02"; break;
+       //                      case "15": $starthour2="03"; break;
+       //                      case "16": $starthour2="04"; break;
+       //                      case "17": $starthour2="05"; break;
+       //                      case "18": $starthour2="06"; break;
+       //                      case "19": $starthour2="07"; break;
+       //                      case "20": $starthour2="08"; break;
+       //                      case "21": $starthour2="09"; break;
+       //                      case "22": $starthour2="10"; break;
+       //                      case "23": $starthour2="11"; break;
+       //                 }
 
-                       $row_meridian3_1 = "PM";
-                    }
+       //                 $row_meridian2_1 = "PM";
+       //              }
 
-                    if(((int) $endhour3) > 12 )
-                    {
-                        switch($endhour3)
-                        {
-                            case "13": $endhour3="01"; break;
-                            case "14": $endhour3="02"; break;
-                            case "15": $endhour3="03"; break;
-                            case "16": $endhour3="04"; break;
-                            case "17": $endhour3="05"; break;
-                            case "18": $endhour3="06"; break;
-                            case "19": $endhour3="07"; break;
-                            case "20": $endhour3="08"; break;
-                            case "21": $endhour3="09"; break;
-                            case "22": $endhour3="10"; break;
-                            case "23": $endhour3="11"; break;
-                       }
+       //              if(((int) $endhour2) > 12 )
+       //              {
+       //                  switch($endhour2)
+       //                  {
+       //                      case "13": $endhour2="01"; break;
+       //                      case "14": $endhour2="02"; break;
+       //                      case "15": $endhour2="03"; break;
+       //                      case "16": $endhour2="04"; break;
+       //                      case "17": $endhour2="05"; break;
+       //                      case "18": $endhour2="06"; break;
+       //                      case "19": $endhour2="07"; break;
+       //                      case "20": $endhour2="08"; break;
+       //                      case "21": $endhour2="09"; break;
+       //                      case "22": $endhour2="10"; break;
+       //                      case "23": $endhour2="11"; break;
+       //                 }
 
-                       $row_meridian3_2 = "PM";
-                    }
-
-
-                    //wednesday
-                    if(((int) $starthour4) > 12)
-                    {
-                       switch($starthour4)
-                       {
-                            case "13": $starthour4="01"; break;
-                            case "14": $starthour4="02"; break;
-                            case "15": $starthour4="03"; break;
-                            case "16": $starthour4="04"; break;
-                            case "17": $starthour4="05"; break;
-                            case "18": $starthour4="06"; break;
-                            case "19": $starthour4="07"; break;
-                            case "20": $starthour4="08"; break;
-                            case "21": $starthour4="09"; break;
-                            case "22": $starthour4="10"; break;
-                            case "23": $starthour4="11"; break;
-                       }
-
-                       $row_meridian4_1 = "PM";
-                    }
-
-                    if(((int) $endhour4) > 12 )
-                    {
-                        switch($endhour4)
-                        {
-                            case "13": $endhour4="01"; break;
-                            case "14": $endhour4="02"; break;
-                            case "15": $endhour4="03"; break;
-                            case "16": $endhour4="04"; break;
-                            case "17": $endhour4="05"; break;
-                            case "18": $endhour4="06"; break;
-                            case "19": $endhour4="07"; break;
-                            case "20": $endhour4="08"; break;
-                            case "21": $endhour4="09"; break;
-                            case "22": $endhour4="10"; break;
-                            case "23": $endhour4="11"; break;
-                       }
-
-                       $row_meridian4_2 = "PM";
-                    }
+       //                 $row_meridian2_2 = "PM";
+       //              }
 
 
-                    //thursday
-                    if(((int) $starthour5) > 12)
-                    {
-                       switch($starthour5)
-                       {
-                            case "13": $starthour5="01"; break;
-                            case "14": $starthour5="02"; break;
-                            case "15": $starthour5="03"; break;
-                            case "16": $starthour5="04"; break;
-                            case "17": $starthour5="05"; break;
-                            case "18": $starthour5="06"; break;
-                            case "19": $starthour5="07"; break;
-                            case "20": $starthour5="08"; break;
-                            case "21": $starthour5="09"; break;
-                            case "22": $starthour5="10"; break;
-                            case "23": $starthour5="11"; break;
-                       }
+       //              //tuesday
+       //              if(((int) $starthour3) > 12)
+       //              {
+       //                 switch($starthour3)
+       //                 {
+       //                      case "13": $starthour3="01"; break;
+       //                      case "14": $starthour3="02"; break;
+       //                      case "15": $starthour3="03"; break;
+       //                      case "16": $starthour3="04"; break;
+       //                      case "17": $starthour3="05"; break;
+       //                      case "18": $starthour3="06"; break;
+       //                      case "19": $starthour3="07"; break;
+       //                      case "20": $starthour3="08"; break;
+       //                      case "21": $starthour3="09"; break;
+       //                      case "22": $starthour3="10"; break;
+       //                      case "23": $starthour3="11"; break;
+       //                 }
 
-                       $row_meridian5_1 = "PM";
-                    }
+       //                 $row_meridian3_1 = "PM";
+       //              }
 
-                    if(((int) $endhour5) > 12 )
-                    {
-                        switch($endhour5)
-                        {
-                            case "13": $endhour5="01"; break;
-                            case "14": $endhour5="02"; break;
-                            case "15": $endhour5="03"; break;
-                            case "16": $endhour5="04"; break;
-                            case "17": $endhour5="05"; break;
-                            case "18": $endhour5="06"; break;
-                            case "19": $endhour5="07"; break;
-                            case "20": $endhour5="08"; break;
-                            case "21": $endhour5="09"; break;
-                            case "22": $endhour5="10"; break;
-                            case "23": $endhour5="11"; break;
-                       }
+       //              if(((int) $endhour3) > 12 )
+       //              {
+       //                  switch($endhour3)
+       //                  {
+       //                      case "13": $endhour3="01"; break;
+       //                      case "14": $endhour3="02"; break;
+       //                      case "15": $endhour3="03"; break;
+       //                      case "16": $endhour3="04"; break;
+       //                      case "17": $endhour3="05"; break;
+       //                      case "18": $endhour3="06"; break;
+       //                      case "19": $endhour3="07"; break;
+       //                      case "20": $endhour3="08"; break;
+       //                      case "21": $endhour3="09"; break;
+       //                      case "22": $endhour3="10"; break;
+       //                      case "23": $endhour3="11"; break;
+       //                 }
 
-                       $row_meridian5_2 = "PM";
-                    }
-
-
-                    //friday
-                    if(((int) $starthour6) > 12)
-                    {
-                       switch($starthour6)
-                       {
-                            case "13": $starthour6="01"; break;
-                            case "14": $starthour6="02"; break;
-                            case "15": $starthour6="03"; break;
-                            case "16": $starthour6="04"; break;
-                            case "17": $starthour6="05"; break;
-                            case "18": $starthour6="06"; break;
-                            case "19": $starthour6="07"; break;
-                            case "20": $starthour6="08"; break;
-                            case "21": $starthour6="09"; break;
-                            case "22": $starthour6="10"; break;
-                            case "23": $starthour6="11"; break;
-                       }
-
-                       $row_meridian6_1 = "PM";
-                    }
-
-                    if(((int) $endhour6) > 12 )
-                    {
-                        switch($endhour6)
-                        {
-                            case "13": $endhour6="01"; break;
-                            case "14": $endhour6="02"; break;
-                            case "15": $endhour6="03"; break;
-                            case "16": $endhour6="04"; break;
-                            case "17": $endhour6="05"; break;
-                            case "18": $endhour6="06"; break;
-                            case "19": $endhour6="07"; break;
-                            case "20": $endhour6="08"; break;
-                            case "21": $endhour6="09"; break;
-                            case "22": $endhour6="10"; break;
-                            case "23": $endhour6="11"; break;
-                       }
-
-                       $row_meridian6_2 = "PM";
-                    }
+       //                 $row_meridian3_2 = "PM";
+       //              }
 
 
-                    //saturday
-                    if(((int) $starthour7) > 12)
-                    {
-                       switch($starthour7)
-                       {
-                            case "13": $starthour7="01"; break;
-                            case "14": $starthour7="02"; break;
-                            case "15": $starthour7="03"; break;
-                            case "16": $starthour7="04"; break;
-                            case "17": $starthour7="05"; break;
-                            case "18": $starthour7="06"; break;
-                            case "19": $starthour7="07"; break;
-                            case "20": $starthour7="08"; break;
-                            case "21": $starthour7="09"; break;
-                            case "22": $starthour7="10"; break;
-                            case "23": $starthour7="11"; break;
-                       }
+       //              //wednesday
+       //              if(((int) $starthour4) > 12)
+       //              {
+       //                 switch($starthour4)
+       //                 {
+       //                      case "13": $starthour4="01"; break;
+       //                      case "14": $starthour4="02"; break;
+       //                      case "15": $starthour4="03"; break;
+       //                      case "16": $starthour4="04"; break;
+       //                      case "17": $starthour4="05"; break;
+       //                      case "18": $starthour4="06"; break;
+       //                      case "19": $starthour4="07"; break;
+       //                      case "20": $starthour4="08"; break;
+       //                      case "21": $starthour4="09"; break;
+       //                      case "22": $starthour4="10"; break;
+       //                      case "23": $starthour4="11"; break;
+       //                 }
 
-                       $row_meridian7_1 = "PM";
-                    }
+       //                 $row_meridian4_1 = "PM";
+       //              }
 
-                    if(((int) $endhour7) > 12 )
-                    {
-                        switch($endhour7)
-                        {
-                            case "13": $endhour7="01"; break;
-                            case "14": $endhour7="02"; break;
-                            case "15": $endhour7="03"; break;
-                            case "16": $endhour7="04"; break;
-                            case "17": $endhour7="05"; break;
-                            case "18": $endhour7="06"; break;
-                            case "19": $endhour7="07"; break;
-                            case "20": $endhour7="08"; break;
-                            case "21": $endhour7="09"; break;
-                            case "22": $endhour7="10"; break;
-                            case "23": $endhour7="11"; break;
-                       }
+       //              if(((int) $endhour4) > 12 )
+       //              {
+       //                  switch($endhour4)
+       //                  {
+       //                      case "13": $endhour4="01"; break;
+       //                      case "14": $endhour4="02"; break;
+       //                      case "15": $endhour4="03"; break;
+       //                      case "16": $endhour4="04"; break;
+       //                      case "17": $endhour4="05"; break;
+       //                      case "18": $endhour4="06"; break;
+       //                      case "19": $endhour4="07"; break;
+       //                      case "20": $endhour4="08"; break;
+       //                      case "21": $endhour4="09"; break;
+       //                      case "22": $endhour4="10"; break;
+       //                      case "23": $endhour4="11"; break;
+       //                 }
 
-                       $row_meridian7_2 = "PM";
-                    }
+       //                 $row_meridian4_2 = "PM";
+       //              }
+
+
+       //              //thursday
+       //              if(((int) $starthour5) > 12)
+       //              {
+       //                 switch($starthour5)
+       //                 {
+       //                      case "13": $starthour5="01"; break;
+       //                      case "14": $starthour5="02"; break;
+       //                      case "15": $starthour5="03"; break;
+       //                      case "16": $starthour5="04"; break;
+       //                      case "17": $starthour5="05"; break;
+       //                      case "18": $starthour5="06"; break;
+       //                      case "19": $starthour5="07"; break;
+       //                      case "20": $starthour5="08"; break;
+       //                      case "21": $starthour5="09"; break;
+       //                      case "22": $starthour5="10"; break;
+       //                      case "23": $starthour5="11"; break;
+       //                 }
+
+       //                 $row_meridian5_1 = "PM";
+       //              }
+
+       //              if(((int) $endhour5) > 12 )
+       //              {
+       //                  switch($endhour5)
+       //                  {
+       //                      case "13": $endhour5="01"; break;
+       //                      case "14": $endhour5="02"; break;
+       //                      case "15": $endhour5="03"; break;
+       //                      case "16": $endhour5="04"; break;
+       //                      case "17": $endhour5="05"; break;
+       //                      case "18": $endhour5="06"; break;
+       //                      case "19": $endhour5="07"; break;
+       //                      case "20": $endhour5="08"; break;
+       //                      case "21": $endhour5="09"; break;
+       //                      case "22": $endhour5="10"; break;
+       //                      case "23": $endhour5="11"; break;
+       //                 }
+
+       //                 $row_meridian5_2 = "PM";
+       //              }
+
+
+       //              //friday
+       //              if(((int) $starthour6) > 12)
+       //              {
+       //                 switch($starthour6)
+       //                 {
+       //                      case "13": $starthour6="01"; break;
+       //                      case "14": $starthour6="02"; break;
+       //                      case "15": $starthour6="03"; break;
+       //                      case "16": $starthour6="04"; break;
+       //                      case "17": $starthour6="05"; break;
+       //                      case "18": $starthour6="06"; break;
+       //                      case "19": $starthour6="07"; break;
+       //                      case "20": $starthour6="08"; break;
+       //                      case "21": $starthour6="09"; break;
+       //                      case "22": $starthour6="10"; break;
+       //                      case "23": $starthour6="11"; break;
+       //                 }
+
+       //                 $row_meridian6_1 = "PM";
+       //              }
+
+       //              if(((int) $endhour6) > 12 )
+       //              {
+       //                  switch($endhour6)
+       //                  {
+       //                      case "13": $endhour6="01"; break;
+       //                      case "14": $endhour6="02"; break;
+       //                      case "15": $endhour6="03"; break;
+       //                      case "16": $endhour6="04"; break;
+       //                      case "17": $endhour6="05"; break;
+       //                      case "18": $endhour6="06"; break;
+       //                      case "19": $endhour6="07"; break;
+       //                      case "20": $endhour6="08"; break;
+       //                      case "21": $endhour6="09"; break;
+       //                      case "22": $endhour6="10"; break;
+       //                      case "23": $endhour6="11"; break;
+       //                 }
+
+       //                 $row_meridian6_2 = "PM";
+       //              }
+
+
+       //              //saturday
+       //              if(((int) $starthour7) > 12)
+       //              {
+       //                 switch($starthour7)
+       //                 {
+       //                      case "13": $starthour7="01"; break;
+       //                      case "14": $starthour7="02"; break;
+       //                      case "15": $starthour7="03"; break;
+       //                      case "16": $starthour7="04"; break;
+       //                      case "17": $starthour7="05"; break;
+       //                      case "18": $starthour7="06"; break;
+       //                      case "19": $starthour7="07"; break;
+       //                      case "20": $starthour7="08"; break;
+       //                      case "21": $starthour7="09"; break;
+       //                      case "22": $starthour7="10"; break;
+       //                      case "23": $starthour7="11"; break;
+       //                 }
+
+       //                 $row_meridian7_1 = "PM";
+       //              }
+
+       //              if(((int) $endhour7) > 12 )
+       //              {
+       //                  switch($endhour7)
+       //                  {
+       //                      case "13": $endhour7="01"; break;
+       //                      case "14": $endhour7="02"; break;
+       //                      case "15": $endhour7="03"; break;
+       //                      case "16": $endhour7="04"; break;
+       //                      case "17": $endhour7="05"; break;
+       //                      case "18": $endhour7="06"; break;
+       //                      case "19": $endhour7="07"; break;
+       //                      case "20": $endhour7="08"; break;
+       //                      case "21": $endhour7="09"; break;
+       //                      case "22": $endhour7="10"; break;
+       //                      case "23": $endhour7="11"; break;
+       //                 }
+
+       //                 $row_meridian7_2 = "PM";
+       //              }
                     
              	?>
 
@@ -484,9 +485,9 @@
                             <input style="height:50px;display:none;" type = "date" required name = "change-time" class = "form-control sign-in-field" id="time-form"><br>
 
                             <select style="width:120px;height:30px" id="time-hour1-1">
-                                <!-- <option value="<?php echo $row->start_hour ?>">
-                                    <?php echo $row->start_hour ?>
-                                </option> -->
+                                <option value="<?php echo $starthour1 ?>">
+                                    <?php echo $starthour1 ?>
+                                </option>
                                 <option value="12">12</option>
                                 <option value="01">01</option>
                                 <option value="02">02</option>
@@ -502,9 +503,9 @@
                             </select>
 
                             <select style="width:100px;height:30px" id="time-minute1-1" onclick="">
-                                <!-- <option value="<?php echo $row->start_minute?>">
-                                    <?php echo $row->start_minute ?>
-                                </option> -->
+                                <option value="<?php echo $startminute1 ?>">
+                                    <?php echo  $startminute1 ?>
+                                </option>
                                 <option value="00">00</option>
                                 <option value="15">15</option>
                                 <option value="30">30</option>
@@ -513,9 +514,9 @@
                             </select>
 
                             <select style="width:100px;height:30px" id="time-meridian1-1" onclick="">
-                                <!-- <option value="<?php echo $row_meridian1; ?>">
-                                    <?php echo $row_meridian1; ?>
-                                </option> -->
+                                <option value="<?php echo $startmeridian1; ?>">
+                                    <?php echo $startmeridian1; ?>
+                                </option>
                                 <option value="AM">AM</option>
                                 <option value="PM">PM</option>
                             </select>
@@ -528,9 +529,9 @@
                             <input style="height:50px;display:none;" type = "date" required name = "change-time" class = "form-control sign-in-field" id="time-form"><br>
 
                             <select style="width:120px;height:30px" id="time-hour2-1" onclick="">
-                                <!-- <option value="<?php echo $row->end_hour ?>">
-                                    <?php echo $row->end_hour ?>
-                                </option> -->
+                                <option value="<?php echo $endhour1 ?>">
+                                    <?php echo $endhour1 ?>
+                                </option>
                                 <option value="12">12</option>
                                 <option value="01">01</option>
                                 <option value="02">02</option>
@@ -546,12 +547,9 @@
                             </select>
 
                             <select style="width:100px;height:30px" id="time-minute2-1" onclick="">
-                                <!-- <option value="<?php echo $row->end_minute ?>">
-                                    <?php echo $row->end_minute ?>
-                                </option> -->
-                                <!-- <option value="<?php echo $row->start_minute?>">
-                                    <?php echo $row->start_minute ?>
-                                </option> -->
+                                <option value="<?php echo $endminute1 ?>">
+                                    <?php echo $endminute1 ?>
+                                </option>
                                 <option value="00">00</option>
                                 <option value="15">15</option>
                                 <option value="30">30</option>
@@ -559,9 +557,9 @@
                             </select>
 
                             <select style="width:100px;height:30px" id="time-meridian2-1" onclick="">
-                                <!-- <option value="<?php echo $row_meridian2; ?>">
-                                    <?php echo $row_meridian2; ?>
-                                </option> -->
+                                <option value="<?php echo $endmeridian1; ?>">
+                                    <?php echo $endmeridian1; ?>
+                                </option>
                                 <option value="AM">AM</option>
                                 <option value="PM">PM</option>
                             </select>
@@ -576,9 +574,9 @@
                             <input style="height:50px;display:none;" type = "date" required name = "change-time" class = "form-control sign-in-field" id="time-form"><br>
 
                             <select style="width:120px;height:30px" id="time-hour1-2">" onclick="">
-                                <!-- <option value="<?php echo $row->start_hour ?>">
-                                    <?php echo $row->start_hour ?>
-                                </option> -->
+                                <option value="<?php echo $starthour2 ?>">
+                                    <?php echo $starthour2 ?>
+                                </option>
                                 <option value="12">12</option>
                                 <option value="01">01</option>
                                 <option value="02">02</option>
@@ -594,9 +592,9 @@
                             </select>
 
                             <select style="width:100px;height:30px" id="time-minute1-2" onclick="">
-                                <!-- <option value="<?php echo $row->start_minute?>">
-                                    <?php echo $row->start_minute ?>
-                                </option> -->
+                                <option value="<?php echo $startminute2 ?>">
+                                    <?php echo $startminute2 ?>
+                                </option>
                                 <option value="00">00</option>
                                 <option value="15">15</option>
                                 <option value="30">30</option>
@@ -605,9 +603,9 @@
                             </select>
 
                             <select style="width:100px;height:30px" id="time-meridian1-2" onclick="">
-                                <!-- <option value="<?php echo $row_meridian1; ?>">
-                                    <?php echo $row_meridian1; ?>
-                                </option> -->
+                                <option value="<?php echo $startmeridian2; ?>">
+                                    <?php echo $startmeridian2; ?>
+                                </option>
                                 <option value="AM">AM</option>
                                 <option value="PM">PM</option>
                             </select>
@@ -620,9 +618,9 @@
                             <input style="height:50px;display:none;" type = "date" required name = "change-time" class = "form-control sign-in-field" id="time-form"><br>
 
                             <select style="width:120px;height:30px" id="time-hour2-2" onclick="">
-                                <!-- <option value="<?php echo $row->end_hour ?>">
-                                    <?php echo $row->end_hour ?>
-                                </option> -->
+                                <option value="<?php echo $endhour2 ?>">
+                                    <?php echo $endhour2 ?>
+                                </option>
                                 <option value="12">12</option>
                                 <option value="01">01</option>
                                 <option value="02">02</option>
@@ -638,12 +636,10 @@
                             </select>
 
                             <select style="width:100px;height:30px" id="time-minute2-2" onclick="">
-                                <!-- <option value="<?php echo $row->end_minute ?>">
-                                    <?php echo $row->end_minute ?>
+                                <option value="<?php echo $endminute2 ?>">
+                                    <?php echo $endminute2 ?>
                                 </option>
-                                <option value="<?php echo $row->start_minute?>">
-                                    <?php echo $row->start_minute ?>
-                                </option> -->
+                                
                                 <option value="00">00</option>
                                 <option value="15">15</option>
                                 <option value="30">30</option>
@@ -651,9 +647,9 @@
                             </select>
 
                             <select style="width:100px;height:30px" id="time-meridian2-2" onclick="">
-                                <!-- <option value="<?php echo $row_meridian2; ?>">
-                                    <?php echo $row_meridian2; ?>
-                                </option> -->
+                                <option value="<?php echo $endmeridian2; ?>">
+                                    <?php echo $endmeridian2; ?>
+                                </option>
                                 <option value="AM">AM</option>
                                 <option value="PM">PM</option>
                             </select>
@@ -668,9 +664,9 @@
                             <input style="height:50px;display:none;" type = "date" required name = "change-time" class = "form-control sign-in-field" id="time-form"><br>
 
                             <select style="width:120px;height:30px" id="time-hour1-3">" onclick="">
-                                <!-- <option value="<?php echo $row->start_hour ?>">
-                                    <?php echo $row->start_hour ?>
-                                </option> -->
+                                <option value="<?php echo $starthour3 ?>">
+                                    <?php echo $starthour3 ?>
+                                </option>
                                 <option value="12">12</option>
                                 <option value="01">01</option>
                                 <option value="02">02</option>
@@ -686,9 +682,9 @@
                             </select>
 
                             <select style="width:100px;height:30px" id="time-minute1-3" onclick="">
-                                <!-- <option value="<?php echo $row->start_minute?>">
-                                    <?php echo $row->start_minute ?>
-                                </option> -->
+                                <option value="<?php echo $startminute3 ?>">
+                                    <?php echo $startminute3 ?>
+                                </option>
                                 <option value="00">00</option>
                                 <option value="15">15</option>
                                 <option value="30">30</option>
@@ -697,9 +693,9 @@
                             </select>
 
                             <select style="width:100px;height:30px" id="time-meridian1-3" onclick="">
-                                <!-- <option value="<?php echo $row_meridian1; ?>">
-                                    <?php echo $row_meridian1; ?>
-                                </option> -->
+                                <option value="<?php echo $startmeridian3; ?>">
+                                    <?php echo $startmeridian3; ?>
+                                </option>
                                 <option value="AM">AM</option>
                                 <option value="PM">PM</option>
                             </select>
@@ -712,9 +708,9 @@
                             <input style="height:50px;display:none;" type = "date" required name = "change-time" class = "form-control sign-in-field" id="time-form"><br>
 
                             <select style="width:120px;height:30px" id="time-hour2-3" onclick="">
-                                <!-- <option value="<?php echo $row->end_hour ?>">
-                                    <?php echo $row->end_hour ?>
-                                </option> -->
+                                <option value="<?php echo $endhour3 ?>">
+                                    <?php echo $endhour3 ?>
+                                </option>
                                 <option value="12">12</option>
                                 <option value="01">01</option>
                                 <option value="02">02</option>
@@ -730,12 +726,9 @@
                             </select>
 
                             <select style="width:100px;height:30px" id="time-minute2-3" onclick="">
-                                <!-- <option value="<?php echo $row->end_minute ?>">
-                                    <?php echo $row->end_minute ?>
-                                </option> -->
-                                <!-- <option value="<?php echo $row->start_minute?>">
-                                    <?php echo $row->start_minute ?>
-                                </option> -->
+                                <option value="<?php echo $endminute3 ?>">
+                                    <?php echo $endminute3 ?>
+                                </option>
                                 <option value="00">00</option>
                                 <option value="15">15</option>
                                 <option value="30">30</option>
@@ -743,9 +736,9 @@
                             </select>
 
                             <select style="width:100px;height:30px" id="time-meridian2-3" onclick="">
-                                <!-- <option value="<?php echo $row_meridian2; ?>">
-                                    <?php echo $row_meridian2; ?>
-                                </option> -->
+                                <option value="<?php echo $endmeridian3; ?>">
+                                    <?php echo $endmeridian3; ?>
+                                </option>
                                 <option value="AM">AM</option>
                                 <option value="PM">PM</option>
                             </select>
@@ -760,9 +753,9 @@
                             <input style="height:50px;display:none;" type = "date" required name = "change-time" class = "form-control sign-in-field" id="time-form"><br>
 
                             <select style="width:120px;height:30px" id="time-hour1-4">" onclick="">
-                                <!-- <option value="<?php echo $row->start_hour ?>">
-                                    <?php echo $row->start_hour ?>
-                                </option> -->
+                                <option value="<?php echo $starthour4 ?>">
+                                    <?php echo $starthour4 ?>
+                                </option>
                                 <option value="12">12</option>
                                 <option value="01">01</option>
                                 <option value="02">02</option>
@@ -778,9 +771,9 @@
                             </select>
 
                             <select style="width:100px;height:30px" id="time-minute1-4" onclick="">
-                                <!-- <option value="<?php echo $row->start_minute?>">
-                                    <?php echo $row->start_minute ?>
-                                </option> -->
+                                <option value="<?php echo $startminute4 ?>">
+                                    <?php echo $startminute4 ?>
+                                </option>
                                 <option value="00">00</option>
                                 <option value="15">15</option>
                                 <option value="30">30</option>
@@ -789,9 +782,9 @@
                             </select>
 
                             <select style="width:100px;height:30px" id="time-meridian1-4" onclick="">
-                                <!-- <option value="<?php echo $row_meridian1; ?>">
-                                    <?php echo $row_meridian1; ?>
-                                </option> -->
+                                <option value="<?php echo $startmeridian4; ?>">
+                                    <?php echo $startmeridian4; ?>
+                                </option>
                                 <option value="AM">AM</option>
                                 <option value="PM">PM</option>
                             </select>
@@ -804,9 +797,9 @@
                             <input style="height:50px;display:none;" type = "date" required name = "change-time" class = "form-control sign-in-field" id="time-form"><br>
 
                             <select style="width:120px;height:30px" id="time-hour2-4" onclick="">
-                                <!-- <option value="<?php echo $row->end_hour ?>">
-                                    <?php echo $row->end_hour ?>
-                                </option> -->
+                                <option value="<?php echo $endhour4 ?>">
+                                    <?php echo $endhour4 ?>
+                                </option>
                                 <option value="12">12</option>
                                 <option value="01">01</option>
                                 <option value="02">02</option>
@@ -822,12 +815,9 @@
                             </select>
 
                             <select style="width:100px;height:30px" id="time-minute2-4" onclick="">
-                                <!-- <option value="<?php echo $row->end_minute ?>">
-                                    <?php echo $row->end_minute ?>
-                                </option> -->
-                                <!-- <option value="<?php echo $row->start_minute?>">
-                                    <?php echo $row->start_minute ?>
-                                </option> -->
+                                <option value="<?php echo $endminute4 ?>">
+                                    <?php echo $endminute4 ?>
+                                </option>
                                 <option value="00">00</option>
                                 <option value="15">15</option>
                                 <option value="30">30</option>
@@ -835,9 +825,9 @@
                             </select>
 
                             <select style="width:100px;height:30px" id="time-meridian2-4" onclick="">
-                                <!-- <option value="<?php echo $row_meridian2; ?>">
-                                    <?php echo $row_meridian2; ?>
-                                </option> -->
+                                <option value="<?php echo $endmeridian4; ?>">
+                                    <?php echo $endmeridian4; ?>
+                                </option>
                                 <option value="AM">AM</option>
                                 <option value="PM">PM</option>
                             </select>
@@ -852,9 +842,9 @@
                             <input style="height:50px;display:none;" type = "date" required name = "change-time" class = "form-control sign-in-field" id="time-form"><br>
 
                             <select style="width:120px;height:30px" id="time-hour1-5">" onclick="">
-                                <!-- <option value="<?php echo $row->start_hour ?>">
-                                    <?php echo $row->start_hour ?>
-                                </option> -->
+                                <option value="<?php echo $starthour5 ?>">
+                                    <?php echo $starthour5 ?>
+                                </option>
                                 <option value="12">12</option>
                                 <option value="01">01</option>
                                 <option value="02">02</option>
@@ -870,9 +860,9 @@
                             </select>
 
                             <select style="width:100px;height:30px" id="time-minute1-5" onclick="">
-                                <!-- <option value="<?php echo $row->start_minute?>">
-                                    <?php echo $row->start_minute ?>
-                                </option> -->
+                                <option value="<?php echo $startminute5?>">
+                                    <?php echo $startminute5 ?>
+                                </option>
                                 <option value="00">00</option>
                                 <option value="15">15</option>
                                 <option value="30">30</option>
@@ -881,9 +871,9 @@
                             </select>
 
                             <select style="width:100px;height:30px" id="time-meridian1-5" onclick="">
-                                <!-- <option value="<?php echo $row_meridian1; ?>">
-                                    <?php echo $row_meridian1; ?>
-                                </option> -->
+                                <option value="<?php echo $startmeridian5; ?>">
+                                    <?php echo $startmeridian5; ?>
+                                </option>
                                 <option value="AM">AM</option>
                                 <option value="PM">PM</option>
                             </select>
@@ -896,9 +886,9 @@
                             <input style="height:50px;display:none;" type = "date" required name = "change-time" class = "form-control sign-in-field" id="time-form"><br>
 
                             <select style="width:120px;height:30px" id="time-hour2-5" onclick="">
-                                <!-- <option value="<?php echo $row->end_hour ?>">
-                                    <?php echo $row->end_hour ?>
-                                </option> -->
+                                <option value="<?php echo $endhour5 ?>">
+                                    <?php echo $endhour5 ?>
+                                </option>
                                 <option value="12">12</option>
                                 <option value="01">01</option>
                                 <option value="02">02</option>
@@ -914,12 +904,9 @@
                             </select>
 
                             <select style="width:100px;height:30px" id="time-minute2-5" onclick="">
-                                <!-- <option value="<?php echo $row->end_minute ?>">
-                                    <?php echo $row->end_minute ?>
+                                <option value="<?php echo $endminute5 ?>">
+                                    <?php echo $endminute5 ?>
                                 </option>
-                                <option value="<?php echo $row->start_minute?>">
-                                    <?php echo $row->start_minute ?>
-                                </option> -->
                                 <option value="00">00</option>
                                 <option value="15">15</option>
                                 <option value="30">30</option>
@@ -927,9 +914,9 @@
                             </select>
 
                             <select style="width:100px;height:30px" id="time-meridian2-5" onclick="">
-                                <!-- <option value="<?php echo $row_meridian2; ?>">
-                                    <?php echo $row_meridian2; ?>
-                                </option> -->
+                                <option value="<?php echo $endmeridian5; ?>">
+                                    <?php echo $endmeridian5; ?>
+                                </option>
                                 <option value="AM">AM</option>
                                 <option value="PM">PM</option>
                             </select>
@@ -944,9 +931,9 @@
                             <input style="height:50px;display:none;" type = "date" required name = "change-time" class = "form-control sign-in-field" id="time-form"><br>
 
                             <select style="width:120px;height:30px" id="time-hour1-6">" onclick="">
-                                <!-- <option value="<?php echo $row->start_hour ?>">
-                                    <?php echo $row->start_hour ?>
-                                </option> -->
+                                <option value="<?php echo $starthour6 ?>">
+                                    <?php echo $starthour6 ?>
+                                </option>
                                 <option value="12">12</option>
                                 <option value="01">01</option>
                                 <option value="02">02</option>
@@ -962,9 +949,9 @@
                             </select>
 
                             <select style="width:100px;height:30px" id="time-minute1-6" onclick="">
-                                <!-- <option value="<?php echo $row->start_minute?>">
-                                    <?php echo $row->start_minute ?>
-                                </option> -->
+                                <option value="<?php echo $startminute6 ?>">
+                                    <?php echo $startminute6 ?>
+                                </option>
                                 <option value="00">00</option>
                                 <option value="15">15</option>
                                 <option value="30">30</option>
@@ -973,9 +960,9 @@
                             </select>
 
                             <select style="width:100px;height:30px" id="time-meridian1-6" onclick="">
-                                <!-- <option value="<?php echo $row_meridian1; ?>">
-                                    <?php echo $row_meridian1; ?>
-                                </option> -->
+                                <option value="<?php echo $startmeridian6; ?>">
+                                    <?php echo $startmeridian6; ?>
+                                </option>
                                 <option value="AM">AM</option>
                                 <option value="PM">PM</option>
                             </select>
@@ -988,9 +975,9 @@
                             <input style="height:50px;display:none;" type = "date" required name = "change-time" class = "form-control sign-in-field" id="time-form"><br>
 
                             <select style="width:120px;height:30px" id="time-hour2-6" onclick="">
-                                <!-- <option value="<?php echo $row->end_hour ?>">
-                                    <?php echo $row->end_hour ?>
-                                </option> -->
+                                <option value="<?php echo $endhour6 ?>">
+                                    <?php echo $endhour6 ?>
+                                </option>
                                 <option value="12">12</option>
                                 <option value="01">01</option>
                                 <option value="02">02</option>
@@ -1006,12 +993,9 @@
                             </select>
 
                             <select style="width:100px;height:30px" id="time-minute2-6" onclick="">
-                                <!-- <option value="<?php echo $row->end_minute ?>">
-                                    <?php echo $row->end_minute ?>
+                                <option value="<?php echo $endminute6 ?>">
+                                    <?php echo $endminute6 ?>
                                 </option>
-                                <option value="<?php echo $row->start_minute?>">
-                                    <?php echo $row->start_minute ?>
-                                </option> -->
                                 <option value="00">00</option>
                                 <option value="15">15</option>
                                 <option value="30">30</option>
@@ -1019,9 +1003,9 @@
                             </select>
 
                             <select style="width:100px;height:30px" id="time-meridian2-6" onclick="">
-                                <!-- <option value="<?php echo $row_meridian2; ?>">
-                                    <?php echo $row_meridian2; ?>
-                                </option> -->
+                                <option value="<?php echo $endmeridian6; ?>">
+                                    <?php echo $endmeridian6; ?>
+                                </option>
                                 <option value="AM">AM</option>
                                 <option value="PM">PM</option>
                             </select>
@@ -1036,9 +1020,9 @@
                             <input style="height:50px;display:none;" type = "date" required name = "change-time" class = "form-control sign-in-field" id="time-form"><br>
 
                             <select style="width:120px;height:30px" id="time-hour1-7">" onclick="">
-                                <!-- <option value="<?php echo $row->start_hour ?>">
-                                    <?php echo $row->start_hour ?>
-                                </option> -->
+                                <option value="<?php echo $starthour7 ?>">
+                                    <?php echo $starthour7 ?>
+                                </option>
                                 <option value="12">12</option>
                                 <option value="01">01</option>
                                 <option value="02">02</option>
@@ -1054,9 +1038,9 @@
                             </select>
 
                             <select style="width:100px;height:30px" id="time-minute1-7" onclick="">
-                                <!-- <option value="<?php echo $row->start_minute?>">
-                                    <?php echo $row->start_minute ?>
-                                </option> -->
+                                <option value="<?php echo $startminute7 ?>">
+                                    <?php echo $startminute7 ?>
+                                </option>
                                 <option value="00">00</option>
                                 <option value="15">15</option>
                                 <option value="30">30</option>
@@ -1065,9 +1049,9 @@
                             </select>
 
                             <select style="width:100px;height:30px" id="time-meridian1-7" onclick="">
-                                <!-- <option value="<?php echo $row_meridian1; ?>">
-                                    <?php echo $row_meridian1; ?>
-                                </option> -->
+                                <option value="<?php echo $startmeridian7; ?>">
+                                    <?php echo $startmeridian7; ?>
+                                </option>
                                 <option value="AM">AM</option>
                                 <option value="PM">PM</option>
                             </select>
@@ -1080,9 +1064,9 @@
                             <input style="height:50px;display:none;" type = "date" required name = "change-time" class = "form-control sign-in-field" id="time-form"><br>
 
                             <select style="width:120px;height:30px" id="time-hour2-7" onclick="">
-                                <!-- <option value="<?php echo $row->end_hour ?>">
-                                    <?php echo $row->end_hour ?>
-                                </option> -->
+                                <option value="<?php echo $endhour7 ?>">
+                                    <?php echo $endhour7 ?>
+                                </option>
                                 <option value="12">12</option>
                                 <option value="01">01</option>
                                 <option value="02">02</option>
@@ -1098,12 +1082,9 @@
                             </select>
 
                             <select style="width:100px;height:30px" id="time-minute2-7" onclick="">
-                                <!-- <option value="<?php echo $row->end_minute ?>">
-                                    <?php echo $row->end_minute ?>
-                                </option> -->
-                                <!-- <option value="<?php echo $row->start_minute?>">
-                                    <?php echo $row->start_minute ?>
-                                </option> -->
+                                <option value="<?php echo $endminute7 ?>">
+                                    <?php echo $endminute7 ?>
+                                </option>
                                 <option value="00">00</option>
                                 <option value="15">15</option>
                                 <option value="30">30</option>
@@ -1111,9 +1092,9 @@
                             </select>
 
                             <select style="width:100px;height:30px" id="time-meridian2-7" onclick="">
-                                <!-- <option value="<?php echo $row_meridian2; ?>">
-                                    <?php echo $row_meridian2; ?>
-                                </option> -->
+                                <option value="<?php echo $endmeridian7; ?>">
+                                    <?php echo $endmeridian7; ?>
+                                </option>
                                 <option value="AM">AM</option>
                                 <option value="PM">PM</option>
                             </select>
@@ -1122,7 +1103,6 @@
                     </div>
 
                 </div>
-
 
 
                 <div class = "form-group register-field container-fluid">

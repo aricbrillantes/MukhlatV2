@@ -188,47 +188,6 @@
                     $row_meridian1_1 = "AM";
                     $row_meridian1_2 = "AM";
                     
-                    //sunday
-                    if(((int) $starthour1) > 12)
-                    {
-                       switch($starthour1)
-                       {
-                            case "13": $starthour1="01"; break;
-                            case "14": $starthour1="02"; break;
-                            case "15": $starthour1="03"; break;
-                            case "16": $starthour1="04"; break;
-                            case "17": $starthour1="05"; break;
-                            case "18": $starthour1="06"; break;
-                            case "19": $starthour1="07"; break;
-                            case "20": $starthour1="08"; break;
-                            case "21": $starthour1="09"; break;
-                            case "22": $starthour1="10"; break;
-                            case "23": $starthour1="11"; break;
-                       }
-
-                       $row_meridian1_1 = "PM";
-                    }
-
-                    if(((int) $endhour1) > 12 )
-                    {
-                        switch($endhour1)
-                        {
-                            case "13": $endhour1="01"; break;
-                            case "14": $endhour1="02"; break;
-                            case "15": $endhour1="03"; break;
-                            case "16": $endhour1="04"; break;
-                            case "17": $endhour1="05"; break;
-                            case "18": $endhour1="06"; break;
-                            case "19": $endhour1="07"; break;
-                            case "20": $endhour1="08"; break;
-                            case "21": $endhour1="09"; break;
-                            case "22": $endhour1="10"; break;
-                            case "23": $endhour1="11"; break;
-                       }
-
-                       $row_meridian1_2 = "PM";
-                    }       
-
                     // print($starthour1);
                     // print($startminute1);
                 ?>
@@ -270,8 +229,8 @@
                     </select>
 
                     <select style="width:100px;height:30px" id="time-meridian1" onclick="">
-                        <option value="<?php echo $row_meridian1_1; ?>">
-                            <?php echo $row_meridian1_1; ?>
+                        <option value="<?php echo $startmeridian1; ?>">
+                            <?php echo $startmeridian1; ?>
                         </option>
                         <option value="AM">AM</option>
                         <option value="PM">PM</option>
@@ -315,8 +274,8 @@
                     </select>
 
                     <select style="width:100px;height:30px" id="time-meridian2" onclick="">
-                        <option value="<?php echo $row_meridian1_2; ?>">
-                            <?php echo $row_meridian1_2; ?>
+                        <option value="<?php echo $endmeridian1 ?>">
+                            <?php echo $endmeridian1 ?>
                         </option>
                         <option value="AM">AM</option>
                         <option value="PM">PM</option>
@@ -420,7 +379,7 @@
             document.cookie = "basicTime2=" + "hour="+ selectedHour2 + "&minute="+  selectedMinute2 + "&meridian="+selectedMeridian2+";path=/";
 
             document.cookie = "1_sunTime1=" + "starthour1="+ selectedHour1 + "&startminute1="+  selectedMinute1 + "&startmeridian1="+selectedMeridian1+";path=/"; 
-            document.cookie = "1_sunTime2=" + "endhour1="+ selectedHour2 + "&endminute1="+  selectedMinute2 + "&endmeridian1="+selectedMeridian1+";path=/";
+            document.cookie = "1_sunTime2=" + "endhour1="+ selectedHour2 + "&endminute1="+  selectedMinute2 + "&endmeridian1="+selectedMeridian2+";path=/";
 
             document.cookie = "2_monTime1=" + "starthour2="+ selectedHour1 + "&startminute2="+  selectedMinute1 + "&startmeridian2="+selectedMeridian1+";path=/"; 
             document.cookie = "2_monTime2=" + "endhour2="+ selectedHour2 + "&endminute2="+  selectedMinute2 + "&endmeridian2="+selectedMeridian2+";path=/";
@@ -439,6 +398,8 @@
 
             document.cookie = "7_satTime1=" + "starthour7="+ selectedHour1 + "&startminute7="+  selectedMinute1 + "&startmeridian7="+selectedMeridian1+";path=/"; 
             document.cookie = "7_satTime2=" + "endhour7="+ selectedHour2 + "&endminute7="+  selectedMinute2 + "&endmeridian7="+selectedMeridian2+";path=/";
+
+            // alert();
         }
 
         location.reload();
