@@ -182,107 +182,677 @@
 
                 <script> ctr++; </script>
 
-                <div class = "col-xs-12 col-md-6 form-group register-field container-fluid" style = "font-size:14px;">
-                    <h3 class = "no-padding text-info"style = "margin-bottom: 5px; margin-top: 0px;">From</h3>
+                <ul class="nav nav-pills nav-justified">
+                    <li class="active"><a class="col-xs-4 col-md-12" data-toggle="pill" href="#sunday-setting" style="border-radius: 6px;">Sunday</a></li>
+                    <li><a class="col-xs-4 col-md-12" data-toggle="pill" href="#monday-setting" style="border-radius: 6px;">Monday</a></li>
+                    <li><a class="col-xs-4 col-md-12" data-toggle="pill" href="#tuesday-setting" style="border-radius: 6px;">Tuesday</a></li>
+                    <li><a class="col-xs-4 col-md-12" data-toggle="pill" href="#wednesday-setting" style="border-radius: 6px;">Wednesday</a></li>
+                    <li><a class="col-xs-4 col-md-12" data-toggle="pill" href="#thursday-setting" style="border-radius: 6px;">Thursday</a></li>
+                    <li><a class="col-xs-4 col-md-12" data-toggle="pill" href="#friday-setting" style="border-radius: 6px;">Friday</a></li>
+                    <li><a class="col-xs-4 col-md-12" data-toggle="pill" href="#saturday-setting" style="border-radius: 6px;">Saturday</a></li>
+                </ul>
+                <br><br>
 
-                    <input style="height:50px;display:none;" type = "date" required name = "change-time" class = "form-control sign-in-field" id="time-form"><br>
+                <div class="tab-content">
+                    <div id="sunday-setting" class = "form-group register-field container-fluid tab-pane fade in active">
+                        <div class = "col-xs-12 col-md-6 form-group register-field container-fluid" style = "font-size:14px;">
+                            <h3 class = "no-padding text-info"style = "margin-bottom: 5px; margin-top: 0px;">From</h3>
 
-                    <select style="width:120px;height:30px" id="time-hour1-<?php echo $num; ?>">" onclick="">
-                        <option value="<?php echo $row->start_hour ?>">
-                            <?php echo $row->start_hour ?>
-                        </option>
-                        <option value="12">12</option>
-                        <option value="01">01</option>
-                        <option value="02">02</option>
-                        <option value="03">03</option>
-                        <option value="04">04</option>
-                        <option value="05">05</option>
-                        <option value="06">06</option>
-                        <option value="07">07</option>
-                        <option value="08">08</option>
-                        <option value="09">09</option>
-                        <option value="10">10</option>
-                        <option value="11">11</option>
-                    </select>
+                            <input style="height:50px;display:none;" type = "date" required name = "change-time" class = "form-control sign-in-field" id="time-form"><br>
 
-                    <select style="width:100px;height:30px" id="time-minute1-<?php echo $num; ?>" onclick="">
-                        <option value="<?php echo $row->start_minute?>">
-                            <?php echo $row->start_minute ?>
-                        </option>
-                        <option value="00">00</option>
-                        <option value="15">15</option>
-                        <option value="30">30</option>
-                        <option value="45">45</option>
-                 
-                    </select>
+                            <select style="width:120px;height:30px" id="time-hour1-1">" onclick="">
+                                <option value="<?php echo $row->start_hour ?>">
+                                    <?php echo $row->start_hour ?>
+                                </option>
+                                <option value="12">12</option>
+                                <option value="01">01</option>
+                                <option value="02">02</option>
+                                <option value="03">03</option>
+                                <option value="04">04</option>
+                                <option value="05">05</option>
+                                <option value="06">06</option>
+                                <option value="07">07</option>
+                                <option value="08">08</option>
+                                <option value="09">09</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                            </select>
 
-                    <select style="width:100px;height:30px" id="time-meridian1-<?php echo $num; ?>" onclick="">
-                        <option value="<?php echo $row_meridian1; ?>">
-                            <?php echo $row_meridian1; ?>
-                        </option>
-                        <option value="AM">AM</option>
-                        <option value="PM">PM</option>
-                    </select>
+                            <select style="width:100px;height:30px" id="time-minute1-1" onclick="">
+                                <option value="<?php echo $row->start_minute?>">
+                                    <?php echo $row->start_minute ?>
+                                </option>
+                                <option value="00">00</option>
+                                <option value="15">15</option>
+                                <option value="30">30</option>
+                                <option value="45">45</option>
+                         
+                            </select>
+
+                            <select style="width:100px;height:30px" id="time-meridian1-1" onclick="">
+                                <option value="<?php echo $row_meridian1; ?>">
+                                    <?php echo $row_meridian1; ?>
+                                </option>
+                                <option value="AM">AM</option>
+                                <option value="PM">PM</option>
+                            </select>
+
+                        </div>
+
+                        <div class = "col-xs-12 col-md-6 form-group register-field " style = "font-size:14px;">
+                            <h3 class = "no-padding text-info"style = "margin-bottom: 5px; margin-top: 0px;">To</h3>
+
+                            <input style="height:50px;display:none;" type = "date" required name = "change-time" class = "form-control sign-in-field" id="time-form"><br>
+
+                            <select style="width:120px;height:30px" id="time-hour2-1" onclick="">
+                                <option value="<?php echo $row->end_hour ?>">
+                                    <?php echo $row->end_hour ?>
+                                </option>
+                                <option value="12">12</option>
+                                <option value="01">01</option>
+                                <option value="02">02</option>
+                                <option value="03">03</option>
+                                <option value="04">04</option>
+                                <option value="05">05</option>
+                                <option value="06">06</option>
+                                <option value="07">07</option>
+                                <option value="08">08</option>
+                                <option value="09">09</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                            </select>
+
+                            <select style="width:100px;height:30px" id="time-minute2-1" onclick="">
+                                <option value="<?php echo $row->end_minute ?>">
+                                    <?php echo $row->end_minute ?>
+                                </option>
+                                <option value="<?php echo $row->start_minute?>">
+                                    <?php echo $row->start_minute ?>
+                                </option>
+                                <option value="00">00</option>
+                                <option value="15">15</option>
+                                <option value="30">30</option>
+                                <option value="45">45</option>
+                            </select>
+
+                            <select style="width:100px;height:30px" id="time-meridian2-1" onclick="">
+                                <option value="<?php echo $row_meridian2; ?>">
+                                    <?php echo $row_meridian2; ?>
+                                </option>
+                                <option value="AM">AM</option>
+                                <option value="PM">PM</option>
+                            </select>
+                            <br><br><br>
+                        </div>
+                    </div>
+
+                    <div id="monday-setting" class = "form-group register-field container-fluid tab-pane fade">
+                        <div class = "col-xs-12 col-md-6 form-group register-field container-fluid" style = "font-size:14px;">
+                            <h3 class = "no-padding text-info"style = "margin-bottom: 5px; margin-top: 0px;">From</h3>
+
+                            <input style="height:50px;display:none;" type = "date" required name = "change-time" class = "form-control sign-in-field" id="time-form"><br>
+
+                            <select style="width:120px;height:30px" id="time-hour1-2">" onclick="">
+                                <option value="<?php echo $row->start_hour ?>">
+                                    <?php echo $row->start_hour ?>
+                                </option>
+                                <option value="12">12</option>
+                                <option value="01">01</option>
+                                <option value="02">02</option>
+                                <option value="03">03</option>
+                                <option value="04">04</option>
+                                <option value="05">05</option>
+                                <option value="06">06</option>
+                                <option value="07">07</option>
+                                <option value="08">08</option>
+                                <option value="09">09</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                            </select>
+
+                            <select style="width:100px;height:30px" id="time-minute1-2" onclick="">
+                                <option value="<?php echo $row->start_minute?>">
+                                    <?php echo $row->start_minute ?>
+                                </option>
+                                <option value="00">00</option>
+                                <option value="15">15</option>
+                                <option value="30">30</option>
+                                <option value="45">45</option>
+                         
+                            </select>
+
+                            <select style="width:100px;height:30px" id="time-meridian1-2" onclick="">
+                                <option value="<?php echo $row_meridian1; ?>">
+                                    <?php echo $row_meridian1; ?>
+                                </option>
+                                <option value="AM">AM</option>
+                                <option value="PM">PM</option>
+                            </select>
+
+                        </div>
+
+                        <div class = "col-xs-12 col-md-6 form-group register-field " style = "font-size:14px;">
+                            <h3 class = "no-padding text-info"style = "margin-bottom: 5px; margin-top: 0px;">To</h3>
+
+                            <input style="height:50px;display:none;" type = "date" required name = "change-time" class = "form-control sign-in-field" id="time-form"><br>
+
+                            <select style="width:120px;height:30px" id="time-hour2-2" onclick="">
+                                <option value="<?php echo $row->end_hour ?>">
+                                    <?php echo $row->end_hour ?>
+                                </option>
+                                <option value="12">12</option>
+                                <option value="01">01</option>
+                                <option value="02">02</option>
+                                <option value="03">03</option>
+                                <option value="04">04</option>
+                                <option value="05">05</option>
+                                <option value="06">06</option>
+                                <option value="07">07</option>
+                                <option value="08">08</option>
+                                <option value="09">09</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                            </select>
+
+                            <select style="width:100px;height:30px" id="time-minute2-2" onclick="">
+                                <option value="<?php echo $row->end_minute ?>">
+                                    <?php echo $row->end_minute ?>
+                                </option>
+                                <option value="<?php echo $row->start_minute?>">
+                                    <?php echo $row->start_minute ?>
+                                </option>
+                                <option value="00">00</option>
+                                <option value="15">15</option>
+                                <option value="30">30</option>
+                                <option value="45">45</option>
+                            </select>
+
+                            <select style="width:100px;height:30px" id="time-meridian2-2" onclick="">
+                                <option value="<?php echo $row_meridian2; ?>">
+                                    <?php echo $row_meridian2; ?>
+                                </option>
+                                <option value="AM">AM</option>
+                                <option value="PM">PM</option>
+                            </select>
+                            <br><br><br>
+                        </div>
+                    </div>
+
+                    <div id="tuesday-setting" class = "form-group register-field container-fluid tab-pane fade">
+                        <div class = "col-xs-12 col-md-6 form-group register-field container-fluid" style = "font-size:14px;">
+                            <h3 class = "no-padding text-info"style = "margin-bottom: 5px; margin-top: 0px;">From</h3>
+
+                            <input style="height:50px;display:none;" type = "date" required name = "change-time" class = "form-control sign-in-field" id="time-form"><br>
+
+                            <select style="width:120px;height:30px" id="time-hour1-3">" onclick="">
+                                <option value="<?php echo $row->start_hour ?>">
+                                    <?php echo $row->start_hour ?>
+                                </option>
+                                <option value="12">12</option>
+                                <option value="01">01</option>
+                                <option value="02">02</option>
+                                <option value="03">03</option>
+                                <option value="04">04</option>
+                                <option value="05">05</option>
+                                <option value="06">06</option>
+                                <option value="07">07</option>
+                                <option value="08">08</option>
+                                <option value="09">09</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                            </select>
+
+                            <select style="width:100px;height:30px" id="time-minute1-3" onclick="">
+                                <option value="<?php echo $row->start_minute?>">
+                                    <?php echo $row->start_minute ?>
+                                </option>
+                                <option value="00">00</option>
+                                <option value="15">15</option>
+                                <option value="30">30</option>
+                                <option value="45">45</option>
+                         
+                            </select>
+
+                            <select style="width:100px;height:30px" id="time-meridian1-3" onclick="">
+                                <option value="<?php echo $row_meridian1; ?>">
+                                    <?php echo $row_meridian1; ?>
+                                </option>
+                                <option value="AM">AM</option>
+                                <option value="PM">PM</option>
+                            </select>
+
+                        </div>
+
+                        <div class = "col-xs-12 col-md-6 form-group register-field " style = "font-size:14px;">
+                            <h3 class = "no-padding text-info"style = "margin-bottom: 5px; margin-top: 0px;">To</h3>
+
+                            <input style="height:50px;display:none;" type = "date" required name = "change-time" class = "form-control sign-in-field" id="time-form"><br>
+
+                            <select style="width:120px;height:30px" id="time-hour2-3" onclick="">
+                                <option value="<?php echo $row->end_hour ?>">
+                                    <?php echo $row->end_hour ?>
+                                </option>
+                                <option value="12">12</option>
+                                <option value="01">01</option>
+                                <option value="02">02</option>
+                                <option value="03">03</option>
+                                <option value="04">04</option>
+                                <option value="05">05</option>
+                                <option value="06">06</option>
+                                <option value="07">07</option>
+                                <option value="08">08</option>
+                                <option value="09">09</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                            </select>
+
+                            <select style="width:100px;height:30px" id="time-minute2-3" onclick="">
+                                <option value="<?php echo $row->end_minute ?>">
+                                    <?php echo $row->end_minute ?>
+                                </option>
+                                <option value="<?php echo $row->start_minute?>">
+                                    <?php echo $row->start_minute ?>
+                                </option>
+                                <option value="00">00</option>
+                                <option value="15">15</option>
+                                <option value="30">30</option>
+                                <option value="45">45</option>
+                            </select>
+
+                            <select style="width:100px;height:30px" id="time-meridian2-3" onclick="">
+                                <option value="<?php echo $row_meridian2; ?>">
+                                    <?php echo $row_meridian2; ?>
+                                </option>
+                                <option value="AM">AM</option>
+                                <option value="PM">PM</option>
+                            </select>
+                            <br><br><br>
+                        </div>
+                    </div>
+
+                    <div id="wednesday-setting" class = "form-group register-field container-fluid tab-pane fade">
+                        <div class = "col-xs-12 col-md-6 form-group register-field container-fluid" style = "font-size:14px;">
+                            <h3 class = "no-padding text-info"style = "margin-bottom: 5px; margin-top: 0px;">From</h3>
+
+                            <input style="height:50px;display:none;" type = "date" required name = "change-time" class = "form-control sign-in-field" id="time-form"><br>
+
+                            <select style="width:120px;height:30px" id="time-hour1-4">" onclick="">
+                                <option value="<?php echo $row->start_hour ?>">
+                                    <?php echo $row->start_hour ?>
+                                </option>
+                                <option value="12">12</option>
+                                <option value="01">01</option>
+                                <option value="02">02</option>
+                                <option value="03">03</option>
+                                <option value="04">04</option>
+                                <option value="05">05</option>
+                                <option value="06">06</option>
+                                <option value="07">07</option>
+                                <option value="08">08</option>
+                                <option value="09">09</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                            </select>
+
+                            <select style="width:100px;height:30px" id="time-minute1-4" onclick="">
+                                <option value="<?php echo $row->start_minute?>">
+                                    <?php echo $row->start_minute ?>
+                                </option>
+                                <option value="00">00</option>
+                                <option value="15">15</option>
+                                <option value="30">30</option>
+                                <option value="45">45</option>
+                         
+                            </select>
+
+                            <select style="width:100px;height:30px" id="time-meridian1-4" onclick="">
+                                <option value="<?php echo $row_meridian1; ?>">
+                                    <?php echo $row_meridian1; ?>
+                                </option>
+                                <option value="AM">AM</option>
+                                <option value="PM">PM</option>
+                            </select>
+
+                        </div>
+
+                        <div class = "col-xs-12 col-md-6 form-group register-field " style = "font-size:14px;">
+                            <h3 class = "no-padding text-info"style = "margin-bottom: 5px; margin-top: 0px;">To</h3>
+
+                            <input style="height:50px;display:none;" type = "date" required name = "change-time" class = "form-control sign-in-field" id="time-form"><br>
+
+                            <select style="width:120px;height:30px" id="time-hour2-4" onclick="">
+                                <option value="<?php echo $row->end_hour ?>">
+                                    <?php echo $row->end_hour ?>
+                                </option>
+                                <option value="12">12</option>
+                                <option value="01">01</option>
+                                <option value="02">02</option>
+                                <option value="03">03</option>
+                                <option value="04">04</option>
+                                <option value="05">05</option>
+                                <option value="06">06</option>
+                                <option value="07">07</option>
+                                <option value="08">08</option>
+                                <option value="09">09</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                            </select>
+
+                            <select style="width:100px;height:30px" id="time-minute2-4" onclick="">
+                                <option value="<?php echo $row->end_minute ?>">
+                                    <?php echo $row->end_minute ?>
+                                </option>
+                                <option value="<?php echo $row->start_minute?>">
+                                    <?php echo $row->start_minute ?>
+                                </option>
+                                <option value="00">00</option>
+                                <option value="15">15</option>
+                                <option value="30">30</option>
+                                <option value="45">45</option>
+                            </select>
+
+                            <select style="width:100px;height:30px" id="time-meridian2-4" onclick="">
+                                <option value="<?php echo $row_meridian2; ?>">
+                                    <?php echo $row_meridian2; ?>
+                                </option>
+                                <option value="AM">AM</option>
+                                <option value="PM">PM</option>
+                            </select>
+                            <br><br><br>
+                        </div>
+                    </div>
+
+                    <div id="thursday-setting" class = "form-group register-field container-fluid tab-pane fade">
+                        <div class = "col-xs-12 col-md-6 form-group register-field container-fluid" style = "font-size:14px;">
+                            <h3 class = "no-padding text-info"style = "margin-bottom: 5px; margin-top: 0px;">From</h3>
+
+                            <input style="height:50px;display:none;" type = "date" required name = "change-time" class = "form-control sign-in-field" id="time-form"><br>
+
+                            <select style="width:120px;height:30px" id="time-hour1-5">" onclick="">
+                                <option value="<?php echo $row->start_hour ?>">
+                                    <?php echo $row->start_hour ?>
+                                </option>
+                                <option value="12">12</option>
+                                <option value="01">01</option>
+                                <option value="02">02</option>
+                                <option value="03">03</option>
+                                <option value="04">04</option>
+                                <option value="05">05</option>
+                                <option value="06">06</option>
+                                <option value="07">07</option>
+                                <option value="08">08</option>
+                                <option value="09">09</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                            </select>
+
+                            <select style="width:100px;height:30px" id="time-minute1-5" onclick="">
+                                <option value="<?php echo $row->start_minute?>">
+                                    <?php echo $row->start_minute ?>
+                                </option>
+                                <option value="00">00</option>
+                                <option value="15">15</option>
+                                <option value="30">30</option>
+                                <option value="45">45</option>
+                         
+                            </select>
+
+                            <select style="width:100px;height:30px" id="time-meridian1-5" onclick="">
+                                <option value="<?php echo $row_meridian1; ?>">
+                                    <?php echo $row_meridian1; ?>
+                                </option>
+                                <option value="AM">AM</option>
+                                <option value="PM">PM</option>
+                            </select>
+
+                        </div>
+
+                        <div class = "col-xs-12 col-md-6 form-group register-field " style = "font-size:14px;">
+                            <h3 class = "no-padding text-info"style = "margin-bottom: 5px; margin-top: 0px;">To</h3>
+
+                            <input style="height:50px;display:none;" type = "date" required name = "change-time" class = "form-control sign-in-field" id="time-form"><br>
+
+                            <select style="width:120px;height:30px" id="time-hour2-5" onclick="">
+                                <option value="<?php echo $row->end_hour ?>">
+                                    <?php echo $row->end_hour ?>
+                                </option>
+                                <option value="12">12</option>
+                                <option value="01">01</option>
+                                <option value="02">02</option>
+                                <option value="03">03</option>
+                                <option value="04">04</option>
+                                <option value="05">05</option>
+                                <option value="06">06</option>
+                                <option value="07">07</option>
+                                <option value="08">08</option>
+                                <option value="09">09</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                            </select>
+
+                            <select style="width:100px;height:30px" id="time-minute2-5" onclick="">
+                                <option value="<?php echo $row->end_minute ?>">
+                                    <?php echo $row->end_minute ?>
+                                </option>
+                                <option value="<?php echo $row->start_minute?>">
+                                    <?php echo $row->start_minute ?>
+                                </option>
+                                <option value="00">00</option>
+                                <option value="15">15</option>
+                                <option value="30">30</option>
+                                <option value="45">45</option>
+                            </select>
+
+                            <select style="width:100px;height:30px" id="time-meridian2-5" onclick="">
+                                <option value="<?php echo $row_meridian2; ?>">
+                                    <?php echo $row_meridian2; ?>
+                                </option>
+                                <option value="AM">AM</option>
+                                <option value="PM">PM</option>
+                            </select>
+                            <br><br><br>
+                        </div>
+                    </div>
+
+                    <div id="friday-setting" class = "form-group register-field container-fluid tab-pane fade">
+                        <div class = "col-xs-12 col-md-6 form-group register-field container-fluid" style = "font-size:14px;">
+                            <h3 class = "no-padding text-info"style = "margin-bottom: 5px; margin-top: 0px;">From</h3>
+
+                            <input style="height:50px;display:none;" type = "date" required name = "change-time" class = "form-control sign-in-field" id="time-form"><br>
+
+                            <select style="width:120px;height:30px" id="time-hour1-6">" onclick="">
+                                <option value="<?php echo $row->start_hour ?>">
+                                    <?php echo $row->start_hour ?>
+                                </option>
+                                <option value="12">12</option>
+                                <option value="01">01</option>
+                                <option value="02">02</option>
+                                <option value="03">03</option>
+                                <option value="04">04</option>
+                                <option value="05">05</option>
+                                <option value="06">06</option>
+                                <option value="07">07</option>
+                                <option value="08">08</option>
+                                <option value="09">09</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                            </select>
+
+                            <select style="width:100px;height:30px" id="time-minute1-6" onclick="">
+                                <option value="<?php echo $row->start_minute?>">
+                                    <?php echo $row->start_minute ?>
+                                </option>
+                                <option value="00">00</option>
+                                <option value="15">15</option>
+                                <option value="30">30</option>
+                                <option value="45">45</option>
+                         
+                            </select>
+
+                            <select style="width:100px;height:30px" id="time-meridian1-6" onclick="">
+                                <option value="<?php echo $row_meridian1; ?>">
+                                    <?php echo $row_meridian1; ?>
+                                </option>
+                                <option value="AM">AM</option>
+                                <option value="PM">PM</option>
+                            </select>
+
+                        </div>
+
+                        <div class = "col-xs-12 col-md-6 form-group register-field " style = "font-size:14px;">
+                            <h3 class = "no-padding text-info"style = "margin-bottom: 5px; margin-top: 0px;">To</h3>
+
+                            <input style="height:50px;display:none;" type = "date" required name = "change-time" class = "form-control sign-in-field" id="time-form"><br>
+
+                            <select style="width:120px;height:30px" id="time-hour2-6" onclick="">
+                                <option value="<?php echo $row->end_hour ?>">
+                                    <?php echo $row->end_hour ?>
+                                </option>
+                                <option value="12">12</option>
+                                <option value="01">01</option>
+                                <option value="02">02</option>
+                                <option value="03">03</option>
+                                <option value="04">04</option>
+                                <option value="05">05</option>
+                                <option value="06">06</option>
+                                <option value="07">07</option>
+                                <option value="08">08</option>
+                                <option value="09">09</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                            </select>
+
+                            <select style="width:100px;height:30px" id="time-minute2-6" onclick="">
+                                <option value="<?php echo $row->end_minute ?>">
+                                    <?php echo $row->end_minute ?>
+                                </option>
+                                <option value="<?php echo $row->start_minute?>">
+                                    <?php echo $row->start_minute ?>
+                                </option>
+                                <option value="00">00</option>
+                                <option value="15">15</option>
+                                <option value="30">30</option>
+                                <option value="45">45</option>
+                            </select>
+
+                            <select style="width:100px;height:30px" id="time-meridian2-6" onclick="">
+                                <option value="<?php echo $row_meridian2; ?>">
+                                    <?php echo $row_meridian2; ?>
+                                </option>
+                                <option value="AM">AM</option>
+                                <option value="PM">PM</option>
+                            </select>
+                            <br><br><br>
+                        </div>
+                    </div>
+
+                    <div id="saturday-setting" class = "form-group register-field container-fluid tab-pane fade">
+                        <div class = "col-xs-12 col-md-6 form-group register-field container-fluid" style = "font-size:14px;">
+                            <h3 class = "no-padding text-info"style = "margin-bottom: 5px; margin-top: 0px;">From</h3>
+
+                            <input style="height:50px;display:none;" type = "date" required name = "change-time" class = "form-control sign-in-field" id="time-form"><br>
+
+                            <select style="width:120px;height:30px" id="time-hour1-7">" onclick="">
+                                <option value="<?php echo $row->start_hour ?>">
+                                    <?php echo $row->start_hour ?>
+                                </option>
+                                <option value="12">12</option>
+                                <option value="01">01</option>
+                                <option value="02">02</option>
+                                <option value="03">03</option>
+                                <option value="04">04</option>
+                                <option value="05">05</option>
+                                <option value="06">06</option>
+                                <option value="07">07</option>
+                                <option value="08">08</option>
+                                <option value="09">09</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                            </select>
+
+                            <select style="width:100px;height:30px" id="time-minute1-7" onclick="">
+                                <option value="<?php echo $row->start_minute?>">
+                                    <?php echo $row->start_minute ?>
+                                </option>
+                                <option value="00">00</option>
+                                <option value="15">15</option>
+                                <option value="30">30</option>
+                                <option value="45">45</option>
+                         
+                            </select>
+
+                            <select style="width:100px;height:30px" id="time-meridian1-7" onclick="">
+                                <option value="<?php echo $row_meridian1; ?>">
+                                    <?php echo $row_meridian1; ?>
+                                </option>
+                                <option value="AM">AM</option>
+                                <option value="PM">PM</option>
+                            </select>
+
+                        </div>
+
+                        <div class = "col-xs-12 col-md-6 form-group register-field " style = "font-size:14px;">
+                            <h3 class = "no-padding text-info"style = "margin-bottom: 5px; margin-top: 0px;">To</h3>
+
+                            <input style="height:50px;display:none;" type = "date" required name = "change-time" class = "form-control sign-in-field" id="time-form"><br>
+
+                            <select style="width:120px;height:30px" id="time-hour2-7" onclick="">
+                                <option value="<?php echo $row->end_hour ?>">
+                                    <?php echo $row->end_hour ?>
+                                </option>
+                                <option value="12">12</option>
+                                <option value="01">01</option>
+                                <option value="02">02</option>
+                                <option value="03">03</option>
+                                <option value="04">04</option>
+                                <option value="05">05</option>
+                                <option value="06">06</option>
+                                <option value="07">07</option>
+                                <option value="08">08</option>
+                                <option value="09">09</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                            </select>
+
+                            <select style="width:100px;height:30px" id="time-minute2-7" onclick="">
+                                <option value="<?php echo $row->end_minute ?>">
+                                    <?php echo $row->end_minute ?>
+                                </option>
+                                <option value="<?php echo $row->start_minute?>">
+                                    <?php echo $row->start_minute ?>
+                                </option>
+                                <option value="00">00</option>
+                                <option value="15">15</option>
+                                <option value="30">30</option>
+                                <option value="45">45</option>
+                            </select>
+
+                            <select style="width:100px;height:30px" id="time-meridian2-7" onclick="">
+                                <option value="<?php echo $row_meridian2; ?>">
+                                    <?php echo $row_meridian2; ?>
+                                </option>
+                                <option value="AM">AM</option>
+                                <option value="PM">PM</option>
+                            </select>
+                            <br><br><br>
+                        </div>
+                    </div>
 
                 </div>
 
 
 
-                <div class = "col-xs-12 col-md-6 form-group register-field " style = "font-size:14px;">
-                    <h3 class = "no-padding text-info"style = "margin-bottom: 5px; margin-top: 0px;">To</h3>
-
-                    <input style="height:50px;display:none;" type = "date" required name = "change-time" class = "form-control sign-in-field" id="time-form"><br>
-
-                    <select style="width:120px;height:30px" id="time-hour2-<?php echo $num; ?>" onclick="">
-                        <option value="<?php echo $row->end_hour ?>">
-                            <?php echo $row->end_hour ?>
-                        </option>
-                        <option value="12">12</option>
-                        <option value="01">01</option>
-                        <option value="02">02</option>
-                        <option value="03">03</option>
-                        <option value="04">04</option>
-                        <option value="05">05</option>
-                        <option value="06">06</option>
-                        <option value="07">07</option>
-                        <option value="08">08</option>
-                        <option value="09">09</option>
-                        <option value="10">10</option>
-                        <option value="11">11</option>
-                    </select>
-
-                    <select style="width:100px;height:30px" id="time-minute2-<?php echo $num; ?>" onclick="">
-                        <option value="<?php echo $row->end_minute ?>">
-                            <?php echo $row->end_minute ?>
-                        </option>
-                        <option value="<?php echo $row->start_minute?>">
-                            <?php echo $row->start_minute ?>
-                        </option>
-                        <option value="00">00</option>
-                        <option value="15">15</option>
-                        <option value="30">30</option>
-                        <option value="45">45</option>
-                    </select>
-
-                    <select style="width:100px;height:30px" id="time-meridian2-<?php echo $num; ?>" onclick="">
-                        <option value="<?php echo $row_meridian2; ?>">
-                            <?php echo $row_meridian2; ?>
-                        </option>
-                        <option value="AM">AM</option>
-                        <option value="PM">PM</option>
-                    </select>
-                    <br><br><br>
-                </div>
-
-                <div class = "col-xs-12 col-md-4 form-group register-field" style = "font-size:14px;">
-                    <h3 class = "no-padding text-info"style = "margin-bottom: 5px; margin-top: 0px;">Warning</h3>
-                    <div class="checkbox">
-                        <label><input type="checkbox" value="">Option 1</label>
+                <div class = "form-group register-field container-fluid">
+                    <div class = "col-xs-12 col-md-4 form-group register-field" style = "font-size:14px;">
+                        <h3 class = "no-padding text-info"style = "margin-bottom: 5px; margin-top: 0px;">Warning</h3>
+                        <div class="checkbox">
+                            <label><input type="checkbox" value="">Option 1</label>
+                        </div>
+                        <div class="checkbox">
+                            <label><input type="checkbox" value="">Option 2</label>
+                        </div>
+                        <br>
                     </div>
-                    <div class="checkbox">
-                        <label><input type="checkbox" value="">Option 2</label>
-                    </div>
-                    <br>
                 </div>
                 
 
@@ -294,7 +864,7 @@
              	</div>
 
             </div>
-            
+
         </div>    
     </div>
     
@@ -312,8 +882,30 @@
         var hour2, minute2, meridian2;
         var warning;
 
+        var selectedHour1_1, selectedMinute1_1, selectedMeridian1_1;
+        var selectedHour2_1, selectedMinute2_1, selectedMeridian2_1;
+
+        var selectedHour1_2, selectedMinute1_2, selectedMeridian1_2;
+        var selectedHour2_2, selectedMinute2_2, selectedMeridian2_2;
+
+        var selectedHour1_3, selectedMinute1_3, selectedMeridian1_3;
+        var selectedHour2_3, selectedMinute2_3, selectedMeridian2_3;
+
+        var selectedHour1_4, selectedMinute1_4, selectedMeridian1_4;
+        var selectedHour2_4, selectedMinute2_4, selectedMeridian2_4;
+
+        var selectedHour1_5, selectedMinute1_5, selectedMeridian1_5;
+        var selectedHour2_5, selectedMinute2_5, selectedMeridian2_5;
+
+        var selectedHour1_6, selectedMinute1_6, selectedMeridian1_6;
+        var selectedHour2_6, selectedMinute2_6, selectedMeridian2_6;
+
+        var selectedHour1_7, selectedMinute1_7, selectedMeridian1_7;
+        var selectedHour2_7, selectedMinute2_7, selectedMeridian2_7;
+
         var selectedHour1, selectedMinute1, selectedMeridian1;
         var selectedHour2, selectedMinute2, selectedMeridian2;
+
         var selectedWarning;
 
         var i;
@@ -324,21 +916,29 @@
 
             selectedWarning = warning.options[warning.selectedIndex].value;
 
-            hour1 = document.getElementById("time-hour1-" + i);
-            minute1 = document.getElementById("time-minute1-" + i);
-            meridian1 = document.getElementById("time-meridian1-" + i);
+            hour1_1 = document.getElementById("time-hour1-" + i);
+            minute1_1 = document.getElementById("time-minute1-" + i);
+            meridian1_1 = document.getElementById("time-meridian1-" + i);
 
-            hour2 = document.getElementById("time-hour2-" + i);
-            minute2 = document.getElementById("time-minute2-" + i);
-            meridian2 = document.getElementById("time-meridian2-" + i);
+            hour2_1 = document.getElementById("time-hour2-" + i);
+            minute2_1 = document.getElementById("time-minute2-" + i);
+            meridian2_1 = document.getElementById("time-meridian2-" + i);
 
-            selectedHour1 = hour1.options[hour1.selectedIndex].value;
-            selectedMinute1 = minute1.options[minute1.selectedIndex].value;
-            selectedMeridian1 = meridian1.options[meridian1.selectedIndex].value;
+            selectedHour1_1 = hour1.options[hour1.selectedIndex].value;
+            selectedMinute1_1 = minute1.options[minute1.selectedIndex].value;
+            selectedMeridian1_1 = meridian1.options[meridian1.selectedIndex].value;
             
-            selectedHour2 = hour2.options[hour2.selectedIndex].value;
-            selectedMinute2 = minute2.options[minute2.selectedIndex].value;
-            selectedMeridian2 = meridian2.options[meridian2.selectedIndex].value;
+            selectedHour2_1 = hour2.options[hour2.selectedIndex].value;
+            selectedMinute2_1 = minute2.options[minute2.selectedIndex].value;
+            selectedMeridian2_1 = meridian2.options[meridian2.selectedIndex].value;
+
+            selectedHour1_2 = hour1.options[hour1.selectedIndex].value;
+            selectedMinute1_2 = minute1.options[minute1.selectedIndex].value;
+            selectedMeridian1_2 = meridian1.options[meridian1.selectedIndex].value;
+            
+            selectedHour2_2 = hour2.options[hour2.selectedIndex].value;
+            selectedMinute2_2 = minute2.options[minute2.selectedIndex].value;
+            selectedMeridian2_2 = meridian2.options[meridian2.selectedIndex].value;
 
             // alert("i=" + i + " " + selectedHour1 + ":" + selectedMinute1 + " " + selectedMeridian1);
             // alert("i=" + i + " " + selectedHour2 + ":" + selectedMinute2 + " " + selectedMeridian2);
