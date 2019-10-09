@@ -23,48 +23,48 @@ class Home extends CI_Controller
 
                 $this->load->model('user_model', 'user');
 
-                $usertimes = $this->user->get_usertimes($logged_user->user_id);
-                // echo print_r($usertimes->result());
-                date_default_timezone_set('Asia/Manila');
+                // $usertimes = $this->user->get_usertimes($logged_user->user_id);
+                // // echo print_r($usertimes->result());
+                // date_default_timezone_set('Asia/Manila');
 
-                if ($usertimes) 
-                {
-                    $restrict = 0;
+                // if ($usertimes) 
+                // {
+                //     $restrict = 0;
 
-                    // echo "<b>Successful query!</b><br><b>Allowed times:</b>";
-                    foreach ($usertimes->result() as $row)
-                    {
-                        $restrict = 0;
-                        // echo "<br>" . (int) $row->start_hour . ":" . $row->start_minute . "-" . $row->end_hour . ":" . $row->end_minute;
+                //     // echo "<b>Successful query!</b><br><b>Allowed times:</b>";
+                //     foreach ($usertimes->result() as $row)
+                //     {
+                //         $restrict = 0;
+                //         // echo "<br>" . (int) $row->start_hour . ":" . $row->start_minute . "-" . $row->end_hour . ":" . $row->end_minute;
                         
-                        if
-                        (   ((int) date("G") > (int) $row->start_hour && (int) date("G") < (int) $row->end_hour) ||
-                            ((int) date("G") == (int) $row->start_hour && (int) date("i") > (int) $row->start_minute) ||
-                            ((int) date("G") == (int) $row->end_hour && (int) date("i") < (int) $row->end_minute)
-                        )
-                        {
-                            $restrict = 0;
-                            break;
-                        }
+                //         if
+                //         (   ((int) date("G") > (int) $row->start_hour && (int) date("G") < (int) $row->end_hour) ||
+                //             ((int) date("G") == (int) $row->start_hour && (int) date("i") > (int) $row->start_minute) ||
+                //             ((int) date("G") == (int) $row->end_hour && (int) date("i") < (int) $row->end_minute)
+                //         )
+                //         {
+                //             $restrict = 0;
+                //             break;
+                //         }
 
-                        else
-                        {
-                            $restrict = 1;
-                            echo "<br> You cannot use<br>";
-                            break;
-                        }
+                //         else
+                //         {
+                //             $restrict = 1;
+                //             echo "<br> You cannot use<br>";
+                //             break;
+                //         }
 
-                    }
+                //     }
 
-                    echo "<br><b>Current time:</b> " . (int) date("G") . ": " . date("i")  ;
-                    //set default timezone to Manila
+                //     echo "<br><b>Current time:</b> " . (int) date("G") . ": " . date("i")  ;
+                //     //set default timezone to Manila
                     
-                    // echo "<br><br>The current server timezone is: " . date_default_timezone_get();
-                    // echo "<br>Date/time is " . date('m/d/Y h:i:s a', time()) . "<br>";
-                } 
+                //     // echo "<br><br>The current server timezone is: " . date_default_timezone_get();
+                //     // echo "<br>Date/time is " . date('m/d/Y h:i:s a', time()) . "<br>";
+                // } 
 
-                else
-                    echo 0;
+                // else
+                //     echo 0;
                 
             }
             

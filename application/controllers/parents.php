@@ -47,6 +47,11 @@ class Parents extends CI_Controller {
         $this->load->view('pages/child_settings');
     }
 
+    public function advanced() 
+    {
+        $this->load->view('pages/child_advanced');
+    }
+
     public function load_network() 
     {
         $this->load->model('network_model', 'net');

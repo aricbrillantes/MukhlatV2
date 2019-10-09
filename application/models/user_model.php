@@ -43,6 +43,22 @@ class User_model extends CI_Model {
         return $user;
     }
 
+    public function isParent($parent_id,$child_id) 
+    {
+       $query = $this->db->select('user_id')
+                ->from('tbl_users')
+                ->where('user_id', $child_id)
+                ->where('parent', $parent_id);
+
+        $query = $this->db->get();
+        
+        // echo print_r($query->result());
+
+        if($query->num_rows() < 1)
+            return 999;
+        
+    }
+
     //function for getting parents' children's data
     public function view_child($parent_id) 
     {
@@ -74,7 +90,7 @@ class User_model extends CI_Model {
     public function get_usertimes($user_id) 
     {
 
-        $this->db->select('start_hour, start_minute, end_hour, end_minute');
+        $this->db->select('*');
         $this->db->from('tbl_users');
         $this->db->join('tbl_usertimes', 'tbl_usertimes.user_id = tbl_users.user_id');
         $this->db->where(array('tbl_usertimes.user_id' => $user_id));
@@ -86,71 +102,50 @@ class User_model extends CI_Model {
 
     public function set_usertimes($user_id) 
     {        
-        if($user_id)
-        {
-            echo $user_id . "<br>";
-            echo htmlspecialchars($_COOKIE["selectedHour2"]);
-        }
+        $i = 0;
 
-        $start_hour = htmlspecialchars($_COOKIE["selectedHour1"]);
-        $end_hour = htmlspecialchars($_COOKIE["selectedHour2"]);
+        $this->db->delete('tbl_usertimes', array('user_id' => $user_id));
 
-        $start_minute = htmlspecialchars($_COOKIE["selectedMinute1"]);
-        $end_minute = htmlspecialchars($_COOKIE["selectedMinute2"]);
+        $sunTime1 = htmlspecialchars($_COOKIE["1_sunTime1"]);
+        $sunTime2 = htmlspecialchars($_COOKIE["1_sunTime2"]); 
 
-        $start_meridian = htmlspecialchars($_COOKIE["selectedMeridian1"]);
-        $end_meridian = htmlspecialchars($_COOKIE["selectedMeridian2"]);
+        $monTime1 = htmlspecialchars($_COOKIE["2_monTime1"]);
+        $monTime2 = htmlspecialchars($_COOKIE["2_monTime2"]);
 
-        if($start_meridian == "PM")
-        {
-            switch($start_hour)
-            {
-                case "01": $start_hour="13"; break;
-                case "02": $start_hour="14"; break;
-                case "03": $start_hour="15"; break;
-                case "04": $start_hour="16"; break;
-                case "05": $start_hour="17"; break;
-                case "06": $start_hour="18"; break;
-                case "07": $start_hour="19"; break;
-                case "08": $start_hour="20"; break;
-                case "09": $start_hour="21"; break;
-                case "10": $start_hour="22"; break;
-                case "11": $start_hour="23"; break;
-                case "12": $start_hour="24"; break;
-            }
-        }
+        $tueTime1 = htmlspecialchars($_COOKIE["3_tueTime1"]); 
+        $tueTime2 = htmlspecialchars($_COOKIE["3_tueTime2"]); 
 
+        $wedTime1 = htmlspecialchars($_COOKIE["4_wedTime1"]);
+        $wedTime2 = htmlspecialchars($_COOKIE["4_wedTime2"]);
 
-        if($end_meridian == "PM")
-        {
-            switch($end_hour)
-            {
-                case "01": $end_hour="13"; break;
-                case "02": $end_hour="14"; break;
-                case "03": $end_hour="15"; break;
-                case "04": $end_hour="16"; break;
-                case "05": $end_hour="17"; break;
-                case "06": $end_hour="18"; break;
-                case "07": $end_hour="19"; break;
-                case "08": $end_hour="20"; break;
-                case "09": $end_hour="21"; break;
-                case "10": $end_hour="22"; break;
-                case "11": $end_hour="23"; break;
-                case "12": $end_hour="24"; break;
-            }
-        }
+        $thuTime1 = htmlspecialchars($_COOKIE["5_thuTime1"]);
+        $thuTime2 = htmlspecialchars($_COOKIE["5_thuTime2"]);
+
+        $friTime1 = htmlspecialchars($_COOKIE["6_friTime1"]);
+        $friTime2 = htmlspecialchars($_COOKIE["6_friTime2"]);
+
+        $satTime1 = htmlspecialchars($_COOKIE["7_satTime1"]);
+        $satTime2 = htmlspecialchars($_COOKIE["7_satTime2"]);
+
+        $warning = htmlspecialchars($_COOKIE["selectedWarning"]);
+
 
         $data = array
         (
-            'user_id'=>$user_id,
-            'start_hour'=> $start_hour,
-            'end_hour'=> $end_hour,
-            'start_minute'=>$start_minute,
-            'end_minute'=>$end_minute
+            'user_id' => $user_id,
+            'sun_time'=> $sunTime1 . "&" . $sunTime2,
+            'mon_time'=> $monTime1 . "&" . $monTime2,
+            'tue_time'=> $tueTime1 . "&" . $tueTime2,
+            'wed_time'=> $wedTime1 . "&" . $wedTime2,
+            'thu_time'=> $thuTime1 . "&" . $thuTime2,
+            'fri_time'=> $friTime1 . "&" . $friTime2,
+            'sat_time'=> $satTime1 . "&" . $satTime2,
+            'warning' => $warning
         );
 
-        $this->db->insert('tbl_usertimes',$data);  
-
+         
+        $this->db->insert('tbl_usertimes',$data);   
+        header("Refresh:0");
     }
 
     public function get_child_records($user_id) 
