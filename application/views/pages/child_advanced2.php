@@ -320,57 +320,57 @@
 
                         <tr>
                             <td>08:30-09:00</td>
-                            <td id="cell28" onclick="colorchange(this.id)"> </td>
                             <td id="cell29" onclick="colorchange(this.id)"> </td>
                             <td id="cell30" onclick="colorchange(this.id)"> </td>
                             <td id="cell31" onclick="colorchange(this.id)"> </td>
                             <td id="cell32" onclick="colorchange(this.id)"> </td>
                             <td id="cell33" onclick="colorchange(this.id)"> </td>
                             <td id="cell34" onclick="colorchange(this.id)"> </td>
+                            <td id="cell35" onclick="colorchange(this.id)"> </td>
                         </tr>
 
                         <tr>
                             <td>09:00-09:30</td>
-                            <td id="cell35" onclick="colorchange(this.id)"> </td>
                             <td id="cell36" onclick="colorchange(this.id)"> </td>
                             <td id="cell37" onclick="colorchange(this.id)"> </td>
                             <td id="cell38" onclick="colorchange(this.id)"> </td>
                             <td id="cell39" onclick="colorchange(this.id)"> </td>
                             <td id="cell40" onclick="colorchange(this.id)"> </td>
                             <td id="cell41" onclick="colorchange(this.id)"> </td>
+                            <td id="cell42" onclick="colorchange(this.id)"> </td>
                         </tr>
 
                         <tr>
                             <td>09:30-10:00</td>
-                            <td id="cell42" onclick="colorchange(this.id)"> </td>
                             <td id="cell43" onclick="colorchange(this.id)"> </td>
                             <td id="cell44" onclick="colorchange(this.id)"> </td>
                             <td id="cell45" onclick="colorchange(this.id)"> </td>
                             <td id="cell46" onclick="colorchange(this.id)"> </td>
                             <td id="cell47" onclick="colorchange(this.id)"> </td>
                             <td id="cell48" onclick="colorchange(this.id)"> </td>
+                            <td id="cell49" onclick="colorchange(this.id)"> </td>
                         </tr>
 
                         <tr>
                             <td>10:00-10:30</td>
-                            <td id="cell49" onclick="colorchange(this.id)"> </td>
                             <td id="cell50" onclick="colorchange(this.id)"> </td>
                             <td id="cell51" onclick="colorchange(this.id)"> </td>
                             <td id="cell52" onclick="colorchange(this.id)"> </td>
                             <td id="cell53" onclick="colorchange(this.id)"> </td>
                             <td id="cell54" onclick="colorchange(this.id)"> </td>
                             <td id="cell55" onclick="colorchange(this.id)"> </td>
+                            <td id="cell56" onclick="colorchange(this.id)"> </td>
                         </tr>
 
                         <tr>
                             <td>10:30-11:00</td>
-                            <td id="cell56" onclick="colorchange(this.id)"> </td>
                             <td id="cell57" onclick="colorchange(this.id)"> </td>
                             <td id="cell58" onclick="colorchange(this.id)"> </td>
                             <td id="cell59" onclick="colorchange(this.id)"> </td>
                             <td id="cell60" onclick="colorchange(this.id)"> </td>
                             <td id="cell61" onclick="colorchange(this.id)"> </td>
                             <td id="cell62" onclick="colorchange(this.id)"> </td>
+                            <td id="cell63" onclick="colorchange(this.id)"> </td>
                         </tr>
                         
 
