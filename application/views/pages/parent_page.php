@@ -86,10 +86,42 @@
     <div class = "container-fluid">
         
         <a class = "navbar-brand" href = "<?php echo base_url('home') ?>"><img id = "nav-logo" src = "<?php echo base_url('images/logo/mukhlatlogo_side_basic.png'); ?>"/></a>
-            
-        <a href = "<?php echo base_url('signin/logout'); ?>" class = "pull-right btn btn-primary btn-md" style = "margin-right: 20px; margin-top: 10px; margin-bottom: 10px;">Log Out</a>
+
+        <?php if (!$mobile): ?>
+
+            <ul class = "nav navbar-nav navbar-right pull-right" style = "margin-right: 5px;">
+                <li class="dropdown">
+
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <img class = "img-rounded nav-prof-pic" src = "<?php echo $logged_user->profile_url ? base_url($logged_user->profile_url) : base_url('images/default.jpg') ?>"/> 
+                        <?php echo $logged_user->first_name . " " . $logged_user->last_name; ?>
+                        
+                        <span class="caret"></span>
+                    </a>                 
+                
+                    <ul class="dropdown-menu">
+                        <!-- <li><a href="<?php echo base_url('user/profile/' . $logged_user->user_id); ?>"><i class = "fa fa-user"></i> My Profile</a></li> -->
+                        
+                        <?php foreach ($children->result() as $child):$data['user'] = $this->users->get_user(true, true, array('user_id' =>  $child->user_id));?>
+
+                        <li><a href="<?php echo base_url('parents/activity/' . $child->user_id); ?>"><i class = "fa fa-user" style="color:green"></i> <?php echo $child->first_name . " " . $child->last_name ?></a></li>    
+                        <?php endforeach; ?>
+
+                        <li><span style="color:white">______</span></li>
+                        
+                        <li><a href="<?php echo base_url('signin/logout');?>"><i class = "glyphicon glyphicon-log-out" style="color:red"></i> Logout</a></li>
+
+                    </ul>
+                </li>
+            </ul>
+
+        <?php else: ?>
+            <a href = "<?php echo base_url('signin/logout'); ?>" class = "pull-right btn btn-primary btn-md" style = "margin-right: 20px; margin-top: 10px; margin-bottom: 10px;">Log Out</a>
+                            
+        <?php endif; ?>
 
     </div>
+    
 </nav><br><br><br>
 
 <body class = "sign-in">

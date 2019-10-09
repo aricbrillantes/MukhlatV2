@@ -30,6 +30,9 @@
         header("Location: $homeURL");
     }
 
+    //get children for navbar
+    $children_display = $CI->user_model->view_child($logged_user->user_id);
+
     //get data of child being monitored
     $children = $CI->user_model->view_specific_child($id);
 
@@ -68,7 +71,7 @@
 
 <script>
     document.cookie = "updatetime=0;path=/";
-    
+
     document.cookie = "selectedWarning=0;path=/";   
 
     document.cookie = "selectedHour1-0=0;path=/";   
@@ -119,8 +122,38 @@
         </a>
             
             
-        <a href = "<?php echo base_url('signin/logout'); ?>" class = "pull-right btn btn-primary btn-md" style = "margin-right: 20px; margin-top: 10px; margin-bottom: 10px;">Log Out</a>
+        <?php if (!$mobile): ?>
 
+            <ul class = "nav navbar-nav navbar-right pull-right" style = "margin-right: 5px;">
+                <li class="dropdown">
+
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <img class = "img-rounded nav-prof-pic" src = "<?php echo $logged_user->profile_url ? base_url($logged_user->profile_url) : base_url('images/default.jpg') ?>"/> 
+                        <?php echo $logged_user->first_name . " " . $logged_user->last_name; ?>
+                        
+                        <span class="caret"></span>
+                    </a>                 
+                
+                    <ul class="dropdown-menu">
+                        <!-- <li><a href="<?php echo base_url('user/profile/' . $logged_user->user_id); ?>"><i class = "fa fa-user"></i> My Profile</a></li> -->
+                        
+                        <?php foreach ($children_display->result() as $child):$data['user'] = $CI->user_model->get_user(true, true, array('user_id' =>  $child->user_id));?>
+
+                        <li><a href="<?php echo base_url('parents/activity/' . $child->user_id); ?>"><i class = "fa fa-user" style="color:green"></i> <?php echo $child->first_name . " " . $child->last_name ?></a></li>    
+                        <?php endforeach; ?>
+
+                        <li><span style="color:white">______</span></li>
+                        
+                        <li><a href="<?php echo base_url('signin/logout');?>"><i class = "glyphicon glyphicon-log-out" style="color:red"></i> Logout</a></li>
+
+                    </ul>
+                </li>
+            </ul>
+
+        <?php else: ?>
+            <a href = "<?php echo base_url('signin/logout'); ?>" class = "pull-right btn btn-primary btn-md" style = "margin-right: 20px; margin-top: 10px; margin-bottom: 10px;">Log Out</a>
+                            
+        <?php endif; ?>
         
     </div>
 </nav><br><br><br>
@@ -176,9 +209,9 @@
                     <br>
                     <div class = "col-sm-12 " style = "margin-bottom: 40px">
                         <ul class="nav nav-pills nav-justified">
-                            <li class="active"><a data-toggle="pill" href="#user-topic-created">Created Topics</a></li>
-                            <li><a data-toggle="pill" href="#user-topic-moderated">Moderated Topics</a></li>
-                            <li><a data-toggle="pill" href="#user-topic-followed">Followed Topics</a></li>
+                            <li class="active "><a data-toggle="pill" href="#user-topic-created">Created Topics</a></li>
+                            <!-- <li class=""><a data-toggle="pill" href="#user-topic-moderated">Moderated Topics</a></li> -->
+                            <li class=""><a data-toggle="pill" href="#user-topic-followed">Followed Topics</a></li>
                         </ul>
                         <br>
 
@@ -222,7 +255,7 @@
                             <div id="user-topic-followed" class="tab-pane fade">
                                 <div class = "col-sm-12 no-padding">
                                     <div class = "user-header">
-                                        <h4 class = "text-center"><strong>Topics Followed by <?php echo $child->first_name; ?></strong></h4>
+                                        <h4 class = "text-center"><strong>Topics <?php echo $child->first_name; ?> Follows</strong></h4>
                                     </div>
                                     <div class = "">
                                         <ul class="nav">
@@ -245,7 +278,7 @@
                 <!-- Activity -->
                 <div class = "col-xs-12 col-md-6 content-container container-fluid" style = "margin-bottom: 5px; margin-left: 0px">
                     <h3 class = "text-info text-center user-activities-header">
-                        <strong>Activities of <?php echo $child->first_name; ?></strong>
+                        <strong><?php echo $child->first_name; ?>'s Activity</strong>
                     </h3>
                     
                     <div class = "col-sm-12 " style = "margin-bottom: 40px">
@@ -255,10 +288,10 @@
                                 <div class = "user-post-heading no-margin">
                                     
                                     <?php if (empty($post->parent)): ?>
-                                        <span>posted in</span> 
+                                        <b><span>commented</b> in</span>
 
                                     <?php else: ?>
-                                        <span>commented in</span> 
+                                        <b><span>commented</b> in</span> 
 
                                     <?php endif; ?>
                                     

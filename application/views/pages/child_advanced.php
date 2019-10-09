@@ -30,6 +30,9 @@
         header("Location: $homeURL");
     }
 
+    //get children for navbar
+    $children_display = $CI->user_model->view_child($logged_user->user_id);
+
     //get data of child being monitored
     $children = $CI->user_model->view_specific_child($id);
   
@@ -128,7 +131,6 @@
 <!-- Nav Bar -->
 <nav class = "navbar navbar-default navbar-font navbar-fixed-top" style = "border-bottom: 1px solid #CFD8DC;">
     <div class = "container-fluid">
-        
         <a class = "pull-left btn btn-topic-header" style = "display: inline-block; margin-right: 5px; border:0" href="<?php echo base_url('parents/settings/' . $child->user_id) ?>">
             <h3 class = "pull-left" style = "margin-top: 3px; margin-bottom: 0px; padding: 2px;">
                 <strong class = "text-info"><i class = "fa fa-chevron-left"></i> 
@@ -137,8 +139,40 @@
             </h3>
         </a>
             
-        <a href = "<?php echo base_url('signin/logout'); ?>" class = "pull-right btn btn-primary btn-md" style = "margin-right: 20px; margin-top: 10px; margin-bottom: 10px;">Log Out</a>
+            
+        <?php if (!$mobile): ?>
 
+            <ul class = "nav navbar-nav navbar-right pull-right" style = "margin-right: 5px;">
+                <li class="dropdown">
+
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <img class = "img-rounded nav-prof-pic" src = "<?php echo $logged_user->profile_url ? base_url($logged_user->profile_url) : base_url('images/default.jpg') ?>"/> 
+                        <?php echo $logged_user->first_name . " " . $logged_user->last_name; ?>
+                        
+                        <span class="caret"></span>
+                    </a>                 
+                
+                    <ul class="dropdown-menu">
+                        <!-- <li><a href="<?php echo base_url('user/profile/' . $logged_user->user_id); ?>"><i class = "fa fa-user"></i> My Profile</a></li> -->
+                        
+                        <?php foreach ($children_display->result() as $children):$data['user'] = $CI->user_model->get_user(true, true, array('user_id' =>  $children->user_id));?>
+
+                        <li><a href="<?php echo base_url('parents/advanced/' . $children->user_id); ?>"><i class = "fa fa-user" style="color:green"></i> <?php echo $children->first_name . " " . $children->last_name ?></a></li>    
+                        <?php endforeach; ?>
+
+                        <li><span style="color:white">______</span></li>
+                        
+                        <li><a href="<?php echo base_url('signin/logout');?>"><i class = "glyphicon glyphicon-log-out" style="color:red"></i> Logout</a></li>
+
+                    </ul>
+                </li>
+            </ul>
+
+        <?php else: ?>
+            <a href = "<?php echo base_url('signin/logout'); ?>" class = "pull-right btn btn-primary btn-md" style = "margin-right: 20px; margin-top: 10px; margin-bottom: 10px;">Log Out</a>
+                            
+        <?php endif; ?>
+        
     </div>
 </nav><br><br><br>
 
