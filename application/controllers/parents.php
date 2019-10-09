@@ -47,6 +47,11 @@ class Parents extends CI_Controller {
         $this->load->view('pages/child_settings');
     }
 
+    public function advanced2() 
+    {
+        $this->load->view('pages/child_advanced2');
+    }
+
     public function advanced() 
     {
         $this->load->view('pages/child_advanced');

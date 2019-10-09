@@ -201,17 +201,17 @@
             </div>                 
 
             <div class = "content-container container-fluid" >
-                <!-- User Topics -->
+                <!-- User Posts -->
                 <div class = "col-xs-12 col-md-6 content-container container-fluid" style = "margin-bottom: 0px margin-left: 0px">
                     <h3 class = "text-info text-center user-activities-header">
-                        <strong>Topics of <?php echo $child->first_name; ?></strong><br>
+                        <strong>Posts of <?php echo $child->first_name; ?></strong><br>
                     </h3>
                     <br>
                     <div class = "col-sm-12 " style = "margin-bottom: 40px">
                         <ul class="nav nav-pills nav-justified">
-                            <li class="active "><a data-toggle="pill" href="#user-topic-created">Created Topics</a></li>
-                            <!-- <li class=""><a data-toggle="pill" href="#user-topic-moderated">Moderated Topics</a></li> -->
-                            <li class=""><a data-toggle="pill" href="#user-topic-followed">Followed Topics</a></li>
+                            <li class="active "><a data-toggle="pill" href="#user-topic-created">Created Posts</a></li>
+                            <!-- <li class=""><a data-toggle="pill" href="#user-topic-moderated">Moderated Posts</a></li> -->
+                            <li class=""><a data-toggle="pill" href="#user-topic-followed">Followed Posts</a></li>
                         </ul>
                         <br>
 
@@ -219,7 +219,7 @@
                             <div id="user-topic-created" class="tab-pane fade in active">
                                 <div class = "col-sm-12 no-padding">
                                     <div class = "user-header">
-                                        <h4 class = "text-center"><strong>Topics Created by <?php echo $child->first_name; ?></strong></h4>
+                                        <h4 class = "text-center"><strong>Posts Created by <?php echo $child->first_name; ?></strong></h4>
                                     </div>
                                     <div class = "">
                                         <ul class="nav">
@@ -237,7 +237,7 @@
                             </div>
                             <div id="user-topic-moderated" class="tab-pane fade">
                                 <div class = "user-header">
-                                    <h4 class = "text-center"><strong>Topics Moderated by <?php echo $child->first_name; ?></strong></h4>
+                                    <h4 class = "text-center"><strong>Posts Moderated by <?php echo $child->first_name; ?></strong></h4>
                                 </div>
                                 <div class = "">
                                     <ul class="nav">
@@ -255,7 +255,7 @@
                             <div id="user-topic-followed" class="tab-pane fade">
                                 <div class = "col-sm-12 no-padding">
                                     <div class = "user-header">
-                                        <h4 class = "text-center"><strong>Topics <?php echo $child->first_name; ?> Follows</strong></h4>
+                                        <h4 class = "text-center"><strong>Posts <?php echo $child->first_name; ?> Follows</strong></h4>
                                     </div>
                                     <div class = "">
                                         <ul class="nav">

@@ -86,7 +86,40 @@
 
     </style>
 <?php endif; ?>
-<style>div.content-container{border:0px;}</style>
+<style>div.content-container{border:0px;}
+
+    .myTable 
+    { 
+        width: 100%;
+        text-align: left;
+        background: rgb(249,249,249);
+        border-collapse: collapse; 
+    }
+
+    .myTable th 
+    { 
+        background: rgb(100,100,100);
+        color: white; 
+        padding: 10px;
+        border: 1px solid grey; 
+    }
+
+    .myTable td
+    { 
+        background: rgb(249,249,249);
+        width: 6%;
+        padding: 10px;
+        border: 1px solid black; 
+    }
+
+    .myTable th 
+    { 
+        width: 6%;
+        padding: 10px;
+        border: 1px solid black; 
+    }
+
+</style>
 
 <script type="text/javascript" src="<?php echo base_url("/js/user.js"); ?>"></script>
 
@@ -190,22 +223,14 @@
                 <div class = "col-xs-12 form-group register-field" style = "">
 
                     <?php if ($mobile): ?>
-                        <h3 class = "col-xs-12 col-md-6 no-padding text-info pull-left"style = "margin-bottom: 0px; margin-top: 0px;">Advanced Settings </strong></h3>
+                        <h3 class = "col-xs-12 col-md-6 no-padding text-info pull-left"style = "margin-bottom: 0px; margin-top: 0px;">sasasasasasasa Settings </strong></h3>
                          
                     <?php else: ?>
-                        <h3 class = "col-xs-12 col-md-6 no-padding text-info pull-left"style = "margin-bottom: 0px; margin-top: 0px;">Advanced Settings for <?php echo $child->first_name ?></strong></h3>
+                        <h3 class = "col-xs-12 col-md-6 no-padding text-info pull-left"style = "margin-bottom: 0px; margin-top: 0px;">sasasasasasasa    </strong></h3>
                         
                     <?php endif; ?>
 
-                    <a href="<?php echo base_url('parents/advanced2/' . $child->user_id) ?>">
                     
-                    <?php if ($mobile): ?>
-                        <br><br><h3 class = "col-xs-8 col-sm-4 col-md-4 no-padding text-info"style = "margin-bottom: 0px; margin-top: 0px;"><u>Advanced Settings</u></strong></h3>
-                         
-                    <?php else: ?>
-                        <h3 class = "col-xs-8 col-sm-4 col-md-4 no-padding text-info pull-right"style = "margin-bottom: 0px; margin-top: 0px;"><u>Advanced Settings</u></strong></h3>
-                        
-                    <?php endif; ?>
                     
                     </a>
 
@@ -213,9 +238,148 @@
 
             </div>
 
+            <script>
+
+                function colorchange(id) 
+                {
+
+                var background = document.getElementById(id).style.backgroundColor;
+                
+                if (background == "rgb(50, 200, 100)") 
+                {
+                    document.getElementById(id).style.background = "rgb(249, 249, 249)";
+                } 
+
+                else 
+                {
+                    document.getElementById(id).style.background = "rgb(50, 200, 100)";
+                }
+
+}
+
+            </script>
+           
 
             <div class = "col-md-8 col-md-offset-2 content-container container-fluid" style = "margin-bottom: 1vw;"><br>
 
+                 <!-- The table -->
+                 <div class="container-fluid">
+                    <table class="myTable container-fluid">
+                        <tr>
+                            <th style="background-color: #ff8c66">Time</th>
+                            <th>Sun</th>
+                            <th>Mon</th>
+                            <th>Tues</th>
+                            <th>Wed</th>
+                            <th>Thur</th>
+                            <th>Fri</th>
+                            <th>Sat</th>
+                        </tr>
+                        <tr>
+                            <td>06:00-06:30</td>
+                            <td id="cell1" onclick="colorchange(this.id)"> </td>
+                            <td id="cell2" onclick="colorchange(this.id)"> </td>
+                            <td id="cell3" onclick="colorchange(this.id)"> </td>
+                            <td id="cell4" onclick="colorchange(this.id)"> </td>
+                            <td id="cell5" onclick="colorchange(this.id)"> </td>
+                            <td id="cell6" onclick="colorchange(this.id)"> </td>
+                            <td id="cell7" onclick="colorchange(this.id)"> </td>
+                        </tr>
+                        <tr>
+                            <td>06:30-07:00</td>
+                            <td id="cell8" onclick="colorchange(this.id)"> </td>
+                            <td id="cell9" onclick="colorchange(this.id)"> </td>
+                            <td id="cell10" onclick="colorchange(this.id)"> </td>
+                            <td id="cell11" onclick="colorchange(this.id)"> </td>
+                            <td id="cell12" onclick="colorchange(this.id)"> </td>
+                            <td id="cell13" onclick="colorchange(this.id)"> </td>
+                            <td id="cell14" onclick="colorchange(this.id)"> </td>
+                        </tr>
+
+                        <tr>
+                            <td>07:30-08:00</td>
+                            <td id="cell15" onclick="colorchange(this.id)"> </td>
+                            <td id="cell16" onclick="colorchange(this.id)"> </td>
+                            <td id="cell17" onclick="colorchange(this.id)"> </td>
+                            <td id="cell18" onclick="colorchange(this.id)"> </td>
+                            <td id="cell19" onclick="colorchange(this.id)"> </td>
+                            <td id="cell20" onclick="colorchange(this.id)"> </td>
+                            <td id="cell21" onclick="colorchange(this.id)"> </td>
+                        </tr>
+
+                        <tr>
+                            <td>08:00-08:30</td>
+                            <td id="cell22" onclick="colorchange(this.id)"> </td>
+                            <td id="cell23" onclick="colorchange(this.id)"> </td>
+                            <td id="cell24" onclick="colorchange(this.id)"> </td>
+                            <td id="cell25" onclick="colorchange(this.id)"> </td>
+                            <td id="cell26" onclick="colorchange(this.id)"> </td>
+                            <td id="cell27" onclick="colorchange(this.id)"> </td>
+                            <td id="cell28" onclick="colorchange(this.id)"> </td>
+                        </tr>
+
+                        <tr>
+                            <td>08:30-09:00</td>
+                            <td id="cell28" onclick="colorchange(this.id)"> </td>
+                            <td id="cell29" onclick="colorchange(this.id)"> </td>
+                            <td id="cell30" onclick="colorchange(this.id)"> </td>
+                            <td id="cell31" onclick="colorchange(this.id)"> </td>
+                            <td id="cell32" onclick="colorchange(this.id)"> </td>
+                            <td id="cell33" onclick="colorchange(this.id)"> </td>
+                            <td id="cell34" onclick="colorchange(this.id)"> </td>
+                        </tr>
+
+                        <tr>
+                            <td>09:00-09:30</td>
+                            <td id="cell35" onclick="colorchange(this.id)"> </td>
+                            <td id="cell36" onclick="colorchange(this.id)"> </td>
+                            <td id="cell37" onclick="colorchange(this.id)"> </td>
+                            <td id="cell38" onclick="colorchange(this.id)"> </td>
+                            <td id="cell39" onclick="colorchange(this.id)"> </td>
+                            <td id="cell40" onclick="colorchange(this.id)"> </td>
+                            <td id="cell41" onclick="colorchange(this.id)"> </td>
+                        </tr>
+
+                        <tr>
+                            <td>09:30-10:00</td>
+                            <td id="cell42" onclick="colorchange(this.id)"> </td>
+                            <td id="cell43" onclick="colorchange(this.id)"> </td>
+                            <td id="cell44" onclick="colorchange(this.id)"> </td>
+                            <td id="cell45" onclick="colorchange(this.id)"> </td>
+                            <td id="cell46" onclick="colorchange(this.id)"> </td>
+                            <td id="cell47" onclick="colorchange(this.id)"> </td>
+                            <td id="cell48" onclick="colorchange(this.id)"> </td>
+                        </tr>
+
+                        <tr>
+                            <td>10:00-10:30</td>
+                            <td id="cell49" onclick="colorchange(this.id)"> </td>
+                            <td id="cell50" onclick="colorchange(this.id)"> </td>
+                            <td id="cell51" onclick="colorchange(this.id)"> </td>
+                            <td id="cell52" onclick="colorchange(this.id)"> </td>
+                            <td id="cell53" onclick="colorchange(this.id)"> </td>
+                            <td id="cell54" onclick="colorchange(this.id)"> </td>
+                            <td id="cell55" onclick="colorchange(this.id)"> </td>
+                        </tr>
+
+                        <tr>
+                            <td>10:30-11:00</td>
+                            <td id="cell56" onclick="colorchange(this.id)"> </td>
+                            <td id="cell57" onclick="colorchange(this.id)"> </td>
+                            <td id="cell58" onclick="colorchange(this.id)"> </td>
+                            <td id="cell59" onclick="colorchange(this.id)"> </td>
+                            <td id="cell60" onclick="colorchange(this.id)"> </td>
+                            <td id="cell61" onclick="colorchange(this.id)"> </td>
+                            <td id="cell62" onclick="colorchange(this.id)"> </td>
+                        </tr>
+                        
+
+
+                    </table>
+                </div>
+                    <br><br>
+
+                
              	<?php foreach ($usertimes->result() as $row): 
                     
 	              	$num++;
@@ -929,6 +1093,8 @@
 <?php endforeach; ?>
 
 <script>
+
+
 	 function changeTimeSettings()
 	 {
         // if(<?php echo $num; ?> == "-1")
@@ -1185,6 +1351,9 @@
         ?>
     }
 
+
+
 </script>
+
 
 </html>
