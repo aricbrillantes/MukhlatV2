@@ -71,40 +71,13 @@
 
 <script>
     document.cookie = "updatetime=0;path=/";
-
     document.cookie = "selectedWarning=0;path=/";   
+    var ctr = 0;
 
-    document.cookie = "selectedHour1-0=0;path=/";   
-    document.cookie = "selectedMinute1-0=0;path=/"; 
-    document.cookie = "selectedMeridian1-0=0;path=/"; 
+    document.cookie = "defaultTimeSetting=cell8-A cell9-A cell10-A cell11-A cell12-A cell13-A cell14-A cell15-A cell16-A cell17-A cell18-A cell19-A cell20-A cell21-A cell22-A cell23-A cell24-A cell25-A cell26-A cell27-A cell28-A cell29-A cell30-A cell31-A cell32-A cell33-A cell34-A cell35-A cell36-A cell37-A cell38-A cell39-A cell40-A cell41-A cell42-A cell43-A cell44-A cell45-A cell46-A cell47-A cell48-A cell49-A;path=/";   
 
-    document.cookie = "selectedHour2-0=0;path=/";   
-    document.cookie = "selectedMinute2-0=0;path=/"; 
-    document.cookie = "selectedMeridian2-0=0;path=/";   
-
-    document.cookie = "basicTime1=0;path=/"; 
-    document.cookie = "basicTime2=0;path=/";
-
-    document.cookie = "1_sunTime1=0;path=/"; 
-    document.cookie = "1_sunTime2=0;path=/";
-
-    document.cookie = "2_monTime1=0;path=/"; 
-    document.cookie = "2_monTime2=0;path=/";
-
-    document.cookie = "3_tueTime1=0;path=/"; 
-    document.cookie = "3_tueTime2=0;path=/";
-
-    document.cookie = "4_wedTime1=0;path=/"; 
-    document.cookie = "4_wedTime2=0;path=/";
-
-    document.cookie = "5_thuTime1=0;path=/"; 
-    document.cookie = "5_thuTime2=0;path=/";
-
-    document.cookie = "6_friTime1=0;path=/"; 
-    document.cookie = "6_friTime2=0;path=/";
-
-    document.cookie = "7_satTime1=0;path=/"; 
-    document.cookie = "7_satTime2=0;path=/";
+    document.cookie = "defaultWarningSetting=30;path=/"; 
+    
 </script>
 
 <style>div.content-container{border:0px;}</style>

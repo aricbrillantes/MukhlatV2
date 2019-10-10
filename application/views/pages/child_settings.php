@@ -33,8 +33,6 @@
     //get children for navbar
     $children_display = $CI->user_model->view_child($logged_user->user_id);
 
-    // print_r($children_display);
-
     //get data of child being monitored
     $children = $CI->user_model->view_specific_child($id);
   
@@ -51,9 +49,10 @@
 
     if ($usertimes) 
     {
-        // echo "<b>Successful query!</b><br><b>Allowed times:</b>";
+        // echo "<b>Successful query!</b><br><b></b>";
         foreach ($usertimes->result() as $row)
         {
+            // echo $row->time_setting;
             // echo "<p style='color:white;'>" . $row->start_hour . ":" . $row->start_minute . "-" . $row->end_hour . ":" . $row->end_minute . "</p>";
         }
 
@@ -87,58 +86,53 @@
 
     </style>
 <?php endif; ?>
+<style>div.content-container{border:0px;}
 
+    .myTable 
+    { 
+        width: 100%;
+        text-align: left;
+        background: rgb(249,249,249);
+        border-collapse: collapse; 
+    }
 
-<?php 
-   
-    // parse_str(htmlspecialchars($_COOKIE["sunTime"]));
-    // echo $hour;
+    .myTable th 
+    { 
+        background: rgb(100,100,100);
+        color: white; 
+        padding: 10px;
+        border: 1px solid grey; 
+    }
 
-?>
+    .myTable td
+    { 
+        background: rgb(249,249,249);
+        width: 6%;
+        padding: 10px;
+        border: 1px solid black; 
+    }
 
-<style>div.content-container{border:0px;}</style>
+    .myTable th 
+    { 
+        width: 6%;
+        padding: 10px;
+        border: 1px solid black; 
+    }
+
+</style>
 
 <script type="text/javascript" src="<?php echo base_url("/js/user.js"); ?>"></script>
 
 <script>
     document.cookie = "updatetime=0;path=/";
+    document.cookie = "selectedWarning=0;path=/";   
     var ctr = 0;
 
-    document.cookie = "selectedWarning=0;path=/";   
+    document.cookie = "defaultTimeSetting=cell8-A cell9-A cell10-A cell11-A cell12-A cell13-A cell14-A cell15-A cell16-A cell17-A cell18-A cell19-A cell20-A cell21-A cell22-A cell23-A cell24-A cell25-A cell26-A cell27-A cell28-A cell29-A cell30-A cell31-A cell32-A cell33-A cell34-A cell35-A cell36-A cell37-A cell38-A cell39-A cell40-A cell41-A cell42-A cell43-A cell44-A cell45-A cell46-A cell47-A cell48-A cell49-A;path=/";   
 
-    document.cookie = "selectedHour1-0=0;path=/";   
-    document.cookie = "selectedMinute1-0=0;path=/"; 
-    document.cookie = "selectedMeridian1-0=0;path=/"; 
-
-    document.cookie = "selectedHour2-0=0;path=/";   
-    document.cookie = "selectedMinute2-0=0;path=/"; 
-    document.cookie = "selectedMeridian2-0=0;path=/";   
-
-    document.cookie = "basicTime1=0;path=/"; 
-    document.cookie = "basicTime2=0;path=/";
-
-    document.cookie = "1_sunTime1=0;path=/"; 
-    document.cookie = "1_sunTime2=0;path=/";
-
-    document.cookie = "2_monTime1=0;path=/"; 
-    document.cookie = "2_monTime2=0;path=/";
-
-    document.cookie = "3_tueTime1=0;path=/"; 
-    document.cookie = "3_tueTime2=0;path=/";
-
-    document.cookie = "4_wedTime1=0;path=/"; 
-    document.cookie = "4_wedTime2=0;path=/";
-
-    document.cookie = "5_thuTime1=0;path=/"; 
-    document.cookie = "5_thuTime2=0;path=/";
-
-    document.cookie = "6_friTime1=0;path=/"; 
-    document.cookie = "6_friTime2=0;path=/";
-
-    document.cookie = "7_satTime1=0;path=/"; 
-    document.cookie = "7_satTime2=0;path=/";
+    document.cookie = "defaultWarningSetting=30;path=/"; 
+    
 </script>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- Nav Bar -->
 <nav class = "navbar navbar-default navbar-font navbar-fixed-top" style = "border-bottom: 1px solid #CFD8DC;">
@@ -188,6 +182,8 @@
     </div>
 </nav><br><br><br>
 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <!-- Nav Bar Script -->
 <script type="text/javascript" src="<?php echo base_url("/js/nav_bar.js"); ?>"></script>
 
@@ -199,130 +195,179 @@
 
                 <div class = "col-xs-12 form-group register-field" style = "">
 
-                    <h3 class = "col-xs-16 col-sm-4 col-md-4 no-padding text-info "style = "margin-bottom: 0px; margin-top: 0px;">Settings for <strong><?php echo $child->first_name ?></strong></h3>
-
-                    <a href="<?php echo base_url('parents/advanced/' . $child->user_id) ?>">
-                    
                     <?php if ($mobile): ?>
-                        <br><br><h3 class = "col-xs-8 col-sm-4 col-md-4 no-padding text-info"style = "margin-bottom: 0px; margin-top: 0px;"><u>Advanced Settings</u></strong></h3>
+                        <h3 class = "col-xs-12 col-md-6 no-padding text-info pull-left"style = "margin-bottom: 0px; margin-top: 0px;">Settings </strong></h3>
                          
                     <?php else: ?>
-                        <h3 class = "col-xs-8 col-sm-4 col-md-4 no-padding text-info pull-right"style = "margin-bottom: 0px; margin-top: 0px;"><u>Advanced Settings</u></strong></h3>
+                        <h3 class = "col-xs-12 col-md-6 no-padding text-info pull-left"style = "margin-bottom: 0px; margin-top: 0px;">Settings for <b><?php echo $child->first_name ?></b></strong></h3>
                         
                     <?php endif; ?>
                     
                     </a>
+
                 </div>
 
             </div>
 
+            <script>
+
+                function colorchange(id) 
+                {
+                    var background = document.getElementById(id).style.backgroundColor;
+                    var newID = id.replace("-A","");
+                    
+                    if (background == "rgb(50, 200, 100)" && id.includes("-A")) 
+                    {
+                        document.getElementById(id).style.background = "rgb(249, 249, 249)";
+                        document.getElementById(id).id = id.replace("-A","");
+                    } 
+
+                    else if(!id.includes("-A"))
+                    {
+                        document.getElementById(id).style.background = "rgb(50, 200, 100)";
+                        document.getElementById(id).id = id + "-A";
+                    }
+
+                    // alert(id); 
+                }
+
+            
+            </script>
+           
+
             <div class = "col-md-8 col-md-offset-2 content-container container-fluid" style = "margin-bottom: 1vw;"><br>
 
-                <?php foreach ($usertimes->result() as $row): 
-                    
-                    // echo print_r($row);
+                 <!-- The table -->
+                 <div class="container-fluid">
+                    <table id="time-table" class="myTable container-fluid">
+                        <tr >
+                            <th style="background-color: #a83b3b"><center>Time</center></th>
+                            <th><center>S<center></th>
+                            <th><center>M<center></th>
+                            <th><center>T<center></th>
+                            <th><center>W<center></th>
+                            <th><center>T<center></th>
+                            <th><center>F<center></th>
+                            <th><center>S<center></th>
+                        </tr>
+                        <tr id="time-table1">
+                            <td style="font-size: 12px"><center>06:00-07:00</center></td>
+                            <td id="cell1" onclick="colorchange(this.id)"> </td>
+                            <td id="cell2" onclick="colorchange(this.id)"> </td>
+                            <td id="cell3" onclick="colorchange(this.id)"> </td>
+                            <td id="cell4" onclick="colorchange(this.id)"> </td>
+                            <td id="cell5" onclick="colorchange(this.id)"> </td>
+                            <td id="cell6" onclick="colorchange(this.id)"> </td>
+                            <td id="cell7" onclick="colorchange(this.id)"> </td>
+                        </tr>
+                        <tr>
+                            <td style="font-size: 12px"><center>07:00-08:00</center></td>
+                            <td id="cell8" onclick="colorchange(this.id)"> </td>
+                            <td id="cell9" onclick="colorchange(this.id)"> </td>
+                            <td id="cell10" onclick="colorchange(this.id)"> </td>
+                            <td id="cell11" onclick="colorchange(this.id)"> </td>
+                            <td id="cell12" onclick="colorchange(this.id)"> </td>
+                            <td id="cell13" onclick="colorchange(this.id)"> </td>
+                            <td id="cell14" onclick="colorchange(this.id)"> </td>
+                        </tr>
 
-                    $num++;
+                        <tr>
+                            <td style="font-size: 12px"><center>08:00-09:00</center></td>
+                            <td id="cell15" onclick="colorchange(this.id)"> </td>
+                            <td id="cell16" onclick="colorchange(this.id)"> </td>
+                            <td id="cell17" onclick="colorchange(this.id)"> </td>
+                            <td id="cell18" onclick="colorchange(this.id)"> </td>
+                            <td id="cell19" onclick="colorchange(this.id)"> </td>
+                            <td id="cell20" onclick="colorchange(this.id)"> </td>
+                            <td id="cell21" onclick="colorchange(this.id)"> </td>
+                        </tr>
 
-                    parse_str(str_replace("amp;","",$row->sun_time));
+                        <tr>
+                            <td style="font-size: 12px"><center>09:00-10:00</center></td>
+                            <td id="cell22" onclick="colorchange(this.id)"> </td>
+                            <td id="cell23" onclick="colorchange(this.id)"> </td>
+                            <td id="cell24" onclick="colorchange(this.id)"> </td>
+                            <td id="cell25" onclick="colorchange(this.id)"> </td>
+                            <td id="cell26" onclick="colorchange(this.id)"> </td>
+                            <td id="cell27" onclick="colorchange(this.id)"> </td>
+                            <td id="cell28" onclick="colorchange(this.id)"> </td>
+                        </tr>
 
-                    $row_meridian1_1 = "AM";
-                    $row_meridian1_2 = "AM";
-                    
-                    // print($starthour1);
-                    // print($startminute1);
-                ?>
+                        <tr>
+                            <td style="font-size: 12px"><center>10:00-11:00</center></td>
+                            <td id="cell29" onclick="colorchange(this.id)"> </td>
+                            <td id="cell30" onclick="colorchange(this.id)"> </td>
+                            <td id="cell31" onclick="colorchange(this.id)"> </td>
+                            <td id="cell32" onclick="colorchange(this.id)"> </td>
+                            <td id="cell33" onclick="colorchange(this.id)"> </td>
+                            <td id="cell34" onclick="colorchange(this.id)"> </td>
+                            <td id="cell35" onclick="colorchange(this.id)"> </td>
+                        </tr>
 
-                <script> ctr++; </script>
+                        <tr>
+                            <td style="font-size: 12px"><center>11:00-12:00</center></td>
+                            <td id="cell36" onclick="colorchange(this.id)"> </td>
+                            <td id="cell37" onclick="colorchange(this.id)"> </td>
+                            <td id="cell38" onclick="colorchange(this.id)"> </td>
+                            <td id="cell39" onclick="colorchange(this.id)"> </td>
+                            <td id="cell40" onclick="colorchange(this.id)"> </td>
+                            <td id="cell41" onclick="colorchange(this.id)"> </td>
+                            <td id="cell42" onclick="colorchange(this.id)"> </td>
+                        </tr>
 
-                <div class = "col-xs-12 col-md-6 form-group register-field container-fluid" style = "font-size:14px;">
-                    <h3 class = "no-padding text-info"style = "margin-bottom: 5px; margin-top: 0px;">From</h3>
+                        <tr>
+                            <td style="font-size: 12px"><center>12:00-01:00</center></td>
+                            <td id="cell43" onclick="colorchange(this.id)"> </td>
+                            <td id="cell44" onclick="colorchange(this.id)"> </td>
+                            <td id="cell45" onclick="colorchange(this.id)"> </td>
+                            <td id="cell46" onclick="colorchange(this.id)"> </td>
+                            <td id="cell47" onclick="colorchange(this.id)"> </td>
+                            <td id="cell48" onclick="colorchange(this.id)"> </td>
+                            <td id="cell49" onclick="colorchange(this.id)"> </td>
+                        </tr>
 
-                    <input style="height:50px;display:none;" type = "date" required name = "change-time" class = "form-control sign-in-field" id="time-form"><br>
+                        <tr>
+                            <td style="font-size: 12px"><center>01:00-02:00</center></td>
+                            <td id="cell50" onclick="colorchange(this.id)"> </td>
+                            <td id="cell51" onclick="colorchange(this.id)"> </td>
+                            <td id="cell52" onclick="colorchange(this.id)"> </td>
+                            <td id="cell53" onclick="colorchange(this.id)"> </td>
+                            <td id="cell54" onclick="colorchange(this.id)"> </td>
+                            <td id="cell55" onclick="colorchange(this.id)"> </td>
+                            <td id="cell56" onclick="colorchange(this.id)"> </td>
+                        </tr>
 
-                    <select style="width:120px;height:30px" id="time-hour1">
-                        <option value="<?php echo $starthour1  ?>">
-                            <?php echo $starthour1 ?>
-                        </option>
-                        <option value="12">12</option>
-                        <option value="01">01</option>
-                        <option value="02">02</option>
-                        <option value="03">03</option>
-                        <option value="04">04</option>
-                        <option value="05">05</option>
-                        <option value="06">06</option>
-                        <option value="07">07</option>
-                        <option value="08">08</option>
-                        <option value="09">09</option>
-                        <option value="10">10</option>
-                        <option value="11">11</option>
-                    </select>
+                        <tr>
+                            <td style="font-size: 12px"><center>02:00-03:00</center></td>
+                            <td id="cell57" onclick="colorchange(this.id)"> </td>
+                            <td id="cell58" onclick="colorchange(this.id)"> </td>
+                            <td id="cell59" onclick="colorchange(this.id)"> </td>
+                            <td id="cell60" onclick="colorchange(this.id)"> </td>
+                            <td id="cell61" onclick="colorchange(this.id)"> </td>
+                            <td id="cell62" onclick="colorchange(this.id)"> </td>
+                            <td id="cell63" onclick="colorchange(this.id)"> </td>
+                        </tr>
 
-                    <select style="width:100px;height:30px" id="time-minute1" onclick="">
-                        <option value="<?php echo $startminute1 ?>">
-                            <?php echo $startminute1 ?>
-                        </option>
-                        <option value="00">00</option>
-                        <option value="15">15</option>
-                        <option value="30">30</option>
-                        <option value="45">45</option>
-                 
-                    </select>
+                        <tr>
+                            <td style="font-size: 12px"><center>03:00-04:00</center></td>
+                            <td id="cell64" onclick="colorchange(this.id)"> </td>
+                            <td id="cell65" onclick="colorchange(this.id)"> </td>
+                            <td id="cell66" onclick="colorchange(this.id)"> </td>
+                            <td id="cell67" onclick="colorchange(this.id)"> </td>
+                            <td id="cell68" onclick="colorchange(this.id)"> </td>
+                            <td id="cell69" onclick="colorchange(this.id)"> </td>
+                            <td id="cell70" onclick="colorchange(this.id)"> </td>
+                        </tr>
 
-                    <select style="width:100px;height:30px" id="time-meridian1" onclick="">
-                        <option value="<?php echo $startmeridian1; ?>">
-                            <?php echo $startmeridian1; ?>
-                        </option>
-                        <option value="AM">AM</option>
-                        <option value="PM">PM</option>
-                    </select>
-
+                        
+                    </table>
                 </div>
 
+                <br><br>
 
-
-                <div class = "col-xs-12 col-md-6 form-group register-field " style = "font-size:14px;">
-                    <h3 class = "no-padding text-info"style = "margin-bottom: 5px; margin-top: 0px;">To</h3>
-
-                    <input style="height:50px;display:none;" type = "date" required name = "change-time" class = "form-control sign-in-field" id="time-form"><br>
-
-                    <select style="width:120px;height:30px" id="time-hour2">
-                        <option value="<?php echo $endhour1  ?>">
-                            <?php echo $endhour1 ?>
-                        </option>
-                        <option value="12">12</option>
-                        <option value="01">01</option>
-                        <option value="02">02</option>
-                        <option value="03">03</option>
-                        <option value="04">04</option>
-                        <option value="05">05</option>
-                        <option value="06">06</option>
-                        <option value="07">07</option>
-                        <option value="08">08</option>
-                        <option value="09">09</option>
-                        <option value="10">10</option>
-                        <option value="11">11</option>
-                    </select>
-
-                    <select style="width:100px;height:30px" id="time-minute2" onclick="">
-                        <option value="<?php echo $endminute1 ?>">
-                            <?php echo $endminute1 ?>
-                        </option>
-                        <option value="00">00</option>
-                        <option value="15">15</option>
-                        <option value="30">30</option>
-                        <option value="45">45</option>
-                    </select>
-
-                    <select style="width:100px;height:30px" id="time-meridian2" onclick="">
-                        <option value="<?php echo $endmeridian1 ?>">
-                            <?php echo $endmeridian1 ?>
-                        </option>
-                        <option value="AM">AM</option>
-                        <option value="PM">PM</option>
-                    </select>
-                    <br><br><br>
-                </div>
+                
+                <?php foreach ($usertimes->result() as $row): ?>
+                
 
                 <div class = "col-xs-12 form-group register-field" style = "font-size:14px;">
                     <h3 class = "no-padding text-info"style = "margin-bottom: 5px; margin-top: 0px;">Warning</h3>
@@ -346,113 +391,83 @@
                     </input>
                     <br><br><br>
                 </div>
-                
 
             <?php  endforeach; ?>
                 <!-- <a id = "notif-btn" href="#notif-modal" data-toggle = "modal">sasasa</a> -->
                 <?php include(APPPATH . 'views/modals/confirm_modal.php'); ?>
                 <div class = "text-center">
-                    <button href="#notif-modal" data-toggle = "modal" class = "btn btn-success container-fluid col-xs-12" style="font-size:24px; margin-top: 10px; margin-bottom: 10px">Save Changes</button>
+                    <button onclick="changeTimeSettings('time-table', 'td', 'cell');" data-toggle = "modal" class = "btn btn-success container-fluid col-xs-12" style="font-size:24px; margin-top: 10px; margin-bottom: 10px">Save Changes</button>
                 </div>
 
             </div>
 
-            
         </div>    
     </div>
     
-    <!-- <script type="text/javascript" src="<?php echo base_url('assets/vis/vis.js'); ?>"></script> -->
-    <!-- <link rel="stylesheet" href="<?php echo base_url("assets/vis/vis.css"); ?>"/> -->
+    <script type="text/javascript" src="<?php echo base_url('assets/vis/vis.js'); ?>"></script>
+    <link rel="stylesheet" href="<?php echo base_url("assets/vis/vis.css"); ?>" />
 
 </body>
 <?php endforeach; ?>
 
-<script>
-	 function changeTimeSettings()
-	 {
-        // if(<?php echo $num; ?> == "-1")
-        var hour1, minute1, meridian1;
-        var hour2, minute2, meridian2;
-        var warning;
+<?php foreach ($usertimes->result() as $row):?>
+    <script>
 
-        var selectedHour1, selectedMinute1, selectedMeridian1;
-        var selectedHour2, selectedMinute2, selectedMeridian2;
-        var selectedWarning;
+        var j;
+        var readstring = "<?php echo $row->time_setting; ?>";
+        var readarray = readstring.split(" ");
+        var string, currentID;
+        // alert(readstring);
 
-        var i;
-
-        for(i = 0; i < ctr; i++)
+        if(readstring!=null && readstring!="" && readstring!=" ")
         {
-            warning = document.getElementById("time-warning");
+            for(j=0; j<readarray.length; j++)
+            {
+                // alert(readarray[j]);
 
-            selectedWarning = warning.options[warning.selectedIndex].value;
+                currentID = readarray[j].replace("-A","");
 
-            hour1 = document.getElementById("time-hour1");
-            minute1 = document.getElementById("time-minute1");
-            meridian1 = document.getElementById("time-meridian1");
+                document.getElementById(currentID).style.background = "rgb(50, 200, 100)";
+                document.getElementById(currentID).id = readarray[j];
+            }
+        }
+        
 
-            hour2 = document.getElementById("time-hour2");
-            minute2 = document.getElementById("time-minute2");
-            meridian2 = document.getElementById("time-meridian2");
-
-            selectedHour1 = hour1.options[hour1.selectedIndex].value;
-            selectedMinute1 = minute1.options[minute1.selectedIndex].value;
-            selectedMeridian1 = meridian1.options[meridian1.selectedIndex].value;
+        function changeTimeSettings(container, selectorTag, prefix) 
+        {
+            var i, items = [];
+            var cell = document.getElementById(container).getElementsByTagName(selectorTag);
             
-            selectedHour2 = hour2.options[hour2.selectedIndex].value;
-            selectedMinute2 = minute2.options[minute2.selectedIndex].value;
-            selectedMeridian2 = meridian2.options[meridian2.selectedIndex].value;
 
-            // alert("i=" + i + " " + selectedHour1 + ":" + selectedMinute1 + " " + selectedMeridian1);
-            // alert("i=" + i + " " + selectedHour2 + ":" + selectedMinute2 + " " + selectedMeridian2);
+            for (var i = 0; i < cell.length; i++) 
+            {
+                if(cell[i].id.includes("-A"))
+                {
+                    items.push(cell[i].id);
+                    // alert(cell[i].id);
+                }
+            }
 
+            string = items.join(" ");
+
+            // alert(string);
+            document.cookie = "timeSetting=" + string + ";path=/";
+
+            document.cookie = "updatetime=1;path=/";
+
+            var warning = document.getElementById("time-warning");
+            var selectedWarning = warning.options[warning.selectedIndex].value;
             document.cookie = "selectedWarning=" + selectedWarning + ";path=/";   
 
-            document.cookie = "selectedHour1-" + i + "=" + selectedHour1 + ";" + ";path=/";   
-            document.cookie = "selectedMinute1-" + i + "=" + selectedMinute1 + ";" + ";path=/"; 
-            document.cookie = "selectedMeridian1-" + i + "=" + selectedMeridian1 + ";" + ";path=/"; 
+            location.reload();
 
-            document.cookie = "selectedHour2-" + i + "=" + selectedHour2 + ";" + ";path=/";   
-            document.cookie = "selectedMinute2-" + i + "=" + selectedMinute2 + ";" + ";path=/"; 
-            document.cookie = "selectedMeridian2-" + i + "=" + selectedMeridian2 + ";" + ";path=/";   
-
-            document.cookie = "basicTime1=" + "hour="+ selectedHour1 + "&minute="+  selectedMinute1 + "&meridian="+selectedMeridian1+";path=/"; 
-            document.cookie = "basicTime2=" + "hour="+ selectedHour2 + "&minute="+  selectedMinute2 + "&meridian="+selectedMeridian2+";path=/";
-
-            document.cookie = "1_sunTime1=" + "starthour1="+ selectedHour1 + "&startminute1="+  selectedMinute1 + "&startmeridian1="+selectedMeridian1+";path=/"; 
-            document.cookie = "1_sunTime2=" + "endhour1="+ selectedHour2 + "&endminute1="+  selectedMinute2 + "&endmeridian1="+selectedMeridian2+";path=/";
-
-            document.cookie = "2_monTime1=" + "starthour2="+ selectedHour1 + "&startminute2="+  selectedMinute1 + "&startmeridian2="+selectedMeridian1+";path=/"; 
-            document.cookie = "2_monTime2=" + "endhour2="+ selectedHour2 + "&endminute2="+  selectedMinute2 + "&endmeridian2="+selectedMeridian2+";path=/";
-
-            document.cookie = "3_tueTime1=" + "starthour3="+ selectedHour1 + "&startminute3="+  selectedMinute1 + "&startmeridian3="+selectedMeridian1+";path=/"; 
-            document.cookie = "3_tueTime2=" + "endhour3="+ selectedHour2 + "&endminute3="+  selectedMinute2 + "&endmeridian3="+selectedMeridian2+";path=/";
-
-            document.cookie = "4_wedTime1=" + "starthour4="+ selectedHour1 + "&startminute4="+  selectedMinute1 + "&startmeridian4="+selectedMeridian1+";path=/"; 
-            document.cookie = "4_wedTime2=" + "endhour4="+ selectedHour2 + "&endminute4="+  selectedMinute2 + "&endmeridian4="+selectedMeridian2+";path=/";
-
-            document.cookie = "5_thuTime1=" + "starthour5="+ selectedHour1 + "&startminute5="+  selectedMinute1 + "&startmeridian5="+selectedMeridian1+";path=/"; 
-            document.cookie = "5_thuTime2=" + "endhour5="+ selectedHour2 + "&endminute5="+  selectedMinute2 + "&endmeridian5="+selectedMeridian2+";path=/";
-
-            document.cookie = "6_friTime1=" + "starthour6="+ selectedHour1 + "&startminute6="+  selectedMinute1 + "&startmeridian6="+selectedMeridian1+";path=/"; 
-            document.cookie = "6_friTime2=" + "endhour6="+ selectedHour2 + "&endminute6="+  selectedMinute2 + "&endmeridian6="+selectedMeridian2+";path=/";
-
-            document.cookie = "7_satTime1=" + "starthour7="+ selectedHour1 + "&startminute7="+  selectedMinute1 + "&startmeridian7="+selectedMeridian1+";path=/"; 
-            document.cookie = "7_satTime2=" + "endhour7="+ selectedHour2 + "&endminute7="+  selectedMinute2 + "&endmeridian7="+selectedMeridian2+";path=/";
-
-            // alert();
+            <?php 
+                if($_COOKIE["updatetime"])
+                    echo $CI->user_model->set_usertimes($child->user_id, 0);
+            ?>
         }
 
-        location.reload();
-
-        document.cookie = "updatetime=1;path=/";
-        <?php 
-            if($_COOKIE["updatetime"])
-                echo $CI->user_model->set_usertimes($child->user_id, 0); //set to $num once adding again
-
-        ?>
-    }
-
-</script>
+    </script>
+<?php endforeach; ?>
 
 </html>
