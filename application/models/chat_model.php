@@ -15,7 +15,7 @@ class Chat_model extends CI_Model{
         $query_str = "SELECT
                     cm.sender_id,
                     cm.chat_message,
-                    DATE_FORMAT(cm.create_date, '%m/%d/%Y @ %h:%i %p') AS chat_timestamp,
+                    DATE_FORMAT(cm.create_date, '%m|%d|%Y @ %h:%i %p') AS chat_timestamp,
                     CONCAT(u.first_name,' ', u.last_name) AS sender_name
                     FROM tbl_chatmsgs cm
                     JOIN tbl_users u ON cm.sender_id = u.user_id

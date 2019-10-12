@@ -37,6 +37,7 @@ class Chat extends CI_Controller
 
     public function ajax_getChatMessages()
     {
+        $logged_user = $_SESSION['logged_user'];
         $chat_id = $this->input->post('chat_id');
 
         
@@ -47,12 +48,14 @@ class Chat extends CI_Controller
 
         if($chat_messages->num_rows() >0)
         {
+            
 
             // echo "<script type='text/javascript'>alert('if');</script>";
             $chat_messages_html = '<ul>';
             foreach($chat_messages->result() as $chat_msg)
             {
-                $chat_messages_html .= '<li>' . $chat_msg->chat_message ;
+                $li_class = ($logged_user->user_id == $chat_msg->sender_id) ? 'class=by_current_user':'';
+                $chat_messages_html .= '<li ' . $li_class .'>' . '<span class=chat_header>'. $chat_msg->chat_timestamp . ' by ' . $chat_msg->sender_name . '<p class=message_content>' . $chat_msg->chat_message ;
             }
            
             // echo '<script type="text/javascript">alert("message is '.$chat_messages_html.'");</script>';
@@ -100,7 +103,7 @@ class Chat extends CI_Controller
                     $other_user_name = $this->chatmodel->get_name($other_user_instance->other_user);
                     foreach($other_user_name->result() as $other_user_name_instance)
                     {
-                        $chats_html .= '<h2>' . $other_user_name_instance->name;
+                        $chats_html .= '<h2>' . $other_user_name_instance->name ;
                         
                         
                         // $chats_html .= '<div id="chat_inst" style="border: 1px solid gray;">';

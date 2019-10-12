@@ -28,25 +28,48 @@
 
 <style type="text/css">
 #chat_viewport{
-    min-height: 500px;
+    height: 100%;
     border : 1px solid black;
+    overflow:scroll;
 }
 #chats_box{
-    height: 80%;
+    height: 100%;
   border: 3px solid blue;
   overflow:scroll;
 }
+span.chat_header{
+    font-size:0.7em;
+    color:#696969;
+}
+p.message_content{
+    color:black;
+    margin-top:0px;
+    margin-bottom:5px;
+    padding-left:10px;
+    padding-right:0px;
+}
+li.by_current_user span.chat_header{
+    color:blue;
+}
+li.by_current_user {
+    text-align: right;
+
+}
+#chat_viewport ul{
+    list-style-type:none;
+}
+
 </style>
 
 <body>
     <?php include(APPPATH . 'views/navigation_bar.php');?>
-    <div style="width: 100%; overflow: hidden ;margin-top: 60px;height:100vh;">
+    <div style="width: 100%; overflow: hidden ;margin-top: 60px;height:90vh;">
     <div id="chats_box"style="width: 20%; float: left;">
     
     <button id="addchat" style="width:100%;min-height:10%;">Send New Message</button>
     
     </div>
-    <div style="width: 80%; float: right;">
+    <div style="width: 80%; float: right;height: 95%;">
     <div id="chat_viewport">
     </div>
 
@@ -57,4 +80,5 @@
     </div>
     </div>
     </div>
+    
 </body>
