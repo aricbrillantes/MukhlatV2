@@ -134,12 +134,9 @@
 <script>
     document.cookie = "updatetime=0;path=/";
     document.cookie = "selectedWarning=0;path=/";   
+    document.cookie = "selectedLimit=180;path=/"; 
+    document.cookie = "selectedKeep=1;path=/"; 
     var ctr = 0;
-
-    document.cookie = "defaultTimeSetting=cell8-A cell9-A cell10-A cell11-A cell12-A cell13-A cell14-A cell15-A cell16-A cell17-A cell18-A cell19-A cell20-A cell21-A cell22-A cell23-A cell24-A cell25-A cell26-A cell27-A cell28-A cell29-A cell30-A cell31-A cell32-A cell33-A cell34-A cell35-A cell36-A cell37-A cell38-A cell39-A cell40-A cell41-A cell42-A cell43-A cell44-A cell45-A cell46-A cell47-A cell48-A cell49-A;path=/";   
-
-    document.cookie = "defaultWarningSetting=30;path=/"; 
-    
 </script>
 
 <!-- Nav Bar -->
@@ -461,16 +458,32 @@
 
                     <li class = "active text-center">
                         <h3 class = "no-padding text-info" style = "margin-top: 15px;"><br>Time Limit</h3>
-                        
-                        <select style="width:100px; height:20px" id="time-limit" onclick="">
-                                
-                            <!-- <?php if($row->warning != 0 &&$row->warning != 60): ?>
-                                <option value="<?php echo $row->warning; ?>"><?php echo $row->warning; ?> minutes</option>
-                            <?php endif; ?>
+                            <!-- <?php echo $row->use_limit?> -->
 
-                            <?php if($row->warning == 60): ?>
-                                <option value="<?php echo $row->warning; ?>">1 hour</option>
-                            <?php endif; ?> -->
+                        <select style="width:110px; height:20px" id="time-limit" onclick="">
+                                
+                            <?php if($row->use_limit== 60): ?>
+                                <option value="60">1 hour</option>
+
+                            <?php elseif($row->use_limit== 90): ?>
+                                <option value="90">1 hour 30 mins</option>
+
+                            <?php elseif($row->use_limit== 120): ?>
+                                <option value="120">2 hours</option>
+
+                            <?php elseif($row->use_limit== 150): ?>
+                                <option value="150">2 hours 30 mins</option>
+
+                            <?php elseif($row->use_limit== 180): ?>
+                                <option value="180">3 hours</option>
+
+                            <?php elseif($row->use_limit== 210): ?>
+                                <option value="210">3 hours 30 mins</option>
+
+                            <?php elseif($row->use_limit== 240): ?>
+                                <option value="240">4 hours</option>
+
+                            <?php endif; ?>
 
                             <option value="30">30 minutes</option>
                             <option value="60">1 hour</option>
@@ -489,7 +502,7 @@
                         <div class = "text-center form-group register-field container-fluid" style="margin-bottom: 10px; margin-top: 15px;">
                             <div class = "col-xs-12 col-md-12 form-group register-field" style = "font-size:14px;"><br>
                                 <div class="checkbox">
-                                    <h4><label class = "text-info"><input type="checkbox" value="" >Keep for next week</label></h4>
+                                    <h4><label class = "text-info"><input type="checkbox" id="keep" value="" >Keep for next week</label></h4>
                                 </div>
 
                                 <p class = "no-padding " style = "margin-bottom: 15px; margin-top: 5px;">(Carry these settings over to next week)</p>
@@ -528,7 +541,8 @@
         var readstring = "<?php echo $row->time_setting; ?>";
         var readarray = readstring.split(" ");
         var string, currentID;
-        // alert(readstring);
+        var keep = "<?php echo $row->keep; ?>"
+        
 
         if(readstring!=null && readstring!="" && readstring!=" ")
         {
@@ -542,6 +556,14 @@
                 document.getElementById(currentID).id = readarray[j];
             }
         }
+
+        // alert(keep);
+
+        if(keep=='1')
+            document.getElementById("keep").checked = true;
+
+        else
+            document.getElementById("keep").checked = false;
         
 
         function changeTimeSettings(container, selectorTag, prefix) 
@@ -573,6 +595,14 @@
             var selectedLimit = limit.options[limit.selectedIndex].value;
             document.cookie = "selectedLimit=" + selectedLimit + ";path=/"; 
 
+
+            if(document.getElementById("keep").checked)
+                document.cookie = "selectedKeep=1;path=/";
+
+            else
+                document.cookie = "selectedKeep=0;path=/";
+
+
             if(string==null || string=="" || string==" ")
                 alert('empty');
 
@@ -595,6 +625,10 @@
             document.cookie = "timeSetting=" + string + ";path=/";
 
             document.cookie = "selectedWarning=30;path=/"; 
+
+            document.cookie = "selectedLimit=180;path=/"; 
+
+            document.cookie = "selectedKeep=1;path=/"; 
 
             document.cookie = "updatetime=1;path=/";
 
