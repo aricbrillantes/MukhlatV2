@@ -110,13 +110,15 @@ class User_model extends CI_Model {
             $settings = htmlspecialchars($_COOKIE["defaultTimeSetting"]);
             $warning = htmlspecialchars($_COOKIE["defaultWarningSetting"]);
             $keep = '1';
+            $limit = '180';
 
             $data = array
             (
                 'user_id' => $user_id,
                 'time_setting'=> $settings,
                 'warning' => $warning,
-                'keep' => $keep
+                'keep' => $keep,
+                'use_limit' => $limit
             );
 
             $this->db->insert('tbl_usertimes',$data);   
@@ -132,13 +134,15 @@ class User_model extends CI_Model {
         $settings = htmlspecialchars($_COOKIE["timeSetting"]);
         $warning = htmlspecialchars($_COOKIE["selectedWarning"]);
         $keep = '1';
-        
+        $limit = '180';
+
         $data = array
         (
             'user_id' => $user_id,
             'time_setting'=> $settings,
             'warning' => $warning,
-            'keep' => $keep
+            'keep' => $keep,
+            'use_limit' => $limit
         );
 
         $this->db->insert('tbl_usertimes',$data);   

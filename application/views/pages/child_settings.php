@@ -419,12 +419,27 @@
                 
                 <?php foreach ($usertimes->result() as $row): ?>
                 
+
+                <div class = "text-center form-group register-field container-fluid" style="margin-bottom: -25px;  ">
+                    <div class = "text-center col-xs-12 col-md-12 form-group register-field" style = "font-size:14px;">
+                        
+                        <a id = "notif-btn" data-toggle = "modal" href="#default-time-modal">
+                            <h4 class = "no-padding text-info" style = "margin-top: 10px;">Use Default Settings</h4>
+                        </a>
+
+                        <p class = "no-padding " style = "margin-bottom: 0px; margin-top: 0px;">(Use the default 8:00 AM - 8:00 PM setting)</p>
+                        
+                        <br>
+                    </div>
+                </div>
+                    
+
                 <ul class="nav nav-pills nav-justified" style = "margin-bottom: 10px; margin-top: 10px;">
    
                     <li class = "active text-center">
-                        <h3 class = "no-padding text-info" style = "margin-top: 0px;">Warning</h3>
+                        <h3 class = "no-padding text-info" style = "margin-top: 10px;"><br>Warning</h3>
                         
-                        <select style="width:120px; height:30px" id="time-warning" onclick="">
+                        <select style="width:100px; height:20px" id="time-warning" onclick="">
                                 
                             <?php if($row->warning != 0 &&$row->warning != 60): ?>
                                 <option value="<?php echo $row->warning; ?>"><?php echo $row->warning; ?> minutes</option>
@@ -440,35 +455,51 @@
                             <option value="45">45 minutes</option>
                             <option value="60">1 hour</option>
                         </select>
+
+                        <p class = "no-padding " style = "margin-bottom: 0px; margin-top: 15px;">(Set when children will be warned)</p>
                     </li>
 
                     <li class = "active text-center">
-                        <!-- <h3 class = "no-padding text-info"style = "margin-bottom: 5px; margin-top: 0px;">Warning</h3> -->
-                        <div class = "text-center form-group register-field container-fluid" style="margin-bottom: 10px;  ">
-                            <div class = "col-xs-12 col-md-12 form-group register-field" style = "font-size:14px;">
-                                <h3 class = "no-padding text-info" style = "margin-bottom: 15px; margin-top: 0px;">Keep Settings?</h3>
+                        <h3 class = "no-padding text-info" style = "margin-top: 15px;"><br>Time Limit</h3>
+                        
+                        <select style="width:100px; height:20px" id="time-limit" onclick="">
+                                
+                            <!-- <?php if($row->warning != 0 &&$row->warning != 60): ?>
+                                <option value="<?php echo $row->warning; ?>"><?php echo $row->warning; ?> minutes</option>
+                            <?php endif; ?>
+
+                            <?php if($row->warning == 60): ?>
+                                <option value="<?php echo $row->warning; ?>">1 hour</option>
+                            <?php endif; ?> -->
+
+                            <option value="30">30 minutes</option>
+                            <option value="60">1 hour</option>
+                            <option value="90">1 hr 30 mins</option>
+                            <option value="120">2 hours</option>
+                            <option value="150">2 hrs 30 mins</option>
+                            <option value="180">3 hours</option>
+                            <option value="210">3 hrs 30 mins</option>
+                            <option value="240">4 hours</option>
+                        </select>
+
+                        <p class = "no-padding " style = "margin-bottom: 0px; margin-top: 15px;">(Set how long children can use Mukhlat)</p>
+                    </li>
+
+                    <li class = "active text-center">
+                        <div class = "text-center form-group register-field container-fluid" style="margin-bottom: 10px; margin-top: 15px;">
+                            <div class = "col-xs-12 col-md-12 form-group register-field" style = "font-size:14px;"><br>
                                 <div class="checkbox">
-                                    <label><input type="checkbox" value="">Keep for next week</label>
+                                    <h4><label class = "text-info"><input type="checkbox" value="" >Keep for next week</label></h4>
                                 </div>
+
+                                <p class = "no-padding " style = "margin-bottom: 15px; margin-top: 5px;">(Carry these settings over to next week)</p>
                                 
                                 <br>
                             </div>
                         </div>
                     </li>
 
-                    <li class = "active text-center">
-                        <!-- <h3 class = "no-padding text-info"style = "margin-bottom: 5px; margin-top: 0px;">Warning</h3> -->
-                        <div class = "text-center form-group register-field container-fluid" style="margin-bottom: 10px;  ">
-                            <div class = "col-xs-12 col-md-12 form-group register-field" style = "font-size:14px;">
-                                
-                                <a id = "notif-btn" data-toggle = "modal" href="#default-time-modal">
-                                    <h4 class = "no-padding text-info" style = "margin-bottom: 15px; margin-top: 0px;">Revert to Default Settings</h4>
-                                </a>
-                                
-                                <br>
-                            </div>
-                        </div>
-                    </li>
+                    
                 </ul>
 
             <?php endforeach; ?>
@@ -537,6 +568,10 @@
             var warning = document.getElementById("time-warning");
             var selectedWarning = warning.options[warning.selectedIndex].value;
             document.cookie = "selectedWarning=" + selectedWarning + ";path=/";   
+
+            var limit = document.getElementById("time-limit");
+            var selectedLimit = limit.options[limit.selectedIndex].value;
+            document.cookie = "selectedLimit=" + selectedLimit + ";path=/"; 
 
             if(string==null || string=="" || string==" ")
                 alert('empty');
