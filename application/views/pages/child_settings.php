@@ -1,5 +1,8 @@
 <?php
     include(APPPATH . 'views/header.php');
+    include(APPPATH . 'views/modals/confirm_modal.php');
+    include(APPPATH . 'views/modals/empty_warning_modal.php');
+    include(APPPATH . 'views/modals/default_time_modal.php');
 
     //check if current user is parent or logged in
     //if user is not a parent, redirect to home
@@ -119,6 +122,11 @@
         border: 1px solid black; 
     }
 
+    td.timecol
+    {
+        background: rgb(242,242,242);
+    }
+
 </style>
 
 <script type="text/javascript" src="<?php echo base_url("/js/user.js"); ?>"></script>
@@ -137,51 +145,61 @@
 <!-- Nav Bar -->
 <nav class = "navbar navbar-default navbar-font navbar-fixed-top" style = "border-bottom: 1px solid #CFD8DC;">
     <div class = "container-fluid">
-        <a class = "pull-left btn btn-topic-header" style = "display: inline-block; margin-right: 5px; border:0" href="<?php echo base_url('parents/activity/' . $child->user_id) ?>">
-            <h3 class = "pull-left" style = "margin-top: 3px; margin-bottom: 0px; padding: 2px;">
-                <strong class = "text-info"><i class = "fa fa-chevron-left"></i> 
-                    Back
-                </strong>
-            </h3>
-        </a>
+    <a class = "pull-left btn btn-topic-header" style = "display: inline-block; margin-right: 5px; border:0" href="<?php echo base_url('parents/activity/' . $child->user_id) ?>">
+        <h3 class = "pull-left" style = "margin-top: 3px; margin-bottom: 0px; padding: 2px;">
+            <strong class = "text-info"><i class = "fa fa-chevron-left"></i> 
+                Back
+            </strong>
+        </h3>
+    </a>
+
+   <!--  <span class = "pull-left btn-topic-header" style = "display: inline-block; margin-right: 5px; border:0" href="<?php echo base_url('parents/activity/' . $child->user_id) ?>">
+        <h3 class = "pull-left" style = "margin-top: 3px; margin-bottom: 0px; padding: 2px;">
+            <strong class = "text-info"><i class = "fa fa-chevron-left"></i> 
+                Back
+            </strong>
+        </h3>
+    </span> -->
+        
+        
+    <?php if (!$mobile): ?>
+
+        <ul class = "nav navbar-nav navbar-right pull-right" style = "margin-right: 5px;">
+            <li class="dropdown ">
+
+                <a class="dropdown-toggle pull-right" data-toggle="dropdown" href="#">
+                    Monitoring: <b><?php echo $child->first_name ?></b>
+                    <span class="caret"></span>
+                </a>                 
             
-            
-        <?php if (!$mobile): ?>
+                <ul class="dropdown-menu container container-fluid col-md-4 col-xs-4 col-sm-4">
 
-            <ul class = "nav navbar-nav navbar-right pull-right" style = "margin-right: 5px;">
-                <li class="dropdown">
+                    <li><span style="margin-left: 10px"> Children: </span>  
+                    </li>
 
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <img class = "img-rounded nav-prof-pic" src = "<?php echo $logged_user->profile_url ? base_url($logged_user->profile_url) : base_url('images/default.jpg') ?>"/> 
-                        <?php echo $logged_user->first_name . " " . $logged_user->last_name; ?>
+                    <?php foreach ($children_display->result() as $children):$data['user'] = $CI->user_model->get_user(true, true, array('user_id' =>  $children->user_id));?>
+
+                    <li><a href="<?php echo base_url('parents/settings/' . $children->user_id); ?>"><i class = "fa fa-user" style="color:green"></i> <?php echo $children->first_name ?> </a></li>    
+                    <?php endforeach; ?>
+
+                    <li><span style="color:white">______</span></li>
+                    
+                    <li><a href="<?php echo base_url('signin/logout');?>"><i class = "glyphicon glyphicon-log-out" style="color:red"></i> Logout</a></li>
+
+                </ul>
+            </li>
+        </ul>
+
+    <?php else: ?>
+        <a href = "<?php echo base_url('signin/logout'); ?>" class = "pull-right btn btn-primary btn-md" style = "margin-right: 20px; margin-top: 10px; margin-bottom: 10px;">Log Out</a>
                         
-                        <span class="caret"></span>
-                    </a>                 
-                
-                    <ul class="dropdown-menu">
-                        <!-- <li><a href="<?php echo base_url('user/profile/' . $logged_user->user_id); ?>"><i class = "fa fa-user"></i> My Profile</a></li> -->
-                        
-                        <?php foreach ($children_display->result() as $children):$data['user'] = $CI->user_model->get_user(true, true, array('user_id' =>  $children->user_id));?>
-
-                        <li><a href="<?php echo base_url('parents/settings/' . $children->user_id); ?>"><i class = "fa fa-user" style="color:green"></i> <?php echo $children->first_name . " " . $children->last_name ?></a></li>    
-                        <?php endforeach; ?>
-
-                        <li><span style="color:white">______</span></li>
-                        
-                        <li><a href="<?php echo base_url('signin/logout');?>"><i class = "glyphicon glyphicon-log-out" style="color:red"></i> Logout</a></li>
-
-                    </ul>
-                </li>
-            </ul>
-
-        <?php else: ?>
-            <a href = "<?php echo base_url('signin/logout'); ?>" class = "pull-right btn btn-primary btn-md" style = "margin-right: 20px; margin-top: 10px; margin-bottom: 10px;">Log Out</a>
-                            
-        <?php endif; ?>
+    <?php endif; ?>
         
     </div>
 </nav><br><br><br>
 
+<link href="https://fonts.googleapis.com/css?family=Cabin|Muli|Oswald" rel="stylesheet"/>
+<link rel="stylesheet" href="<?php echo base_url("/css/style_parentview.css"); ?>" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- Nav Bar Script -->
@@ -190,24 +208,6 @@
 <body class = "sign-in">
     <div class = "container" style = "">
         <div class = "row">
-
-            <div class = "col-md-8 col-md-offset-2 content-container container-fluid" style = "margin-bottom: 4.5px;"><br>
-
-                <div class = "col-xs-12 form-group register-field" style = "">
-
-                    <?php if ($mobile): ?>
-                        <h3 class = "col-xs-12 col-md-6 no-padding text-info pull-left"style = "margin-bottom: 0px; margin-top: 0px;">Settings </strong></h3>
-                         
-                    <?php else: ?>
-                        <h3 class = "col-xs-12 col-md-6 no-padding text-info pull-left"style = "margin-bottom: 0px; margin-top: 0px;">Settings for <b><?php echo $child->first_name ?></b></strong></h3>
-                        
-                    <?php endif; ?>
-                    
-                    </a>
-
-                </div>
-
-            </div>
 
             <script>
 
@@ -231,11 +231,19 @@
                     // alert(id); 
                 }
 
-            
             </script>
-           
 
-            <div class = "col-md-8 col-md-offset-2 content-container container-fluid" style = "margin-bottom: 1vw;"><br>
+            <div class = "col-md-12 col-sm-14 col-xs-16 col-md-offset-0 content-container container-fluid" style = "margin-bottom: 1vw;"><br>
+
+                <div class = " content-container container-fluid" style = "margin-bottom: 4.5px;">
+
+                    <div class = "col-xs-12 form-group register-field" style = "">
+                        <h3 class = "col-xs-4 no-padding text-info pull-left"style = "margin-bottom: 0px; margin-top: 0px;">Settings for <b><?php echo $child->first_name ?></b></strong></h3>
+
+                        
+                    </div>
+
+                </div>
 
                  <!-- The table -->
                  <div class="container-fluid">
@@ -251,7 +259,7 @@
                             <th><center>S<center></th>
                         </tr>
                         <tr id="time-table1">
-                            <td style="font-size: 12px"><center>06:00-07:00</center></td>
+                            <td class="timecol" style="font-size: 12px"><center>06:00-07:00</center></td>
                             <td id="cell1" onclick="colorchange(this.id)"> </td>
                             <td id="cell2" onclick="colorchange(this.id)"> </td>
                             <td id="cell3" onclick="colorchange(this.id)"> </td>
@@ -261,7 +269,7 @@
                             <td id="cell7" onclick="colorchange(this.id)"> </td>
                         </tr>
                         <tr>
-                            <td style="font-size: 12px"><center>07:00-08:00</center></td>
+                            <td class="timecol" style="font-size: 12px"><center>07:00-08:00</center></td>
                             <td id="cell8" onclick="colorchange(this.id)"> </td>
                             <td id="cell9" onclick="colorchange(this.id)"> </td>
                             <td id="cell10" onclick="colorchange(this.id)"> </td>
@@ -272,7 +280,7 @@
                         </tr>
 
                         <tr>
-                            <td style="font-size: 12px"><center>08:00-09:00</center></td>
+                            <td class="timecol" style="font-size: 12px"><center>08:00-09:00</center></td>
                             <td id="cell15" onclick="colorchange(this.id)"> </td>
                             <td id="cell16" onclick="colorchange(this.id)"> </td>
                             <td id="cell17" onclick="colorchange(this.id)"> </td>
@@ -283,7 +291,7 @@
                         </tr>
 
                         <tr>
-                            <td style="font-size: 12px"><center>09:00-10:00</center></td>
+                            <td class="timecol" style="font-size: 12px"><center>09:00-10:00</center></td>
                             <td id="cell22" onclick="colorchange(this.id)"> </td>
                             <td id="cell23" onclick="colorchange(this.id)"> </td>
                             <td id="cell24" onclick="colorchange(this.id)"> </td>
@@ -294,7 +302,7 @@
                         </tr>
 
                         <tr>
-                            <td style="font-size: 12px"><center>10:00-11:00</center></td>
+                            <td class="timecol" style="font-size: 12px"><center>10:00-11:00</center></td>
                             <td id="cell29" onclick="colorchange(this.id)"> </td>
                             <td id="cell30" onclick="colorchange(this.id)"> </td>
                             <td id="cell31" onclick="colorchange(this.id)"> </td>
@@ -305,7 +313,7 @@
                         </tr>
 
                         <tr>
-                            <td style="font-size: 12px"><center>11:00-12:00</center></td>
+                            <td class="timecol" style="font-size: 12px"><center>11:00-12:00</center></td>
                             <td id="cell36" onclick="colorchange(this.id)"> </td>
                             <td id="cell37" onclick="colorchange(this.id)"> </td>
                             <td id="cell38" onclick="colorchange(this.id)"> </td>
@@ -316,7 +324,7 @@
                         </tr>
 
                         <tr>
-                            <td style="font-size: 12px"><center>12:00-01:00</center></td>
+                            <td class="timecol" style="font-size: 12px"><center>12:00-01:00</center></td>
                             <td id="cell43" onclick="colorchange(this.id)"> </td>
                             <td id="cell44" onclick="colorchange(this.id)"> </td>
                             <td id="cell45" onclick="colorchange(this.id)"> </td>
@@ -327,7 +335,7 @@
                         </tr>
 
                         <tr>
-                            <td style="font-size: 12px"><center>01:00-02:00</center></td>
+                            <td class="timecol" style="font-size: 12px"><center>01:00-02:00</center></td>
                             <td id="cell50" onclick="colorchange(this.id)"> </td>
                             <td id="cell51" onclick="colorchange(this.id)"> </td>
                             <td id="cell52" onclick="colorchange(this.id)"> </td>
@@ -338,7 +346,7 @@
                         </tr>
 
                         <tr>
-                            <td style="font-size: 12px"><center>02:00-03:00</center></td>
+                            <td class="timecol" style="font-size: 12px"><center>02:00-03:00</center></td>
                             <td id="cell57" onclick="colorchange(this.id)"> </td>
                             <td id="cell58" onclick="colorchange(this.id)"> </td>
                             <td id="cell59" onclick="colorchange(this.id)"> </td>
@@ -349,7 +357,7 @@
                         </tr>
 
                         <tr>
-                            <td style="font-size: 12px"><center>03:00-04:00</center></td>
+                            <td class="timecol" style="font-size: 12px"><center>03:00-04:00</center></td>
                             <td id="cell64" onclick="colorchange(this.id)"> </td>
                             <td id="cell65" onclick="colorchange(this.id)"> </td>
                             <td id="cell66" onclick="colorchange(this.id)"> </td>
@@ -359,7 +367,50 @@
                             <td id="cell70" onclick="colorchange(this.id)"> </td>
                         </tr>
 
-                        
+                        <tr>
+                            <td class="timecol" style="font-size: 12px"><center>04:00-05:00</center></td>
+                            <td id="cell71" onclick="colorchange(this.id)"> </td>
+                            <td id="cell72" onclick="colorchange(this.id)"> </td>
+                            <td id="cell73" onclick="colorchange(this.id)"> </td>
+                            <td id="cell74" onclick="colorchange(this.id)"> </td>
+                            <td id="cell75" onclick="colorchange(this.id)"> </td>
+                            <td id="cell76" onclick="colorchange(this.id)"> </td>
+                            <td id="cell77" onclick="colorchange(this.id)"> </td>
+                        </tr>
+
+                        <tr>
+                            <td class="timecol" style="font-size: 12px"><center>05:00-06:00</center></td>
+                            <td id="cell78" onclick="colorchange(this.id)"> </td>
+                            <td id="cell79" onclick="colorchange(this.id)"> </td>
+                            <td id="cell80" onclick="colorchange(this.id)"> </td>
+                            <td id="cell81" onclick="colorchange(this.id)"> </td>
+                            <td id="cell82" onclick="colorchange(this.id)"> </td>
+                            <td id="cell83" onclick="colorchange(this.id)"> </td>
+                            <td id="cell84" onclick="colorchange(this.id)"> </td>
+                        </tr>
+
+                        <tr>
+                            <td class="timecol" style="font-size: 12px"><center>06:00-07:00</center></td>
+                            <td id="cell85" onclick="colorchange(this.id)"> </td>
+                            <td id="cell86" onclick="colorchange(this.id)"> </td>
+                            <td id="cell87" onclick="colorchange(this.id)"> </td>
+                            <td id="cell88" onclick="colorchange(this.id)"> </td>
+                            <td id="cell89" onclick="colorchange(this.id)"> </td>
+                            <td id="cell90" onclick="colorchange(this.id)"> </td>
+                            <td id="cell91" onclick="colorchange(this.id)"> </td>
+                        </tr>
+
+                        <tr>
+                            <td class="timecol" style="font-size: 12px"><center>07:00-08:00</center></td>
+                            <td id="cell92" onclick="colorchange(this.id)"> </td>
+                            <td id="cell93" onclick="colorchange(this.id)"> </td>
+                            <td id="cell94" onclick="colorchange(this.id)"> </td>
+                            <td id="cell95" onclick="colorchange(this.id)"> </td>
+                            <td id="cell96" onclick="colorchange(this.id)"> </td>
+                            <td id="cell97" onclick="colorchange(this.id)"> </td>
+                            <td id="cell98" onclick="colorchange(this.id)"> </td>
+                        </tr>
+
                     </table>
                 </div>
 
@@ -368,12 +419,13 @@
                 
                 <?php foreach ($usertimes->result() as $row): ?>
                 
-
-                <div class = "col-xs-12 form-group register-field" style = "font-size:14px;">
-                    <h3 class = "no-padding text-info"style = "margin-bottom: 5px; margin-top: 0px;">Warning</h3>
-                    <input style="height:50px;display:none;" type = "date" required name = "change-warning" class = "form-control sign-in-field" id="time-form"><br>
-                        <select style="width:120px;height:30px" id="time-warning" onclick="">
-                            
+                <ul class="nav nav-pills nav-justified" style = "margin-bottom: 10px; margin-top: 10px;">
+   
+                    <li class = "active text-center">
+                        <h3 class = "no-padding text-info" style = "margin-top: 0px;">Warning</h3>
+                        
+                        <select style="width:120px; height:30px" id="time-warning" onclick="">
+                                
                             <?php if($row->warning != 0 &&$row->warning != 60): ?>
                                 <option value="<?php echo $row->warning; ?>"><?php echo $row->warning; ?> minutes</option>
                             <?php endif; ?>
@@ -388,17 +440,45 @@
                             <option value="45">45 minutes</option>
                             <option value="60">1 hour</option>
                         </select>
-                    </input>
-                    <br><br><br>
-                </div>
+                    </li>
 
-            <?php  endforeach; ?>
-                <!-- <a id = "notif-btn" href="#notif-modal" data-toggle = "modal">sasasa</a> -->
-                <?php include(APPPATH . 'views/modals/confirm_modal.php'); ?>
+                    <li class = "active text-center">
+                        <!-- <h3 class = "no-padding text-info"style = "margin-bottom: 5px; margin-top: 0px;">Warning</h3> -->
+                        <div class = "text-center form-group register-field container-fluid" style="margin-bottom: 10px;  ">
+                            <div class = "col-xs-12 col-md-12 form-group register-field" style = "font-size:14px;">
+                                <h3 class = "no-padding text-info" style = "margin-bottom: 15px; margin-top: 0px;">Keep Settings?</h3>
+                                <div class="checkbox">
+                                    <label><input type="checkbox" value="">Keep for next week</label>
+                                </div>
+                                
+                                <br>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class = "active text-center">
+                        <!-- <h3 class = "no-padding text-info"style = "margin-bottom: 5px; margin-top: 0px;">Warning</h3> -->
+                        <div class = "text-center form-group register-field container-fluid" style="margin-bottom: 10px;  ">
+                            <div class = "col-xs-12 col-md-12 form-group register-field" style = "font-size:14px;">
+                                
+                                <a id = "notif-btn" data-toggle = "modal" href="#default-time-modal">
+                                    <h4 class = "no-padding text-info" style = "margin-bottom: 15px; margin-top: 0px;">Revert to Default Settings</h4>
+                                </a>
+                                
+                                <br>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+
+            <?php endforeach; ?>
+
                 <div class = "text-center">
-                    <button onclick="changeTimeSettings('time-table', 'td', 'cell');" data-toggle = "modal" class = "btn btn-success container-fluid col-xs-12" style="font-size:24px; margin-top: 10px; margin-bottom: 10px">Save Changes</button>
+                    <br><br><br>
+                    <a id = "confirm-btn" data-toggle = "modal">
+                        <button onclick="ifEmpty('time-table', 'td', 'cell');" data-toggle = "modal" class = "btn btn-success container-fluid col-xs-12" style="font-size:24px; margin-top: 10px; margin-bottom: 10px">Save Changes</button>
+                    </a>
                 </div>
-
             </div>
 
         </div>    
@@ -438,7 +518,6 @@
             var i, items = [];
             var cell = document.getElementById(container).getElementsByTagName(selectorTag);
             
-
             for (var i = 0; i < cell.length; i++) 
             {
                 if(cell[i].id.includes("-A"))
@@ -459,12 +538,62 @@
             var selectedWarning = warning.options[warning.selectedIndex].value;
             document.cookie = "selectedWarning=" + selectedWarning + ";path=/";   
 
-            location.reload();
+            if(string==null || string=="" || string==" ")
+                alert('empty');
+
+            else
+            {
+                location.reload();
+
+                <?php 
+                    if($_COOKIE["updatetime"])
+                        echo $CI->user_model->set_usertimes($child->user_id, 0);
+                ?>
+            }
+            
+        }
+
+        function setDefaultTime() 
+        {
+            var string = "cell8-A cell9-A cell10-A cell11-A cell12-A cell13-A cell14-A cell15-A cell16-A cell17-A cell18-A cell19-A cell20-A cell21-A cell22-A cell23-A cell24-A cell25-A cell26-A cell27-A cell28-A cell29-A cell30-A cell31-A cell32-A cell33-A cell34-A cell35-A cell36-A cell37-A cell38-A cell39-A cell40-A cell41-A cell42-A cell43-A cell44-A cell45-A cell46-A cell47-A cell48-A cell49-A";   
+
+            document.cookie = "timeSetting=" + string + ";path=/";
+
+            document.cookie = "selectedWarning=30;path=/"; 
+
+            document.cookie = "updatetime=1;path=/";
 
             <?php 
                 if($_COOKIE["updatetime"])
                     echo $CI->user_model->set_usertimes($child->user_id, 0);
             ?>
+
+            location.reload();
+        }
+
+        function ifEmpty(container, selectorTag, prefix) 
+        {
+            var i, items = [];
+            var cell = document.getElementById(container).getElementsByTagName(selectorTag);
+            
+            for (var i = 0; i < cell.length; i++) 
+            {
+                if(cell[i].id.includes("-A"))
+                {
+                    items.push(cell[i].id);
+                    // alert(cell[i].id);
+                }
+            }
+
+            string = items.join(" ");
+
+            // alert(string);
+
+            if(string==null || string=="" || string==" ")
+                $("#empty-modal").modal();
+
+            else
+                $("#confirm-modal").modal();
         }
 
     </script>

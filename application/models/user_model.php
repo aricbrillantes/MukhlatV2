@@ -56,6 +56,8 @@ class User_model extends CI_Model {
 
         if($query->num_rows() < 1)
             return 999;
+
+        else return 1;
         
     }
 
@@ -107,12 +109,14 @@ class User_model extends CI_Model {
         {
             $settings = htmlspecialchars($_COOKIE["defaultTimeSetting"]);
             $warning = htmlspecialchars($_COOKIE["defaultWarningSetting"]);
+            $keep = '1';
 
             $data = array
             (
                 'user_id' => $user_id,
                 'time_setting'=> $settings,
-                'warning' => $warning
+                'warning' => $warning,
+                'keep' => $keep
             );
 
             $this->db->insert('tbl_usertimes',$data);   
@@ -127,12 +131,14 @@ class User_model extends CI_Model {
 
         $settings = htmlspecialchars($_COOKIE["timeSetting"]);
         $warning = htmlspecialchars($_COOKIE["selectedWarning"]);
-
+        $keep = '1';
+        
         $data = array
         (
             'user_id' => $user_id,
             'time_setting'=> $settings,
-            'warning' => $warning
+            'warning' => $warning,
+            'keep' => $keep
         );
 
         $this->db->insert('tbl_usertimes',$data);   

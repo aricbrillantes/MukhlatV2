@@ -80,6 +80,8 @@
     
 </script>
 
+<link href="https://fonts.googleapis.com/css?family=Cabin|Muli|Oswald" rel="stylesheet"/>
+<link rel="stylesheet" href="<?php echo base_url("/css/style_parentview.css"); ?>" />
 <style>div.content-container{border:0px;}</style>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
