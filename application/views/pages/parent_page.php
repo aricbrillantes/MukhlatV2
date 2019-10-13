@@ -42,12 +42,10 @@
 
 <script>
     document.cookie = "updatetime=0;path=/";
-    document.cookie = "selectedWarning=0;path=/"; 
-
-    document.cookie = "defaultTimeSetting=cell8-A cell9-A cell10-A cell11-A cell12-A cell13-A cell14-A cell15-A cell16-A cell17-A cell18-A cell19-A cell20-A cell21-A cell22-A cell23-A cell24-A cell25-A cell26-A cell27-A cell28-A cell29-A cell30-A cell31-A cell32-A cell33-A cell34-A cell35-A cell36-A cell37-A cell38-A cell39-A cell40-A cell41-A cell42-A cell43-A cell44-A cell45-A cell46-A cell47-A cell48-A cell49-A;path=/";   
-
-    document.cookie = "defaultWarningSetting=30;path=/"; 
-    
+    document.cookie = "selectedWarning=0;path=/";   
+    document.cookie = "selectedLimit=180;path=/"; 
+    document.cookie = "selectedKeep=1;path=/"; 
+    var ctr = 0;
 </script>
 
 <style>div.content-container{border:0px;}</style>

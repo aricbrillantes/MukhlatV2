@@ -107,7 +107,7 @@ class User_model extends CI_Model {
 
         else
         {
-            $settings = 'cell8-A cell9-A cell10-A cell11-A cell12-A cell13-A cell14-A cell15-A cell16-A cell17-A cell18-A cell19-A cell20-A cell21-A cell22-A cell23-A cell24-A cell25-A cell26-A cell27-A cell28-A cell29-A cell30-A cell31-A cell32-A cell33-A cell34-A cell35-A cell36-A cell37-A cell38-A cell39-A cell40-A cell41-A cell42-A cell43-A cell44-A cell45-A cell46-A cell47-A cell48-A cell49-A';
+            $settings = 'cell15-A cell16-A cell17-A cell18-A cell19-A cell20-A cell21-A cell22-A cell23-A cell24-A cell25-A cell26-A cell27-A cell28-A cell29-A cell30-A cell31-A cell32-A cell33-A cell34-A cell35-A cell36-A cell37-A cell38-A cell39-A cell40-A cell41-A cell42-A cell43-A cell44-A cell45-A cell46-A cell47-A cell48-A cell49-A cell50-A cell51-A cell52-A cell53-A cell54-A cell55-A cell56-A cell57-A cell58-A cell59-A cell60-A cell61-A cell62-A cell63-A cell64-A cell65-A cell66-A cell67-A cell68-A cell69-A cell70-A cell71-A cell72-A cell73-A cell74-A cell75-A cell76-A cell77-A cell78-A cell79-A cell80-A cell81-A cell82-A cell83-A cell84-A cell85-A cell86-A cell87-A cell88-A cell89-A cell90-A cell91-A cell92-A cell93-A cell94-A cell95-A cell96-A cell97-A cell98-A';
             $warning = '30';
             $keep = '1';
             $limit = '180';
