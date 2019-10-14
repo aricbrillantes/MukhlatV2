@@ -85,50 +85,50 @@ class Chat extends CI_Controller
         $this->chatmodel->add_chat_message($chat_id,$sender_id,$chat_message);
     }
 
-    public function ajax_getChats()
-    {
-        $sender_id = $this->input->post('sender_id');
-        $chats=$this->chatmodel->get_chats($sender_id);
-        if($chats->num_rows() >0)
-        {
+    // public function ajax_getChats()
+    // {
+    //     $sender_id = $this->input->post('sender_id');
+    //     $chats=$this->chatmodel->get_chats($sender_id);
+    //     if($chats->num_rows() >0)
+    //     {
 
-            // echo "<script type='text/javascript'>alert('if');</script>";
-            $chats_html = '';
-            foreach($chats->result() as $chat_instance)
-            {
-                $chats_html .= '<button class=chat_inst style=border:1pxsolidgray;width:100%;min-height:20%; value='.$chat_instance->chat_id.'>';
-                $other_user = $this->chatmodel->get_other_user($chat_instance->chat_id, $sender_id);
-                foreach($other_user->result() as $other_user_instance)
-                {
-                    $other_user_name = $this->chatmodel->get_name($other_user_instance->other_user);
-                    foreach($other_user_name->result() as $other_user_name_instance)
-                    {
-                        $chats_html .= '<h2>' . $other_user_name_instance->name ;
+    //         // echo "<script type='text/javascript'>alert('if');</script>";
+    //         $chats_html = '';
+    //         foreach($chats->result() as $chat_instance)
+    //         {
+    //             $chats_html .= '<button class=chat_inst style=border:1pxsolidgray;width:100%;min-height:20%; value='.$chat_instance->chat_id.'>';
+    //             $other_user = $this->chatmodel->get_other_user($chat_instance->chat_id, $sender_id);
+    //             foreach($other_user->result() as $other_user_instance)
+    //             {
+    //                 $other_user_name = $this->chatmodel->get_name($other_user_instance->other_user);
+    //                 foreach($other_user_name->result() as $other_user_name_instance)
+    //                 {
+    //                     $chats_html .= '<h2>' . $other_user_name_instance->name ;
                         
                         
-                        // $chats_html .= '<div id="chat_inst" style="border: 1px solid gray;">';
-                    }
-                }
+    //                     // $chats_html .= '<div id="chat_inst" style="border: 1px solid gray;">';
+    //                 }
+    //             }
                 
-            }
+    //         }
             
            
-            // echo '<script type="text/javascript">alert("message is '.$chat_messages_html.'");</script>';
+    //         // echo '<script type="text/javascript">alert("message is '.$chat_messages_html.'");</script>';
             
-            $str = json_encode($chats_html);
-            echo trim($str, '"'); 
+    //         $str = json_encode($chats_html);
+    //         echo trim($str, '"'); 
             
-        }
-        else
-        {
-            // echo "<script type='text/javascript'>alert('else');</script>";
+    //     }
+    //     else
+    //     {
+    //         // echo "<script type='text/javascript'>alert('else');</script>";
             
-            $str = json_encode('"');
-            echo trim($str, '"'); 
+    //         $str = json_encode('"');
+    //         echo trim($str, '"'); 
             
-        }
+    //     }
 
-    }
+    // }
 
     public function change_chat($chat_id)
     {

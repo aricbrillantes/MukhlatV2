@@ -1,24 +1,26 @@
 $(document).ready(function()
 {
-    function get_chats()
-    {
-        $.ajax({
-            type: "POST",
-            url: base_url + "chat/ajax_getChats",
-            // dataType: "json",
-            data: { sender_id : sender_id },
-            success: function (data) {
-                // alert('2');
+    // function get_chats()
+    // {
+    //     $.ajax({
+    //         type: "POST",
+    //         url: base_url + "chat/ajax_getChats",
+    //         // dataType: "json",
+    //         data: { sender_id : sender_id },
+    //         success: function (data) {
+    //             // alert('2');
                 
                    
-                $("div#chats_box").append(data);
-                // $(div).find('#chat_viewport').html('<h1>Hello</h1>');
+    //             $("div#chats_box").append(data);
+    //             // $(div).find('#chat_viewport').html('<h1>Hello</h1>');
                 
                 
-            }
-        });
-    }
-    get_chats();
+    //         }
+    //     });
+    // }
+    // get_chats();
+    
+
     function get_chatmessages()
     {
         // alert('1');

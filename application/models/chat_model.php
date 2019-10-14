@@ -44,7 +44,7 @@ class Chat_model extends CI_Model{
         $user_idcopy = $user_id;
         // echo '<script type="text/javascript">alert("user is '.$user_id.'");</script>';
         $query_str = "SELECT chat_id FROM tbl_chats WHERE user_1 = ? OR user_2 = ?";
-        $result =  $this->db->query($query_str,  array($user_id,$user_idcopy));
+        $result =  $this->db->query($query_str,  array($user_id,$user_idcopy))->result();
         return $result;
         
 
@@ -66,7 +66,7 @@ class Chat_model extends CI_Model{
         END AS other_user
         FROM tbl_chats
         WHERE chat_id = ?";
-        $result =  $this->db->query($query_str, array($user_id,$chat_id));
+        $result =  $this->db->query($query_str, array($user_id,$chat_id))->result();
         return $result;
 
     }
@@ -78,7 +78,17 @@ class Chat_model extends CI_Model{
         WHERE user_id = ?";
         
 
-        $result =  $this->db->query($query_str, $user_id);
+        $result =  $this->db->query($query_str, $user_id)->result();
+        
+        return $result;
+    }
+
+    public function get_users()
+    {
+        $query_str = "SELECT CONCAT(first_name, ' ', last_name) AS name, user_id
+        FROM tbl_users
+        WHERE role_id = 2";
+        $result =  $this->db->query($query_str)->result();
         
         return $result;
     }
