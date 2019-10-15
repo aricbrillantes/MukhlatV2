@@ -290,7 +290,7 @@
 
                             if(document.getElementById(temp+"-A"))
                             {
-                                document.getElementById(temp+"-A").style.background = "rgb(249, 249, 249)";
+                                document.getElementById(temp+"-A").style.background = "rgb(255, 255, 255)";
                                 document.getElementById(temp+"-A").id = temp;
                             }
 
@@ -309,8 +309,39 @@
 
                         if(document.getElementById(temp))
                         {
-                            document.getElementById(temp).style.background = "rgb(249, 249, 249)";
+                            document.getElementById(temp).style.background = "rgb(255, 255, 255)";
                             document.getElementById(temp).id = temp.replace("-A","");
+                        }
+
+                    }  
+
+                }
+
+                function defaultTable() 
+                {
+
+                    clearTable();
+                    var i, temp; 
+
+                    if(document.getElementById("keep").checked == false)
+                        document.getElementById("keep").checked = true;
+
+                    document.getElementById("time-limit").options[3].selected = true;
+
+                    document.getElementById("time-warning").options[2].selected = true;
+                    
+                    for(i=106; i<=280; i++)
+                    {
+                        temp = "cell" + i;
+
+                        if(document.getElementById(temp))
+                        {
+                            if(i>=106 && i<=280)
+                            {
+                                document.getElementById(temp).style.background = "rgb(50, 200, 100)";
+                                document.getElementById(temp).id = temp + "-A";
+                            }
+                            
                         }
 
                     }  
@@ -976,7 +1007,7 @@
                             <div class = "text-center col-xs-12 col-md-12 form-group register-field" style = "font-size:14px;">
                                 
                                 <a id = "notif-btn"  href="#">
-                                    <h4 class = "no-padding text-info" onclick="clearTable();" style = "margin-top: 10px;">Clear Table</h4>
+                                    <h4 class = "no-padding text-info" onclick="clearTable();" style = "margin-top: 10px;">Clear All Timeslots</h4>
                                 </a>
 
                                 <p class = "no-padding " style = "margin-bottom: 0px; margin-top: 0px;">(Clear entire table)</p>
@@ -990,11 +1021,15 @@
                         <div class = "text-center form-group register-field container-fluid" style="margin-bottom: -25px;  ">
                             <div class = "text-center col-xs-12 col-md-12 form-group register-field" style = "font-size:14px;">
                                 
-                                <a id = "notif-btn" data-toggle = "modal" href="#default-time-modal">
+                                <!-- <a id = "notif-btn" data-toggle = "modal" href="#default-time-modal">
                                     <h4 class = "no-padding text-info" style = "margin-top: 10px;">Use Default Settings</h4>
+                                </a> -->
+
+                                <a id = "notif-btn" href="#">
+                                    <h4 class = "no-padding text-info" onclick="defaultTable();" style = "margin-top: 10px;">Reset to Default Settings</h4>
                                 </a>
 
-                                <p class = "no-padding " style = "margin-bottom: 0px; margin-top: 0px;">(Use the default 8:00 AM - 8:00 PM setting)</p>
+                                <p class = "no-padding " style = "margin-bottom: 0px; margin-top: 0px;">(Revert to the 8:00 AM - 8:00 PM setting)</p>
                                 
                                 <br>
                             </div>
@@ -1008,16 +1043,7 @@
                     <li class = "active text-center">
                         <h3 class = "no-padding text-info" style = "margin-top: 10px;"><br>Warning</h3>
                         
-                        <select style="width:100px; height:20px" id="time-warning" onclick="">
-                                
-                            <?php if($row->warning != 0 &&$row->warning != 60): ?>
-                                <option value="<?php echo $row->warning; ?>"><?php echo $row->warning; ?> minutes</option>
-                            <?php endif; ?>
-
-                            <?php if($row->warning == 60): ?>
-                                <option value="<?php echo $row->warning; ?>">1 hour</option>
-                            <?php endif; ?>
-
+                        <select style="width:100px; height:20px" id="time-warning" onclick=""> 
                             <option value="0">None</option>
                             <option value="15">15 minutes</option>
                             <option value="30">30 minutes</option>
@@ -1033,29 +1059,6 @@
                             <!-- <?php echo $row->use_limit?> -->
 
                         <select style="width:110px; height:20px" id="time-limit" onclick="">
-                                
-                            <?php if($row->use_limit== 60): ?>
-                                <option value="60">1 hour</option>
-
-                            <?php elseif($row->use_limit== 90): ?>
-                                <option value="90">1 hour 30 mins</option>
-
-                            <?php elseif($row->use_limit== 120): ?>
-                                <option value="120">2 hours</option>
-
-                            <?php elseif($row->use_limit== 150): ?>
-                                <option value="150">2 hours 30 mins</option>
-
-                            <?php elseif($row->use_limit== 180): ?>
-                                <option value="180">3 hours</option>
-
-                            <?php elseif($row->use_limit== 210): ?>
-                                <option value="210">3 hours 30 mins</option>
-
-                            <?php elseif($row->use_limit== 240): ?>
-                                <option value="240">4 hours</option>
-
-                            <?php endif; ?>
 
                             <option value="30">30 minutes</option>
                             <option value="60">1 hour</option>
@@ -1113,9 +1116,7 @@
         var readstring = "<?php echo $row->time_setting; ?>";
         var readarray = readstring.split(" ");
         var string, currentID;
-        var keep = "<?php echo $row->keep; ?>"
         
-
         if(readstring!=null && readstring!="" && readstring!=" ")
         {
             for(j=0; j<readarray.length; j++)
@@ -1129,14 +1130,41 @@
             }
         }
 
-        // alert(keep);
 
-        if(keep=='1')
+        //keep settings
+        var keep = parseInt("<?php echo $row->keep; ?>");
+
+        if(keep==1)
             document.getElementById("keep").checked = true;
 
         else
             document.getElementById("keep").checked = false;
+
+
+        //use limit
+        var limit = parseInt("<?php echo $row->use_limit; ?>");
+        switch(limit)
+        {
+            case 30:document.getElementById("time-limit").options[0].selected = true;break;
+            case 60:document.getElementById("time-limit").options[1].selected = true;break;
+            case 90:document.getElementById("time-limit").options[2].selected = true;break;
+            case 120:document.getElementById("time-limit").options[3].selected = true;break;
+            case 150:document.getElementById("time-limit").options[4].selected = true;break;
+            case 180:document.getElementById("time-limit").options[5].selected = true;break;
+            case 210:document.getElementById("time-limit").options[6].selected = true;break;
+            case 240:document.getElementById("time-limit").options[7].selected = true;break;
+        }
         
+
+        var warning = parseInt("<?php echo $row->warning; ?>");
+        switch(warning)
+        {
+            case 0:document.getElementById("time-warning").options[0].selected = true;break;
+            case 15:document.getElementById("time-warning").options[1].selected = true;break;
+            case 30:document.getElementById("time-warning").options[2].selected = true;break;
+            case 45:document.getElementById("time-warning").options[3].selected = true;break;
+            case 60:document.getElementById("time-warning").options[4].selected = true;break;
+        }
 
         function changeTimeSettings(container, selectorTag, prefix) 
         {
