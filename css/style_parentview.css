@@ -13,6 +13,11 @@ textarea{
     resize: none;
 }
 
+a{
+	color: black;
+	
+}
+
 .sign-in-logo{
     font-family: 'Oswald', sans-serif;
     color: white;
