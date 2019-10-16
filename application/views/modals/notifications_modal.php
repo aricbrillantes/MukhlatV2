@@ -3,10 +3,9 @@
 <div id="notif-modal" class="modal fade" role="dialog">
     <div class="modal-dialog">
         <!-- Notification Modal Content-->
-        <div class="modal-content">
-            <div class="modal-header modal-heading">
+        <div class="modal-content" style="background: #E3DFDE;">
+            <div class="modal-header modal-heading modalbg" style="background-image: url(<?php echo base_url('images/newsheader.png'); ?>);background-size:cover;">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title text-center"><strong>Notifications</strong></h4>
             </div>
             <div class="modal-body">
                 <div class = "row">
@@ -25,32 +24,32 @@
                                             <li class = "list-group-item" style = "text-align: left;">
                                                 <img src = "<?php echo $notif->profile_url ? base_url($notif->profile_url) : base_url('images/default.jpg') ?>" class = "no-padding no-margin pull-left img-circle notif-pic"/>
                                                 <div class = "wrap"style = "margin-top: 6px; margin-bottom: 6px;">
-                                                    <span class = "text-muted" style = "font-size: 12px;">
-                                                        <a class = "btn btn-link no-padding no-margin notif-btn" href = "<?php echo base_url('user/profile/' . $notif->doer_id); ?>"><strong><?php echo $notif->first_name . " " . $notif->last_name; ?></strong></a>
+                                                    <span class = "text-muted" style = "font-size: 22px;">
+                                                        <a class = "btn btn-link no-padding no-margin notif-btn text1color" href = "<?php echo base_url('user/profile/' . $notif->doer_id); ?>"><strong><?php echo $notif->first_name . " " . $notif->last_name; ?></strong></a>
                                                         <?php if ($notif->notification_type_id === '1'): ?>
-                                                            replied to your <a class = "btn btn-link no-padding no-margin notif-btn" href = "<?php echo base_url('topic/thread/' . $notif->post->post_id); ?>">
+                                                            replied to your <a class = "btn btn-link no-padding no-margin notif-btn text1color" href = "<?php echo base_url('topic/thread/' . $notif->post->post_id); ?>">
                                                                 <strong>post</strong>
                                                             </a> 
-                                                            in <a class = "btn btn-link no-padding no-margin notif-btn" href = "<?php echo base_url('topic/view/' . $notif->post->topic->topic_id); ?>">
+                                                            in <a class = "btn btn-link no-padding no-margin notif-btn text1color" href = "<?php echo base_url('topic/view/' . $notif->post->topic->topic_id); ?>">
                                                                 <strong>
                                                                     <?php echo utf8_decode($notif->post->topic->topic_name); ?>
                                                                 </strong>
                                                             </a>
                                                         <?php elseif ($notif->notification_type_id === '2'): ?>
-                                                            followed your topic <a class = "btn btn-link no-padding no-margin notif-btn" href = "<?php echo base_url('topic/view/' . $notif->topic->topic_id); ?>">
+                                                            followed your topic <a class = "btn btn-link no-padding no-margin notif-btn text1color" href = "<?php echo base_url('topic/view/' . $notif->topic->topic_id); ?>">
                                                                 <strong><?php echo utf8_decode($notif->topic->topic_name); ?></strong>
                                                             </a>
                                                         <?php elseif ($notif->notification_type_id === '3'): ?>
-                                                            upvoted your <a class = "btn btn-link no-padding no-margin notif-btn" href = "<?php echo base_url('topic/thread/' . $notif->post->post_id); ?>">
+                                                            upvoted your <a class = "btn btn-link no-padding no-margin notif-btn text1color" href = "<?php echo base_url('topic/thread/' . $notif->post->post_id); ?>">
                                                                 <strong>post</strong>
                                                             </a> in 
-                                                            <a class = "btn btn-link no-padding no-margin notif-btn" href = "<?php echo base_url('topic/view/' . $notif->post->topic->topic_id); ?>">
+                                                            <a class = "btn btn-link no-padding no-margin notif-btn text1color" href = "<?php echo base_url('topic/view/' . $notif->post->topic->topic_id); ?>">
                                                                 <strong><?php echo utf8_decode($notif->post->topic->topic_name); ?></strong>
                                                             </a>
                                                         <?php elseif ($notif->notification_type_id === '5'): ?>
-                                                            <a class = "btn btn-link no-padding no-margin notif-btn" href = "<?php echo base_url('topic/thread/' . $notif->post->post_id); ?>">
+                                                            <a class = "btn btn-link no-padding no-margin notif-btn text1color" href = "<?php echo base_url('topic/thread/' . $notif->post->post_id); ?>">
                                                                 <strong>posted</strong></a> in 
-                                                            <a class = "btn btn-link no-padding no-margin notif-btn" href = "<?php echo base_url('topic/view/' . $notif->post->topic->topic_id); ?>">
+                                                            <a class = "btn btn-link no-padding no-margin notif-btn text1color" href = "<?php echo base_url('topic/view/' . $notif->post->topic->topic_id); ?>">
                                                                 <strong><?php echo utf8_decode($notif->post->topic->topic_name); ?></strong>
                                                             </a>
                                                         <?php endif; ?>
@@ -71,10 +70,10 @@
                                             <li class = "list-group-item" style = "height: 60px; text-align: left;">
                                                 <img src = "<?php echo $notif->profile_url ? base_url($notif->profile_url) : base_url('images/default.jpg') ?>" class = "no-padding no-margin pull-left img-circle notif-pic"/>
                                                 <div class = "wrap"style = "margin-top: 6px; margin-bottom: 6px;">
-                                                    <span class = "text-muted" style = "font-size: 12px;">
-                                                        <a class = "btn btn-link no-padding no-margin notif-btn" href = "<?php echo base_url('user/profile/' . $notif->doer_id);?>"><strong><?php echo $notif->first_name . " " . $notif->last_name ?></strong></a>
+                                                    <span class = "text-muted" style = "font-size: 22px;">
+                                                        <a class = "btn btn-link no-padding no-margin notif-btn text1color" href = "<?php echo base_url('user/profile/' . $notif->doer_id);?>"><strong><?php echo $notif->first_name . " " . $notif->last_name ?></strong></a>
                                                         shared the topic 
-                                                        <a class = "btn btn-link no-padding no-margin notif-btn" href = "<?php echo base_url('topic/view/' . $notif->topic->topic_id); ?>"><strong><?php echo utf8_decode($notif->topic->topic_name); ?></strong></a> 
+                                                        <a class = "btn btn-link no-padding no-margin notif-btn text1color" href = "<?php echo base_url('topic/view/' . $notif->topic->topic_id); ?>"><strong><?php echo utf8_decode($notif->topic->topic_name); ?></strong></a> 
                                                         to you! Check it out!
                                                     </span>
                                                 </div>

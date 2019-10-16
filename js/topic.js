@@ -401,6 +401,7 @@ $(document).ready(function () {
     $(document).on('change', '#attach-img', function () {
         //disable attachment buttons
         $("#image-text").html('<i class = "fa fa-file-image-o"></i> Change Image');
+        $("#image-text2").html('<i class = "fa fa-file-image-o"></i> Change Image');
         $("#attach-audio").attr('disabled', 'true');
         $("#audio-label").addClass('disabled');
         $("#attach-video").attr('disabled', 'true');

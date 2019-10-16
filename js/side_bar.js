@@ -1,7 +1,10 @@
 $(document).ready(function() {
     $("#side-topics-created").hide();
     $("#side-topics-moderated").hide();
-    $("#side-topics-followed").hide();
+    if(getCookie("tpsidebar")==='0')
+        $("#side-topics-followed").hide();
+    else
+        $("#side-topics-followed").show();
 
     $("#side-topics-created-btn").on("click", function() {
         $("#side-topics-created").toggle('fast');

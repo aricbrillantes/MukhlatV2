@@ -190,7 +190,7 @@ function vote(vote_btn, vote_type) {
     var data = {vote_type: vote_type};
     var post_id = vote_btn.val();
     var count = vote_btn.siblings(".vote-count");
-    var trophy = "<i class = \"fa fa-trophy\"></i>";
+    var trophy = "<i class = \"glyphicon glyphicon-star\"></i>";
     $.ajax({
         url: window.location.origin + "/MukhlatV2/topic/vote/" + post_id,
         type: "POST",

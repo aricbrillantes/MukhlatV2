@@ -6,39 +6,22 @@
  * and open the template in the editor.
  */
 
+/**
+ * Description of topic
+ *
+ * @author Arces
+ */
 class Topic extends CI_Controller {
 
-    public function index() 
-    {
+    public function index() {
         $logged_user = $_SESSION['logged_user'];
-        
-        if (!empty($logged_user)) 
-        {
+        if (!empty($logged_user)) {
             $this->load->model('topic_model', 'topics');
             $_SESSION['sort_type'] = 1;
             $data['topics'] = $this->topics->search_topics('', 1);
             $this->load->view('pages/topic_list_page', $data);
-        } 
-
-        else 
-        {
-            //formerly $this->load->view('errors/html/error_general');
-            $homeURL = base_url('home');
-            header("Location: $homeURL");
-        }
-
-        $this->load->library('user_agent');
-        global $mobile;
-        $mobile=$this->agent->is_mobile();
-
-        if(!$mobile)
-        {
-            // echo "<script type='text/javascript'>alert('topic desktop');</script>";
-        }   
-
-        else
-        {
-            // echo "<script type='text/javascript'>alert('topic mobile');</script>";
+        } else {
+            echo 'ERROR!';
         }
     }
 
@@ -96,7 +79,8 @@ class Topic extends CI_Controller {
             $this->load->view('errors/error_404');
         }
     }
-
+    
+    
     public function create() {
         $input = $this->input;
         $logged_user = $_SESSION['logged_user'];
@@ -110,7 +94,38 @@ class Topic extends CI_Controller {
         $this->db->set('date_created', 'NOW()', FALSE);
         $this->db->insert('tbl_topics', $data);
         $topic_id = $this->db->insert_id();
+        
+        
+        
+        
+        
+        // ATTACHMENTS
+        if (!file_exists('./uploads1/_' . $topic_id . '/')) {
+            mkdir('./uploads1/_' . $topic_id . '/', 0777, true);
+        }
+        $config['upload_path'] = './uploads1/_' . $topic_id . '/';
+        $config['encrypt_name'] = TRUE;
+        $config['allowed_types'] = '*';
+        $config['maxsize'] = '0';
 
+        $this->load->library('upload', $config);
+
+        //image
+        if (isset($_FILES['topic_image']['name'])) {
+            mkdir('./uploads1/_good/', 0777, true);
+            if (!$this->upload->do_upload('topic_image')) {
+                echo $this->upload->display_errors();
+            } else {
+                //upload success
+                $upload_data = $this->upload->data();
+                $path = './uploads1/_' . $topic_id . '/' . $upload_data['file_name'];
+
+                $this->load->model('attachment_model', 'attachments');
+                
+                $this->attachments->insert_cover($topic_id, $path);
+            }
+        }
+        
         //follow topic
         $follow_data = array(
             'user_id' => $logged_user->user_id,
@@ -662,12 +677,12 @@ class Topic extends CI_Controller {
         $html = "";
         foreach ($topics as $topic) {
             $user = $topic->user;
-            $html = $html . "<a class = \"list-group-item btn btn-link list-entry\" href = \"topic/view/" . $topic->topic_id . "\">\n"
-                    . "<h4 class = \"text-info no-padding no-margin\" style = \"display: inline-block;\">" . $topic->topic_name . "</h4>\n"
-                    . "<small><i>by " . $user->first_name . " " . $user->last_name . " </i></small>\n"
-                    . "<div class = \"pull-right\">\n"
-                    . "<span class = \"label label-info follower-label\"><i class = \"fa fa-group\"></i> " . ($topic->followers ? count($topic->followers) : '0')
-                    . " <i class = \"fa fa-comments\"></i> " . $topic->post_count . "</span>\n"
+            $html = $html . "<a class = \"topic-grid1\" href = \"topic/view/" . $topic->topic_id . "\">\n"
+                    . "<h4 class = \"text-info no-padding no-margin text1color topicheader\" style = \"display: inline-block;\">" . $topic->topic_name . "</h4><br>\n"
+                    . "<small class=\"topicheader2\"><i>by " . $user->first_name . " " . $user->last_name . " </i></small>\n"
+                    . "<div class = \"topic-grid-icons\">\n"
+                    . "<div class = \"label label-info follower-label\"><i class = \"fa fa-group\"></i> " . ($topic->followers ? count($topic->followers) : '0')
+                    . " <i class = \"fa fa-comments\"></i> " . $topic->post_count . "</div>\n"
                     . "</div>\n"
                     . "</a>\n";
         }

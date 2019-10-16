@@ -25,7 +25,6 @@ class Post_model extends CI_Model {
 
     public function get_post($get_descendants, $get_votes, $get_attachments, $post_id) {
         $post = $this->db->get_where('tbl_posts', array('post_id' => $post_id))->row();
-
         //load user of post
         $this->load->model('user_model', 'users');
         $post->user = $this->users->get_user(false, false, array('user_id' => $post->user_id));
@@ -86,7 +85,7 @@ class Post_model extends CI_Model {
     }
 
     public function get_home_posts($user_id) {
-        $this->db->select('p.post_id, p.post_title, p.post_content, p.date_posted, t.topic_id, t.topic_name, u1.user_id, u1.first_name, u1.last_name, u1.profile_url, u1.is_enabled');
+        $this->db->select('p.post_id, p.post_title, p.post_content, p.date_posted, t.topic_id, t.topic_name, t.topic_description, t.date_created, u1.user_id, u1.first_name, u1.last_name, u1.profile_url, u1.is_enabled');
         $this->db->from('tbl_posts as p');
         $this->db->join('tbl_users as u1', 'p.user_id = u1.user_id');
         $this->db->join('tbl_topics as t', 'p.topic_id = t.topic_id');

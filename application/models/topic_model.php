@@ -23,6 +23,23 @@ class Topic_model extends CI_Model {
         return $query->result();
     }
     
+        public function get_topic_posts($topic_id) {
+        $user = $_SESSION['logged_user'];
+        $query = $this->db->order_by('date_posted', 'DESC')->get_where('tbl_posts', array('topic_id' => $topic_id, 'parent_id' => 0));
+        $posts = $query->result();
+
+        //load user of post
+        $this->load->model('user_model', 'users');
+
+        foreach ($posts as $post) {
+            $post->user = $this->users->get_user(false, false, array('user_id' => $post->user_id));
+            $post->vote_count = $this->get_vote_count($post->post_id);
+            $post->vote_type = $this->get_vote_type($post->post_id, $user->user_id);
+        }
+
+        return $posts;
+    }
+    
     public function get_topic($load_posts, $id) {
         $topic = $this->db->get_where('tbl_topics', array('topic_id' => $id))->row();
 

@@ -36,7 +36,7 @@
                                 <input id = "log-in-password" type = "password" required name = "log_in_password"  class = "form-control sign-in-field" placeholder = "Password"/>
                             </div>
                             <div class = "form-group text-center">
-                                <button type="submit" class="btn btn-primary" style = "width: 100%;">Login</button>
+                                <button type="submit" class="btn btn-primary buttonsgo" id="loginbutton" style = "width: 100%;font-size:24px;">Login</button>
                             </div>
                         </div>
                     </form>

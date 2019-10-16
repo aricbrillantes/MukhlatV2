@@ -27,8 +27,23 @@ class Attachment_model extends CI_Model {
         $this->db->insert('tbl_attachments', $data);
     }
     
+    public function insert_cover($topic_id, $file_url){
+        $data = array(
+            'cover_id' => '0',
+            'topic_id' => $topic_id,
+            'file_url' => $file_url);
+        
+        $this->db->insert('tbl_covers', $data);
+    }
+    
     public function get_post_attachments($post_id){
         $attachments = $this->db->get_where('tbl_attachments', array('post_id' => $post_id))->result();
+        
+        return $attachments;
+    }
+    
+    public function get_topic_covers($topic_id){
+        $attachments = $this->db->get_where('tbl_covers', array('topic_id' => $topic_id))->result();
         
         return $attachments;
     }
