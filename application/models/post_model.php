@@ -89,9 +89,9 @@ class Post_model extends CI_Model {
         $this->db->from('tbl_posts as p');
         $this->db->join('tbl_users as u1', 'p.user_id = u1.user_id');
         $this->db->join('tbl_topics as t', 'p.topic_id = t.topic_id');
-        $this->db->join('tbl_topic_follower as tf', 'tf.topic_id = t.topic_id');
-        $this->db->join('tbl_users as u2', 'tf.user_id = u2.user_id');
-        $this->db->where('u2.user_id =', $user_id);
+//        $this->db->join('tbl_topic_follower as tf', 'tf.topic_id = t.topic_id');
+//        $this->db->join('tbl_users as u2', 'tf.user_id = u2.user_id');
+//        $this->db->where('u2.user_id =', $user_id);
         $this->db->where('p.parent_id =', '0');
         $this->db->where('t.is_cancelled =', '0');
         $this->db->order_by('p.date_posted', 'DESC');

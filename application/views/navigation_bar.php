@@ -515,7 +515,6 @@
     </nav>
 <!--<img class = "draggable mascoti" src = "<?php echo base_url('images/Picture1.png'); ?>"/><span class="mascotitalk">Hello</span>-->
 
-<img class = "draggable mascoti" src = "<?php echo base_url('images/Picture1.png'); ?>"/>
 <!-- Nav Bar Script -->
 <script type="text/javascript" src="<?php echo base_url("/js/nav_bar.js"); ?>"></script>
 <!--voice search indicator script-->
