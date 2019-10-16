@@ -77,11 +77,41 @@
     var ctr = 0;
 </script>
 
+<?php if ($logged_user->role_id == 2): ?>
+            <link rel="stylesheet" href="<?php echo base_url("/css/style.css"); ?>" />
+
+        <?php else: ?>
+            <link rel="stylesheet" href="<?php echo base_url("/css/style_parentview.css"); ?>" />
+
+        <?php endif; ?>
+
 <link href="https://fonts.googleapis.com/css?family=Cabin|Muli|Oswald" rel="stylesheet"/>
 <link rel="stylesheet" href="<?php echo base_url("/css/style_parentview.css"); ?>" />
 <style>div.content-container{border:0px;}</style>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<?php if ($logged_user->role_id == 2): ?>
+    <link rel="stylesheet" href="<?php echo base_url("/css/style.css"); ?>" />
+
+<?php else: ?>
+    <link rel="stylesheet" href="<?php echo base_url("/css/style_parentview.css"); ?>" />
+
+<?php endif; ?>
+
+<?php foreach ($children->result() as $child): 
+
+                //read data of child 
+                //note: foreach is needed even though only one child is being fetched
+
+                //store user data in array
+                $data['user'] = $CI->user_model->get_user(true, true, array('user_id' => $child->user_id));
+                
+                //get topic data
+                $user_topics = $CI->topic_model->get_user_topics($child->user_id);
+                $user_moderated_topics = $CI->topic_model->get_moderated_topics($child->user_id);
+                $user_followed_topics = $CI->topic_model->get_followed_topics($child->user_id);
+
+            ?>
 <!-- Nav Bar -->
 <nav class = "navbar navbar-default navbar-font navbar-fixed-top" style = "border-bottom: 1px solid #CFD8DC;">
     <div class = "container-fluid">
@@ -99,12 +129,10 @@
             <ul class = "nav navbar-nav navbar-right pull-right" style = "margin-right: 5px;">
                 <li class="dropdown">
 
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <img class = "img-rounded nav-prof-pic" src = "<?php echo $logged_user->profile_url ? base_url($logged_user->profile_url) : base_url('images/default.jpg') ?>"/> 
-                        <?php echo $logged_user->first_name . " " . $logged_user->last_name; ?>
-                        
+                    <a class="dropdown-toggle pull-right" data-toggle="dropdown" href="#">
+                        Monitoring: <b><?php echo $child->first_name ?></b>
                         <span class="caret"></span>
-                    </a>                 
+                    </a>                
                 
                     <ul class="dropdown-menu">
                         <!-- <li><a href="<?php echo base_url('user/profile/' . $logged_user->user_id); ?>"><i class = "fa fa-user"></i> My Profile</a></li> -->
@@ -129,6 +157,7 @@
         
     </div>
 </nav><br><br><br>
+<?php endforeach; ?>
 
 <!-- Nav Bar Script -->
 <script type="text/javascript" src="<?php echo base_url("/js/nav_bar.js"); ?>"></script>

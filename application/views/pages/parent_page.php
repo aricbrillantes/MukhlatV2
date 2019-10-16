@@ -50,6 +50,14 @@
 
 <style>div.content-container{border:0px;}</style>
 
+<?php if ($logged_user->role_id == 2): ?>
+    <link rel="stylesheet" href="<?php echo base_url("/css/style.css"); ?>" />
+
+<?php else: ?>
+    <link rel="stylesheet" href="<?php echo base_url("/css/style_parentview.css"); ?>" />
+
+<?php endif; ?>
+
 <link href="https://fonts.googleapis.com/css?family=Cabin|Muli|Oswald" rel="stylesheet"/>
 <link rel="stylesheet" href="<?php echo base_url("/css/style_parentview.css"); ?>" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -66,7 +74,7 @@
                 <li class="dropdown">
 
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <img class = "img-rounded nav-prof-pic" src = "<?php echo $logged_user->profile_url ? base_url($logged_user->profile_url) : base_url('images/default.jpg') ?>"/> 
+                        <!-- <img class = "img-rounded nav-prof-pic" src = "<?php echo $logged_user->profile_url ? base_url($logged_user->profile_url) : base_url('images/default.jpg') ?>"/>  -->
                         <?php echo $logged_user->first_name . " " . $logged_user->last_name; ?>
                         
                         <span class="caret"></span>
