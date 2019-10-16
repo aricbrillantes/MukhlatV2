@@ -85,11 +85,11 @@ include(APPPATH . 'views/header.php');
 
                                 <h4 class = "text-info no-padding no-margin text1color topicheader"><?php echo utf8_decode($topic->topic_name); ?></h4><br>
                                 <small class="topicheader2"><i>by <?php echo $topic->user->first_name . " " . $topic->user->last_name; ?></i></small>
-                                <div class="topic-grid-icons">
+                                <!-- <div class="topic-grid-icons">
                                     <div class = "label label-info follower-label draggable"><i class = "fa fa-group"></i> 
                                         <?php echo $topic->followers ? count($topic->followers) : '0' ?> <i class = "fa fa-comments"></i> 
                                             <?php echo $topic->post_count; ?></div>
-                                </div>
+                                </div> -->
                             </a>
                         <?php endforeach; ?>
                     </div>

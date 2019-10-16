@@ -13,6 +13,7 @@
 
 <!-- browser tab icon -->
 <link rel="icon" href="<?php echo base_url('./images/logo/mukhlatlogo_icon.png'); ?>" sizes="32x32"> 
+<link rel="stylesheet" href="<?php echo base_url("/css/style.css"); ?>" />
 
 <body class = "sign-in">
     <div class = "container-fluid">

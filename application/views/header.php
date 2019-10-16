@@ -17,7 +17,7 @@ and open the template in the editor.
         <link href="https://fonts.googleapis.com/css?family=Cabin|Muli|Oswald" rel="stylesheet"/>
         <link rel="stylesheet" href="<?php echo base_url("assets/css/bootstrap.css"); ?>" />
         <link rel="stylesheet" href="<?php echo base_url("assets/css/font-awesome.css"); ?>" />
-        <link rel="stylesheet" href="<?php echo base_url("/css/style.css"); ?>" />
+        <!-- <link rel="stylesheet" href="<?php echo base_url("/css/style.css"); ?>" /> -->
         <script type="text/javascript" src="<?php echo base_url("assets/js/jQuery-3.1.1.js"); ?>"></script>
         <script type="text/javascript" src="<?php echo base_url("assets/js/bootstrap.js"); ?>"></script>
         <script type="text/javascript" src="<?php echo base_url("assets/js/fusioncharts/fusioncharts.js"); ?>"></script>

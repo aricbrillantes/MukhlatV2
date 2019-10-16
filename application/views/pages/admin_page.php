@@ -10,19 +10,46 @@
         $homeURL = base_url('home');
         header("Location: $homeURL");
     }
+
+    $CI =&get_instance();
+    $CI->load->library('user_agent');
+
+    $mobile=$CI->agent->is_mobile();
 ?>
+<?php if ($logged_user->role_id == 2): ?>
+    <link rel="stylesheet" href="<?php echo base_url("/css/style.css"); ?>" />
+
+<?php else: ?>
+    <link rel="stylesheet" href="<?php echo base_url("/css/style_parentview.css"); ?>" />
+
+<?php endif; ?>
+
+<!-- Nav Bar -->
+<nav class = "navbar navbar-default navbar-font navbar-fixed-top" style = "border-bottom: 1px solid #CFD8DC;">
+    <div class = "container-fluid">
+        
+        <a class = "navbar-brand" href = "<?php echo base_url('home') ?>"><img id = "nav-logo" src = "<?php echo base_url('images/logo/mukhlatlogo_side_basic.png'); ?>"/></a>
+
+        <a href = "<?php echo base_url('signin/logout'); ?>" class = "pull-right btn btn-primary btn-md" style = "margin-right: 20px; margin-top: 10px; margin-bottom: 10px;">Log Out</a>
+                            
+        
+
+    </div>
+    
+</nav><br><br><br>
+
 <body class = "sign-in">
     <div id = "admin-page" class = "container" style = "margin-top: 30px;">
         <div class = "row">
             <!-- Admin Header -->
-            <div class = "col-md-8 col-md-offset-2 content-container" style = "margin-bottom: 5px;">
+            <div class = "col-md-8 col-md-offset-2 content-container container-fluid" style = "margin-bottom: 5px;">
                 <h3 class = "text-info no-margin" style = "display: inline-block; padding-left: 10px; margin-top: 5px;"><strong><?php echo $logged_user->first_name . " " . $logged_user->last_name ?></strong></h3>
-                <a href = "<?php echo base_url('signin/logout'); ?>" class = "pull-right btn btn-primary btn-md" style = "margin-right: 20px;">Log Out</a>
-            </div>
-            
-            <div class = "col-md-8 col-md-offset-2 content-container">
+                <!-- <a href = "<?php echo base_url('signin/logout'); ?>" class = "pull-right btn btn-primary btn-md" style = "margin-right: 20px;">Log Out</a> --><br><br>
+
                 <a href = "<?php echo base_url('admin/network'); ?>" class = "btn btn-primary btn-block"><i class = "fa fa-globe"></i> View Interaction Network of Mukhlat</a>
             </div>
+            
+            
             
             <!-- Admin Content -->
             <div class = "col-md-8 col-md-offset-2 content-container">

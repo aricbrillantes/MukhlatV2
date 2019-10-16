@@ -210,9 +210,9 @@
                     <br>
                     <div class = "col-sm-12 " style = "margin-bottom: 40px">
                         <ul class="nav nav-pills nav-justified">
-                            <li class="active "><a data-toggle="pill" href="#user-topic-created">Created Posts</a></li>
+                            <!-- <li class="active "><a data-toggle="pill" href="#user-topic-created">Created Posts</a></li> -->
                             <!-- <li class=""><a data-toggle="pill" href="#user-topic-moderated">Moderated Posts</a></li> -->
-                            <li class=""><a data-toggle="pill" href="#user-topic-followed">Followed Posts</a></li>
+                            <!-- <li class=""><a data-toggle="pill" href="#user-topic-followed">Followed Posts</a></li> -->
                         </ul>
                         <br>
 
