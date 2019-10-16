@@ -83,14 +83,37 @@ class Chat_model extends CI_Model{
         return $result;
     }
 
-    public function get_users()
+    public function get_users($user_id)
     {
         $query_str = "SELECT CONCAT(first_name, ' ', last_name) AS name, user_id
         FROM tbl_users
-        WHERE role_id = 2";
-        $result =  $this->db->query($query_str)->result();
+        WHERE role_id = 2 AND user_id <> ?";
+        $result =  $this->db->query($query_str, $user_id)->result();
         
         return $result;
+    }
+
+    public function add_chat($user_1, $user_2)
+    {
+        $query_str = "INSERT INTO tbl_chats ( user_1, user_2) VALUES (?,?)";
+        $this->db->query($query_str, array($user_1, $user_2));
+    }
+
+    public function get_first_chat($user_id)
+    {
+        $user_idcopy = $user_id;
+        // echo '<script type="text/javascript">alert("user is '.$user_id.'");</script>';
+        $query_str = "SELECT chat_id FROM tbl_chats WHERE user_1 = ? OR user_2 = ? LIMIT 1";
+        $result =  $this->db->query($query_str,  array($user_id,$user_idcopy))->result();
+        return $result;
+        
+
+        // $this->db->select("chat_id");
+        // $this->db->from("tbl_chats");
+        // $this->db->where("user_1 =", $user_id, "OR user_2 =", $user_id);
+        // $result = $this->db->get()->result();
+        
+        // return $result;
     }
 
     

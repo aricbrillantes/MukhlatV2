@@ -15,16 +15,14 @@
     $CI =&get_instance();
     $CI->load->model('chat_model');
 
-    $users = $CI->chat_model->get_users();
+    $users = $CI->chat_model->get_users($logged_user->user_id);
     $otherchats = $CI->chat_model->get_chats($logged_user->user_id);
 
     
 ?>
 <script type="text/javascript">
     
-    var chat_id = "<?php echo $chat_id?>";
     
-    var sender_id = "<?php echo $sender_id?>";
     
 </script> 
 
@@ -33,15 +31,19 @@
 <link rel="icon" href="<?php echo base_url('./images/logo/mukhlatlogo_icon.png'); ?>" sizes="32x32">
 
 <style type="text/css">
+#chat_name{
+    text-align:center;
+    height:5%;
+}
 #chat_viewport{
-    height: 100%;
+    height: 95%;
     border : 1px solid black;
-    overflow:scroll;
+    overflow-y:scroll;
 }
 #chats_box{
     height: 100%;
   border: 3px solid blue;
-  overflow:scroll;
+  overflow-y:scroll;
 }
 span.chat_header{
     font-size:0.7em;
@@ -55,10 +57,32 @@ p.message_content{
     padding-right:0px;
 }
 li.by_current_user span.chat_header{
-    color:blue;
+    color:white;
 }
+li.by_current_user p.message_content{
+    color:white;
+
+}
+li.other_user{
+    text-align: left;
+    border-radius: 10px;
+    border: 2px solid #73AD21;
+    padding: 3px;
+    width:70%;
+    float:left;
+    margin-top:5px;
+    margin-bottom:5px;
+}
+
 li.by_current_user {
     text-align: right;
+    border-radius: 10px;
+    background: #73AD21;
+    padding: 3px;
+    width:70%;
+    float:right;
+    margin-top:5px;
+    margin-bottom:5px;
 
 }
 #chat_viewport ul{
@@ -103,7 +127,7 @@ li.by_current_user {
 }
 .user_container{
     border:3px solid black;
-    overflow:scroll;
+    overflow-y:scroll;
     height:95%;
 }
 .userbox{
@@ -114,7 +138,7 @@ li.by_current_user {
 
 </style>
 
-<body>
+<body onload="scrolldown()">
     <?php include(APPPATH . 'views/navigation_bar.php');?>
     <div style="width: 100%; overflow: hidden ;margin-top: 60px;height:90vh;">
     <div id="chats_box"style="width: 20%; float: left;">
@@ -125,19 +149,20 @@ li.by_current_user {
         <?php foreach ($other_user as $others):
         $other_user_name = $CI->chat_model->get_name($others->other_user);?>
             <?php foreach ($other_user_name as $others_name):?>
-                <button class="chat_inst" value="<?php echo utf8_decode($chats->chat_id); ?>"> <?php echo utf8_decode($others_name->name); ?></button>
+                <button class="chat_inst" value="<?php echo utf8_decode($chats->chat_id); ?>" onclick="changechat(<?php echo utf8_decode($chats->chat_id); ?>)"> <?php echo utf8_decode($others_name->name); ?></button>
 
             <?php endforeach; ?>
         <?php endforeach; ?>
     <?php endforeach; ?>
     </div>
     <div style="width: 80%; float: right;height: 95%;">
+    <div id="chat_name"></div>
     <div id="chat_viewport">
     </div>
 
     <div id="chat_input" >
-        <input id="chat_msg" name="chat_msg" type="text" value="" tabindex="1" placeholder="input here" style="width:90%"/>
-        <?php echo anchor('chat', 'send', array('title'=>'send', 'id' => 'submit_msg'));?>
+        <input id="chat_msg" name="chat_msg" type="text" value="" tabindex="1" placeholder="Type here" style="width:90%"/>
+        <?php echo anchor('chat#', 'send', array('title'=>'send', 'id' => 'submit_msg', 'onclick' => 'scrolldown()'));?>
         <div class="clearer"></div>
     </div>
     </div>
@@ -147,7 +172,7 @@ li.by_current_user {
     <div class="popup_content">Chat with:
     <div class="user_container">
     <?php foreach ($users as $usernames): ?>
-    <button class="userbox"> <?php echo utf8_decode($usernames->name); ?> </button>
+    <button class="userbox" value="<?php echo utf8_decode($usernames->user_id); ?>" onClick="window.location.reload();"> <?php echo utf8_decode($usernames->name); ?> </button>
     <?php endforeach; ?>
 
     
@@ -155,12 +180,25 @@ li.by_current_user {
     </div>
     </div>
     <script>
+    var chat_id = "<?php echo $chat_id?>";
+    
+    var sender_id = "<?php echo $sender_id?>";
         function openpopup() {
             document.getElementById("chat_popup").style.display = "block";
         }
 
         function closepopup() {
             document.getElementById("chat_popup").style.display = "none";
+        }
+
+        function scrolldown(){
+            document.getElementById("chat_viewport").scroll({
+                top:1000000000,
+                behavior:'smooth'
+            });
+        }
+        function changechat(chatid){
+            chat_id = chatid;
         }
     </script>
 </body>

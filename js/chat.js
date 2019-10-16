@@ -1,5 +1,7 @@
 $(document).ready(function()
 {
+    setInterval(function(){get_chatmessages()},1000)
+    setInterval(function(){get_chatname()},1000)
     // function get_chats()
     // {
     //     $.ajax({
@@ -41,6 +43,26 @@ $(document).ready(function()
         });
     }
 
+    function get_chatname()
+    {
+        // alert('1');
+        $.ajax({
+            type: "POST",
+            url: base_url + "chat/get_chatname",
+            // dataType: "json",
+            data: { chat_id : chat_id },
+            success: function (data) {
+                // alert('2');
+                
+                   
+                $("div#chat_name").html(data);
+                // $(div).find('#chat_viewport').html('<h1>Hello</h1>');
+                
+                
+            }
+        });
+    }
+    get_chatname();
     get_chatmessages();
 
     $("a#submit_msg").click(function(){
@@ -67,20 +89,34 @@ $(document).ready(function()
     });
 
     $(".chat_inst").on("click", function(){
-        var chat_id = $(".chat_inst").val();
-        alert('button clicked');
+        var chat_id = $(this).val();
+        
+        
         $.ajax({
             type: "POST",
             url: base_url + "chat/change_chat",
             data: { chat_id : chat_id },
             success: function () {
-                alert('chat changed');
+                
             }
         });
         
 
     });
 
-    
+    $(".userbox").on("click", function()
+    {
+        var user_2=$(this).val();
+        
+        $.ajax({
+            type: "POST",
+            url: base_url + "chat/add_chat",
+            data: { user_2 : user_2, sender_id : sender_id },
+            success: function () {
+                alert('chat added');
+            }
+        });
+
+    });
 
 });
