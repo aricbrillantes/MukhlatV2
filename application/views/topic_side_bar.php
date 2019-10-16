@@ -7,7 +7,7 @@ $logged_user = $_SESSION['logged_user'];
     <div class = "col-xs-12 home-sidebar content-container" style="border-radius:20px;">
         <!--Header-->
         <div class = "clearfix content-container" style="border-radius:20px;cursor: pointer;position: relative" id = "side-topics-followed-btn"  onclick="tpsidebar()">
-            <i class="fa fa-chevron-down pull-right" style="display: inline;position: relative;top:40%;cursor: pointer;"></i>
+            <!--<i class="fa fa-chevron-down pull-right" style="display: inline;position: relative;top:40%;cursor: pointer;"></i>-->
                         <a class="text1color" href = "<?php echo base_url('user/profile/' . $logged_user->user_id); ?>">
                             <img style="cursor:pointer;" class = "pull-left img-rounded btn btn-link home-prof-pic topictop" src = "<?php echo $logged_user->profile_url ? base_url($logged_user->profile_url) : base_url('images/default.jpg') ?>">
                         </a>
@@ -24,11 +24,11 @@ $logged_user = $_SESSION['logged_user'];
                             </div>-->
                         </div>
  </div>
-        <div id = "side-topics-followed">
-        <!--<h3 class = "text-center text-info no-padding no-margin text1color" style = "margin-bottom: 10px;"><strong>Topic Shortcuts</strong></h3>-->
-        <!--<a id = "side-topics-created-btn" class = "btn btn-sm btn-block no-padding sidebar-header-btn buttonsbgcolor">-->
+<!--        <div id = "side-topics-followed">
+        <h3 class = "text-center text-info no-padding no-margin text1color" style = "margin-bottom: 10px;"><strong>Topic Shortcuts</strong></h3>
+        <a id = "side-topics-created-btn" class = "btn btn-sm btn-block no-padding sidebar-header-btn buttonsbgcolor">
             <h4 class="ptopcolor textoutliner" style="border-radius: 2px;color: white">Your topics</h4>
-        <!--</a>-->
+        </a>
         <div class = "sidebar-topic-div">
             <ul class="nav">
                 <?php
@@ -52,9 +52,9 @@ $logged_user = $_SESSION['logged_user'];
 
 
 
-        <!--<a id = "side-topics-followed-btn" class = "btn btn-block no-padding sidebar-header-btn buttonsbgcolor">-->
+        <a id = "side-topics-followed-btn" class = "btn btn-block no-padding sidebar-header-btn buttonsbgcolor">
         <h4 class="ptopcolor textoutliner" style="border-radius: 2px;color: white">Topics you Follow</h4>
-        <!--</a>-->
+        </a>
         <div class = "sidebar-topic-div">
             <ul class="nav">
                 <?php
@@ -75,7 +75,7 @@ $logged_user = $_SESSION['logged_user'];
                 <?php endif; ?>
             </ul>
         </div>
-        </div>
+        </div>-->
         <!--random trivia-->
         <div id="randtriv1" class="draggable">
         <?php

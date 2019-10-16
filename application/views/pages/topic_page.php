@@ -21,7 +21,7 @@ $c_topic = $_SESSION['current_topic'];
                         </strong>
                     </h4>
                 </a>
-                <?php if (!$is_followed): ?>
+<!--                <?php if (!$is_followed): ?>
                     <button onmouseenter="playclip()" id = "topic-follow-btn" class = "btn pull-right btn-primary textoutliner" style = "margin: 5px; margin-right: 20px; width: 20%;font-size: 19px;" value = "<?php echo $c_topic->topic_id ?>">
                         <i class = "fa fa-plus-circle"></i> Follow Topic
                     </button>
@@ -32,7 +32,7 @@ $c_topic = $_SESSION['current_topic'];
                     </button>
                     <a onmouseenter="playclip()" class = "btn btn-success pull-right btn-md textoutliner" style = "margin: 5px; width: 20%" href = "#topic-members-modal" data-toggle = "modal">
                         <i class = "fa fa-user"></i> Members
-                    </a>
+                    </a>-->
             </div>
         </div>
         <div class = "row">
