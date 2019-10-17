@@ -36,10 +36,10 @@ include(APPPATH . 'views/header.php');
                     <!-- User Topics -->
                     <div class = "col-md-12 user-topic-container">
                         <h3 class = "text-info text-center user-topic-header modalbg" style="margin-bottom: 2px;"><strong class="textoutliner">Topics of <?php echo $user->first_name ?></strong></h3>
-                        <ul class="nav nav-pills nav-justified">
+                        <!-- <ul class="nav nav-pills nav-justified">
                             <li class="active"><a data-toggle="pill" href="#user-topic-created">Created Topics</a></li>
                             <li><a data-toggle="pill" href="#user-topic-followed">Followed Topics</a></li>
-                        </ul>
+                        </ul> -->
                         <br>
                         <div class="tab-content">
                             <div id="user-topic-created" class="tab-pane fade in active">
@@ -72,7 +72,7 @@ include(APPPATH . 'views/header.php');
                                                 <li>
                                                     <a class = "user-topic-item" href="<?php echo base_url('topic/view/' . $topic->topic_id); ?>" style = "padding: 5px 30px;">
                                                         <h4 class = "no-padding no-margin text1color" style = "display: inline-block;"><?php echo utf8_decode($topic->topic_name); ?></h4>
-                                                        <span class = "pull-right label label-info follower-label"><i class = "fa fa-group"></i> <?php echo $topic->followers ? count($topic->followers) : '0' ?></span>
+                                                        <!-- <span class = "pull-right label label-info follower-label"><i class = "fa fa-group"></i> <?php echo $topic->followers ? count($topic->followers) : '0' ?></span> -->
                                                     </a>
                                                 </li>
                                             <?php endforeach; ?>
@@ -169,6 +169,6 @@ include(APPPATH . 'views/header.php');
     <script type="text/javascript" src="<?php echo base_url("/js/user.js"); ?>"></script>
     <?php
   //  include(APPPATH . 'views/chat/chat.php');
-    include(APPPATH . 'views/side_navbar.php');
+    // include(APPPATH . 'views/side_navbar.php');
     include(APPPATH . 'views/modals/edit_profile_modal.php');
     
