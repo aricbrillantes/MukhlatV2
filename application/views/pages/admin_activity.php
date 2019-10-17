@@ -5,7 +5,7 @@
     //if user is not a parent, redirect to home
     //if user is not logged in, redirect to sign in
     $logged_user = $_SESSION['logged_user'];
-    if($logged_user->role_id != 3 || $logged_user == null)
+    if($logged_user->role_id != 1 || $logged_user == null)
     {
         $homeURL = base_url('home');
         header("Location: $homeURL");
@@ -24,17 +24,11 @@
         header("Location: $homeURL");
     }
 
-    if($CI->user_model->isParent($logged_user->user_id,$id) == 999)
-    {
-        $homeURL = base_url('home');
-        header("Location: $homeURL");
-    }
-
-    //get children for navbar
     $children_display = $CI->user_model->view_child($logged_user->user_id);
 
     //get data of child being monitored
     $children = $CI->user_model->view_specific_child($id);
+
 
     //load topic model
     $CI =&get_instance();
@@ -78,12 +72,12 @@
 </script>
 
 <?php if ($logged_user->role_id == 2): ?>
-            <link rel="stylesheet" href="<?php echo base_url("/css/style.css"); ?>" />
+    <link rel="stylesheet" href="<?php echo base_url("/css/style.css"); ?>" />
 
-        <?php else: ?>
-            <link rel="stylesheet" href="<?php echo base_url("/css/style_parentview.css"); ?>" />
+<?php else: ?>
+    <link rel="stylesheet" href="<?php echo base_url("/css/style_parentview.css"); ?>" />
 
-        <?php endif; ?>
+<?php endif; ?>
 
 <link href="https://fonts.googleapis.com/css?family=Cabin|Muli|Oswald" rel="stylesheet"/>
 <link rel="stylesheet" href="<?php echo base_url("/css/style_parentview.css"); ?>" />
@@ -104,13 +98,18 @@
     //note: foreach is needed even though only one child is being fetched
 
     //store user data in array
-    $data['user'] = $CI->user_model->get_user(true, true, array('user_id' => $child->user_id,'is_enabled'));
+    $data['user'] = $CI->user_model->get_user(true, true, array('user_id' => $child->user_id));
     
     //get topic data
     $user_topics = $CI->topic_model->get_user_topics($child->user_id);
-    $user_moderated_topics = $CI->topic_model->get_moderated_topics($child->user_id);
-    $user_followed_topics = $CI->topic_model->get_followed_topics($child->user_id);
 
+
+    if($child->role_id == 3)
+    {
+        $homeURL = base_url('home');
+        header("Location: $homeURL");
+        // print("parent");
+    }    
 ?>
 <!-- Nav Bar -->
 <nav class = "navbar navbar-default navbar-font navbar-fixed-top" style = "border-bottom: 1px solid #CFD8DC;">
@@ -130,19 +129,11 @@
                 <li class="dropdown">
 
                     <a class="dropdown-toggle pull-right" data-toggle="dropdown" href="#">
-                        Monitoring: <b><?php echo $child->first_name ?></b>
+                        Viewing: <b><?php echo $child->first_name ?></b>
                         <span class="caret"></span>
                     </a>                
                 
                     <ul class="dropdown-menu">
-                        <!-- <li><a href="<?php echo base_url('user/profile/' . $logged_user->user_id); ?>"><i class = "fa fa-user"></i> My Profile</a></li> -->
-                        
-                        <?php foreach ($children_display->result() as $child):$data['user'] = $CI->user_model->get_user(true, true, array('user_id' =>  $child->user_id));?>
-
-                        <li><a href="<?php echo base_url('parents/activity/' . $child->user_id); ?>"><i class = "fa fa-user" style="color:green"></i> <?php echo $child->first_name . " " . $child->last_name ?></a></li>    
-                        <?php endforeach; ?>
-
-                        <li><span style="color:white">______</span></li>
                         
                         <li><a href="<?php echo base_url('signin/logout');?>"><i class = "glyphicon glyphicon-log-out" style="color:red"></i> Logout</a></li>
 
@@ -178,7 +169,6 @@
                 $user_topics = $CI->topic_model->get_user_topics($child->user_id);
                 $user_moderated_topics = $CI->topic_model->get_moderated_topics($child->user_id);
                 // $user_followed_topics = $CI->topic_model->get_followed_topics($child->user_id);
-
             ?>
 
              <div class = "col-xs-16 col-md-8 col-md-offset-2 content-container container-fluid " style = "margin-bottom: 5px;">
@@ -188,24 +178,6 @@
                         <small class = "no-padding no-margin"><?php echo $child->email ?></small>
                         
                         <p class = "wrap text-muted" style = ""><i><?php echo $child->description ? $child->description : 'Hello World!'; ?></i></p>
-                    </div>
-                    <!-- <?php
-                    if ($child->is_enabled):
-                            ?>
-                            <button type = "button" value = "<?php echo $child->user_id ?>" class = "toggle-account-parent pull-right btn btn-danger admin-list-btn">Disable</button>
-                        <?php else: ?>
-                            <button type = "button" value = "<?php echo $child->user_id ?>" class = "toggle-account-parent pull-right btn btn-success admin-list-btn">Enable</button>
-                        <?php
-                        endif;
-                    ?> -->
-
-                    <div class = "col-xs-6 no-padding no-margin" style="float: right; margin-bottom: 0px;">
-                        <a class = "pull-right btn " style = "display: inline-block; float: right" href="<?php echo base_url('parents/settings/' . $child->user_id) ?>">
-                            <h3 class = "no-padding text-info" style = "margin-bottom: 0px; float: right">
-                                <strong><i class = "glyphicon glyphicon-cog"></i></strong>
-                            </h3> 
-                        </a>
-                        
                     </div>
                 </div>    
             </div>                 
@@ -218,11 +190,11 @@
                     </h3>
                     <br>
                     <div class = "col-sm-12 " style = "margin-bottom: 40px">
-                        <ul class="nav nav-pills nav-justified">
-                            <!-- <li class="active "><a data-toggle="pill" href="#user-topic-created">Created Posts</a></li> -->
-                            <!-- <li class=""><a data-toggle="pill" href="#user-topic-moderated">Moderated Posts</a></li> -->
-                            <!-- <li class=""><a data-toggle="pill" href="#user-topic-followed">Followed Posts</a></li> -->
-                        </ul>
+                        <!-- <ul class="nav nav-pills nav-justified">
+                            <li class="active "><a data-toggle="pill" href="#user-topic-created">Created Posts</a></li>
+                            <li class=""><a data-toggle="pill" href="#user-topic-moderated">Moderated Posts</a></li>
+                            <li class=""><a data-toggle="pill" href="#user-topic-followed">Followed Posts</a></li>
+                        </ul> -->
                         <br>
 
                         <div class="tab-content">
@@ -245,42 +217,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- <div id="user-topic-moderated" class="tab-pane fade">
-                                <div class = "user-header">
-                                    <h4 class = "text-center"><strong>Posts Moderated by <?php echo $child->first_name; ?></strong></h4>
-                                </div>
-                                <div class = "">
-                                    <ul class="nav">
-                                        <?php foreach ($user_moderated_topics as $topic): ?>
-                                            <li>
-                                                <a class = "user-topic-item" href="<?php echo base_url('topic/view/' . $topic->topic_id); ?>" style = "padding: 5px 30px;">
-                                                    <h4 class = "no-padding no-margin" style = "display: inline-block;"><?php echo utf8_decode($topic->topic_name); ?></h4>
-                                                    <span class = "pull-right label label-info follower-label"><i class = "fa fa-group"></i> <?php echo $topic->followers ? count($topic->followers) : '0' ?></span>
-                                                </a>
-                                            </li>
-                                        <?php endforeach; ?>
-                                    </ul>
-                                </div>
-                            </div> -->
-                            <!-- <div id="user-topic-followed" class="tab-pane fade">
-                                <div class = "col-sm-12 no-padding">
-                                    <div class = "user-header">
-                                        <h4 class = "text-center"><strong>Posts <?php echo $child->first_name; ?> Follows</strong></h4>
-                                    </div>
-                                    <div class = "">
-                                        <ul class="nav">
-                                            <?php foreach ($user_followed_topics as $topic): ?>
-                                                <li>
-                                                    <a class = "user-topic-item" href="<?php echo base_url('topic/view/' . $topic->topic_id); ?>" style = "padding: 5px 30px;">
-                                                        <h4 class = "no-padding no-margin" style = "display: inline-block;"><?php echo utf8_decode($topic->topic_name); ?></h4>
-                                                        <span class = "pull-right label label-info follower-label"><i class = "fa fa-group"></i> <?php echo $topic->followers ? count($topic->followers) : '0' ?></span>
-                                                    </a>
-                                                </li>
-                                            <?php endforeach; ?>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div> -->
                         </div>
                     </div>
                 </div>
@@ -340,8 +276,6 @@
 
         </div>
     </div>
-
-    <script type="text/javascript" src="<?php echo base_url("/js/parent.js"); ?>"></script>
 
     <!-- <script type="text/javascript" src="<?php echo base_url('assets/vis/vis.js'); ?>"></script>
     <script type="text/javascript" src="<?php echo base_url('/js/network.js'); ?>"></script>

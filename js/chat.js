@@ -1,6 +1,5 @@
 $(document).ready(function()
 {
-    var base_url = 'http://' . $_SERVER['HTTP_HOST'] . '/MukhlatV2/';
     setInterval(function(){get_chatmessages()},1000)
     setInterval(function(){get_chatname()},1000)
     // function get_chats()

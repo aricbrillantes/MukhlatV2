@@ -37,6 +37,16 @@ class Admin extends CI_Controller {
         $this->load->view('pages/network_page');
     }
 
+    public function activity() 
+    {
+        $this->load->view('pages/admin_activity');
+    }
+
+    public function parent() 
+    {
+        $this->load->view('pages/admin_parent_page');
+    }
+
     public function load_network() 
     {
         $this->load->model('network_model', 'net');

@@ -66,7 +66,7 @@ class User_model extends CI_Model {
     {
         // echo $parent_id . "<br>";
         
-        $query = $this->db->select('user_id, first_name, last_name, parent, email, description')
+        $query = $this->db->select('user_id, first_name, last_name, parent, email, description, is_enabled, role_id')
                 ->from('tbl_users')
                 ->where('parent', $parent_id);
 
@@ -79,7 +79,7 @@ class User_model extends CI_Model {
     //function for getting specific child's data
     public function view_specific_child($user_id) 
     {        
-        $query = $this->db->select('user_id, first_name, last_name, parent, email, description')
+        $query = $this->db->select('user_id, first_name, last_name, parent, email, description, is_enabled, role_id')
                 ->from('tbl_users')
                 ->where('user_id', $user_id);
 

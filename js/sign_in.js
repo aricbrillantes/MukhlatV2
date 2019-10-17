@@ -41,8 +41,8 @@ function sign_up() {
 }
 
 function check_values() {
-    var pass = $(".sign-up-password");
-    var retype = $("#sign-up-retype");
+    var pass = document.getElementById("sign-up-password").value;
+    var retype = document.getElementById("sign-up-retype").value;
 
-    return pass.val() === retype.val();
+    return pass === retype;
 }
