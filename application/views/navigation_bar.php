@@ -440,10 +440,10 @@
                     <form action = "<?php echo base_url('search'); ?>" class="navbar-left" role = "search" method = "GET" style="width:30%; margin-top:0.555%; margin-left:1%; margin-right:4%;">
                         <span class="input-group">
                             <div class="input-group-btn" style="display: inline-block;">
-                                <input required type="text" name = "search-key" class="form-control" placeholder="Search for topics/users" id="search" style="width: 400px; font-size: 22px">
+                                <input required type="text" name = "search-key" class="form-control" placeholder="" id="search" style="width: 400px; font-size: 22px">
                                 <!-- <span class="btn btn-default search-btn tooltip1" onclick="voiceDropdown()" id="voice-search-button" style="cursor: pointer"><i class = "fa fa-microphone buttonsgo"style="font-size:16px;cursor: pointer"></i><span class="tooltiptext1" style="width:180px;">Search by voice</span></span> -->
                                 <button class="btn btn-default search-btn tooltip1" type="submit" style="width:40px;height:35px">
-<!--                                    <i class="glyphicon glyphicon-search buttonsgo" style="cursor: pointer"></i>--> <img  src = "<?php echo base_url('icons/search.png'); ?>" class="buttonsgo" style="width:150%;height:auto;cursor: pointer"/><span class="tooltiptext1" style="width:150px;">Start search</span>
+<!--                                    <i class="glyphicon glyphicon-search buttonsgo" style="cursor: pointer"></i>--> <img  src = "<?php echo base_url('icons/search.png'); ?>" class="buttonsgo" style="width:150%;height:auto;cursor: pointer"/><span class="tooltiptext1" style="width:150px;">Start looking</span>
                                 </button> 
                                 
                             </div>
@@ -485,11 +485,11 @@
                                 </div>
                             </div>
                             <div class="navbaricons2">
-                                <a onclick="window.speechSynthesis.cancel();" onmouseenter="playclip()" id="logout-btn" class="navbaricons" href="<?php echo base_url('signin/logout'); ?>" style="margin-right:4%;"><p class="iconin" style="font-size:14px !important;text-align: left !important;"><img  src = "<?php echo base_url('icons/logout.png'); ?>" class="iconin" style="width:100%;height:auto"/>Bye!</p>
-                                <span class="tooltiptext">Log out of Mukhlat</span></a>
+                                <a onclick="window.speechSynthesis.cancel();" onmouseenter="playclip()" id="logout-btn" class="navbaricons" href="<?php echo base_url('signin/logout'); ?>" style="margin-right:4%;"><p class="iconin" style="font-size:14px !important;text-align: left !important;"><img  src = "<?php echo base_url('icons/logout.png'); ?>" class="iconin" style="width:100%;height:auto"/><!Bye!></p>
+                                <span class="tooltiptext">Goodbye Mukhlat!</span></a>
 
                             <a onmouseenter="playclip()" class="navbaricons" href="#customize-theme" data-toggle = "modal">
-                                <p class="iconin" style="font-size:14px !important;text-align: left !important;"><img  src = "<?php echo base_url('icons/paintbrush.png'); ?>" class="iconin" style="width:100%;height:auto"/>Style</p>
+                                <p class="iconin" style="font-size:14px !important;text-align: left !important;"><img  src = "<?php echo base_url('icons/paintbrush.png'); ?>" class="iconin" style="width:100%;height:auto"/><!Style></p>
                                 <span class="tooltiptext">Change what you see!</span>
                             </a>
                                     </a>
@@ -498,22 +498,22 @@
                                     <?php if ((int) $logged_user->unread_notifs > 0): ?>
                                     <span id = "notif-badge" class = "badge" style="float:right;background: red;"><?php echo $logged_user->unread_notifs ?></span>
                                     <?php endif; ?>    
-                                    <p class="iconin" style="font-size:14px !important;text-align: left !important;"><img  src = "<?php echo base_url('icons/notif.png'); ?>" class="iconin" style="width:100%;height:auto"/>News    </p>
-                                <span class="tooltiptext">Check your notifications!</span>  
+                                    <p class="iconin" style="font-size:14px !important;text-align: left !important;"><img  src = "<?php echo base_url('icons/notif.png'); ?>" class="iconin" style="width:100%;height:auto"/><!News>    </p>
+                                <span class="tooltiptext">Check what's up!</span>  
                             </a>
 
                             <a onmouseenter="playclip()" class="navbaricons" id = "notif-btn" href="<?php echo base_url('chat') ?>" <?php echo (int) $logged_user->unread_notifs > 0 ? "data-value = \"" . $logged_user->unread_notifs . "\"" : "" ?>>
                                     <?php if ((int) $logged_user->unread_notifs > 0): ?>
                                     <span id = "notif-badge" class = "badge" style="float:right;background: red;"><?php echo $logged_user->unread_notifs ?></span>
                                     <?php endif; ?>    
-                                    <p class="iconin" style="font-size:14px !important;text-align: left !important;">Chat    </p>
+                                    <p class="iconin" style="font-size:14px !important;text-align: left !important;"><img  src = "<?php echo base_url('icons/chat.png'); ?>" class="iconin" style="width:100%;height:auto"/><!Chat>    </p>
                                 <span class="tooltiptext">Chit chat!</span>  
                             </a>
 
                             <div class="vl"  style="margin-right:0.3%;"></div>
  
-                            <a onmouseenter="playclip()" class="navbaricons" href="<?php echo base_url('topic') ?>"><p class="iconin" style="font-size:14px !important;text-align: left !important;"> <img  src = "<?php echo base_url('icons/topics.png'); ?>" class="iconin" style="width:100%;height:auto;cursor: pointer"/>Topics</p><span class="tooltiptext">Look at others' topics!</span></a>
-                                <a onmouseenter="playclip()" class="navbaricons" href="<?php echo base_url('home') ?>"><p class="iconin" style="font-size:14px !important;text-align: left !important;"><img  src = "<?php echo base_url('icons/home.png'); ?>" class="iconin" style="width:100%;height:auto"/>Home</p><span class="tooltiptext">Go to the homepage</span></a>
+                            <a onmouseenter="playclip()" class="navbaricons" href="<?php echo base_url('topic') ?>"><p class="iconin" style="font-size:14px !important;text-align: left !important;"> <img  src = "<?php echo base_url('icons/topics.png'); ?>" class="iconin" style="width:100%;height:auto;cursor: pointer"/><!Topics></p><span class="tooltiptext">Visit other rooms!</span></a>
+                                <a onmouseenter="playclip()" class="navbaricons" href="<?php echo base_url('home') ?>"><p class="iconin" style="font-size:14px !important;text-align: left !important;"><img  src = "<?php echo base_url('icons/home.png'); ?>" class="iconin" style="width:100%;height:auto"/><!Home></p><span class="tooltiptext">Go to the homepage</span></a>
                                
                                 <a onmouseenter="playclip()" class="navbarprofileicon" href="<?php echo base_url('user/profile/' . $logged_user->user_id); ?>" >
                                 <img class = "img-circle nav-prof-pic iconin" src = "<?php echo $logged_user->profile_url ? base_url($logged_user->profile_url) : base_url('images/default.jpg') ?>"/> 

@@ -32,8 +32,8 @@ include(APPPATH . 'views/header.php');
                     
                     <div class = "clearfix content-container" style="border-radius:20px;">
                     <center>
-                                <a onmouseenter="playclip()" id="crettop" class ="btn btn-primary buttonsbgcolor textoutliner" href="#create-topic-modal" data-toggle = "modal" style="margin:1%"><img  src = "<?php echo base_url('icons/pencil.png'); ?>" style="width:10%;height:auto;cursor: pointer"/> Create Topic</a>
-                                <a onmouseenter="playclip()" id="crettop" class="btn btn-primary buttonsbgcolor textoutliner" href="<?php echo base_url('topic') ?>" style="margin:1%"><img  src = "<?php echo base_url('icons/topics.png'); ?>" style="width:15%;height:auto;cursor: pointer"/> Go to Topics</a>                   
+                                <a onmouseenter="playclip()" id="crettop" class ="btn btn-primary buttonsbgcolor textoutliner" href="#create-topic-modal" data-toggle = "modal" style="margin:1%"><img  src = "<?php echo base_url('icons/pencil.png'); ?>" style="width:10%;height:auto;cursor: pointer"/> My Room</a>
+                                <a onmouseenter="playclip()" id="crettop" class="btn btn-primary buttonsbgcolor textoutliner" href="<?php echo base_url('topic') ?>" style="margin:1%"><img  src = "<?php echo base_url('icons/topics.png'); ?>" style="width:15%;height:auto;cursor: pointer"/> My Roomies</a>                   
                                 <!--<a id="crettop" class="btn btn-primary buttonsbgcolor" href="#create-post-modal" data-toggle = "modal">Post to your wall</a>-->
                     </center>
                     </div>
@@ -71,23 +71,23 @@ include(APPPATH . 'views/header.php');
                                 foreach ($posts as $post):
                                     ?>
                                     <div class = "col-xs-12 no-padding post-container ptopcolor" style = "margin-bottom: 20px;border-radius:20px;">
-                                        <div class = "whitebg2 no-margin " style="border-radius:20px;">
+<!--                                        <div class = "whitebg2 no-margin " style="border-radius:20px;">
                                             <a class = "btn btn-link no-padding text1color" href = "<?php echo base_url('user/profile/' . $post->user_id); ?>">
                                                 
                                                     <img class = "img-circle" style = "margin: 10px 0px;" width = "65px" height = "65px" src = "<?php echo $post->profile_url ? base_url($post->profile_url) : base_url('images/default.jpg'); ?>"/>
                                                
                                                 <strong><?php echo $post->first_name . " " . $post->last_name; ?></strong>
                                             </a> 
-                                            <span>wants to talk about</span> <span class = "text-muted pull-right"> <i style = "font-size: 16px"><?php echo date("F d, Y", strtotime($post->date_created)); ?></i></span>
+                                            <span>talked in</span> <span class = "text-muted pull-right"> <i style = "font-size: 16px"><?php echo date("F d, Y", strtotime($post->date_created)); ?></i></span>
                                             <a class = "btn btn-link no-padding text1color" href = "<?php echo base_url('topic/view/' . $post->topic_id); ?>">
                                                 <strong ><?php echo utf8_decode($post->topic_name); ?></strong>
                                             </a><h4 style="display:inline"></h4><br>
                                             <p class = "home-content-body whitebg2" style = "border-right: none;white-space: pre-wrap;max-width: 714px;"><?php echo utf8_decode($post->topic_description); ?><br></p>
                                                 <button class = "btn btn-primary pull-right" id="text2speak" style = "margin-right: 3px;border-radius: 20px;" onclick="readcontent('<?php $stringy = utf8_decode($post->topic_description); $stringy1 = str_replace('\'', '`', $stringy); echo trim(preg_replace('/[^A-Za-z0-9()#,%\/?@$*.:+=_~`-]/', ' ', $stringy1)); ?>')"><i class="glyphicon glyphicon-volume-up" style="padding-top: 5px;"></i></button>
                                                 &emsp;&emsp;&emsp;&emsp;&emsp;<br><br>
-                                        </div>
+                                        </div>-->
 
-                                        <div class = "col-xs-12 user-post-content no-padding">
+                                        <div class = "col-xs-12 whitebg2 no-padding">
                                             <!-- Left -->
                                             <div class = "col-xs-1 text-center no-padding" style = "padding-left: 10px;">
                                                 <a class = "btn btn-link no-padding text1color" href = "<?php echo base_url('user/profile/' . $post->user_id); ?>">
@@ -107,10 +107,14 @@ include(APPPATH . 'views/header.php');
                                                         <a class = "btn btn-link btn-xs no-padding text1color" href = "<?php echo base_url('user/profile/' . $post->user_id); ?>">
                                                             <?php echo $post->first_name . " " . $post->last_name ?>
                                                         </a>
+                                                    <span>talked in</span>
+                                                    <a class = "btn btn-link no-padding text1color" href = "<?php echo base_url('topic/view/' . $post->topic_id); ?>">
+                                                    <strong ><?php echo utf8_decode($post->topic_name); ?></strong>
+                                                    </a>
                                                     
                                                       
-                                                </i>
-                                                <span class = "text-muted pull-right"> <i style = "font-size: 16px"><?php echo date("F d, Y", strtotime($post->date_posted)); ?></i></span><br>
+                                                </i><br>
+                                                <span class = "text-muted"> <i style = "font-size: 16px"><?php echo date("F d, Y", strtotime($post->date_posted)); ?></i></span><br>
                                                 <div class="ptopcolor" style="padding-bottom:15px !important;">
                                                     <!--<h4 class = "no-padding no-margin text-muted wrap whitebg2" style="display:inline-block"><strong><?php echo utf8_decode($post->post_title); ?></strong></h4>-->
                                                 <p class = "home-content-body whitebg2" style = "border-right: none;white-space: pre-wrap;max-width: 714px;"><?php echo utf8_decode($post->post_content); ?></p>
@@ -129,7 +133,7 @@ include(APPPATH . 'views/header.php');
                                         </div>
                                         <div class = "user-post-footer no-margin text-right" style="border-radius:20px;">
                                             
-                                            <a class = "btn btn-user-post-footer no-up-down-pad" href = "<?php echo base_url('topic/thread/' . $post->post_id); ?>">View Post <i class = "fa fa-chevron-right"></i></a>
+                                            <a class = "btn btn-user-post-footer no-up-down-pad" href = "<?php echo base_url('topic/view/' . $post->topic_id); ?>">Visit Room<i class = "fa fa-chevron-right"></i></a>
                                         </div>
                                     </div>
                                     <?php
