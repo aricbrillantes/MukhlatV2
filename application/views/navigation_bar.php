@@ -485,8 +485,11 @@
                                 </div>
                             </div>
                             <div class="navbaricons2">
-                                <a onclick="window.speechSynthesis.cancel();" onmouseenter="playclip()" id="logout-btn" class="navbaricons" href="<?php echo base_url('signin/logout'); ?>" style="margin-right:4%;"><p class="iconin" style="font-size:14px !important;text-align: left !important;"><img  src = "<?php echo base_url('icons/logout.png'); ?>" class="iconin" style="width:100%;height:auto"/><!Bye!></p>
+                                <a onclick="window.speechSynthesis.cancel();" onmouseenter="playclip()" id="logout-btn" href="#logout-modal" data-toggle = "modal" class="navbaricons" href="<?php echo base_url('signin/logout'); ?>" style="margin-right:4%;"><p class="iconin" style="font-size:14px !important;text-align: left !important;"><img  src = "<?php echo base_url('icons/logout.png'); ?>" class="iconin" style="width:100%;height:auto"/><!Bye!></p>
                                 <span class="tooltiptext">Goodbye Mukhlat!</span></a>
+
+                                <!-- <a onclick="window.speechSynthesis.cancel();" onmouseenter="playclip()" id="logout-btn" class="navbaricons" href="<?php echo base_url('signin/logout'); ?>" style="margin-right:4%;"><p class="iconin" style="font-size:14px !important;text-align: left !important;"><img  src = "<?php echo base_url('icons/logout.png'); ?>" class="iconin" style="width:100%;height:auto"/><!Bye!></p>
+                                <span class="tooltiptext">Goodbye Mukhlat!</span></a> -->
 
                             <a onmouseenter="playclip()" class="navbaricons" href="#customize-theme" data-toggle = "modal">
                                 <p class="iconin" style="font-size:14px !important;text-align: left !important;"><img  src = "<?php echo base_url('icons/paintbrush.png'); ?>" class="iconin" style="width:100%;height:auto"/><!Style></p>
@@ -818,6 +821,6 @@ function readcontent(value) {
 <!-- End Nav Bar -->
 
 
-
+<?php include(APPPATH . 'views/modals/logout_confirm_modal.php'); ?>
 <?php include(APPPATH . 'views/modals/notifications_modal.php'); ?>
 <?php include(APPPATH . 'views/modals/customize_modal.php'); ?>
