@@ -1,6 +1,8 @@
 
 <?php
 include(APPPATH . 'views/header.php');
+$CI =&get_instance();
+$CI->load->model('attachment_model');
 ?>
 
 <body>
@@ -66,10 +68,12 @@ include(APPPATH . 'views/header.php');
                     <div class = "col-sm-12 content-container" style="border-radius:20px;">
                         
                             <!-- POST PREVIEW -->
-                            <?php
+<?php
                             if (!empty($posts)):
                                 foreach ($posts as $post):
-                                    ?>
+  
+                                
+                                ?>
                                     <div class = "col-xs-12 no-padding post-container ptopcolor" style = "margin-bottom: 20px;border-radius:20px;">
 <!--                                        <div class = "whitebg2 no-margin " style="border-radius:20px;">
                                             <a class = "btn btn-link no-padding text1color" href = "<?php echo base_url('user/profile/' . $post->user_id); ?>">
@@ -117,8 +121,31 @@ include(APPPATH . 'views/header.php');
                                                 <span class = "text-muted"> <i style = "font-size: 16px"><?php echo date("F d, Y", strtotime($post->date_posted)); ?></i></span><br>
                                                 <div class="ptopcolor" style="padding-bottom:15px !important;">
                                                     <!--<h4 class = "no-padding no-margin text-muted wrap whitebg2" style="display:inline-block"><strong><?php echo utf8_decode($post->post_title); ?></strong></h4>-->
-                                                <p class = "home-content-body whitebg2" style = "border-right: none;white-space: pre-wrap;max-width: 714px;"><?php echo utf8_decode($post->post_content); ?></p>
-                                                
+                                                    <p class = "home-content-body whitebg2" style = "border-right: none;white-space: pre-wrap;max-width: 714px;"><?php echo utf8_decode($post->post_content); ?></p>
+                                                    <center>
+                                                <?php $attachments = $CI->attachment_model->get_post_attachments($post->post_id);
+
+                                                // print_r($attachments);
+
+                                                foreach ($attachments as $attachment):
+                                                    if ($attachment->attachment_type_id === '1'):?>
+                                                        <img src = "<?= base_url($attachment->file_url); ?>"/>
+
+                                                    <?php elseif ($attachment->attachment_type_id === '2'): ?>
+                                                        <audio src = "<?= base_url($attachment->file_url); ?>" controls></audio>
+
+                                                    <?php elseif ($attachment->attachment_type_id === '3'): ?>
+                                                        <video src = "<?= base_url($attachment->file_url); ?>" width = "300px" controls/></video>
+
+                                                    <?php elseif ($attachment->attachment_type_id === '4'): ?>
+                                                        <a href = "<?= base_url($attachment->file_url); ?>" download><i class = "fa fa-file-o"></i> <i class = "text" style = "font-size: 12px;"><?= utf8_decode($attachment->caption); ?></i></a>
+
+                                                <?php 
+
+                                                    endif;
+                                                endforeach;
+
+                                                ?>   </center>
                                                 <span class="whitebg2" style="padding-right: 30px !important;">
                                                 <button class = "upvote-btn btn btn-link btn-xs" style = "margin-left: 3px;" value = "<?php echo $post->post_id; ?>">
                                                     <span class = "<?php echo $post->vote_type === '1' ? 'upvote-text' : '' ?> glyphicon glyphicon-star vote-text starroll"></span>
