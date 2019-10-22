@@ -32,7 +32,8 @@
         }
 
 
-        div.content-container{
+        div.content-container
+        {
             border:0px;
             background-color: #f9f9f9;
         }
@@ -62,6 +63,27 @@
 <link rel="stylesheet" href="<?php echo base_url("/css/style_parentview.css"); ?>" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<?php if($mobile):?>
+    <!-- <script>alert('mobile!');</script> -->
+    <style>
+
+        body.sign-in
+        {
+            background-image: none;
+            background-color: #f9f9f9;
+            font-family: 'Cabin', 'Muli', sans-serif;
+            height: 500px;
+        }
+
+
+        div.content-container{
+            border:0px;
+            background-color: #f9f9f9;
+        }
+
+    </style>
+<?php endif; ?>
+
 <!-- Nav Bar -->
 <nav class = "navbar navbar-default navbar-font navbar-fixed-top" style = "border-bottom: 1px solid #CFD8DC;">
     <div class = "container-fluid">
@@ -81,15 +103,6 @@
                     </a>                 
                 
                     <ul class="dropdown-menu">
-                        <!-- <li><a href="<?php echo base_url('user/profile/' . $logged_user->user_id); ?>"><i class = "fa fa-user"></i> My Profile</a></li> -->
-                        
-                        <!-- <?php foreach ($children->result() as $child):$data['user'] = $this->users->get_user(true, true, array('user_id' =>  $child->user_id));?>
-
-                        <li><a href="<?php echo base_url('parents/activity/' . $child->user_id); ?>"><i class = "fa fa-user" style="color:green"></i> <?php echo $child->first_name . " " . $child->last_name ?></a></li>    
-                        <?php endforeach; ?> -->
-
-                        <!-- <li><span style="color:white">______</span></li> -->
-                        
                         <li><a href="<?php echo base_url('signin/logout');?>"><i class = "glyphicon glyphicon-log-out" style="color:red"></i> Logout</a></li>
 
                     </ul>

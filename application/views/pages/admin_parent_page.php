@@ -60,6 +60,10 @@
 
 <style>div.content-container{border:0px;}</style>
 
+<link href="https://fonts.googleapis.com/css?family=Cabin|Muli|Oswald" rel="stylesheet"/>
+<link rel="stylesheet" href="<?php echo base_url("/css/style_parentview.css"); ?>" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <?php if ($logged_user->role_id == 2): ?>
     <link rel="stylesheet" href="<?php echo base_url("/css/style.css"); ?>" />
 
@@ -68,9 +72,28 @@
 
 <?php endif; ?>
 
-<link href="https://fonts.googleapis.com/css?family=Cabin|Muli|Oswald" rel="stylesheet"/>
-<link rel="stylesheet" href="<?php echo base_url("/css/style_parentview.css"); ?>" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<?php if($mobile):?>
+    <!-- <script>alert('mobile!');</script> -->
+    <style>
+
+        body.sign-in
+        {
+            background-image: none;
+            background-color: #f9f9f9;
+            font-family: 'Cabin', 'Muli', sans-serif;
+            height: 500px;
+        }
+
+
+        div.content-container{
+            border:0px;
+            background-color: #f9f9f9;
+        }
+
+    </style>
+<?php endif; ?>
+
+
 
 <!-- Nav Bar -->
 <nav class = "navbar navbar-default navbar-font navbar-fixed-top" style = "border-bottom: 1px solid #CFD8DC;">

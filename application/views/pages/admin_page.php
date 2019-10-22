@@ -24,6 +24,28 @@
 
 <?php endif; ?>
 
+<?php if($mobile):?>
+    <!-- <script>alert('mobile!');</script> -->
+    <style>
+
+        body.sign-in
+        {
+            background-image: none;
+            background-color: #f9f9f9;
+            font-family: 'Cabin', 'Muli', sans-serif;
+            height: 500px;
+        }
+
+
+        div.content-container{
+            border:0px;
+            background-color: #f9f9f9;
+        }
+
+    </style>
+<?php endif; ?>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <!-- Nav Bar -->
 <nav class = "navbar navbar-default navbar-font navbar-fixed-top" style = "border-bottom: 1px solid #CFD8DC;">
     <div class = "container-fluid">
@@ -53,32 +75,50 @@
             
             <!-- Admin Content -->
             <div class = "col-md-8 col-md-offset-2 content-container">
-                <div class = "col-md-12">
+                <!-- <div class = "col-md-12">
                     <form action = "javascript:void(0);" role="search">
                         <div class="input-group" style = "width: 100%">
                             <input type="text" class="form-control search-text" placeholder="&#xF002; Search for a user" id = "search-user-list">
                         </div>
                     </form>
-                </div>
+                </div> -->
                 <div class = "col-md-12 admin-user-list">
                     <ul id = "user-list" class = "list-group">
                         <?php foreach ($users as $user): ?>
                             <li class = "list-group-item admin-list-item">
                                 <img src = "<?php echo $user->profile_url ? base_url($user->profile_url) : base_url('images/default.jpg') ?>" class = "no-padding pull-left img-circle" width = "45px" height = "45px"/> 
-                                <h4 class = "no-padding admin-list-name"><?php echo $user->first_name . " " . $user->last_name ?> 
+                                <h4 class = "no-padding admin-list-name">
                                     <!-- ADMIN -->
-                                    <?php if ($user->role_id === '1'): ?>
-                                        <i class = "text-muted btn-sm no-padding">Administrator <?php echo ($logged_user->user_id === $user->user_id) ? '(You)' : '' ?></i>
-                                        <!-- USERS //put modal -->
 
-                                    <?php elseif ($user->role_id === '2'): ?>
+                                    <?php if (!$mobile && $user->role_id === '1'): ?>
+                                            <?php echo $user->first_name . " " . $user->last_name ?> 
+                                            <i class = "text-muted btn-sm no-padding">Administrator <?php echo ($logged_user->user_id === $user->user_id) ? '(You)' : '' ?></i>
+                                            <!-- USERS //put modal -->
 
+                                    <?php elseif (!$mobile && $user->role_id === '2'): ?>
+                                        <?php echo $user->first_name . " " . $user->last_name ?> 
                                         <a value = "" href="<?php echo base_url('admin/activity/' . $user->user_id)?>" class = " btn btn-link btn-xs"><i class = "fa fa-question-circle-o"></i> <i>Record of <?php echo $user->first_name ?></i></a>
 
-                                    <?php elseif ($user->role_id === '3'): ?>
+                                    <?php elseif (!$mobile && $user->role_id === '3'): ?>
+                                        <?php echo $user->first_name . " " . $user->last_name ?> 
                                         <a value = "" href="<?php echo base_url('admin/parent/' . $user->user_id)?>" class = " btn btn-link btn-xs"><i class = "fa fa-question-circle-o"></i> <i>Children of <?php echo $user->first_name ?></i></a>
 
-                                    <?php endif ?>
+
+                                    <?php elseif ($mobile && $user->role_id === '1'): ?>
+                                        <?php echo $user->first_name . " " . $user->last_name ?> 
+                                        <i class = "text-muted btn-sm no-padding"><?php echo ($logged_user->user_id === $user->user_id) ? '(You)' : '' ?></i>
+                                            <!-- USERS //put modal -->
+
+                                    <?php elseif ($mobile && $user->role_id === '2'): ?>
+
+                                        <a value = "" href="<?php echo base_url('admin/activity/' . $user->user_id)?>" class = " "><i><?php echo $user->first_name . " " . $user->last_name ?> </i></a>
+
+                                    <?php elseif ($mobile && $user->role_id === '3'): ?>
+                                        <a value = "" href="<?php echo base_url('admin/parent/' . $user->user_id)?>" class = " "><i><?php echo $user->first_name . " " . $user->last_name ?> </i></a>
+
+                                        
+
+                                    <?php endif; ?>
                                 </h4>
 
                                 <?php

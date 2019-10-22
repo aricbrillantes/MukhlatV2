@@ -98,6 +98,28 @@
 
 <?php endif; ?>
 
+<?php if($mobile):?>
+    <!-- <script>alert('mobile!');</script> -->
+    <style>
+
+        body.sign-in
+        {
+            background-image: none;
+            background-color: #f9f9f9;
+            font-family: 'Cabin', 'Muli', sans-serif;
+            height: 500px;
+        }
+
+
+        div.content-container{
+            border:0px;
+            background-color: #f9f9f9;
+        }
+
+    </style>
+<?php endif; ?>
+
+
 <?php foreach ($children->result() as $child): 
 
     //read data of child 
@@ -245,7 +267,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- <div id="user-topic-moderated" class="tab-pane fade">
+                            <div id="user-topic-moderated" class="tab-pane fade">
                                 <div class = "user-header">
                                     <h4 class = "text-center"><strong>Posts Moderated by <?php echo $child->first_name; ?></strong></h4>
                                 </div>
@@ -261,8 +283,8 @@
                                         <?php endforeach; ?>
                                     </ul>
                                 </div>
-                            </div> -->
-                            <!-- <div id="user-topic-followed" class="tab-pane fade">
+                            </div>
+                            <div id="user-topic-followed" class="tab-pane fade">
                                 <div class = "col-sm-12 no-padding">
                                     <div class = "user-header">
                                         <h4 class = "text-center"><strong>Posts <?php echo $child->first_name; ?> Follows</strong></h4>
@@ -280,7 +302,7 @@
                                         </ul>
                                     </div>
                                 </div>
-                            </div> -->
+                            </div>
                         </div>
                     </div>
                 </div>

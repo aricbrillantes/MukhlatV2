@@ -92,6 +92,27 @@
 
 <?php endif; ?>
 
+<?php if($mobile):?>
+    <!-- <script>alert('mobile!');</script> -->
+    <style>
+
+        body.sign-in
+        {
+            background-image: none;
+            background-color: #f9f9f9;
+            font-family: 'Cabin', 'Muli', sans-serif;
+            height: 500px;
+        }
+
+
+        div.content-container{
+            border:0px;
+            background-color: #f9f9f9;
+        }
+
+    </style>
+<?php endif; ?>
+
 <?php foreach ($children->result() as $child): 
 
     //read data of child 

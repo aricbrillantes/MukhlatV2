@@ -70,33 +70,27 @@
 
     $mobile=$CI->agent->is_mobile();
 
-    if($mobile):?>
-    <!-- <script>alert('mobile!');</script> -->
-    <style>
+?>
 
-        body.sign-in
-        {
-            background-image: none;
-            background-color: #f9f9f9;
-            font-family: 'Cabin', 'Muli', sans-serif;
-            height: 500px;
-        }
-
-
-        div.content-container{
-            border:0px;
-            background-color: #f9f9f9;
-        }
-
-    </style>
-<?php endif; ?>
-<style>div.content-container{border:0px;}
+<style>
+    div.content-container
+    {
+        border:0px;
+    }
 
     .myTable 
     { 
+
+        <?php if ($mobile): ?>
+            background-color: #f9f9f9;
+
+        <?php else: ?>
+            background: rgb(255,255,255);
+            
+        <?php endif; ?>
+
         width: 93%;
         text-align: left;
-        background: rgb(255,255,255);
         border-collapse: collapse; 
     }
 
@@ -111,8 +105,13 @@
     
     .myTable td
     { 
+        <?php if ($mobile): ?>
+            font-size: 8px;
+            width: 10px;
+        <?php endif; ?>
+
         background: rgb(255,255,255);
-        width: 5%;
+        
         padding: 3px;
         border: 2px solid; 
     }
@@ -124,9 +123,17 @@
         border: 2px solid black; 
     }
 
+
+
     td.timecol
     {
         background: rgb(242,242,242);
+        font-size: 14px;
+
+        <?php if ($mobile): ?>
+            font-size: 8px;
+            width: 10px;
+        <?php endif; ?>
     }
 
     .nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus 
@@ -224,6 +231,28 @@
 
 <?php endif; ?>
 
+
+<?php if($mobile):?>
+    <!-- <script>alert('mobile!');</script> -->
+    <style>
+
+        body.sign-in
+        {
+            background-image: none;
+            background-color: #f9f9f9;
+            font-family: 'Cabin', 'Muli', sans-serif;
+            height: 500px;
+        }
+
+
+        div.content-container{
+            border:0px;
+            background-color: #f9f9f9;
+        }
+
+    </style>
+<?php endif; ?>
+
 <!-- Nav Bar Script -->
 <script type="text/javascript" src="<?php echo base_url("/js/nav_bar.js"); ?>"></script>
 
@@ -240,7 +269,7 @@
                     
                     if (background == "rgb(50, 200, 100)" && id.includes("-A")) 
                     {
-                        document.getElementById(id).style.background = "rgb(249, 249, 249)";
+                        document.getElementById(id).style.background = "rgb(255, 255, 255)";
                         document.getElementById(id).id = id.replace("-A","");
                     } 
 
@@ -253,59 +282,7 @@
                     // alert(id); 
                 }
 
-                function selectRow(id) 
-                {
-                    var background = document.getElementById(id).style.backgroundColor;
-                    var newID = id.replace("-A","");
-                    var i, temp; 
-
-                    n = parseInt(id.replace("_cell","").replace("-A",""));
-                    
-
-                    // alert(n);
-                    // alert(n+7);
-
-                    if(toggle==0)
-                        toggle=1;
-
-                    else if(toggle==1)
-                        toggle=0;
-
-                    // alert(toggle);
-
-                    
-                    if(toggle==1)
-                    {
-                        for(i=n; i<n+7; i++)
-                        {
-                            temp = "cell" + i;
-
-                            if(document.getElementById(temp.replace("-A","")))
-                            {
-                                document.getElementById(temp).style.background = "rgb(50, 200, 100)";
-                                document.getElementById(temp).id = temp + "-A";
-                            }
-
-                        }  
-                    }
-                     
-
-                    if(toggle==0)
-                    {
-                        for(i=n; i<n+7; i++)
-                        {
-                            temp = "cell" + i;
-
-                            if(document.getElementById(temp+"-A"))
-                            {
-                                document.getElementById(temp+"-A").style.background = "rgb(255, 255, 255)";
-                                document.getElementById(temp+"-A").id = temp;
-                            }
-
-                        } 
-                    }
-                }
-
+                
                 function clearTable() 
                 {
                     var i, temp; 
@@ -351,19 +328,17 @@
                             }
                             
                         }
-
                     }  
-
                 }
 
             </script>
 
             <div class = "col-md-12 col-sm-14 col-xs-16 col-md-offset-0 content-container container-fluid" style = "margin-bottom: 1vw;"><br>
 
-                <div class = "content-container container-fluid" style = "margin-bottom: 4.5px;">
+                <div class = "content-container container-fluid " style = "margin-bottom: 4.5px;">
 
                     <div class = "col-xs-12 form-group register-field" style = "">
-                        <h3 class = "col-xs-4 no-padding text-info pull-left"style = "margin-bottom: 0px; margin-top: 0px;">Settings for <b><?php echo $child->first_name ?></b></strong></h3>
+                        <h3 class = "col-xs-12 no-padding text-info pull-left"style = "margin-bottom: 0px; margin-top: 0px;">Settings for <b><?php echo $child->first_name ?></b></strong></h3>
 
                         
                     </div>
@@ -388,7 +363,7 @@
                 </ul> -->
 
                  <!-- The table -->
-                 <div id="time-table" class="container-fluid tab-content">
+                 <div id="time-table" class="container-fluid tab-content col-xs-16">
 
                     <table id="timetable-1" class="myTable container-fluid tab-pane fade">
                         <tr>
@@ -416,7 +391,7 @@
                         </tr>
 
                         <tr>
-                            <td id="_cell1" class="timecol" style="font-size: 12px"><a href="#"><center>12:00 - 12:30</center></a></td>
+                            <td id="_cell1" class="timecol"><center>12:00 - 12:30</center></td>
                             <td id="cell1" onclick="colorchange(this.id)"> </td>
                             <td id="cell2" onclick="colorchange(this.id)"> </td>
                             <td id="cell3" onclick="colorchange(this.id)"> </td>
@@ -426,7 +401,7 @@
                             <td id="cell7" onclick="colorchange(this.id)"> </td>
                         </tr>
                         <tr>
-                            <td id="_cell8" class="timecol" style="font-size: 12px"><center>12:30 - 01:00</center></td>
+                            <td id="_cell8" class="timecol"><center>12:30 - 01:00</center></td>
                             <td id="cell8" onclick="colorchange(this.id)"> </td>
                             <td id="cell9" onclick="colorchange(this.id)"> </td>
                             <td id="cell10" onclick="colorchange(this.id)"> </td>
@@ -437,7 +412,7 @@
                         </tr>
 
                         <tr>
-                            <td id="_cell15" class="timecol" style="font-size: 12px"><center>01:00 - 01:30</center></td>
+                            <td id="_cell15" class="timecol"><center>01:00 - 01:30</center></td>
                             <td id="cell15" onclick="colorchange(this.id)"> </td>
                             <td id="cell16" onclick="colorchange(this.id)"> </td>
                             <td id="cell17" onclick="colorchange(this.id)"> </td>
@@ -448,7 +423,7 @@
                         </tr>
 
                         <tr>
-                            <td id="_cell22" class="timecol" style="font-size: 12px"><center>01:30 - 02:00</center></td>
+                            <td id="_cell22" class="timecol"><center>01:30 - 02:00</center></td>
                             <td id="cell22" onclick="colorchange(this.id)"> </td>
                             <td id="cell23" onclick="colorchange(this.id)"> </td>
                             <td id="cell24" onclick="colorchange(this.id)"> </td>
@@ -459,7 +434,7 @@
                         </tr>
 
                         <tr>
-                            <td id="_cell29" class="timecol" style="font-size: 12px"><center>02:30 - 03:00</center></td>
+                            <td id="_cell29" class="timecol" ><center>02:30 - 03:00</center></td>
                             <td id="cell29" onclick="colorchange(this.id)"> </td>
                             <td id="cell30" onclick="colorchange(this.id)"> </td>
                             <td id="cell31" onclick="colorchange(this.id)"> </td>
@@ -470,7 +445,7 @@
                         </tr>
 
                         <tr>
-                            <td id="_cell36" class="timecol" style="font-size: 12px"><center>03:00 - 03:30</center></td>
+                            <td id="_cell36" class="timecol" ><center>03:00 - 03:30</center></td>
                             <td id="cell36" onclick="colorchange(this.id)"> </td>
                             <td id="cell37" onclick="colorchange(this.id)"> </td>
                             <td id="cell38" onclick="colorchange(this.id)"> </td>
@@ -481,7 +456,7 @@
                         </tr>
 
                         <tr>
-                            <td class="timecol" style="font-size: 12px"><center>03:30 - 04:00</center></td>
+                            <td class="timecol" ><center>03:30 - 04:00</center></td>
                             <td id="cell43" onclick="colorchange(this.id)"> </td>
                             <td id="cell44" onclick="colorchange(this.id)"> </td>
                             <td id="cell45" onclick="colorchange(this.id)"> </td>
@@ -492,7 +467,7 @@
                         </tr>
 
                         <tr>
-                            <td class="timecol" style="font-size: 12px"><center>04:00 - 04:30</center></td>
+                            <td class="timecol" ><center>04:00 - 04:30</center></td>
                             <td id="cell50" onclick="colorchange(this.id)"> </td>
                             <td id="cell51" onclick="colorchange(this.id)"> </td>
                             <td id="cell52" onclick="colorchange(this.id)"> </td>
@@ -503,7 +478,7 @@
                         </tr>
 
                         <tr>
-                            <td class="timecol" style="font-size: 12px"><center>04:30 - 05:00</center></td>
+                            <td class="timecol" ><center>04:30 - 05:00</center></td>
                             <td id="cell57" onclick="colorchange(this.id)"> </td>
                             <td id="cell58" onclick="colorchange(this.id)"> </td>
                             <td id="cell59" onclick="colorchange(this.id)"> </td>
@@ -514,7 +489,7 @@
                         </tr>
 
                         <tr>
-                            <td class="timecol" style="font-size: 12px"><center>05:00 - 05:30</center></td>
+                            <td class="timecol" ><center>05:00 - 05:30</center></td>
                             <td id="cell64" onclick="colorchange(this.id)"> </td>
                             <td id="cell65" onclick="colorchange(this.id)"> </td>
                             <td id="cell66" onclick="colorchange(this.id)"> </td>
@@ -525,7 +500,7 @@
                         </tr>
 
                         <tr>
-                            <td class="timecol" style="font-size: 12px"><center>05:30 - 06:00</center></td>
+                            <td class="timecol" ><center>05:30 - 06:00</center></td>
                             <td id="cell71" onclick="colorchange(this.id)"> </td>
                             <td id="cell72" onclick="colorchange(this.id)"> </td>
                             <td id="cell73" onclick="colorchange(this.id)"> </td>
@@ -536,7 +511,7 @@
                         </tr>
 
                         <tr>
-                            <td class="timecol" style="font-size: 12px"><center>06:00 - 06:30</center></td>
+                            <td class="timecol" ><center>06:00 - 06:30</center></td>
                             <td id="cell78" onclick="colorchange(this.id)"> </td>
                             <td id="cell79" onclick="colorchange(this.id)"> </td>
                             <td id="cell80" onclick="colorchange(this.id)"> </td>
@@ -547,7 +522,7 @@
                         </tr>
 
                         <tr>
-                            <td class="timecol" style="font-size: 12px"><center>06:30 - 07:00</center></td>
+                            <td class="timecol" ><center>06:30 - 07:00</center></td>
                             <td id="cell85" onclick="colorchange(this.id)"> </td>
                             <td id="cell86" onclick="colorchange(this.id)"> </td>
                             <td id="cell87" onclick="colorchange(this.id)"> </td>
@@ -558,7 +533,7 @@
                         </tr>
 
                         <tr>
-                            <td id="_cell92" class="timecol" style="font-size: 12px"><center>07:00 - 07:30</center></td>
+                            <td id="_cell92" class="timecol" ><center>07:00 - 07:30</center></td>
                             <td id="cell92" onclick="colorchange(this.id)"> </td>
                             <td id="cell93" onclick="colorchange(this.id)"> </td>
                             <td id="cell94" onclick="colorchange(this.id)"> </td>
@@ -569,7 +544,7 @@
                         </tr>
 
                         <tr>
-                            <td id="_cell99"  class="timecol" style="font-size: 12px"><center>07:30 - 08:00</center></td>
+                            <td id="_cell99"  class="timecol" ><center>07:30 - 08:00</center></td>
                             <td id="cell99" onclick="colorchange(this.id)"> </td>
                             <td id="cell100" onclick="colorchange(this.id)"> </td>
                             <td id="cell101" onclick="colorchange(this.id)"> </td>
@@ -609,7 +584,7 @@
                         
 
                         <tr>
-                            <td id="_cell106" class="timecol" onclick="selectRow(this.id)" style="font-size: 12px"><center>08:00 - 08:30</center></td>
+                            <td id="_cell106" class="timecol" onclick=""><center>08:00 - 08:30</center></td>
                             <td id="cell106" onclick="colorchange(this.id)"> </td>
                             <td id="cell107" onclick="colorchange(this.id)"> </td>
                             <td id="cell108" onclick="colorchange(this.id)"> </td>
@@ -620,7 +595,7 @@
                         </tr>
 
                         <tr>
-                            <td class="timecol" style="font-size: 12px"><center>08:30 - 09:00</center></td>
+                            <td class="timecol" ><center>08:30 - 09:00</center></td>
                             <td id="cell113" onclick="colorchange(this.id)"> </td>
                             <td id="cell114" onclick="colorchange(this.id)"> </td>
                             <td id="cell115" onclick="colorchange(this.id)"> </td>
@@ -631,7 +606,7 @@
                         </tr>
 
                         <tr>
-                            <td class="timecol" style="font-size: 12px"><center>09:00 - 09:30</center></td>
+                            <td class="timecol" ><center>09:00 - 09:30</center></td>
                             <td id="cell120" onclick="colorchange(this.id)"> </td>
                             <td id="cell121" onclick="colorchange(this.id)"> </td>
                             <td id="cell122" onclick="colorchange(this.id)"> </td>
@@ -642,7 +617,7 @@
                         </tr>
 
                         <tr>
-                            <td class="timecol" style="font-size: 12px"><center>09:30 - 10:00</center></td>
+                            <td class="timecol" ><center>09:30 - 10:00</center></td>
                             <td id="cell127" onclick="colorchange(this.id)"> </td>
                             <td id="cell128" onclick="colorchange(this.id)"> </td>
                             <td id="cell129" onclick="colorchange(this.id)"> </td>
@@ -653,7 +628,7 @@
                         </tr>
 
                         <tr>
-                            <td class="timecol" style="font-size: 12px"><center>10:00 - 10:30</center></td>
+                            <td class="timecol" ><center>10:00 - 10:30</center></td>
                             <td id="cell134" onclick="colorchange(this.id)"> </td>
                             <td id="cell135" onclick="colorchange(this.id)"> </td>
                             <td id="cell136" onclick="colorchange(this.id)"> </td>
@@ -664,7 +639,7 @@
                         </tr>
 
                         <tr>
-                            <td class="timecol" style="font-size: 12px"><center>10:30 - 11:00</center></td>
+                            <td class="timecol" ><center>10:30 - 11:00</center></td>
                             <td id="cell141" onclick="colorchange(this.id)"> </td>
                             <td id="cell142" onclick="colorchange(this.id)"> </td>
                             <td id="cell143" onclick="colorchange(this.id)"> </td>
@@ -675,7 +650,7 @@
                         </tr>
 
                         <tr>
-                            <td class="timecol" style="font-size: 12px"><center>11:00 - 11:30</center></td>
+                            <td class="timecol" ><center>11:00 - 11:30</center></td>
                             <td id="cell148" onclick="colorchange(this.id)"> </td>
                             <td id="cell149" onclick="colorchange(this.id)"> </td>
                             <td id="cell150" onclick="colorchange(this.id)"> </td>
@@ -686,7 +661,7 @@
                         </tr>
 
                         <tr>
-                            <td class="timecol" style="font-size: 12px"><center>11:30 - 12:00</center></td>
+                            <td class="timecol" ><center>11:30 - 12:00</center></td>
                             <td id="cell155" onclick="colorchange(this.id)"> </td>
                             <td id="cell156" onclick="colorchange(this.id)"> </td>
                             <td id="cell157" onclick="colorchange(this.id)"> </td>
@@ -697,7 +672,7 @@
                         </tr>
 
                         <tr>
-                            <td class="timecol" style="font-size: 12px"><center>12:00 - 12:30</center></td>
+                            <td class="timecol" ><center>12:00 - 12:30</center></td>
                             <td id="cell162" onclick="colorchange(this.id)"> </td>
                             <td id="cell163" onclick="colorchange(this.id)"> </td>
                             <td id="cell164" onclick="colorchange(this.id)"> </td>
@@ -708,7 +683,7 @@
                         </tr>
 
                         <tr>
-                            <td class="timecol" style="font-size: 12px"><center>12:30 - 01:00</center></td>
+                            <td class="timecol" ><center>12:30 - 01:00</center></td>
                             <td id="cell169" onclick="colorchange(this.id)"> </td>
                             <td id="cell170" onclick="colorchange(this.id)"> </td>
                             <td id="cell171" onclick="colorchange(this.id)"> </td>
@@ -719,7 +694,7 @@
                         </tr>
 
                         <tr>
-                            <td class="timecol" style="font-size: 12px"><center>01:00 - 01:30</center></td>
+                            <td class="timecol" ><center>01:00 - 01:30</center></td>
                             <td id="cell176" onclick="colorchange(this.id)"> </td>
                             <td id="cell177" onclick="colorchange(this.id)"> </td>
                             <td id="cell178" onclick="colorchange(this.id)"> </td>
@@ -730,7 +705,7 @@
                         </tr>
 
                         <tr>
-                            <td class="timecol" style="font-size: 12px"><center>12:00 - 12:30</center></td>
+                            <td class="timecol" ><center>12:00 - 12:30</center></td>
                             <td id="cell183" onclick="colorchange(this.id)"> </td>
                             <td id="cell184" onclick="colorchange(this.id)"> </td>
                             <td id="cell185" onclick="colorchange(this.id)"> </td>
@@ -741,7 +716,7 @@
                         </tr>
 
                         <tr>
-                            <td class="timecol" style="font-size: 12px"><center>12:30 - 01:00</center></td>
+                            <td class="timecol" ><center>12:30 - 01:00</center></td>
                             <td id="cell190" onclick="colorchange(this.id)"> </td>
                             <td id="cell191" onclick="colorchange(this.id)"> </td>
                             <td id="cell192" onclick="colorchange(this.id)"> </td>
@@ -752,7 +727,7 @@
                         </tr>
 
                         <tr>
-                            <td class="timecol" style="font-size: 12px"><center>01:00 - 01:30</center></td>
+                            <td class="timecol" ><center>01:00 - 01:30</center></td>
                             <td id="cell197" onclick="colorchange(this.id)"> </td>
                             <td id="cell198" onclick="colorchange(this.id)"> </td>
                             <td id="cell199" onclick="colorchange(this.id)"> </td>
@@ -763,7 +738,7 @@
                         </tr>
 
                         <tr>
-                            <td class="timecol" style="font-size: 12px"><center>02:30 - 03:00</center></td>
+                            <td class="timecol" ><center>02:30 - 03:00</center></td>
                             <td id="cell204" onclick="colorchange(this.id)"> </td>
                             <td id="cell205" onclick="colorchange(this.id)"> </td>
                             <td id="cell206" onclick="colorchange(this.id)"> </td>
@@ -774,7 +749,7 @@
                         </tr>
 
                         <tr>
-                            <td class="timecol" style="font-size: 12px"><center>03:00 - 03:30</center></td>
+                            <td class="timecol" ><center>03:00 - 03:30</center></td>
                             <td id="cell211" onclick="colorchange(this.id)"> </td>
                             <td id="cell212" onclick="colorchange(this.id)"> </td>
                             <td id="cell213" onclick="colorchange(this.id)"> </td>
@@ -785,7 +760,7 @@
                         </tr>
 
                         <tr>
-                            <td class="timecol" style="font-size: 12px"><center>03:30 - 04:00</center></td>
+                            <td class="timecol" ><center>03:30 - 04:00</center></td>
                             <td id="cell218" onclick="colorchange(this.id)"> </td>
                             <td id="cell219" onclick="colorchange(this.id)"> </td>
                             <td id="cell220" onclick="colorchange(this.id)"> </td>
@@ -796,7 +771,7 @@
                         </tr>
 
                         <tr>
-                            <td class="timecol" style="font-size: 12px"><center>04:00 - 04:30</center></td>
+                            <td class="timecol" ><center>04:00 - 04:30</center></td>
                             <td id="cell225" onclick="colorchange(this.id)"> </td>
                             <td id="cell226" onclick="colorchange(this.id)"> </td>
                             <td id="cell227" onclick="colorchange(this.id)"> </td>
@@ -807,7 +782,7 @@
                         </tr>
 
                         <tr>
-                            <td class="timecol" style="font-size: 12px"><center>04:30 - 05:00</center></td>
+                            <td class="timecol" ><center>04:30 - 05:00</center></td>
                             <td id="cell232" onclick="colorchange(this.id)"> </td>
                             <td id="cell233" onclick="colorchange(this.id)"> </td>
                             <td id="cell234" onclick="colorchange(this.id)"> </td>
@@ -818,7 +793,7 @@
                         </tr>
 
                         <tr>
-                            <td class="timecol" style="font-size: 12px"><center>05:00 - 05:30</center></td>
+                            <td class="timecol" ><center>05:00 - 05:30</center></td>
                             <td id="cell239" onclick="colorchange(this.id)"> </td>
                             <td id="cell240" onclick="colorchange(this.id)"> </td>
                             <td id="cell241" onclick="colorchange(this.id)"> </td>
@@ -829,7 +804,7 @@
                         </tr>
 
                         <tr>
-                            <td class="timecol" style="font-size: 12px"><center>05:30 - 06:00</center></td>
+                            <td class="timecol" ><center>05:30 - 06:00</center></td>
                             <td id="cell246" onclick="colorchange(this.id)"> </td>
                             <td id="cell247" onclick="colorchange(this.id)"> </td>
                             <td id="cell248" onclick="colorchange(this.id)"> </td>
@@ -840,7 +815,7 @@
                         </tr>
 
                         <tr>
-                            <td class="timecol" style="font-size: 12px"><center>06:00 - 06:30</center></td>
+                            <td class="timecol" ><center>06:00 - 06:30</center></td>
                             <td id="cell253" onclick="colorchange(this.id)"> </td>
                             <td id="cell254" onclick="colorchange(this.id)"> </td>
                             <td id="cell255" onclick="colorchange(this.id)"> </td>
@@ -851,7 +826,7 @@
                         </tr>
 
                         <tr>
-                            <td class="timecol" style="font-size: 12px"><center>06:30 - 07:00</center></td>
+                            <td class="timecol" ><center>06:30 - 07:00</center></td>
                             <td id="cell260" onclick="colorchange(this.id)"> </td>
                             <td id="cell261" onclick="colorchange(this.id)"> </td>
                             <td id="cell262" onclick="colorchange(this.id)"> </td>
@@ -862,7 +837,7 @@
                         </tr>
 
                         <tr>
-                            <td class="timecol" style="font-size: 12px"><center>07:00 - 07:30</center></td>
+                            <td class="timecol" ><center>07:00 - 07:30</center></td>
                             <td id="cell267" onclick="colorchange(this.id)"> </td>
                             <td id="cell268" onclick="colorchange(this.id)"> </td>
                             <td id="cell269" onclick="colorchange(this.id)"> </td>
@@ -873,7 +848,7 @@
                         </tr>
 
                         <tr>
-                            <td class="timecol" style="font-size: 12px"><center>07:30 - 08:00</center></td>
+                            <td class="timecol" ><center>07:30 - 08:00</center></td>
                             <td id="cell274" onclick="colorchange(this.id)"> </td>
                             <td id="cell275" onclick="colorchange(this.id)"> </td>
                             <td id="cell276" onclick="colorchange(this.id)"> </td>
@@ -912,7 +887,7 @@
 
 
                         <tr>
-                            <td class="timecol" style="font-size: 12px"><center>08:00 - 08:30</center></td>
+                            <td class="timecol" ><center>08:00 - 08:30</center></td>
                             <td id="cell281" onclick="colorchange(this.id)"> </td>
                             <td id="cell282" onclick="colorchange(this.id)"> </td>
                             <td id="cell283" onclick="colorchange(this.id)"> </td>
@@ -923,7 +898,7 @@
                         </tr>
 
                         <tr>
-                            <td class="timecol" style="font-size: 12px"><center>08:30 - 09:00</center></td>
+                            <td class="timecol" ><center>08:30 - 09:00</center></td>
                             <td id="cell288" onclick="colorchange(this.id)"> </td>
                             <td id="cell289" onclick="colorchange(this.id)"> </td>
                             <td id="cell290" onclick="colorchange(this.id)"> </td>
@@ -934,7 +909,7 @@
                         </tr>
 
                         <tr>
-                            <td class="timecol" style="font-size: 12px"><center>09:00 - 09:30</center></td>
+                            <td class="timecol" ><center>09:00 - 09:30</center></td>
                             <td id="cell295" onclick="colorchange(this.id)"> </td>
                             <td id="cell296" onclick="colorchange(this.id)"> </td>
                             <td id="cell297" onclick="colorchange(this.id)"> </td>
@@ -945,7 +920,7 @@
                         </tr>
 
                         <tr>
-                            <td class="timecol" style="font-size: 12px"><center>09:30 - 10:00</center></td>
+                            <td class="timecol" ><center>09:30 - 10:00</center></td>
                             <td id="cell302" onclick="colorchange(this.id)"> </td>
                             <td id="cell303" onclick="colorchange(this.id)"> </td>
                             <td id="cell304" onclick="colorchange(this.id)"> </td>
@@ -956,7 +931,7 @@
                         </tr>
 
                         <tr>
-                            <td class="timecol" style="font-size: 12px"><center>10:00 - 10:30</center></td>
+                            <td class="timecol" ><center>10:00 - 10:30</center></td>
                             <td id="cell309" onclick="colorchange(this.id)"> </td>
                             <td id="cell310" onclick="colorchange(this.id)"> </td>
                             <td id="cell311" onclick="colorchange(this.id)"> </td>
@@ -967,7 +942,7 @@
                         </tr>
 
                         <tr>
-                            <td class="timecol" style="font-size: 12px"><center>10:30 - 11:00</center></td>
+                            <td class="timecol" ><center>10:30 - 11:00</center></td>
                             <td id="cell316" onclick="colorchange(this.id)"> </td>
                             <td id="cell317" onclick="colorchange(this.id)"> </td>
                             <td id="cell318" onclick="colorchange(this.id)"> </td>
@@ -978,7 +953,7 @@
                         </tr>
 
                         <tr>
-                            <td class="timecol" style="font-size: 12px"><center>11:00 - 11:30</center></td>
+                            <td class="timecol" ><center>11:00 - 11:30</center></td>
                             <td id="cell323" onclick="colorchange(this.id)"> </td>
                             <td id="cell324" onclick="colorchange(this.id)"> </td>
                             <td id="cell325" onclick="colorchange(this.id)"> </td>
@@ -989,7 +964,7 @@
                         </tr>
 
                         <tr>
-                            <td class="timecol" style="font-size: 12px"><center>11:30 - 12:00</center></td>
+                            <td class="timecol" ><center>11:30 - 12:00</center></td>
                             <td id="cell330" onclick="colorchange(this.id)"> </td>
                             <td id="cell331" onclick="colorchange(this.id)"> </td>
                             <td id="cell332" onclick="colorchange(this.id)"> </td>
