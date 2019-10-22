@@ -3,6 +3,8 @@ include(APPPATH . 'views/header.php');
   $logged_user = $_SESSION['logged_user'];  
 $c_topic = $_SESSION['current_topic'];
 
+$CI =&get_instance();
+$CI->load->model('attachment_model');
 ?>
 
 <body>
@@ -120,7 +122,7 @@ $c_topic = $_SESSION['current_topic'];
     </div>
 
     <?php
-//    include(APPPATH . 'views/side_navbar.php');
+    include(APPPATH . 'views/side_postbar.php');
     include(APPPATH . 'views/modals/create_post_modal.php');
     include(APPPATH . 'views/modals/topic_members_modal.php');
     include(APPPATH . 'views/modals/cancel_topic_modal.php');
