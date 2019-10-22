@@ -77,7 +77,7 @@ $CI->load->model('attachment_model');
                             </p>
                         </div>
                                                     <div class = "col-xs-12">
-                        <button onmouseenter="playclip()" id="crettop" class = "btn btn-primary buttonsbgcolor textoutliner" href="#create-post-modal" data-toggle = "modal" style="font-size:22px">Post to <?php echo utf8_decode($c_topic->topic_name); ?></button>
+                        <button onmouseenter="playclip()" id="crettop" class = "btn btn-primary buttonsbgcolor textoutliner" href="#create-post-modal" data-toggle = "modal" style="font-size:22px">Decorate</button>
                     </div>
                     </div>
 <!--                    <div id = "preview-div" class = "col-sm-12 well topic-preview-div">

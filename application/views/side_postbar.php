@@ -64,6 +64,9 @@ $logged_user = $_SESSION['logged_user'];
                             <?php endforeach; ?>
                         </div>
                     </div>
+                        <div>
+                        <button onmouseenter="playclip()" id="crettop" class = "btn btn-primary buttonsbgcolor textoutliner" href="#create-post-modal" data-toggle = "modal" style="font-size:22px">Say something</button>
+                    </div>
     
 </div>
 
