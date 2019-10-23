@@ -10,7 +10,7 @@ $logged_user = $_SESSION['logged_user'];
 
                         <!-- Topic Post List -->
                     
-                    <div class = "col-xs-12 topic-post-list">
+                    <div class = "col-xs-12 col-md-4 pull-right topic-post-list">
                         <div class = "list-group" style = "padding-top: 15px;">
                              <!--List Entry--> 
                             <?php
@@ -23,20 +23,20 @@ $logged_user = $_SESSION['logged_user'];
                                 }
                                 ?>
                                 <!--<a href = "javascript: void(0);" class = "btn btn-link list-group-item list-entry no-up-down-pad topic-post-entry" data-value = "<?php echo $post->post_id; ?>">-->
-<div>
+                        <div>
                             
 
-<div class = "row">
-                                        <div class = "col-xs-9">
-                                            <h4 class = "ellipsis"><strong><?php echo utf8_decode($post->post_title); ?></strong> <small><i><?php echo $post->user->first_name . " " . $post->user->last_name; ?></i></small></h4>
-                                            <p class = "ellipsis" style="white-space: pre-wrap;"><?php echo utf8_decode($post->post_content); ?></p>
-                                        </div>
-                                        <div class = "col-xs-3 text-center" style = "padding: 0px;">
-                                            <p style = "padding-top: 10px; font-size: 18px !important;color: #78909C;"><i><?php echo date("F d, Y", strtotime($post->date_posted)); ?></i></p>
-                                        </div>
+                                <div class = "row">
+                                    <div class = "col-xs-9">
+                                        <h4 class = "ellipsis"><strong><?php echo utf8_decode($post->post_title); ?></strong> <small><i><?php echo $post->user->first_name . " " . $post->user->last_name; ?></i></small></h4>
+                                        <p class = "ellipsis" style="white-space: pre-wrap;"><?php echo utf8_decode($post->post_content); ?></p>
                                     </div>
+                                    <div class = "col-xs-3 text-center" style = "padding: 0px;">
+                                        <p style = "padding-top: 10px; font-size: 18px !important;color: #78909C;"><i><?php echo date("F d, Y", strtotime($post->date_posted)); ?></i></p>
+                                    </div>
+                                </div>
 
- <?php $attachments = $CI->attachment_model->get_post_attachments($post->post_id);
+                                            <?php $attachments = $CI->attachment_model->get_post_attachments($post->post_id);
 
                                                 // print_r($attachments);
 

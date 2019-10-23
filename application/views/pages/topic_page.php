@@ -43,10 +43,15 @@ include(APPPATH . 'views/header.php');
         </div>
         <div class = "row">
             <!-- Topic Page Content -->
-            <div class = "col-md-12 content-container">
+            <div class = "col-md-8 col-xs-12 content-container">
                 <!-- Topic Post Preview -->
                 <div class = "col-sm-12 col-md-12">
                     <div class = "col-12 col-md-12 no-padding">
+
+                        <?php if ($c_topic->creator_id === $logged_user->user_id): ?>
+                            <button onmouseenter="playclip()" id="crettop" class = "btn btn-primary buttonsbgcolor textoutliner" href="#create-post-modal" data-toggle = "modal" style="font-size:22px">Decorate your room</button><br><br>
+                        <?php endif;?>
+
                        
                         <data></data><div class = "content-container topic-intro-content " style="border-radius:30px;"> <h4 class = "no-margin text-center user-topic-header topic-intro-header bar1color" style="border-radius:20px">
                            <strong class="textoutliner"><?php echo utf8_decode($c_topic->topic_name); ?></strong>
@@ -77,19 +82,20 @@ include(APPPATH . 'views/header.php');
                                         <button onmouseenter="playclip()" value = "<?php echo $c_topic->topic_id ?>" id = "edit-topic-save" class = "btn btn-primary btn-sm">Save</button>
                                         <button onmouseenter="playclip()" id = "edit-topic-cancel" type = "button" class = "btn btn-gray btn-sm">Cancel</button>
                                     </div>
+
                                 </div>
                             <?php endif; ?>
+
                             <p id = "desc-container" class = "no-margin wrap text-center">
                                 <?php echo utf8_decode($c_topic->topic_description); ?>
                             </p>
                         </div>
-                                
+
                         <div class = "col-sm-12 col-md-12">
-                    
-                    
                             <div class=" col-md-12">
+
                             <?php
-                            // var_dump($c_topic->posts);
+                            // var_dump($c_topic->posts);   
 
                             foreach ($c_topic->posts as $post):
 
@@ -100,11 +106,13 @@ include(APPPATH . 'views/header.php');
                                     $text_class = 'text-danger';
                                 }
 
-
+                                if($post->user_id === $c_topic->creator_id):
                                 ?> 
 
                                 <div class="topic-grid1 content-container" style="color: white;  position: relative;  height: auto;  min-height: 100% !important;">
-                                        <!-- <?php echo ($post->user->user_id); ?> -->
+                                        <!-- <?php echo ($post->topic_id); ?> -->
+                                        <!-- <?php echo ($c_topic->creator_id); ?> -->
+                                        <!-- <?php echo ($post->user_id); ?> -->
                                         <!-- <img class = "img-circle" style = "margin: 10px 0px;" width = "40px" height = "40px" src = "<?php echo $post->profile_url ? base_url($post->user->profile_url) : base_url('images/default.jpg'); ?>"/>  -->
 
                                         <p style="font-size: 19px; display:inline"> <?php echo($post->user->first_name); ?> says </p>
@@ -136,7 +144,12 @@ include(APPPATH . 'views/header.php');
                                                 ?>                                     
                                     </div>
                                 
-                            <?php endforeach; ?>
+                            <?php endif;
+
+                            endforeach; 
+
+
+                            ?>
                         </div>
                 </div>
                         
@@ -179,11 +192,75 @@ include(APPPATH . 'views/header.php');
                     </div>
                 </div>-->
             </div>
-        </div>
+
+            <div class = "col-md-4 col-xs-12 content-container  topic-post-list" >
+                <div class = "list-group" style = "padding-top: 15px;">
+                             <!--List Entry--> 
+                        <?php if (!$c_topic->creator_id === $logged_user->user_id): ?>
+                            <button onmouseenter="playclip()" id="crettop" class = "btn btn-primary buttonsbgcolor textoutliner" href="#create-post-modal" data-toggle = "modal" style="font-size:22px">Say something</button><br><br>
+                        <?php endif;?>
+                        
+
+                    <?php
+                    foreach ($c_topic->posts as $post):
+                        $text_class = '';
+                        if ($post->vote_count > 0) {
+                            $text_class = 'text-success';
+                        } else if ($post->vote_count < 0) {
+                            $text_class = 'text-danger';
+                        }
+                        ?>
+                        <!--<a href = "javascript: void(0);" class = "btn btn-link list-group-item list-entry no-up-down-pad topic-post-entry" data-value = "<?php echo $post->post_id; ?>">-->
+                        <div class = "row container-fluid" style="position: relative; min-height: 100% !important; ">
+
+                                
+                            <div class="container-fluid" style="border: 1px solid grey;">
+                                <div class = "col-xs-9" >
+                                    <h4 class = "ellipsis"><small><i><?php echo $post->user->first_name . " " . $post->user->last_name; ?></i></small></h4>
+                                    <p class = "" style = "border-right: none; max-width: 714px; overflow: hidden;text-overflow: ellipsis;">"<?php echo utf8_decode($post->post_content); ?>"</p>
+                                </div>
+                                <div class = "col-xs-3 text-center" style = "padding: 0px; ">
+                                    <p style = "padding-top: 10px; font-size: 18px !important;color: #78909C;"><i><?php echo date("F d, Y", strtotime($post->date_posted)); ?></i></p>
+                                </div>
+
+                                <?php $attachments = $CI->attachment_model->get_post_attachments($post->post_id);?>
+
+                                    <?php //print_r($attachments); ?>
+
+                                    <?php foreach ($attachments as $attachment):
+                                        if ($attachment->attachment_type_id === '1'):?>
+                                            <img src = "<?= base_url($attachment->file_url); ?>" width = "50%"  style="position:relative;" />
+
+                                        <?php elseif ($attachment->attachment_type_id === '2'): ?>
+                                            <audio src = "<?= base_url($attachment->file_url); ?>" controls></audio>
+
+                                        <?php elseif ($attachment->attachment_type_id === '3'): ?>
+                                            <video src = "<?= base_url($attachment->file_url); ?>" width = "100px" controls/></video>
+
+                                        <?php elseif ($attachment->attachment_type_id === '4'): ?>
+                                            <a href = "<?= base_url($attachment->file_url); ?>" download><i class = "fa fa-file-o"></i> <i class = "text" style = "font-size: 12px;"><?= utf8_decode($attachment->caption); ?></i></a>
+
+                                    <?php 
+
+                                        endif;
+                                    endforeach;
+
+                                    ?>
+                                <button class = "reply-btn pull-right btn btn-sm btn-gray" style = "margin-right: 5px;" value = "<?php echo $post->post_id; ?>">Reply</button>
+
+                                    <br><br>
+                            </div>
+                        </div>
+                        <br>
+                        <?php endforeach; ?>
+                        
+                </div>
+            </div>
     </div>
 
     <?php
     // include(APPPATH . 'views/side_postbar.php');
+    include(APPPATH . 'views/modals/create_reply_modal.php');
     include(APPPATH . 'views/modals/create_post_modal.php');
     include(APPPATH . 'views/modals/topic_members_modal.php');
     include(APPPATH . 'views/modals/cancel_topic_modal.php');

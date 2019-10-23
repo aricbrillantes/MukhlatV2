@@ -5,10 +5,14 @@ function log_in() {
         url: "signin/login",
         data: $("#log-in-form").serialize(),
         success: function (data) {
-            if (data === '1') {
+            if (data != '0') {
                 window.location.href = "home";
-            } else {
+            } 
+
+            else 
+            {
                 $("<div id = \"sign-in-message\" class = \"col-md-12 text-center\" style = \"padding-bottom: 10px; font-size:24px;\"><span class = \"text-warning\"><i class = \"fa fa-warning\"></i> <i>Invalid username/password! Please try again.</i></span></div>").hide().appendTo("#sign-in-container").show("fast");
+            
             }
         }
     });
