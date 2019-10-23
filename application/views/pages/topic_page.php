@@ -13,9 +13,77 @@ include(APPPATH . 'views/header.php');
     <?php
     include(APPPATH . 'views/navigation_bar.php');
     ?>
+    <!--<div id = "topic-page" class = "container page" style = "min-height: 100%; height: 100%;">test</div>-->
     
-    <div id = "topic-page" class = "container page" style = "min-height: 100%; height: 100%;">
-        <!-- Topic Page Header -->
+    <div class="doorroom col-sm-9">
+    
+        <center><div class="nameframe">
+        <h4><strong><?php echo utf8_decode($c_topic->user->first_name); ?>'s Room</strong></h4>
+    </div></center>
+    
+        
+        <!--Pictures-->
+    <div class="wrapper col-sm-3">
+  <div class="picture">
+    <!--<div class="hook"></div>-->
+    <div class="frame">
+        <div class="inside"><strong><center>Pictures</center></strong></div>
+    </div>
+  </div>
+        <?php if ($c_topic->creator_id === $logged_user->user_id): ?>
+            <button onmouseenter="playclip()" id="crettop" class = "btn btn-primary buttonsbgcolor textoutliner" href="#create-post-modal" data-toggle = "modal" style="font-size:22px;margin-top: 2%; margin-left: 17%">Add pictures</button><br><br>
+            <?php endif;?>
+    </div>
+      
+        <!--Shout out-->
+   <ul class="stickynote col-sm-3">
+       <li class="stickytext">
+           <a href="#" class="stickyact">
+        <h2>my party</h2>
+        <p>see you in school</p>
+      </a>
+    </li>
+        </ul>
+        
+        
+        <!--regular text, emojis and stickers-->
+        <div>
+        <div id="white-board" class="col-sm-3 pull-right" style="max-height:300px">
+            <?php
+                            foreach ($c_topic->posts as $post):
+                                $text_class = '';
+                                if ($post->vote_count > 0) {
+                                    $text_class = 'text-success';
+                                } else if ($post->vote_count < 0) {
+                                    $text_class = 'text-danger';
+                                }
+                                ?>
+            <p style = "border-right: none; max-width: 714px;padding: 3%;max-height: 50%"><?php echo utf8_decode($post->post_content); ?></p>
+                        
+        <?php endforeach; ?>
+            
+            
+            
+   <div id="eraser"></div>
+    <div id="red-pen"></div>
+    <div id="blue-pen"></div> </div>
+    <?php if ($c_topic->creator_id === $logged_user->user_id): ?>
+            <button onmouseenter="playclip()" id="crettop" class = "btn btn-primary buttonsbgcolor textoutliner" href="#create-post-modal" data-toggle = "modal" style="font-size:22px;margin-left: 18%;margin-top: 1%">Write on your board</button><br><br>
+            <?php endif;?></div>
+        
+    </div>
+    <div class="doorroom col-sm-9">
+        <div class="col-sm-2"><p></p></div>
+    </div>
+        
+<!--    <div class="line1"></div>
+    </div>-->
+<!--        <table style="width:150%;border-style: inset;border-color: #b38377;border-width: 10px; background-color: #b38377;  border-top: 6px solid #b89675;  border-right: 6px solid #7b654f;border-bottom: 6px solid #7b654f;  border-left: 6px solid #a67c52; "><tr>
+                <td>hi</td><td>hi</td>
+            </tr></table>-->
+    
+<!--    <div id = "topic-page" class = "container page" style = "min-height: 100%; height: 100%;">
+         Topic Page Header 
         <div class = "row">
             <div id = "topic-heading" class = "col-md-12 content-container no-padding">
                 <a onmouseenter="playclip()" class = "btn btn-topic-header" href="<?php echo base_url('topic'); ?>">
@@ -27,7 +95,7 @@ include(APPPATH . 'views/header.php');
                     </h4>
                 </a>
                 <center><h4 class = "col-md-4 col-md-offset-4 text-center user-topic-header topic-intro-header bar1color" style="border-radius:20px"><strong><?php echo utf8_decode($c_topic->user->first_name); ?>'s Room</strong></h4></center>
-<!--                <?php if (!$is_followed): ?>
+                <?php if (!$is_followed): ?>
                     <button onmouseenter="playclip()" id = "topic-follow-btn" class = "btn pull-right btn-primary textoutliner" style = "margin: 5px; margin-right: 20px; width: 20%;font-size: 19px;" value = "<?php echo $c_topic->topic_id ?>">
                         <i class = "fa fa-plus-circle"></i> Follow Topic
                     </button>
@@ -38,13 +106,13 @@ include(APPPATH . 'views/header.php');
                     </button>
                     <a onmouseenter="playclip()" class = "btn btn-success pull-right btn-md textoutliner" style = "margin: 5px; width: 20%" href = "#topic-members-modal" data-toggle = "modal">
                         <i class = "fa fa-user"></i> Members
-                    </a>-->
+                    </a>
             </div>
         </div>
         <div class = "row">
-            <!-- Topic Page Content -->
+             Topic Page Content 
             <div class = "col-md-8 col-xs-12 content-container">
-                <!-- Topic Post Preview -->
+                 Topic Post Preview 
                 <div class = "col-sm-12 col-md-12">
                     <div class = "col-12 col-md-12 no-padding">
 
@@ -56,7 +124,7 @@ include(APPPATH . 'views/header.php');
                         <data></data><div class = "content-container topic-intro-content " style="border-radius:30px;"> <h4 class = "no-margin text-center user-topic-header topic-intro-header bar1color" style="border-radius:20px">
                            <strong class="textoutliner"><?php echo utf8_decode($c_topic->topic_name); ?></strong>
 
-<!--                             <?php if ($is_moderated): ?>
+                             <?php if ($is_moderated): ?>
                             <br>
                             <button onmouseenter="playclip()" id = "edit-topic-btn" class = "btn btn-default"><i class = "fa fa-pencil"></i> Edit Description</button>
 
@@ -67,7 +135,7 @@ include(APPPATH . 'views/header.php');
                         </h4>
                           <p id = "desc-creator" class = "no-margin text-muted" align = "center">
                                 <small><i>by <a class = "btn btn-link btn-xs no-padding no-margin text1color" href = "<?php echo base_url('user/profile/' . $c_topic->user->user_id); ?>"><?php echo $c_topic->user->first_name . " " . $c_topic->user->last_name; ?></a></i></small>
-                            </p> -->
+                            </p> 
                             <?php if ($is_moderated): 
 
                                 // print($c_topic->user->first_name);
@@ -110,10 +178,10 @@ include(APPPATH . 'views/header.php');
                                 ?> 
 
                                 <div class="topic-grid1 content-container" style="color: white;  position: relative;  height: auto;  min-height: 100% !important;">
-                                        <!-- <?php echo ($post->topic_id); ?> -->
-                                        <!-- <?php echo ($c_topic->creator_id); ?> -->
-                                        <!-- <?php echo ($post->user_id); ?> -->
-                                        <!-- <img class = "img-circle" style = "margin: 10px 0px;" width = "40px" height = "40px" src = "<?php echo $post->profile_url ? base_url($post->user->profile_url) : base_url('images/default.jpg'); ?>"/>  -->
+                                         <?php echo ($post->topic_id); ?> 
+                                         <?php echo ($c_topic->creator_id); ?> 
+                                         <?php echo ($post->user_id); ?> 
+                                         <img class = "img-circle" style = "margin: 10px 0px;" width = "40px" height = "40px" src = "<?php echo $post->profile_url ? base_url($post->user->profile_url) : base_url('images/default.jpg'); ?>"/>  
 
                                         <p style="font-size: 19px; display:inline"> <?php echo($post->user->first_name); ?> says </p>
                                         
@@ -154,14 +222,14 @@ include(APPPATH . 'views/header.php');
                 </div>
                         
                     </div>
-<!--                    <div id = "preview-div" class = "col-sm-12 well topic-preview-div">
+                    <div id = "preview-div" class = "col-sm-12 well topic-preview-div">
                         <div id = "no-preview"class = "topic-no-preview text-center">
                             <span><h3>Click a post to preview</h3></span>
                         </div>
-                    </div>-->
+                    </div>
                 </div>
-                <!-- Topic Post List -->
-<!--                <div class = "col-sm-6 topic-preview-div">
+                 Topic Post List 
+                <div class = "col-sm-6 topic-preview-div">
                     
                     <div class = "col-xs-12 topic-post-list">
                         <div class = "list-group" style = "padding-top: 15px;">
@@ -190,12 +258,12 @@ include(APPPATH . 'views/header.php');
                             <?php endforeach; ?>
                         </div>
                     </div>
-                </div>-->
+                </div>
             </div>
 
             <div class = "col-md-4 col-xs-12 content-container  topic-post-list" >
                 <div class = "list-group" style = "padding-top: 15px;">
-                             <!--List Entry--> 
+                             List Entry 
                         <?php if (!$c_topic->creator_id === $logged_user->user_id): ?>
                             <button onmouseenter="playclip()" id="crettop" class = "btn btn-primary buttonsbgcolor textoutliner" href="#create-post-modal" data-toggle = "modal" style="font-size:22px">Say something</button><br><br>
                         <?php endif;?>
@@ -210,7 +278,7 @@ include(APPPATH . 'views/header.php');
                             $text_class = 'text-danger';
                         }
                         ?>
-                        <!--<a href = "javascript: void(0);" class = "btn btn-link list-group-item list-entry no-up-down-pad topic-post-entry" data-value = "<?php echo $post->post_id; ?>">-->
+                        <a href = "javascript: void(0);" class = "btn btn-link list-group-item list-entry no-up-down-pad topic-post-entry" data-value = "<?php echo $post->post_id; ?>">
                         <div class = "row container-fluid" style="position: relative; min-height: 100% !important; ">
 
                                 
@@ -256,7 +324,7 @@ include(APPPATH . 'views/header.php');
                         
                 </div>
             </div>
-    </div>
+    </div>-->
 
     <?php
     // include(APPPATH . 'views/side_postbar.php');
