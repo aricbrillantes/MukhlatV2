@@ -19,10 +19,12 @@ $CI->load->model('attachment_model');
                 <a onmouseenter="playclip()" class = "btn btn-topic-header" href="<?php echo base_url('topic'); ?>">
                     <h4 class = "pull-left topic-header-title no-padding" style = "margin-top: 3px; margin-bottom: 0px;">
                         <strong class = "text-info text1color" style="cursor:pointer;"><i class = "fa fa-chevron-left" style="cursor:pointer;"></i> 
-                            Back to Topics List
+                            Back to my roomies
                         </strong>
+                        
                     </h4>
                 </a>
+                <center><h4 class = "col-md-4 col-md-offset-4 text-center user-topic-header topic-intro-header bar1color" style="border-radius:20px"><strong><?php echo utf8_decode($c_topic->topic_name); ?>'s Room</strong></h4></center>
 <!--                <?php if (!$is_followed): ?>
                     <button onmouseenter="playclip()" id = "topic-follow-btn" class = "btn pull-right btn-primary textoutliner" style = "margin: 5px; margin-right: 20px; width: 20%;font-size: 19px;" value = "<?php echo $c_topic->topic_id ?>">
                         <i class = "fa fa-plus-circle"></i> Follow Topic
@@ -42,11 +44,11 @@ $CI->load->model('attachment_model');
             <div class = "col-md-12 content-container">
                 <!-- Topic Post Preview -->
                 <div class = "col-sm-6">
-                    <div class = "col-sm-12 topic-description-div no-padding">
+                    <div class = "col-6 col-md-4 no-padding">
                        
-                        <div class = "content-container topic-intro-content" style="border-radius:30px;"> <h4 class = "no-margin text-center user-topic-header topic-intro-header bar1color" style="border-radius:20px">
-                            <strong class="textoutliner"><?php echo utf8_decode($c_topic->topic_name); ?></strong>
-
+                        <div class = "content-container topic-intro-content col-md-offset-4" style="border-radius:30px;"> <!--<h4 class = "no-margin text-center user-topic-header topic-intro-header bar1color" style="border-radius:20px">
+<!--                            <strong class="textoutliner"><?php echo utf8_decode($c_topic->topic_name); ?></strong>-->
+<!--
                             <?php if ($is_moderated): ?>
                             <br>
                             <button onmouseenter="playclip()" id = "edit-topic-btn" class = "btn btn-default"><i class = "fa fa-pencil"></i> Edit Description</button>
@@ -54,11 +56,11 @@ $CI->load->model('attachment_model');
                             <?php if ($c_topic->creator_id === $logged_user->user_id): ?>
                                 <button onmouseenter="playclip()" type = "button" id = "cancel-topic-btn" class = "btn btn-danger" style = "margin-left: 5px;"><i class = "fa fa-trash"></i> Cancel Topic</button>
                             <?php endif; 
-                            endif;?>
-                        </h4>
-                            <p id = "desc-creator" class = "no-margin text-muted" align = "center">
+                            endif;?> -->
+                        <!--</h4>--> 
+<!--                            <p id = "desc-creator" class = "no-margin text-muted" align = "center">
                                 <small><i>by <a class = "btn btn-link btn-xs no-padding no-margin text1color" href = "<?php echo base_url('user/profile/' . $c_topic->user->user_id); ?>"><?php echo $c_topic->user->first_name . " " . $c_topic->user->last_name; ?></a></i></small>
-                            </p>
+                            </p>-->
                             <?php if ($is_moderated): ?>
                                 <div id = "desc-edit" class = "col-md-12 hidden">
                                     <div class = "form-group" style = "margin-bottom: 5px;">
@@ -77,8 +79,52 @@ $CI->load->model('attachment_model');
                             </p>
                         </div>
                                                     <div class = "col-xs-12">
-                        <button onmouseenter="playclip()" id="crettop" class = "btn btn-primary buttonsbgcolor textoutliner" href="#create-post-modal" data-toggle = "modal" style="font-size:22px">Decorate</button>
-                    </div>
+                                                        <button onmouseenter="playclip()" id="crettop" class = "btn btn-primary buttonsbgcolor textoutliner" href="#create-post-modal" data-toggle = "modal" style="font-size:22px">Decorate your room</button></denter>
+                                                    </div>
+                        <div class = "col-sm-12">
+                    
+                    
+                            <div class="row">
+                            <?php
+                            foreach ($c_topic->posts as $post):
+                                $text_class = '';
+                                if ($post->vote_count > 0) {
+                                    $text_class = 'text-success';
+                                } else if ($post->vote_count < 0) {
+                                    $text_class = 'text-danger';
+                                }
+                                ?> <span  style="display: inline !important">
+                                            <h4 ><strong><?php echo utf8_decode($post->post_title); ?></strong></h4>
+                                            <p ><?php echo utf8_decode($post->post_content); ?></p>
+                                             <?php $attachments = $CI->attachment_model->get_post_attachments($post->post_id);
+
+                                                // print_r($attachments);
+
+                                                foreach ($attachments as $attachment):
+                                                    if ($attachment->attachment_type_id === '1'):?>
+                                                        <img src = "<?= base_url($attachment->file_url); ?>"/>
+
+                                                    <?php elseif ($attachment->attachment_type_id === '2'): ?>
+                                                        <audio src = "<?= base_url($attachment->file_url); ?>" controls></audio>
+
+                                                    <?php elseif ($attachment->attachment_type_id === '3'): ?>
+                                                        <video src = "<?= base_url($attachment->file_url); ?>" width = "300px" controls/></video>
+
+                                                    <?php elseif ($attachment->attachment_type_id === '4'): ?>
+                                                        <a href = "<?= base_url($attachment->file_url); ?>" download><i class = "fa fa-file-o"></i> <i class = "text" style = "font-size: 12px;"><?= utf8_decode($attachment->caption); ?></i></a>
+
+                                                <?php 
+
+                                                    endif;
+                                                endforeach;
+
+                                                ?> 
+                                    </span>
+                                
+                            <?php endforeach; ?>
+                        </div>
+                </div>
+                        
                     </div>
 <!--                    <div id = "preview-div" class = "col-sm-12 well topic-preview-div">
                         <div id = "no-preview"class = "topic-no-preview text-center">
