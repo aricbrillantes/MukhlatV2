@@ -1,10 +1,12 @@
 <?php
 include(APPPATH . 'views/header.php');
-  $logged_user = $_SESSION['logged_user'];  
-$c_topic = $_SESSION['current_topic'];
+    $logged_user = $_SESSION['logged_user'];  
+    $c_topic = $_SESSION['current_topic'];
 
-$CI =&get_instance();
-$CI->load->model('attachment_model');
+    $CI =&get_instance();
+    $CI->load->model('attachment_model');
+
+    
 ?>
 
 <body>
@@ -24,7 +26,7 @@ $CI->load->model('attachment_model');
                         
                     </h4>
                 </a>
-                <center><h4 class = "col-md-4 col-md-offset-4 text-center user-topic-header topic-intro-header bar1color" style="border-radius:20px"><strong><?php echo utf8_decode($c_topic->topic_name); ?>'s Room</strong></h4></center>
+                <center><h4 class = "col-md-4 col-md-offset-4 text-center user-topic-header topic-intro-header bar1color" style="border-radius:20px"><strong><?php echo utf8_decode($c_topic->user->first_name); ?>'s Room</strong></h4></center>
 <!--                <?php if (!$is_followed): ?>
                     <button onmouseenter="playclip()" id = "topic-follow-btn" class = "btn pull-right btn-primary textoutliner" style = "margin: 5px; margin-right: 20px; width: 20%;font-size: 19px;" value = "<?php echo $c_topic->topic_id ?>">
                         <i class = "fa fa-plus-circle"></i> Follow Topic
@@ -43,27 +45,30 @@ $CI->load->model('attachment_model');
             <!-- Topic Page Content -->
             <div class = "col-md-12 content-container">
                 <!-- Topic Post Preview -->
-                <div class = "col-sm-6">
-                    <div class = "col-6 col-md-4 no-padding">
+                <div class = "col-sm-12 col-md-12">
+                    <div class = "col-12 col-md-12 no-padding">
                        
-                        <div class = "content-container topic-intro-content col-md-offset-4" style="border-radius:30px;"> <!--<h4 class = "no-margin text-center user-topic-header topic-intro-header bar1color" style="border-radius:20px">
-<!--                            <strong class="textoutliner"><?php echo utf8_decode($c_topic->topic_name); ?></strong>-->
-<!--
-                            <?php if ($is_moderated): ?>
+                        <data></data><div class = "content-container topic-intro-content " style="border-radius:30px;"> <h4 class = "no-margin text-center user-topic-header topic-intro-header bar1color" style="border-radius:20px">
+                           <strong class="textoutliner"><?php echo utf8_decode($c_topic->topic_name); ?></strong>
+
+<!--                             <?php if ($is_moderated): ?>
                             <br>
                             <button onmouseenter="playclip()" id = "edit-topic-btn" class = "btn btn-default"><i class = "fa fa-pencil"></i> Edit Description</button>
 
                             <?php if ($c_topic->creator_id === $logged_user->user_id): ?>
                                 <button onmouseenter="playclip()" type = "button" id = "cancel-topic-btn" class = "btn btn-danger" style = "margin-left: 5px;"><i class = "fa fa-trash"></i> Cancel Topic</button>
                             <?php endif; 
-                            endif;?> -->
-                        <!--</h4>--> 
-<!--                            <p id = "desc-creator" class = "no-margin text-muted" align = "center">
+                            endif;?> 
+                        </h4>
+                          <p id = "desc-creator" class = "no-margin text-muted" align = "center">
                                 <small><i>by <a class = "btn btn-link btn-xs no-padding no-margin text1color" href = "<?php echo base_url('user/profile/' . $c_topic->user->user_id); ?>"><?php echo $c_topic->user->first_name . " " . $c_topic->user->last_name; ?></a></i></small>
-                            </p>-->
-                            <?php if ($is_moderated): ?>
-                                <div id = "desc-edit" class = "col-md-12 hidden">
-                                    <div class = "form-group" style = "margin-bottom: 5px;">
+                            </p> -->
+                            <?php if ($is_moderated): 
+
+                                // print($c_topic->user->first_name);
+                                ?>
+                                <div id = "desc-edit" class = "col-md-12 hidden pull-left">
+                                    <div class = "form-group" style = "margin-bottom: 5px; margin-left: -1">
                                         <p class="lead emoji-picker-container">
                                             <textarea id = "edit-topic-text" style="height:100px;" maxlength = "180" class = "form-control" data-emojiable="true"><?php echo $c_topic->topic_description ?></textarea>
                                         </p>
@@ -78,31 +83,42 @@ $CI->load->model('attachment_model');
                                 <?php echo utf8_decode($c_topic->topic_description); ?>
                             </p>
                         </div>
-                                                    <div class = "col-xs-12">
-                                                        <button onmouseenter="playclip()" id="crettop" class = "btn btn-primary buttonsbgcolor textoutliner" href="#create-post-modal" data-toggle = "modal" style="font-size:22px">Decorate your room</button></denter>
-                                                    </div>
-                        <div class = "col-sm-12">
+                                
+                        <div class = "col-sm-12 col-md-12">
                     
                     
-                            <div class="row">
+                            <div class=" col-md-12">
                             <?php
+                            // var_dump($c_topic->posts);
+
                             foreach ($c_topic->posts as $post):
+
                                 $text_class = '';
                                 if ($post->vote_count > 0) {
                                     $text_class = 'text-success';
                                 } else if ($post->vote_count < 0) {
                                     $text_class = 'text-danger';
                                 }
-                                ?> <span  style="display: inline !important">
-                                            <h4 ><strong><?php echo utf8_decode($post->post_title); ?></strong></h4>
-                                            <p ><?php echo utf8_decode($post->post_content); ?></p>
-                                             <?php $attachments = $CI->attachment_model->get_post_attachments($post->post_id);
 
-                                                // print_r($attachments);
 
-                                                foreach ($attachments as $attachment):
+                                ?> 
+
+                                <div class="topic-grid1 content-container" style="color: white;  position: relative;  height: auto;  min-height: 100% !important;">
+                                        <!-- <?php echo ($post->user->user_id); ?> -->
+                                        <!-- <img class = "img-circle" style = "margin: 10px 0px;" width = "40px" height = "40px" src = "<?php echo $post->profile_url ? base_url($post->user->profile_url) : base_url('images/default.jpg'); ?>"/>  -->
+
+                                        <p style="font-size: 19px; display:inline"> <?php echo($post->user->first_name); ?> says </p>
+                                        
+                                        <br>
+                                        <p class = "" style = "border-right: none; max-width: 714px; white-space: nowrap; overflow: hidden;text-overflow: ellipsis;">"<?php echo utf8_decode($post->post_content); ?>"</p>
+
+                                        <?php $attachments = $CI->attachment_model->get_post_attachments($post->post_id);?>
+
+                                                <?php //print_r($attachments); ?>
+
+                                                <?php foreach ($attachments as $attachment):
                                                     if ($attachment->attachment_type_id === '1'):?>
-                                                        <img src = "<?= base_url($attachment->file_url); ?>"/>
+                                                        <img src = "<?= base_url($attachment->file_url); ?>" width = "75%"  style="position:relative;" />
 
                                                     <?php elseif ($attachment->attachment_type_id === '2'): ?>
                                                         <audio src = "<?= base_url($attachment->file_url); ?>" controls></audio>
@@ -117,9 +133,8 @@ $CI->load->model('attachment_model');
 
                                                     endif;
                                                 endforeach;
-
-                                                ?> 
-                                    </span>
+                                                ?>                                     
+                                    </div>
                                 
                             <?php endforeach; ?>
                         </div>
@@ -168,7 +183,7 @@ $CI->load->model('attachment_model');
     </div>
 
     <?php
-    include(APPPATH . 'views/side_postbar.php');
+    // include(APPPATH . 'views/side_postbar.php');
     include(APPPATH . 'views/modals/create_post_modal.php');
     include(APPPATH . 'views/modals/topic_members_modal.php');
     include(APPPATH . 'views/modals/cancel_topic_modal.php');

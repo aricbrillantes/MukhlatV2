@@ -121,6 +121,9 @@ $topic = $_SESSION['current_topic'];
                          <br><br>
                          
                     <div id = "attachment-buttons" class = "form-group">
+
+                      <img id="target" />
+
                         Attach a file:
                         <!--IMAGE-->
                         <label id = "img-label" class="btn btn-primary buttonsbgcolor">
@@ -152,7 +155,7 @@ $topic = $_SESSION['current_topic'];
                     </div>
                 </div>
                 <div class = "modal-footer" style = "padding: 5px; border-top: none; padding-bottom: 10px; padding-right: 10px;">
-                    <a id = "create-post-btn" class ="btn btn-primary buttonsbgcolor" data-toggle = "modal">Post</a>
+                    <a id = "create-post-btn" class ="btn btn-primary buttonsbgcolor" data-toggle = "modal" onClick="putImage()">Post</a>
                 </div>
             </form>
         </div>
@@ -163,7 +166,36 @@ $topic = $_SESSION['current_topic'];
 <!--PROFANITY FILTER and character limit counter-->
  <!--<script src="https://code.responsivevoice.org/responsivevoice.js"></script>-->
 
+
+
 <script type="text/javascript">
+
+
+  function showImage(src, target) 
+  {
+    var fr = new FileReader();
+
+    fr.onload = function()
+    {
+      // target.src = fr.result;
+    }
+
+    fr.readAsDataURL(src.files[0]);
+
+    
+  }
+
+  function putImage() 
+  {
+    var src = document.getElementById("attach-img");
+    var target = document.getElementById("target");
+    // showImage(src, target);
+
+    if((src.files[0].size * 0.000001) > 1.6)
+      alert("file too big!");
+  }
+
+
     var warningCount=0, count=0;
     var x = document.getElementById("profanityWarning");
     var charCount1=100, charCount2=16000;

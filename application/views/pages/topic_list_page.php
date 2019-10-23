@@ -9,6 +9,23 @@ include(APPPATH . 'views/header.php');
     include(APPPATH . 'views/navigation_bar.php');
     include(APPPATH . 'views/topic_side_bar.php');
     ?>
+
+    <style>
+        
+        .topic-grid1{
+   
+        margin:1.5%;
+        position:relative;
+        float:left;
+        width:30%;
+        padding:10px;
+        text-decoration:none;
+        height:170px;
+        border-radius: 10px;   
+    }
+
+        
+    </style>
     
     <!-- CODE HERE -->
 <!--    <div class="well well-sm">

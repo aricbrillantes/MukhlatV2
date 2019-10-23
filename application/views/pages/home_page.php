@@ -1,8 +1,8 @@
 
 <?php
-include(APPPATH . 'views/header.php');
-$CI =&get_instance();
-$CI->load->model('attachment_model');
+    include(APPPATH . 'views/header.php');
+    $CI =&get_instance();
+    $CI->load->model('attachment_model');
 ?>
 
 <body>
@@ -68,68 +68,46 @@ $CI->load->model('attachment_model');
                     <div class = "col-sm-12 content-container" style="border-radius:20px;">
                         
                             <!-- POST PREVIEW -->
-<?php
+                            <?php
                             if (!empty($posts)):
                                 foreach ($posts as $post):
-  
-                                
-                                ?>
-                                    <div class = "col-xs-12 no-padding post-container ptopcolor" style = "margin-bottom: 20px;border-radius:20px;">
-<!--                                        <div class = "whitebg2 no-margin " style="border-radius:20px;">
-                                            <a class = "btn btn-link no-padding text1color" href = "<?php echo base_url('user/profile/' . $post->user_id); ?>">
-                                                
-                                                    <img class = "img-circle" style = "margin: 10px 0px;" width = "65px" height = "65px" src = "<?php echo $post->profile_url ? base_url($post->profile_url) : base_url('images/default.jpg'); ?>"/>
-                                               
-                                                <strong><?php echo $post->first_name . " " . $post->last_name; ?></strong>
-                                            </a> 
-                                            <span>talked in</span> <span class = "text-muted pull-right"> <i style = "font-size: 16px"><?php echo date("F d, Y", strtotime($post->date_created)); ?></i></span>
-                                            <a class = "btn btn-link no-padding text1color" href = "<?php echo base_url('topic/view/' . $post->topic_id); ?>">
-                                                <strong ><?php echo utf8_decode($post->topic_name); ?></strong>
-                                            </a><h4 style="display:inline"></h4><br>
-                                            <p class = "home-content-body whitebg2" style = "border-right: none;white-space: pre-wrap;max-width: 714px;"><?php echo utf8_decode($post->topic_description); ?><br></p>
-                                                <button class = "btn btn-primary pull-right" id="text2speak" style = "margin-right: 3px;border-radius: 20px;" onclick="readcontent('<?php $stringy = utf8_decode($post->topic_description); $stringy1 = str_replace('\'', '`', $stringy); echo trim(preg_replace('/[^A-Za-z0-9()#,%\/?@$*.:+=_~`-]/', ' ', $stringy1)); ?>')"><i class="glyphicon glyphicon-volume-up" style="padding-top: 5px;"></i></button>
-                                                &emsp;&emsp;&emsp;&emsp;&emsp;<br><br>
-                                        </div>-->
+                                    // echo utf8_decode($post->creator_id);
+                                    // print_r($posts);
+                            ?>
+                                    <div class="topic-grid1 content-container" style="color: white;  position: relative;  height: auto;  min-height: 100% !important;">
+                                        
+                                        <img class = "img-circle" style = "margin: 10px 0px;" width = "40px" height = "40px" src = "<?php echo $post->profile_url ? base_url($post->profile_url) : base_url('images/default.jpg'); ?>"/> 
 
-                                        <div class = "col-xs-12 whitebg2 no-padding">
-                                            <!-- Left -->
-                                            <div class = "col-xs-1 text-center no-padding" style = "padding-left: 10px;">
-                                                <a class = "btn btn-link no-padding text1color" href = "<?php echo base_url('user/profile/' . $post->user_id); ?>">
-                                                    <img class = "img-circle" style = "margin: 10px 0px;" width = "65px" height = "65px" src = "<?php echo $post->profile_url ? base_url($post->profile_url) : base_url('images/default.jpg'); ?>"/>
-                                                </a><br>
-                                                  
-                                                
-<!--                                                <button class = "downvote-btn btn btn-link btn-xs" value = "<?php echo $post->post_id; ?>">
-                                                    <span class = "<?php echo $post->vote_type === '-1' ? 'downvote-text' : '' ?> fa fa-chevron-down vote-text"></span>
-                                                </button>-->
-                                            </div>
+                                        <?php if($post->creator_id === $post->user_id): ?>
+                                            <p style="font-size: 24px; display:inline"> <?php echo "  " . $post->first_name?> </p>
+                                            <a style="color: white; max-width: 500px; overflow: hidden; text-overflow: ellipsis; display:inline " class = "" href = "<?php echo base_url('topic/view/' . $post->topic_id); ?>"> added to their room! </a>
 
-                                            <!-- Right -->
-                                            <div class = "col-xs-11" style = "margin-top: 7px;margin-bottom: 10px;">
-                                                <i class = "text-muted" style="display:inline">                            
-                                                    
-                                                        <a class = "btn btn-link btn-xs no-padding text1color" href = "<?php echo base_url('user/profile/' . $post->user_id); ?>">
-                                                            <?php echo $post->first_name . " " . $post->last_name ?>
-                                                        </a>
-                                                    <span>talked in</span>
-                                                    <a class = "btn btn-link no-padding text1color" href = "<?php echo base_url('topic/view/' . $post->topic_id); ?>">
-                                                    <strong ><?php echo utf8_decode($post->topic_name); ?></strong>
-                                                    </a>
-                                                    
-                                                      
-                                                </i><br>
-                                                <span class = "text-muted"> <i style = "font-size: 16px"><?php echo date("F d, Y", strtotime($post->date_posted)); ?></i></span><br>
-                                                <div class="ptopcolor" style="padding-bottom:15px !important;">
-                                                    <!--<h4 class = "no-padding no-margin text-muted wrap whitebg2" style="display:inline-block"><strong><?php echo utf8_decode($post->post_title); ?></strong></h4>-->
-                                                    <p class = "home-content-body whitebg2" style = "border-right: none;white-space: pre-wrap;max-width: 714px;"><?php echo utf8_decode($post->post_content); ?></p>
-                                                    <center>
-                                                <?php $attachments = $CI->attachment_model->get_post_attachments($post->post_id);
+                                        <?php else: ?>
+                                            <p style="font-size: 19px; display:inline">In </p>
+                                            <a style="color: white; max-width: 500px; overflow: hidden; text-overflow: ellipsis; display:inline " class = "" href = "<?php echo base_url('topic/view/' . $post->topic_id); ?>"> <?php echo utf8_decode($post->topic_name); ?> , </a>
+                                            <p style="font-size: 24px; display:inline"> <?php echo "  " . $post->first_name?> says:</p>
 
-                                                // print_r($attachments);
+                                        <?php endif; ?>
+                                        
+                                        <!-- <h4 class = "text-info no-padding no-margin text1color topicheader"><?php echo utf8_decode($topic->topic_name); ?></h4><br> -->
+                                        <!-- <small class="topicheader2"><i>by <?php echo $topic->user->first_name . " " . $topic->user->last_name; ?></i></small> -->
 
-                                                foreach ($attachments as $attachment):
+                                        <!-- <p style="font-size: 24px; display:inline"><?php echo $post->first_name . " " . $post->last_name ?> says:</p> -->
+                                        
+                                        <br>
+                                            <!-- <a class = "text1color" href = "<?php echo base_url('topic/view/' . $post->topic_id); ?>">
+                                                <p style="color: white"></p>
+                                            </a> -->
+
+                                        <p class = "" style = "border-right: none; max-width: 714px; white-space: nowrap; overflow: hidden;text-overflow: ellipsis;">"<?php echo utf8_decode($post->post_content); ?>"</p>
+
+                                        <?php $attachments = $CI->attachment_model->get_post_attachments($post->post_id);?>
+
+                                                <?php //print_r($attachments); ?>
+
+                                                <?php foreach ($attachments as $attachment):
                                                     if ($attachment->attachment_type_id === '1'):?>
-                                                        <img src = "<?= base_url($attachment->file_url); ?>"/>
+                                                        <img src = "<?= base_url($attachment->file_url); ?>" width = "75%"  style="position:relative;" />
 
                                                     <?php elseif ($attachment->attachment_type_id === '2'): ?>
                                                         <audio src = "<?= base_url($attachment->file_url); ?>" controls></audio>
@@ -145,29 +123,14 @@ $CI->load->model('attachment_model');
                                                     endif;
                                                 endforeach;
 
-                                                ?>   </center>
-                                                <span class="whitebg2" style="padding-right: 30px !important;">
-                                                <button class = "upvote-btn btn btn-link btn-xs" style = "margin-left: 3px;" value = "<?php echo $post->post_id; ?>">
-                                                    <span class = "<?php echo $post->vote_type === '1' ? 'upvote-text' : '' ?> glyphicon glyphicon-star vote-text starroll"></span>
-                                                </button>
-                                                <span class = "vote-count text-muted" style = "margin-left: 3px;"><?php echo $post->vote_count ? $post->vote_count : '0'; ?></span>
-                                                <button class = "btn btn-primary pull-right" id="text2speak" style = "margin-right: 3px;border-radius: 20px;" onclick="readcontent('<?php $stringy = utf8_decode($post->post_content); $stringy1 = str_replace('\'', '`', $stringy); echo trim(preg_replace('/[^A-Za-z0-9()#,%\/?@$*.:+=_~`-]/', ' ', $stringy1)); ?>')"><i class="glyphicon glyphicon-volume-up" style="padding-top: 5px;"></i></button>
-                                                </span>
-                                                
-                                                </div>
-                                                
-                                            </div>
-                                        </div>
-                                        <div class = "user-post-footer no-margin text-right" style="border-radius:20px;">
-                                            
-                                            <a class = "btn btn-user-post-footer no-up-down-pad" href = "<?php echo base_url('topic/view/' . $post->topic_id); ?>">Visit Room<i class = "fa fa-chevron-right"></i></a>
-                                        </div>
+                                                ?>
                                     </div>
+
                                     <?php
                                 endforeach;
-                            else:
+                            //else:
                                 ?>
-                            <h4 class = "text-center text-warning">Your home page looks empty. Try following or creating more topics!</h4>
+                            <!-- <h4 class = "text-center text-warning">Your home page looks empty. Try following or creating more topics!</h4> -->
                                 <?php endif; ?>
                         </div>
 
