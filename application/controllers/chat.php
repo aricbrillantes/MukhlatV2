@@ -16,6 +16,7 @@ class Chat extends CI_Controller
             $logged_user = $_SESSION['logged_user'];
             
             $chat_id = $this->chatmodel->get_first_chat($logged_user->user_id);
+            // gets the first chat id of the current user
             foreach($chat_id as $chatid)
             {
              $this->view_data['chat_id']=$chatid->chat_id;
@@ -23,7 +24,9 @@ class Chat extends CI_Controller
             //  echo "<script type='text/javascript'>alert('');</script>";
 
             $this->view_data['sender_id']= $logged_user->user_id;
+            // passes the values to the view
             $this->load->view('chat/viewchat', $this->view_data);
+            
 
             
         // }
@@ -35,10 +38,11 @@ class Chat extends CI_Controller
         //     die();
         // }
     }
-
+    // returns the name that the user is talking to
     public function get_chatname()
     {
         $logged_user = $_SESSION['logged_user'];
+        // all $this->input->post gets its value from chat.js
         $chat_id = $this->input->post('chat_id');
 
         $other_user = $this->chatmodel->get_other_user($chat_id,$logged_user->user_id);
@@ -54,6 +58,7 @@ class Chat extends CI_Controller
 
     }
 
+    // gets the chat messages of the current chat id and makes an html which is then passed to the ajax
     public function ajax_getChatMessages()
     {
         $logged_user = $_SESSION['logged_user'];
@@ -73,6 +78,7 @@ class Chat extends CI_Controller
             $chat_messages_html = '<ul>';
             foreach($chat_messages->result() as $chat_msg)
             {
+                // html part which is passed as a string
                 $li_class = ($logged_user->user_id == $chat_msg->sender_id) ? 'class=by_current_user':'class=other_user';
                 $chat_messages_html .= '<li ' . $li_class .'>' . '<span class=chat_header>'. $chat_msg->chat_timestamp . ' by ' . $chat_msg->sender_name . '<p class=message_content>' . $chat_msg->chat_message ;
             }
@@ -94,7 +100,7 @@ class Chat extends CI_Controller
         }
     }
 
-    
+    // adds message to db on tbl_chatmsgs with current chat id
     public function ajax_add_chat_message()
     {
         $chat_id = $this->input->post('chat_id');
@@ -104,6 +110,7 @@ class Chat extends CI_Controller
         $this->chatmodel->add_chat_message($chat_id,$sender_id,$chat_message);
     }
 
+    
     public function change_chat()
     {
         $chat_id = $this->input->post('chat_id');
@@ -112,6 +119,7 @@ class Chat extends CI_Controller
         $this->load->view('chat/viewchat', $this->view_data);
     }
 
+    // adds a chat to tbl_chats
     public function add_chat()
     {
         $user_2 = $this->input->post('user_2');

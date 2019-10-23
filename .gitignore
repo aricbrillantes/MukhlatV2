@@ -26,3 +26,4 @@ uploads/*
 *.stTheme.cache
 *.sublime-workspace
 *.sublime-project
+application/config/database.php

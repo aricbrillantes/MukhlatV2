@@ -26,6 +26,7 @@
     
 </script> 
 
+<!-- loads chat.js -->
 <script type="text/javascript" src="<?php echo base_url("js/chat.js"); ?>"></script>
 
 <link rel="icon" href="<?php echo base_url('./images/logo/mukhlatlogo_icon.png'); ?>" sizes="32x32">
@@ -144,6 +145,8 @@ li.by_current_user {
     <div id="chats_box"style="width: 20%; float: left;">
     
     <button id="addchat" style="width:100%;min-height:10%;" onclick="openpopup()">Send New Message</button>
+
+    <!-- displays chat instances of current user left sidebar , on click changes current child chatting with-->
     <?php foreach ($otherchats as $chats): 
         $other_user = $CI->chat_model->get_other_user($chats->chat_id, $logged_user->user_id);?>
         <?php foreach ($other_user as $others):
@@ -171,6 +174,7 @@ li.by_current_user {
     <div id="chat_popup" ><a href="javascript:void(0)" class="closebtn" onclick="closepopup()">&times;</a>
     <div class="popup_content">Chat with:
     <div class="user_container">
+    <!-- displays all kids and on click creates an instance of the chat and adds into tbl_chats -->
     <?php foreach ($users as $usernames): ?>
     <button class="userbox" value="<?php echo utf8_decode($usernames->user_id); ?>" onClick="window.location.reload();"> <?php echo utf8_decode($usernames->name); ?> </button>
     <?php endforeach; ?>

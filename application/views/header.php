@@ -26,6 +26,9 @@ and open the template in the editor.
         <script type="text/javascript" src="<?php echo base_url("assets/js/fusioncharts/themes/fusioncharts.theme.fint.js"); ?>"></script>
         <script type="text/javascript" src="<?php echo base_url("assets/js/fusioncharts/themes/fusioncharts.theme.zune.js"); ?>"></script>
         <script type="text/javascript" src="<?php echo base_url("assets/js/fusioncharts/themes/fusioncharts.theme.carbon.js"); ?>"></script>
+        <script type="text/javascript">
+        var base_url = "<?php echo base_url();?>";
+        </script>
     </head>
     
     
