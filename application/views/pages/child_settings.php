@@ -73,18 +73,12 @@
     div.content-container
     {
         border:0px;
+        background-color: #f7f7f7;
     }
 
     .myTable 
     { 
-
-        <?php if ($mobile): ?>
-            background-color: #f9f9f9;
-
-        <?php else: ?>
-            background: rgb(255,255,255);
-            
-        <?php endif; ?>
+        background-color: #f7f7f7;
 
         width: 93%;
         text-align: left;
@@ -110,17 +104,15 @@
         background: rgb(255,255,255);
         
         padding: 3px;
-        border: 2px solid; 
+        border: 1px solid; 
     }
 
     .myTable th 
     { 
         width: 5%;
         padding: 3px;
-        border: 2px solid black; 
+        border: 1px solid black; 
     }
-
-
 
     td.timecol
     {
@@ -226,28 +218,6 @@
 <?php else: ?>
     <link rel="stylesheet" href="<?php echo base_url("/css/style_parentview.css"); ?>" />
 
-<?php endif; ?>
-
-
-<?php if($mobile):?>
-    <!-- <script>alert('mobile!');</script> -->
-    <style>
-
-        body.sign-in
-        {
-            background-image: none;
-            background-color: #f9f9f9;
-            font-family: 'Cabin', 'Muli', sans-serif;
-            height: 500px;
-        }
-
-
-        div.content-container{
-            border:0px;
-            background-color: #f9f9f9;
-        }
-
-    </style>
 <?php endif; ?>
 
 <!-- Nav Bar Script -->
@@ -427,7 +397,7 @@
                         </tr>
 
                         <tr>
-                            <td id="_cell1" class="timecol"><center>12:00</center></td>
+                            <td id="_cell1" class="timecol" style="border-bottom-color: #e3e3e3"><center>12:00</center></td>
                             <td id="cell1" onclick="colorchange(this.id)"> </td>
                             <td id="cell2" onclick="colorchange(this.id)"> </td>
                             <td id="cell3" onclick="colorchange(this.id)"> </td>
@@ -448,7 +418,7 @@
                         </tr>
 
                         <tr>
-                            <td id="_cell15" class="timecol"><center>01:00</center></td>
+                            <td id="_cell15" class="timecol" style="border-bottom-color: #e3e3e3"><center>01:00</center></td>
                             <td id="cell15" onclick="colorchange(this.id)"> </td>
                             <td id="cell16" onclick="colorchange(this.id)"> </td>
                             <td id="cell17" onclick="colorchange(this.id)"> </td>
@@ -470,7 +440,7 @@
                         </tr>
 
                         <tr>
-                            <td id="" class="timecol" ><center>02:00</center></td>
+                            <td id="" class="timecol" style="border-bottom-color: #e3e3e3"><center>02:00</center></td>
                             <td id="cell29" onclick="colorchange(this.id)"> </td>
                             <td id="cell30" onclick="colorchange(this.id)"> </td>
                             <td id="cell31" onclick="colorchange(this.id)"> </td>
@@ -492,7 +462,7 @@
                         </tr>
 
                         <tr>
-                            <td class="timecol" ><center>03:00</center></td>
+                            <td class="timecol" style="border-bottom-color: #e3e3e3"><center>03:00</center></td>
                             <td id="cell43" onclick="colorchange(this.id)"> </td>
                             <td id="cell44" onclick="colorchange(this.id)"> </td>
                             <td id="cell45" onclick="colorchange(this.id)"> </td>
@@ -543,7 +513,7 @@
                         
 
                         <tr>
-                            <td class="timecol" ><center>04:00</center></td>
+                            <td class="timecol" style="border-bottom-color: #e3e3e3"><center>04:00</center></td>
                             <td id="cell57" onclick="colorchange(this.id)"> </td>
                             <td id="cell58" onclick="colorchange(this.id)"> </td>
                             <td id="cell59" onclick="colorchange(this.id)"> </td>
@@ -565,7 +535,7 @@
                         </tr>
 
                         <tr>
-                            <td class="timecol" ><center>05:00</center></td>
+                            <td class="timecol" style="border-bottom-color: #e3e3e3"><center>05:00</center></td>
                             <td id="cell71" onclick="colorchange(this.id)"> </td>
                             <td id="cell72" onclick="colorchange(this.id)"> </td>
                             <td id="cell73" onclick="colorchange(this.id)"> </td>
@@ -587,7 +557,7 @@
                         </tr>
 
                         <tr>
-                            <td class="timecol" ><center>06:00</center></td>
+                            <td class="timecol" style="border-bottom-color: #e3e3e3"><center>06:00</center></td>
                             <td id="cell85" onclick="colorchange(this.id)"> </td>
                             <td id="cell86" onclick="colorchange(this.id)"> </td>
                             <td id="cell87" onclick="colorchange(this.id)"> </td>
@@ -609,7 +579,7 @@
                         </tr>
 
                         <tr>
-                            <td id="_cell99"  class="timecol" ><center>07:00</center></td>
+                            <td id="_cell99" class="timecol" style="border-bottom-color: #e3e3e3"><center>07:00</center></td>
                             <td id="cell99" onclick="colorchange(this.id)"> </td>
                             <td id="cell100" onclick="colorchange(this.id)"> </td>
                             <td id="cell101" onclick="colorchange(this.id)"> </td>
@@ -659,10 +629,8 @@
                             <?php endif; ?>
                         </tr>
 
-                        
-
                         <tr>
-                            <td class="timecol" ><center>08:00</center></td>
+                            <td class="timecol" style="border-bottom-color: #e3e3e3"><center>08:00</center></td>
                             <td id="cell113" onclick="colorchange(this.id)"> </td>
                             <td id="cell114" onclick="colorchange(this.id)"> </td>
                             <td id="cell115" onclick="colorchange(this.id)"> </td>
@@ -684,7 +652,7 @@
                         </tr>
 
                         <tr>
-                            <td class="timecol" ><center>09:00</center></td>
+                            <td class="timecol" style="border-bottom-color: #e3e3e3"><center>09:00</center></td>
                             <td id="cell127" onclick="colorchange(this.id)"> </td>
                             <td id="cell128" onclick="colorchange(this.id)"> </td>
                             <td id="cell129" onclick="colorchange(this.id)"> </td>
@@ -706,7 +674,7 @@
                         </tr>
 
                         <tr>
-                            <td class="timecol" ><center>10:00</center></td>
+                            <td class="timecol" style="border-bottom-color: #e3e3e3"><center>10:00</center></td>
                             <td id="cell141" onclick="colorchange(this.id)"> </td>
                             <td id="cell142" onclick="colorchange(this.id)"> </td>
                             <td id="cell143" onclick="colorchange(this.id)"> </td>
@@ -728,7 +696,7 @@
                         </tr>
 
                         <tr>
-                            <td class="timecol" ><center>11:00</center></td>
+                            <td class="timecol" style="border-bottom-color: #e3e3e3"><center>11:00</center></td>
                             <td id="cell155" onclick="colorchange(this.id)"> </td>
                             <td id="cell156" onclick="colorchange(this.id)"> </td>
                             <td id="cell157" onclick="colorchange(this.id)"> </td>
@@ -777,10 +745,9 @@
                             <?php endif; ?>
                         </tr>
 
-                        
 
                         <tr>
-                            <td class="timecol" ><center>12:00</center></td>
+                            <td class="timecol" style="border-bottom-color: #e3e3e3"><center>12:00</center></td>
                             <td id="cell169" onclick="colorchange(this.id)"> </td>
                             <td id="cell170" onclick="colorchange(this.id)"> </td>
                             <td id="cell171" onclick="colorchange(this.id)"> </td>
@@ -802,7 +769,7 @@
                         </tr>
 
                         <tr>
-                            <td class="timecol" ><center>01:00</center></td>
+                            <td class="timecol" style="border-bottom-color: #e3e3e3"><center>01:00</center></td>
                             <td id="cell183" onclick="colorchange(this.id)"> </td>
                             <td id="cell184" onclick="colorchange(this.id)"> </td>
                             <td id="cell185" onclick="colorchange(this.id)"> </td>
@@ -824,7 +791,7 @@
                         </tr>
 
                         <tr>
-                            <td class="timecol" ><center>02:00</center></td>
+                            <td class="timecol" style="border-bottom-color: #e3e3e3"><center>02:00</center></td>
                             <td id="cell197" onclick="colorchange(this.id)"> </td>
                             <td id="cell198" onclick="colorchange(this.id)"> </td>
                             <td id="cell199" onclick="colorchange(this.id)"> </td>
@@ -846,7 +813,7 @@
                         </tr>
 
                         <tr>
-                            <td class="timecol" ><center>03:00</center></td>
+                            <td class="timecol" style="border-bottom-color: #e3e3e3"><center>03:00</center></td>
                             <td id="cell211" onclick="colorchange(this.id)"> </td>
                             <td id="cell212" onclick="colorchange(this.id)"> </td>
                             <td id="cell213" onclick="colorchange(this.id)"> </td>
@@ -896,7 +863,7 @@
                         </tr>
 
                         <tr>
-                            <td class="timecol" ><center>04:00</center></td>
+                            <td class="timecol" style="border-bottom-color: #e3e3e3"><center>04:00</center></td>
                             <td id="cell225" onclick="colorchange(this.id)"> </td>
                             <td id="cell226" onclick="colorchange(this.id)"> </td>
                             <td id="cell227" onclick="colorchange(this.id)"> </td>
@@ -918,7 +885,7 @@
                         </tr>
 
                         <tr>
-                            <td class="timecol" ><center>05:00</center></td>
+                            <td class="timecol" style="border-bottom-color: #e3e3e3"><center>05:00</center></td>
                             <td id="cell239" onclick="colorchange(this.id)"> </td>
                             <td id="cell240" onclick="colorchange(this.id)"> </td>
                             <td id="cell241" onclick="colorchange(this.id)"> </td>
@@ -940,7 +907,7 @@
                         </tr>
 
                         <tr>
-                            <td class="timecol" ><center>06:00</center></td>
+                            <td class="timecol" style="border-bottom-color: #e3e3e3"><center>06:00</center></td>
                             <td id="cell253" onclick="colorchange(this.id)"> </td>
                             <td id="cell254" onclick="colorchange(this.id)"> </td>
                             <td id="cell255" onclick="colorchange(this.id)"> </td>
@@ -962,7 +929,7 @@
                         </tr>
 
                         <tr>
-                            <td class="timecol" ><center>07:00</center></td>
+                            <td class="timecol" style="border-bottom-color: #e3e3e3"><center>07:00</center></td>
                             <td id="cell267" onclick="colorchange(this.id)"> </td>
                             <td id="cell268" onclick="colorchange(this.id)"> </td>
                             <td id="cell269" onclick="colorchange(this.id)"> </td>
@@ -1011,7 +978,7 @@
                         </tr>
 
                         <tr>
-                            <td class="timecol" ><center>08:00</center></td>
+                            <td class="timecol" style="border-bottom-color: #e3e3e3"><center>08:00</center></td>
                             <td id="cell281" onclick="colorchange(this.id)"> </td>
                             <td id="cell282" onclick="colorchange(this.id)"> </td>
                             <td id="cell283" onclick="colorchange(this.id)"> </td>
@@ -1033,7 +1000,7 @@
                         </tr>
 
                         <tr>
-                            <td class="timecol" ><center>09:00</center></td>
+                            <td class="timecol" style="border-bottom-color: #e3e3e3"><center>09:00</center></td>
                             <td id="cell295" onclick="colorchange(this.id)"> </td>
                             <td id="cell296" onclick="colorchange(this.id)"> </td>
                             <td id="cell297" onclick="colorchange(this.id)"> </td>
@@ -1055,7 +1022,7 @@
                         </tr>
 
                         <tr>
-                            <td class="timecol" ><center>10:00</center></td>
+                            <td class="timecol" style="border-bottom-color: #e3e3e3"><center>10:00</center></td>
                             <td id="cell309" onclick="colorchange(this.id)"> </td>
                             <td id="cell310" onclick="colorchange(this.id)"> </td>
                             <td id="cell311" onclick="colorchange(this.id)"> </td>
@@ -1077,7 +1044,7 @@
                         </tr>
 
                         <tr>
-                            <td class="timecol" ><center>11:00</center></td>
+                            <td class="timecol" style="border-bottom-color: #e3e3e3"><center>11:00</center></td>
                             <td id="cell323" onclick="colorchange(this.id)"> </td>
                             <td id="cell324" onclick="colorchange(this.id)"> </td>
                             <td id="cell325" onclick="colorchange(this.id)"> </td>

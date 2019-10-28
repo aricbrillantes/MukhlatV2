@@ -3,11 +3,21 @@ body{
     font-family: 'Muli', 'Cabin', sans-serif;
 }
 
-body.sign-in{
-    background-image: url(../images/wood_tile/blue.jpg);
+body.sign-in
+{
+    background-image: none;
+    background-color: #f7f7f7;
     font-family: 'Cabin', 'Muli', sans-serif;
     height: 500px;
 }
+
+
+div.content-container
+{
+    border:0px;
+    background-color: #f7f7f7;
+}
+
 
 textarea{
     resize: none;
@@ -188,7 +198,7 @@ a{
 }
 
 .home-content-header{
-    background-color: #F5F5F5;
+    background-color: #f7f7f7;
     border-top-left-radius: 3px;
     border-top-right-radius: 3px;
     border-bottom: 1px #CFD8DC solid; 
@@ -349,7 +359,7 @@ a{
     background-color: #E0E0E0;
     padding-left: 10px;
     color: #757575;
-    //border-top: 1px solid #F5F5F5;
+    //border-top: 1px solid #f7f7f7;
 }
 
 .user-post-footer{
@@ -477,7 +487,7 @@ p{
 }
 
 .admin-list-item{
-    background-color: #fafafa; 
+    background-color: #ffffff; 
     padding: 15px; 
     padding-top: 5px;
     margin-bottom: 2px;
