@@ -24,12 +24,12 @@ include(APPPATH . 'views/header.php');
         
         <!--Pictures-->
     <div class="wrapper col-sm-3">
-  <div class="picture">
+  <a class="picture" href="#room_pictures_modal" data-toggle = "modal">
     <!--<div class="hook"></div>-->
     <div class="frame">
         <div class="inside"><strong><center>Pictures</center></strong></div>
     </div>
-  </div>
+  </a>
         <?php if ($c_topic->creator_id === $logged_user->user_id): ?>
             <button onmouseenter="playclip()" id="crettop" class = "btn btn-primary buttonsbgcolor textoutliner" href="#create-post-modal" data-toggle = "modal" style="font-size:22px;margin-top: 2%; margin-left: 17%">Add pictures</button><br><br>
             <?php endif;?>
@@ -38,11 +38,18 @@ include(APPPATH . 'views/header.php');
         <!--Shout out-->
    <ul class="stickynote col-sm-3">
        <li class="stickytext">
-           <a href="#" class="stickyact">
-        <h2>my party</h2>
-        <p>see you in school</p>
+           <a href="#room_shout_modal" data-toggle = "modal" class="stickyact">
+               <?php
+                            foreach ($c_topic->posts as $post):
+                                ?>
+        <h2><?php echo utf8_decode($post->post_title); ?></h2>
+        <p><?php echo utf8_decode($post->post_content); ?></p>
+        <?php break; endforeach; ?>
       </a>
     </li>
+    <?php if ($c_topic->creator_id === $logged_user->user_id): ?>
+            <button onmouseenter="playclip()" id="crettop" class = "btn btn-primary buttonsbgcolor textoutliner" href="#create-post-modal" data-toggle = "modal" style="font-size:22px;margin-top: 2%; margin-left: 17%">Do a Shoutout!</button><br><br>
+            <?php endif;?>
         </ul>
         
         
@@ -51,12 +58,6 @@ include(APPPATH . 'views/header.php');
         <div id="white-board" class="col-sm-3 pull-right" style="max-height:300px">
             <?php
                             foreach ($c_topic->posts as $post):
-                                $text_class = '';
-                                if ($post->vote_count > 0) {
-                                    $text_class = 'text-success';
-                                } else if ($post->vote_count < 0) {
-                                    $text_class = 'text-danger';
-                                }
                                 ?>
             <p style = "border-right: none; max-width: 714px;padding: 3%;max-height: 50%"><?php echo utf8_decode($post->post_content); ?></p>
                         
@@ -73,7 +74,29 @@ include(APPPATH . 'views/header.php');
         
     </div>
     <div class="doorroom col-sm-9">
-        <div class="col-sm-2"><p></p></div>
+        <div class="wrapper col-sm-3">
+  <a class="picture" href="#room_sounds_modal" data-toggle = "modal">
+    <!--<div class="hook"></div>-->
+    <div class="frame">
+        <div class="inside"><strong><center>Sounds</center></strong></div>
+    </div>
+  </a>
+        <?php if ($c_topic->creator_id === $logged_user->user_id): ?>
+            <button onmouseenter="playclip()" id="crettop" class = "btn btn-primary buttonsbgcolor textoutliner" href="#create-post-modal" data-toggle = "modal" style="font-size:22px;margin-top: 2%; margin-left: 17%">Add Sounds</button><br><br>
+            <?php endif;?>
+    </div>
+        <div class="wrapper col-sm-3">
+  <a class="picture" href="#room_videos_modal" data-toggle = "modal">
+    <!--<div class="hook"></div>-->
+    <div class="frame">
+        <div class="inside"><strong><center>Videos</center></strong></div>
+    </div>
+  </a>
+        <?php if ($c_topic->creator_id === $logged_user->user_id): ?>
+            <button onmouseenter="playclip()" id="crettop" class = "btn btn-primary buttonsbgcolor textoutliner" href="#create-post-modal" data-toggle = "modal" style="font-size:22px;margin-top: 2%; margin-left: 17%">Add Videos</button><br><br>
+            <?php endif;?>
+    </div>
+        <div class="col-sm-3"><p></p></div>
     </div>
         
 <!--    <div class="line1"></div>
@@ -328,6 +351,12 @@ include(APPPATH . 'views/header.php');
 
     <?php
     // include(APPPATH . 'views/side_postbar.php');
+    include(APPPATH . 'views/modals/room_pictures_modal.php');
+    include(APPPATH . 'views/modals/room_shout_modal.php');
+    include(APPPATH . 'views/modals/room_sounds_modal.php');
+    include(APPPATH . 'views/modals/room_videos_modal.php');
+    
+    
     include(APPPATH . 'views/modals/create_reply_modal.php');
     include(APPPATH . 'views/modals/create_post_modal.php');
     include(APPPATH . 'views/modals/topic_members_modal.php');

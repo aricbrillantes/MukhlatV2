@@ -77,8 +77,6 @@ $topic = $_SESSION['current_topic'];
             </div>
             <form enctype = "multipart/form-data" action = "<?php echo base_url('topic/post'); ?>" id = "create-post-form" method = "POST">
                 <div class="modal-body">
-                    
-                    
                     <div style="display: none">
                     <div class="form-group"><!-- check if title is already taken -->
                         <label for = "title">Make a title for your post:</label>
@@ -91,8 +89,6 @@ $topic = $_SESSION['current_topic'];
                             <!--<button onclick="startDictation2(event)">Try it</button>-->
                     </div>
                     </div>
-                    
-                    
                     <div id="results" style="display: none" border="1px">
                         <span id="final_span2" class="final"></span>
                         <span id="interim_span2" class="interim"></span>
