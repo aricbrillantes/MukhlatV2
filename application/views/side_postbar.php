@@ -10,19 +10,19 @@ $logged_user = $_SESSION['logged_user'];
 
     <!-- Topic Post List -->
                     
-    <div class = "col-md-12 topic-post-list">
+    <div class = "topic-post-list" style="width:320px">
         <!--<div class = "list-group" style = "padding-top: 15%">-->
            <!--List Entry--> 
            <?php
            foreach ($c_topic->posts as $post):
-    //                                if($post->reply==1):
+                                    if($post->reply==1):
             ?>
             <!--<a href = "javascript: void(0);" class = "btn btn-link list-group-item list-entry no-up-down-pad topic-post-entry" data-value = "<?php echo $post->post_id; ?>">-->
-                <!--<div class = "speech-bubble">-->
+                <div class = "col-xs-9">
                     
 
         <div>
-            <div class = "col-xs-9">
+            <div>
                 <h4 class = "ellipsis"><strong><?php echo utf8_decode($post->post_title); ?></strong> <small><i><?php echo $post->user->first_name . " " . $post->user->last_name; ?></i></small></h4>
                 <p class = "ellipsis" style="white-space: pre-wrap;"><?php echo utf8_decode($post->post_content); ?></p>
             </div>
@@ -37,7 +37,7 @@ $logged_user = $_SESSION['logged_user'];
 
         foreach ($attachments as $attachment):
             if ($attachment->attachment_type_id === '1'):?>
-                <img src = "<?= base_url($attachment->file_url); ?>"/>
+                <img src = "<?= base_url($attachment->file_url); ?>" width="200px"/>
 
                 <?php elseif ($attachment->attachment_type_id === '2'): ?>
                     <audio src = "<?= base_url($attachment->file_url); ?>" controls></audio>
@@ -54,16 +54,16 @@ $logged_user = $_SESSION['logged_user'];
                     endforeach;
                     
                     ?> 
-                    <!--</div>-->
+                    </div>
                     <!--                                </a>-->
                     <?php 
-        //                            endif;
+                                    endif;
                 endforeach; ?>
                 <!--</div>-->
             </div>
         <div>
             <?php if ($c_topic->creator_id === $logged_user->user_id): ?>
-                <button onmouseenter="playclip()" id="crettop" class = "btn btn-primary buttonsbgcolor textoutliner" href="#create-post-modal" data-toggle = "modal" style="font-size:22px">Say something</button>
+                <button onmouseenter="playclip()" onclick="toggleButton('reply')" id="crettop" class = "btn btn-primary buttonsbgcolor textoutliner" href="#create-post-modal" data-toggle = "modal" style="font-size:22px">Say something</button>
             <?php endif;?>
         </div>
     

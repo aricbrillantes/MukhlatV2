@@ -15,12 +15,21 @@
             
             <div class="modal-body content-container container-fluid">
                 <div class = "row col-md-12"><center>
-                         <?php
+                        <?php
                             foreach ($c_topic->posts as $post):
-                                ?>
+                                if($post->shout==1):?>
                         <div class="col-md-3">
-                            <p><?php echo utf8_decode($post->post_content); ?></p>
-                        <?php $attachments = $CI->attachment_model->get_post_attachments($post->post_id);?>
+                            <ul class="stickynote">
+                                <li class="stickytext">
+                                    <a href="#" data-toggle = "modal" class="stickyact">
+                                        <h2><?php echo utf8_decode($post->post_title); ?></h2>
+                                        <p><?php echo utf8_decode($post->post_content); ?></p>
+
+                                    </a>
+                                </li>       
+                            </ul>
+                            
+<!--                        <?php $attachments = $CI->attachment_model->get_post_attachments($post->post_id);?>
 
                                                 <?php foreach ($attachments as $attachment):
                                                     if ($attachment->attachment_type_id === '1'):?>
@@ -41,9 +50,10 @@
                                                     endif;
                                                 endforeach;
 
-                                                ?>
+                                                ?> -->
+                                                
                         </div>
-                        <?php endforeach; ?>
+                        <?php endif; endforeach; ?>
                     
                     
                     </center>

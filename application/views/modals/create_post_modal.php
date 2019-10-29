@@ -79,8 +79,8 @@ $topic = $_SESSION['current_topic'];
                 <div class="modal-body">
                     
                     
-                    <div style="display: none">
-                    <div class="form-group"><!-- check if title is already taken -->
+                    
+                    <div class="form-group" id="post-title-container"><!-- check if title is already taken -->
                         <label for = "title">Make a title for your post:</label>
                         <!--<p class="lead emoji-picker-container">-->
                         <input type="text" style="height: 50px;" maxlength = "100"  required class="form-control" name = "post_title" id = "post-title" placeholder = "Title of your Post"  data-emojiable="true" value=" "/>
@@ -90,7 +90,8 @@ $topic = $_SESSION['current_topic'];
                             <!--<a href="#" class="voicesearch" id="voicesearch" onclick="stopDictation2(event)"><img border="0" id="voicesearchicon" class="voicesearchicon" alt="START" src="images/microphone_start.png" height="50" width="50"></a>-->
                             <!--<button onclick="startDictation2(event)">Try it</button>-->
                     </div>
-                        
+                    
+                    <div style="display: none">
                         <input maxlength = "1"  required class="form-control" name = "reply" id = "reply"  value="0"/>
                         <input maxlength = "1"  required class="form-control" name = "shout" id = "shout"  value="0"/>
                     </div>
@@ -182,34 +183,48 @@ $topic = $_SESSION['current_topic'];
         $('[id$=img-label]').hide();
         $('[id$=audio-label]').hide();
         $('[id$=video-label]').hide();
+        $('[id$=attachment-preview]').hide();
+        $('[id$=post-title-container]').hide();
+        $('[id$=reply]').val(0);
+        $('[id$=shout]').val(0);
+        
 
         if(p==="image")
         {
           $('[id$=img-label]').show();
+          $('[id$=attachment-preview]').show();
         }
 
         if(p==="audio")
         {
           $('[id$=audio-label]').show();
+          $('[id$=attachment-preview]').show();
         }
 
         if(p==="video")
         {
             $('[id$=video-label]').show();
+            $('[id$=attachment-preview]').show();
         }
         
         if(p==="text")
-        {
-          $('[id$=img-label]').hide();
-          $('[id$=audio-label]').hide();
-          $('[id$=video-label]').hide();
+        {;
+          
         }
 
         if(p==="shout")
         {
-          $('[id$=img-label]').hide();
-          $('[id$=audio-label]').hide();
-          $('[id$=video-label]').hide();
+          $('[id$=post-title-container]').show();
+          $('[id$=shout]').val(1);
+        }
+        
+        if(p==="reply")
+        {
+          $('[id$=img-label]').show();
+          $('[id$=audio-label]').show();
+          $('[id$=video-label]').show();
+          $('[id$=attachment-preview]').show();
+          $('[id$=reply]').val(1);
         }
         
     }

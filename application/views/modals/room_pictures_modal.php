@@ -17,7 +17,7 @@
                 <div class = "row col-md-12">
                          <?php
                             foreach ($c_topic->posts as $post):
-                                ?>
+                                if($post->reply==0):?>
                         <?php $attachments = $CI->attachment_model->get_post_attachments($post->post_id);?>
 
                                                 <?php foreach ($attachments as $attachment):
@@ -33,7 +33,7 @@
 
                                                 ?>
                         
-                        <?php endforeach; ?>
+                        <?php endif; endforeach; ?>
                     
                     
                 </div>

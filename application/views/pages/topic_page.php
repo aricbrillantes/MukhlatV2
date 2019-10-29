@@ -29,7 +29,7 @@ include(APPPATH . 'views/header.php');
     <?php
         include(APPPATH . 'views/navigation_bar.php'); ?>
        
-   <div class = "col-sm-12 col-md-9"> 
+   <div class = "col-sm-12 col-md-10"> 
         <!--<div id = "topic-page" class = "container page" style = "min-height: 100%; height: 100%;">test</div>-->
         
         <div class="doorroom col-sm-12 col-md-11">
@@ -45,7 +45,8 @@ include(APPPATH . 'views/header.php');
                     <div class="frame">
                         <div class="inside"><strong><center>Pictures</center></strong>
                         <?php $once=0;
-                            foreach ($c_topic->posts as $post):?>
+                            foreach ($c_topic->posts as $post):
+                                if($post->reply==0):?>
                             <?php $attachments = $CI->attachment_model->get_post_attachments($post->post_id);?>
 
                                 <?php foreach ($attachments as $attachment):
@@ -57,7 +58,7 @@ include(APPPATH . 'views/header.php');
                                     endif;
                                 endforeach; ?>
 
-                        <?php endforeach; ?></div>
+                        <?php endif; endforeach; ?></div>
                     </div>
                 </a>
 
@@ -72,30 +73,33 @@ include(APPPATH . 'views/header.php');
                <li class="stickytext">
                    <a href="#room_shout_modal" data-toggle = "modal" class="stickyact">
                         <?php
-                            foreach ($c_topic->posts as $post):?>
+                            foreach ($c_topic->posts as $post):
+                                if($post->shout==1):?>
                             
                     <h2><?php echo utf8_decode($post->post_title); ?></h2>
                     <p><?php echo utf8_decode($post->post_content); ?></p>
-                    <?php break; endforeach; ?>
+                    <?php break; endif; endforeach; ?>
 
                   </a>
                 </li>
 
             <?php if ($c_topic->creator_id === $logged_user->user_id): ?>
-                <button onmouseenter="playclip()" id="crettop" class = "btn btn-primary buttonsbgcolor textoutliner" href="#create-post-modal" data-toggle = "modal" style="font-size:22px;margin-top: 2%; margin-left: 17%">Do a Shoutout!</button><br><br>
+                <button onmouseenter="playclip()" onclick="toggleButton('shout')" id="crettop" class = "btn btn-primary buttonsbgcolor textoutliner" href="#create-post-modal" data-toggle = "modal" style="font-size:22px;margin-top: 2%; margin-left: 17%">Do a Shoutout!</button><br><br>
                 <?php endif;?>
             </ul>
                 
                 
                 <!--regular text, emojis and stickers-->
                 <div>
-                <div id="white-board" class="col-sm-3 pull-right" style="max-height:300px">
+                <div id="white-board" class="col-sm-3 pull-right" style="min-height:300px; max-height:300px">
                     <?php
                         foreach ($c_topic->posts as $post):
                             ?>
-                    <p style = "border-right: none; max-width: 714px;padding: 3%;max-height: 50%"><?php echo utf8_decode($post->post_content); ?></p>
-                                
-                <?php endforeach; ?>
+                    <?php $attachments = $CI->attachment_model->get_post_attachments($post->post_id);?>
+                    <?php if(!$attachments):?>
+                            <p style = "border-right: none; max-width: 714px;padding: 3%;max-height: 50%"><?php echo utf8_decode($post->post_content); ?></p>
+                    <?php endif;
+                          endforeach; ?>
                     
             <div id="eraser"></div>
             <div id="red-pen"></div>
@@ -127,7 +131,7 @@ include(APPPATH . 'views/header.php');
                         <div class="inside"><strong><center>Videos</center></strong>
                         <?php $once=0;
                             foreach ($c_topic->posts as $post):
-                                ?>
+                                if($post->reply==0):?>
                             <?php $attachments = $CI->attachment_model->get_post_attachments($post->post_id);?>
 
                                 <?php foreach ($attachments as $attachment):
@@ -138,7 +142,7 @@ include(APPPATH . 'views/header.php');
                                     $once++;
                                     endif;
                                 endforeach; ?>
-                            <?php endforeach; ?>
+                            <?php endif; endforeach; ?>
                         </div>
                     </div>
                   </a>
@@ -399,13 +403,6 @@ include(APPPATH . 'views/header.php');
     include(APPPATH . 'views/modals/room_shout_modal.php');
     include(APPPATH . 'views/modals/room_sounds_modal.php');
     include(APPPATH . 'views/modals/room_videos_modal.php');
-    
-//    include(APPPATH . 'views/modals/create_post_pics_modal.php');
-//    include(APPPATH . 'views/modals/create_post_reply_modal.php');
-//    include(APPPATH . 'views/modals/create_post_shout_modal.php');
-//    include(APPPATH . 'views/modals/create_post_sound_modal.php');
-//    include(APPPATH . 'views/modals/create_post_text_modal.php');
-//    include(APPPATH . 'views/modals/create_post_vids_modal.php');
     
     
     include(APPPATH . 'views/modals/create_reply_modal.php');
