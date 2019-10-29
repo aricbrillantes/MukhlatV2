@@ -94,11 +94,12 @@ include(APPPATH . 'views/header.php');
                 <div id="white-board" class="col-sm-3 pull-right" style="min-height:300px; max-height:300px">
                     <?php
                         foreach ($c_topic->posts as $post):
-                            ?>
+                            if($post->shout==0 && $post->reply==0):?>
                     <?php $attachments = $CI->attachment_model->get_post_attachments($post->post_id);?>
                     <?php if(!$attachments):?>
                             <p style = "border-right: none; max-width: 714px;padding: 3%;max-height: 50%"><?php echo utf8_decode($post->post_content); ?></p>
                     <?php endif;
+                          endif;
                           endforeach; ?>
                     
             <div id="eraser"></div>
