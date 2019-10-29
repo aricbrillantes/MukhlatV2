@@ -50,14 +50,10 @@
 
     if ($usertimes) 
     {
-        // echo "<b>Successful query!</b><br><b></b>";
         foreach ($usertimes->result() as $row)
         {
-            // echo $row->time_setting;
-            // echo "<p style='color:white;'>" . $row->start_hour . ":" . $row->start_minute . "-" . $row->end_hour . ":" . $row->end_minute . "</p>";
+            echo count(explode(" ",$row->time_setting));
         }
-
-        // echo "<p style='color:white;'><b>Current time:</b> " . (int) date("G") . ": " . date("i") . "</p> " ;
     } 
 
     $num=-1;
@@ -293,10 +289,7 @@
                             document.getElementById(temp).style.background = "rgb(50, 200, 100)";
                                 document.getElementById(temp).id = temp + "-A";
                         }
-
-                    }  
-
-                    
+                    }                      
                 }
 
             </script>
@@ -312,39 +305,43 @@
 
                     <ul class="nav nav-pills nav-justified" style = "margin-bottom: 10px; margin-top: 10px;">
    
-                    <li class = "active text-center">
-                        <h3 class = "no-padding text-info" style = "margin-top: 10px;">Warning</h3>
-                        
-                        <select style="width:100px; height:20px" id="time-warning" onclick=""> 
-                            <option value="0">None</option>
-                            <option value="15">15 minutes</option>
-                            <option value="30">30 minutes</option>
-                            <option value="45">45 minutes</option>
-                            <option value="60">1 hour</option>
-                        </select>
+                        <li class = "active text-center">
+                            <h3 class = "no-padding text-info" style = "margin-top: 15px;">Session Time Limit</h3>
+                                <!-- <?php echo $row->use_limit?> -->
 
-                        <p class = "no-padding " style = "margin-bottom: 0px; margin-top: 15px;">(Set when children will be warned)</p>
-                    </li>
+                            <select style="width:110px; height:20px" id="time-limit" onclick="">
+                                <option value="30">30 minutes</option>
+                                <option value="60">1 hour</option>
+                                <option value="90">1 hr 30 mins</option>
+                                <option value="120">2 hours</option>
+                                <option value="150">2 hrs 30 mins</option>
+                                <option value="180">3 hours</option>
+                                <!-- <option value="210">3 hrs 30 mins</option>
+                                <option value="240">4 hours</option>
+                                <option value="270">4 hours 30 mins</option>
+                                <option value="300">5 hours</option> -->
+                            </select>
 
-                    <li class = "active text-center">
-                        <h3 class = "no-padding text-info" style = "margin-top: 15px;">Time Limit</h3>
-                            <!-- <?php echo $row->use_limit?> -->
+                            <p class = "no-padding " style = "margin-bottom: 0px; margin-top: 15px;">As parents, you can set how long your child can use Mukhlat for each session.<br></p>
+                        </li>
 
-                        <select style="width:110px; height:20px" id="time-limit" onclick="">
 
-                            <option value="30">30 minutes</option>
-                            <option value="60">1 hour</option>
-                            <option value="90">1 hr 30 mins</option>
-                            <option value="120">2 hours</option>
-                            <option value="150">2 hrs 30 mins</option>
-                            <option value="180">3 hours</option>
-                            <option value="210">3 hrs 30 mins</option>
-                            <option value="240">4 hours</option>
-                        </select>
+                        <li class = "active text-center">
+                            <h3 class = "no-padding text-info" style = "margin-top: 10px;">Warning</h3>
+                            
+                            <select style="width:100px; height:20px" id="time-warning" onclick=""> 
+                                <option value="0">None</option>
+                                <option value="15">15 minutes</option>
+                                <option value="30">30 minutes</option>
+                                <option value="45">45 minutes</option>
+                                <option value="60">1 hour</option>
+                            </select>
 
-                        <p class = "no-padding " style = "margin-bottom: 0px; margin-top: 15px;">(Set how long children can use Mukhlat)</p>
-                    </li>
-                </ul><br>
+                            <p class = "no-padding " style = "margin-bottom: 0px; margin-top: 15px;">Mukhlat has a feature that warns children that they can<br>only use Mukhlat for a limited time, and that their session is about to end.</p>
+                        </li>
+
+
+                    </ul><br>
 
                     <div class = "content-container container-fluid col-md-10 col-md-offset-1 col-sm-offset-1 col-sm-10 col-xs-offset-1 col-xs-10">
                         <ul class="nav nav-pills nav-justified" style="">
@@ -1077,14 +1074,14 @@
                 <ul class="nav nav-pills nav-justified" style = "margin-bottom: 10px; margin-top: 10px;">
    
                     <li class = "active text-center">
-                        <div class = "text-center form-group register-field container-fluid" style="margin-bottom: -25px;  ">
-                            <div class = "text-center col-xs-12 col-md-12 form-group register-field" style = "font-size:14px;">
+                        <div class = "text-center form-group register-field container-fluid" style="margin-bottom: -25px; ">
+                            <div class = "text-center col-xs-12 col-md-auto col-sm-offset-2 col-sm-6 form-group register-field" style = "font-size:14px;">
                                 
                                 <a id = "notif-btn"  href="#">
                                     <h4 class = "no-padding text-info" onclick="clearTable();" style = "margin-top: 10px;">Clear All Timeslots</h4>
                                 </a>
 
-                                <p class = "no-padding " style = "margin-bottom: 0px; margin-top: 0px;">(Clear entire table)</p>
+                                <p class = "no-padding " style = "margin-bottom: 0px; margin-top: 0px;">Clear entire table</p>
                                 
                                 <br>
                             </div>
@@ -1092,8 +1089,8 @@
                     </li>
 
                     <li class = "active text-center">
-                        <div class = "text-center form-group register-field container-fluid" style="margin-bottom: 10px  ">
-                            <div class = "text-center col-xs-12 col-md-12 form-group register-field" style = "font-size:14px;">
+                        <div class = "text-center form-group register-field container-fluid" style="margin-bottom: 10px; ">
+                            <div class = "text-center col-xs-12 col-md-auto col-sm-offset-1 col-sm-8 form-group register-field" style = "font-size:14px;">
                                 
                                 <!-- <a id = "notif-btn" data-toggle = "modal" href="#default-time-modal">
                                     <h4 class = "no-padding text-info" style = "margin-top: 10px;">Use Default Settings</h4>
@@ -1103,7 +1100,11 @@
                                     <h4 class = "no-padding text-info" onclick="defaultTable();" style = "margin-top: 10px;">Reset to Default Settings</h4>
                                 </a>
 
-                                <p class = "no-padding " style = "margin-bottom: 0px; margin-top: 0px;">(Revert to the 8:00 AM - 8:00 PM setting)</p>
+                                <p class = "no-padding " style = "margin-bottom: 0px; margin-top: 0px;">Use Mukhlat's default settings of:<br><br>
+                                    Monday-Friday:<br> 05:00AM - 07:30PM<br><br>
+                                    Saturday-Sunday:<br> 08:00AM - 10:00AM,<br> 03:00PM - 06:00PM<br>
+                                    
+                                </p>
                                 
                                 <br>
                             </div>
@@ -1113,13 +1114,13 @@
                     <li class = "active text-center">
                         <div class = "text-center form-group register-field container-fluid" style="margin-bottom: 10px; margin-top: 0px;">
                             
-                            <div class = "text-center col-xs-12 col-md-12 form-group register-field" style = "font-size:14px;">
+                            <div class = "text-center col-xs-12 col-md-auto col-sm-offset-1 col-sm-8 form-group register-field" style = "font-size:14px;">
                                 
                                 <div class="checkbox">
                                     <h4><label class = "text-info"><input type="checkbox" id="keep" value="" >Keep for next week</label></h4>
                                 </div>
 
-                                <p class = "no-padding " style = "margin-bottom: 15px; margin-top: 5px;">(Carry these settings over to next week)</p>
+                                <p class = "no-padding " style = "margin-bottom: 15px; margin-top: 5px;">If you check this setting, Mukhlat will keep these settings for next week.<br><br>If you leave it unchecked, the settings will reset to the default settings at the start of the next week.</p>
                                 
                                 <br>
                             </div>
