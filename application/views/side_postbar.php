@@ -63,7 +63,7 @@ $logged_user = $_SESSION['logged_user'];
                     </div>
                         <div>
                             <?php if ($c_topic->creator_id === $logged_user->user_id): ?>
-                        <button onmouseenter="playclip()" id="crettop" class = "btn btn-primary buttonsbgcolor textoutliner" href="#create_post_reply_modal" data-toggle = "modal" style="font-size:22px">Say something</button>
+                        <button onmouseenter="playclip()" id="crettop" class = "btn btn-primary buttonsbgcolor textoutliner" href="#create-post-modal" data-toggle = "modal" style="font-size:22px">Say something</button>
                     <?php endif;?>
                         </div>
     
