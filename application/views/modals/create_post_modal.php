@@ -131,7 +131,7 @@ $topic = $_SESSION['current_topic'];
 
                       <img id="target" />
 
-                        Attach a file:
+                        <!-- Attach a file: -->
                         <!--IMAGE-->
                         <label id = "img-label" class="btn btn-primary buttonsbgcolor">
                             <input id = "attach-img" accept = "image/*" type="file" name = "post_image" style = "display: none;">
@@ -151,10 +151,10 @@ $topic = $_SESSION['current_topic'];
                         </label>
 
                         <!--FILE-->
-                        <label id = "file-label" class="btn btn-primary buttonsbgcolor">
+                        <!-- <label id = "file-label" class="btn btn-primary buttonsbgcolor">
                             <input id = "attach-file" type="file" name = "post_file" style = "display: none;">
                             <p id = "file-text" class = "attach-btn-text"><i class = "fa fa-file-o"></i> Add File</p>
-                        </label>
+                        </label> -->
 
                     </div>
                     <div id = "attachment-preview" class = "content-container">
@@ -173,6 +173,48 @@ $topic = $_SESSION['current_topic'];
 <!--PROFANITY FILTER and character limit counter-->
  <!--<script src="https://code.responsivevoice.org/responsivevoice.js"></script>-->
 
+
+<script>
+
+
+    function toggleButton(p)
+    {
+        $('[id$=img-label]').hide();
+        $('[id$=audio-label]').hide();
+        $('[id$=video-label]').hide();
+
+        if(p==="image")
+        {
+          $('[id$=img-label]').show();
+        }
+
+        if(p==="audio")
+        {
+          $('[id$=audio-label]').show();
+        }
+
+        if(p==="video")
+        {
+            $('[id$=video-label]').show();
+        }
+        
+        if(p==="text")
+        {
+          $('[id$=img-label]').hide();
+          $('[id$=audio-label]').hide();
+          $('[id$=video-label]').hide();
+        }
+
+        if(p==="shout")
+        {
+          $('[id$=img-label]').hide();
+          $('[id$=audio-label]').hide();
+          $('[id$=video-label]').hide();
+        }
+        
+    }
+
+</script>
 
 
 <script type="text/javascript">

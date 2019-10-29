@@ -24,125 +24,187 @@ include(APPPATH . 'views/header.php');
     
 ?>
 
-<body>
+<body class="row">
+
     <?php
-    include(APPPATH . 'views/navigation_bar.php');
-    ?>
-    <!--<div id = "topic-page" class = "container page" style = "min-height: 100%; height: 100%;">test</div>-->
-    
-    <div class="doorroom col-sm-9">
-    
-        <center><div class="nameframe">
-        <h4><strong><?php echo utf8_decode($c_topic->user->first_name); ?>'s Room</strong></h4>
-    </div></center>
-    
+        include(APPPATH . 'views/navigation_bar.php'); ?>
+       
+   <div class = "col-sm-12 col-md-9"> 
+        <!--<div id = "topic-page" class = "container page" style = "min-height: 100%; height: 100%;">test</div>-->
         
-        <!--Pictures-->
-    <div class="wrapper col-sm-3">
-  <a class="picture" href="#room_pictures_modal" data-toggle = "modal">
-    <!--<div class="hook"></div>-->
-    <div class="frame">
-        <div class="inside"><strong><center>Pictures</center></strong>
-        <?php $once=0;
-                            foreach ($c_topic->posts as $post):
-                                ?>
-                                    <?php $attachments = $CI->attachment_model->get_post_attachments($post->post_id);?>
+        <div class="doorroom col-sm-12 col-md-11">
+        
+            <center><div class="nameframe">
+            <h4><strong><?php echo utf8_decode($c_topic->user->first_name); ?>'s Room</strong></h4>
+            </div></center>
+        
+            <!--Pictures-->
+            <div class="wrapper col-sm-3">
+                <a class="picture" href="#room_pictures_modal" data-toggle = "modal">
+                    <!--<div class="hook"></div>-->
+                    <div class="frame">
+                        <div class="inside"><strong><center>Pictures</center></strong>
+                        <?php $once=0;
+                            foreach ($c_topic->posts as $post):?>
+                            <?php $attachments = $CI->attachment_model->get_post_attachments($post->post_id);?>
 
-                                                <?php foreach ($attachments as $attachment):
-                                                    if ($attachment->attachment_type_id === '1' && $once==0):?>
-                                                        <img src = "<?= base_url($attachment->file_url); ?>" width = "75%"  style="position:relative;" />
-                                                        
-                                                <?php 
-                                                    $once++;
-                                                    endif;
-                                                endforeach; ?>
-        <?php endforeach; ?></div>
-    </div>
-  </a>
-        <?php if ($c_topic->creator_id === $logged_user->user_id): ?>
-        <button onmouseenter="playclip()" id="crettop" class = "btn btn-primary buttonsbgcolor textoutliner" href="#create-post-modal" data-toggle = "modal" style="font-size:22px;margin-top: 2%; margin-left: 17%" onclick="dopics('pics')">Add pictures</button><br><br>
-            <?php endif;?>
-    </div>
-      
-        <!--Shout out-->
-   <ul class="stickynote col-sm-3">
-       <li class="stickytext">
-           <a href="#room_shout_modal" data-toggle = "modal" class="stickyact">
-               <?php
-                            foreach ($c_topic->posts as $post):
-                                ?>
-        <h2><?php echo utf8_decode($post->post_title); ?></h2>
-        <p><?php echo utf8_decode($post->post_content); ?></p>
-        <?php break; endforeach; ?>
-      </a>
-    </li>
-    <?php if ($c_topic->creator_id === $logged_user->user_id): ?>
-            <button onmouseenter="playclip()" id="crettop" class = "btn btn-primary buttonsbgcolor textoutliner" href="#create-post-modal" data-toggle = "modal" style="font-size:22px;margin-top: 2%; margin-left: 17%">Do a Shoutout!</button><br><br>
-            <?php endif;?>
-        </ul>
-        
-        
-        <!--regular text, emojis and stickers-->
-        <div>
-        <div id="white-board" class="col-sm-3 pull-right" style="max-height:300px">
-            <?php
-                            foreach ($c_topic->posts as $post):
-                                ?>
-            <p style = "border-right: none; max-width: 714px;padding: 3%;max-height: 50%"><?php echo utf8_decode($post->post_content); ?></p>
-                        
-        <?php endforeach; ?>
-            
-            
-            
-   <div id="eraser"></div>
-    <div id="red-pen"></div>
-    <div id="blue-pen"></div> </div>
-    <?php if ($c_topic->creator_id === $logged_user->user_id): ?>
-            <button onmouseenter="playclip()" id="crettop" class = "btn btn-primary buttonsbgcolor textoutliner" href="#create-post-modal" data-toggle = "modal" style="font-size:22px;margin-left: 18%;margin-top: 1%">Write on your board</button><br><br>
-            <?php endif;?></div>
-        
-    </div>
-    <div class="doorroom col-sm-9">
-        <div class="wrapper col-sm-3">
-  <a class="picture" href="#room_sounds_modal" data-toggle = "modal">
-    <!--<div class="hook"></div>-->
-    <div class="frame">
-        <div class="inside"><strong><center>Sounds</center></strong></div>
-    </div>
-  </a>
-        <?php if ($c_topic->creator_id === $logged_user->user_id): ?>
-            <button onmouseenter="playclip()" id="crettop" class = "btn btn-primary buttonsbgcolor textoutliner" href="#create-post-modal" data-toggle = "modal" style="font-size:22px;margin-top: 2%; margin-left: 17%">Add Sounds</button><br><br>
-            <?php endif;?>
-    </div>
-        <div class="wrapper col-sm-3">
-  <a class="picture" href="#room_videos_modal" data-toggle = "modal">
-    <!--<div class="hook"></div>-->
-    <div class="frame">
-        <div class="inside"><strong><center>Videos</center></strong>
-        <?php $once=0;
-                            foreach ($c_topic->posts as $post):
-                                ?>
-                                    <?php $attachments = $CI->attachment_model->get_post_attachments($post->post_id);?>
+                                <?php foreach ($attachments as $attachment):
+                                    if ($attachment->attachment_type_id === '1' && $once==0):?>
+                                        <img src = "<?= base_url($attachment->file_url); ?>" width = "75%"  style="position:relative;" />
+                                                
+                                <?php 
+                                    $once++;
+                                    endif;
+                                endforeach; ?>
 
-                                                <?php foreach ($attachments as $attachment):
-                                                    if ($attachment->attachment_type_id === '3' && $once==0):?>
-                                                        <video src = "<?= base_url($attachment->file_url); ?>" width = "99%"/></video>
-                                                        
-                                                <?php 
-                                                    $once++;
-                                                    endif;
-                                                endforeach; ?>
-        <?php endforeach; ?>
+                        <?php endforeach; ?></div>
+                    </div>
+                </a>
+
+                <?php if ($c_topic->creator_id === $logged_user->user_id): ?>
+                    <button onmouseenter="playclip()" onclick="toggleButton('image')" id="crettop" class = "btn btn-primary buttonsbgcolor textoutliner" href="#create-post-modal" data-toggle = "modal" style="font-size:22px;margin-top: 2%; margin-left: 17%" onclick="dopics('pics')">Add pictures</button><br><br>
+                <?php endif;?>
+
+            </div>
+              
+                <!--Shout out-->
+           <ul class="stickynote col-sm-3">
+               <li class="stickytext">
+                   <a href="#room_shout_modal" data-toggle = "modal" class="stickyact">
+                        <?php
+                            foreach ($c_topic->posts as $post):?>
+                            
+                    <h2><?php echo utf8_decode($post->post_title); ?></h2>
+                    <p><?php echo utf8_decode($post->post_content); ?></p>
+                    <?php break; endforeach; ?>
+
+                  </a>
+                </li>
+
+            <?php if ($c_topic->creator_id === $logged_user->user_id): ?>
+                <button onmouseenter="playclip()" id="crettop" class = "btn btn-primary buttonsbgcolor textoutliner" href="#create-post-modal" data-toggle = "modal" style="font-size:22px;margin-top: 2%; margin-left: 17%">Do a Shoutout!</button><br><br>
+                <?php endif;?>
+            </ul>
+                
+                
+                <!--regular text, emojis and stickers-->
+                <div>
+                <div id="white-board" class="col-sm-3 pull-right" style="max-height:300px">
+                    <?php
+                        foreach ($c_topic->posts as $post):
+                            ?>
+                    <p style = "border-right: none; max-width: 714px;padding: 3%;max-height: 50%"><?php echo utf8_decode($post->post_content); ?></p>
+                                
+                <?php endforeach; ?>
+                    
+            <div id="eraser"></div>
+            <div id="red-pen"></div>
+            <div id="blue-pen"></div> </div>
+            <?php if ($c_topic->creator_id === $logged_user->user_id): ?>
+                <button onmouseenter="playclip()" onclick="toggleButton('text')" id="crettop" class = "btn btn-primary buttonsbgcolor textoutliner" href="#create-post-modal" data-toggle = "modal" style="font-size:22px;margin-left: 18%;margin-top: 1%">Write on your board</button><br><br>
+                <?php endif;?></div>
+                
         </div>
-    </div>
-  </a>
-        <?php if ($c_topic->creator_id === $logged_user->user_id): ?>
-            <button onmouseenter="playclip()" id="crettop" class = "btn btn-primary buttonsbgcolor textoutliner" href="#create-post-modal" data-toggle = "modal" style="font-size:22px;margin-top: 2%; margin-left: 17%">Add Videos</button><br><br>
-            <?php endif;?>
-    </div>
-        <div class="col-sm-3"><p></p></div>
-    </div>
+
+        <div class="doorroom col-sm-12 col-md-11">
+            <div class="wrapper col-sm-3">
+                <a class="picture" href="#room_sounds_modal" data-toggle = "modal">
+                    <!--<div class="hook"></div>-->
+                    <div class="frame">
+                        <div class="inside"><strong><center>Sounds</center></strong></div>
+                    </div>
+                </a>
+
+                <?php if ($c_topic->creator_id === $logged_user->user_id): ?>
+                    <button onmouseenter="playclip()" onclick="toggleButton('audio')" id="crettop" class = "btn btn-primary buttonsbgcolor textoutliner" href="#create-post-modal" data-toggle = "modal" style="font-size:22px;margin-top: 2%; margin-left: 17%">Add Sounds</button><br><br>
+                    <?php endif;?>
+            </div>
+            
+            <div class="wrapper col-sm-3">
+                <a class="picture" href="#room_videos_modal" data-toggle = "modal">
+                    <!--<div class="hook"></div>-->
+                    <div class="frame">
+                        <div class="inside"><strong><center>Videos</center></strong>
+                        <?php $once=0;
+                            foreach ($c_topic->posts as $post):
+                                ?>
+                            <?php $attachments = $CI->attachment_model->get_post_attachments($post->post_id);?>
+
+                                <?php foreach ($attachments as $attachment):
+                                    if ($attachment->attachment_type_id === '3' && $once==0):?>
+                                        <video src = "<?= base_url($attachment->file_url); ?>" width = "99%"/></video>
+                                        
+                                <?php 
+                                    $once++;
+                                    endif;
+                                endforeach; ?>
+                            <?php endforeach; ?>
+                        </div>
+                    </div>
+                  </a>
+                <?php if ($c_topic->creator_id === $logged_user->user_id): ?>
+                    <button onmouseenter="playclip()" onclick="toggleButton('video')"id="crettop" class = "btn btn-primary buttonsbgcolor textoutliner" href="#create-post-modal" data-toggle = "modal" style="font-size:22px;margin-top: 2%; margin-left: 17%">Add Videos</button><br><br>
+                <?php endif;?>
+            </div>
+            
+        </div>
         
+    </div>
+
+    <!-- <div class = "col-sm-12 col-md-2 topic-preview-div">
+                    
+        <div class = "col-md-12 topic-post-list">
+
+           <?php
+           foreach ($c_topic->posts as $post):?>
+
+        <div>
+            <div class = "col-xs-9">
+                <h4 class = "ellipsis"><strong><?php echo utf8_decode($post->post_title); ?></strong> <small><i><?php echo $post->user->first_name . " " . $post->user->last_name; ?></i></small></h4>
+                <p class = "ellipsis" style="white-space: pre-wrap;"><?php echo utf8_decode($post->post_content); ?></p>
+            </div>
+
+        </div>
+
+        <?php $attachments = $CI->attachment_model->get_post_attachments($post->post_id);
+
+        // print_r($attachments);
+
+        foreach ($attachments as $attachment):
+            if ($attachment->attachment_type_id === '1'):?>
+                <img src = "<?= base_url($attachment->file_url); ?>"/>
+
+                <?php elseif ($attachment->attachment_type_id === '2'): ?>
+                    <audio src = "<?= base_url($attachment->file_url); ?>" controls></audio>
+
+                    <?php elseif ($attachment->attachment_type_id === '3'): ?>
+                        <video src = "<?= base_url($attachment->file_url); ?>" width = "300px" controls/></video>
+
+                        <?php elseif ($attachment->attachment_type_id === '4'): ?>
+                            <a href = "<?= base_url($attachment->file_url); ?>" download><i class = "fa fa-file-o"></i> <i class = "text" style = "font-size: 12px;"><?= utf8_decode($attachment->caption); ?></i></a>
+
+                        <?php 
+
+                        endif;
+                    endforeach;
+                    
+                    ?> 
+
+                    <?php 
+                endforeach; ?>
+
+            </div>
+        <div>
+            <?php if ($c_topic->creator_id === $logged_user->user_id): ?>
+                <button onmouseenter="playclip()" id="crettop" class = "btn btn-primary buttonsbgcolor textoutliner" href="#create-post-modal" data-toggle = "modal" style="font-size:22px">Say something</button>
+            <?php endif;?>
+        </div>
+    </div> -->
+
+</body>
+
+
+
 <!--    <div class="line1"></div>
     </div>-->
 <!--        <table style="width:150%;border-style: inset;border-color: #b38377;border-width: 10px; background-color: #b38377;  border-top: 6px solid #b89675;  border-right: 6px solid #7b654f;border-bottom: 6px solid #7b654f;  border-left: 6px solid #a67c52; "><tr>
@@ -328,77 +390,9 @@ include(APPPATH . 'views/header.php');
                 </div>
             </div>
 
-            <div class = "col-md-4 col-xs-12 content-container  topic-post-list" >
-                <div class = "list-group" style = "padding-top: 15px;">
-                             List Entry 
-                        <?php if (!$c_topic->creator_id === $logged_user->user_id): ?>
-                            <button onmouseenter="playclip()" id="crettop" class = "btn btn-primary buttonsbgcolor textoutliner" href="#create-post-modal" data-toggle = "modal" style="font-size:22px">Say something</button><br><br>
-                        <?php endif;?>
-                        
-
-                    <?php
-                    foreach ($c_topic->posts as $post):
-                        $text_class = '';
-                        if ($post->vote_count > 0) {
-                            $text_class = 'text-success';
-                        } else if ($post->vote_count < 0) {
-                            $text_class = 'text-danger';
-                        }
-                        ?>
-                        <a href = "javascript: void(0);" class = "btn btn-link list-group-item list-entry no-up-down-pad topic-post-entry" data-value = "<?php echo $post->post_id; ?>">
-                        <div class = "row container-fluid" style="position: relative; min-height: 100% !important; ">
-
-                                
-                            <div class="container-fluid" style="border: 1px solid grey;">
-                                <div class = "col-xs-9" >
-                                    <h4 class = "ellipsis"><small><i><?php echo $post->user->first_name . " " . $post->user->last_name; ?></i></small></h4>
-                                    <p class = "" style = "border-right: none; max-width: 714px; overflow: hidden;text-overflow: ellipsis;">"<?php echo utf8_decode($post->post_content); ?>"</p>
-                                </div>
-                                <div class = "col-xs-3 text-center" style = "padding: 0px; ">
-                                    <p style = "padding-top: 10px; font-size: 18px !important;color: #78909C;"><i><?php echo date("F d, Y", strtotime($post->date_posted)); ?></i></p>
-                                </div>
-
-                                <?php $attachments = $CI->attachment_model->get_post_attachments($post->post_id);?>
-
-                                    <?php //print_r($attachments); ?>
-
-                                    <?php foreach ($attachments as $attachment):
-                                        if ($attachment->attachment_type_id === '1'):?>
-                                            <img src = "<?= base_url($attachment->file_url); ?>" width = "50%"  style="position:relative;" />
-
-                                        <?php elseif ($attachment->attachment_type_id === '2'): ?>
-                                            <audio src = "<?= base_url($attachment->file_url); ?>" controls></audio>
-
-                                        <?php elseif ($attachment->attachment_type_id === '3'): ?>
-                                            <video src = "<?= base_url($attachment->file_url); ?>" width = "100px" controls/></video>
-
-                                        <?php elseif ($attachment->attachment_type_id === '4'): ?>
-                                            <a href = "<?= base_url($attachment->file_url); ?>" download><i class = "fa fa-file-o"></i> <i class = "text" style = "font-size: 12px;"><?= utf8_decode($attachment->caption); ?></i></a>
-
-                                    <?php 
-
-                                        endif;
-                                    endforeach;
-
-                                    ?>
-                                <button class = "reply-btn pull-right btn btn-sm btn-gray" style = "margin-right: 5px;" value = "<?php echo $post->post_id; ?>">Reply</button>
-
-                                    <br><br>
-                            </div>
-                        </div>
-                        <br>
-                        <?php endforeach; ?>
-                        
-                </div>
-            </div>
+            
     </div>-->
-<script>
-function doposting(p){
-        document.getElementById("audio-label").style.display = "none";
-    
-}
 
-</script>
     <?php
      include(APPPATH . 'views/side_postbar.php');
     include(APPPATH . 'views/modals/room_pictures_modal.php');
@@ -418,5 +412,9 @@ function doposting(p){
     include(APPPATH . 'views/modals/create_post_modal.php');
     include(APPPATH . 'views/modals/topic_members_modal.php');
     include(APPPATH . 'views/modals/cancel_topic_modal.php');
- //   include(APPPATH . 'views/chat/chat.php');
+     //   include(APPPATH . 'views/chat/chat.php');
+    ?>
+
+
+
     
