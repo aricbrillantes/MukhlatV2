@@ -274,7 +274,7 @@
 
                     document.getElementById("time-limit").options[3].selected = true;
 
-                    document.getElementById("time-warning").options[2].selected = true;
+                    // document.getElementById("time-warning").options[2].selected = true;
                     
                     var i, temp, string ="cell71-A cell72-A cell73-A cell74-A cell75-A cell78-A cell79-A cell80-A cell81-A cell82-A cell85-A cell86-A cell87-A cell88-A cell89-A cell92-A cell93-A cell94-A cell95-A cell96-A cell99-A cell100-A cell101-A cell102-A cell103-A cell106-A cell107-A cell108-A cell109-A cell110-A cell113-A cell114-A cell115-A cell116-A cell117-A cell118-A cell119-A cell120-A cell121-A cell122-A cell123-A cell124-A cell125-A cell126-A cell127-A cell128-A cell129-A cell130-A cell131-A cell132-A cell133-A cell134-A cell135-A cell136-A cell137-A cell138-A cell139-A cell140-A cell141-A cell142-A cell143-A cell144-A cell145-A cell148-A cell149-A cell150-A cell151-A cell152-A cell155-A cell156-A cell157-A cell158-A cell159-A cell162-A cell163-A cell164-A cell165-A cell166-A cell169-A cell170-A cell171-A cell172-A cell173-A cell176-A cell177-A cell178-A cell179-A cell180-A cell183-A cell184-A cell185-A cell186-A cell187-A cell190-A cell191-A cell192-A cell193-A cell194-A cell197-A cell198-A cell199-A cell200-A cell201-A cell204-A cell205-A cell206-A cell207-A cell208-A cell211-A cell212-A cell213-A cell214-A cell215-A cell216-A cell217-A cell218-A cell219-A cell220-A cell221-A cell222-A cell223-A cell224-A cell225-A cell226-A cell227-A cell228-A cell229-A cell230-A cell231-A cell232-A cell233-A cell234-A cell235-A cell236-A cell237-A cell238-A cell239-A cell240-A cell241-A cell242-A cell243-A cell244-A cell245-A cell246-A cell247-A cell248-A cell249-A cell250-A cell251-A cell252-A cell253-A cell254-A cell255-A cell256-A cell257-A cell260-A cell261-A cell262-A cell263-A cell264-A cell267-A cell268-A cell269-A cell270-A cell271-A";
 
@@ -325,8 +325,12 @@
                             <p class = "no-padding " style = "margin-bottom: 0px; margin-top: 15px;">As parents, you can set how long your child can use Mukhlat for each session.<br></p>
                         </li>
 
+                        <!-- <li class = "active text-center">
+                            <p class = "no-padding " style = "margin-bottom: 0px; margin-top: 15px;">Mukhlat has a feature that warns children that they can<br>only use Mukhlat for a limited time, and that their session is about to end.</p>
+                        </li> -->
 
-                        <li class = "active text-center">
+
+                        <!-- <li class = "active text-center">
                             <h3 class = "no-padding text-info" style = "margin-top: 10px;">Warning</h3>
                             
                             <select style="width:100px; height:20px" id="time-warning" onclick=""> 
@@ -338,7 +342,7 @@
                             </select>
 
                             <p class = "no-padding " style = "margin-bottom: 0px; margin-top: 15px;">Mukhlat has a feature that warns children that they can<br>only use Mukhlat for a limited time, and that their session is about to end.</p>
-                        </li>
+                        </li> -->
 
 
                     </ul><br>
@@ -1195,15 +1199,15 @@
         }
         
 
-        var warning = parseInt("<?php echo $row->warning; ?>");
-        switch(warning)
-        {
-            case 0:document.getElementById("time-warning").options[0].selected = true;break;
-            case 15:document.getElementById("time-warning").options[1].selected = true;break;
-            case 30:document.getElementById("time-warning").options[2].selected = true;break;
-            case 45:document.getElementById("time-warning").options[3].selected = true;break;
-            case 60:document.getElementById("time-warning").options[4].selected = true;break;
-        }
+        // var warning = parseInt("<?//php echo $row->warning; ?>");
+        // switch(warning)
+        // {
+        //     case 0:document.getElementById("time-warning").options[0].selected = true;break;
+        //     case 15:document.getElementById("time-warning").options[1].selected = true;break;
+        //     case 30:document.getElementById("time-warning").options[2].selected = true;break;
+        //     case 45:document.getElementById("time-warning").options[3].selected = true;break;
+        //     case 60:document.getElementById("time-warning").options[4].selected = true;break;
+        // }
 
         function changeTimeSettings(container, selectorTag, prefix) 
         {
@@ -1226,9 +1230,9 @@
 
             document.cookie = "updatetime=1;path=/";
 
-            var warning = document.getElementById("time-warning");
-            var selectedWarning = warning.options[warning.selectedIndex].value;
-            document.cookie = "selectedWarning=" + selectedWarning + ";path=/";   
+            // var warning = document.getElementById("time-warning");
+            // var selectedWarning = warning.options[warning.selectedIndex].value;
+            // document.cookie = "selectedWarning=" + selectedWarning + ";path=/";   
 
             var limit = document.getElementById("time-limit");
             var selectedLimit = limit.options[limit.selectedIndex].value;

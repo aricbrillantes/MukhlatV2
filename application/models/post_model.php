@@ -63,10 +63,10 @@ class Post_model extends CI_Model {
         $this->db->from('tbl_posts as p');
         $this->db->join('tbl_users as u1', 'p.user_id = u1.user_id');
         $this->db->join('tbl_topics as t', 'p.topic_id = t.topic_id');
-        $this->db->join('tbl_topic_follower as tf', 'tf.topic_id = t.topic_id');
-        $this->db->join('tbl_users as u2', 'tf.user_id = u2.user_id');
+        // $this->db->join('tbl_topic_follower as tf', 'tf.topic_id = t.topic_id');
+        // $this->db->join('tbl_users as u2', 'tf.user_id = u2.user_id');
         $this->db->where('u1.user_id =', $user_id);
-        $this->db->where('u2.user_id =', $logged_user_id);
+        // $this->db->where('u2.user_id =', $logged_user_id);
         $this->db->where('t.is_cancelled =', '0');
         $this->db->order_by('p.date_posted', 'DESC');
 
@@ -77,8 +77,8 @@ class Post_model extends CI_Model {
                 $post->parent = $this->get_post(false, true, false, $post->parent_id);
             }
 
-            $post->vote_count = $this->get_vote_count($post->post_id);
-            $post->vote_type = $this->get_vote_type($post->post_id, $logged_user_id);
+            // $post->vote_count = $this->get_vote_count($post->post_id);
+            // $post->vote_type = $this->get_vote_type($post->post_id, $logged_user_id);
         }
 
         return $user_activities;
