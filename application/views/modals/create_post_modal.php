@@ -446,10 +446,10 @@ $topic = $_SESSION['current_topic'];
 })();</script>-->
 
     <!-- Begin emoji-picker JavaScript -->
-<!--    <script src="<?php echo base_url('lib/js/config.js');?>"></script>
+    <script src="<?php echo base_url('lib/js/config.js');?>"></script>
     <script src="<?php echo base_url('lib/js/util.js');?>"></script>
     <script src="<?php echo base_url('lib/js/jquery.emojiarea.js');?>"></script>
-    <script src="<?php echo base_url('lib/js/emoji-picker.js');?>"></script>-->
+    <script src="<?php echo base_url('lib/js/emoji-picker.js');?>"></script>
     <!-- End emoji-picker JavaScript -->
 
     <script>
