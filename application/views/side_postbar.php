@@ -10,30 +10,25 @@ $logged_user = $_SESSION['logged_user'];
 
                         <!-- Topic Post List -->
                     
-                    <div class = "col-xs-12 col-md-4 pull-right topic-post-list">
-                        <div class = "list-group" style = "padding-top: 15px;">
+                    <div class = "col-md-12 topic-post-list">
+                        <!--<div class = "list-group" style = "padding-top: 15%">-->
                              <!--List Entry--> 
                             <?php
                             foreach ($c_topic->posts as $post):
-                                $text_class = '';
-                                if ($post->vote_count > 0) {
-                                    $text_class = 'text-success';
-                                } else if ($post->vote_count < 0) {
-                                    $text_class = 'text-danger';
-                                }
+//                                if($post->reply==1):
                                 ?>
                                 <!--<a href = "javascript: void(0);" class = "btn btn-link list-group-item list-entry no-up-down-pad topic-post-entry" data-value = "<?php echo $post->post_id; ?>">-->
-                        <div>
+                        <!--<div class = "speech-bubble">-->
                             
 
-                                <div class = "row">
+                                <div>
                                     <div class = "col-xs-9">
                                         <h4 class = "ellipsis"><strong><?php echo utf8_decode($post->post_title); ?></strong> <small><i><?php echo $post->user->first_name . " " . $post->user->last_name; ?></i></small></h4>
                                         <p class = "ellipsis" style="white-space: pre-wrap;"><?php echo utf8_decode($post->post_content); ?></p>
                                     </div>
-                                    <div class = "col-xs-3 text-center" style = "padding: 0px;">
+<!--                                    <div class = "col-xs-3 text-center" style = "padding: 0px;">
                                         <p style = "padding-top: 10px; font-size: 18px !important;color: #78909C;"><i><?php echo date("F d, Y", strtotime($post->date_posted)); ?></i></p>
-                                    </div>
+                                    </div>-->
                                 </div>
 
                                             <?php $attachments = $CI->attachment_model->get_post_attachments($post->post_id);
@@ -57,16 +52,18 @@ $logged_user = $_SESSION['logged_user'];
 
                                                     endif;
                                                 endforeach;
-
+                                            
                                                 ?> 
-                        </div>
+                        <!--</div>-->
 <!--                                </a>-->
-                            <?php endforeach; ?>
-                        </div>
+                            <?php 
+//                            endif;
+                            endforeach; ?>
+                        <!--</div>-->
                     </div>
                         <div>
                             <?php if ($c_topic->creator_id === $logged_user->user_id): ?>
-                        <button onmouseenter="playclip()" id="crettop" class = "btn btn-primary buttonsbgcolor textoutliner" href="#create-post-modal" data-toggle = "modal" style="font-size:22px">Say something</button>
+                        <button onmouseenter="playclip()" id="crettop" class = "btn btn-primary buttonsbgcolor textoutliner" href="#create_post_reply_modal" data-toggle = "modal" style="font-size:22px">Say something</button>
                     <?php endif;?>
                         </div>
     

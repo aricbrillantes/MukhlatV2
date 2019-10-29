@@ -698,8 +698,8 @@ function voiceIndicatorOFF() {
         
         
     </script>
-<script src="<?php echo base_url('js/eastereggs.js'); ?>"></script>
-<script src="<?php echo base_url('js/usagetimer.js'); ?>"></script>
+<!--<script src="<?php echo base_url('js/eastereggs.js'); ?>"></script>-->
+<!--<script src="<?php echo base_url('js/usagetimer.js'); ?>"></script>-->
 <script>var $draggable = $('.draggable').draggabilly();</script>
 <script src="<?php echo base_url('js/frequencybars.js'); ?>"></script>
 <script src="<?php echo base_url('js/sparkles.js'); ?>"></script>

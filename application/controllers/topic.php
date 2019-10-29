@@ -243,6 +243,9 @@ class Topic extends CI_Controller {
             'topic_id' => $topic->topic_id,
             'post_title' => utf8_encode(htmlspecialchars($input->post('post_title'))),
             'post_content' => utf8_encode(htmlspecialchars($input->post('post_content'))),
+            
+            'reply' => utf8_encode(htmlspecialchars($input->post('reply'))),
+            'shout' => utf8_encode(htmlspecialchars($input->post('shout'))),
         );
 
         $caption = utf8_encode(htmlspecialchars($input->post('attachment_caption')));

@@ -65,9 +65,9 @@ $topic = $_SESSION['current_topic'];
                                 
     </script>-->
  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
-  <link href="<?php echo base_url('lib/css/emoji.css'); ?>" rel="stylesheet">
+  <!--<link href="<?php echo base_url('lib/css/emoji.css'); ?>" rel="stylesheet">-->
 <!-- Create Post Modal -->
-<div id="create-post-modal" class="modal fade" role="dialog">
+<div id="create_post_shout_modal" class="modal fade" role="dialog">
     <div class="modal-dialog">
         <!-- Create Topic Modal Content-->
         <div class="modal-content">
@@ -81,13 +81,15 @@ $topic = $_SESSION['current_topic'];
                     <div class="form-group"><!-- check if title is already taken -->
                         <label for = "title">Make a title for your post:</label>
                         <!--<p class="lead emoji-picker-container">-->
-                        <input type="text" style="height: 50px;" maxlength = "100"  required class="form-control" name = "post_title" id = "post-title" placeholder = "Title of your Post"  data-emojiable="true" value=" "/>
+                        <input type="text" style="height: 50px;" maxlength = "100"  required class="form-control" name = "post_title" id = "post-title" placeholder = "Title of your Post" value=" "/>
                         <p id="charsRemaining3">Characters Left: 100</p>
                         <div class="charLimitMessage" id="charLimitMessage3"><center>Oops! You've used up all the letters and numbers for your title!</center></div>
                         <!--<span id="start_button" onclick="startDictation2(event)" style="display: inline-block;"><img border="0" alt="Start" id="start_img" src="https://www.google.com/intl/en/chrome/assets/common/images/content/mic.gif"></span>-->
                             <!--<a href="#" class="voicesearch" id="voicesearch" onclick="stopDictation2(event)"><img border="0" id="voicesearchicon" class="voicesearchicon" alt="START" src="images/microphone_start.png" height="50" width="50"></a>-->
                             <!--<button onclick="startDictation2(event)">Try it</button>-->
                     </div>
+                        <input maxlength = "1"  required class="form-control" name = "reply" id = "reply"  value="0"/>
+                        <input maxlength = "1"  required class="form-control" name = "shout" id = "shout"  value="1"/>
                     </div>
                     <div id="results" style="display: none" border="1px">
                         <span id="final_span2" class="final"></span>
@@ -97,7 +99,7 @@ $topic = $_SESSION['current_topic'];
                     <div class="form-group"><!-- check if description exceeds n words-->
                         <label for = "content">Make the content of your post:</label>
                         <!--<p class="lead emoji-picker-container">-->
-                        <textarea class = "form-control" style="height: 100px;" maxlength = "16000" required name = "post_content" id = "post-content" placeholder = "Tell something in your post!" data-emojiable="true"></textarea>
+                        <textarea class = "form-control" style="height: 100px;" maxlength = "16000" required name = "post_content" id = "post-content" placeholder = "Tell something in your post!"></textarea>
                         <p id="charsRemaining4">Characters Left: 16000</p>
                         <div class="charLimitMessage" id="charLimitMessage4"><center>Oops! You've used up all the letters and numbers for your post!</center></div>
                     </div>
@@ -120,42 +122,10 @@ $topic = $_SESSION['current_topic'];
                          
                          <br><br>
                          
-                    <div id = "attachment-buttons" class = "form-group">
 
-                      <img id="target" />
-
-                        Attach a file:
-                        <!--IMAGE-->
-                        <label id = "img-label" class="btn btn-primary buttonsbgcolor">
-                            <input id = "attach-img" accept = "image/*" type="file" name = "post_image" style = "display: none;">
-                            <p id = "image-text" class = "attach-btn-text"><i class = "fa fa-file-image-o"></i> Add Image</p>
-                        </label>
-
-                        <!--AUDIO-->
-                        <label id = "audio-label" class="btn btn-primary buttonsbgcolor">
-                            <input id = "attach-audio" accept = "audio/*" type="file" name = "post_audio" style = "display: none;">
-                            <p id = "audio-text" class = "attach-btn-text"><i class = "fa fa-file-audio-o"></i> Add Audio</p>
-                        </label>
-
-                        <!--VIDEO-->
-                        <label id = "video-label" class="btn btn-primary buttonsbgcolor">
-                            <input id = "attach-video" accept = "video/*" type="file" name = "post_video" style = "display: none;">
-                            <p id = "video-text" class = "attach-btn-text"><i class = "fa fa-file-video-o"></i> Add Video</p>
-                        </label>
-
-                        <!--FILE-->
-                        <label id = "file-label" class="btn btn-primary buttonsbgcolor">
-                            <input id = "attach-file" type="file" name = "post_file" style = "display: none;">
-                            <p id = "file-text" class = "attach-btn-text"><i class = "fa fa-file-o"></i> Add File</p>
-                        </label>
-
-                    </div>
-                    <div id = "attachment-preview" class = "content-container">
-                        <h5 id = "attachment-message" class = "text-warning text-center">No attachment yet.</h5>
-                    </div>
                 </div>
                 <div class = "modal-footer" style = "padding: 5px; border-top: none; padding-bottom: 10px; padding-right: 10px;">
-                    <a id = "create-post-btn" class ="btn btn-primary buttonsbgcolor" data-toggle = "modal" onClick="putImage()">Post</a>
+                    <a id = "create-post-btn" class ="btn btn-primary buttonsbgcolor" data-toggle = "modal">Post</a>
                 </div>
             </form>
         </div>
@@ -169,33 +139,6 @@ $topic = $_SESSION['current_topic'];
 
 
 <script type="text/javascript">
-
-
-  function showImage(src, target) 
-  {
-    var fr = new FileReader();
-
-    fr.onload = function()
-    {
-      // target.src = fr.result;
-    }
-
-    fr.readAsDataURL(src.files[0]);
-
-    
-  }
-
-  function putImage() 
-  {
-    var src = document.getElementById("attach-img");
-    var target = document.getElementById("target");
-    // showImage(src, target);
-
-    if((src.files[0].size * 0.000001) > 1.6)
-      alert("file too big!");
-  }
-
-
     var warningCount=0, count=0;
     var x = document.getElementById("profanityWarning");
     var charCount1=100, charCount2=16000;
@@ -388,20 +331,7 @@ $topic = $_SESSION['current_topic'];
     <script src="<?php echo base_url('lib/js/emoji-picker.js');?>"></script>-->
     <!-- End emoji-picker JavaScript -->
 
-    <script>
-      $(function() {
-        // Initializes and creates emoji set from sprite sheet
-        window.emojiPicker = new EmojiPicker({
-          emojiable_selector: '[data-emojiable=true]',
-          assetsPath: '<?php echo base_url('lib/img/');?>',
-          popupButtonClasses: 'fa fa-smile-o'
-        });
-        // Finds all elements with `emojiable_selector` and converts them to rich emoji input fields
-        // You may want to delay this step if you have dynamically created input fields that appear later in the loading process
-        // It can be called as many times as necessary; previously converted input fields will not be converted again
-        window.emojiPicker.discover();
-      });
-    </script>
+
     
 <script type="text/javascript" src="<?php echo base_url("/js/topic.js"); ?>"></script>
 <!-- END SCRIPTS -->

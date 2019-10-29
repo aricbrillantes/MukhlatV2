@@ -1,10 +1,25 @@
 <?php
 include(APPPATH . 'views/header.php');
-    $logged_user = $_SESSION['logged_user'];  
     $c_topic = $_SESSION['current_topic'];
 
     $CI =&get_instance();
     $CI->load->model('attachment_model');
+    
+    if(isset($_SESSION['logged_user']))
+    {
+        $logged_user = $_SESSION['logged_user'];
+        if($logged_user->role_id != 2 || $logged_user == null)
+        {
+            $homeURL = base_url('home');
+            header("Location: $homeURL");
+        }
+    }
+
+    else
+    {
+        $homeURL = base_url('home');
+        header("Location: $homeURL");
+    }
 
     
 ?>
@@ -27,11 +42,25 @@ include(APPPATH . 'views/header.php');
   <a class="picture" href="#room_pictures_modal" data-toggle = "modal">
     <!--<div class="hook"></div>-->
     <div class="frame">
-        <div class="inside"><strong><center>Pictures</center></strong></div>
+        <div class="inside"><strong><center>Pictures</center></strong>
+        <?php $once=0;
+                            foreach ($c_topic->posts as $post):
+                                ?>
+                                    <?php $attachments = $CI->attachment_model->get_post_attachments($post->post_id);?>
+
+                                                <?php foreach ($attachments as $attachment):
+                                                    if ($attachment->attachment_type_id === '1' && $once==0):?>
+                                                        <img src = "<?= base_url($attachment->file_url); ?>" width = "75%"  style="position:relative;" />
+                                                        
+                                                <?php 
+                                                    $once++;
+                                                    endif;
+                                                endforeach; ?>
+        <?php endforeach; ?></div>
     </div>
   </a>
         <?php if ($c_topic->creator_id === $logged_user->user_id): ?>
-            <button onmouseenter="playclip()" id="crettop" class = "btn btn-primary buttonsbgcolor textoutliner" href="#create-post-modal" data-toggle = "modal" style="font-size:22px;margin-top: 2%; margin-left: 17%">Add pictures</button><br><br>
+        <button onmouseenter="playclip()" id="crettop" class = "btn btn-primary buttonsbgcolor textoutliner" href="#create-post-modal" data-toggle = "modal" style="font-size:22px;margin-top: 2%; margin-left: 17%" onclick="dopics('pics')">Add pictures</button><br><br>
             <?php endif;?>
     </div>
       
@@ -89,7 +118,22 @@ include(APPPATH . 'views/header.php');
   <a class="picture" href="#room_videos_modal" data-toggle = "modal">
     <!--<div class="hook"></div>-->
     <div class="frame">
-        <div class="inside"><strong><center>Videos</center></strong></div>
+        <div class="inside"><strong><center>Videos</center></strong>
+        <?php $once=0;
+                            foreach ($c_topic->posts as $post):
+                                ?>
+                                    <?php $attachments = $CI->attachment_model->get_post_attachments($post->post_id);?>
+
+                                                <?php foreach ($attachments as $attachment):
+                                                    if ($attachment->attachment_type_id === '3' && $once==0):?>
+                                                        <video src = "<?= base_url($attachment->file_url); ?>" width = "99%"/></video>
+                                                        
+                                                <?php 
+                                                    $once++;
+                                                    endif;
+                                                endforeach; ?>
+        <?php endforeach; ?>
+        </div>
     </div>
   </a>
         <?php if ($c_topic->creator_id === $logged_user->user_id): ?>
@@ -348,13 +392,26 @@ include(APPPATH . 'views/header.php');
                 </div>
             </div>
     </div>-->
+<script>
+function doposting(p){
+        document.getElementById("audio-label").style.display = "none";
+    
+}
 
+</script>
     <?php
-    // include(APPPATH . 'views/side_postbar.php');
+     include(APPPATH . 'views/side_postbar.php');
     include(APPPATH . 'views/modals/room_pictures_modal.php');
     include(APPPATH . 'views/modals/room_shout_modal.php');
     include(APPPATH . 'views/modals/room_sounds_modal.php');
     include(APPPATH . 'views/modals/room_videos_modal.php');
+    
+//    include(APPPATH . 'views/modals/create_post_pics_modal.php');
+//    include(APPPATH . 'views/modals/create_post_reply_modal.php');
+//    include(APPPATH . 'views/modals/create_post_shout_modal.php');
+//    include(APPPATH . 'views/modals/create_post_sound_modal.php');
+//    include(APPPATH . 'views/modals/create_post_text_modal.php');
+//    include(APPPATH . 'views/modals/create_post_vids_modal.php');
     
     
     include(APPPATH . 'views/modals/create_reply_modal.php');

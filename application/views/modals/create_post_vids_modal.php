@@ -67,7 +67,7 @@ $topic = $_SESSION['current_topic'];
  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
   <link href="<?php echo base_url('lib/css/emoji.css'); ?>" rel="stylesheet">
 <!-- Create Post Modal -->
-<div id="create-post-modal" class="modal fade" role="dialog">
+<div id="create_post_vids_modal" class="modal fade" role="dialog">
     <div class="modal-dialog">
         <!-- Create Topic Modal Content-->
         <div class="modal-content">
@@ -88,6 +88,8 @@ $topic = $_SESSION['current_topic'];
                             <!--<a href="#" class="voicesearch" id="voicesearch" onclick="stopDictation2(event)"><img border="0" id="voicesearchicon" class="voicesearchicon" alt="START" src="images/microphone_start.png" height="50" width="50"></a>-->
                             <!--<button onclick="startDictation2(event)">Try it</button>-->
                     </div>
+                        <input maxlength = "1"  required class="form-control" name = "reply" id = "reply"  value="0"/>
+                        <input maxlength = "1"  required class="form-control" name = "shout" id = "shout"  value="0"/>
                     </div>
                     <div id="results" style="display: none" border="1px">
                         <span id="final_span2" class="final"></span>

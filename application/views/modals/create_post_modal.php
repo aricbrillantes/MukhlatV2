@@ -90,6 +90,9 @@ $topic = $_SESSION['current_topic'];
                             <!--<a href="#" class="voicesearch" id="voicesearch" onclick="stopDictation2(event)"><img border="0" id="voicesearchicon" class="voicesearchicon" alt="START" src="images/microphone_start.png" height="50" width="50"></a>-->
                             <!--<button onclick="startDictation2(event)">Try it</button>-->
                     </div>
+                        
+                        <input maxlength = "1"  required class="form-control" name = "reply" id = "reply"  value="0"/>
+                        <input maxlength = "1"  required class="form-control" name = "shout" id = "shout"  value="0"/>
                     </div>
                     
                     
