@@ -14,19 +14,38 @@
 class Topic extends CI_Controller {
 
     public function index() {
-        $logged_user = $_SESSION['logged_user'];
-        if (!empty($logged_user)) {
-            $this->load->model('topic_model', 'topics');
-            $_SESSION['sort_type'] = 1;
-            $data['topics'] = $this->topics->search_topics('', 1);
-            $this->load->view('pages/topic_list_page', $data);
-        } else {
-            echo 'ERROR!';
+
+        if(isset($_SESSION['logged_user']))
+        {
+            if(isset($_SESSION['logged_user']))
+            $logged_user = $_SESSION['logged_user'];
+            if (!empty($logged_user)) 
+            {
+                $this->load->model('topic_model', 'topics');
+                $_SESSION['sort_type'] = 1;
+                $data['topics'] = $this->topics->search_topics('', 1);
+                $this->load->view('pages/topic_list_page', $data);
+            }
         }
+
+        else
+        {
+            $homeURL = base_url('home');
+            header("Location: $homeURL");
+        }
+         
     }
 
     public function view() {
-        $logged_user = $_SESSION['logged_user'];
+        
+        if(isset($_SESSION['logged_user']))
+            $logged_user = $_SESSION['logged_user'];
+
+        else
+        {
+            $homeURL = base_url('home');
+            header("Location: $homeURL");
+        }
 
         $topic_id = $this->uri->segment(3);
 
@@ -83,20 +102,22 @@ class Topic extends CI_Controller {
     
     public function create() {
         $input = $this->input;
-        $logged_user = $_SESSION['logged_user'];
+
+        if(isset($_SESSION['logged_user']))
+            if(isset($_SESSION['logged_user']))
+            $logged_user = $_SESSION['logged_user'];
+        
 
         $data = array(
             'creator_id' => $logged_user->user_id,
             'topic_name' => utf8_encode(htmlspecialchars($input->post('topic_name'))),
-            'topic_description' => utf8_encode(htmlspecialchars($input->post('topic_description'))),
+            'topic_description' => utf8_encode(htmlspecialchars($input->post('topic_description')))
+            // 'room_theme' => utf8_encode(htmlspecialchars($input->post('topic_design')))
         );
 
         $this->db->set('date_created', 'NOW()', FALSE);
         $this->db->insert('tbl_topics', $data);
         $topic_id = $this->db->insert_id();
-        
-        
-        
         
         
         // ATTACHMENTS
@@ -153,7 +174,10 @@ class Topic extends CI_Controller {
     }
 
     public function follow() {
-        $logged_user = $_SESSION['logged_user'];
+        if(isset($_SESSION['logged_user']))
+            if(isset($_SESSION['logged_user']))
+            $logged_user = $_SESSION['logged_user'];
+
         if ($logged_user) {
             $topic_id = $this->uri->segment(3);
             $this->load->model("topic_model", "topics");
@@ -201,8 +225,15 @@ class Topic extends CI_Controller {
     /* FUNCTIONS FOR POSTS */
 
     public function post() {
+
+        // echo '<script type="text/javascript">alert("post")</script>'; 
+
         $input = $this->input;
-        $logged_user = $_SESSION['logged_user'];
+
+        if(isset($_SESSION['logged_user']))
+            if(isset($_SESSION['logged_user']))
+            $logged_user = $_SESSION['logged_user'];
+
         $topic = $_SESSION['current_topic'];
 
         $data = array(
@@ -234,11 +265,14 @@ class Topic extends CI_Controller {
         //image
         if (isset($_FILES['post_image']['name'])) {
             if (!$this->upload->do_upload('post_image')) {
+                // echo '<script type="text/javascript">alert("fail");</script>'; 
                 echo $this->upload->display_errors();
             } else {
                 //upload success
                 $upload_data = $this->upload->data();
                 $path = './uploads/_' . $post_id . '/' . $upload_data['file_name'];
+    
+                // echo '<script type="text/javascript">alert("' . $upload_data['file_name'] . '");</script>';
 
                 $this->load->model('attachment_model', 'attachments');
 
@@ -316,7 +350,9 @@ class Topic extends CI_Controller {
     }
 
     public function vote() {
-        $logged_user = $_SESSION['logged_user'];
+        if(isset($_SESSION['logged_user']))
+            if(isset($_SESSION['logged_user']))
+            $logged_user = $_SESSION['logged_user'];
 
         $post_id = $this->uri->segment(3);
         $vote_type = $this->input->post("vote_type");
@@ -359,7 +395,8 @@ class Topic extends CI_Controller {
     public function reply() {
         $id = $this->uri->segment(3);
         $input = $this->input;
-        $logged_user = $_SESSION['logged_user'];
+        if(isset($_SESSION['logged_user']))
+            $logged_user = $_SESSION['logged_user'];
         $topic = $_SESSION['current_topic'];
 
         $caption = $input->post(utf8_encode(htmlspecialchars('attachment_caption')));
@@ -592,7 +629,8 @@ class Topic extends CI_Controller {
         $this->topics->update_topic($topic_id, $data);
 
         //remove topic from logged user
-        $logged_user = $_SESSION['logged_user'];
+        if(isset($_SESSION['logged_user']))
+            $logged_user = $_SESSION['logged_user'];
 
         $topic_index = -1;
         foreach ($logged_user->topics as $key => $topic) {
@@ -657,7 +695,8 @@ class Topic extends CI_Controller {
 
     //refreshes the user's list of topics
     public function refresh() {
-        $logged_user = $_SESSION['logged_user'];
+        if(isset($_SESSION['logged_user']))
+            $logged_user = $_SESSION['logged_user'];
 
         if ($logged_user) {
             $this->load->model("topic_model", "topics");

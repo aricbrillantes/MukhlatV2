@@ -35,7 +35,15 @@ class User extends CI_Controller {
     }
 
     public function update() {
-        $user = $_SESSION['logged_user'];
+        
+        if(isset($_SESSION['logged_user']))
+            $user = $_SESSION['logged_user'];
+
+        else
+        {
+            $homeURL = base_url('home');
+            header("Location: $homeURL");
+        }
         
         if (!file_exists('./uploads/user_profiles')) {
             mkdir('./uploads/user_profiles/', 0777, true);
