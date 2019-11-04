@@ -24,14 +24,14 @@
         header("Location: $homeURL");
     }
 
-    if($CI->user_model->isParent($logged_user->user_id,$id) == 999)
+    if($CI->user_model->isParent($logged_user->email,$id) == 999)
     {
         $homeURL = base_url('home');
         header("Location: $homeURL");
     }
 
     //get children for navbar
-    $children_display = $CI->user_model->view_child($logged_user->user_id);
+    $children_display = $CI->user_model->view_child($logged_user->email);
 
     //get data of child being monitored
     $children = $CI->user_model->view_specific_child($id);
@@ -40,7 +40,6 @@
     $CI =&get_instance();
     $CI->load->model('topic_model');
     $CI->load->model('post_model');
-
 
     $user_activity = $CI->user_model->get_child_records($id);
     $activities = $CI->post_model->get_user_activities($id,$id);

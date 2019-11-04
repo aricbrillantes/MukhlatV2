@@ -19,7 +19,8 @@ class Signin extends CI_Controller {
         $fields = array('email' => $input->post('sign_up_email'));
         $user = $this->user->get_user(false, false, $fields);
 
-        if (!$user && !empty(htmlspecialchars($input->post('sign_up_birthday', TRUE)))) 
+        if (!$user 
+            && !empty(htmlspecialchars($input->post('sign_up_birthday', TRUE))) ) 
         {
             $data = array(
                 'first_name' => utf8_encode(htmlspecialchars($input->post('first_name', TRUE))),
@@ -27,6 +28,7 @@ class Signin extends CI_Controller {
                 'email' => htmlspecialchars($input->post('sign_up_email', TRUE)),
                 'password' => hash('sha256', htmlspecialchars($input->post('sign_up_password', TRUE))),
                 'birthdate' => htmlspecialchars($input->post('sign_up_birthday', TRUE)),
+                'parent' => htmlspecialchars($input->post('sign_up_email_parent', TRUE)),
                 'role_id' => htmlspecialchars($input->post('sign_up_role', TRUE)),
                 'is_enabled' => false,
             );
@@ -35,7 +37,9 @@ class Signin extends CI_Controller {
             // echo 1;
         } 
 
-        else if (!$user && empty(htmlspecialchars($input->post('sign_up_birthday', TRUE)))) 
+        else if (!$user 
+            && empty(htmlspecialchars($input->post('sign_up_birthday', TRUE))) 
+            &&  empty(htmlspecialchars($input->post('sign_up_email_parent', TRUE))) ) 
         {
             $data = array(
                 'first_name' => utf8_encode(htmlspecialchars($input->post('first_name', TRUE))),

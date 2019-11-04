@@ -18,6 +18,15 @@ class User_model extends CI_Model {
         return $query->get()->result();
     }
 
+    public function get_id($email) 
+    {
+        $query = $this->db->select('user_id, email')
+                ->from('tbl_users')
+                ->where('email',$email);
+
+        return $query->get()->result();
+    }
+
     public function get_user($load_topics, $load_activities, $fields = array()) {
         $query = $this->db->get_where('tbl_users', $fields);
 
@@ -43,12 +52,12 @@ class User_model extends CI_Model {
         return $user;
     }
 
-    public function isParent($parent_id,$child_id) 
+    public function isParent($parent_email,$child_id) 
     {
        $query = $this->db->select('user_id')
                 ->from('tbl_users')
                 ->where('user_id', $child_id)
-                ->where('parent', $parent_id);
+                ->where('parent', $parent_email);
 
         $query = $this->db->get();
         
@@ -62,13 +71,13 @@ class User_model extends CI_Model {
     }
 
     //function for getting parents' children's data
-    public function view_child($parent_id) 
+    public function view_child($parent_email) 
     {
         // echo $parent_id . "<br>";
         
         $query = $this->db->select('user_id, first_name, last_name, parent, email, description, is_enabled, role_id')
                 ->from('tbl_users')
-                ->where('parent', $parent_id);
+                ->where('parent', $parent_email);
 
         $query = $this->db->get();
         // echo print_r($query->result());

@@ -12,7 +12,10 @@
     }
 
     $this->load->model('user_model', 'users');
-    $children = $this->users->view_child($logged_user->user_id);
+
+    echo($logged_user->email);
+
+    $children = $this->users->view_child($logged_user->email);
 
     $CI =&get_instance();
     $CI->load->library('user_agent');
