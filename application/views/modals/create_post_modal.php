@@ -166,6 +166,18 @@ $topic = $_SESSION['current_topic'];
                     <a id = "create-post-btn" class ="btn btn-primary buttonsbgcolor" data-toggle = "modal" onClick="putImage()">Post</a>
                 </div>
             </form>
+
+            <div id = "audio-label">
+                    <button id="btnStart">Record My Voice!</button>
+                    <button id="btnStop">Im done recording!</button></p>
+        
+                    
+                    <audio id="vid2" controls></audio><br>
+        
+                    <a id="dl"  download>download</a>
+
+            </div>
+
         </div>
     </div>
 </div>
@@ -177,6 +189,85 @@ $topic = $_SESSION['current_topic'];
 
 <script>
 
+///////////////
+let constraintObj = { 
+            audio: true, 
+            video: false
+        }; 
+      
+        if (navigator.mediaDevices === undefined) {
+            navigator.mediaDevices = {};
+            navigator.mediaDevices.getUserMedia = function(constraintObj) {
+                let getUserMedia = navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+                if (!getUserMedia) {
+                    return Promise.reject(new Error('getUserMedia is not implemented in this browser'));
+                }
+                return new Promise(function(resolve, reject) {
+                    getUserMedia.call(navigator, constraintObj, resolve, reject);
+                });
+            }
+        }else{
+            navigator.mediaDevices.enumerateDevices()
+            .then(devices => {
+                devices.forEach(device=>{
+                    console.log(device.kind.toUpperCase(), device.label);
+                    //, device.deviceId
+                })
+            })
+            .catch(err=>{
+                console.log(err.name, err.message);
+            })
+        }
+        navigator.mediaDevices.getUserMedia(constraintObj)
+        .then(function(mediaStreamObj) {
+            //connect the media stream to the first audio element
+            // let audio = document.querySelector('audio');
+            // if ("srcObject" in audio) {
+            //     audio.srcObject = mediaStreamObj;
+            // } else {
+            //     //old version
+            //     audio.src = window.URL.createObjectURL(mediaStreamObj);
+            // }
+            
+            // audio.onloadedmetadata = function(ev) {
+            //     //show in the audio element what is being captured by the webcam
+            //     audio.play();
+            // };
+            
+            //add listeners for saving audio/audio
+            let dl = document.getElementById('dl');
+            let start = document.getElementById('btnStart');
+            let stop = document.getElementById('btnStop');
+            let vidSave = document.getElementById('vid2');
+            let mediaRecorder = new MediaRecorder(mediaStreamObj);
+            let chunks = [];
+            
+            start.addEventListener('click', (ev)=>{
+                mediaRecorder.start();
+                console.log(mediaRecorder.state);
+                
+            })
+            stop.addEventListener('click', (ev)=>{
+                mediaRecorder.stop();
+                console.log(mediaRecorder.state);
+            });
+            mediaRecorder.ondataavailable = function(ev) {
+                chunks.push(ev.data);
+            }
+            mediaRecorder.onstop = (ev)=>{
+                let blob = new Blob(chunks, { 'type' : 'audio/mp3;' });
+                chunks = [];
+                let audioURL = window.URL.createObjectURL(blob);
+                vidSave.src = audioURL;
+                dl.href=audioURL;
+
+            }
+        })
+        .catch(function(err) { 
+            console.log(err.name, err.message); 
+        });
+        
+///////////////
 
     function toggleButton(p)
     {
