@@ -11,13 +11,16 @@ class Signin extends CI_Controller {
         $this->load->view('pages/sign_in_page', $data);
     }
 
-    public function signup() {
+    public function signup() 
+    {
         $input = $this->input;
         $this->load->model('user_model', 'user');
 
         $fields = array('email' => $input->post('sign_up_email'));
         $user = $this->user->get_user(false, false, $fields);
-        if (!$user) {
+
+        if (!$user && !empty(htmlspecialchars($input->post('sign_up_birthday', TRUE)))) 
+        {
             $data = array(
                 'first_name' => utf8_encode(htmlspecialchars($input->post('first_name', TRUE))),
                 'last_name' => utf8_encode(htmlspecialchars($input->post('last_name', TRUE))),
@@ -30,7 +33,23 @@ class Signin extends CI_Controller {
             $this->db->insert('tbl_users', $data);
             
             // echo 1;
-        } else{
+        } 
+
+        else if (!$user && empty(htmlspecialchars($input->post('sign_up_birthday', TRUE)))) 
+        {
+            $data = array(
+                'first_name' => utf8_encode(htmlspecialchars($input->post('first_name', TRUE))),
+                'last_name' => utf8_encode(htmlspecialchars($input->post('last_name', TRUE))),
+                'email' => htmlspecialchars($input->post('sign_up_email', TRUE)),
+                'password' => hash('sha256', htmlspecialchars($input->post('sign_up_password', TRUE))),
+                'role_id' => htmlspecialchars($input->post('sign_up_role', TRUE)),
+                'is_enabled' => false,
+            );
+            $this->db->insert('tbl_users', $data); 
+        } 
+
+        else
+        {
             // echo 0;
         }
     }

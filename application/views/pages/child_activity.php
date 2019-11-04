@@ -233,10 +233,10 @@
             </div>                 
 
             <div class = "content-container container-fluid" >
-                <!-- User Posts -->
+                <!-- User Room -->
                 <div class = "col-xs-12 col-md-6 content-container container-fluid" style = "margin-bottom: 0px margin-left: 0px">
                     <h3 class = "text-info text-center user-activities-header">
-                        <strong>Posts of <?php echo $child->first_name; ?></strong><br>
+                        <strong><?php echo $child->first_name; ?>'s Room</strong><br>
                     </h3>
                     <br>
                     <div class = "col-sm-12 " style = "margin-bottom: 40px">
@@ -320,10 +320,10 @@
                                 <div class = "user-post-heading no-margin">
                                     
                                     <?php if (empty($post->parent)): ?>
-                                        <b><span>commented</b> in</span>
+                                        <span>posted to their room </span>
 
                                     <?php else: ?>
-                                        <b><span>commented</b> in</span> 
+                                        <span>posted to their room </span> 
 
                                     <?php endif; ?>
                                     

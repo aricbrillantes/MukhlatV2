@@ -87,11 +87,11 @@
                                 <div class = "col-xs-12 col-md-6 form-group register-field content-container container-fluid">
                                     <input type = "email" required id = "sign_up_email" name = "sign_up_email" class = "form-control sign-in-field col-md-4 col-md-offset-0" placeholder = "Email Address" maxlength = "45">
                                 </div>
-                                <div class = "col-xs-12 col-sm-auto col-md-2 form-group register-field content-container container-fluid">
+                                <div id="birthday-1" class = "col-xs-12 col-sm-auto col-md-2 form-group register-field content-container container-fluid" style="visibility: visible">
                                     <p class = "text-muted"><strong>Birthday: </strong></p>
                                 </div>
-                                <div class = "col-xs-12 col-sm-auto col-md-4 form-group register-field content-container container-fluid">
-                                    <input type = "date" required name = "sign_up_birthday" class = "form-control sign-in-field col-md-4 col-md-offset-0">
+                                <div id="birthday-2" class = "col-xs-12 col-sm-auto col-md-4 form-group register-field content-container container-fluid" style="visibility: visible">
+                                    <input type = "date"  name = "sign_up_birthday" class = "form-control sign-in-field col-md-4 col-md-offset-0">
                                 </div>
                                 <div class = "col-xs-12 col-md-6 form-group register-field content-container container-fluid">
                                     <input id = "sign-up-password" type = "password" required name = "sign_up_password" class = "form-control sign-in-field col-md-6 col-md-offset-0" placeholder = "Password">
@@ -143,10 +143,16 @@
         {
             document.getElementById("parent-email").style.visibility = "visible";
             document.getElementById("sign_up_email_parent").value = document.getElementById("sign_up_email").value;
+            document.getElementById("birthday-1").style.visibility = "visible";
+            document.getElementById("birthday-2").style.visibility = "visible";
         }
 
         else
+        {
             document.getElementById("parent-email").style.visibility = "hidden";
+            document.getElementById("birthday-1").style.visibility = "hidden";
+            document.getElementById("birthday-2").style.visibility = "hidden";
+        }
     };
 
     var toggle = 0;
