@@ -70,10 +70,10 @@ $topic = $_SESSION['current_topic'];
 <div id="create-post-modal" class="modal fade" role="dialog">
     <div class="modal-dialog">
         <!-- Create Topic Modal Content-->
-        <div class="modal-content">
-            <div class="modal-header modal-heading modalbg">
+        <div class="modal-content" id="text">
+            <div class="modal-header modal-heading modalbg notetextfix" id="margin">
                 <button type="button" class="close" style = "padding: 5px;" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title"><strong>Post to <?php echo utf8_decode($topic->topic_name); ?></strong></h4>
+                <h4 class="modal-title"><strong id="modaltitle">Share to <?php echo utf8_decode($topic->topic_name); ?></strong></h4>
             </div>
             <form enctype = "multipart/form-data" action = "<?php echo base_url('topic/post'); ?>" id = "create-post-form" method = "POST">
                 <div class="modal-body">
@@ -81,9 +81,9 @@ $topic = $_SESSION['current_topic'];
                     
                     
                     <div class="form-group" id="post-title-container"><!-- check if title is already taken -->
-                        <label for = "title">Make a title for your post:</label>
+                        <!--<label for = "title">Make a title for your post:</label>-->
                         <!--<p class="lead emoji-picker-container">-->
-                        <input type="text" style="height: 50px;" maxlength = "100"  required class="form-control" name = "post_title" id = "post-title" placeholder = "Title of your Post"  data-emojiable="true" value=" "/>
+                        <input type="text" style="height: 50px;" maxlength = "100"  required class="form-control" name = "post_title" id = "post-title" placeholder = "Title"  data-emojiable="true" value=" "/>
                         <p id="charsRemaining3">Characters Left: 100</p>
                         <div class="charLimitMessage" id="charLimitMessage3"><center>Oops! You've used up all the letters and numbers for your title!</center></div>
                         <!--<span id="start_button" onclick="startDictation2(event)" style="display: inline-block;"><img border="0" alt="Start" id="start_img" src="https://www.google.com/intl/en/chrome/assets/common/images/content/mic.gif"></span>-->
@@ -102,12 +102,12 @@ $topic = $_SESSION['current_topic'];
                         <span id="interim_span2" class="interim"></span>
                     </div>
                     
-                    <div class="form-group"><!-- check if description exceeds n words-->
-                        <label for = "content">Make the content of your post:</label>
+                    <div class="form-group" ><!-- check if description exceeds n words-->
+                        <!--<label for = "content">Make the content of your post:</label>-->
                         <!--<p class="lead emoji-picker-container">-->
-                        <textarea class = "form-control" style="height: 100px;" maxlength = "16000" required name = "post_content" id = "post-content" placeholder = "Tell something in your post!" data-emojiable="true"></textarea>
+                        <textarea class = "form-control" style="height: 100px;" maxlength = "16000" required name = "post_content" id = "post-content" placeholder = "Write here" data-emojiable="true"></textarea>
                         <p id="charsRemaining4">Characters Left: 16000</p>
-                        <div class="charLimitMessage" id="charLimitMessage4"><center>Oops! You've used up all the letters and numbers for your post!</center></div>
+                        <div class="charLimitMessage" id="charLimitMessage4"><center>Oops! You've used up all the letters and numbers for your message!</center></div>
                     </div>
                     
                    <div class="profanityWarning" id="profanityWarning"><center>Hey there! It looks like you used a bad word!</center></div>
@@ -129,24 +129,22 @@ $topic = $_SESSION['current_topic'];
                          <br><br>
                          
                     <div id = "attachment-buttons" class = "form-group">
-
-                      <img id="target" />
-
+                      <!--<img id="target"/>-->
                         <!-- Attach a file: -->
                         <!--IMAGE-->
-                        <label id = "img-label" class="btn btn-primary buttonsbgcolor">
+                        <label id = "img-label" class="btn btn-primary buttonsbgcolor dotdot">
                             <input id = "attach-img" accept = "image/*" type="file" name = "post_image" style = "display: none;">
-                            <p id = "image-text" class = "attach-btn-text"><i class = "fa fa-file-image-o"></i> Add Image</p>
+                            <p id = "image-text" class = "attach-btn-text"><i class = "fa fa-file-image-o"></i> Add Picture</p>
                         </label>
 
                         <!--AUDIO-->
-                        <label id = "audio-label" class="btn btn-primary buttonsbgcolor">
+                        <label id = "audio-label" class="btn btn-primary buttonsbgcolor dotdot">
                             <input id = "attach-audio" accept = "audio/*" type="file" name = "post_audio" style = "display: none;">
-                            <p id = "audio-text" class = "attach-btn-text"><i class = "fa fa-file-audio-o"></i> Add Audio</p>
+                            <p id = "audio-text" class = "attach-btn-text"><i class = "fa fa-file-audio-o"></i> Add Sound</p>
                         </label>
 
                         <!--VIDEO-->
-                        <label id = "video-label" class="btn btn-primary buttonsbgcolor">
+                        <label id = "video-label" class="btn btn-primary buttonsbgcolor dotdot">
                             <input id = "attach-video" accept = "video/*" type="file" name = "post_video" style = "display: none;">
                             <p id = "video-text" class = "attach-btn-text"><i class = "fa fa-file-video-o"></i> Add Video</p>
                         </label>
@@ -163,7 +161,7 @@ $topic = $_SESSION['current_topic'];
                     </div>
                 </div>
                 <div class = "modal-footer" style = "padding: 5px; border-top: none; padding-bottom: 10px; padding-right: 10px;">
-                    <a id = "create-post-btn" class ="btn btn-primary buttonsbgcolor" data-toggle = "modal" onClick="putImage()">Post</a>
+                    <a id = "create-post-btn" class ="btn btn-primary buttonsbgcolor" data-toggle = "modal" onClick="putImage()">Share</a>
                 </div>
             </form>
 
@@ -284,29 +282,33 @@ let constraintObj = {
         {
           $('[id$=img-label]').show();
           $('[id$=attachment-preview]').show();
+          $('[id$=modaltitle]').text("Add to your picture album");
         }
 
         if(p==="audio")
         {
           $('[id$=audio-label]').show();
           $('[id$=attachment-preview]').show();
+          $('[id$=modaltitle]').text("Add to your sound album");
         }
 
         if(p==="video")
         {
             $('[id$=video-label]').show();
             $('[id$=attachment-preview]').show();
+          $('[id$=modaltitle]').text("Add to your video album");
         }
         
         if(p==="text")
-        {;
-          
+        {
+          $('[id$=modaltitle]').text("Write on your whiteboard");
         }
 
         if(p==="shout")
         {
           $('[id$=post-title-container]').show();
           $('[id$=shout]').val(1);
+          $('[id$=modaltitle]').text("Give a shout out!");
         }
         
         if(p==="reply")
@@ -316,6 +318,7 @@ let constraintObj = {
           $('[id$=video-label]').show();
           $('[id$=attachment-preview]').show();
           $('[id$=reply]').val(1);
+          $('[id$=modaltitle]').text("Share it on the chat room");
         }
         
     }
