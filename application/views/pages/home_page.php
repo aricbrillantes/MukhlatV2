@@ -8,14 +8,14 @@
 <body>
     <?php
     include(APPPATH . 'views/navigation_bar.php');
-    include(APPPATH . 'views/topic_side_bar.php');
+//    include(APPPATH . 'views/topic_side_bar.php');
     $logged_user = $_SESSION['logged_user'];
 
     ?>
 <!--    <script src='https://code.responsivevoice.org/responsivevoice.js'></script>-->
     <div class = "container page">
         <div class = "row">
-            <div class = "col-md-9 home-container">
+            <div class = "col-md-12 home-container">
                 <div class = "col-sm-12 home-container">
                     <!-- HEADER -->
 <!--                    <div class = "clearfix content-container" style="border-radius:20px;"><center>
@@ -33,9 +33,15 @@
                         </center></div>-->
                     
                     <div class = "clearfix content-container" style="border-radius:20px;">
-                    <center>
-                                <a onmouseenter="playclip()" id="crettop" class ="btn btn-primary buttonsbgcolor textoutliner" href="#create-topic-modal" data-toggle = "modal" style="margin:1%"><img  src = "<?php echo base_url('icons/pencil.png'); ?>" style="width:10%;height:auto;cursor: pointer"/> My Room</a>
-                                <a onmouseenter="playclip()" id="crettop" class="btn btn-primary buttonsbgcolor textoutliner" href="<?php echo base_url('topic') ?>" style="margin:1%"><img  src = "<?php echo base_url('icons/topics.png'); ?>" style="width:15%;height:auto;cursor: pointer"/> My Roomies</a>                   
+                    <center>    <?php $flag=0; foreach ($logged_user->topics as $topic): $flag++; endforeach;?>
+                                    
+                                <?php if($flag>0):?>
+                                <a onmouseenter="playclip()" id="crettop" class ="btn btn-primary buttonsbgcolor textoutliner" href="<?php echo base_url('topic/view/' . $topic->topic_id); ?>" data-toggle = "modal" style="margin:1%; width:20%"><img  src = "<?php echo base_url('icons/pencil.png'); ?>" style="width:10%;height:auto;cursor: pointer"/> My Room</a>
+                                <?php else:?>
+                                <a onmouseenter="playclip()" id="crettop" class ="btn btn-primary buttonsbgcolor textoutliner" href="#create-topic-modal" data-toggle = "modal" style="margin:1%; width:20%"><img  src = "<?php echo base_url('icons/pencil.png'); ?>" style="width:10%;height:auto;cursor: pointer"/> My Room</a>
+                                <?php endif;?>
+                                
+                                <a onmouseenter="playclip()" id="crettop" class="btn btn-primary buttonsbgcolor textoutliner" href="<?php echo base_url('topic') ?>" style="margin:1%; width:20%"><img  src = "<?php echo base_url('icons/topics.png'); ?>" style="width:15%;height:auto;cursor: pointer"/> My Roomies</a>                   
                                 <!--<a id="crettop" class="btn btn-primary buttonsbgcolor" href="#create-post-modal" data-toggle = "modal">Post to your wall</a>-->
                     </center>
                     </div>
@@ -74,17 +80,17 @@
                                     // echo utf8_decode($post->creator_id);
                                     // print_r($posts);
                             ?>
-                                    <div class="topic-grid1 content-container" style="color: white;  position: relative;  height: auto;  min-height: 100% !important;">
+                                    <div class=" content-container messagereceiver" style="position: relative;  height: auto;  min-height: 100% !important;">
                                         
                                         <img class = "img-circle" style = "margin: 10px 0px;" width = "40px" height = "40px" src = "<?php echo $post->profile_url ? base_url($post->profile_url) : base_url('images/default.jpg'); ?>"/> 
 
                                         <?php if($post->creator_id === $post->user_id): ?>
                                             <p style="font-size: 24px; display:inline"> <?php echo "  " . $post->first_name?> </p>
-                                            <a style="color: white; max-width: 500px; overflow: hidden; text-overflow: ellipsis; display:inline " class = "" href = "<?php echo base_url('topic/view/' . $post->topic_id); ?>"> added to their room! </a>
+                                            <a style="max-width: 500px; overflow: hidden; text-overflow: ellipsis; display:inline " class = "" href = "<?php echo base_url('topic/view/' . $post->topic_id); ?>"> added to their room! </a>
 
                                         <?php else: ?>
                                             <p style="font-size: 19px; display:inline">In </p>
-                                            <a style="color: white; max-width: 500px; overflow: hidden; text-overflow: ellipsis; display:inline " class = "" href = "<?php echo base_url('topic/view/' . $post->topic_id); ?>"> <?php echo utf8_decode($post->topic_name); ?> , </a>
+                                            <a style="max-width: 500px; overflow: hidden; text-overflow: ellipsis; display:inline " class = "" href = "<?php echo base_url('topic/view/' . $post->topic_id); ?>"> <?php echo utf8_decode($post->topic_name); ?>'s room, </a>
                                             <p style="font-size: 24px; display:inline"> <?php echo "  " . $post->first_name?> says:</p>
 
                                         <?php endif; ?>

@@ -83,7 +83,7 @@ $topic = $_SESSION['current_topic'];
                     <div class="form-group" id="post-title-container"><!-- check if title is already taken -->
                         <!--<label for = "title">Make a title for your post:</label>-->
                         <!--<p class="lead emoji-picker-container">-->
-                        <input type="text" style="height: 50px;" maxlength = "100"  required class="form-control" name = "post_title" id = "post-title" placeholder = "Title"  data-emojiable="true" value=" "/>
+                        <input type="text" style="height: 50px;" maxlength = "100"  required class="form-control" name = "post_title" id = "post-title" placeholder = "Title"  data-emojiable="true" value=""/>
                         <p id="charsRemaining3">Characters Left: 100</p>
                         <div class="charLimitMessage" id="charLimitMessage3"><center>Oops! You've used up all the letters and numbers for your title!</center></div>
                         <!--<span id="start_button" onclick="startDictation2(event)" style="display: inline-block;"><img border="0" alt="Start" id="start_img" src="https://www.google.com/intl/en/chrome/assets/common/images/content/mic.gif"></span>-->
@@ -132,19 +132,19 @@ $topic = $_SESSION['current_topic'];
                       <!--<img id="target"/>-->
                         <!-- Attach a file: -->
                         <!--IMAGE-->
-                        <label id = "img-label" class="btn btn-primary buttonsbgcolor dotdot">
+                        <label id = "img-label" class="btn btn-primary buttonsbgcolor borderbuttonoutline">
                             <input id = "attach-img" accept = "image/*" type="file" name = "post_image" style = "display: none;">
                             <p id = "image-text" class = "attach-btn-text"><i class = "fa fa-file-image-o"></i> Add Picture</p>
                         </label>
 
                         <!--AUDIO-->
-                        <label id = "audio-label" class="btn btn-primary buttonsbgcolor dotdot">
+                        <label id = "audio-label" class="btn btn-primary buttonsbgcolor borderbuttonoutline">
                             <input id = "attach-audio" accept = "audio/*" type="file" name = "post_audio" style = "display: none;">
                             <p id = "audio-text" class = "attach-btn-text"><i class = "fa fa-file-audio-o"></i> Add Sound</p>
                         </label>
 
                         <!--VIDEO-->
-                        <label id = "video-label" class="btn btn-primary buttonsbgcolor dotdot">
+                        <label id = "video-label" class="btn btn-primary buttonsbgcolor borderbuttonoutline">
                             <input id = "attach-video" accept = "video/*" type="file" name = "post_video" style = "display: none;">
                             <p id = "video-text" class = "attach-btn-text"><i class = "fa fa-file-video-o"></i> Add Video</p>
                         </label>
@@ -276,6 +276,7 @@ let constraintObj = {
         $('[id$=post-title-container]').hide();
         $('[id$=reply]').val(0);
         $('[id$=shout]').val(0);
+        $('[id$=post-title]').val("");
         
 
         if(p==="image")
@@ -283,6 +284,7 @@ let constraintObj = {
           $('[id$=img-label]').show();
           $('[id$=attachment-preview]').show();
           $('[id$=modaltitle]').text("Add to your picture album");
+          $('[id$=post-title]').val(" ");
         }
 
         if(p==="audio")
@@ -290,18 +292,21 @@ let constraintObj = {
           $('[id$=audio-label]').show();
           $('[id$=attachment-preview]').show();
           $('[id$=modaltitle]').text("Add to your sound album");
+          $('[id$=post-title]').val(" ");
         }
 
         if(p==="video")
         {
-            $('[id$=video-label]').show();
-            $('[id$=attachment-preview]').show();
+          $('[id$=video-label]').show();
+          $('[id$=attachment-preview]').show();
           $('[id$=modaltitle]').text("Add to your video album");
+          $('[id$=post-title]').val(" ");
         }
         
         if(p==="text")
         {
           $('[id$=modaltitle]').text("Write on your whiteboard");
+          $('[id$=post-title]').val(" ");
         }
 
         if(p==="shout")
@@ -318,6 +323,7 @@ let constraintObj = {
           $('[id$=video-label]').show();
           $('[id$=attachment-preview]').show();
           $('[id$=reply]').val(1);
+          $('[id$=post-title]').val(" ");
           $('[id$=modaltitle]').text("Share it on the chat room");
         }
         
@@ -389,7 +395,7 @@ let constraintObj = {
 //                  document.getElementById("profanityWarning").innerHTML = 'NO SWEARING!';
                 x.style.display = "block";
                 document.getElementById('create-post-btn').style.background="red";
-                document.getElementById('create-post-btn').innerHTML="You should remove bad words from your post!";
+                document.getElementById('create-post-btn').innerHTML="You should remove bad words from your message!";
                 document.getElementById('create-post-btn').style.pointerEvents="none";
             }  
 
@@ -398,7 +404,7 @@ let constraintObj = {
 //                    document.getElementById("profanityWarning").innerHTML = '';
                 x.style.display = "none";
                 document.getElementById('create-post-btn').style.background=getCookie("ButtonColor");
-                document.getElementById('create-post-btn').innerHTML="Post";
+                document.getElementById('create-post-btn').innerHTML="Share";
                 document.getElementById('create-post-btn').style.pointerEvents="auto";
             }
 ////              

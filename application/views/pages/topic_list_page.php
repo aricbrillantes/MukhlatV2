@@ -59,7 +59,8 @@ include(APPPATH . 'views/header.php');
                                 </ul>
                             </div>
                         </div>-->
-<center><a onmouseenter="playclip()" id="crettop" class ="btn btn-primary buttonsbgcolor textoutliner" href="#create-topic-modal" data-toggle = "modal"><i class = "fa fa-pencil"></i> Create Topic</a>
+<center>
+                                <a onmouseenter="playclip()" id="crettop" class ="btn btn-primary buttonsbgcolor textoutliner" href="#create-topic-modal" data-toggle = "modal" style="margin:1%; width:20%"><img  src = "<?php echo base_url('icons/pencil.png'); ?>" style="width:10%;height:auto;cursor: pointer"/> My Room</a>
 </center>
                     </div>
                 </div>

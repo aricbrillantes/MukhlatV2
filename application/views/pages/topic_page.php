@@ -101,10 +101,7 @@ include(APPPATH . 'views/header.php');
                     <?php endif;
                           endif;
                           endforeach; ?>
-                    
-            <div id="eraser"></div>
-            <div id="red-pen"></div>
-            <div id="blue-pen"></div> </div>
+                    </div>
             <?php if ($c_topic->creator_id === $logged_user->user_id): ?>
                 <button onmouseenter="playclip()" onclick="toggleButton('text')" id="crettop" class = "btn btn-primary buttonsbgcolor textoutliner" href="#create-post-modal" data-toggle = "modal" style="font-size:22px;margin-left: 18%;margin-top: 1%">Write on your board</button><br><br>
                 <?php endif;?></div>
