@@ -52,10 +52,8 @@
         
         <a class = "navbar-brand" href = "<?php echo base_url('home') ?>"><img id = "nav-logo" src = "<?php echo base_url('images/logo/mukhlatlogo_side_basic.png'); ?>"/></a>
 
-        <a href = "<?php echo base_url('signin/logout'); ?>" class = "pull-right btn btn-primary btn-md" style = "margin-right: 20px; margin-top: 10px; margin-bottom: 10px;">Log Out</a>
+        <a href="#logout-modal-parents" data-toggle = "modal" class = "pull-right btn btn-primary btn-md" style = "margin-right: 20px; margin-top: 10px; margin-bottom: 10px; background:#c73838; border-color: #c73838;">Log Out</a>
                             
-        
-
     </div>
     
 </nav><br><br><br>
@@ -84,7 +82,7 @@
 
                 <div class = "content-container container-fluid col-md-10 col-md-offset-1 col-sm-offset-1 col-sm-10 col-xs-offset-1 col-xs-10">
                     <ul class="nav nav-pills nav-justified" style="">
-                        <li class=""><a data-toggle="pill" href="#user-list-1">Children</a></li>
+                        <li class="active"><a data-toggle="pill" href="#user-list-1">Children</a></li>
                         <li class=""><a data-toggle="pill" href="#user-list-2">Parents</a></li>
                         <li class=""><a data-toggle="pill" href="#user-list-3">Administrators</a></li>
                         
@@ -125,7 +123,7 @@
                     <div id = "user-list-2" class = "list-group tab-pane fade container-fluid">
                         <?php foreach ($users as $user): 
 
-                            if (!$mobile && $user->role_id === '3'):?>
+                            if ($user->role_id === '3'):?>
 
                                 <li class = "list-group-item admin-list-item">
                                     <img src = "<?php echo $user->profile_url ? base_url($user->profile_url) : base_url('images/default.jpg') ?>" class = "no-padding pull-left img-circle" width = "45px" height = "45px"/> 
@@ -157,7 +155,7 @@
                         
                         <?php foreach ($users as $user): 
 
-                            if (!$mobile && $user->role_id === '1'):?>
+                            if ($user->role_id === '1'):?>
 
                                 <li class = "list-group-item admin-list-item">
                                     <img src = "<?php echo $user->profile_url ? base_url($user->profile_url) : base_url('images/default.jpg') ?>" class = "no-padding pull-left img-circle" width = "45px" height = "45px"/> 
@@ -189,8 +187,11 @@
 
     <script type="text/javascript" src="<?php echo base_url("/js/admin.js"); ?>"></script>
     <script type="text/javascript" src="<?php echo base_url("/js/search.js"); ?>"></script>
-    
-    <?php
-//include(APPPATH . "views/modals/user_record_modal.php");?>
+
 </body>
 </html>
+
+<?php
+    //include(APPPATH . "views/modals/user_record_modal.php");
+    include(APPPATH . 'views/modals/logout_confirm_modal_parents.php');
+?>

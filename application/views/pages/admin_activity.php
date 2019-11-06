@@ -35,7 +35,6 @@
     $CI->load->model('topic_model');
     $CI->load->model('post_model');
 
-
     $user_activity = $CI->user_model->get_child_records($id);
     $activities = $CI->post_model->get_user_activities($id,$id);
 
@@ -132,9 +131,11 @@
         // print("parent");
     }    
 ?>
+
 <!-- Nav Bar -->
 <nav class = "navbar navbar-default navbar-font navbar-fixed-top" style = "border-bottom: 1px solid #CFD8DC;">
     <div class = "container-fluid">
+        
         <a class = "pull-left btn btn-topic-header" style = "display: inline-block; margin-right: 5px; border:0" href="<?php echo base_url('home') ?>">
             <h3 class = "pull-left" style = "margin-top: 3px; margin-bottom: 0px; padding: 2px;">
                 <strong class = "text-info"><i class = "fa fa-chevron-left"></i> 
@@ -142,32 +143,11 @@
                 </strong>
             </h3>
         </a>
-            
-            
-        <?php if (!$mobile): ?>
 
-            <ul class = "nav navbar-nav navbar-right pull-right" style = "margin-right: 5px;">
-                <li class="dropdown">
-
-                    <a class="dropdown-toggle pull-right" data-toggle="dropdown" href="#">
-                        Viewing: <b><?php echo $child->first_name ?></b>
-                        <span class="caret"></span>
-                    </a>                
-                
-                    <ul class="dropdown-menu">
-                        
-                        <li><a href="<?php echo base_url('signin/logout');?>"><i class = "glyphicon glyphicon-log-out" style="color:red"></i> Logout</a></li>
-
-                    </ul>
-                </li>
-            </ul>
-
-        <?php else: ?>
-            <a href = "<?php echo base_url('signin/logout'); ?>" class = "pull-right btn btn-primary btn-md" style = "margin-right: 20px; margin-top: 10px; margin-bottom: 10px;">Log Out</a>
+        <a href="#logout-modal-parents" data-toggle = "modal" class = "pull-right btn btn-primary btn-md" style = "margin-right: 20px; margin-top: 10px; margin-bottom: 10px; background:#c73838; border-color: #c73838;">Log Out</a>
                             
-        <?php endif; ?>
-        
     </div>
+    
 </nav><br><br><br>
 <?php endforeach; ?>
 
@@ -207,7 +187,7 @@
                 <!-- User Posts -->
                 <div class = "col-xs-12 col-md-6 content-container container-fluid" style = "margin-bottom: 0px margin-left: 0px">
                     <h3 class = "text-info text-center user-activities-header">
-                        <strong>Posts of <?php echo $child->first_name; ?></strong><br>
+                        <strong><?php echo $child->first_name; ?>'s Room</strong><br>
                     </h3>
                     <br>
                     <div class = "col-sm-12 " style = "margin-bottom: 40px">
@@ -302,9 +282,10 @@
     <script type="text/javascript" src="<?php echo base_url('/js/network.js'); ?>"></script>
     <link rel="stylesheet" href="<?php echo base_url("assets/vis/vis.css"); ?>" /> -->
 
-    <?php
-    include(APPPATH . 'views/modals/network_view_modal.php');
-    ?>
-
 </body>
 </html>
+
+<?php
+    include(APPPATH . 'views/modals/network_view_modal.php');
+    include(APPPATH . 'views/modals/logout_confirm_modal_parents.php');
+?>

@@ -27,6 +27,15 @@ class User_model extends CI_Model {
         return $query->get()->result();
     }
 
+    public function get_email($id) 
+    {
+        $query = $this->db->select('user_id, email')
+                ->from('tbl_users')
+                ->where('user_id',$id);
+
+        return $query->get()->result();
+    }
+
     public function get_user($load_topics, $load_activities, $fields = array()) {
         $query = $this->db->get_where('tbl_users', $fields);
 

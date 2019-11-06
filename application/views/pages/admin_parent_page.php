@@ -13,7 +13,7 @@
 
     $CI =&get_instance();
 
-    //get user ID of child being monitored (from the URL)
+    //get user ID of parent being monitored (from the URL)
     $id = $this->uri->segment(3);
 
     if(!$id) //if there is no user ID in the URL, redirect to home page
@@ -23,8 +23,24 @@
     }
 
     $CI->load->model('user_model');
+
+    $email = $CI->user_model->get_email($id);
+
+    // print_r($email);
+
+    foreach ($email as $details)
+    { 
+        $CI =&get_instance();
+            
+        $data['user'] = $CI->user_model->get_user(true, true, array('user_id' => $details->user_id));
+
+        print($details->user_id);
+
+    }
+
     $parent = $CI->user_model->view_specific_child($id);
-    $children = $CI->user_model->view_child($id);
+
+    $children = $CI->user_model->view_child($details->email);
     
     $CI->load->library('user_agent');
     $mobile=$CI->agent->is_mobile();
@@ -129,7 +145,7 @@
             </ul>
 
         <?php else: ?>
-            <a href = "<?php echo base_url('signin/logout'); ?>" class = "pull-right btn btn-primary btn-md" style = "margin-right: 20px; margin-top: 10px; margin-bottom: 10px;">Log Out</a>
+            <a href="#logout-modal-parents" data-toggle = "modal" class = "pull-right btn btn-primary btn-md" style = "margin-right: 20px; margin-top: 10px; margin-bottom: 10px; background:#c73838; border-color: #c73838;">Log Out</a>
                             
         <?php endif; ?>
 
@@ -218,3 +234,7 @@
 
 </body>
 </html>
+
+<?php
+    include(APPPATH . 'views/modals/logout_confirm_modal_parents.php');
+?>
