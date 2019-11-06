@@ -84,13 +84,25 @@
                                         
                                         <img class = "img-circle" style = "margin: 10px 0px;" width = "40px" height = "40px" src = "<?php echo $post->profile_url ? base_url($post->profile_url) : base_url('images/default.jpg'); ?>"/> 
 
-                                        <?php if($post->creator_id === $post->user_id): ?>
+                                        <?php if($post->user_id === $logged_user->user_id): ?>
+                                            <p style="font-size: 24px; display:inline"> You </p>
+                                            <a style="max-width: 500px; overflow: hidden; text-overflow: ellipsis; display:inline " class = "" href = "<?php echo base_url('topic/view/' . $post->topic_id); ?>"> decorated your room! </a>
+
+                                        <?php elseif($post->creator_id === $post->user_id): ?>
                                             <p style="font-size: 24px; display:inline"> <?php echo "  " . $post->first_name?> </p>
-                                            <a style="max-width: 500px; overflow: hidden; text-overflow: ellipsis; display:inline " class = "" href = "<?php echo base_url('topic/view/' . $post->topic_id); ?>"> added to their room! </a>
+                                            <a style="max-width: 500px; overflow: hidden; text-overflow: ellipsis; display:inline " class = "" href = "<?php echo base_url('topic/view/' . $post->topic_id); ?>"> decorated their room! </a>
 
                                         <?php else: ?>
                                             <p style="font-size: 19px; display:inline">In </p>
-                                            <a style="max-width: 500px; overflow: hidden; text-overflow: ellipsis; display:inline " class = "" href = "<?php echo base_url('topic/view/' . $post->topic_id); ?>"> <?php echo utf8_decode($post->topic_name); ?>'s room, </a>
+
+                                            <?php if($post->topic_id === $logged_user->user_id):?>
+                                                <a style="max-width: 500px; overflow: hidden; text-overflow: ellipsis; display:inline " class = "" href = "<?php echo base_url('topic/view/' . $post->topic_id); ?>"> your room, </a>
+
+                                            <?php else:?>
+                                                <a style="max-width: 500px; overflow: hidden; text-overflow: ellipsis; display:inline " class = "" href = "<?php echo base_url('topic/view/' . $post->topic_id); ?>"> <?php echo utf8_decode($post->topic_name); ?>, </a>
+                                            
+                                            <?php endif;?>
+                                            
                                             <p style="font-size: 24px; display:inline"> <?php echo "  " . $post->first_name?> says:</p>
 
                                         <?php endif; ?>

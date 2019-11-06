@@ -134,7 +134,7 @@ include(APPPATH . 'views/header.php');
 
                                 <?php foreach ($attachments as $attachment):
                                     if ($attachment->attachment_type_id === '3' && $once==0):?>
-                                        <video src = "<?= base_url($attachment->file_url); ?>" width = "99%"/></video>
+                                        <video src = "<?= base_url($attachment->file_url); ?>" width = "99%" style="max-height:120px"/></video>
                                         
                                 <?php 
                                     $once++;
