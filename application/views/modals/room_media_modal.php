@@ -4,13 +4,13 @@
 
 </head>
 
-<div id="room_pictures_modal" class="modal fade" role="dialog">
+<div id="room_media_modal" class="modal fade" role="dialog">
     <div class="modal-dialog" style="width:90%;">
         <!-- Play Modal Content-->
         <div class="modal-content">
             <div class="modal-header modal-heading modalbg">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title text-center"><strong><i class="fa fa-gamepad"></i> Pictures</strong></h4>
+                <h4 class="modal-title text-center"><strong>My Stuff</strong></h4>
             </div>
             
             <div class="modal-body content-container container-fluid">
@@ -26,6 +26,18 @@
                                                         <p><?php echo utf8_decode($post->post_content); ?></p>
                                                         <img src = "<?= base_url($attachment->file_url); ?>" width = "75%"  style="position:relative;" />
                                                         </div>
+                                                <?php elseif ($attachment->attachment_type_id === '2'):?>
+                                                        <div class="col-md-3">
+                                                        <p><?php echo utf8_decode($post->post_content); ?></p>
+                                                        <audio src = "<?= base_url($attachment->file_url); ?>" controls></audio>
+                                                        </div>
+                                                <?php elseif ($attachment->attachment_type_id === '3'):?>
+                                                        <div class="col-md-3">
+                                                        <p><?php echo utf8_decode($post->post_content); ?></p>
+                                                        <video src = "<?= base_url($attachment->file_url); ?>" width = "300px" controls/></video>
+                                                        </div>
+                    
+                    
                                                 <?php 
 
                                                     endif;

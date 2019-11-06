@@ -33,16 +33,20 @@ include(APPPATH . 'views/header.php');
         <!--<div id = "topic-page" class = "container page" style = "min-height: 100%; height: 100%;">test</div>-->
         
         <div class="doorroom col-sm-12 col-md-11">
-        
+           
             <center><div class="nameframe">
             <h4><strong><?php echo utf8_decode($c_topic->user->first_name); ?>'s Room</strong></h4>
             </div></center>
-        
             <!--Pictures-->
-            <div class="wrapper col-sm-3">
-                <a class="picture" href="#room_pictures_modal" data-toggle = "modal">
+            <div class="col-sm-3">
+                <a class="picture" href="#room_media_modal" data-toggle = "modal" style="color: black">
+                    <div style="margin-left: 60px;margin-bottom: 100%">
+                        <figure class="boxside boxtop"><i class = "glyphicon glyphicon-picture fa-2x" style="margin-top: 25px"></i></figure>
+                    <figure class="boxside boxleft"><i class = "glyphicon glyphicon-volume-up fa-2x" style="margin-top: 25px"></i></figure>
+                    <figure class="boxside boxright"><i class = "fa fa-play fa-2x" style="margin-top: 25px"></i></figure>
+                    </div>
                     <!--<div class="hook"></div>-->
-                    <div class="frame">
+<!--                    <div class="frame">
                         <div class="inside"><strong><center>Pictures</center></strong>
                         <?php $once=0;
                             foreach ($c_topic->posts as $post):
@@ -59,11 +63,11 @@ include(APPPATH . 'views/header.php');
                                 endforeach; ?>
 
                         <?php endif; endforeach; ?></div>
-                    </div>
+                    </div>-->
                 </a>
 
                 <?php if ($c_topic->creator_id === $logged_user->user_id): ?>
-                    <button onmouseenter="playclip()" onclick="toggleButton('image')" id="crettop" class = "btn btn-primary buttonsbgcolor textoutliner" href="#create-post-modal" data-toggle = "modal" style="font-size:22px;margin-top: 2%; margin-left: 17%" onclick="dopics('pics')">Add pictures</button><br><br>
+                    <button onmouseenter="playclip()" onclick="toggleButton('media')" id="crettop" class = "btn btn-primary buttonsbgcolor textoutliner" href="#create-post-modal" data-toggle = "modal" style="font-size:22px;margin-top: 2%; margin-left: 30%">My Stuff</button><br><br>
                 <?php endif;?>
 
             </div>
@@ -84,15 +88,15 @@ include(APPPATH . 'views/header.php');
                 </li>
 
             <?php if ($c_topic->creator_id === $logged_user->user_id): ?>
-                <button onmouseenter="playclip()" onclick="toggleButton('shout')" id="crettop" class = "btn btn-primary buttonsbgcolor textoutliner" href="#create-post-modal" data-toggle = "modal" style="font-size:22px;margin-top: 2%; margin-left: 17%">Do a Shoutout!</button><br><br>
+                <button onmouseenter="playclip()" onclick="toggleButton('shout')" id="crettop" class = "btn btn-primary buttonsbgcolor textoutliner" href="#create-post-modal" data-toggle = "modal" style="font-size:22px;margin-top: 2%; margin-left: 17%">Shoutout!</button><br><br>
                 <?php endif;?>
             </ul>
                 
                 
                 <!--regular text, emojis and stickers-->
                 <div>
-                <div id="white-board" class="col-sm-3 pull-right" style="min-height:300px; max-height:300px">
-                    <?php
+                <div  class="col-sm-3 pull-right open-book" style="min-height:300px; max-height:300px">
+<!--                    <?php
                         foreach ($c_topic->posts as $post):
                             if($post->shout==0 && $post->reply==0):?>
                     <?php $attachments = $CI->attachment_model->get_post_attachments($post->post_id);?>
@@ -101,17 +105,18 @@ include(APPPATH . 'views/header.php');
                     <?php endif;
                           endif;
                           endforeach; ?>
+                            -->
                     </div>
             <?php if ($c_topic->creator_id === $logged_user->user_id): ?>
-                <button onmouseenter="playclip()" onclick="toggleButton('text')" id="crettop" class = "btn btn-primary buttonsbgcolor textoutliner" href="#create-post-modal" data-toggle = "modal" style="font-size:22px;margin-left: 18%;margin-top: 1%">Write on your board</button><br><br>
+                    <center> <button onmouseenter="playclip()" onclick="toggleButton('text')" id="crettop" class = "btn btn-primary buttonsbgcolor textoutliner" href="#create-post-modal" data-toggle = "modal" style="font-size:22px;margin-left: 5%;margin-top: 1%">My Diary</button></center><br><br>
                 <?php endif;?></div>
                 
         </div>
 
-        <div class="doorroom col-sm-12 col-md-11">
+<!--        <div class="doorroom col-sm-12 col-md-11">
             <div class="wrapper col-sm-3">
                 <a class="picture" href="#room_sounds_modal" data-toggle = "modal">
-                    <!--<div class="hook"></div>-->
+                    <div class="hook"></div>
                     <div class="frame">
                         <div class="inside"><strong><center>Sounds</center></strong></div>
                     </div>
@@ -124,7 +129,7 @@ include(APPPATH . 'views/header.php');
             
             <div class="wrapper col-sm-3">
                 <a class="picture" href="#room_videos_modal" data-toggle = "modal">
-                    <!--<div class="hook"></div>-->
+                    <div class="hook"></div>
                     <div class="frame">
                         <div class="inside"><strong><center>Videos</center></strong>
                         <?php $once=0;
@@ -149,7 +154,7 @@ include(APPPATH . 'views/header.php');
                 <?php endif;?>
             </div>
             
-        </div>
+        </div>-->
         
     </div>
 
@@ -397,7 +402,7 @@ include(APPPATH . 'views/header.php');
 
     <?php
      include(APPPATH . 'views/side_postbar.php');
-    include(APPPATH . 'views/modals/room_pictures_modal.php');
+    include(APPPATH . 'views/modals/room_media_modal.php');
     include(APPPATH . 'views/modals/room_shout_modal.php');
     include(APPPATH . 'views/modals/room_sounds_modal.php');
     include(APPPATH . 'views/modals/room_videos_modal.php');

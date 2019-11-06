@@ -83,8 +83,8 @@ $topic = $_SESSION['current_topic'];
                     <div class="form-group" id="post-title-container"><!-- check if title is already taken -->
                         <!--<label for = "title">Make a title for your post:</label>-->
                         <!--<p class="lead emoji-picker-container">-->
-                        <input type="text" style="height: 50px;" maxlength = "100"  required class="form-control" name = "post_title" id = "post-title" placeholder = "Title"  data-emojiable="true" value=""/>
-                        <p id="charsRemaining3">Characters Left: 100</p>
+                        <input type="text" style="height: 50px;" maxlength = "100"  required class="form-control" name = "post_title" id = "post-title" placeholder = "My title"  data-emojiable="true" value=""/>
+                        <!--<p id="charsRemaining3">Characters Left: 100</p>-->
                         <div class="charLimitMessage" id="charLimitMessage3"><center>Oops! You've used up all the letters and numbers for your title!</center></div>
                         <!--<span id="start_button" onclick="startDictation2(event)" style="display: inline-block;"><img border="0" alt="Start" id="start_img" src="https://www.google.com/intl/en/chrome/assets/common/images/content/mic.gif"></span>-->
                             <!--<a href="#" class="voicesearch" id="voicesearch" onclick="stopDictation2(event)"><img border="0" id="voicesearchicon" class="voicesearchicon" alt="START" src="images/microphone_start.png" height="50" width="50"></a>-->
@@ -105,8 +105,8 @@ $topic = $_SESSION['current_topic'];
                     <div class="form-group" ><!-- check if description exceeds n words-->
                         <!--<label for = "content">Make the content of your post:</label>-->
                         <!--<p class="lead emoji-picker-container">-->
-                        <textarea class = "form-control" style="height: 100px;" maxlength = "16000" required name = "post_content" id = "post-content" placeholder = "Write here" data-emojiable="true"></textarea>
-                        <p id="charsRemaining4">Characters Left: 16000</p>
+                        <textarea class = "form-control" style="height: 100px;" maxlength = "16000" required name = "post_content" id = "post-content" placeholder = "My thoughts" data-emojiable="true"></textarea>
+                        <!--<p id="charsRemaining4">Characters Left: 16000</p>-->
                         <div class="charLimitMessage" id="charLimitMessage4"><center>Oops! You've used up all the letters and numbers for your message!</center></div>
                     </div>
                     
@@ -165,7 +165,7 @@ $topic = $_SESSION['current_topic'];
                 </div>
             </form>
 
-            <div id = "audio-label">
+            <div style="display: none">
                     <button id="btnStart">Record My Voice!</button>
                     <button id="btnStop">Im done recording!</button></p>
         
@@ -279,11 +279,13 @@ let constraintObj = {
         $('[id$=post-title]').val("");
         
 
-        if(p==="image")
+        if(p==="media")
         {
           $('[id$=img-label]').show();
+          $('[id$=audio-label]').show();
+          $('[id$=video-label]').show();
           $('[id$=attachment-preview]').show();
-          $('[id$=modaltitle]').text("Add to your picture album");
+          $('[id$=modaltitle]').text("Add stuff");
           $('[id$=post-title]').val(" ");
         }
 
@@ -305,7 +307,7 @@ let constraintObj = {
         
         if(p==="text")
         {
-          $('[id$=modaltitle]').text("Write on your whiteboard");
+          $('[id$=modaltitle]').text("Add to diary");
           $('[id$=post-title]').val(" ");
         }
 

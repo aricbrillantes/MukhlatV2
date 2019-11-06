@@ -497,13 +497,13 @@
                             </a>
                                     </a>
                             
-                            <a onmouseenter="playclip()" class="navbaricons" id = "notif-btn" href="#notif-modal" data-toggle = "modal" <?php echo (int) $logged_user->unread_notifs > 0 ? "data-value = \"" . $logged_user->unread_notifs . "\"" : "" ?>>
+<!--                            <a onmouseenter="playclip()" class="navbaricons" id = "notif-btn" href="#notif-modal" data-toggle = "modal" <?php echo (int) $logged_user->unread_notifs > 0 ? "data-value = \"" . $logged_user->unread_notifs . "\"" : "" ?>>
                                     <?php if ((int) $logged_user->unread_notifs > 0): ?>
                                     <span id = "notif-badge" class = "badge" style="float:right;background: red;"><?php echo $logged_user->unread_notifs ?></span>
                                     <?php endif; ?>    
                                     <p class="iconin" style="font-size:14px !important;text-align: left !important;"><img  src = "<?php echo base_url('icons/notif.png'); ?>" class="iconin" style="width:100%;height:auto"/><!News>    </p>
                                 <span class="tooltiptext">Check what's up!</span>  
-                            </a>
+                            </a>-->
 
                             <a onmouseenter="playclip()" class="navbaricons" id = "notif-btn" href="<?php echo base_url('chat') ?>" <?php echo (int) $logged_user->unread_notifs > 0 ? "data-value = \"" . $logged_user->unread_notifs . "\"" : "" ?>>
                                     <?php if ((int) $logged_user->unread_notifs > 0): ?>
