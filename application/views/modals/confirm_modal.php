@@ -674,13 +674,13 @@
 
                         <tr style="border-top: 1px solid">
                             <td rowspan="2" class="timecol row"><center>12:00</center></td>
-                            <td id="a-a-sum-cell1"> </td>
-                            <td id="a-a-sum-cell2"> </td>
-                            <td id="a-a-sum-cell3"> </td>
-                            <td id="a-a-sum-cell4"> </td>
-                            <td id="a-a-sum-cell5"> </td>
-                            <td id="a-a-sum-cell6"> </td>
-                            <td id="a-a-sum-cell7"> </td>
+                            <td id="a-sum-cell1"> </td>
+                            <td id="a-sum-cell2"> </td>
+                            <td id="a-sum-cell3"> </td>
+                            <td id="a-sum-cell4"> </td>
+                            <td id="a-sum-cell5"> </td>
+                            <td id="a-sum-cell6"> </td>
+                            <td id="a-sum-cell7"> </td>
                             
                         </tr>
 
@@ -1196,7 +1196,7 @@
                     <div class = "col-md-12">
                         <ul class="nav nav-pills nav-justified" style = "margin-bottom: 10px;">
    
-                            <li class = "active text-center"><button data-dismiss="modal" class = "btn btn-success" style="width:50%; font-size:24px; margin-top: 10px; margin-bottom: 10px; background-color: grey">Cancel</button></li>
+                            <li class = "active text-center"><button data-dismiss="modal" class = "btn " style="width:50%; font-size:24px; margin-top: 10px; margin-bottom: 10px; background-color: grey; color: #fff;">Cancel</button></li>
 
                             <li class = "active text-center"><button onclick="changeTimeSettings('time-table', 'td', 'cell');" class = "btn btn-success" style="width:50%; font-size:24px; margin-top: 10px; margin-bottom: 10px">Yes</button></li>
                         </ul>
@@ -1254,11 +1254,15 @@
         for(i=1; i<337; i++)
         {
             temp = "sum-cell" + i;
+            temp2 = "a-sum-cell" + i;
 
-            if(document.getElementById(temp))
+            if(document.getElementById(temp) && document.getElementById(temp2))
             {
                 document.getElementById(temp).style.background = "rgb(255, 255, 255)";
                 document.getElementById(temp).id = temp.replace("-A","");
+
+                document.getElementById(temp2).style.background = "rgb(255, 255, 255)";
+                document.getElementById(temp2).id = temp2.replace("-A","");
             }
 
         }  
@@ -1295,7 +1299,6 @@
                 document.getElementById(currentID).style.background = "rgb(50, 200, 100)";
             }
         }
-
 
     }
 

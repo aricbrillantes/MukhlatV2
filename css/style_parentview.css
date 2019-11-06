@@ -19,16 +19,31 @@ div.content-container
 }
 
 
-textarea{
+textarea
+{
     resize: none;
 }
 
-a{
+a
+{
 	color: black;
 	
 }
 
-.sign-in-logo{
+.text-info 
+{
+    color: #386354;
+}
+
+.btn-primary 
+{
+    color: #fff;
+    background-color: #297d62;
+    border-color: #297d62;
+}
+
+.sign-in-logo
+{
     font-family: 'Oswald', sans-serif;
     color: white;
     font-size: 47px;
@@ -322,7 +337,7 @@ a{
 }
 
 .user-topic-header{
-    background-color: #26A69A;
+    background-color: #297d62;
     color: white;
     margin-top: 0px;
     padding: 5px;
@@ -432,7 +447,7 @@ a{
 }
 
 .user-activities-header{
-    background-color: #26A69A;
+    background-color: #297d62;
     color: white;
     margin-top: 0px;
     margin-bottom: 0px;
@@ -477,7 +492,7 @@ p{
 }
 
 .modal-heading{
-    background-color: #26A69A; 
+    background-color: #297d62; 
     padding-bottom: 5px; 
     padding-top: 5px;
     border-top-left-radius: 4px;
@@ -664,7 +679,7 @@ END CHAT
 */
 
 .sidebar-header-btn{
-    background-color: #26A69A;
+    background-color: #297d62;
     margin: 0px;
     margin-top: 5px;
     color: white;

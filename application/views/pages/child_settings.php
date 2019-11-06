@@ -190,14 +190,14 @@
 
                     <li><span style="color:white">______</span></li>
                     
-                    <li><a href="<?php echo base_url('signin/logout');?>"><i class = "glyphicon glyphicon-log-out" style="color:red"></i> Logout</a></li>
+                    <li><a href = "<?php echo base_url('signin/logout'); ?>"><i class = "glyphicon glyphicon-log-out" style="color:red;"></i> Log Out</a></li>
 
                 </ul>
             </li>
         </ul>
 
-    <?php else: ?>
-        <a href = "<?php echo base_url('signin/logout'); ?>" class = "pull-right btn btn-primary btn-md" style = "margin-right: 20px; margin-top: 10px; margin-bottom: 10px;">Log Out</a>
+    <?php else:?>
+        <a href="#logout-modal-parents" data-toggle = "modal" class = "pull-right btn btn-primary btn-md" style = "margin-right: 20px; margin-top: 10px; margin-bottom: 10px; background:#c73838; border-color: #c73838;">Log Out</a>
                         
     <?php endif; ?>
         
@@ -299,14 +299,14 @@
                 <div class = "content-container container-fluid " style = "margin-bottom: 4.5px;">
 
                     <div class = "col-xs-12 form-group register-field" style = "">
-                        <h3 class = "col-xs-12 no-padding text-info pull-left"style = "margin-bottom: 0px; margin-top: 0px;">Settings for <b><?php echo $child->first_name ?></b></strong></h3>
+                        <h3 class = "col-xs-12 no-padding text-info pull-left"style = "margin-bottom: 0px; margin-top: 0px;">Manage <b><?php echo $child->first_name ?>'s </b>Schedule</h3>
                         
                     </div>
 
                     <ul class="nav nav-pills nav-justified" style = "margin-bottom: 10px; margin-top: 10px;">
    
                         <li class = "active text-center">
-                            <h3 class = "no-padding text-info" style = "margin-top: 15px;">Session Time Limit</h3>
+                            <h4 class = "no-padding text-info" style = "margin-top: 15px;">Session Time Limit</h4>
                                 <!-- <?php echo $row->use_limit?> -->
 
                             <select style="width:110px; height:20px" id="time-limit" onclick="">
@@ -349,12 +349,12 @@
 
                     <div class = "content-container container-fluid col-md-10 col-md-offset-1 col-sm-offset-1 col-sm-10 col-xs-offset-1 col-xs-10">
                         <ul class="nav nav-pills nav-justified" style="">
-                            <li class=""><a data-toggle="pill" href="#timetable-1">Early Dawn</a></li>
-                            <li class=""><a data-toggle="pill" href="#timetable-2">Early Morning</a></li>
-                            <li class="active"><a data-toggle="pill" href="#timetable-3">Morning</a></li>
-                            <li class=""><a data-toggle="pill" href="#timetable-4">Afternoon</a></li>
-                            <li class=""><a data-toggle="pill" href="#timetable-5">Night</a></li>
-                            <li class=""><a data-toggle="pill" href="#timetable-6">Late Night</a></li>
+                            <li class="" style="background-color: #f0f0f0"><a style="padding: 10px;" data-toggle="pill" href="#timetable-1">Early Dawn</a></li>
+                            <li class="" style="background-color: #f0f0f0"><a style="padding: 10px;" data-toggle="pill" href="#timetable-2">Early Morning</a></li>
+                            <li class="active" style="background-color: #f0f0f0"><a style="padding: 10px;" data-toggle="pill" href="#timetable-3">Morning</a></li>
+                            <li class="" style="background-color: #f0f0f0"><a style="padding: 10px;" data-toggle="pill" href="#timetable-4">Afternoon</a></li>
+                            <li class="" style="background-color: #f0f0f0"><a style="padding: 10px;" data-toggle="pill" href="#timetable-5">Night</a></li>
+                            <li class="" style="background-color: #f0f0f0"><a style="padding: 10px;" data-toggle="pill" href="#timetable-6">Late Night</a></li>
                             
                         </ul>
                     </div>
@@ -1307,12 +1307,11 @@
     </script>
 <?php endforeach; 
 
-
     include(APPPATH . 'views/modals/confirm_modal.php');
     include(APPPATH . 'views/modals/empty_warning_modal.php');
     include(APPPATH . 'views/modals/late_warning_modal.php');
     include(APPPATH . 'views/modals/default_time_modal.php');
-
+    include(APPPATH . 'views/modals/logout_confirm_modal_parents.php');
 
 ?>
 

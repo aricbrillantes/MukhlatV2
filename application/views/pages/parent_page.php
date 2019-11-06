@@ -113,7 +113,7 @@
             </ul>
 
         <?php else: ?>
-            <a href = "<?php echo base_url('signin/logout'); ?>" class = "pull-right btn btn-primary btn-md" style = "margin-right: 20px; margin-top: 10px; margin-bottom: 10px;">Log Out</a>
+            <a href="#logout-modal-parents" data-toggle = "modal" class = "pull-right btn btn-primary btn-md" style = "margin-right: 20px; margin-top: 10px; margin-bottom: 10px; background:#c73838; border-color: #c73838;">Log Out</a>
                             
         <?php endif; ?>
 
@@ -177,3 +177,7 @@
 
 </body>
 </html>
+
+<?php
+    include(APPPATH . 'views/modals/logout_confirm_modal_parents.php');
+?>
