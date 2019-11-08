@@ -95,8 +95,8 @@ include(APPPATH . 'views/header.php');
                 
                 <!--regular text, emojis and stickers-->
                 <div>
-                <div  class="col-sm-3 pull-right open-book" style="min-height:300px; max-height:300px">
-<!--                    <?php
+                <div  class="col-sm-3 pull-right chalkboard" style="min-height:300px; max-height:300px">
+                    <?php
                         foreach ($c_topic->posts as $post):
                             if($post->shout==0 && $post->reply==0):?>
                     <?php $attachments = $CI->attachment_model->get_post_attachments($post->post_id);?>
@@ -105,10 +105,10 @@ include(APPPATH . 'views/header.php');
                     <?php endif;
                           endif;
                           endforeach; ?>
-                            -->
+                            
                     </div>
             <?php if ($c_topic->creator_id === $logged_user->user_id): ?>
-                    <center> <button onmouseenter="playclip()" onclick="toggleButton('text')" id="crettop" class = "btn btn-primary buttonsbgcolor textoutliner" href="#create-post-modal" data-toggle = "modal" style="font-size:22px;margin-left: 5%;margin-top: 1%">My Diary</button></center><br><br>
+                    <center> <button onmouseenter="playclip()" onclick="toggleButton('text')" id="crettop" class = "btn btn-primary buttonsbgcolor textoutliner" href="#create-post-modal" data-toggle = "modal" style="font-size:22px;margin-left: 5%;margin-top: 1%">My Board</button></center><br><br>
                 <?php endif;?></div>
                 
         </div>

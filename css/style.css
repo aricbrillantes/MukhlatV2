@@ -2201,7 +2201,7 @@ body::-webkit-scrollbar-thumb {
     background-color: #d9b382;
 }
 
-#white-board{
+.white-board{
   background-color: #f2f2f2;
   position: relative;
   width: 40%;
@@ -2735,3 +2735,32 @@ border: 2px outset  #000;
   /*prespectiv creates the door open effect*/
   transform: perspective(1200px) translateZ(0px) translateX(0px) translateY(0px) rotateY(-105deg);
 }
+
+.chalkboard {
+  font-size: 40px;
+  color: #E8E8E8;
+  font-family: "Walter Turncoat", cursive;
+  display: block;
+  width: 40%;
+  height: 40%;
+  min-height: auto;
+  margin: 30px auto 0 auto;
+  background-color: #497959;
+  padding: 20px 30px;
+  overflow-y: auto;
+  box-shadow: -1px 2px 2px 0px #555, inset 0 0 10px 0 #555;
+  -webkit-border-radius: 10px;
+  -khtml-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  border-radius: 10px;
+  border: #B78240 solid 10px;
+  -webkit-border-radius: 10px;
+  -khtml-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  border-radius: 10px;
+  border: #B78240 solid 10px;
+  }
