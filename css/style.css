@@ -741,6 +741,11 @@ textarea{
     src: url("../assets/fonts/ComickBook_Simple.ttf");
 }
 
+@font-face{
+    font-family: "KGChasingPavements";
+    src: url("../assets/fonts/KGChasingPavements.ttf");
+}
+
 .sign-in-content{
     width: 60%;
     margin-right: auto;
