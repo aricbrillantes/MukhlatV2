@@ -133,19 +133,19 @@ $topic = $_SESSION['current_topic'];
                         <!-- Attach a file: -->
                         <!--IMAGE-->
                         <label id = "img-label" class="btn btn-primary buttonsbgcolor borderbuttonoutline">
-                            <input id = "attach-img" accept = "image/*" type="file" name = "post_image" style = "display: none;">
+                            <input id = "attach-img" accept = "image/*" type="file" name = "post_image" style = "display: none;" onchange="readURL(this);">
                             <p id = "image-text" class = "attach-btn-text"><i class = "fa fa-file-image-o"></i> Add Picture</p>
                         </label>
 
                         <!--AUDIO-->
                         <label id = "audio-label" class="btn btn-primary buttonsbgcolor borderbuttonoutline">
-                            <input id = "attach-audio" accept = "audio/*" type="file" name = "post_audio" style = "display: none;">
+                            <input id = "attach-audio" accept = "audio/*" type="file" name = "post_audio" style = "display: none;" onchange="readAud(this);">
                             <p id = "audio-text" class = "attach-btn-text"><i class = "fa fa-file-audio-o"></i> Add Sound</p>
                         </label>
 
                         <!--VIDEO-->
                         <label id = "video-label" class="btn btn-primary buttonsbgcolor borderbuttonoutline">
-                            <input id = "attach-video" accept = "video/*" type="file" name = "post_video" style = "display: none;">
+                            <input id = "attach-video" accept = "video/*" type="file" name = "post_video" style = "display: none;" onchange="readVid(this);">
                             <p id = "video-text" class = "attach-btn-text"><i class = "fa fa-file-video-o"></i> Add Video</p>
                         </label>
 
@@ -156,13 +156,21 @@ $topic = $_SESSION['current_topic'];
                         </label> -->
 
                     </div>
-                    <div id = "attachment-preview" class = "content-container">
-                        <h5 id = "attachment-message" class = "text-warning text-center">No attachment yet.</h5>
-                    </div>
+                    <img id="pic" src="#" style="display: none" alt="your image here" />
+              <audio id="aud" style="display: none" controls>
+              <source src="#" id="audio_here">
+              hi
+              </audio>
+              <video id="vid" width="400" style="display: none" controls>
+                  <source src="#" id="video_here">
+                  hi
+              </video>  
                 </div>
                 <div class = "modal-footer" style = "padding: 5px; border-top: none; padding-bottom: 10px; padding-right: 10px;">
                     <a id = "create-post-btn" class ="btn btn-primary buttonsbgcolor" data-toggle = "modal" onClick="putImage()">Share</a>
                 </div>
+                
+                
             </form>
 
             <div style="display: none">
@@ -186,6 +194,40 @@ $topic = $_SESSION['current_topic'];
 
 
 <script>
+
+function readURL(input) {
+  
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+    
+    reader.onload = function(e) {
+      $('#pic').attr('src', e.target.result);
+    }
+    
+    reader.readAsDataURL(input.files[0]);
+  }
+  $('[id$=pic]').show();
+}
+
+function readVid(input){
+  var $source = $('#video_here');
+  $source[0].src = URL.createObjectURL(input.files[0]);
+  $source.parent()[0].load();
+  $('[id$=vid]').show();
+}
+
+function readAud(input){
+  var $source = $('#audio_here');
+  $source[0].src = URL.createObjectURL(input.files[0]);
+  $source.parent()[0].load();
+  $('[id$=aud]').show();
+}
+
+// $("#attach-img").change(function() {
+//   readURL(this);
+// });
+
+
 
 ///////////////
 let constraintObj = { 
