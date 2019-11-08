@@ -7,7 +7,11 @@
         $homeURL = base_url('home');
         header("Location: $homeURL");
     }
+
+    include(APPPATH . 'views/modals/birthday_modal.php'); 
+    include(APPPATH . 'views/modals/afk_warning_modal.php'); 
 ?>
+<p id="afktimer" style="float: right; display:none;">Time Left: 9999<p>
 
 <!-- scale to device resolution -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,39 +21,107 @@
 
 <script type="text/javascript">
     
-    function getCookie(cname) {
+    function getCookie(cname) 
+    {
         var name = cname + "=";
         var ca = document.cookie.split(';');
-        for(var i = 0; i < ca.length; i++) {
+        for(var i = 0; i < ca.length; i++) 
+        {
             var c = ca[i];
-            while (c.charAt(0) === ' ') {
+            while (c.charAt(0) === ' ') 
+            {
                 c = c.substring(1);
             }
-            if (c.indexOf(name) === 0) {
+
+            if (c.indexOf(name) === 0) 
+            {
                 return c.substring(name.length, c.length);
             }
         }
         return "";
     }
+
+    var currentDate = new Date();
+    var curMonth = currentDate.getMonth()+1;
+    var curDay = currentDate.getDate();
+
+    var birthDate = new Date('<?php echo $logged_user->birthdate; ?>');
+    var birthMonth = birthDate.getMonth()+1;
+    var birthDay = birthDate.getDate(); 
+   
+    if(birthMonth===curMonth && birthDay===curDay)
+    {
+        if(!getCookie("birthday") && getCookie("birthday")!==1)
+        {
+            document.cookie = "birthday=1;" + ";path=/"; 
+            $('#birthdaypopup').modal('show');
+        }    
+    }
+        
+
+/*------------------------- AFK Timer Script -------------------------*/
+
+    var start = document.getElementById("start");
+    var dis = document.getElementById("afktimer");
+    var finishTime;
+    var timerLength = 300; // 600 seconds or 10 minutes
+    var timeoutID;
+    dis.innerHTML = "Time Left: " + timerLength;
     
+    document.onmousemove = function()
+    { //reset timer and hide AFK popup
+        StartTimer();
+        $('#afkpopup').modal('hide'); 
+    };
+    
+    StartTimer();
+
+    function StartTimer() 
+    {
+        localStorage.setItem('myTime', ((new Date()).getTime() + timerLength * 1000));
+
+        if (timeoutID !== undefined) window.clearTimeout(timeoutID);
+            Update();
+    };
+
+    function Update() 
+    {
+        finishTime = localStorage.getItem('myTime');
+        var timeLeft = (finishTime - new Date());
+        dis.innerHTML = "Time Left: " + Math.max(timeLeft/1000,0);
+        timeoutID = window.setTimeout(Update, 100);
+
+        if(timeLeft<=180*1000) //display AFK popup after 5 minutes
+        {
+            $('#afkpopup').modal('show');
+        }
+        
+        if(timeLeft<=10) // logout user if AFK
+        {
+            location.href="<?php echo base_url('signin/logout');?>";
+        }
+    }
+
     var randomColor = Math.floor(Math.random()*16777215).toString(16);
     var randomColor2 = Math.floor(Math.random()*16777215).toString(16);
     var randomColor3 = Math.floor(Math.random()*16777215).toString(16);
     var randomColor4 = Math.floor(Math.random()*16777215).toString(16);
     
-    if(getCookie("activaterain")==='1'){  
+    if(getCookie("activaterain")==='1')
+    {  
         document.cookie = "NavbarColor=#" + randomColor + ";" + ";path=/"; 
         document.cookie = "ButtonColor=#" + randomColor4 + ";" + ";path=/"; 
         document.cookie = "ButtonHColor=#" + randomColor2 + ";" + ";path=/";
         document.cookie = "ButtonAColor=#" + randomColor3 + ";" + ";path=/";
     }
     
-     if(getCookie("ButtonColor")==='')
+    if(getCookie("ButtonColor")==='')
     {
         document.cookie = "ButtonColor=#1d8f15;" + ";path=/"; 
         document.cookie = "ButtonHColor=#14620f;" + ";path=/"; 
         document.cookie = "ButtonAColor=#185729;" + ";path=/"; 
     }
+
 //    changing custom themes, pointers, effects based on the users choices
     document.write('<style type="text/css">.navbar-font {background:' + getCookie("NavbarColor") + ';}\n\
                     #randtriv1{background: #'+ randomColor2 +';}\n\
@@ -87,9 +159,6 @@
                     .topic-grid1{background-color: #'+ randomColor +';}\n\
                     .ptopcolor{background:' + getCookie("ButtonColor") + ';}<\/style>');
     
-    
-    
-    
     if(getCookie("MouseTrail")==='0')
             document.write('<style type="text/css">.trail{display:none;}<\/style>');
         
@@ -100,116 +169,75 @@
         document.write('<style type="text/css"> #logom .bubbletooltip{visibility:hidden;}<\/style>');
         
     if(getCookie("randomcolors")==='1')
-        {
-            document.write('<style type="text/css">\n\
-                        #randtriv1{background: #'+ randomColor2 +';}\n\
-                    .topic-grid1{background-color: #'+ randomColor +';}<\/style>');
-        }
-        
-        else
-        {
-            document.write('<style type="text/css">\n\
-                        #randtriv1{background:'+ getCookie("ButtonColor") +';}\n\
-                        .topic-grid1{background-color:'+ getCookie("ButtonColor") +';}<\/style>');
-        }    
-    if(getCookie("sparklebg1")==="block"){
+    {
+        document.write('<style type="text/css">\n\
+                    #randtriv1{background: #'+ randomColor2 +';}\n\
+                .topic-grid1{background-color: #'+ randomColor +';}<\/style>');
+    }
+    
+    else
+    {
+        document.write('<style type="text/css">\n\
+                    #randtriv1{background:'+ getCookie("ButtonColor") +';}\n\
+                    .topic-grid1{background-color:'+ getCookie("ButtonColor") +';}<\/style>');
+    }    
+
+    if(getCookie("sparklebg1")==="block")
+    {
         document.write('<canvas id="world" class="sparklesbg"></canvas>'); 
     }
-    if(getCookie("fireworkbg1")==="block"){
+
+    if(getCookie("fireworkbg1")==="block")
+    {
         document.write('<canvas id="firework" class="fireworkbg"></canvas>'); 
     }
     
     if(getCookie("dance")==='1')
-        {
-            document.write('<style type="text/css">\n\
-                            .btn{animation: dance 3s infinite;}\n\
-                            .navbaricons{animation: dance 3s infinite;}\n\
-                            .navbarprofileicon{animation: dance 3s infinite;}\n\
-                            #logout-btn{animation: dance 3s infinite;}\n\
-                            button{animation: dance 3s infinite;}\n\
-                            a{animation: dance 3s infinite;}\n\
-                            <\/style>');
-        }
+    {
+        document.write('<style type="text/css">\n\
+                        .btn{animation: dance 3s infinite;}\n\
+                        .navbaricons{animation: dance 3s infinite;}\n\
+                        .navbarprofileicon{animation: dance 3s infinite;}\n\
+                        #logout-btn{animation: dance 3s infinite;}\n\
+                        button{animation: dance 3s infinite;}\n\
+                        a{animation: dance 3s infinite;}\n\
+                        <\/style>');
+    }
        
-        
-        var birthDate = new Date('<?php echo $logged_user->birthdate; ?>');
-        var birthMonth = birthDate.getMonth()+1;
-        var birthDay = birthDate.getDate();
+
+    //night mode script
+    var currentTime = new Date();
+    var hours = currentTime.getHours();
+    var minutes = currentTime.getMinutes();
+
+    //different logo on nightmode
+    if(hours >= 18 || hours < 6)
+    {
+        document.write('<style type="text/css">\n\
+        #nav-logo{display:none}\n\
+        #home2{display:none}\n\
+        <\/style>');
+    }
     
-        var currentDate = new Date();
-        var curMonth = currentDate.getMonth()+1;
-        var curDay = currentDate.getDate();
-        
-//night mode script
-        var currentTime = new Date();
-        var hours = currentTime.getHours();
-        var minutes = currentTime.getMinutes();
+    else
+    {
+        document.write('<style type="text/css">\n\
+            #nav-logo2{display:none}\n\
+            #bed2{display:none}<\/style>');
+    }
 
-//different logo on nightmode
-        if(hours >= 18 || hours < 6)
-        {
-            document.write('<style type="text/css">\n\
-            #nav-logo{display:none}\n\
-            #home2{display:none}\n\
-            <\/style>');
-        }
+    //force logout by 8pm to 6am
+    //        if(hours >= 20 || hours < 6)
+    //        {
+    //            location.href="http://localhost/MukhlatV2Beta/signin/logout";
+    //        }
+    //Warning before 8pm's force logout
+    // if(hours === 19 && getCookie("warned")==='0')
+    // {
+    //     $('#timeoutpopup').modal({backdrop: 'static', keyboard: false});
+    //     document.cookie = "warned=1;path=/"; 
         
-        else
-        {
-            document.write('<style type="text/css">\n\
-                #nav-logo2{display:none}\n\
-                #bed2{display:none}<\/style>');
-        }
-//force logout by 8pm to 6am
-//        if(hours >= 20 || hours < 6)
-//        {
-//            location.href="http://localhost/MukhlatV2Beta/signin/logout";
-//        }
-//Warning before 8pm's force logout
-        if(hours === 19 && getCookie("warned")==='0')
-        {
-            $('#timeoutpopup').modal({backdrop: 'static', keyboard: false});
-            document.cookie = "warned=1;path=/"; 
-            
-        }
-//greet if user's birthday
-        if(birthMonth===curMonth && birthDay===curDay)
-        {
-            if(getCookie("birthday")==='0')
-                birthdayPopup();
-        }
-           
-        function birthdayPopup()
-        {
-            document.cookie = "birthday=1;" + ";path=/"; 
-            $('#birthdaypopup').modal('show');
-            
-        }
-        
-        var now = new Date();
-        var now2 = new Date();
-        var time = now.getTime();
-        var time2 = now.getTime()+(1800 * 1000);
-        now.setTime(time);
-        now2.setTime(time2);
-
-        var nowH = now.getHours();
-        var nowM = now.getMinutes();
-       
-        function forceTimeout()
-        {
-            blur = blur+1;
-            document.cookie = "blur=" + blur + ";path=/"; 
-            $('#timepopup').modal({backdrop: 'static', keyboard: false});
-        }
-        
-        function removeBlur()
-        {
-            blur = 0;
-            document.cookie = "blur=" + blur + ";path=/"; 
-            location.reload();
-        }
-        
+    // }
        
 </script>
 <!--<script type="text/javascript" src="https://panzi.github.io/Browser-Ponies/basecfg.js" id="browser-ponies-config"></script>
@@ -290,39 +318,19 @@
 	}
 </style>-->
     <!--snowflakes falling effect-->
-<div class="snowflakebg" style="display: none;">    
-<div class="snowflakes" aria-hidden="true">
-  <div class="snowflake" style="font-size: 30px">
-  ❄
-  </div>
-  <div class="snowflake" style="font-size: 25px">
-  ❅
-  </div>
-  <div class="snowflake" style="font-size: 31px">
-  ❆
-  </div>
-  <div class="snowflake" style="font-size: 26px">
-  ❄
-  </div>
-  <div class="snowflake" style="font-size: 27px">
-  ❅
-  </div>
-  <div class="snowflake" style="font-size: 28px">
-  ❆
-  </div>
-  <div class="snowflake" style="font-size: 29px">
-  ❄
-  </div>
-  <div class="snowflake" style="font-size: 24px">
-  ❅
-  </div>
-  <div class="snowflake" style="font-size: 32px">
-  ❆
-  </div>
-  <div class="snowflake" style="font-size: 23px">
-  ❄
-  </div>
-</div>
+<div class="snowflakebg" style="display: none;">       
+    <div class="snowflakes" aria-hidden="true">
+        <div class="snowflake" style="font-size: 23px">❄</div>
+        <div class="snowflake" style="font-size: 24px">❅</div>
+        <div class="snowflake" style="font-size: 32px">❆</div>
+        <div class="snowflake" style="font-size: 23px">❄</div>
+        <div class="snowflake" style="font-size: 24px">❅</div>
+        <div class="snowflake" style="font-size: 32px">❆</div>
+        <div class="snowflake" style="font-size: 23px">❄</div>
+        <div class="snowflake" style="font-size: 24px">❅</div>
+        <div class="snowflake" style="font-size: 32px">❆</div>
+        <div class="snowflake" style="font-size: 23px">❄</div>
+    </div>
 </div>    
 
 </head>
