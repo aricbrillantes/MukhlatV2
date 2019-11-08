@@ -10,7 +10,7 @@
     }
 
 ?>
-
+<script src="<?php echo base_url('zxcvbn-master/dist/zxcvbn.js'); ?>"></script>
 <!-- browser tab icon -->
 <link rel="icon" href="<?php echo base_url('./images/logo/mukhlatlogo_icon.png'); ?>" sizes="32x32"> 
 <link rel="stylesheet" href="<?php echo base_url("/css/style.css"); ?>" />
@@ -100,11 +100,14 @@
                                     <input id = "sign-up-retype" type = "password" required class = "form-control sign-in-field col-md-4 col-md-offset-0" placeholder = "Retype Password">
                                 </div>
 
+                                <meter max="4" id="password-strength-meter" style="width:100%;"></meter>
+                                <p id="password-strength-text"></p>
+
                                 <div id="parent-email" class = "col-xs-12 col-md-6 form-group register-field content-container container-fluid" style="visibility: visible">
                                     <input type = "email" id = "sign_up_email_parent" name = "sign_up_email_parent" class = "form-control sign-in-field col-md-4 col-md-offset-0" placeholder = "Parent' Email Address" maxlength = "45">
                                 </div><br>
                                                            
-                                <div class = "text-center col-xs-12 col-md-12 form-group content-container container-fluid">
+                                <div id="sign-up-save" class = "text-center col-xs-12 col-md-12 form-group content-container container-fluid">
                                     <button type = "submit" class = "btn btn-success" style="width:100%;">Register</button>
                                 </div>
                             </form>
@@ -135,6 +138,8 @@
 <script type="text/javascript" src="<?php echo base_url("/js/sign_in.js"); ?>"></script>
 
 <script>
+
+
 
     document.getElementById('sign_up_role').onchange = function() 
     {
@@ -183,6 +188,62 @@
         }
 
     }
+
+    var strength =
+        {
+            0: "Worst",
+            1: "Bad",
+            2: "Weak",
+            3: "Good",
+            4: "Strong"
+        };
+
+    var password = document.getElementById('sign-up-password');
+    var meter = document.getElementById('password-strength-meter');
+    var text = document.getElementById('password-strength-text');
+
+    password.addEventListener('input', function ()
+    {
+        var val = password.value;
+        var result = zxcvbn(val);
+
+        // Update the password strength meter
+        meter.value = result.score;
+
+        // Update the text indicator
+        if (val !== "")
+        {
+            if (strength[result.score] === 'Worst' && password.value.length > 8)
+            {
+                text.innerHTML = "Strength: " + "<strong style='color:red'>" + strength[result.score] + "</strong>" + "<br><span class='feedback' style='color:red'>" + "Your password is too short! Try using more letters and numbers!" + "<br>" + "<br></span";
+                document.getElementById('sign-up-save').style.visibility = "hidden";
+            } else if (strength[result.score] === 'Worst' && password.value.length < 8)
+            {
+                text.innerHTML = "Strength: " + "<strong style='color:red'>" + strength[result.score] + "</strong>" + "<br><span class='feedback' style='color:red'>" + "Your password is very easy to crack! Try using different letters and numbers!" + "<br>" + "<br></span";
+                document.getElementById('sign-up-save').style.visibility = "hidden";
+            } else if (strength[result.score] === 'Bad' && password.value.length < 8)
+            {
+                text.innerHTML = "Strength: " + "<strong style='color:orange'>" + strength[result.score] + "</strong>" + "<br><span class='feedback' style='color:orange'>" + "Your password is still easy to crack! Try using different letters and numbers!" + "<br>" + "<br></span";
+                document.getElementById('sign-up-save').style.visibility = "hidden";
+            } else if (strength[result.score] === 'Weak')
+            {
+                text.innerHTML = "Strength: " + "<strong style='color:yellow'>" + strength[result.score] + "</strong>" + "<br><span class='feedback' style='color:yellow'>" + "Your password is still easy to crack!" + "<br>" + "<br></span";
+                document.getElementById('sign-up-save').style.visibility = "hidden";
+            } else if (strength[result.score] === 'Good')
+            {
+                text.innerHTML = "Strength: " + "<strong style='color:green'>" + strength[result.score] + "</strong>" + "<br><span class='feedback' style='color:green'>" + "Your password is good!" + "<br>" + "<br></span";
+                document.getElementById('sign-up-save').style.visibility = "visible";
+            } else if (strength[result.score] === 'Strong')
+            {
+                text.innerHTML = "Strength: " + "<strong style='color:blue'>" + strength[result.score] + "</strong>" + "<br><span class='feedback' style='color:blue'>" + "Your password is strong!" + "<br>" + "<br></span";
+                document.getElementById('regisign-up-savester').style.visibility = "visible";
+            }
+        } else
+        {
+            text.innerHTML = "";
+            document.getElementById('register').style.display = "visible";
+        }
+    });
 
 </script>
 
