@@ -38,7 +38,7 @@ include(APPPATH . 'views/header.php');
             <h4><strong><?php echo utf8_decode($c_topic->user->first_name); ?>'s Room</strong></h4>
             </div></center>
             <!--Pictures-->
-            <div class="col-sm-3">
+            <div class="col-sm-3"><br><br><br>
                 <a class="picture" href="#room_media_modal" data-toggle = "modal" style="color: black">
                     <div style="margin-left: 60px;margin-bottom: 100%">
                         <figure class="boxside boxtop"><i class = "glyphicon glyphicon-picture fa-2x" style="margin-top: 25px"></i></figure>

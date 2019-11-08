@@ -2159,6 +2159,10 @@ body::-webkit-scrollbar-thumb {
   float: left;
   margin: 0 20px;
 }
+.picture:hover{
+    transform: scale(1.35);
+
+}
 .hook {
   width: 4px;
   height: 4px;
@@ -2699,4 +2703,35 @@ border: 2px outset  #000;
 	margin-top: 8%;
         margin-bottom: 10%;
         font-size: 34px;
+}
+
+.backDoor
+{
+  background-color: #333;
+  position:relative;
+  width:200px;
+  height:300px;
+  
+  margin: 0 auto;
+  margin-top:50px;
+}
+
+.door
+{
+  background-color: brown;
+  position:absolute;
+  top:0px;
+  left:0px;
+  width:200px;
+  height:300px;
+ 
+  transform-origin: left;
+  /*Speed of the Door animation*/
+  transition: all 0.5s ease-in-out;
+}
+
+.door:hover
+{
+  /*prespectiv creates the door open effect*/
+  transform: perspective(1200px) translateZ(0px) translateX(0px) translateY(0px) rotateY(-105deg);
 }
