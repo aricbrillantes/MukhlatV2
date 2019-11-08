@@ -64,7 +64,7 @@
     var start = document.getElementById("start");
     var dis = document.getElementById("afktimer");
     var finishTime;
-    var timerLength = 300; // 600 seconds or 10 minutes
+    var timerLength = 600000000; // 600 seconds or 10 minutes
     var timeoutID;
     dis.innerHTML = "Time Left: " + timerLength;
     

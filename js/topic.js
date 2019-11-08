@@ -177,19 +177,29 @@ $(document).ready(function () {
     });
 
     $('#edit-topic-save').on('click', function () {
+        // alert("eut");
         var id = $(this).val();
-        var desc = $("#edit-topic-text").val();
+        var theme = $("#change-topic-theme").val();
+        // alert(theme);
         $.ajax({
             url: window.location.origin + '/MukhlatV2/topic/edit_topic/' + id,
             type: 'POST',
-            data: {topic_description: desc},
-            success: function (data) {
-                $("#desc-edit").addClass("hidden");
-                $("#desc-creator").removeClass("hidden");
-                $("#desc-container").removeClass("hidden");
-                $("#desc-container").html(data);
-                $("#edit-topic-text").val(data);
+            data: {change_topic_theme: theme},
+            success: function (data) 
+            {
+                // alert("eut");
+                // alert ();
+                window.location.href = "http://localhost/MukhlatV2/topic/view/" + id;
+
+
             }
+            // data: {topic_description: desc},
+            // success: function (data) {
+            //     $("#desc-edit").addClass("hidden");
+            //     $("#desc-creator").removeClass("hidden");
+            //     $("#desc-container").removeClass("hidden");
+            //     $("#desc-container").html(data);
+            //     $("#edit-topic-text").val(data);
         });
     });
 

@@ -23,7 +23,8 @@ class Topic_model extends CI_Model {
         return $query->result();
     }
     
-        public function get_topic_posts($topic_id) {
+    public function get_topic_posts($topic_id) 
+    {
         $user = $_SESSION['logged_user'];
         $query = $this->db->order_by('date_posted', 'DESC')->get_where('tbl_posts', array('topic_id' => $topic_id, 'parent_id' => 0));
         $posts = $query->result();
@@ -40,25 +41,38 @@ class Topic_model extends CI_Model {
         return $posts;
     }
     
-    public function get_topic($load_posts, $id) {
-        $topic = $this->db->get_where('tbl_topics', array('topic_id' => $id))->row();
+    public function get_topic($load_posts, $id) 
+    {
+        if($this->db->get_where('tbl_topics', array('topic_id' => $id))->row())
+        {
+            $topic = $this->db->get_where('tbl_topics', array('topic_id' => $id))->row();
+            
+            if ($load_posts && $topic) 
+            {
+                //get posts
+                $this->load->model('post_model', 'posts');
+                $topic->posts = $this->posts->get_topic_posts($topic->topic_id);
 
-        if ($load_posts) {
-            //get posts
-            $this->load->model('post_model', 'posts');
-            $topic->posts = $this->posts->get_topic_posts($topic->topic_id);
+                $this->load->model('user_model', 'users');
+                $topic->followers = $this->users->get_topic_followers($topic->topic_id);
+                $topic->moderators = $this->users->get_topic_moderators($topic->topic_id);
+
+                $topic->nonfollowers = $this->users->get_nonfollowers($topic->topic_id);
+                $topic->nonmoderators = $this->users->get_nonmoderators($topic->topic_id);
+            }
 
             $this->load->model('user_model', 'users');
-            $topic->followers = $this->users->get_topic_followers($topic->topic_id);
-            $topic->moderators = $this->users->get_topic_moderators($topic->topic_id);
-
-            $topic->nonfollowers = $this->users->get_nonfollowers($topic->topic_id);
-            $topic->nonmoderators = $this->users->get_nonmoderators($topic->topic_id);
+            $topic->user = $this->users->get_user(false, false, array('user_id' => $topic->creator_id));
+            return $topic;
         }
 
-        $this->load->model('user_model', 'users');
-        $topic->user = $this->users->get_user(false, false, array('user_id' => $topic->creator_id));
-        return $topic;
+        else
+        {
+            $homeURL = base_url('home');
+            header("Location: $homeURL");
+        }       
+
+        
     }
 
     public function get_user_topics($user_id) {

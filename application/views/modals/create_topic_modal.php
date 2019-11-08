@@ -34,6 +34,14 @@
                             <p id = "image-text2" class = "attach-btn-text"><i class = "fa fa-file-image-o"></i> Add Cover Image</p>
                         </label>
                      </div>-->
+                    <select style="width:110px; height:40px"  class="form-control" name="topic_theme" id="topic-theme" onclick="">
+                        <option value="1">Theme 1</option>
+                        <option value="2">Theme 2</option>
+                        <option value="3">Theme 3</option>
+                        <option value="4">Theme 4</option>
+                        <option value="5">Theme 5</option>
+                        <option value="6">Theme 6</option>
+                    </select>
 
                 </div>
                 <div class = "modal-footer" style = "padding: 5px; border-top: none; padding-bottom: 10px; padding-right: 10px;">

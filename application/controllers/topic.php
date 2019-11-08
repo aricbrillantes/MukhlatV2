@@ -111,8 +111,8 @@ class Topic extends CI_Controller {
         $data = array(
             'creator_id' => $logged_user->user_id,
             'topic_name' => utf8_encode(htmlspecialchars($input->post('topic_name'))),
-            'topic_description' => utf8_encode(htmlspecialchars($input->post('topic_description')))
-            // 'room_theme' => utf8_encode(htmlspecialchars($input->post('topic_design')))
+            'topic_description' => utf8_encode(htmlspecialchars($input->post('topic_description'))),
+            'theme' => utf8_encode(htmlspecialchars($input->post('topic_theme')))
         );
 
         $this->db->set('date_created', 'NOW()', FALSE);
@@ -611,15 +611,20 @@ class Topic extends CI_Controller {
 
     public function edit_topic() {
         $topic_id = $this->uri->segment(3);
-        $description = $this->input->post('topic_description', TRUE);
+        $theme = $this->input->post('change_topic_theme', TRUE);
+        // $description = $this->input->post('topic_description', TRUE);
 
         $this->load->model("topic_model", "topics");
 
-        $data = array('topic_description' => utf8_encode(htmlspecialchars($description)));
+        $data = array('theme' => $theme);
+        // $data = array('topic_description' => utf8_encode(htmlspecialchars($description)));
 
         $this->topics->update_topic($topic_id, $data);
 
-        echo $description;
+        // $redirect = base_url('topic/view/'.$topic_id);
+
+        // echo '<script type="text/javascript">alert("'.base_url('topic/view/'.$topic_id).'")</script>';
+        // header("Location: $redirect");
     }
 
     public function cancel_topic() {
