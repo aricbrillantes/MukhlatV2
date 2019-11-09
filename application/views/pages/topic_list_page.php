@@ -87,30 +87,44 @@ include(APPPATH . 'views/header.php');
                     <div id = "topic-list" class = "list-group">
                         <?php foreach ($topics as $topic): ?>
                         
-                        <!--retrieving the cover photo-->
-                    <a class="topic-grid1" id="topicGcolor" href = "<?php echo base_url('topic/view/' . $topic->topic_id); ?>">
-                        <?php
-
-                        $conn = @new mysqli($servername, $username, $password, $dbname);
-
-                        $sql = "SELECT file_url FROM tbl_covers WHERE topic_id = '$topic->topic_id'";
-                        $result = $conn->query($sql);
-                        while ($row = $result->fetch_assoc()) {
-                        echo '<img src=" '.$row['file_url'].' " width = "100%" height="150px" style="position:relative;" />';
-                        echo '<span  style="font-size: 32px">'. $topic->topic_name .'<img src=" '.$row['file_url'].' " /></span>';
-                        $conn->close();
-                        }?>
-
-                                <h4 class = "text-info no-padding no-margin text1color topicheader"><?php echo utf8_decode($topic->topic_name); ?></h4><br>
-                                <small class="topicheader2"><i>by <?php echo $topic->user->first_name . " " . $topic->user->last_name; ?></i></small>
+                        <?php if($topic->theme==1):?>
+                        <!--skewedbtn theme-->
+                       <div class="button-wrapper">
+                            <a class="skewedbtn background-button"  href = "<?php echo base_url('topic/view/' . $topic->topic_id); ?>" title="<?php echo utf8_decode($topic->topic_name); ?>">
+                        <?php elseif($topic->theme==2):?>        
+                        <!--cane theme-->
+                        <div class="cane">
+                            <a class="canecontent"  href = "<?php echo base_url('topic/view/' . $topic->topic_id); ?>">
+                                <h4 class = "text-info no-padding text1color topicheader" style="margin-top:50px;margin-left: 13px"><?php echo utf8_decode($topic->topic_name); ?></h4><br>
+                        <?php elseif($topic->theme==3):?>        
+                        <!--squares theme--><div>
+                        <div class="square1"></div>
+                            <a class="square2"  href = "<?php echo base_url('topic/view/' . $topic->topic_id); ?>">
+                                <h4 class = "text-info no-padding text1color topicheader" style="margin-top:50px;margin-left: 13px"><?php echo utf8_decode($topic->topic_name); ?></h4><br>
+                                    
+                        <?php else:?>        
+                        <!--default theme-->
+                        <div>
+                            <a class="topic-grid1"  href = "<?php echo base_url('topic/view/' . $topic->topic_id); ?>">
+                                <h4 class = "text-info no-padding text1color topicheader" style="margin-top:50px;margin-left: 13px"><?php echo utf8_decode($topic->topic_name); ?></h4><br>
+                        <?php endif;?>        
+                        
+  
+                                
+                                
+                                
+                                
+                                
+                                <!--<h4 class = "text-info no-padding no-margin text1color topicheader"><?php echo utf8_decode($topic->theme); ?></h4>-->
+                                <!--<small class="topicheader2"><i>by <?php echo $topic->user->first_name . " " . $topic->user->last_name; ?></i></small>-->
                                 <!-- <div class="topic-grid-icons">
                                     <div class = "label label-info follower-label draggable"><i class = "fa fa-group"></i> 
                                         <?php echo $topic->followers ? count($topic->followers) : '0' ?> <i class = "fa fa-comments"></i> 
                                             <?php echo $topic->post_count; ?></div>
                                 </div> -->
-                            </a>
+                            </a></div>
                         <?php endforeach; ?>
-                    </div>
+                        </div>
                 </div>
             </div>
             <?php
