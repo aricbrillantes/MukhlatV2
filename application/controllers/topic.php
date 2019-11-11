@@ -236,14 +236,14 @@ class Topic extends CI_Controller {
 
         $topic = $_SESSION['current_topic'];
 
-        $data = array(
+        $data = array
+        (
             'parent_id' => 0,
             'user_id' => $logged_user->user_id,
             'root_id' => 0,
             'topic_id' => $topic->topic_id,
             'post_title' => utf8_encode(htmlspecialchars($input->post('post_title'))),
             'post_content' => utf8_encode(htmlspecialchars($input->post('post_content'))),
-            
             'reply' => utf8_encode(htmlspecialchars($input->post('reply'))),
             'shout' => utf8_encode(htmlspecialchars($input->post('shout'))),
         );
@@ -253,6 +253,43 @@ class Topic extends CI_Controller {
         $this->db->insert('tbl_posts', $data);
 
         $post_id = $this->db->insert_id();
+
+        //update swear infractions in database
+        $swears = 
+        substr_count($input->post('post_content'), 'fuck') +
+        substr_count($input->post('post_content'), 'shit') +
+        substr_count($input->post('post_content'), 'ass'); 
+
+        $this->db->select('user_id, infractions');
+        $this->db->from('tbl_infractions');
+        $this->db->where(array('tbl_infractions.user_id' => $logged_user->user_id));
+
+        $infractions = $this->db->get();
+
+        if ($infractions) 
+        {
+            $currentInfractions = $infractions->row()->infractions;
+            $data = array
+            (
+                'user_id' => $logged_user->user_id,
+                'infractions' => $swears+$currentInfractions
+            );
+
+            $this->db->delete('tbl_infractions', array('user_id' => $logged_user->user_id));
+            $this->db->insert('tbl_infractions', $data);
+        } 
+
+        else
+        {
+            $data = array
+            (
+                'user_id' => $logged_user->user_id,
+                'infractions' => $swears
+            );
+
+            $this->db->insert('tbl_infractions', $data);
+        }
+
 
         // ATTACHMENTS
         if (!file_exists('./uploads/_' . $post_id . '/')) {
