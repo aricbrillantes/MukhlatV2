@@ -50,10 +50,10 @@
 
     if ($usertimes) 
     {
-        foreach ($usertimes->result() as $row)
-        {
-            echo count(explode(" ",$row->time_setting));
-        }
+        // foreach ($usertimes->result() as $row)
+        // {
+        //     echo count(explode(" ",$row->time_setting));
+        // }
     } 
 
     $num=-1;
@@ -1073,7 +1073,7 @@
                 <br><br>
 
                 
-                <?php foreach ($usertimes->result() as $row): ?>
+                <?php $row = $usertimes->row(); ?>
                 
                 <ul class="nav nav-pills nav-justified" style = "margin-bottom: 10px; margin-top: 10px;">
    
@@ -1133,7 +1133,7 @@
                 </ul>
                     
 
-            <?php endforeach; ?>
+            <?php //endforeach; ?>
 
                 <div class = "text-center">
                     <br>
@@ -1152,7 +1152,7 @@
 </body>
 <?php endforeach; ?>
 
-<?php foreach ($usertimes->result() as $row):?>
+<?php $row = $usertimes->row();?> 
     <script>
 
         var j;
@@ -1305,7 +1305,7 @@
         }
 
     </script>
-<?php endforeach; 
+<?php //endforeach; 
 
     include(APPPATH . 'views/modals/confirm_modal.php');
     include(APPPATH . 'views/modals/empty_warning_modal.php');

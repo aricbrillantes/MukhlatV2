@@ -87,12 +87,73 @@
                                 <div class = "col-xs-12 col-md-6 form-group register-field content-container container-fluid">
                                     <input type = "email" required id = "sign_up_email" name = "sign_up_email" class = "form-control sign-in-field col-md-4 col-md-offset-0" placeholder = "Email Address" maxlength = "45">
                                 </div>
-                                <div id="birthday-1" class = "col-xs-12 col-sm-auto col-md-2 form-group register-field content-container container-fluid" style="visibility: visible">
-                                    <p class = "text-muted"><strong>Birthday: </strong></p>
+
+                                <div id = "sign-up-birthday" class = "col-xs-12 col-md-6 form-group register-field content-container container-fluid">
+                                    <input style="height:55px;display:none;" type = "date" required name = "sign_up_birthday" class = "form-control sign-in-field" id="birhdate10">
+                                    <select style="width:120px;height:30px" id="DOBMonth" onclick="choosebday()">
+                                        <option>Month</option>
+                                        <option value="01">January</option>
+                                        <option value="02">February</option>
+                                        <option value="03">March</option>
+                                        <option value="04">April</option>
+                                        <option value="05">May</option>
+                                        <option value="06">June</option>
+                                        <option value="07">July</option>
+                                        <option value="08">August</option>
+                                        <option value="09">September</option>
+                                        <option value="10">October</option>
+                                        <option value="11">November</option>
+                                        <option value="12">December</option>
+                                    </select>
+
+                                    <select style="width:100px;height:30px" id="DOBDay" onclick="choosebday()">
+                                        <option>Day</option>
+                                        <option value="01">1</option>
+                                        <option value="02">2</option>
+                                        <option value="03">3</option>
+                                        <option value="04">4</option>
+                                        <option value="05">5</option>
+                                        <option value="06">6</option>
+                                        <option value="07">7</option>
+                                        <option value="08">8</option>
+                                        <option value="09">9</option>
+                                        <option value="10">10</option>
+                                        <option value="11">11</option>
+                                        <option value="12">12</option>
+                                        <option value="13">13</option>
+                                        <option value="14">14</option>
+                                        <option value="15">15</option>
+                                        <option value="16">16</option>
+                                        <option value="17">17</option>
+                                        <option value="18">18</option>
+                                        <option value="19">19</option>
+                                        <option value="20">20</option>
+                                        <option value="21">21</option>
+                                        <option value="22">22</option>
+                                        <option value="23">23</option>
+                                        <option value="24">24</option>
+                                        <option value="25">25</option>
+                                        <option value="26">26</option>
+                                        <option value="27">27</option>
+                                        <option value="28">28</option>
+                                        <option value="29">29</option>
+                                        <option value="30">30</option>
+                                        <option value="31">31</option>
+                                    </select>
+
+                                    <select style="width:100px;height:30px" id="DOBYear" onclick="choosebday()">
+                                        <option>Year</option>
+                                        <option value="2006">2006</option>
+                                        <option value="2007">2007</option>
+                                        <option value="2008">2008</option>
+                                        <option value="2009">2009</option>
+                                        <option value="2010">2010</option>
+                                        <option value="2011">2011</option>
+                                        <option value="2012">2012</option>
+                                    </select>
+
                                 </div>
-                                <div id="birthday-2" class = "col-xs-12 col-sm-auto col-md-4 form-group register-field content-container container-fluid" style="visibility: visible">
-                                    <input type = "date"  name = "sign_up_birthday" class = "form-control sign-in-field col-md-4 col-md-offset-0">
-                                </div>
+
                                 <div class = "col-xs-12 col-md-6 form-group register-field content-container container-fluid">
                                     <input id = "sign-up-password" type = "password" required name = "sign_up_password" class = "form-control sign-in-field col-md-6 col-md-offset-0" placeholder = "Password">
                                 </div>
@@ -139,7 +200,18 @@
 
 <script>
 
+    function choosebday() 
+    {
+        var date1 = document.getElementById("DOBDay");
+        var month1 = document.getElementById("DOBMonth");
+        var year1 = document.getElementById("DOBYear");
 
+        var selectedday = date1.options[date1.selectedIndex].value;
+        var selectedmonth = month1.options[month1.selectedIndex].value;
+        var selectedyear = year1.options[year1.selectedIndex].value;
+
+        document.getElementById("birhdate10").value = selectedyear + "-" + selectedmonth + "-" + selectedday;
+    }
 
     document.getElementById('sign_up_role').onchange = function() 
     {
@@ -148,15 +220,15 @@
         {
             document.getElementById("parent-email").style.visibility = "visible";
             document.getElementById("sign_up_email_parent").value = document.getElementById("sign_up_email").value;
-            document.getElementById("birthday-1").style.visibility = "visible";
-            document.getElementById("birthday-2").style.visibility = "visible";
+            document.getElementById("sign-up-birthday").style.visibility = "visible";
+            // document.getElementById("birthday-2").style.visibility = "visible";
         }
 
         else
         {
             document.getElementById("parent-email").style.visibility = "hidden";
-            document.getElementById("birthday-1").style.visibility = "hidden";
-            document.getElementById("birthday-2").style.visibility = "hidden";
+            document.getElementById("sign-up-birthday").style.visibility = "hidden";
+            // document.getElementById("birthday-2").style.visibility = "hidden";
         }
     };
 
@@ -216,27 +288,27 @@
             if (strength[result.score] === 'Worst' && password.value.length > 8)
             {
                 text.innerHTML = "Strength: " + "<strong style='color:red'>" + strength[result.score] + "</strong>" + "<br><span class='feedback' style='color:red'>" + "Your password is too short! Try using more letters and numbers!" + "<br>" + "<br></span";
-                document.getElementById('sign-up-save').style.visibility = "hidden";
+                // document.getElementById('sign-up-save').style.visibility = "hidden";
             } else if (strength[result.score] === 'Worst' && password.value.length < 8)
             {
                 text.innerHTML = "Strength: " + "<strong style='color:red'>" + strength[result.score] + "</strong>" + "<br><span class='feedback' style='color:red'>" + "Your password is very easy to crack! Try using different letters and numbers!" + "<br>" + "<br></span";
-                document.getElementById('sign-up-save').style.visibility = "hidden";
+                // document.getElementById('sign-up-save').style.visibility = "hidden";
             } else if (strength[result.score] === 'Bad' && password.value.length < 8)
             {
                 text.innerHTML = "Strength: " + "<strong style='color:orange'>" + strength[result.score] + "</strong>" + "<br><span class='feedback' style='color:orange'>" + "Your password is still easy to crack! Try using different letters and numbers!" + "<br>" + "<br></span";
-                document.getElementById('sign-up-save').style.visibility = "hidden";
+                // document.getElementById('sign-up-save').style.visibility = "hidden";
             } else if (strength[result.score] === 'Weak')
             {
                 text.innerHTML = "Strength: " + "<strong style='color:yellow'>" + strength[result.score] + "</strong>" + "<br><span class='feedback' style='color:yellow'>" + "Your password is still easy to crack!" + "<br>" + "<br></span";
-                document.getElementById('sign-up-save').style.visibility = "hidden";
+                // document.getElementById('sign-up-save').style.visibility = "hidden";
             } else if (strength[result.score] === 'Good')
             {
                 text.innerHTML = "Strength: " + "<strong style='color:green'>" + strength[result.score] + "</strong>" + "<br><span class='feedback' style='color:green'>" + "Your password is good!" + "<br>" + "<br></span";
-                document.getElementById('sign-up-save').style.visibility = "visible";
+                // document.getElementById('sign-up-save').style.visibility = "visible";
             } else if (strength[result.score] === 'Strong')
             {
                 text.innerHTML = "Strength: " + "<strong style='color:blue'>" + strength[result.score] + "</strong>" + "<br><span class='feedback' style='color:blue'>" + "Your password is strong!" + "<br>" + "<br></span";
-                document.getElementById('regisign-up-savester').style.visibility = "visible";
+                // document.getElementById('regisign-up-savester').style.visibility = "visible";
             }
         } else
         {
