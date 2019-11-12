@@ -3147,3 +3147,58 @@ border: 2px outset  #000;
   background-size: 120% 120%;
 }
   
+.polaroidwrapper { 
+  box-sizing: border-box;
+  /*width: 100%;*/
+  /*padding: 0 2rem;*/
+  text-align: center;
+}
+.polaroid {box-sizing: border-box;
+  background: #fff;
+  /*padding: 1rem;*/
+  box-shadow: 0 0.2rem 1.2rem rgba(0,0,0,0.2);
+  
+}
+.polaroid > .polaroidfile{
+  max-width: 100%;
+  height: auto;
+}
+.polaroidcaption {
+  font-size: 1.8rem;
+  text-align: center;
+  line-height: 2em;
+}
+.polaroiditem {
+  width: 30%;
+  display: inline-block;
+  /*margin-top: 2rem;*/
+}
+.polaroiditem .polaroid:before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  transition: all 0.35s;
+}
+.polaroiditem:hover {
+  filter: none;
+  transform: scale(1.35) rotate(0deg) !important;
+  transition: all 0.35s;
+}
+.polaroiditem:hover .polaroid:before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  transform: rotate(0deg) !important;
+  height: 90%;
+  width: 90%;
+  bottom: 0%;
+  right: 5%;
+  box-shadow: 0 1rem 3rem rgba(0,0,0,0.2);
+  transition: all 0.35s;
+}
+.homepostsborder{
+    border-style: solid;
+    border-radius: 20px;
+    
+    padding:5px !important;
+}

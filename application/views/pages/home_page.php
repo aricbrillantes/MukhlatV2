@@ -80,17 +80,23 @@
                                     // echo utf8_decode($post->creator_id);
                                     // print_r($posts);
                             ?>
-                                    <div class=" content-container messagereceiver" style="position: relative;  height: auto;  min-height: 100% !important;">
-                                        
+                                    <!--<div class=" " style="position: relative;  height: auto;  min-height: 100% !important;">-->
+                                    <div class="polaroiditem polaroid homepostsborder" style="margin: 1%;">
                                         <img class = "img-circle" style = "margin: 10px 0px;" width = "40px" height = "40px" src = "<?php echo $post->profile_url ? base_url($post->profile_url) : base_url('images/default.jpg'); ?>"/> 
 
                                         <?php if($post->user_id === $logged_user->user_id): ?>
-                                            <p style="font-size: 24px; display:inline"> You </p>
-                                            <a style="max-width: 500px; overflow: hidden; text-overflow: ellipsis; display:inline " class = "" href = "<?php echo base_url('topic/view/' . $post->topic_id); ?>"> decorated your room! </a>
+                                            <a class = "text1color" href = "<?php echo base_url('user/profile/' . $post->user_id); ?>">
+                                                <strong style = "font-size: 21px">You</strong>
+                                            </a> 
+                                            <p style="font-size: 24px; display:inline"> decorated </p>
+                                            <a style="max-width: 500px; overflow: hidden; text-overflow: ellipsis; display:inline " class = "" href = "<?php echo base_url('topic/view/' . $post->topic_id); ?>">your room! </a>
 
                                         <?php elseif($post->creator_id === $post->user_id): ?>
-                                            <p style="font-size: 24px; display:inline"> <?php echo "  " . $post->first_name?> </p>
-                                            <a style="max-width: 500px; overflow: hidden; text-overflow: ellipsis; display:inline " class = "" href = "<?php echo base_url('topic/view/' . $post->topic_id); ?>"> decorated their room! </a>
+                                            <a class = "text1color" href = "<?php echo base_url('user/profile/' . $post->user_id); ?>">
+                                                <strong style = "font-size: 21px"><?php echo $post->first_name;?></strong>
+                                            </a>
+                                            <p style="font-size: 24px; display:inline"> decorated </p> 
+                                            <a style="max-width: 500px; overflow: hidden; text-overflow: ellipsis; display:inline " class = "" href = "<?php echo base_url('topic/view/' . $post->topic_id); ?>">their room! </a>
 
                                         <?php else: ?>
                                             <p style="font-size: 19px; display:inline">In </p>
@@ -102,8 +108,10 @@
                                                 <a style="max-width: 500px; overflow: hidden; text-overflow: ellipsis; display:inline " class = "" href = "<?php echo base_url('topic/view/' . $post->topic_id); ?>"> <?php echo utf8_decode($post->topic_name); ?>, </a>
                                             
                                             <?php endif;?>
-                                            
-                                            <p style="font-size: 24px; display:inline"> <?php echo "  " . $post->first_name?> says:</p>
+                                            <a class = "text1color" href = "<?php echo base_url('user/profile/' . $post->user_id); ?>">
+                                                <strong style = "font-size: 21px"><?php echo $post->first_name;?></strong>
+                                            </a>
+                                            <p style="font-size: 24px; display:inline"> says:</p>
 
                                         <?php endif; ?>
                                         
@@ -116,33 +124,36 @@
                                             <!-- <a class = "text1color" href = "<?php echo base_url('topic/view/' . $post->topic_id); ?>">
                                                 <p style="color: white"></p>
                                             </a> -->
-
-                                        <p class = "" style = "border-right: none; max-width: 714px; white-space: nowrap; overflow: hidden;text-overflow: ellipsis;">"<?php echo utf8_decode($post->post_content); ?>"</p>
-
+                                        <div class="polaroidwrapper">
+                                        <p class = "" style = "">"<?php echo utf8_decode($post->post_content); ?>"</p>
+                                        
                                         <?php $attachments = $CI->attachment_model->get_post_attachments($post->post_id);?>
-
+                                        
                                                 <?php //print_r($attachments); ?>
 
                                                 <?php foreach ($attachments as $attachment):
                                                     if ($attachment->attachment_type_id === '1'):?>
                                                         <img src = "<?= base_url($attachment->file_url); ?>" width = "75%"  style="position:relative;" />
+                                                        
 
                                                     <?php elseif ($attachment->attachment_type_id === '2'): ?>
-                                                        <audio src = "<?= base_url($attachment->file_url); ?>" controls></audio>
+                                                        <audio src = "<?= base_url($attachment->file_url); ?>" style="width: 100%" controls></audio>
+                                                        
 
                                                     <?php elseif ($attachment->attachment_type_id === '3'): ?>
-                                                        <video src = "<?= base_url($attachment->file_url); ?>" width = "300px" controls/></video>
+                                                        <video src = "<?= base_url($attachment->file_url); ?>" width = "100%" controls/></video>
+                                                    
 
                                                     <?php elseif ($attachment->attachment_type_id === '4'): ?>
                                                         <a href = "<?= base_url($attachment->file_url); ?>" download><i class = "fa fa-file-o"></i> <i class = "text" style = "font-size: 12px;"><?= utf8_decode($attachment->caption); ?></i></a>
-
-                                                <?php 
-
-                                                    endif;
-                                                endforeach;
+                                                    
+                                                <?php endif; ?>
+                                        
+                                                    
+                                                <?php endforeach;
 
                                                 ?>
-                                    </div>
+                                    </div></div>
 
                                     <?php
                                 endforeach;

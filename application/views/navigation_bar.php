@@ -611,6 +611,7 @@
                     .modal-header{background:' + getCookie("NavbarColor") + ';}\n\
                     .charLimitMessage{background:' + getCookie("ButtonHColor") + ';}\n\
                     .topic-grid1{background-color: #'+ randomColor +';}\n\
+                    .homepostsborder{border-color:' + getCookie("ButtonColor") + ';}\n\
                     .ptopcolor{background:' + getCookie("ButtonColor") + ';}<\/style>');
     
     if(getCookie("MouseTrail")==='0')
