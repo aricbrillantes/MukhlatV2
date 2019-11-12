@@ -2975,13 +2975,14 @@ border: 2px outset  #000;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	background-color: pink;
+	background-color: red;
 }
 
 .cane {
 	width: 200px;
 	height: 200px;
 	box-sizing: border-box;
+        margin: 0;
 	padding: 15px;
 	position: relative;
 	overflow: hidden;
@@ -2995,12 +2996,12 @@ border: 2px outset  #000;
 	background: repeating-linear-gradient(
 			white 0%,
 			white 7.5px,
-			hotpink 7.5px,
-			hotpink 15px,
+			red 7.5px,
+			red 15px,
 			white 15px,
 			white 22.5px,
-			hotpink 22.5px,
-			hotpink 30px);
+			red 22.5px,
+			red 30px);
 	transform: translateX(-20%) translateY(-20%) rotate(-45deg);
 	animation: animate 20s linear infinite;
 }
@@ -3018,7 +3019,7 @@ border: 2px outset  #000;
 
 .cane,
 .cane .canecontent {
-	box-shadow: 0 0 2px deeppink,
+	box-shadow: 0 0 2px red,
 				0 0 5px rgba(0, 0, 0, 1),
 				inset 0 0 5px rgba(0, 0, 0, 1);
 	border-radius: 10px;

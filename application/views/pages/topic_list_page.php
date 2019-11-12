@@ -90,22 +90,22 @@ include(APPPATH . 'views/header.php');
                         <?php if($topic->theme==1):?>
                         <!--skewedbtn theme-->
                        <div class="button-wrapper">
-                            <a class="skewedbtn background-button"  href = "<?php echo base_url('topic/view/' . $topic->topic_id); ?>" title="<?php echo utf8_decode($topic->topic_name); ?>">
+                            <a class="skewedbtn background-button col-md-3"  href = "<?php echo base_url('topic/view/' . $topic->topic_id); ?>" title="<?php echo utf8_decode($topic->topic_name); ?>">
                         <?php elseif($topic->theme==2):?>        
                         <!--cane theme-->
-                        <div class="cane">
-                            <a class="canecontent"  href = "<?php echo base_url('topic/view/' . $topic->topic_id); ?>">
+                        <div class="cane col-md-3">
+                            <a class="canecontent" href = "<?php echo base_url('topic/view/' . $topic->topic_id); ?>">
                                 <h4 class = "text-info no-padding text1color topicheader" style="margin-top:50px;margin-left: 13px"><?php echo utf8_decode($topic->topic_name); ?></h4><br>
                         <?php elseif($topic->theme==3):?>        
                         <!--squares theme-->
                         <div>
-                        <div class="square1"></div>
+                        <div class="square1 col-md-3"></div>
                             <a class="square2"  href = "<?php echo base_url('topic/view/' . $topic->topic_id); ?>">
                                 <h4 class = "text-info no-padding text1color topicheader" style="margin-top:50px;margin-left: 13px"><?php echo utf8_decode($topic->topic_name); ?></h4><br>
                                     
                         <?php elseif($topic->theme==4):?>        
                         <!--TVsquare theme-->
-                        <div>
+                        <div class=" col-md-3">
                             <a   href = "<?php echo base_url('topic/view/' . $topic->topic_id); ?>"><button class="TVbtn TVbtn-blow"><span>
                                 <h4 class = "text-info no-padding text1color topicheader" style="margin-top:50px;margin-left: 13px"><?php echo utf8_decode($topic->topic_name); ?></h4><br>
                                     </span></button>
@@ -114,7 +114,7 @@ include(APPPATH . 'views/header.php');
                         <?php else:?>        
                         <!--default theme-->
                         <div>
-                            <a class="topic-grid1"  href = "<?php echo base_url('topic/view/' . $topic->topic_id); ?>">
+                            <a class="topic-grid1 col-md-3"  href = "<?php echo base_url('topic/view/' . $topic->topic_id); ?>">
                                 <h4 class = "text-info no-padding text1color topicheader" style="margin-top:50px;margin-left: 13px"><?php echo utf8_decode($topic->topic_name); ?></h4><br>
                         <?php endif;?>        
                         
