@@ -214,7 +214,7 @@ function readURL(input) {
   if (input.files && input.files[0]) {
     
     
-    if(input.files[0] && input.files[0].size < 5485760) { // 10 MB (this size is in bytes)
+    if(input.files[0] && input.files[0].size < 2000000) { // 10 MB (this size is in bytes)
         //Submit form        
     } else {
       $('[id$=pic_h]').show();
@@ -235,7 +235,7 @@ function readURL(input) {
 
 function readVid(input){
 
-  if(input.files[0] && input.files[0].size < 2485760) { // 10 MB (this size is in bytes)
+  if(input.files[0] && input.files[0].size < 2000000) { // 10 MB (this size is in bytes)
         //Submit form        
     } else {
       $('[id$=vid_h]').show();
@@ -249,7 +249,7 @@ function readVid(input){
 
 function readAud(input){
 
-  if(input.files[0] && input.files[0].size < 2485760) { // 10 MB (this size is in bytes)
+  if(input.files[0] && input.files[0].size < 2000000) { // 10 MB (this size is in bytes)
         //Submit form        
     } else {
       $('[id$=snd_h]').show();
