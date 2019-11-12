@@ -97,11 +97,20 @@ include(APPPATH . 'views/header.php');
                             <a class="canecontent"  href = "<?php echo base_url('topic/view/' . $topic->topic_id); ?>">
                                 <h4 class = "text-info no-padding text1color topicheader" style="margin-top:50px;margin-left: 13px"><?php echo utf8_decode($topic->topic_name); ?></h4><br>
                         <?php elseif($topic->theme==3):?>        
-                        <!--squares theme--><div>
+                        <!--squares theme-->
+                        <div>
                         <div class="square1"></div>
                             <a class="square2"  href = "<?php echo base_url('topic/view/' . $topic->topic_id); ?>">
                                 <h4 class = "text-info no-padding text1color topicheader" style="margin-top:50px;margin-left: 13px"><?php echo utf8_decode($topic->topic_name); ?></h4><br>
                                     
+                        <?php elseif($topic->theme==4):?>        
+                        <!--TVsquare theme-->
+                        <div>
+                            <a   href = "<?php echo base_url('topic/view/' . $topic->topic_id); ?>"><button class="TVbtn TVbtn-blow"><span>
+                                <h4 class = "text-info no-padding text1color topicheader" style="margin-top:50px;margin-left: 13px"><?php echo utf8_decode($topic->topic_name); ?></h4><br>
+                                    </span></button>
+                                
+                                
                         <?php else:?>        
                         <!--default theme-->
                         <div>
