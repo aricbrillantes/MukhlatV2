@@ -11,7 +11,7 @@
  *
  * @author Aric
  */
-class Restrict extends CI_Controller 
+class Afk extends CI_Controller 
 {
     public function index() 
     {
@@ -27,7 +27,7 @@ class Restrict extends CI_Controller
 
             else if($logged_user->role_id == 2)
             {
-                $this->load->view('pages/child_restrict_page');
+                $this->load->view('pages/afk_page');
             }
         }
 
@@ -36,5 +36,5 @@ class Restrict extends CI_Controller
             $homeURL = base_url('home');
             header("Location: $homeURL");
         }
-    }
+    }    
 }

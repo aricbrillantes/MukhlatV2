@@ -430,7 +430,7 @@
         {
             //comment out this line for testing
             $home = base_url('home');
-            header("Location: $home");
+            // header("Location: $home");
         }    
 
         else

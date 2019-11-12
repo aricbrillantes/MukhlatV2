@@ -446,7 +446,7 @@
         {
             print("<br>you cant use xd");
             $restrict = base_url('restrict');
-            header("Location: $restrict");
+            // header("Location: $restrict");
         }    
 
         // print("<b>Current time:</b> " . (int) date("G") . ": " . date("i") . " ". date("l"));
@@ -494,31 +494,14 @@
         }
         return "";
     }
-
-    var currentDate = new Date();
-    var curMonth = currentDate.getMonth()+1;
-    var curDay = currentDate.getDate();
-
-    var birthDate = new Date('<?php echo $logged_user->birthdate; ?>');
-    var birthMonth = birthDate.getMonth()+1;
-    var birthDay = birthDate.getDate(); 
-   
-    if(birthMonth===curMonth && birthDay===curDay)
-    {
-        if(!getCookie("birthday") && getCookie("birthday")!==1)
-        {
-            document.cookie = "birthday=1;" + ";path=/"; 
-            $('#birthdaypopup').modal('show');
-        }    
-    }
-        
+     
 
 /*------------------------- AFK Timer Script -------------------------*/
 
     var start = document.getElementById("start");
     var dis = document.getElementById("afktimer");
     var finishTime;
-    var timerLength = 600000000; // 600 seconds or 10 minutes
+    var timerLength = 60000; // 600 seconds or 10 minutes
     var timeoutID;
     dis.innerHTML = "Time Left: " + timerLength;
     
@@ -542,18 +525,35 @@
     {
         finishTime = localStorage.getItem('myTime');
         var timeLeft = (finishTime - new Date());
-        // dis.innerHTML = "Time Left: " + Math.max(timeLeft/1000,0);
+        dis.innerHTML = "Time Left: " + Math.max(timeLeft/1000,0);
         timeoutID = window.setTimeout(Update, 100);
 
-        if(timeLeft<=180*1000) //display AFK popup after 5 minutes
+        if(timeLeft<=480*1000) //display AFK popup after 2 minutes
         {
             $('#afkpopup').modal('show');
         }
         
-        if(timeLeft<=10) // logout user if AFK
+        if(timeLeft<=10*1000) // logout user if AFK
         {
-            location.href="<?php echo base_url('signin/logout');?>";
+            location.href="<?php echo base_url('afk');?>";
         }
+    }
+
+    var currentDate = new Date();
+    var curMonth = currentDate.getMonth()+1;
+    var curDay = currentDate.getDate();
+
+    var birthDate = new Date('<?php echo $logged_user->birthdate; ?>');
+    var birthMonth = birthDate.getMonth()+1;
+    var birthDay = birthDate.getDate(); 
+   
+    if(birthMonth===curMonth && birthDay===curDay)
+    {
+        if(!getCookie("birthday") && getCookie("birthday")!==1)
+        {
+            document.cookie = "birthday=1;" + ";path=/"; 
+            $('#birthdaypopup').modal('show');
+        }    
     }
 
     var randomColor = Math.floor(Math.random()*16777215).toString(16);
