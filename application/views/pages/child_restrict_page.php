@@ -59,6 +59,38 @@
                 case "cell27-A":array_push($restrictions2,"0130 Saturday");break;
                 case "cell28-A":array_push($restrictions2,"0130 Sunday");break;
 
+                case "cell29-A":array_push($restrictions2,"0200 Monday");break;
+                case "cell30-A":array_push($restrictions2,"0200 Tuesday");break;
+                case "cell31-A":array_push($restrictions2,"0200 Wednesday");break;
+                case "cell32-A":array_push($restrictions2,"0200 Thursday");break;
+                case "cell33-A":array_push($restrictions2,"0200 Friday");break;
+                case "cell34-A":array_push($restrictions2,"0200 Saturday");break;
+                case "cell35-A":array_push($restrictions2,"0200 Sunday");break;
+
+                case "cell36-A":array_push($restrictions2,"0230 Monday");break;
+                case "cell37-A":array_push($restrictions2,"0230 Tuesday");break;
+                case "cell38-A":array_push($restrictions2,"0230 Wednesday");break;
+                case "cell39-A":array_push($restrictions2,"0230 Thursday");break;
+                case "cell40-A":array_push($restrictions2,"0230 Friday");break;
+                case "cell41-A":array_push($restrictions2,"0230 Saturday");break;
+                case "cell42-A":array_push($restrictions2,"0230 Sunday");break;
+
+                case "cell43-A":array_push($restrictions2,"0300 Monday");break;
+                case "cell44-A":array_push($restrictions2,"0300 Tuesday");break;
+                case "cell45-A":array_push($restrictions2,"0300 Wednesday");break;
+                case "cell46-A":array_push($restrictions2,"0300 Thursday");break;
+                case "cell47-A":array_push($restrictions2,"0300 Friday");break;
+                case "cell48-A":array_push($restrictions2,"0300 Saturday");break;
+                case "cell49-A":array_push($restrictions2,"0300 Sunday");break;
+
+                case "cell50-A":array_push($restrictions2,"0330 Monday");break;
+                case "cell51-A":array_push($restrictions2,"0330 Tuesday");break;
+                case "cell52-A":array_push($restrictions2,"0330 Wednesday");break;
+                case "cell53-A":array_push($restrictions2,"0330 Thursday");break;
+                case "cell54-A":array_push($restrictions2,"0330 Friday");break;
+                case "cell55-A":array_push($restrictions2,"0330 Saturday");break;
+                case "cell56-A":array_push($restrictions2,"0330 Sunday");break;
+
                 case "cell57-A":array_push($restrictions2,"0400 Monday");break;
                 case "cell58-A":array_push($restrictions2,"0400 Tuesday");break;
                 case "cell59-A":array_push($restrictions2,"0400 Wednesday");break;
@@ -330,6 +362,54 @@
                 case "cell292-A":array_push($restrictions2,"2030 Friday");break;
                 case "cell293-A":array_push($restrictions2,"2030 Saturday");break;
                 case "cell294-A":array_push($restrictions2,"2030 Sunday");break;
+
+                case "cell295-A":array_push($restrictions2,"2100 Monday");break;
+                case "cell296-A":array_push($restrictions2,"2100 Tuesday");break;
+                case "cell297-A":array_push($restrictions2,"2100 Wednesday");break;
+                case "cell298-A":array_push($restrictions2,"2100 Thursday");break;
+                case "cell299-A":array_push($restrictions2,"2100 Friday");break;
+                case "cell300-A":array_push($restrictions2,"2100 Saturday");break;
+                case "cell301-A":array_push($restrictions2,"2100 Sunday");break;
+
+                case "cell302-A":array_push($restrictions2,"2130 Monday");break;
+                case "cell303-A":array_push($restrictions2,"2130 Tuesday");break;
+                case "cell304-A":array_push($restrictions2,"2130 Wednesday");break;
+                case "cell305-A":array_push($restrictions2,"2130 Thursday");break;
+                case "cell306-A":array_push($restrictions2,"2130 Friday");break;
+                case "cell307-A":array_push($restrictions2,"2130 Saturday");break;
+                case "cell308-A":array_push($restrictions2,"2130 Sunday");break;
+
+                case "cell309-A":array_push($restrictions2,"2200 Monday");break;
+                case "cell310-A":array_push($restrictions2,"2200 Tuesday");break;
+                case "cell311-A":array_push($restrictions2,"2200 Wednesday");break;
+                case "cell312-A":array_push($restrictions2,"2200 Thursday");break;
+                case "cell313-A":array_push($restrictions2,"2200 Friday");break;
+                case "cell314-A":array_push($restrictions2,"2200 Saturday");break;
+                case "cell315-A":array_push($restrictions2,"2200 Sunday");break;
+
+                case "cell316-A":array_push($restrictions2,"2230 Monday");break;
+                case "cell317-A":array_push($restrictions2,"2230 Tuesday");break;
+                case "cell318-A":array_push($restrictions2,"2230 Wednesday");break;
+                case "cell319-A":array_push($restrictions2,"2230 Thursday");break;
+                case "cell320-A":array_push($restrictions2,"2230 Friday");break;
+                case "cell321-A":array_push($restrictions2,"2230 Saturday");break;
+                case "cell322-A":array_push($restrictions2,"2230 Sunday");break;
+
+                case "cell323-A":array_push($restrictions2,"2300 Monday");break;
+                case "cell324-A":array_push($restrictions2,"2300 Tuesday");break;
+                case "cell325-A":array_push($restrictions2,"2300 Wednesday");break;
+                case "cell326-A":array_push($restrictions2,"2300 Thursday");break;
+                case "cell327-A":array_push($restrictions2,"2300 Friday");break;
+                case "cell328-A":array_push($restrictions2,"2300 Saturday");break;
+                case "cell329-A":array_push($restrictions2,"2300 Sunday");break;
+
+                case "cell330-A":array_push($restrictions2,"2330 Monday");break;
+                case "cell331-A":array_push($restrictions2,"2330 Tuesday");break;
+                case "cell332-A":array_push($restrictions2,"2330 Wednesday");break;
+                case "cell333-A":array_push($restrictions2,"2330 Thursday");break;
+                case "cell334-A":array_push($restrictions2,"2330 Friday");break;
+                case "cell335-A":array_push($restrictions2,"2330 Saturday");break;
+                case "cell336-A":array_push($restrictions2,"2330 Sunday");break;
             }
         }
 
@@ -348,8 +428,9 @@
 
         if(in_array($currentTimeSlot,$restrictions2))
         {
+            //comment out this line for testing
             $home = base_url('home');
-            // header("Location: $home");
+            header("Location: $home");
         }    
 
         else
