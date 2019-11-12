@@ -1,12 +1,23 @@
 <?php
-    $logged_user = $_SESSION['logged_user'];
-    $unanswered = $logged_user->unanswered_invites + $logged_user->unanswered_requests;
 
-    if($logged_user->role_id != 2 || $logged_user == null)
+    if(isset($_SESSION['logged_user']))
+    {
+        $logged_user = $_SESSION['logged_user'];
+        if($logged_user->role_id != 2 || $logged_user == null)
+        {
+            $homeURL = base_url('home');
+            header("Location: $homeURL");
+        }
+
+    }
+
+    else
     {
         $homeURL = base_url('home');
         header("Location: $homeURL");
     }
+
+    
 
     include(APPPATH . 'views/modals/birthday_modal.php'); 
     include(APPPATH . 'views/modals/afk_warning_modal.php'); 

@@ -24,7 +24,7 @@ class Home extends CI_Controller
                 $this->load->model('user_model', 'user');
 
                 // $usertimes = $this->user->get_usertimes($logged_user->user_id);
-                // // echo print_r($usertimes->result());
+                // echo print_r($usertimes->result());
                 // date_default_timezone_set('Asia/Manila');
 
                 // if ($usertimes) 

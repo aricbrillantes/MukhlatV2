@@ -41,21 +41,34 @@ class User_model extends CI_Model {
 
         $user = $query->row();
 
-        if ($user) {
-            if ($load_topics) {
+        if ($user) 
+        {
+            if ($load_topics) 
+            {
                 $this->load->model('topic_model', 'topics');
                 $user->topics = $this->topics->get_user_topics($user->user_id);
                 $user->followed_topics = $this->topics->get_followed_topics($user->user_id);
                 $user->moderated_topics = $this->topics->get_moderated_topics($user->user_id);
             }
 
-            if ($load_activities) {
-                $logged_user = $_SESSION['logged_user'];
-                $this->load->model('post_model', 'posts');
-                $user->activities = $this->posts->get_user_activities($user->user_id, $logged_user->user_id);
+            if ($load_activities) 
+            {
+                if(isset($_SESSION['logged_user']))
+                {
+                    $logged_user = $_SESSION['logged_user'];
+                    $this->load->model('post_model', 'posts');
+                    $user->activities = $this->posts->get_user_activities($user->user_id, $logged_user->user_id);
 
-                $user->post_count = $this->posts->get_post_count($user->user_id);
-                $user->vote_points = $this->posts->get_vote_points($user->user_id);
+                    $user->post_count = $this->posts->get_post_count($user->user_id);
+                    $user->vote_points = $this->posts->get_vote_points($user->user_id);
+                }
+
+                else
+                {
+                    $homeURL = base_url('home');
+                    header("Location: $homeURL");
+                }
+                
             }
         }
         return $user;
