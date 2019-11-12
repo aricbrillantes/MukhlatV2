@@ -156,7 +156,7 @@ $topic = $_SESSION['current_topic'];
                         </label> -->
 
                     </div>
-                    <img id="pic" src="#" style="display: none" alt="your image here" />
+                    <img id="pic" src="#" style="display: none" width="400" />
               <audio id="aud" style="display: none" controls>
               <source src="#" id="audio_here">
               hi
@@ -165,24 +165,38 @@ $topic = $_SESSION['current_topic'];
                   <source src="#" id="video_here">
                   hi
               </video>  
+              <h2 id="pic_h" style="display: none">The picture you used is too big sorry!</h2>
+              <h2 id="vid_h" style="display: none">The video you used is too big sorry!</h2>
+              <h2 id="snd_h" style="display: none">The sound you used is too big sorry!</h2>
                 </div>
                 <div class = "modal-footer" style = "padding: 5px; border-top: none; padding-bottom: 10px; padding-right: 10px;">
                     <a id = "create-post-btn" class ="btn btn-primary buttonsbgcolor" data-toggle = "modal" onClick="putImage()">Share</a>
                 </div>
                 
-                
-            </form>
 
-            <div style="display: none">
+            </form>
+            <label id = "record-label" >
+            <div >
                     <button id="btnStart">Record My Voice!</button>
-                    <button id="btnStop">Im done recording!</button></p>
+                    <button id="btnStop" >Im done recording!</button></p>
         
                     
-                    <audio id="vid2" controls></audio><br>
+                    <audio id="aud1" controls></audio><br>
         
-                    <a id="dl"  download>download</a>
+                    <a id="dl"  download="My Voice">download</a>
 
             </div>
+            <div >
+                    <button id="btnStart2">Take a video!</button>
+                    <button id="btnStop2">Im done recording!</button></p>
+        
+                    
+                    <video width="400" id="vid1" controls></video><br>
+        
+                    <a id="dl2"  download="My Video">download</a>
+
+            </div>
+            </label>
 
         </div>
     </div>
@@ -196,6 +210,16 @@ $topic = $_SESSION['current_topic'];
 <script>
 
 function readURL(input) {
+
+  if (input.files && input.files[0]) {
+    
+    
+    if(input.files[0] && input.files[0].size < 5485760) { // 10 MB (this size is in bytes)
+        //Submit form        
+    } else {
+      $('[id$=pic_h]').show();
+    }
+  }
   
   if (input.files && input.files[0]) {
     var reader = new FileReader();
@@ -210,6 +234,13 @@ function readURL(input) {
 }
 
 function readVid(input){
+
+  if(input.files[0] && input.files[0].size < 2485760) { // 10 MB (this size is in bytes)
+        //Submit form        
+    } else {
+      $('[id$=vid_h]').show();
+    }
+
   var $source = $('#video_here');
   $source[0].src = URL.createObjectURL(input.files[0]);
   $source.parent()[0].load();
@@ -217,15 +248,20 @@ function readVid(input){
 }
 
 function readAud(input){
+
+  if(input.files[0] && input.files[0].size < 2485760) { // 10 MB (this size is in bytes)
+        //Submit form        
+    } else {
+      $('[id$=snd_h]').show();
+    }
+    
   var $source = $('#audio_here');
   $source[0].src = URL.createObjectURL(input.files[0]);
   $source.parent()[0].load();
   $('[id$=aud]').show();
 }
 
-// $("#attach-img").change(function() {
-//   readURL(this);
-// });
+
 
 
 
@@ -278,7 +314,7 @@ let constraintObj = {
             let dl = document.getElementById('dl');
             let start = document.getElementById('btnStart');
             let stop = document.getElementById('btnStop');
-            let vidSave = document.getElementById('vid2');
+            let vidSave = document.getElementById('aud1');
             let mediaRecorder = new MediaRecorder(mediaStreamObj);
             let chunks = [];
             
@@ -290,6 +326,7 @@ let constraintObj = {
             stop.addEventListener('click', (ev)=>{
                 mediaRecorder.stop();
                 console.log(mediaRecorder.state);
+               
             });
             mediaRecorder.ondataavailable = function(ev) {
                 chunks.push(ev.data);
@@ -300,6 +337,8 @@ let constraintObj = {
                 let audioURL = window.URL.createObjectURL(blob);
                 vidSave.src = audioURL;
                 dl.href=audioURL;
+                stop.href = audioURL;
+                
 
             }
         })
@@ -307,6 +346,85 @@ let constraintObj = {
             console.log(err.name, err.message); 
         });
         
+///////////////
+
+let constraintObj2 = { 
+            audio: true, 
+            video: true
+        }; 
+      
+        if (navigator.mediaDevices === undefined) {
+            navigator.mediaDevices = {};
+            navigator.mediaDevices.getUserMedia = function(constraintObj2) {
+                let getUserMedia = navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+                if (!getUserMedia) {
+                    return Promise.reject(new Error('getUserMedia is not implemented in this browser'));
+                }
+                return new Promise(function(resolve, reject) {
+                    getUserMedia.call(navigator, constraintObj2, resolve, reject);
+                });
+            }
+        }else{
+            navigator.mediaDevices.enumerateDevices()
+            .then(devices => {
+                devices.forEach(device=>{
+                    console.log(device.kind.toUpperCase(), device.label);
+                    //, device.deviceId
+                })
+            })
+            .catch(err=>{
+                console.log(err.name, err.message);
+            })
+        }
+        navigator.mediaDevices.getUserMedia(constraintObj2)
+        .then(function(mediaStreamObj2) {
+            //connect the media stream to the first audio element
+            // let audio = document.querySelector('audio');
+            // if ("srcObject" in audio) {
+            //     audio.srcObject = mediaStreamObj;
+            // } else {
+            //     //old version
+            //     audio.src = window.URL.createObjectURL(mediaStreamObj);
+            // }
+            
+            // audio.onloadedmetadata = function(ev) {
+            //     //show in the audio element what is being captured by the webcam
+            //     audio.play();
+            // };
+            
+            //add listeners for saving audio/audio
+            let dl2 = document.getElementById('dl2');
+            let start2 = document.getElementById('btnStart2');
+            let stop2 = document.getElementById('btnStop2');
+            let vidSave2 = document.getElementById('vid1');
+            let mediaRecorder2 = new MediaRecorder(mediaStreamObj2);
+            let chunks2 = [];
+            
+            start2.addEventListener('click', (ev)=>{
+                mediaRecorder2.start();
+                console.log(mediaRecorder2.state);
+                
+            })
+            stop2.addEventListener('click', (ev)=>{
+                mediaRecorder2.stop();
+                console.log(mediaRecorder2.state);
+            });
+            mediaRecorder2.ondataavailable = function(ev) {
+                chunks2.push(ev.data);
+            }
+            mediaRecorder2.onstop = (ev)=>{
+                let blob2 = new Blob(chunks2, { 'type' : 'video/mp4;' });
+                chunks2 = [];
+                let audioURL2 = window.URL.createObjectURL(blob2);
+                vidSave2.src = audioURL2;
+                dl2.href=audioURL2;
+
+            }
+        })
+        .catch(function(err) { 
+            console.log(err.name, err.message); 
+        });
+
 ///////////////
 
     function toggleButton(p)
