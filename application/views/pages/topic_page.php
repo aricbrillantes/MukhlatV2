@@ -38,8 +38,10 @@ include(APPPATH . 'views/header.php');
             <h4><strong><?php echo utf8_decode($c_topic->user->first_name); ?>'s Room</strong></h4>
             </div></center>
 
-            <strong>Theme: <?php echo utf8_decode($c_topic->theme); ?></strong>
+            <!--<strong>Theme: <?php echo utf8_decode($c_topic->theme); ?></strong>-->
             <a onmouseenter="playclip()" id="crettop" class ="btn btn-primary buttonsbgcolor textoutliner" href="#edit-topic-modal" data-toggle = "modal" style="margin:1%; width:20%"><img  src = "<?php echo base_url('icons/pencil.png'); ?>" style="width:10%;height:auto;cursor: pointer"/> Edit Room</a>
+            
+            
             <!--Pictures-->
             <div class="col-sm-3"><br><br><br>
                 <a class="picture" href="#room_media_modal" data-toggle = "modal" style="color: black">

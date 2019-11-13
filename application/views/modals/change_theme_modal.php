@@ -41,6 +41,11 @@
                         <option value="4">Theme 4</option>
                         <option value="5">Theme 5</option>
                         <option value="6">Theme 6</option>
+                        <option value="7">Theme 7</option>
+                        <option value="8">Theme 8</option>
+                        <option value="9">Theme 9</option>
+                        <option value="10">Theme 10</option>
+                        <option value="11">Theme 11</option>
                     </select>
 
                 </div>
