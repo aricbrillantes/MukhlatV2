@@ -9,6 +9,7 @@
     {
         $homeURL = base_url('home');
         header("Location: $homeURL");
+        exit(0);
     }
 
     $this->load->model('user_model', 'users');

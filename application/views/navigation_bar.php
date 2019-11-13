@@ -7,10 +7,12 @@
         {
             $homeURL = base_url('home');
             header("Location: $homeURL");
+            exit(0);
         }
 
         $CI =&get_instance();
         $CI->load->model('user_model');
+
         $usertimes = $CI->user_model->get_usertimes($logged_user->user_id);
         // print_r($usertimes->row()->time_setting);
 

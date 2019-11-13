@@ -19,6 +19,27 @@ include(APPPATH . 'views/header.php');
         $homeURL = base_url('home');
         header("Location: $homeURL");
     }
+
+    //get user ID of user being viewed (from the URL)
+    $id = $this->uri->segment(3);
+
+    if(!$id) //if there is no user ID in the URL, redirect to home page
+    {
+        $homeURL = base_url('home');
+        header("Location: $homeURL");
+        exit(0);
+    }
+
+    else
+    {
+        if(!$CI->user_model->user_exists($id))
+        {
+            $homeURL = base_url('home');
+            header("Location: $homeURL");
+            exit(0);
+        }
+    }
+    
     ?>
    
     <div class = "container page">

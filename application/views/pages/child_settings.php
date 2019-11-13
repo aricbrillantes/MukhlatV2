@@ -23,6 +23,8 @@
     {
         $homeURL = base_url('home');
         header("Location: $homeURL");
+
+        exit(0);
     }
 
     if($CI->user_model->isParent($logged_user->email,$id) == 999)

@@ -36,6 +36,15 @@ class User_model extends CI_Model {
         return $query->get()->result();
     }
 
+    public function user_exists($id) 
+    {
+        $query = $this->db->select('*')
+                ->from('tbl_users')
+                ->where('user_id',$id);
+
+        return $query->get()->result();
+    }
+
     public function get_user($load_topics, $load_activities, $fields = array()) {
         $query = $this->db->get_where('tbl_users', $fields);
 

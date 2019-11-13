@@ -9,6 +9,7 @@
     {
         $homeURL = base_url('home');
         header("Location: $homeURL");
+        exit(0);
     }
 
     $CI =&get_instance();
@@ -20,6 +21,7 @@
     {
         $homeURL = base_url('home');
         header("Location: $homeURL");
+        exit(0);
     }
 
     $CI->load->model('user_model');
@@ -27,6 +29,13 @@
     $email = $CI->user_model->get_email($id);
 
     // print_r($email);
+
+    if(!$email)
+    {
+        $homeURL = base_url('home');
+        header("Location: $homeURL");
+        exit(0);
+    }
 
     foreach ($email as $details)
     { 
