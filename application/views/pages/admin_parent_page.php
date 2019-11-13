@@ -38,7 +38,7 @@
 
     }
 
-    $parent = $CI->user_model->view_specific_child($id);
+    $parent = $CI->user_model->view_parent($id);
 
     $children = $CI->user_model->view_child($details->email);
     

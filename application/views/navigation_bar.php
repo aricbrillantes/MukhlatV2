@@ -444,15 +444,15 @@
 
         else
         {
-            print("<br>you cant use xd");
+            print("you cant use xd ");
             $restrict = base_url('restrict');
             // header("Location: $restrict");
         }    
 
         // print("<b>Current time:</b> " . (int) date("G") . ": " . date("i") . " ". date("l"));
-        print("<br>");
+        // print("<br>");
         print($currentTime . "<br>");
-        // print($currentTimeSlot . "<br>");
+        // print($currentTimeSlot);
         
     }
 

@@ -108,11 +108,25 @@ class User_model extends CI_Model {
     }
 
     //function for getting specific child's data
-    public function view_specific_child($user_id) 
+    public function view_parent($user_id) 
     {        
-        $query = $this->db->select('user_id, first_name, last_name, parent, email, description, is_enabled, role_id')
+        $query = $this->db->select('*')
                 ->from('tbl_users')
                 ->where('user_id', $user_id);
+
+        $query = $this->db->get();
+        
+        // echo print_r($query->result());
+        return $query;
+    }
+
+    //function for getting specific child's data
+    public function view_specific_child($user_id) 
+    {        
+        $query = $this->db->select('*')
+                ->from('tbl_users')
+                ->join('tbl_infractions', 'tbl_infractions.user_id = tbl_users.user_id')
+                ->where(array('tbl_users.user_id' => $user_id));
 
         $query = $this->db->get();
         
@@ -161,7 +175,7 @@ class User_model extends CI_Model {
     public function set_usertimes($user_id) 
     {        
         
-        $this->db->delete('tbl_usertimes', array('user_id' => $user_id));
+        // $this->db->delete('tbl_usertimes', array('user_id' => $user_id));
 
         $settings = htmlspecialchars($_COOKIE["timeSetting"]);
         // $warning = htmlspecialchars($_COOKIE["selectedWarning"]);
@@ -177,7 +191,12 @@ class User_model extends CI_Model {
             'use_limit' => $limit
         );
 
-        $this->db->insert('tbl_usertimes',$data);   
+        // $this->db->insert('tbl_usertimes',$data);   
+
+        // $this->db->select('*');
+        // $this->db->from('tbl_usertimes');
+        $this->db->where('user_id', $user_id);
+        $this->db->update('tbl_usertimes', $data); 
         header("Refresh:0");
     }
 
@@ -270,12 +289,16 @@ class User_model extends CI_Model {
         $this->db->update("tbl_users");
     }
 
-    public function search_users($keyword, $get_admin) {
+    public function search_users($keyword, $get_admin) 
+    {
         $this->db->where("CONCAT(first_name, ' ', last_name) LIKE '%" . $keyword . "%'", NULL, FALSE);
-        if (!$get_admin) {
+
+        if (!$get_admin) 
+        {
             $this->db->where("role_id = ", 2);
             $this->db->where("is_enabled", true);
         }
+        
         $users = $this->db->get("tbl_users")->result();
 
         return $users;

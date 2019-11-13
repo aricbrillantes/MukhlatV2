@@ -266,7 +266,7 @@ class Topic extends CI_Controller {
 
         $infractions = $this->db->get();
 
-        if ($infractions) 
+        if(!empty($infractions->result()))
         {
             $currentInfractions = $infractions->row()->infractions;
             $data = array
@@ -275,8 +275,13 @@ class Topic extends CI_Controller {
                 'infractions' => $swears+$currentInfractions
             );
 
-            $this->db->delete('tbl_infractions', array('user_id' => $logged_user->user_id));
-            $this->db->insert('tbl_infractions', $data);
+            // $this->db->delete('tbl_infractions', array('user_id' => $logged_user->user_id));
+            // $this->db->insert('tbl_infractions', $data);
+
+            $this->db->select('user_id, infractions');
+            $this->db->from('tbl_infractions');
+            $this->db->where('user_id', $logged_user->user_id);
+            $this->db->update('tbl_infractions', $data); 
         } 
 
         else
