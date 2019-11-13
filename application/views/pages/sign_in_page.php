@@ -11,9 +11,10 @@
 
 ?>
 <script src="<?php echo base_url('zxcvbn-master/dist/zxcvbn.js'); ?>"></script>
+
 <!-- browser tab icon -->
 <link rel="icon" href="<?php echo base_url('./images/logo/mukhlatlogo_icon.png'); ?>" sizes="32x32"> 
-<link rel="stylesheet" href="<?php echo base_url("/css/style.css"); ?>" />
+<link rel="stylesheet" href="<?php echo base_url("/css/sign_in.css"); ?>" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <body id = "mainbody" class = "sign-in" style="background: #f2f2f2">
@@ -27,7 +28,7 @@
             <div class = "col-md-12 col-xs-12 col-md-offset-0 container-fluid" style = "margin-bottom: 30px;">
                 <div id = "sign-in-container" class = "col-md-12 content-container no-padding">
                     <div class ="form-group">
-                            <h3 class = "sign-in-header no-padding no-margin" style = "padding: 10px;"><strong id="login" >Hello! Welcome to Mukhlat!</strong></h3>
+                            <h2 class = "sign-in-header no-padding no-margin" style = "padding: 10px;"><strong id="login" >Hello! Welcome to Mukhlat!</strong></h2>
                         </div>
 
                     <form class = "form-inline text-center" id = "log-in-form" onsubmit = "return log_in()" method = "post">
@@ -41,7 +42,7 @@
                             </div>
                             
                             <div class = "form-group text-center content-container container-fluid">
-                                <button type="submit" class="btn btn-primary buttonsgo col-md-2 col-sm-12 col-xs-12"  id="loginbutton" style = "width: 100%;font-size:24px;">Login</button>
+                                <button type="submit" class="btn btn-primary buttonsgo col-md-2 col-sm-12 col-xs-12"  id="loginbutton" style = "width: 100%;font-size:24px;">Log In</button>
                             </div>
                         </div>
                     </form>
@@ -165,7 +166,7 @@
                                 <p id="password-strength-text"></p>
 
                                 <div id="parent-email" class = "col-xs-12 col-md-6 form-group register-field content-container container-fluid" style="visibility: visible">
-                                    <input type = "email" id = "sign_up_email_parent" name = "sign_up_email_parent" class = "form-control sign-in-field col-md-4 col-md-offset-0" placeholder = "Parent' Email Address" maxlength = "45">
+                                    <input type = "email" id = "sign_up_email_parent" name = "sign_up_email_parent" class = "form-control sign-in-field col-md-4 col-md-offset-0" placeholder = "Parent' Email" maxlength = "45">
                                 </div><br>
                                                            
                                 <div id="sign-up-save" class = "text-center col-xs-12 col-md-12 form-group content-container container-fluid">
