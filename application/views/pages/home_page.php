@@ -81,49 +81,29 @@
                                     // print_r($posts);
                             ?>
                                     <!--<div class=" " style="position: relative;  height: auto;  min-height: 100% !important;">-->
-                                     <?php if($post->theme==1):?>
-                                        <div class="polaroiditem polaroid homepostsborder roomtheme-arrow" style="margin: 1%;">
-                                     <?php elseif($post->theme==2):?>
-                                        <div class="polaroiditem polaroid homepostsborder roomtheme-zigzag" style="margin: 1%;">
-                                     <?php elseif($post->theme==3):?>
-                                        <div class="polaroiditem polaroid homepostsborder roomtheme-scales" style="margin: 1%;">
-                                     <?php elseif($post->theme==4):?>
-                                        <div class="polaroiditem polaroid homepostsborder roomtheme-halfrhombe" style="margin: 1%;">
-                                     <?php elseif($post->theme==5):?>
-                                        <div class="polaroiditem polaroid homepostsborder roomtheme-marrakesh" style="margin: 1%;">
-                                     <?php elseif($post->theme==6):?>
-                                        <div class="polaroiditem polaroid homepostsborder roomtheme-hearts" style="margin: 1%;">
-                                     <?php elseif($post->theme==7):?>
-                                        <div class="polaroiditem polaroid homepostsborder roomtheme-stars" style="margin: 1%;">
-                                     <?php elseif($post->theme==8):?>
-                                        <div class="polaroiditem polaroid homepostsborder roomtheme-seigaiha" style="margin: 1%;">
-                                     <?php elseif($post->theme==9):?>
-                                        <div class="polaroiditem polaroid homepostsborder roomtheme-bricks" style="margin: 1%;">
-                                     <?php elseif($post->theme==10):?>
-                                        <div class="polaroiditem polaroid homepostsborder roomtheme-diacheckerboard" style="margin: 1%;">
-                                     <?php elseif($post->theme==11):?>
-                                        <div class="polaroiditem polaroid homepostsborder roomtheme-tablecloth" style="margin: 1%;">
-                                     <?php elseif($post->theme==12):?>
-                                        <div class="polaroiditem polaroid homepostsborder roomtheme-brady" style="margin: 1%;">
-                                     <?php elseif($post->theme==13):?>
-                                        <div class="polaroiditem polaroid homepostsborder roomtheme-argyle" style="margin: 1%;">
-                                     <?php elseif($post->theme==14):?>
-                                        <div class="polaroiditem polaroid homepostsborder roomtheme-shippo" style="margin: 1%;">
-                                     <?php elseif($post->theme==15):?>
-                                        <div class="polaroiditem polaroid homepostsborder roomtheme-waves" style="margin: 1%;">
-                                     <?php elseif($post->theme==16):?>
-                                        <div class="polaroiditem polaroid homepostsborder roomtheme-polkadot" style="margin: 1%;">
-                                     <?php elseif($post->theme==17):?>
-                                        <div class="polaroiditem polaroid homepostsborder roomtheme-honeycomb" style="margin: 1%;">
-                                     <?php elseif($post->theme==18):?>
-                                        <div class="polaroiditem polaroid homepostsborder roomtheme-chocolateweave" style="margin: 1%;">
-                                     <?php elseif($post->theme==19):?>
-                                        <div class="polaroiditem polaroid homepostsborder roomtheme-crosseddot" style="margin: 1%;">
-                                    
-                                     <?php else:?>
-                                         <div class="polaroiditem polaroid homepostsborder" style="margin: 1%;">
-                                     <?php endif;?> 
-                                        
+                                     <?php if($post->theme==1): $theme="roomtheme-arrow";
+                                        elseif($post->theme==2): $theme="roomtheme-zigzag";
+                                        elseif($post->theme==3): $theme="roomtheme-scales";
+                                        elseif($post->theme==4): $theme="roomtheme-halfrhombe";
+                                        elseif($post->theme==5): $theme="roomtheme-marrakesh";
+                                        elseif($post->theme==6): $theme="roomtheme-hearts";
+                                        elseif($post->theme==7): $theme="roomtheme-stars";
+                                        elseif($post->theme==8): $theme="roomtheme-seigaiha";
+                                        elseif($post->theme==9): $theme="roomtheme-bricks";
+                                        elseif($post->theme==10): $theme="roomtheme-diacheckerboard";
+                                        elseif($post->theme==11): $theme="roomtheme-tablecloth";
+                                        elseif($post->theme==12): $theme="roomtheme-brady";
+                                        elseif($post->theme==13): $theme="roomtheme-argyle";
+                                        elseif($post->theme==14): $theme="roomtheme-shippo";
+                                        elseif($post->theme==15): $theme="roomtheme-waves";
+                                        elseif($post->theme==16): $theme="roomtheme-polkadot";
+                                        elseif($post->theme==17): $theme="roomtheme-honeycomb";
+                                        elseif($post->theme==18): $theme="roomtheme-chocolateweave";
+                                        elseif($post->theme==19): $theme="roomtheme-crosseddot";
+                                        else: $theme="";
+                                        endif;?>
+                                         <div class="polaroiditem polaroid homepostsborder <?php echo $theme?>" style="margin: 1%;">
+                                     
                                         <div class="whitebg">
                                         <img class = "img-circle" style = "margin: 10px 0px;" width = "40px" height = "40px" src = "<?php echo $post->profile_url ? base_url($post->profile_url) : base_url('images/default.jpg'); ?>"/> 
                                         
