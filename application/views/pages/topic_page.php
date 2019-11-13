@@ -31,69 +31,29 @@ include(APPPATH . 'views/header.php');
        
    <div class = "col-sm-12 col-md-10"> 
         <!--<div id = "topic-page" class = "container page" style = "min-height: 100%; height: 100%;">test</div>-->
-                        <?php if($c_topic->theme==1):?>
-                        <!--arrow theme-->
-                        <div class="roomtheme-arrow col-sm-12 col-md-11">        
-                        <?php elseif($c_topic->theme==2):?>        
-                        <!--zigzag theme-->
-                        <div class="roomtheme-zigzag col-sm-12 col-md-11">       
-                        <?php elseif($c_topic->theme==3):?>        
-                        <!--scales theme-->
-                        <div class="roomtheme-scales col-sm-12 col-md-11">       
-                        <?php elseif($c_topic->theme==4):?>        
-                        <!--halfrhombe theme-->
-                        <div class="roomtheme-halfrhombe col-sm-12 col-md-11">       
-                        <?php elseif($c_topic->theme==5):?>        
-                        <!--marrakesh theme-->
-                        <div class="roomtheme-marrakesh col-sm-12 col-md-11">        
-                        <?php elseif($c_topic->theme==6):?>        
-                        <!--hearts theme-->
-                        <div class="roomtheme-hearts col-sm-12 col-md-11">        
-                        <?php elseif($c_topic->theme==7):?>        
-                        <!--stars theme-->
-                        <div class="roomtheme-stars col-sm-12 col-md-11">  
-                        <?php elseif($c_topic->theme==8):?>        
-                        <!--seigaiha theme-->
-                        <div class="roomtheme-seigaiha col-sm-12 col-md-11">     
-                        <?php elseif($c_topic->theme==9):?>        
-                        <!--bricks theme-->
-                        <div class="roomtheme-bricks col-sm-12 col-md-11"> 
-                        <?php elseif($c_topic->theme==10):?>        
-                        <!--diacheckerboard theme-->
-                        <div class="roomtheme-diacheckerboard col-sm-12 col-md-11">     
-                        <?php elseif($c_topic->theme==11):?>        
-                        <!--tablecloth theme-->
-                        <div class="roomtheme-tablecloth col-sm-12 col-md-11">  
-                        <?php elseif($c_topic->theme==12):?>        
-                        <!--brady theme-->
-                        <div class="roomtheme-brady col-sm-12 col-md-11"> 
-                        <?php elseif($c_topic->theme==13):?>        
-                        <!--argyle theme-->
-                        <div class="roomtheme-argyle col-sm-12 col-md-11">   
-                        <?php elseif($c_topic->theme==14):?>        
-                        <!--shippo theme-->
-                        <div class="roomtheme-shippo col-sm-12 col-md-11">  
-                        <?php elseif($c_topic->theme==15):?>        
-                        <!--waves theme-->
-                        <div class="roomtheme-waves col-sm-12 col-md-11">    
-                        <?php elseif($c_topic->theme==16):?>        
-                        <!--polkadot theme-->
-                        <div class="roomtheme-polkadot col-sm-12 col-md-11">     
-                        <?php elseif($c_topic->theme==17):?>        
-                        <!--honeycomb theme-->
-                        <div class="roomtheme-honeycomb col-sm-12 col-md-11">     
-                        <?php elseif($c_topic->theme==18):?>        
-                        <!--chocolateweave theme-->
-                        <div class="roomtheme-chocolateweave col-sm-12 col-md-11">    
-                        <?php elseif($c_topic->theme==19):?>        
-                        <!--crosseddot theme-->
-                        <div class="roomtheme-crosseddot col-sm-12 col-md-11">
-                        <?php else:?>        
-                        <!--default theme-->
-                        <div class="dooroom col-sm-12 col-md-11">
-                        <?php endif;?>  
+        <?php if($c_topic->theme==1): $theme="roomtheme-arrow";
+        elseif($c_topic->theme==2): $theme="roomtheme-zigzag";
+        elseif($c_topic->theme==3): $theme="roomtheme-scales";
+        elseif($c_topic->theme==4): $theme="roomtheme-halfrhombe";
+        elseif($c_topic->theme==5): $theme="roomtheme-marrakesh";
+        elseif($c_topic->theme==6): $theme="roomtheme-hearts";
+        elseif($c_topic->theme==7): $theme="roomtheme-stars";
+        elseif($c_topic->theme==8): $theme="roomtheme-seigaiha";
+        elseif($c_topic->theme==9): $theme="roomtheme-bricks";
+        elseif($c_topic->theme==10): $theme="roomtheme-diacheckerboard";
+        elseif($c_topic->theme==11): $theme="roomtheme-tablecloth";
+        elseif($c_topic->theme==12): $theme="roomtheme-brady";
+        elseif($c_topic->theme==13): $theme="roomtheme-argyle";
+        elseif($c_topic->theme==14): $theme="roomtheme-shippo";
+        elseif($c_topic->theme==15): $theme="roomtheme-waves";
+        elseif($c_topic->theme==16): $theme="roomtheme-polkadot";
+        elseif($c_topic->theme==17): $theme="roomtheme-honeycomb";
+        elseif($c_topic->theme==18): $theme="roomtheme-chocolateweave";
+        elseif($c_topic->theme==19): $theme="roomtheme-crosseddot";
+        else: $theme="dooroom";
+        endif;?>
+        <div class="<?php echo $theme?> col-sm-12 col-md-11">
         
-           
             <center><div class="nameframe">
             <h4><strong><?php echo utf8_decode($c_topic->user->first_name); ?>'s Room</strong></h4>
             </div></center>
