@@ -349,12 +349,12 @@
 
                     <div class = "content-container container-fluid col-md-10 col-md-offset-1 col-sm-offset-1 col-sm-10 col-xs-offset-1 col-xs-10">
                         <ul class="nav nav-pills nav-justified" style="">
-                            <li class="" style="background-color: #f0f0f0"><a style="padding: 10px;" data-toggle="pill" href="#timetable-1">Early Dawn</a></li>
-                            <li class="" style="background-color: #f0f0f0"><a style="padding: 10px;" data-toggle="pill" href="#timetable-2">Early Morning</a></li>
-                            <li class="active" style="background-color: #f0f0f0"><a style="padding: 10px;" data-toggle="pill" href="#timetable-3">Morning</a></li>
-                            <li class="" style="background-color: #f0f0f0"><a style="padding: 10px;" data-toggle="pill" href="#timetable-4">Afternoon</a></li>
-                            <li class="" style="background-color: #f0f0f0"><a style="padding: 10px;" data-toggle="pill" href="#timetable-5">Night</a></li>
-                            <li class="" style="background-color: #f0f0f0"><a style="padding: 10px;" data-toggle="pill" href="#timetable-6">Late Night</a></li>
+                            <li class="" style="background-color: #f0f0f0"><a style="padding: 10px;" data-toggle="pill" href="#timetable-1">12:00 AM to 06:00 AM</a></li>
+                            <li class="active" style="background-color: #f0f0f0"><a style="padding: 10px;" data-toggle="pill" href="#timetable-2">06:00 AM to 12:00 PM</a></li>
+                            <li class="" style="background-color: #f0f0f0"><a style="padding: 10px;" data-toggle="pill" href="#timetable-3">12:00 PM to 06:00 PM</a></li>
+                            <li class="" style="background-color: #f0f0f0"><a style="padding: 10px;" data-toggle="pill" href="#timetable-4">06:00 PM to 12:00 AM</a></li>
+                            <!-- <li class="" style="background-color: #f0f0f0"><a style="padding: 10px;" data-toggle="pill" href="#timetable-5">Night</a></li>
+                            <li class="" style="background-color: #f0f0f0"><a style="padding: 10px;" data-toggle="pill" href="#timetable-6">Late Night</a></li> -->
                             
                         </ul>
                     </div>
@@ -370,7 +370,7 @@
 
 
                  <!-- The table -->
-                 <div id="time-table" class="container-fluid tab-content col-xs-16">
+                 <div id="time-table" class="container-fluid tab-content row">
 
                     <table id="timetable-1" class="myTable container-fluid tab-pane fade">
                         <tr>
@@ -398,7 +398,7 @@
                         </tr>
 
                         <tr>
-                            <td id="_cell1" class="timecol" style="border-bottom-color: #e3e3e3"><center>12:00</center></td>
+                            <td rowspan="2" class="timecol row"><center>12:00<br> to 01:00</center></td>
                             <td id="cell1" onclick="colorchange(this.id)"> </td>
                             <td id="cell2" onclick="colorchange(this.id)"> </td>
                             <td id="cell3" onclick="colorchange(this.id)"> </td>
@@ -408,7 +408,7 @@
                             <td id="cell7" onclick="colorchange(this.id)"> </td>
                         </tr>
                         <tr>
-                            <td id="_cell8" class="timecol"><center>12:30</center></td>
+                            <!-- <td id="_cell8" class="timecol"><center>12:30</center></td> -->
                             <td id="cell8" onclick="colorchange(this.id)"> </td>
                             <td id="cell9" onclick="colorchange(this.id)"> </td>
                             <td id="cell10" onclick="colorchange(this.id)"> </td>
@@ -419,7 +419,7 @@
                         </tr>
 
                         <tr>
-                            <td id="_cell15" class="timecol" style="border-bottom-color: #e3e3e3"><center>01:00</center></td>
+                            <td rowspan="2" class="timecol row"><center>01:00<br> to 02:00</center></td>
                             <td id="cell15" onclick="colorchange(this.id)"> </td>
                             <td id="cell16" onclick="colorchange(this.id)"> </td>
                             <td id="cell17" onclick="colorchange(this.id)"> </td>
@@ -430,7 +430,7 @@
                         </tr>
 
                         <tr>
-                            <td id="_cell22" class="timecol"><center>01:30</center></td>
+                            <!-- <td id="_cell22" class="timecol"><center>01:30</center></td> -->
                             <td id="cell22" onclick="colorchange(this.id)"> </td>
                             <td id="cell23" onclick="colorchange(this.id)"> </td>
                             <td id="cell24" onclick="colorchange(this.id)"> </td>
@@ -441,7 +441,7 @@
                         </tr>
 
                         <tr>
-                            <td id="" class="timecol" style="border-bottom-color: #e3e3e3"><center>02:00</center></td>
+                            <td rowspan="2" class="timecol row"><center>02:00<br> to 03:00</center></td>
                             <td id="cell29" onclick="colorchange(this.id)"> </td>
                             <td id="cell30" onclick="colorchange(this.id)"> </td>
                             <td id="cell31" onclick="colorchange(this.id)"> </td>
@@ -452,7 +452,7 @@
                         </tr>
 
                         <tr>
-                            <td id="" class="timecol" ><center>02:30</center></td>
+                            <!-- <td id="" class="timecol" ><center>02:30</center></td> -->
                             <td id="cell36" onclick="colorchange(this.id)"> </td>
                             <td id="cell37" onclick="colorchange(this.id)"> </td>
                             <td id="cell38" onclick="colorchange(this.id)"> </td>
@@ -463,7 +463,7 @@
                         </tr>
 
                         <tr>
-                            <td class="timecol" style="border-bottom-color: #e3e3e3"><center>03:00</center></td>
+                            <td rowspan="2" class="timecol row"><center>03:00<br> to 04:00</center></td>
                             <td id="cell43" onclick="colorchange(this.id)"> </td>
                             <td id="cell44" onclick="colorchange(this.id)"> </td>
                             <td id="cell45" onclick="colorchange(this.id)"> </td>
@@ -474,7 +474,7 @@
                         </tr>
 
                         <tr>
-                            <td class="timecol" ><center>03:30</center></td>
+                            <!-- <td class="timecol" ><center>03:30</center></td> -->
                             <td id="cell50" onclick="colorchange(this.id)"> </td>
                             <td id="cell51" onclick="colorchange(this.id)"> </td>
                             <td id="cell52" onclick="colorchange(this.id)"> </td>
@@ -484,9 +484,54 @@
                             <td id="cell56" onclick="colorchange(this.id)"> </td>
                         </tr>
 
+
+                        <tr>
+                            <td rowspan="2" class="timecol row"><center>04:00<br> to 05:00</center></td>
+                            <td id="cell57" onclick="colorchange(this.id)"> </td>
+                            <td id="cell58" onclick="colorchange(this.id)"> </td>
+                            <td id="cell59" onclick="colorchange(this.id)"> </td>
+                            <td id="cell60" onclick="colorchange(this.id)"> </td>
+                            <td id="cell61" onclick="colorchange(this.id)"> </td>
+                            <td id="cell62" onclick="colorchange(this.id)"> </td>
+                            <td id="cell63" onclick="colorchange(this.id)"> </td>
+                        </tr>
+
+                        <tr>
+                            <!-- <td class="timecol" ><center>04:30</center></td> -->
+                            <td id="cell64" onclick="colorchange(this.id)"> </td>
+                            <td id="cell65" onclick="colorchange(this.id)"> </td>
+                            <td id="cell66" onclick="colorchange(this.id)"> </td>
+                            <td id="cell67" onclick="colorchange(this.id)"> </td>
+                            <td id="cell68" onclick="colorchange(this.id)"> </td>
+                            <td id="cell69" onclick="colorchange(this.id)"> </td>
+                            <td id="cell70" onclick="colorchange(this.id)"> </td>
+                        </tr>
+
+                        <tr>
+                            <td rowspan="2" class="timecol row"><center>05:00<br> to 06:00</center></td>
+                            <td id="cell71" onclick="colorchange(this.id)"> </td>
+                            <td id="cell72" onclick="colorchange(this.id)"> </td>
+                            <td id="cell73" onclick="colorchange(this.id)"> </td>
+                            <td id="cell74" onclick="colorchange(this.id)"> </td>
+                            <td id="cell75" onclick="colorchange(this.id)"> </td>
+                            <td id="cell76" onclick="colorchange(this.id)"> </td>
+                            <td id="cell77" onclick="colorchange(this.id)"> </td>
+                        </tr>
+
+                        <tr>
+                            <!-- <td class="timecol" ><center>05:30</center></td> -->
+                            <td id="cell78" onclick="colorchange(this.id)"> </td>
+                            <td id="cell79" onclick="colorchange(this.id)"> </td>
+                            <td id="cell80" onclick="colorchange(this.id)"> </td>
+                            <td id="cell81" onclick="colorchange(this.id)"> </td>
+                            <td id="cell82" onclick="colorchange(this.id)"> </td>
+                            <td id="cell83" onclick="colorchange(this.id)"> </td>
+                            <td id="cell84" onclick="colorchange(this.id)"> </td>
+                        </tr>
+
                     </table>
 
-                    <table id="timetable-2" class="myTable container-fluid tab-pane fade">
+                    <table id="timetable-2" class="myTable container-fluid tab-pane fade in active">
                         <tr>
                             <?php if ($mobile): ?>
                                 <th style="background-color: #a83b3b"><center>Time</center></th>
@@ -511,54 +556,8 @@
                             <?php endif; ?>
                         </tr>
 
-                        
-
                         <tr>
-                            <td class="timecol" style="border-bottom-color: #e3e3e3"><center>04:00</center></td>
-                            <td id="cell57" onclick="colorchange(this.id)"> </td>
-                            <td id="cell58" onclick="colorchange(this.id)"> </td>
-                            <td id="cell59" onclick="colorchange(this.id)"> </td>
-                            <td id="cell60" onclick="colorchange(this.id)"> </td>
-                            <td id="cell61" onclick="colorchange(this.id)"> </td>
-                            <td id="cell62" onclick="colorchange(this.id)"> </td>
-                            <td id="cell63" onclick="colorchange(this.id)"> </td>
-                        </tr>
-
-                        <tr>
-                            <td class="timecol" ><center>04:30</center></td>
-                            <td id="cell64" onclick="colorchange(this.id)"> </td>
-                            <td id="cell65" onclick="colorchange(this.id)"> </td>
-                            <td id="cell66" onclick="colorchange(this.id)"> </td>
-                            <td id="cell67" onclick="colorchange(this.id)"> </td>
-                            <td id="cell68" onclick="colorchange(this.id)"> </td>
-                            <td id="cell69" onclick="colorchange(this.id)"> </td>
-                            <td id="cell70" onclick="colorchange(this.id)"> </td>
-                        </tr>
-
-                        <tr>
-                            <td class="timecol" style="border-bottom-color: #e3e3e3"><center>05:00</center></td>
-                            <td id="cell71" onclick="colorchange(this.id)"> </td>
-                            <td id="cell72" onclick="colorchange(this.id)"> </td>
-                            <td id="cell73" onclick="colorchange(this.id)"> </td>
-                            <td id="cell74" onclick="colorchange(this.id)"> </td>
-                            <td id="cell75" onclick="colorchange(this.id)"> </td>
-                            <td id="cell76" onclick="colorchange(this.id)"> </td>
-                            <td id="cell77" onclick="colorchange(this.id)"> </td>
-                        </tr>
-
-                        <tr>
-                            <td class="timecol" ><center>05:30</center></td>
-                            <td id="cell78" onclick="colorchange(this.id)"> </td>
-                            <td id="cell79" onclick="colorchange(this.id)"> </td>
-                            <td id="cell80" onclick="colorchange(this.id)"> </td>
-                            <td id="cell81" onclick="colorchange(this.id)"> </td>
-                            <td id="cell82" onclick="colorchange(this.id)"> </td>
-                            <td id="cell83" onclick="colorchange(this.id)"> </td>
-                            <td id="cell84" onclick="colorchange(this.id)"> </td>
-                        </tr>
-
-                        <tr>
-                            <td class="timecol" style="border-bottom-color: #e3e3e3"><center>06:00</center></td>
+                            <td rowspan="2" class="timecol row"><center>06:00<br> to 07:00</center></td>
                             <td id="cell85" onclick="colorchange(this.id)"> </td>
                             <td id="cell86" onclick="colorchange(this.id)"> </td>
                             <td id="cell87" onclick="colorchange(this.id)"> </td>
@@ -569,7 +568,7 @@
                         </tr>
 
                         <tr>
-                            <td id="_cell92" class="timecol" ><center>06:30</center></td>
+                            <!-- <td id="_cell92" class="timecol" ><center>06:30</center></td> -->
                             <td id="cell92" onclick="colorchange(this.id)"> </td>
                             <td id="cell93" onclick="colorchange(this.id)"> </td>
                             <td id="cell94" onclick="colorchange(this.id)"> </td>
@@ -580,7 +579,7 @@
                         </tr>
 
                         <tr>
-                            <td id="_cell99" class="timecol" style="border-bottom-color: #e3e3e3"><center>07:00</center></td>
+                            <td rowspan="2" class="timecol row"><center>07:00<br> to 08:00</center></td>
                             <td id="cell99" onclick="colorchange(this.id)"> </td>
                             <td id="cell100" onclick="colorchange(this.id)"> </td>
                             <td id="cell101" onclick="colorchange(this.id)"> </td>
@@ -592,7 +591,7 @@
 
                         
                         <tr>
-                            <td id="_cell106" class="timecol" onclick=""><center>07:30</center></td>
+                            <!-- <td id="_cell106" class="timecol" onclick=""><center>07:30</center></td> -->
                             <td id="cell106" onclick="colorchange(this.id)"> </td>
                             <td id="cell107" onclick="colorchange(this.id)"> </td>
                             <td id="cell108" onclick="colorchange(this.id)"> </td>
@@ -601,11 +600,99 @@
                             <td id="cell111" onclick="colorchange(this.id)"> </td>
                             <td id="cell112" onclick="colorchange(this.id)"> </td>
                         </tr>
-    
+        
+                        <tr>
+                            <td rowspan="2" class="timecol row"><center>08:00<br> to 09:00</center></td>
+                            <td id="cell113" onclick="colorchange(this.id)"> </td>
+                            <td id="cell114" onclick="colorchange(this.id)"> </td>
+                            <td id="cell115" onclick="colorchange(this.id)"> </td>
+                            <td id="cell116" onclick="colorchange(this.id)"> </td>
+                            <td id="cell117" onclick="colorchange(this.id)"> </td>
+                            <td id="cell118" onclick="colorchange(this.id)"> </td>
+                            <td id="cell119" onclick="colorchange(this.id)"> </td>
+                        </tr>
+
+                        <tr>
+                            <!-- <td class="timecol" ><center>08:30</center></td> -->
+                            <td id="cell120" onclick="colorchange(this.id)"> </td>
+                            <td id="cell121" onclick="colorchange(this.id)"> </td>
+                            <td id="cell122" onclick="colorchange(this.id)"> </td>
+                            <td id="cell123" onclick="colorchange(this.id)"> </td>
+                            <td id="cell124" onclick="colorchange(this.id)"> </td>
+                            <td id="cell125" onclick="colorchange(this.id)"> </td>
+                            <td id="cell126" onclick="colorchange(this.id)"> </td>
+                        </tr>
+
+                        <tr>
+                            <td rowspan="2" class="timecol row"><center>09:00<br> to 10:00</center></td>
+                            <td id="cell127" onclick="colorchange(this.id)"> </td>
+                            <td id="cell128" onclick="colorchange(this.id)"> </td>
+                            <td id="cell129" onclick="colorchange(this.id)"> </td>
+                            <td id="cell130" onclick="colorchange(this.id)"> </td>
+                            <td id="cell131" onclick="colorchange(this.id)"> </td>
+                            <td id="cell132" onclick="colorchange(this.id)"> </td>
+                            <td id="cell133" onclick="colorchange(this.id)"> </td>
+                        </tr>
+
+                        <tr>
+                            <!-- <td class="timecol" ><center>09:30</center></td> -->
+                            <td id="cell134" onclick="colorchange(this.id)"> </td>
+                            <td id="cell135" onclick="colorchange(this.id)"> </td>
+                            <td id="cell136" onclick="colorchange(this.id)"> </td>
+                            <td id="cell137" onclick="colorchange(this.id)"> </td>
+                            <td id="cell138" onclick="colorchange(this.id)"> </td>
+                            <td id="cell139" onclick="colorchange(this.id)"> </td>
+                            <td id="cell140" onclick="colorchange(this.id)"> </td>
+                        </tr>
+
+                        <tr>
+                            <td rowspan="2" class="timecol row"><center>10:00<br> to 11:00</center></td>
+                            <td id="cell141" onclick="colorchange(this.id)"> </td>
+                            <td id="cell142" onclick="colorchange(this.id)"> </td>
+                            <td id="cell143" onclick="colorchange(this.id)"> </td>
+                            <td id="cell144" onclick="colorchange(this.id)"> </td>
+                            <td id="cell145" onclick="colorchange(this.id)"> </td>
+                            <td id="cell146" onclick="colorchange(this.id)"> </td>
+                            <td id="cell147" onclick="colorchange(this.id)"> </td>
+                        </tr>
+
+                        <tr>
+                            <!-- <td class="timecol" ><center>10:30</center></td> -->
+                            <td id="cell148" onclick="colorchange(this.id)"> </td>
+                            <td id="cell149" onclick="colorchange(this.id)"> </td>
+                            <td id="cell150" onclick="colorchange(this.id)"> </td>
+                            <td id="cell151" onclick="colorchange(this.id)"> </td>
+                            <td id="cell152" onclick="colorchange(this.id)"> </td>
+                            <td id="cell153" onclick="colorchange(this.id)"> </td>
+                            <td id="cell154" onclick="colorchange(this.id)"> </td>
+                        </tr>
+
+                        <tr>
+                            <td rowspan="2" class="timecol row"><center>11:00<br> to 12:00</center></td>
+                            <td id="cell155" onclick="colorchange(this.id)"> </td>
+                            <td id="cell156" onclick="colorchange(this.id)"> </td>
+                            <td id="cell157" onclick="colorchange(this.id)"> </td>
+                            <td id="cell158" onclick="colorchange(this.id)"> </td>
+                            <td id="cell159" onclick="colorchange(this.id)"> </td>
+                            <td id="cell160" onclick="colorchange(this.id)"> </td>
+                            <td id="cell161" onclick="colorchange(this.id)"> </td>
+                        </tr>
+
+                        <tr>
+                            <!-- <td class="timecol" ><center>11:30</center></td> -->
+                            <td id="cell162" onclick="colorchange(this.id)"> </td>
+                            <td id="cell163" onclick="colorchange(this.id)"> </td>
+                            <td id="cell164" onclick="colorchange(this.id)"> </td>
+                            <td id="cell165" onclick="colorchange(this.id)"> </td>
+                            <td id="cell166" onclick="colorchange(this.id)"> </td>
+                            <td id="cell167" onclick="colorchange(this.id)"> </td>
+                            <td id="cell168" onclick="colorchange(this.id)"> </td>
+                        </tr>
+
 
                     </table>
 
-                    <table id="timetable-3" class="myTable container-fluid tab-pane fade  in active">
+                    <table id="timetable-3" class="myTable container-fluid tab-pane fade">
                         <tr>
                             <?php if ($mobile): ?>
                                 <th style="background-color: #a83b3b"><center>Time</center></th>
@@ -631,91 +718,135 @@
                         </tr>
 
                         <tr>
-                            <td class="timecol" style="border-bottom-color: #e3e3e3"><center>08:00</center></td>
-                            <td id="cell113" onclick="colorchange(this.id)"> </td>
-                            <td id="cell114" onclick="colorchange(this.id)"> </td>
-                            <td id="cell115" onclick="colorchange(this.id)"> </td>
-                            <td id="cell116" onclick="colorchange(this.id)"> </td>
-                            <td id="cell117" onclick="colorchange(this.id)"> </td>
-                            <td id="cell118" onclick="colorchange(this.id)"> </td>
-                            <td id="cell119" onclick="colorchange(this.id)"> </td>
+                            <td rowspan="2" class="timecol row"><center>12:00<br> to 01:00</center></td>
+                            <td id="cell169" onclick="colorchange(this.id)"> </td>
+                            <td id="cell170" onclick="colorchange(this.id)"> </td>
+                            <td id="cell171" onclick="colorchange(this.id)"> </td>
+                            <td id="cell172" onclick="colorchange(this.id)"> </td>
+                            <td id="cell173" onclick="colorchange(this.id)"> </td>
+                            <td id="cell174" onclick="colorchange(this.id)"> </td>
+                            <td id="cell175" onclick="colorchange(this.id)"> </td>
                         </tr>
 
                         <tr>
-                            <td class="timecol" ><center>08:30</center></td>
-                            <td id="cell120" onclick="colorchange(this.id)"> </td>
-                            <td id="cell121" onclick="colorchange(this.id)"> </td>
-                            <td id="cell122" onclick="colorchange(this.id)"> </td>
-                            <td id="cell123" onclick="colorchange(this.id)"> </td>
-                            <td id="cell124" onclick="colorchange(this.id)"> </td>
-                            <td id="cell125" onclick="colorchange(this.id)"> </td>
-                            <td id="cell126" onclick="colorchange(this.id)"> </td>
+                            <!-- <td class="timecol" ><center>12:30</center></td> -->
+                            <td id="cell176" onclick="colorchange(this.id)"> </td>
+                            <td id="cell177" onclick="colorchange(this.id)"> </td>
+                            <td id="cell178" onclick="colorchange(this.id)"> </td>
+                            <td id="cell179" onclick="colorchange(this.id)"> </td>
+                            <td id="cell180" onclick="colorchange(this.id)"> </td>
+                            <td id="cell181" onclick="colorchange(this.id)"> </td>
+                            <td id="cell182" onclick="colorchange(this.id)"> </td>
                         </tr>
 
                         <tr>
-                            <td class="timecol" style="border-bottom-color: #e3e3e3"><center>09:00</center></td>
-                            <td id="cell127" onclick="colorchange(this.id)"> </td>
-                            <td id="cell128" onclick="colorchange(this.id)"> </td>
-                            <td id="cell129" onclick="colorchange(this.id)"> </td>
-                            <td id="cell130" onclick="colorchange(this.id)"> </td>
-                            <td id="cell131" onclick="colorchange(this.id)"> </td>
-                            <td id="cell132" onclick="colorchange(this.id)"> </td>
-                            <td id="cell133" onclick="colorchange(this.id)"> </td>
+                            <td rowspan="2" class="timecol row"><center>01:00<br> to 02:00</center></td>
+                            <td id="cell183" onclick="colorchange(this.id)"> </td>
+                            <td id="cell184" onclick="colorchange(this.id)"> </td>
+                            <td id="cell185" onclick="colorchange(this.id)"> </td>
+                            <td id="cell186" onclick="colorchange(this.id)"> </td>
+                            <td id="cell187" onclick="colorchange(this.id)"> </td>
+                            <td id="cell188" onclick="colorchange(this.id)"> </td>
+                            <td id="cell189" onclick="colorchange(this.id)"> </td>
                         </tr>
 
                         <tr>
-                            <td class="timecol" ><center>09:30</center></td>
-                            <td id="cell134" onclick="colorchange(this.id)"> </td>
-                            <td id="cell135" onclick="colorchange(this.id)"> </td>
-                            <td id="cell136" onclick="colorchange(this.id)"> </td>
-                            <td id="cell137" onclick="colorchange(this.id)"> </td>
-                            <td id="cell138" onclick="colorchange(this.id)"> </td>
-                            <td id="cell139" onclick="colorchange(this.id)"> </td>
-                            <td id="cell140" onclick="colorchange(this.id)"> </td>
+                            <!-- <td class="timecol" ><center>01:30</center></td> -->
+                            <td id="cell190" onclick="colorchange(this.id)"> </td>
+                            <td id="cell191" onclick="colorchange(this.id)"> </td>
+                            <td id="cell192" onclick="colorchange(this.id)"> </td>
+                            <td id="cell193" onclick="colorchange(this.id)"> </td>
+                            <td id="cell194" onclick="colorchange(this.id)"> </td>
+                            <td id="cell195" onclick="colorchange(this.id)"> </td>
+                            <td id="cell196" onclick="colorchange(this.id)"> </td>
                         </tr>
 
                         <tr>
-                            <td class="timecol" style="border-bottom-color: #e3e3e3"><center>10:00</center></td>
-                            <td id="cell141" onclick="colorchange(this.id)"> </td>
-                            <td id="cell142" onclick="colorchange(this.id)"> </td>
-                            <td id="cell143" onclick="colorchange(this.id)"> </td>
-                            <td id="cell144" onclick="colorchange(this.id)"> </td>
-                            <td id="cell145" onclick="colorchange(this.id)"> </td>
-                            <td id="cell146" onclick="colorchange(this.id)"> </td>
-                            <td id="cell147" onclick="colorchange(this.id)"> </td>
+                            <td rowspan="2" class="timecol row"><center>02:00<br> to 03:00</center></td>
+                            <td id="cell197" onclick="colorchange(this.id)"> </td>
+                            <td id="cell198" onclick="colorchange(this.id)"> </td>
+                            <td id="cell199" onclick="colorchange(this.id)"> </td>
+                            <td id="cell200" onclick="colorchange(this.id)"> </td>
+                            <td id="cell201" onclick="colorchange(this.id)"> </td>
+                            <td id="cell202" onclick="colorchange(this.id)"> </td>
+                            <td id="cell203" onclick="colorchange(this.id)"> </td>
                         </tr>
 
                         <tr>
-                            <td class="timecol" ><center>10:30</center></td>
-                            <td id="cell148" onclick="colorchange(this.id)"> </td>
-                            <td id="cell149" onclick="colorchange(this.id)"> </td>
-                            <td id="cell150" onclick="colorchange(this.id)"> </td>
-                            <td id="cell151" onclick="colorchange(this.id)"> </td>
-                            <td id="cell152" onclick="colorchange(this.id)"> </td>
-                            <td id="cell153" onclick="colorchange(this.id)"> </td>
-                            <td id="cell154" onclick="colorchange(this.id)"> </td>
+                            <!-- <td class="timecol" ><center>02:30</center></td> -->
+                            <td id="cell204" onclick="colorchange(this.id)"> </td>
+                            <td id="cell205" onclick="colorchange(this.id)"> </td>
+                            <td id="cell206" onclick="colorchange(this.id)"> </td>
+                            <td id="cell207" onclick="colorchange(this.id)"> </td>
+                            <td id="cell208" onclick="colorchange(this.id)"> </td>
+                            <td id="cell209" onclick="colorchange(this.id)"> </td>
+                            <td id="cell210" onclick="colorchange(this.id)"> </td>
                         </tr>
 
                         <tr>
-                            <td class="timecol" style="border-bottom-color: #e3e3e3"><center>11:00</center></td>
-                            <td id="cell155" onclick="colorchange(this.id)"> </td>
-                            <td id="cell156" onclick="colorchange(this.id)"> </td>
-                            <td id="cell157" onclick="colorchange(this.id)"> </td>
-                            <td id="cell158" onclick="colorchange(this.id)"> </td>
-                            <td id="cell159" onclick="colorchange(this.id)"> </td>
-                            <td id="cell160" onclick="colorchange(this.id)"> </td>
-                            <td id="cell161" onclick="colorchange(this.id)"> </td>
+                            <td rowspan="2" class="timecol row"><center>03:00<br> to 04:00</center></td>
+                            <td id="cell211" onclick="colorchange(this.id)"> </td>
+                            <td id="cell212" onclick="colorchange(this.id)"> </td>
+                            <td id="cell213" onclick="colorchange(this.id)"> </td>
+                            <td id="cell214" onclick="colorchange(this.id)"> </td>
+                            <td id="cell215" onclick="colorchange(this.id)"> </td>
+                            <td id="cell216" onclick="colorchange(this.id)"> </td>
+                            <td id="cell217" onclick="colorchange(this.id)"> </td>
                         </tr>
 
                         <tr>
-                            <td class="timecol" ><center>11:30</center></td>
-                            <td id="cell162" onclick="colorchange(this.id)"> </td>
-                            <td id="cell163" onclick="colorchange(this.id)"> </td>
-                            <td id="cell164" onclick="colorchange(this.id)"> </td>
-                            <td id="cell165" onclick="colorchange(this.id)"> </td>
-                            <td id="cell166" onclick="colorchange(this.id)"> </td>
-                            <td id="cell167" onclick="colorchange(this.id)"> </td>
-                            <td id="cell168" onclick="colorchange(this.id)"> </td>
+                            <!-- <td class="timecol" ><center>03:30</center></td> -->
+                            <td id="cell218" onclick="colorchange(this.id)"> </td>
+                            <td id="cell219" onclick="colorchange(this.id)"> </td>
+                            <td id="cell220" onclick="colorchange(this.id)"> </td>
+                            <td id="cell221" onclick="colorchange(this.id)"> </td>
+                            <td id="cell222" onclick="colorchange(this.id)"> </td>
+                            <td id="cell223" onclick="colorchange(this.id)"> </td>
+                            <td id="cell224" onclick="colorchange(this.id)"> </td>
+                        </tr>
+                        
+                        <tr>
+                            <td rowspan="2" class="timecol row"><center>04:00<br> to 05:00</center></td>
+                            <td id="cell225" onclick="colorchange(this.id)"> </td>
+                            <td id="cell226" onclick="colorchange(this.id)"> </td>
+                            <td id="cell227" onclick="colorchange(this.id)"> </td>
+                            <td id="cell228" onclick="colorchange(this.id)"> </td>
+                            <td id="cell229" onclick="colorchange(this.id)"> </td>
+                            <td id="cell230" onclick="colorchange(this.id)"> </td>
+                            <td id="cell231" onclick="colorchange(this.id)"> </td>
+                        </tr>
+
+                        <tr>
+                            <!-- <td class="timecol" ><center>04:30</center></td> -->
+                            <td id="cell232" onclick="colorchange(this.id)"> </td>
+                            <td id="cell233" onclick="colorchange(this.id)"> </td>
+                            <td id="cell234" onclick="colorchange(this.id)"> </td>
+                            <td id="cell235" onclick="colorchange(this.id)"> </td>
+                            <td id="cell236" onclick="colorchange(this.id)"> </td>
+                            <td id="cell237" onclick="colorchange(this.id)"> </td>
+                            <td id="cell238" onclick="colorchange(this.id)"> </td>
+                        </tr>
+
+                        <tr>
+                            <td rowspan="2" class="timecol row"><center>05:00<br> to 06:00</center></td>
+                            <td id="cell239" onclick="colorchange(this.id)"> </td>
+                            <td id="cell240" onclick="colorchange(this.id)"> </td>
+                            <td id="cell241" onclick="colorchange(this.id)"> </td>
+                            <td id="cell242" onclick="colorchange(this.id)"> </td>
+                            <td id="cell243" onclick="colorchange(this.id)"> </td>
+                            <td id="cell244" onclick="colorchange(this.id)"> </td>
+                            <td id="cell245" onclick="colorchange(this.id)"> </td>
+                        </tr>
+
+                        <tr>
+                            <!-- <td class="timecol" ><center>05:30</center></td> -->
+                            <td id="cell246" onclick="colorchange(this.id)"> </td>
+                            <td id="cell247" onclick="colorchange(this.id)"> </td>
+                            <td id="cell248" onclick="colorchange(this.id)"> </td>
+                            <td id="cell249" onclick="colorchange(this.id)"> </td>
+                            <td id="cell250" onclick="colorchange(this.id)"> </td>
+                            <td id="cell251" onclick="colorchange(this.id)"> </td>
+                            <td id="cell252" onclick="colorchange(this.id)"> </td>
                         </tr>
 
                     </table>
@@ -746,93 +877,137 @@
                             <?php endif; ?>
                         </tr>
 
-
+                        
                         <tr>
-                            <td class="timecol" style="border-bottom-color: #e3e3e3"><center>12:00</center></td>
-                            <td id="cell169" onclick="colorchange(this.id)"> </td>
-                            <td id="cell170" onclick="colorchange(this.id)"> </td>
-                            <td id="cell171" onclick="colorchange(this.id)"> </td>
-                            <td id="cell172" onclick="colorchange(this.id)"> </td>
-                            <td id="cell173" onclick="colorchange(this.id)"> </td>
-                            <td id="cell174" onclick="colorchange(this.id)"> </td>
-                            <td id="cell175" onclick="colorchange(this.id)"> </td>
+                            <td rowspan="2" class="timecol row"><center>06:00<br> to 07:00</center></td>
+                            <td id="cell253" onclick="colorchange(this.id)"> </td>
+                            <td id="cell254" onclick="colorchange(this.id)"> </td>
+                            <td id="cell255" onclick="colorchange(this.id)"> </td>
+                            <td id="cell256" onclick="colorchange(this.id)"> </td>
+                            <td id="cell257" onclick="colorchange(this.id)"> </td>
+                            <td id="cell258" onclick="colorchange(this.id)"> </td>
+                            <td id="cell259" onclick="colorchange(this.id)"> </td>
                         </tr>
 
                         <tr>
-                            <td class="timecol" ><center>12:30</center></td>
-                            <td id="cell176" onclick="colorchange(this.id)"> </td>
-                            <td id="cell177" onclick="colorchange(this.id)"> </td>
-                            <td id="cell178" onclick="colorchange(this.id)"> </td>
-                            <td id="cell179" onclick="colorchange(this.id)"> </td>
-                            <td id="cell180" onclick="colorchange(this.id)"> </td>
-                            <td id="cell181" onclick="colorchange(this.id)"> </td>
-                            <td id="cell182" onclick="colorchange(this.id)"> </td>
+                            <!-- <td class="timecol" ><center>06:30</center></td> -->
+                            <td id="cell260" onclick="colorchange(this.id)"> </td>
+                            <td id="cell261" onclick="colorchange(this.id)"> </td>
+                            <td id="cell262" onclick="colorchange(this.id)"> </td>
+                            <td id="cell263" onclick="colorchange(this.id)"> </td>
+                            <td id="cell264" onclick="colorchange(this.id)"> </td>
+                            <td id="cell265" onclick="colorchange(this.id)"> </td>
+                            <td id="cell266" onclick="colorchange(this.id)"> </td>
                         </tr>
 
                         <tr>
-                            <td class="timecol" style="border-bottom-color: #e3e3e3"><center>01:00</center></td>
-                            <td id="cell183" onclick="colorchange(this.id)"> </td>
-                            <td id="cell184" onclick="colorchange(this.id)"> </td>
-                            <td id="cell185" onclick="colorchange(this.id)"> </td>
-                            <td id="cell186" onclick="colorchange(this.id)"> </td>
-                            <td id="cell187" onclick="colorchange(this.id)"> </td>
-                            <td id="cell188" onclick="colorchange(this.id)"> </td>
-                            <td id="cell189" onclick="colorchange(this.id)"> </td>
+                            <td rowspan="2" class="timecol row"><center>07:00<br> to 08:00</center></td>
+                            <td id="cell267" onclick="colorchange(this.id)"> </td>
+                            <td id="cell268" onclick="colorchange(this.id)"> </td>
+                            <td id="cell269" onclick="colorchange(this.id)"> </td>
+                            <td id="cell270" onclick="colorchange(this.id)"> </td>
+                            <td id="cell271" onclick="colorchange(this.id)"> </td>
+                            <td id="cell272" onclick="colorchange(this.id)"> </td>
+                            <td id="cell273" onclick="colorchange(this.id)"> </td>
                         </tr>
 
                         <tr>
-                            <td class="timecol" ><center>01:30</center></td>
-                            <td id="cell190" onclick="colorchange(this.id)"> </td>
-                            <td id="cell191" onclick="colorchange(this.id)"> </td>
-                            <td id="cell192" onclick="colorchange(this.id)"> </td>
-                            <td id="cell193" onclick="colorchange(this.id)"> </td>
-                            <td id="cell194" onclick="colorchange(this.id)"> </td>
-                            <td id="cell195" onclick="colorchange(this.id)"> </td>
-                            <td id="cell196" onclick="colorchange(this.id)"> </td>
+                            <!-- <td class="timecol" ><center>07:30</center></td> -->
+                            <td id="cell274" onclick="colorchange(this.id)"> </td>
+                            <td id="cell275" onclick="colorchange(this.id)"> </td>
+                            <td id="cell276" onclick="colorchange(this.id)"> </td>
+                            <td id="cell277" onclick="colorchange(this.id)"> </td>
+                            <td id="cell278" onclick="colorchange(this.id)"> </td>
+                            <td id="cell279" onclick="colorchange(this.id)"> </td>
+                            <td id="cell280" onclick="colorchange(this.id)"> </td>
                         </tr>
 
                         <tr>
-                            <td class="timecol" style="border-bottom-color: #e3e3e3"><center>02:00</center></td>
-                            <td id="cell197" onclick="colorchange(this.id)"> </td>
-                            <td id="cell198" onclick="colorchange(this.id)"> </td>
-                            <td id="cell199" onclick="colorchange(this.id)"> </td>
-                            <td id="cell200" onclick="colorchange(this.id)"> </td>
-                            <td id="cell201" onclick="colorchange(this.id)"> </td>
-                            <td id="cell202" onclick="colorchange(this.id)"> </td>
-                            <td id="cell203" onclick="colorchange(this.id)"> </td>
+                            <td rowspan="2" class="timecol row"><center>08:00<br> to 09:00</center></td>
+                            <td id="cell281" onclick="colorchange(this.id)"> </td>
+                            <td id="cell282" onclick="colorchange(this.id)"> </td>
+                            <td id="cell283" onclick="colorchange(this.id)"> </td>
+                            <td id="cell284" onclick="colorchange(this.id)"> </td>
+                            <td id="cell285" onclick="colorchange(this.id)"> </td>
+                            <td id="cell286" onclick="colorchange(this.id)"> </td>
+                            <td id="cell287" onclick="colorchange(this.id)"> </td>
                         </tr>
 
                         <tr>
-                            <td class="timecol" ><center>02:30</center></td>
-                            <td id="cell204" onclick="colorchange(this.id)"> </td>
-                            <td id="cell205" onclick="colorchange(this.id)"> </td>
-                            <td id="cell206" onclick="colorchange(this.id)"> </td>
-                            <td id="cell207" onclick="colorchange(this.id)"> </td>
-                            <td id="cell208" onclick="colorchange(this.id)"> </td>
-                            <td id="cell209" onclick="colorchange(this.id)"> </td>
-                            <td id="cell210" onclick="colorchange(this.id)"> </td>
+                            <!-- <td class="timecol" ><center>08:30</center></td> -->
+                            <td id="cell288" onclick="colorchange(this.id)"> </td>
+                            <td id="cell289" onclick="colorchange(this.id)"> </td>
+                            <td id="cell290" onclick="colorchange(this.id)"> </td>
+                            <td id="cell291" onclick="colorchange(this.id)"> </td>
+                            <td id="cell292" onclick="colorchange(this.id)"> </td>
+                            <td id="cell293" onclick="colorchange(this.id)"> </td>
+                            <td id="cell294" onclick="colorchange(this.id)"> </td>
                         </tr>
 
                         <tr>
-                            <td class="timecol" style="border-bottom-color: #e3e3e3"><center>03:00</center></td>
-                            <td id="cell211" onclick="colorchange(this.id)"> </td>
-                            <td id="cell212" onclick="colorchange(this.id)"> </td>
-                            <td id="cell213" onclick="colorchange(this.id)"> </td>
-                            <td id="cell214" onclick="colorchange(this.id)"> </td>
-                            <td id="cell215" onclick="colorchange(this.id)"> </td>
-                            <td id="cell216" onclick="colorchange(this.id)"> </td>
-                            <td id="cell217" onclick="colorchange(this.id)"> </td>
+                            <td rowspan="2" class="timecol row"><center>09:00<br> to 10:00</center></td>
+                            <td id="cell295" onclick="colorchange(this.id)"> </td>
+                            <td id="cell296" onclick="colorchange(this.id)"> </td>
+                            <td id="cell297" onclick="colorchange(this.id)"> </td>
+                            <td id="cell298" onclick="colorchange(this.id)"> </td>
+                            <td id="cell299" onclick="colorchange(this.id)"> </td>
+                            <td id="cell300" onclick="colorchange(this.id)"> </td>
+                            <td id="cell301" onclick="colorchange(this.id)"> </td>
                         </tr>
 
                         <tr>
-                            <td class="timecol" ><center>03:30</center></td>
-                            <td id="cell218" onclick="colorchange(this.id)"> </td>
-                            <td id="cell219" onclick="colorchange(this.id)"> </td>
-                            <td id="cell220" onclick="colorchange(this.id)"> </td>
-                            <td id="cell221" onclick="colorchange(this.id)"> </td>
-                            <td id="cell222" onclick="colorchange(this.id)"> </td>
-                            <td id="cell223" onclick="colorchange(this.id)"> </td>
-                            <td id="cell224" onclick="colorchange(this.id)"> </td>
+                            <!-- <td class="timecol" ><center>09:30</center></td> -->
+                            <td id="cell302" onclick="colorchange(this.id)"> </td>
+                            <td id="cell303" onclick="colorchange(this.id)"> </td>
+                            <td id="cell304" onclick="colorchange(this.id)"> </td>
+                            <td id="cell305" onclick="colorchange(this.id)"> </td>
+                            <td id="cell306" onclick="colorchange(this.id)"> </td>
+                            <td id="cell307" onclick="colorchange(this.id)"> </td>
+                            <td id="cell308" onclick="colorchange(this.id)"> </td>
+                        </tr>
+
+                        <tr>
+                            <td rowspan="2" class="timecol row"><center>10:00<br> to 11:00</center></td>
+                            <td id="cell309" onclick="colorchange(this.id)"> </td>
+                            <td id="cell310" onclick="colorchange(this.id)"> </td>
+                            <td id="cell311" onclick="colorchange(this.id)"> </td>
+                            <td id="cell312" onclick="colorchange(this.id)"> </td>
+                            <td id="cell313" onclick="colorchange(this.id)"> </td>
+                            <td id="cell314" onclick="colorchange(this.id)"> </td>
+                            <td id="cell315" onclick="colorchange(this.id)"> </td>
+                        </tr>
+
+                        <tr>
+                            <!-- <td class="timecol" ><center>10:30</center></td> -->
+                            <td id="cell316" onclick="colorchange(this.id)"> </td>
+                            <td id="cell317" onclick="colorchange(this.id)"> </td>
+                            <td id="cell318" onclick="colorchange(this.id)"> </td>
+                            <td id="cell319" onclick="colorchange(this.id)"> </td>
+                            <td id="cell320" onclick="colorchange(this.id)"> </td>
+                            <td id="cell321" onclick="colorchange(this.id)"> </td>
+                            <td id="cell322" onclick="colorchange(this.id)"> </td>
+                        </tr>
+
+                        <tr>
+                            <td rowspan="2" class="timecol row"><center>11:00<br> to 12:00</center></td>
+                            <td id="cell323" onclick="colorchange(this.id)"> </td>
+                            <td id="cell324" onclick="colorchange(this.id)"> </td>
+                            <td id="cell325" onclick="colorchange(this.id)"> </td>
+                            <td id="cell326" onclick="colorchange(this.id)"> </td>
+                            <td id="cell327" onclick="colorchange(this.id)"> </td>
+                            <td id="cell328" onclick="colorchange(this.id)"> </td>
+                            <td id="cell329" onclick="colorchange(this.id)"> </td>
+                        </tr>
+
+                        <tr>
+                            <!-- <td class="timecol" ><center>11:30</center></td> -->
+                            <td id="cell330" onclick="colorchange(this.id)"> </td>
+                            <td id="cell331" onclick="colorchange(this.id)"> </td>
+                            <td id="cell332" onclick="colorchange(this.id)"> </td>
+                            <td id="cell333" onclick="colorchange(this.id)"> </td>
+                            <td id="cell334" onclick="colorchange(this.id)"> </td>
+                            <td id="cell335" onclick="colorchange(this.id)"> </td>
+                            <td id="cell336" onclick="colorchange(this.id)"> </td>
                         </tr>
 
                     </table>
@@ -862,94 +1037,6 @@
 
                             <?php endif; ?>
                         </tr>
-
-                        <tr>
-                            <td class="timecol" style="border-bottom-color: #e3e3e3"><center>04:00</center></td>
-                            <td id="cell225" onclick="colorchange(this.id)"> </td>
-                            <td id="cell226" onclick="colorchange(this.id)"> </td>
-                            <td id="cell227" onclick="colorchange(this.id)"> </td>
-                            <td id="cell228" onclick="colorchange(this.id)"> </td>
-                            <td id="cell229" onclick="colorchange(this.id)"> </td>
-                            <td id="cell230" onclick="colorchange(this.id)"> </td>
-                            <td id="cell231" onclick="colorchange(this.id)"> </td>
-                        </tr>
-
-                        <tr>
-                            <td class="timecol" ><center>04:30</center></td>
-                            <td id="cell232" onclick="colorchange(this.id)"> </td>
-                            <td id="cell233" onclick="colorchange(this.id)"> </td>
-                            <td id="cell234" onclick="colorchange(this.id)"> </td>
-                            <td id="cell235" onclick="colorchange(this.id)"> </td>
-                            <td id="cell236" onclick="colorchange(this.id)"> </td>
-                            <td id="cell237" onclick="colorchange(this.id)"> </td>
-                            <td id="cell238" onclick="colorchange(this.id)"> </td>
-                        </tr>
-
-                        <tr>
-                            <td class="timecol" style="border-bottom-color: #e3e3e3"><center>05:00</center></td>
-                            <td id="cell239" onclick="colorchange(this.id)"> </td>
-                            <td id="cell240" onclick="colorchange(this.id)"> </td>
-                            <td id="cell241" onclick="colorchange(this.id)"> </td>
-                            <td id="cell242" onclick="colorchange(this.id)"> </td>
-                            <td id="cell243" onclick="colorchange(this.id)"> </td>
-                            <td id="cell244" onclick="colorchange(this.id)"> </td>
-                            <td id="cell245" onclick="colorchange(this.id)"> </td>
-                        </tr>
-
-                        <tr>
-                            <td class="timecol" ><center>05:30</center></td>
-                            <td id="cell246" onclick="colorchange(this.id)"> </td>
-                            <td id="cell247" onclick="colorchange(this.id)"> </td>
-                            <td id="cell248" onclick="colorchange(this.id)"> </td>
-                            <td id="cell249" onclick="colorchange(this.id)"> </td>
-                            <td id="cell250" onclick="colorchange(this.id)"> </td>
-                            <td id="cell251" onclick="colorchange(this.id)"> </td>
-                            <td id="cell252" onclick="colorchange(this.id)"> </td>
-                        </tr>
-
-                        <tr>
-                            <td class="timecol" style="border-bottom-color: #e3e3e3"><center>06:00</center></td>
-                            <td id="cell253" onclick="colorchange(this.id)"> </td>
-                            <td id="cell254" onclick="colorchange(this.id)"> </td>
-                            <td id="cell255" onclick="colorchange(this.id)"> </td>
-                            <td id="cell256" onclick="colorchange(this.id)"> </td>
-                            <td id="cell257" onclick="colorchange(this.id)"> </td>
-                            <td id="cell258" onclick="colorchange(this.id)"> </td>
-                            <td id="cell259" onclick="colorchange(this.id)"> </td>
-                        </tr>
-
-                        <tr>
-                            <td class="timecol" ><center>06:30</center></td>
-                            <td id="cell260" onclick="colorchange(this.id)"> </td>
-                            <td id="cell261" onclick="colorchange(this.id)"> </td>
-                            <td id="cell262" onclick="colorchange(this.id)"> </td>
-                            <td id="cell263" onclick="colorchange(this.id)"> </td>
-                            <td id="cell264" onclick="colorchange(this.id)"> </td>
-                            <td id="cell265" onclick="colorchange(this.id)"> </td>
-                            <td id="cell266" onclick="colorchange(this.id)"> </td>
-                        </tr>
-
-                        <tr>
-                            <td class="timecol" style="border-bottom-color: #e3e3e3"><center>07:00</center></td>
-                            <td id="cell267" onclick="colorchange(this.id)"> </td>
-                            <td id="cell268" onclick="colorchange(this.id)"> </td>
-                            <td id="cell269" onclick="colorchange(this.id)"> </td>
-                            <td id="cell270" onclick="colorchange(this.id)"> </td>
-                            <td id="cell271" onclick="colorchange(this.id)"> </td>
-                            <td id="cell272" onclick="colorchange(this.id)"> </td>
-                            <td id="cell273" onclick="colorchange(this.id)"> </td>
-                        </tr>
-
-                        <tr>
-                            <td class="timecol" ><center>07:30</center></td>
-                            <td id="cell274" onclick="colorchange(this.id)"> </td>
-                            <td id="cell275" onclick="colorchange(this.id)"> </td>
-                            <td id="cell276" onclick="colorchange(this.id)"> </td>
-                            <td id="cell277" onclick="colorchange(this.id)"> </td>
-                            <td id="cell278" onclick="colorchange(this.id)"> </td>
-                            <td id="cell279" onclick="colorchange(this.id)"> </td>
-                            <td id="cell280" onclick="colorchange(this.id)"> </td>
-                        </tr>
                     </table>
 
                     <table id="timetable-6" class="myTable container-fluid tab-pane fade">
@@ -977,96 +1064,7 @@
 
                             <?php endif; ?>
                         </tr>
-
-                        <tr>
-                            <td class="timecol" style="border-bottom-color: #e3e3e3"><center>08:00</center></td>
-                            <td id="cell281" onclick="colorchange(this.id)"> </td>
-                            <td id="cell282" onclick="colorchange(this.id)"> </td>
-                            <td id="cell283" onclick="colorchange(this.id)"> </td>
-                            <td id="cell284" onclick="colorchange(this.id)"> </td>
-                            <td id="cell285" onclick="colorchange(this.id)"> </td>
-                            <td id="cell286" onclick="colorchange(this.id)"> </td>
-                            <td id="cell287" onclick="colorchange(this.id)"> </td>
-                        </tr>
-
-                        <tr>
-                            <td class="timecol" ><center>08:30</center></td>
-                            <td id="cell288" onclick="colorchange(this.id)"> </td>
-                            <td id="cell289" onclick="colorchange(this.id)"> </td>
-                            <td id="cell290" onclick="colorchange(this.id)"> </td>
-                            <td id="cell291" onclick="colorchange(this.id)"> </td>
-                            <td id="cell292" onclick="colorchange(this.id)"> </td>
-                            <td id="cell293" onclick="colorchange(this.id)"> </td>
-                            <td id="cell294" onclick="colorchange(this.id)"> </td>
-                        </tr>
-
-                        <tr>
-                            <td class="timecol" style="border-bottom-color: #e3e3e3"><center>09:00</center></td>
-                            <td id="cell295" onclick="colorchange(this.id)"> </td>
-                            <td id="cell296" onclick="colorchange(this.id)"> </td>
-                            <td id="cell297" onclick="colorchange(this.id)"> </td>
-                            <td id="cell298" onclick="colorchange(this.id)"> </td>
-                            <td id="cell299" onclick="colorchange(this.id)"> </td>
-                            <td id="cell300" onclick="colorchange(this.id)"> </td>
-                            <td id="cell301" onclick="colorchange(this.id)"> </td>
-                        </tr>
-
-                        <tr>
-                            <td class="timecol" ><center>09:30</center></td>
-                            <td id="cell302" onclick="colorchange(this.id)"> </td>
-                            <td id="cell303" onclick="colorchange(this.id)"> </td>
-                            <td id="cell304" onclick="colorchange(this.id)"> </td>
-                            <td id="cell305" onclick="colorchange(this.id)"> </td>
-                            <td id="cell306" onclick="colorchange(this.id)"> </td>
-                            <td id="cell307" onclick="colorchange(this.id)"> </td>
-                            <td id="cell308" onclick="colorchange(this.id)"> </td>
-                        </tr>
-
-                        <tr>
-                            <td class="timecol" style="border-bottom-color: #e3e3e3"><center>10:00</center></td>
-                            <td id="cell309" onclick="colorchange(this.id)"> </td>
-                            <td id="cell310" onclick="colorchange(this.id)"> </td>
-                            <td id="cell311" onclick="colorchange(this.id)"> </td>
-                            <td id="cell312" onclick="colorchange(this.id)"> </td>
-                            <td id="cell313" onclick="colorchange(this.id)"> </td>
-                            <td id="cell314" onclick="colorchange(this.id)"> </td>
-                            <td id="cell315" onclick="colorchange(this.id)"> </td>
-                        </tr>
-
-                        <tr>
-                            <td class="timecol" ><center>10:30</center></td>
-                            <td id="cell316" onclick="colorchange(this.id)"> </td>
-                            <td id="cell317" onclick="colorchange(this.id)"> </td>
-                            <td id="cell318" onclick="colorchange(this.id)"> </td>
-                            <td id="cell319" onclick="colorchange(this.id)"> </td>
-                            <td id="cell320" onclick="colorchange(this.id)"> </td>
-                            <td id="cell321" onclick="colorchange(this.id)"> </td>
-                            <td id="cell322" onclick="colorchange(this.id)"> </td>
-                        </tr>
-
-                        <tr>
-                            <td class="timecol" style="border-bottom-color: #e3e3e3"><center>11:00</center></td>
-                            <td id="cell323" onclick="colorchange(this.id)"> </td>
-                            <td id="cell324" onclick="colorchange(this.id)"> </td>
-                            <td id="cell325" onclick="colorchange(this.id)"> </td>
-                            <td id="cell326" onclick="colorchange(this.id)"> </td>
-                            <td id="cell327" onclick="colorchange(this.id)"> </td>
-                            <td id="cell328" onclick="colorchange(this.id)"> </td>
-                            <td id="cell329" onclick="colorchange(this.id)"> </td>
-                        </tr>
-
-                        <tr>
-                            <td class="timecol" ><center>11:30</center></td>
-                            <td id="cell330" onclick="colorchange(this.id)"> </td>
-                            <td id="cell331" onclick="colorchange(this.id)"> </td>
-                            <td id="cell332" onclick="colorchange(this.id)"> </td>
-                            <td id="cell333" onclick="colorchange(this.id)"> </td>
-                            <td id="cell334" onclick="colorchange(this.id)"> </td>
-                            <td id="cell335" onclick="colorchange(this.id)"> </td>
-                            <td id="cell336" onclick="colorchange(this.id)"> </td>
-                        </tr>
                     </table>
-
 
                 </div>
 

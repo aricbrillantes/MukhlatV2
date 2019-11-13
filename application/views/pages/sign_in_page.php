@@ -18,12 +18,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <body id = "mainbody" class = "sign-in" style="background: #f2f2f2">
-    <div class = "container-fluid ">
+    <div class = "container-fluid col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1">
         <!-- Logo -->
         <div class = "row sign-in-logo"><img src = "<?php echo base_url('images/logo/mukhlatlogo1.png'); ?>" style="max-width: 30%; height: auto;"></div>
 
         <!-- Content -->
-        <div id="sign-in-div" class = "row sign-in-content content-container container-fluid"  style="width:80% ">
+        <div id="sign-in-div" class = "row sign-in-content content-container container-fluid col-xs-12 col-md-12 col-sm-12"  style="width:100% ">
             <!--Sign In-->
             <div class = "col-md-12 col-xs-12 col-md-offset-0 container-fluid" style = "margin-bottom: 30px;">
                 <div id = "sign-in-container" class = "col-md-12 content-container no-padding">
@@ -65,12 +65,12 @@
                         <div class = "sign-in-form">
                             <form id = "sign-up-form" onsubmit = "return sign_up()" method = "post">
 
-                                <div class = "col-xs-12 col-sm-2 col-md-12 form-group register-field content-container container-fluid" >
-                                    <div class = "col-xs-12 col-sm-2 col-md-1 form-group register-field content-container container-fluid" style="margin-right: 25px">
+                                <div class = "col-xs-12 col-sm-12 col-md-12 form-group register-field content-container container-fluid" >
+                                    <div class = "col-xs-12 col-sm-2 col-md-1 form-group register-field content-container container-fluid" style="margin-right: 0px">
                                         <p class = "text-muted"><strong>Role: </strong></p>
                                     </div>
 
-                                    <div class = "col-xs-12 col-md-3 form-group register-field content-container container-fluid" >
+                                    <div class = "col-xs-12 col-sm-3 col-md-3 form-group register-field content-container container-fluid" >
                                         <select class = "form-control" name = "sign_up_role" id = "sign_up_role">
                                             <option value="2">Child</option>
                                             <option value="1">Administrator</option>
@@ -79,93 +79,99 @@
                                     </div>
                                 </div>
 
-                                <div class = "col-xs-12 col-md-6 form-group content-container container-fluid" style = "">
+                                <div class = "col-xs-12 col-sm-6 col-md-6  form-group content-container container-fluid" style = "height: 54px">
                                     <input type = "text" required name = "first_name" class = "form-control sign-in-field col-md-4 col-md-offset-0 " placeholder = "First Name" maxlength = "25">
                                 </div>
-                                <div class = "col-xs-12 col-md-6 form-group register-field content-container container-fluid">
+                                <div class = "col-xs-12 col-sm-6 col-md-6 form-group register-field content-container container-fluid" style = "height: 54px">
                                     <input type = "text" required name = "last_name" class = "form-control sign-in-field col-md-4 col-md-offset-0" placeholder = "Last Name" maxlength = "25">
                                 </div>
-                                <div class = "col-xs-12 col-md-6 form-group register-field content-container container-fluid">
+                                <div class = "col-xs-12 col-sm-6 col-md-6 form-group register-field content-container container-fluid" style = "height: 54px">
                                     <input type = "email" required id = "sign_up_email" name = "sign_up_email" class = "form-control sign-in-field col-md-4 col-md-offset-0" placeholder = "Email Address" maxlength = "45">
                                 </div>
 
-                                <div id = "sign-up-birthday" class = "col-xs-12 col-md-6 form-group register-field content-container container-fluid">
-                                    <input style="height:55px;display:none;" type = "date" required name = "sign_up_birthday" class = "form-control sign-in-field" id="birhdate10">
-                                    <select style="width:120px;height:30px" id="DOBMonth" onclick="choosebday()">
-                                        <option>Month</option>
-                                        <option value="01">January</option>
-                                        <option value="02">February</option>
-                                        <option value="03">March</option>
-                                        <option value="04">April</option>
-                                        <option value="05">May</option>
-                                        <option value="06">June</option>
-                                        <option value="07">July</option>
-                                        <option value="08">August</option>
-                                        <option value="09">September</option>
-                                        <option value="10">October</option>
-                                        <option value="11">November</option>
-                                        <option value="12">December</option>
-                                    </select>
+                                <div id = "sign-up-birthday" class = "col-xs-12 col-sm-6 col-md-6 form-group register-field content-container container-fluid row" style = "height:auto; min-height: 54px; margin-left:0px">
+                                    <input style="display:none; " type = "date" required name = "sign_up_birthday" class = "form-control sign-in-field" id="birthdate10">
 
-                                    <select style="width:100px;height:30px" id="DOBDay" onclick="choosebday()">
-                                        <option>Day</option>
-                                        <option value="01">1</option>
-                                        <option value="02">2</option>
-                                        <option value="03">3</option>
-                                        <option value="04">4</option>
-                                        <option value="05">5</option>
-                                        <option value="06">6</option>
-                                        <option value="07">7</option>
-                                        <option value="08">8</option>
-                                        <option value="09">9</option>
-                                        <option value="10">10</option>
-                                        <option value="11">11</option>
-                                        <option value="12">12</option>
-                                        <option value="13">13</option>
-                                        <option value="14">14</option>
-                                        <option value="15">15</option>
-                                        <option value="16">16</option>
-                                        <option value="17">17</option>
-                                        <option value="18">18</option>
-                                        <option value="19">19</option>
-                                        <option value="20">20</option>
-                                        <option value="21">21</option>
-                                        <option value="22">22</option>
-                                        <option value="23">23</option>
-                                        <option value="24">24</option>
-                                        <option value="25">25</option>
-                                        <option value="26">26</option>
-                                        <option value="27">27</option>
-                                        <option value="28">28</option>
-                                        <option value="29">29</option>
-                                        <option value="30">30</option>
-                                        <option value="31">31</option>
-                                    </select>
+                                    <div class = "col-xs-12 col-sm-2 col-md-2 container-fluid">
+                                        <p class = "text-muted no-margin"><strong>Birthday:</strong></p>
+                                    </div>
 
-                                    <select style="width:100px;height:30px" id="DOBYear" onclick="choosebday()">
-                                        <option>Year</option>
-                                        <option value="2006">2006</option>
-                                        <option value="2007">2007</option>
-                                        <option value="2008">2008</option>
-                                        <option value="2009">2009</option>
-                                        <option value="2010">2010</option>
-                                        <option value="2011">2011</option>
-                                        <option value="2012">2012</option>
-                                    </select>
+                                    <div class = "col-xs-12 col-sm-12 col-md-12 content-container container-fluid row" style="margin-left: 5px">
+                                        <select class = "form-control col-md-6 col-sm-12 col-xs-12" style="height:auto;max-width:45%;max-height:30px;font-size:auto" id="DOBMonth" onclick="choosebday()">
+                                            <option>Month</option>
+                                            <option value="01">January</option>
+                                            <option value="02">February</option>
+                                            <option value="03">March</option>
+                                            <option value="04">April</option>
+                                            <option value="05">May</option>
+                                            <option value="06">June</option>
+                                            <option value="07">July</option>
+                                            <option value="08">August</option>
+                                            <option value="09">September</option>
+                                            <option value="10">October</option>
+                                            <option value="11">November</option>
+                                            <option value="12">December</option>
+                                        </select>
 
+                                        <select class = "form-control col-md-12 col-sm-4 col-xs-4" style="height:auto;max-width:25%;max-height:30px;font-size: auto" id="DOBDay" onclick="choosebday()">
+                                            <option>Day</option>
+                                            <option value="01">1</option>
+                                            <option value="02">2</option>
+                                            <option value="03">3</option>
+                                            <option value="04">4</option>
+                                            <option value="05">5</option>
+                                            <option value="06">6</option>
+                                            <option value="07">7</option>
+                                            <option value="08">8</option>
+                                            <option value="09">9</option>
+                                            <option value="10">10</option>
+                                            <option value="11">11</option>
+                                            <option value="12">12</option>
+                                            <option value="13">13</option>
+                                            <option value="14">14</option>
+                                            <option value="15">15</option>
+                                            <option value="16">16</option>
+                                            <option value="17">17</option>
+                                            <option value="18">18</option>
+                                            <option value="19">19</option>
+                                            <option value="20">20</option>
+                                            <option value="21">21</option>
+                                            <option value="22">22</option>
+                                            <option value="23">23</option>
+                                            <option value="24">24</option>
+                                            <option value="25">25</option>
+                                            <option value="26">26</option>
+                                            <option value="27">27</option>
+                                            <option value="28">28</option>
+                                            <option value="29">29</option>
+                                            <option value="30">30</option>
+                                            <option value="31">31</option>
+                                        </select>
+
+                                        <select class = "form-control col-md-12 col-sm-4 col-xs-4" style="height:auto;max-width:100%;max-height:30px;font-size: auto" id="DOBYear" onclick="choosebday()">
+                                            <option>Year</option>
+                                            <option value="2006">2006</option>
+                                            <option value="2007">2007</option>
+                                            <option value="2008">2008</option>
+                                            <option value="2009">2009</option>
+                                            <option value="2010">2010</option>
+                                            <option value="2011">2011</option>
+                                            <option value="2012">2012</option>
+                                        </select>
+                                    </div>
                                 </div>
 
-                                <div class = "col-xs-12 col-md-6 form-group register-field content-container container-fluid">
-                                    <input id = "sign-up-password" type = "password" required name = "sign_up_password" class = "form-control sign-in-field col-md-6 col-md-offset-0" placeholder = "Password">
+                                <div class = "col-xs-12 col-sm-6 col-md-6 form-group register-field content-container container-fluid" style = "height: 54px">
+                                    <input id = "sign-up-password" type = "password" required name = "sign_up_password" class = "form-control sign-in-field col-md-4 col-md-offset-0" placeholder = "Password">
                                 </div>
-                                <div class = "col-xs-12 col-md-6 form-group register-field content-container container-fluid">
+                                <div class = "col-xs-12 col-sm-6 col-md-6 form-group register-field content-container container-fluid" style = "height: 54px">
                                     <input id = "sign-up-retype" type = "password" required class = "form-control sign-in-field col-md-4 col-md-offset-0" placeholder = "Retype Password">
                                 </div>
 
                                 <meter max="4" id="password-strength-meter" style="width:100%;"></meter>
                                 <p id="password-strength-text"></p>
 
-                                <div id="parent-email" class = "col-xs-12 col-md-6 form-group register-field content-container container-fluid" style="visibility: visible">
+                                <div id="parent-email" class = "col-xs-12 col-sm-6 col-md-6 form-group register-field content-container container-fluid" style="visibility: visible">
                                     <input type = "email" id = "sign_up_email_parent" name = "sign_up_email_parent" class = "form-control sign-in-field col-md-4 col-md-offset-0" placeholder = "Parent' Email" maxlength = "45">
                                 </div><br>
                                                            
@@ -211,7 +217,7 @@
         var selectedmonth = month1.options[month1.selectedIndex].value;
         var selectedyear = year1.options[year1.selectedIndex].value;
 
-        document.getElementById("birhdate10").value = selectedyear + "-" + selectedmonth + "-" + selectedday;
+        document.getElementById("birthdate10").value = selectedyear + "-" + selectedmonth + "-" + selectedday;
     }
 
     document.getElementById('sign_up_role').onchange = function() 
