@@ -90,116 +90,116 @@ include(APPPATH . 'views/header.php');
                         <?php if($topic->theme==1):?>
                         <!--skewedbtn theme-->
                        <div>
-                            <a class="roomtheme-arrow"  href = "<?php echo base_url('topic/view/' . $topic->topic_id); ?>">
+                            <a class="roomthemes roomtheme-arrow"  href = "<?php echo base_url('topic/view/' . $topic->topic_id); ?>">
                                 <h4 class = "text-info no-padding text1color topicheader" style="margin-top:50px;margin-left: 13px"><?php echo utf8_decode($topic->topic_name); ?></h4><br>
                                 
                         <?php elseif($topic->theme==2):?>        
                         <!--cane theme-->
                         <div>
-                            <a class="roomtheme-zigzag" href = "<?php echo base_url('topic/view/' . $topic->topic_id); ?>">
+                            <a class="roomthemes roomtheme-zigzag" href = "<?php echo base_url('topic/view/' . $topic->topic_id); ?>">
                                 <h4 class = "text-info no-padding text1color topicheader" style="margin-top:50px;margin-left: 13px"><?php echo utf8_decode($topic->topic_name); ?></h4><br>
                                 
                         <?php elseif($topic->theme==3):?>        
                         <!--squares theme-->
                         <div>
                         <!--<div class="square1 col-md-3"></div>-->
-                            <a class="roomtheme-scales"  href = "<?php echo base_url('topic/view/' . $topic->topic_id); ?>">
+                            <a class="roomthemes roomtheme-scales"  href = "<?php echo base_url('topic/view/' . $topic->topic_id); ?>">
                                 <h4 class = "text-info no-padding text1color topicheader" style="margin-top:50px;margin-left: 13px"><?php echo utf8_decode($topic->topic_name); ?></h4><br>
                                 
                         <?php elseif($topic->theme==4):?>        
                         <!--TVsquare theme-->
                         <div>
-                            <a class="roomtheme-halfrhombe" href = "<?php echo base_url('topic/view/' . $topic->topic_id); ?>">
+                            <a class="roomthemes roomtheme-halfrhombe" href = "<?php echo base_url('topic/view/' . $topic->topic_id); ?>">
                                 <h4 class = "text-info no-padding text1color topicheader" style="margin-top:50px;margin-left: 13px"><?php echo utf8_decode($topic->topic_name); ?></h4><br>
                                     
                         <?php elseif($topic->theme==5):?>        
                         <!--TVsquare theme-->
                         <div>
-                            <a class="roomtheme-marrakesh" href = "<?php echo base_url('topic/view/' . $topic->topic_id); ?>">
+                            <a class="roomthemes roomtheme-marrakesh" href = "<?php echo base_url('topic/view/' . $topic->topic_id); ?>">
                                 <h4 class = "text-info no-padding text1color topicheader" style="margin-top:50px;margin-left: 13px"><?php echo utf8_decode($topic->topic_name); ?></h4><br>
                                 
                         <?php elseif($topic->theme==6):?>        
                         <!--TVsquare theme-->
                         <div>
-                            <a class="roomtheme-hearts" href = "<?php echo base_url('topic/view/' . $topic->topic_id); ?>">
+                            <a class="roomthemes roomtheme-hearts" href = "<?php echo base_url('topic/view/' . $topic->topic_id); ?>">
                                 <h4 class = "text-info no-padding text1color topicheader" style="margin-top:50px;margin-left: 13px"><?php echo utf8_decode($topic->topic_name); ?></h4><br>
                                 
                         <?php elseif($topic->theme==7):?>        
                         <!--TVsquare theme-->
                         <div>
-                            <a class="roomtheme-stars" href = "<?php echo base_url('topic/view/' . $topic->topic_id); ?>">
+                            <a class="roomthemes roomtheme-stars" href = "<?php echo base_url('topic/view/' . $topic->topic_id); ?>">
                                 <h4 class = "text-info no-padding text1color topicheader" style="margin-top:50px;margin-left: 13px"><?php echo utf8_decode($topic->topic_name); ?></h4><br>
                                 
                         <?php elseif($topic->theme==8):?>        
                         <!--TVsquare theme-->
                         <div>
-                            <a class="roomtheme-seigaiha" href = "<?php echo base_url('topic/view/' . $topic->topic_id); ?>">
+                            <a class="roomthemes roomtheme-seigaiha" href = "<?php echo base_url('topic/view/' . $topic->topic_id); ?>">
                                 <h4 class = "text-info no-padding text1color topicheader" style="margin-top:50px;margin-left: 13px"><?php echo utf8_decode($topic->topic_name); ?></h4><br>
                                 
                         <?php elseif($topic->theme==9):?>        
                         <!--TVsquare theme-->
                         <div>
-                            <a class="roomtheme-bricks" href = "<?php echo base_url('topic/view/' . $topic->topic_id); ?>">
+                            <a class="roomthemes roomtheme-bricks" href = "<?php echo base_url('topic/view/' . $topic->topic_id); ?>">
                                 <h4 class = "text-info no-padding text1color topicheader" style="margin-top:50px;margin-left: 13px"><?php echo utf8_decode($topic->topic_name); ?></h4><br>
                                 
                         <?php elseif($topic->theme==10):?>        
                         <!--TVsquare theme-->
                         <div>
-                            <a class="roomtheme-diacheckerboard" href = "<?php echo base_url('topic/view/' . $topic->topic_id); ?>">
+                            <a class="roomthemes roomtheme-diacheckerboard" href = "<?php echo base_url('topic/view/' . $topic->topic_id); ?>">
                                 <h4 class = "text-info no-padding text1color topicheader" style="margin-top:50px;margin-left: 13px"><?php echo utf8_decode($topic->topic_name); ?></h4><br>
                                 
                         <?php elseif($topic->theme==11):?>        
                         <!--TVsquare theme-->
                         <div>
-                            <a class="roomtheme-tablecloth" href = "<?php echo base_url('topic/view/' . $topic->topic_id); ?>">
+                            <a class="roomthemes roomtheme-tablecloth" href = "<?php echo base_url('topic/view/' . $topic->topic_id); ?>">
                                 <h4 class = "text-info no-padding text1color topicheader" style="margin-top:50px;margin-left: 13px"><?php echo utf8_decode($topic->topic_name); ?></h4><br>
                                 
                         <?php elseif($topic->theme==12):?>        
                         <!--TVsquare theme-->
                         <div>
-                            <a class="roomtheme-brady" href = "<?php echo base_url('topic/view/' . $topic->topic_id); ?>">
+                            <a class="roomthemes roomtheme-brady" href = "<?php echo base_url('topic/view/' . $topic->topic_id); ?>">
                                 <h4 class = "text-info no-padding text1color topicheader" style="margin-top:50px;margin-left: 13px"><?php echo utf8_decode($topic->topic_name); ?></h4><br>
                                 
                         <?php elseif($topic->theme==13):?>        
                         <!--TVsquare theme-->
                         <div>
-                            <a class="roomtheme-argyle" href = "<?php echo base_url('topic/view/' . $topic->topic_id); ?>">
+                            <a class="roomthemes roomtheme-argyle" href = "<?php echo base_url('topic/view/' . $topic->topic_id); ?>">
                                 <h4 class = "text-info no-padding text1color topicheader" style="margin-top:50px;margin-left: 13px"><?php echo utf8_decode($topic->topic_name); ?></h4><br>
                                 
                         <?php elseif($topic->theme==14):?>        
                         <!--TVsquare theme-->
                         <div>
-                            <a class="roomtheme-shippo" href = "<?php echo base_url('topic/view/' . $topic->topic_id); ?>">
+                            <a class="roomthemes roomtheme-shippo" href = "<?php echo base_url('topic/view/' . $topic->topic_id); ?>">
                                 <h4 class = "text-info no-padding text1color topicheader" style="margin-top:50px;margin-left: 13px"><?php echo utf8_decode($topic->topic_name); ?></h4><br>
                                 
                         <?php elseif($topic->theme==15):?>        
                         <!--TVsquare theme-->
                         <div>
-                            <a class="roomtheme-waves" href = "<?php echo base_url('topic/view/' . $topic->topic_id); ?>">
+                            <a class="roomthemes roomtheme-waves" href = "<?php echo base_url('topic/view/' . $topic->topic_id); ?>">
                                 <h4 class = "text-info no-padding text1color topicheader" style="margin-top:50px;margin-left: 13px"><?php echo utf8_decode($topic->topic_name); ?></h4><br>
                                 
                         <?php elseif($topic->theme==16):?>        
                         <!--TVsquare theme-->
                         <div>
-                            <a class="roomtheme-polkadot" href = "<?php echo base_url('topic/view/' . $topic->topic_id); ?>">
+                            <a class="roomthemes roomtheme-polkadot" href = "<?php echo base_url('topic/view/' . $topic->topic_id); ?>">
                                 <h4 class = "text-info no-padding text1color topicheader" style="margin-top:50px;margin-left: 13px"><?php echo utf8_decode($topic->topic_name); ?></h4><br>
                                 
                         <?php elseif($topic->theme==17):?>        
                         <!--TVsquare theme-->
                         <div>
-                            <a class="roomtheme-honeycomb" href = "<?php echo base_url('topic/view/' . $topic->topic_id); ?>">
+                            <a class="roomthemes roomtheme-honeycomb" href = "<?php echo base_url('topic/view/' . $topic->topic_id); ?>">
                                 <h4 class = "text-info no-padding text1color topicheader" style="margin-top:50px;margin-left: 13px"><?php echo utf8_decode($topic->topic_name); ?></h4><br>
                                 
                         <?php elseif($topic->theme==18):?>        
                         <!--TVsquare theme-->
                         <div>
-                            <a class="roomtheme-chocolateweave" href = "<?php echo base_url('topic/view/' . $topic->topic_id); ?>">
+                            <a class="roomthemes roomtheme-chocolateweave" href = "<?php echo base_url('topic/view/' . $topic->topic_id); ?>">
                                 <h4 class = "text-info no-padding text1color topicheader" style="margin-top:50px;margin-left: 13px"><?php echo utf8_decode($topic->topic_name); ?></h4><br>
                                 
                         <?php elseif($topic->theme==19):?>        
                         <!--TVsquare theme-->
                         <div>
-                            <a class="roomtheme-crosseddot" href = "<?php echo base_url('topic/view/' . $topic->topic_id); ?>">
+                            <a class="roomthemes roomtheme-crosseddot" href = "<?php echo base_url('topic/view/' . $topic->topic_id); ?>">
                                 <h4 class = "text-info no-padding text1color topicheader" style="margin-top:50px;margin-left: 13px"><?php echo utf8_decode($topic->topic_name); ?></h4><br>
                                 
                                    

@@ -81,9 +81,52 @@
                                     // print_r($posts);
                             ?>
                                     <!--<div class=" " style="position: relative;  height: auto;  min-height: 100% !important;">-->
-                                    <div class="polaroiditem polaroid homepostsborder" style="margin: 1%;">
+                                     <?php if($post->theme==1):?>
+                                        <div class="polaroiditem polaroid homepostsborder roomtheme-arrow" style="margin: 1%;">
+                                     <?php elseif($post->theme==2):?>
+                                        <div class="polaroiditem polaroid homepostsborder roomtheme-zigzag" style="margin: 1%;">
+                                     <?php elseif($post->theme==3):?>
+                                        <div class="polaroiditem polaroid homepostsborder roomtheme-scales" style="margin: 1%;">
+                                     <?php elseif($post->theme==4):?>
+                                        <div class="polaroiditem polaroid homepostsborder roomtheme-halfrhombe" style="margin: 1%;">
+                                     <?php elseif($post->theme==5):?>
+                                        <div class="polaroiditem polaroid homepostsborder roomtheme-marrakesh" style="margin: 1%;">
+                                     <?php elseif($post->theme==6):?>
+                                        <div class="polaroiditem polaroid homepostsborder roomtheme-hearts" style="margin: 1%;">
+                                     <?php elseif($post->theme==7):?>
+                                        <div class="polaroiditem polaroid homepostsborder roomtheme-stars" style="margin: 1%;">
+                                     <?php elseif($post->theme==8):?>
+                                        <div class="polaroiditem polaroid homepostsborder roomtheme-seigaiha" style="margin: 1%;">
+                                     <?php elseif($post->theme==9):?>
+                                        <div class="polaroiditem polaroid homepostsborder roomtheme-bricks" style="margin: 1%;">
+                                     <?php elseif($post->theme==10):?>
+                                        <div class="polaroiditem polaroid homepostsborder roomtheme-diacheckerboard" style="margin: 1%;">
+                                     <?php elseif($post->theme==11):?>
+                                        <div class="polaroiditem polaroid homepostsborder roomtheme-tablecloth" style="margin: 1%;">
+                                     <?php elseif($post->theme==12):?>
+                                        <div class="polaroiditem polaroid homepostsborder roomtheme-brady" style="margin: 1%;">
+                                     <?php elseif($post->theme==13):?>
+                                        <div class="polaroiditem polaroid homepostsborder roomtheme-argyle" style="margin: 1%;">
+                                     <?php elseif($post->theme==14):?>
+                                        <div class="polaroiditem polaroid homepostsborder roomtheme-shippo" style="margin: 1%;">
+                                     <?php elseif($post->theme==15):?>
+                                        <div class="polaroiditem polaroid homepostsborder roomtheme-waves" style="margin: 1%;">
+                                     <?php elseif($post->theme==16):?>
+                                        <div class="polaroiditem polaroid homepostsborder roomtheme-polkadot" style="margin: 1%;">
+                                     <?php elseif($post->theme==17):?>
+                                        <div class="polaroiditem polaroid homepostsborder roomtheme-honeycomb" style="margin: 1%;">
+                                     <?php elseif($post->theme==18):?>
+                                        <div class="polaroiditem polaroid homepostsborder roomtheme-chocolateweave" style="margin: 1%;">
+                                     <?php elseif($post->theme==19):?>
+                                        <div class="polaroiditem polaroid homepostsborder roomtheme-crosseddot" style="margin: 1%;">
+                                    
+                                     <?php else:?>
+                                         <div class="polaroiditem polaroid homepostsborder" style="margin: 1%;">
+                                     <?php endif;?> 
+                                        
+                                        <div class="whitebg">
                                         <img class = "img-circle" style = "margin: 10px 0px;" width = "40px" height = "40px" src = "<?php echo $post->profile_url ? base_url($post->profile_url) : base_url('images/default.jpg'); ?>"/> 
-
+                                        
                                         <?php if($post->user_id === $logged_user->user_id): ?>
                                             <a class = "text1color" href = "<?php echo base_url('user/profile/' . $post->user_id); ?>">
                                                 <strong style = "font-size: 21px">You</strong>
@@ -112,7 +155,7 @@
                                                 <strong style = "font-size: 21px"><?php echo $post->first_name;?></strong>
                                             </a>
                                             <p style="font-size: 24px; display:inline"> says:</p>
-
+                                        
                                         <?php endif; ?>
                                         
                                         <!-- <h4 class = "text-info no-padding no-margin text1color topicheader"><?php echo utf8_decode($topic->topic_name); ?></h4><br> -->
@@ -125,7 +168,7 @@
                                                 <p style="color: white"></p>
                                             </a> -->
                                         <div class="polaroidwrapper">
-                                        <p class = "" style = "">"<?php echo utf8_decode($post->post_content); ?>"</p>
+                                        <p class = "whitebg" style = "">"<?php echo utf8_decode($post->post_content); ?>"</p>
                                         
                                         <?php $attachments = $CI->attachment_model->get_post_attachments($post->post_id);?>
                                         
@@ -153,7 +196,7 @@
                                                 <?php endforeach;
 
                                                 ?>
-                                    </div></div>
+                                    </div></div></div>
 
                                     <?php
                                 endforeach;
