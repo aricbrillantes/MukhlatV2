@@ -32,7 +32,7 @@
                             if (!empty($topics)):
                                 foreach ($topics as $topic):
                                     ?>
-                                    <a class = "list-group-item btn btn-link list-entry" href = "topic/view/<?php echo $topic->topic_id; ?>">
+                                    <a class = "roomthemes " href = "topic/view/<?php echo $topic->topic_id; ?>">
                                         <!--<img class = "img-circle" style = "margin: 10px 0px;" width = "40px" height = "40px" src = "<?php echo $topic->user->profile_url ? base_url($topic->user->profile_url) : base_url('images/default.jpg'); ?>"/>--> 
                                         <h4 class = "text-info no-padding no-margin" style = "display: inline-block;"><?php echo $topic->user->first_name . " " . $topic->user->last_name; ?>'s Room</h4>
                                         <!--<small><i>by <?php echo $topic->user->first_name . " " . $topic->user->last_name; ?></i></small>-->
