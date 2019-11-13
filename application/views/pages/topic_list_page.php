@@ -20,7 +20,7 @@ include(APPPATH . 'views/header.php');
         width:30%;
         padding:10px;
         text-decoration:none;
-        height:170px;
+        height:200px;
         border-radius: 10px;   
     }
 
