@@ -74,7 +74,7 @@ include(APPPATH . 'views/header.php');
                 </div>
 
                 <div class = "col-md-12 content-container" style="border-radius:20px;">
-                    <div id = "sort-dropdown" class = "dropdown text-muted" style="font-size: 22px">
+<!--                    <div id = "sort-dropdown" class = "dropdown text-muted" style="font-size: 22px">
                         Sort Topics by: <br>
                         <button id = "chosen-sort" class="btn btn-gray dropdown-toggle" type="button" data-toggle="dropdown"><strong style="font-size: 20px"><i class = "fa fa-clock-o"></i> Date Created</strong>
                             <i class="caret"></i></button>
@@ -83,150 +83,37 @@ include(APPPATH . 'views/header.php');
                             <li><a href="#" data-value = "2"><i class = "fa fa-group"></i> Follower Count</a></li>
                             <li><a href="#" data-value = "3"><i class = "fa fa-comments"></i> Post Count</a></li>
                         </ul>
-                    </div>
+                    </div>-->
                     <div id = "topic-list" class = "list-group">
                         <?php foreach ($topics as $topic): ?>
                         
-                        <?php if($topic->theme==1):?>
-                        <!--arrow theme-->
-                       <div>
-                            <a class="roomthemes roomtheme-arrow"  href = "<?php echo base_url('topic/view/' . $topic->topic_id); ?>">
-                                <h4 class = "text-info no-padding text1color topicheader" style="margin-top:50px;margin-left: 13px"><?php echo utf8_decode($topic->topic_name); ?></h4><br>
-                                
-                        <?php elseif($topic->theme==2):?>        
-                        <!--zigzag theme-->
-                        <div>
-                            <a class="roomthemes roomtheme-zigzag" href = "<?php echo base_url('topic/view/' . $topic->topic_id); ?>">
-                                <h4 class = "text-info no-padding text1color topicheader" style="margin-top:50px;margin-left: 13px"><?php echo utf8_decode($topic->topic_name); ?></h4><br>
-                                
-                        <?php elseif($topic->theme==3):?>        
-                        <!--scales theme-->
-                        <div>
-                        <!--<div class="square1 col-md-3"></div>-->
-                            <a class="roomthemes roomtheme-scales"  href = "<?php echo base_url('topic/view/' . $topic->topic_id); ?>">
-                                <h4 class = "text-info no-padding text1color topicheader" style="margin-top:50px;margin-left: 13px"><?php echo utf8_decode($topic->topic_name); ?></h4><br>
-                                
-                        <?php elseif($topic->theme==4):?>        
-                        <!--halfrhombe theme-->
-                        <div>
-                            <a class="roomthemes roomtheme-halfrhombe" href = "<?php echo base_url('topic/view/' . $topic->topic_id); ?>">
-                                <h4 class = "text-info no-padding text1color topicheader" style="margin-top:50px;margin-left: 13px"><?php echo utf8_decode($topic->topic_name); ?></h4><br>
-                                    
-                        <?php elseif($topic->theme==5):?>        
-                        <!--marrakesh theme-->
-                        <div>
-                            <a class="roomthemes roomtheme-marrakesh" href = "<?php echo base_url('topic/view/' . $topic->topic_id); ?>">
-                                <h4 class = "text-info no-padding text1color topicheader" style="margin-top:50px;margin-left: 13px"><?php echo utf8_decode($topic->topic_name); ?></h4><br>
-                                
-                        <?php elseif($topic->theme==6):?>        
-                        <!--hearts theme-->
-                        <div>
-                            <a class="roomthemes roomtheme-hearts" href = "<?php echo base_url('topic/view/' . $topic->topic_id); ?>">
-                                <h4 class = "text-info no-padding text1color topicheader" style="margin-top:50px;margin-left: 13px"><?php echo utf8_decode($topic->topic_name); ?></h4><br>
-                                
-                        <?php elseif($topic->theme==7):?>        
-                        <!--stars theme-->
-                        <div>
-                            <a class="roomthemes roomtheme-stars" href = "<?php echo base_url('topic/view/' . $topic->topic_id); ?>">
-                                <h4 class = "text-info no-padding text1color topicheader" style="margin-top:50px;margin-left: 13px"><?php echo utf8_decode($topic->topic_name); ?></h4><br>
-                                
-                        <?php elseif($topic->theme==8):?>        
-                        <!--seigaiha theme-->
-                        <div>
-                            <a class="roomthemes roomtheme-seigaiha" href = "<?php echo base_url('topic/view/' . $topic->topic_id); ?>">
-                                <h4 class = "text-info no-padding text1color topicheader" style="margin-top:50px;margin-left: 13px"><?php echo utf8_decode($topic->topic_name); ?></h4><br>
-                                
-                        <?php elseif($topic->theme==9):?>        
-                        <!--bricks theme-->
-                        <div>
-                            <a class="roomthemes roomtheme-bricks" href = "<?php echo base_url('topic/view/' . $topic->topic_id); ?>">
-                                <h4 class = "text-info no-padding text1color topicheader" style="margin-top:50px;margin-left: 13px"><?php echo utf8_decode($topic->topic_name); ?></h4><br>
-                                
-                        <?php elseif($topic->theme==10):?>        
-                        <!--diacheckerboard theme-->
-                        <div>
-                            <a class="roomthemes roomtheme-diacheckerboard" href = "<?php echo base_url('topic/view/' . $topic->topic_id); ?>">
-                                <h4 class = "text-info no-padding text1color topicheader" style="margin-top:50px;margin-left: 13px"><?php echo utf8_decode($topic->topic_name); ?></h4><br>
-                                
-                        <?php elseif($topic->theme==11):?>        
-                        <!--tablecloth theme-->
-                        <div>
-                            <a class="roomthemes roomtheme-tablecloth" href = "<?php echo base_url('topic/view/' . $topic->topic_id); ?>">
-                                <h4 class = "text-info no-padding text1color topicheader" style="margin-top:50px;margin-left: 13px"><?php echo utf8_decode($topic->topic_name); ?></h4><br>
-                                
-                        <?php elseif($topic->theme==12):?>        
-                        <!--brady theme-->
-                        <div>
-                            <a class="roomthemes roomtheme-brady" href = "<?php echo base_url('topic/view/' . $topic->topic_id); ?>">
-                                <h4 class = "text-info no-padding text1color topicheader" style="margin-top:50px;margin-left: 13px"><?php echo utf8_decode($topic->topic_name); ?></h4><br>
-                                
-                        <?php elseif($topic->theme==13):?>        
-                        <!--argyle theme-->
-                        <div>
-                            <a class="roomthemes roomtheme-argyle" href = "<?php echo base_url('topic/view/' . $topic->topic_id); ?>">
-                                <h4 class = "text-info no-padding text1color topicheader" style="margin-top:50px;margin-left: 13px"><?php echo utf8_decode($topic->topic_name); ?></h4><br>
-                                
-                        <?php elseif($topic->theme==14):?>        
-                        <!--shippo theme-->
-                        <div>
-                            <a class="roomthemes roomtheme-shippo" href = "<?php echo base_url('topic/view/' . $topic->topic_id); ?>">
-                                <h4 class = "text-info no-padding text1color topicheader" style="margin-top:50px;margin-left: 13px"><?php echo utf8_decode($topic->topic_name); ?></h4><br>
-                                
-                        <?php elseif($topic->theme==15):?>        
-                        <!--waves theme-->
-                        <div>
-                            <a class="roomthemes roomtheme-waves" href = "<?php echo base_url('topic/view/' . $topic->topic_id); ?>">
-                                <h4 class = "text-info no-padding text1color topicheader" style="margin-top:50px;margin-left: 13px"><?php echo utf8_decode($topic->topic_name); ?></h4><br>
-                                
-                        <?php elseif($topic->theme==16):?>        
-                        <!--polkadot theme-->
-                        <div>
-                            <a class="roomthemes roomtheme-polkadot" href = "<?php echo base_url('topic/view/' . $topic->topic_id); ?>">
-                                <h4 class = "text-info no-padding text1color topicheader" style="margin-top:50px;margin-left: 13px"><?php echo utf8_decode($topic->topic_name); ?></h4><br>
-                                
-                        <?php elseif($topic->theme==17):?>        
-                        <!--honeycomb theme-->
-                        <div>
-                            <a class="roomthemes roomtheme-honeycomb" href = "<?php echo base_url('topic/view/' . $topic->topic_id); ?>">
-                                <h4 class = "text-info no-padding text1color topicheader" style="margin-top:50px;margin-left: 13px"><?php echo utf8_decode($topic->topic_name); ?></h4><br>
-                                
-                        <?php elseif($topic->theme==18):?>        
-                        <!--chocolateweave theme-->
-                        <div>
-                            <a class="roomthemes roomtheme-chocolateweave" href = "<?php echo base_url('topic/view/' . $topic->topic_id); ?>">
-                                <h4 class = "text-info no-padding text1color topicheader" style="margin-top:50px;margin-left: 13px"><?php echo utf8_decode($topic->topic_name); ?></h4><br>
-                                
-                        <?php elseif($topic->theme==19):?>        
-                        <!--crosseddot theme-->
-                        <div>
-                            <a class="roomthemes roomtheme-crosseddot" href = "<?php echo base_url('topic/view/' . $topic->topic_id); ?>">
-                                <h4 class = "text-info no-padding text1color topicheader" style="margin-top:50px;margin-left: 13px"><?php echo utf8_decode($topic->topic_name); ?></h4><br>
-                                
-                                   
-                                
-                                
-                        <?php else:?>        
-                        <!--default theme-->
-                        <div>
-                            <a class="topic-grid1 col-md-3"  href = "<?php echo base_url('topic/view/' . $topic->topic_id); ?>">
-                                <h4 class = "text-info no-padding text1color topicheader" style="margin-top:50px;margin-left: 13px"><?php echo utf8_decode($topic->topic_name); ?></h4><br>
-                                
-                        <?php endif;?>        
+                        <?php if($topic->theme==1): $theme="roomthemes roomtheme-arrow";
+                        elseif($topic->theme==2): $theme="roomthemes roomtheme-zigzag";
+                        elseif($topic->theme==3): $theme="roomthemes roomtheme-scales";
+                        elseif($topic->theme==4): $theme="roomthemes roomtheme-halfrhombe";
+                        elseif($topic->theme==5): $theme="roomthemes roomtheme-marrakesh";
+                        elseif($topic->theme==6): $theme="roomthemes roomtheme-hearts";
+                        elseif($topic->theme==7): $theme="roomthemes roomtheme-stars";
+                        elseif($topic->theme==8): $theme="roomthemes roomtheme-seigaiha";
+                        elseif($topic->theme==9): $theme="roomthemes roomtheme-bricks";
+                        elseif($topic->theme==10): $theme="roomthemes roomtheme-diacheckerboard";
+                        elseif($topic->theme==11): $theme="roomthemes roomtheme-tablecloth";
+                        elseif($topic->theme==12): $theme="roomthemes roomtheme-brady";
+                        elseif($topic->theme==13): $theme="roomthemes roomtheme-argyle";
+                        elseif($topic->theme==14): $theme="roomthemes roomtheme-shippo";
+                        elseif($topic->theme==15): $theme="roomthemes roomtheme-waves";
+                        elseif($topic->theme==16): $theme="roomthemes roomtheme-polkadot";
+                        elseif($topic->theme==17): $theme="roomthemes roomtheme-honeycomb";
+                        elseif($topic->theme==18): $theme="roomthemes roomtheme-chocolateweave";
+                        elseif($topic->theme==19): $theme="roomthemes roomtheme-crosseddot";
+                        else: $theme="topic-grid1 col-md-3";
+                        endif;?>  
                         
-  
-                                
-                                
-                                
-                                
-                                
-                                <!--<h4 class = "text-info no-padding no-margin text1color topicheader"><?php echo utf8_decode($topic->theme); ?></h4>-->
-                                <!--<small class="topicheader2"><i>by <?php echo $topic->user->first_name . " " . $topic->user->last_name; ?></i></small>-->
-                                <!-- <div class="topic-grid-icons">
-                                    <div class = "label label-info follower-label draggable"><i class = "fa fa-group"></i> 
-                                        <?php echo $topic->followers ? count($topic->followers) : '0' ?> <i class = "fa fa-comments"></i> 
-                                            <?php echo $topic->post_count; ?></div>
-                                </div> -->
-                            </a></div>
+                       <div>
+                            <a class="<?php echo $theme?>"  href = "<?php echo base_url('topic/view/' . $topic->topic_id); ?>">
+                                <h4 class = "text-info no-padding text1color topicheader" style="margin-top:50px;margin-left: 13px"><?php echo utf8_decode($topic->topic_name); ?></h4><br>
+                            </a>
+                       </div>
                         <?php endforeach; ?>
                         </div>
                 </div>
@@ -289,6 +176,5 @@ function scrollFunction() {
         <span> <img class = "pinwheel" src = "<?php echo base_url('images/Picture3.png'); ?>"/></span><span> <img class = "pinwheel" src = "<?php echo base_url('images/Picture7.png'); ?>"/></span>
         <span> <img class = "pinwheel" src = "<?php echo base_url('images/Picture4.png'); ?>"/></span><span> <img class = "pinwheel" src = "<?php echo base_url('images/Picture8.png'); ?>"/></span>
 -->   
- <?php
-  //  include(APPPATH . 'views/chat/chat.php');
+
     
