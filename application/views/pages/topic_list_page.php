@@ -154,6 +154,54 @@ include(APPPATH . 'views/header.php');
                             <a class="roomtheme-tablecloth" href = "<?php echo base_url('topic/view/' . $topic->topic_id); ?>">
                                 <h4 class = "text-info no-padding text1color topicheader" style="margin-top:50px;margin-left: 13px"><?php echo utf8_decode($topic->topic_name); ?></h4><br>
                                 
+                        <?php elseif($topic->theme==12):?>        
+                        <!--TVsquare theme-->
+                        <div>
+                            <a class="roomtheme-brady" href = "<?php echo base_url('topic/view/' . $topic->topic_id); ?>">
+                                <h4 class = "text-info no-padding text1color topicheader" style="margin-top:50px;margin-left: 13px"><?php echo utf8_decode($topic->topic_name); ?></h4><br>
+                                
+                        <?php elseif($topic->theme==13):?>        
+                        <!--TVsquare theme-->
+                        <div>
+                            <a class="roomtheme-argyle" href = "<?php echo base_url('topic/view/' . $topic->topic_id); ?>">
+                                <h4 class = "text-info no-padding text1color topicheader" style="margin-top:50px;margin-left: 13px"><?php echo utf8_decode($topic->topic_name); ?></h4><br>
+                                
+                        <?php elseif($topic->theme==14):?>        
+                        <!--TVsquare theme-->
+                        <div>
+                            <a class="roomtheme-shippo" href = "<?php echo base_url('topic/view/' . $topic->topic_id); ?>">
+                                <h4 class = "text-info no-padding text1color topicheader" style="margin-top:50px;margin-left: 13px"><?php echo utf8_decode($topic->topic_name); ?></h4><br>
+                                
+                        <?php elseif($topic->theme==15):?>        
+                        <!--TVsquare theme-->
+                        <div>
+                            <a class="roomtheme-waves" href = "<?php echo base_url('topic/view/' . $topic->topic_id); ?>">
+                                <h4 class = "text-info no-padding text1color topicheader" style="margin-top:50px;margin-left: 13px"><?php echo utf8_decode($topic->topic_name); ?></h4><br>
+                                
+                        <?php elseif($topic->theme==16):?>        
+                        <!--TVsquare theme-->
+                        <div>
+                            <a class="roomtheme-polkadot" href = "<?php echo base_url('topic/view/' . $topic->topic_id); ?>">
+                                <h4 class = "text-info no-padding text1color topicheader" style="margin-top:50px;margin-left: 13px"><?php echo utf8_decode($topic->topic_name); ?></h4><br>
+                                
+                        <?php elseif($topic->theme==17):?>        
+                        <!--TVsquare theme-->
+                        <div>
+                            <a class="roomtheme-honeycomb" href = "<?php echo base_url('topic/view/' . $topic->topic_id); ?>">
+                                <h4 class = "text-info no-padding text1color topicheader" style="margin-top:50px;margin-left: 13px"><?php echo utf8_decode($topic->topic_name); ?></h4><br>
+                                
+                        <?php elseif($topic->theme==18):?>        
+                        <!--TVsquare theme-->
+                        <div>
+                            <a class="roomtheme-chocolateweave" href = "<?php echo base_url('topic/view/' . $topic->topic_id); ?>">
+                                <h4 class = "text-info no-padding text1color topicheader" style="margin-top:50px;margin-left: 13px"><?php echo utf8_decode($topic->topic_name); ?></h4><br>
+                                
+                        <?php elseif($topic->theme==19):?>        
+                        <!--TVsquare theme-->
+                        <div>
+                            <a class="roomtheme-crosseddot" href = "<?php echo base_url('topic/view/' . $topic->topic_id); ?>">
+                                <h4 class = "text-info no-padding text1color topicheader" style="margin-top:50px;margin-left: 13px"><?php echo utf8_decode($topic->topic_name); ?></h4><br>
+                                
                                    
                                 
                                 
