@@ -254,13 +254,15 @@ class Topic extends CI_Controller {
 
         $post_id = $this->db->insert_id();
 
+        date_default_timezone_set('Asia/Manila');
+
         //update swear infractions in database
         $swears = 
         substr_count($input->post('post_content'), 'fuck') +
         substr_count($input->post('post_content'), 'shit') +
         substr_count($input->post('post_content'), 'ass'); 
 
-        $this->db->select('user_id, infractions');
+        $this->db->select('*');
         $this->db->from('tbl_infractions');
         $this->db->where(array('tbl_infractions.user_id' => $logged_user->user_id));
 
@@ -268,17 +270,63 @@ class Topic extends CI_Controller {
 
         if(!empty($infractions->result()))
         {
-            $currentInfractions = $infractions->row()->infractions;
-            $data = array
-            (
-                'user_id' => $logged_user->user_id,
-                'infractions' => $swears+$currentInfractions
-            );
+            $currentWeekInfractions = $infractions->row()->current_total;
+            $overallInfractions = $infractions->row()->overall_total;
+
+            // $lastDate=date_create($child->updated);
+            // date_sub($lastDate,date_interval_create_from_date_string("7 days"));
+            // echo date_format($lastDate,"Y-m-d");
+
+            
+            // $subDate=date_create(date('Y-m-d'));
+            // date_sub($subDate,date_interval_create_from_date_string("1 day"));
+
+            $lastDate=date_create($infractions->row()->updated);
+            $curDate=date_create(date('Y-m-d'));
+
+            $FirstDay = date_create(date("Y-m-d", strtotime('sunday last week')));  
+            $LastDay = date_create(date("Y-m-d", strtotime('sunday this week')));               
+
+            // echo $lastDate->format('Y-m-d') . "<br>";
+            // echo $subDate->format('Y-m-d') . "<br>";
+            // echo $curDate->format('Y-m-d') . "<br>";
+
+            // echo date('D', strtotime($curDate->format('Y-m-d')));
+
+            //if table was updated within the week, update for this week
+            if($lastDate > $FirstDay && $lastDate < $LastDay)
+            {
+                $data = array
+                (
+                    'user_id' => $logged_user->user_id,
+                    'current_total' => $swears+$currentWeekInfractions,
+                    'overall_total' => $swears+$overallInfractions,
+                    'current_avg' => ($swears+$currentWeekInfractions)/7,
+                    'updated' => date('Y-m-d')
+                );
+
+            }
+
+            //if table was updated last week, update for both stats for this week and last week
+            else
+            {
+                $data = array
+                (
+                    'user_id' => $logged_user->user_id,
+                    'current_total' => $swears,
+                    'last_total' => ($infractions->row()->current_total),
+                    'overall_total' => $swears+$overallInfractions,
+                    'current_avg' => $swears/7,
+                    'last_avg' => ($infractions->row()->current_total)/7,
+                    'updated' => date('Y-m-d')
+                );
+            }
+            
 
             // $this->db->delete('tbl_infractions', array('user_id' => $logged_user->user_id));
             // $this->db->insert('tbl_infractions', $data);
 
-            $this->db->select('user_id, infractions');
+            $this->db->select('*');
             $this->db->from('tbl_infractions');
             $this->db->where('user_id', $logged_user->user_id);
             $this->db->update('tbl_infractions', $data); 
@@ -289,7 +337,10 @@ class Topic extends CI_Controller {
             $data = array
             (
                 'user_id' => $logged_user->user_id,
-                'infractions' => $swears
+                'current_total' => $swears,
+                'overall_total' => $swears,
+                'current_avg' => ($swears+$currentWeekInfractions)/7,
+                'updated' => date('Y-m-d')
             );
 
             $this->db->insert('tbl_infractions', $data);
