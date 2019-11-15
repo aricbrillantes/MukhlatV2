@@ -440,7 +440,7 @@
         {
             //comment out this line for testing
             $home = base_url('home');
-            // header("Location: $home");
+            header("Location: $home");
         }    
 
         else if(in_array($currentTimeSlot,$restrictions2))
@@ -451,7 +451,7 @@
         }    
 
         // print("<b>Current time:</b> " . (int) date("G") . ": " . date("i") . " ". date("l"));
-        print("<br>");
+        // print("<br>");
         // print($currentTime . "<br>");
         // print($currentTimeSlot . "<br>");
         

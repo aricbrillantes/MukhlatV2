@@ -441,19 +441,19 @@
         else if( (int)date("i")>=30)
             $currentTimeSlot = date("G")."30"." ".date("l");
 
-        if(in_array($currentTimeSlot,$restrictions2))
-            print("<br>" . $currentTimeSlot);
+        // if(in_array($currentTimeSlot,$restrictions2))
+        //     print("<br>" . $currentTimeSlot);
 
-        else
-        {
-            print("you cant use xd ");
-            $restrict = base_url('restrict');
-            // header("Location: $restrict");
-        }    
+        // else
+        // {
+        //     print("you cant use xd ");
+        //     $restrict = base_url('restrict');
+        //     header("Location: $restrict");
+        // }    
 
         // print("<b>Current time:</b> " . (int) date("G") . ": " . date("i") . " ". date("l"));
         // print("<br>");
-        print($currentTime . "<br>");
+        // print($currentTime . "<br>");
         // print($currentTimeSlot);
         
     }

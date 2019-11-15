@@ -171,6 +171,44 @@
                 $user_topics = $CI->topic_model->get_user_topics($child->user_id);
                 $user_moderated_topics = $CI->topic_model->get_moderated_topics($child->user_id);
                 // $user_followed_topics = $CI->topic_model->get_followed_topics($child->user_id);
+
+                //ceil to round up float
+                foreach ($user_topics as $topic)
+                {}
+
+                $totalRoomPosts=0;
+                $roomPosts=0;;
+                $selfPosts=0;
+                $otherPosts=0;
+                $shoutOuts=0;
+                $postCount=0;
+
+
+                foreach ($activities as $post)
+                {
+                    // print_r($post);
+                    if ($topic->topic_id == $post->topic_id)
+                    {
+                        
+                        if($post->shout == '1')
+                            $shoutOuts++;
+                            
+                        elseif($post->reply == '1')
+                        {
+                            $roomPosts++;
+                            $totalRoomPosts++;
+                        }
+
+                        else
+                        {
+                            $totalRoomPosts++;
+                            $selfPosts++;
+                        }
+                    }
+
+                    else
+                        $otherPosts++;
+                }
             ?>
 
              <div class = "col-xs-16 col-md-8 col-md-offset-2 content-container container-fluid " style = "margin-bottom: 5px;">
@@ -191,6 +229,43 @@
                         <strong><?php echo $child->first_name; ?>'s Use Statistics</strong><br>
                     </h3>
                     <br>
+
+                    <div class=" col-md-4 col-sm-4 col-xs-4">
+                        <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Swears this week: </h4></strong> <h2 class = "" style = "display: inline-block;"><?php echo $child->current_total; ?></h2>
+                    </div>
+
+                    <div class=" col-md-4 col-sm-4 col-xs-4">
+                        <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Swears last week: </h4></strong> <h2 class = "" style = "display: inline-block;"><?php echo $child->last_total; ?></h2>
+                    </div>
+
+                    <div class=" col-md-4 col-sm-4 col-xs-4">
+                        <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Lifetime swears: </h4></strong> <h2 class = "" style = "display: inline-block;"><?php echo $child->overall_total; ?></h2>
+                    </div>
+
+                    <div class=" col-md-12 col-sm-12 col-xs-12">
+                        <br><br><br>
+                    </div>
+
+                    <div class="col-md-6 col-sm-6 col-xs-6">
+                        <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Posts to others</h4></strong> <h2 class = "" style = "display: inline-block;"><?php echo $otherPosts; ?></h2>
+                    </div>
+
+                    <div class="col-md-6 col-sm-6 col-xs-6">
+                        <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Total posts: </h4></strong> <h2 class = "" style = "display: inline-block;"><?php echo $totalRoomPosts; ?></h2>
+                    </div>
+
+                    <div class="col-md-6 col-sm-6 col-xs-6">
+                        <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Stuff shared: </h4></strong> <h2 class = "" style = "display: inline-block;"><?php echo $selfPosts; ?></h2>
+                    </div>
+
+                    <div class=" col-md-4 col-sm-4 col-xs-4">
+                        <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Replies: </h4></strong> <h2 class = "" style = "display: inline-block;"><?php echo $roomPosts; ?></h2>
+                    </div>
+
+                    <div class=" col-md-4 col-sm-4 col-xs-4">
+                        <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Shout outs: </h4></strong> <h2 class = "" style = "display: inline-block;"><?php echo $shoutOuts; ?></h2>
+                    </div>
+
                     <div class = "col-sm-12 " style = "margin-bottom: 40px">
                         <!-- <ul class="nav nav-pills nav-justified">
                             <li class="active "><a data-toggle="pill" href="#user-topic-created">Created Posts</a></li>
@@ -210,110 +285,8 @@
                                             <!-- <li>
                                                 <strong class = "" style = "display: inline-block; margin-right: 20px"><h3>Updated: </h3></strong>
                                                 <h4 class = "" style = "display: inline-block;"><?php echo $child->updated; ?></h4>
-                                            </li>
+                                            </li>-->
 
-                                            <li>
-                                                <strong class = "" style = "display: inline-block; margin-right: 20px"><h3>Refresh: </h3></strong>
-                                                <h4 class = "" style = "display: inline-block;"><?php 
-                                                
-                                                ?></h4>
-                                            </li> -->
-
-                                            <li>
-                                                <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Total swears this week: </h4></strong>
-                                                <h3 class = "" style = "display: inline-block;"><?php echo $child->current_total; ?></h3>
-                                            </li>
-
-                                            <li>
-                                                <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Last week's total: </h4></strong>
-                                                <h3 class = "" style = "display: inline-block;"><?php echo $child->last_total; ?></h3>
-                                            </li>
-
-                                            <li>
-                                                <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Total swears: </h4></strong>
-                                                <h3 class = "" style = "display: inline-block;"><?php echo $child->overall_total; ?></h3>
-                                            </li>
-
-                                            <li>
-                                                <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Current average: </h4></strong>
-                                                <h3 class = "" style = "display: inline-block;"><?php echo $child->current_avg; ?></h3>
-                                            </li>
-
-                                            <li>
-                                                <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Last week's average: </h4></strong>
-                                                <h3 class = "" style = "display: inline-block;"><?php echo $child->last_avg; ?></h3>
-                                            </li><br>
-
-                                            <?php 
-
-                                                //ceil to round up float
-                                                foreach ($user_topics as $topic)
-                                                {
-
-                                                }
-
-                                                $totalRoomPosts=0;
-                                                $roomPosts=0;;
-                                                $selfPosts=0;
-                                                $otherPosts=0;
-                                                $shoutOuts=0;
-                                                $postCount=0;
-
-
-                                                foreach ($activities as $post)
-                                                {
-                                                    // print_r($post);
-                                                    if ($topic->topic_id == $post->topic_id)
-                                                    {
-                                                        
-                                                        if($post->shout == '1')
-                                                        {
-                                                            $shoutOuts++;
-                                                        }    
-
-                                                        elseif($post->reply == '1')
-                                                        {
-                                                            $roomPosts++;
-                                                            $totalRoomPosts++;
-                                                        }
-
-                                                        else
-                                                        {
-                                                            $totalRoomPosts++;
-                                                            $selfPosts++;
-                                                        }
-                                                    }
-
-                                                    else
-                                                        $otherPosts++;
-
-                                                }
-                                            ?> 
-
-                                            <li>
-                                                <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Total posts in room: </h4></strong>
-                                                <h3 class = "" style = "display: inline-block;"><?php echo $totalRoomPosts; ?></h3>
-                                            </li>
-
-                                            <li>
-                                                <strong class = "" style = "text-indent: 50px; display: inline-block; margin-right: 20px"><h4>Stuff shared: </h4></strong>
-                                                <h3 class = "" style = "display: inline-block;"><?php echo $selfPosts; ?></h3>
-                                            </li>
-
-                                            <li>
-                                                <strong class = "" style = "text-indent: 50px; display: inline-block; margin-right: 20px"><h4>Posts in room: </h4></strong>
-                                                <h3 class = "" style = "display: inline-block;"><?php echo $roomPosts; ?></h3>
-                                            </li>
-
-                                            <li>
-                                                <strong class = "" style = "text-indent: 50px; display: inline-block; margin-right: 20px"><h4>Shoutouts: </h4></strong>
-                                                <h3 class = "" style = "display: inline-block;"><?php echo $shoutOuts; ?></h3>
-                                            </li><br>
-
-                                            <li>
-                                                <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Posts in other rooms: </h4></strong>
-                                                <h3 class = "" style = "display: inline-block;"><?php echo $otherPosts; ?></h3>
-                                            </li>
                                             <!-- <?php foreach ($user_topics as $topic): ?>
                                                 <li>
                                                     <a class = "user-topic-item" href="#" style = "padding: 5px 30px;">
