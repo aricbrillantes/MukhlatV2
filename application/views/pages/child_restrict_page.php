@@ -1,5 +1,8 @@
 <?php
     include(APPPATH . 'views/header.php');
+
+    header("Refresh: 300");
+
     $CI =&get_instance();
     $CI->load->model('attachment_model');
 
@@ -418,13 +421,20 @@
         date_default_timezone_set('Asia/Manila');
         $currentTime = date("G").date("i")." ".date("l");
 
-        $currentTimeSlot;
+        $currentTimeSlot; $nextTimeSlot;
 
         if( (int)date("i")>=00 && (int)date("i")<=30)
+        {
             $currentTimeSlot = date("G")."00"." ".date("l");
 
+        }    
+
         else if( (int)date("i")>=30)
+        {
             $currentTimeSlot = date("G")."30"." ".date("l");
+        }    
+
+        // print($restrictions2[array_search($currentTimeSlot, $restrictions2)+1]);
 
         if(in_array($currentTimeSlot,$restrictions2))
         {
@@ -433,7 +443,7 @@
             // header("Location: $home");
         }    
 
-        else
+        else if(in_array($currentTimeSlot,$restrictions2))
         {
             // print("<br>you cant use xd");
             // $restrict = base_url('restrict');
@@ -461,10 +471,10 @@
         <div class = "row">
             <div class = "col-sm-12 col-md-12 col-xs-12 home-container">
                 <div class = "col-sm-12 col-md-12 col-xs-12 home-container text-center">
-                    <h1>Hey there! You cannot use Mukhlat right now 😅<br><br>Come back later!</h1><br><br><br>
+                    <br><br><br><br><br><h1>Hey there! You cannot use Mukhlat right now 😅<br><br>Come back later!</h1><br><br><br><br>
 
-                    <h2>You can click this green button to check if you can use it again!😊.<br><br></h2>
-                    <button class="container btn col-xs-4 col-xs-offset-4 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4" style="background-color: green; color: white; font-size: 24px;" onclick="location.href='<?php echo base_url('home');?>'">Home</button><br><br><br><br><br><br><br>
+                    <!-- <h2>You can click this green button to check if you can use it again!😊.<br><br></h2>
+                    <button class="container btn col-xs-4 col-xs-offset-4 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4" style="background-color: green; color: white; font-size: 24px;" onclick="location.href='<?php echo base_url('home');?>'">Home</button> -->
                     
                     <h2>Or you can say goodbye for now 👋.<br><br></h2>
                     <button class="container btn col-xs-4 col-xs-offset-4 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4" style="background-color: orange; color: white; font-size: 24px;" onclick="location.href='<?php echo base_url('signin/logout');?>'">Goodbye!</button>
