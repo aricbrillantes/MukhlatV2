@@ -499,7 +499,8 @@
      
 
 /*------------------------- AFK Timer Script -------------------------*/
-
+    
+    document.cookie = "afk=0;" + ";path=/"; 
     var start = document.getElementById("start");
     var dis = document.getElementById("afktimer");
     var finishTime;
@@ -508,7 +509,8 @@
     dis.innerHTML = "Time Left: " + timerLength;
     
     document.onmousemove = function()
-    { //reset timer and hide AFK popup
+    { 
+        //reset timer and hide AFK popup
         StartTimer();
         $('#afkpopup').modal('hide'); 
     };
@@ -537,6 +539,7 @@
         
         if(timeLeft<=10*1000) // logout user if AFK
         {
+            document.cookie = "afk=1;" + ";path=/"; 
             location.href="<?php echo base_url('afk');?>";
         }
     }

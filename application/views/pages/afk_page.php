@@ -1,10 +1,28 @@
 <?php
-    include(APPPATH . 'views/header.php');
-    $CI =&get_instance();
-    $CI->load->model('attachment_model');
 
-    session_destroy();
-    // $this->session->sess_destroy();
+    if(isset($_SESSION['logged_user']))
+    {
+        $logged_user = $_SESSION['logged_user'];
+        if($logged_user->role_id != 2 || $logged_user == null)
+        {
+            $homeURL = base_url('home');
+            header("Location: $homeURL");
+        }
+
+        else if($_COOKIE["afk"] == 1)
+        {
+            session_destroy();
+            // $this->session->sess_destroy();
+        }
+
+        else
+        {
+            $homeURL = base_url('home');
+            header("Location: $homeURL");
+        }
+    }
+
+    include(APPPATH . 'views/header.php'); 
 ?>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
