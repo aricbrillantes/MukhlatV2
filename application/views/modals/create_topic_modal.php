@@ -34,7 +34,40 @@
                             <p id = "image-text2" class = "attach-btn-text"><i class = "fa fa-file-image-o"></i> Add Cover Image</p>
                         </label>
                      </div>-->
-                    <select style="width:110px; height:40px"  class="form-control" name="topic_theme" id="topic-theme" onclick="">
+<div class="" style="transform: scale(0.4); position: absolute; top:-70%;left:-75%;" >
+    <table>
+        <tr>
+            <td><div  class="editroomthemes roomtheme-arrow" style="" onclick="roomtheme(1)"></div></td>
+            <td><div  class="editroomthemes roomtheme-zigzag" style="" onclick="roomtheme(2)"></div></td>
+            <td><div  class="editroomthemes roomtheme-scales" style="" onclick="roomtheme(3)"></div></td>
+            <td><div  class="editroomthemes roomtheme-halfrhombe" style="" onclick="roomtheme(4)"></div></td>
+        </tr>
+        <tr>
+            <td><div  class="editroomthemes roomtheme-marrakesh" style="" onclick="roomtheme(5)"></div></td>
+            <td><div  class="editroomthemes roomtheme-hearts" style="" onclick="roomtheme(6)"></div></td>
+            <td><div  class="editroomthemes roomtheme-stars" style="" onclick="roomtheme(7)"></div></td>
+            <td><div  class="editroomthemes roomtheme-seigaiha" style="" onclick="roomtheme(8)"></div></td>
+        </tr>
+        <tr>
+            <td><div  class="editroomthemes roomtheme-bricks" style="" onclick="roomtheme(9)"></div></td>
+            <td><div  class="editroomthemes roomtheme-diacheckerboard" style="" onclick="roomtheme(10)"></div></td>
+            <td><div  class="editroomthemes roomtheme-tablecloth" style="" onclick="roomtheme(11)"></div></td>
+            <td><div  class="editroomthemes roomtheme-brady" style="" onclick="roomtheme(12)"></div></td>
+        </tr>
+        <tr>
+            <td><div  class="editroomthemes roomtheme-argyle" style="" onclick="roomtheme(13)"></div></td>
+            <td><div  class="editroomthemes roomtheme-shippo" style="" onclick="roomtheme(14)"></div></td>
+            <td><div  class="editroomthemes roomtheme-waves" style="" onclick="roomtheme(15)"></div></td>
+            <td><div  class="editroomthemes roomtheme-polkadot" style="" onclick="roomtheme(16)"></div></td>
+        </tr>
+        <tr>
+            <td><div  class="editroomthemes roomtheme-honeycomb" style="" onclick="roomtheme(17)"></div></td>
+            <td><div  class="editroomthemes roomtheme-chocolateweave" style="" onclick="roomtheme(18)"></div></td>
+            <td><div  class="editroomthemes roomtheme-crosseddot" style="" onclick="roomtheme(19)"></div></td>
+        </tr>
+    </table>
+</div><br><br><br><br><br><br><br><br><br><br><br>
+                    <select style="width:110px; height:40px;display: none"  class="form-control" name="topic_theme" id="topic-theme" onclick="">
                         <option value="1">Theme 1</option>
                         <option value="2">Theme 2</option>
                         <option value="3">Theme 3</option>
@@ -159,6 +192,10 @@
 </script>
     
 <script type="text/javascript" src="<?php echo base_url("/js/topic.js"); ?>"></script>
-
+<script>
+        function roomtheme(v){
+            $('[id$=topic-theme]').val(v);
+        }
+    </script>
     
 <!-- END SCRIPTS -->
