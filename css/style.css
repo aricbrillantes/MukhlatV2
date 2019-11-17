@@ -1780,6 +1780,7 @@ transform: rotate(1080deg);
   animation-iteration-count: infinite;
   animation-direction: alternate, normal;
   animation-timing-function: ease-in-out;
+  z-index: 99999;
 }
 
 .bubble1 {
@@ -2770,199 +2771,6 @@ border: 2px outset  #000;
   border-radius: 10px;
   border: #B78240 solid 10px;
   }
-  
-  .roombear{
-   
-    margin:1.5%;
-    position:relative;
-    float:left;
-    width:20%;
-    padding:10px;
-    text-decoration:none;
-    height:200px;
-    border-radius: 30px;  
-    background-color: #964b00;
-}
-.roombearbelly{
-    height:170px;
-    border-radius: 30px;
-    background-color:#f9e4b7;
-}
-.roombearpaw{
-    height:50px;
-    width: 50px;
-    border-radius: 100px;
-    background-color:#964b00;
-}
-.roombearfeet{
-    height:50px;
-    width: 50px;
-    border-radius: 20px 20px 10px 10px;
-    background-color:#964b00;
-}
-.roombearhead{
-    height:100px;
-    width: 100px;
-    border-radius: 100px;
-    background-color:#964b00;
-}
-
-.cooly {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  margin: 20px auto;
-  width: 250px;
-  height: 250px;
-  background: white;
-  border-radius: 75px;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 20px;
-  font-weight: lighter;
-  letter-spacing: 2px;
-  transition: 1s box-shadow;
-}
-
-.cooly:hover {
-  box-shadow: 0 5px 35px 0px rgba(0,0,0,.1);
-}
-
-.cooly:hover:before, .cooly:hover:after {
-  display: block;
-  content: '';
-  position: absolute;
-  width: 250px;
-  height: 250px;
-  background: #FDA8CF;
-  border-radius: 75px;
-  z-index: -1;
-  animation: 1s clockwise infinite;
-}
-
-.cooly:hover:after {
-  background: #F3CE5E;
-  animation: 2s counterclockwise infinite;
-}
-
-@keyframes clockwise {
-  0% {
-    top: -5px;
-    left: 0;
-  }
-  12% {
-    top: -2px;
-    left: 2px;
-  }
-  25% {
-    top: 0;
-    left: 5px;    
-  }
-  37% {
-    top: 2px;
-    left: 2px;
-  }
-  50% {
-    top: 5px;
-    left: 0;    
-  }
-  62% {
-    top: 2px;
-    left: -2px;
-  }
-  75% {
-    top: 0;
-    left: -5px;
-  }
-  87% {
-    top: -2px;
-    left: -2px;
-  }
-  100% {
-    top: -5px;
-    left: 0;    
-  }
-}
-
-@keyframes counterclockwise {
-  0% {
-    top: -5px;
-    right: 0;
-  }
-  12% {
-    top: -2px;
-    right: 2px;
-  }
-  25% {
-    top: 0;
-    right: 5px;    
-  }
-  37% {
-    top: 2px;
-    right: 2px;
-  }
-  50% {
-    top: 5px;
-    right: 0;    
-  }
-  62% {
-    top: 2px;
-    right: -2px;
-  }
-  75% {
-    top: 0;
-    right: -5px;
-  }
-  87% {
-    top: -2px;
-    right: -2px;
-  }
-  100% {
-    top: -5px;
-    right: 0;    
-  }
-}
-
-
-
-.skewedbtn {
-  position: relative;
-  width: 100%;
-  padding-top: 25.92%;
-  display: block;
-  background-size: 100% 100%;
-  font-family: 'luckiest guy';
-  font-size: 28px;
-  margin-bottom: 20px;
-  text-decoration: none;
-  color: #333;
-}
-
-.skewedbtn.background-button {
-  background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/323909/yellow-shadow.png);
-}
-  .skewedbtn.background-button:after {
-    content: attr(title);
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    display: block;
-    background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/323909/yellow-top.png);
-    transition: all 0.3s;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .skewedbtn.background-button:hover:after {
-    -webkit-transform: translate(2.5%, 10%);
-    transform: translate(2.5%, 10%);
-    text-shadow: 2px 2px 1px white;
-    color: black;
-  }
-
 
 .button-wrapper {
   width: 355px;
@@ -3035,119 +2843,6 @@ border: 2px outset  #000;
 	}
 }
 
-.square1 {
-  background: #00aa9d;
-  border-radius: 3px;
-  height: 150px;
-  margin: 100px;
-  position: absolute;
-  transition: transform 0.8s;
-  width: 150px;
-}
-
-.square2 {
-  background: #2b3f53;
-  border-radius: 3px;
-  height: 150px;
-  margin: 100px;
-  transition: transform 0.8s;
-  position: absolute;
-  width: 150px;
-}
-.square2:hover {
-      transform: translate(20px, 20px);
-  }
-
-.TVbtn {
-  display: inline-block;
-
-  color: white;
-  background-color: transparent;
-  border: none;  
-  cursor: pointer;
-  z-index: 0;
-  padding: 0;
-}
-
-.TVbtn:focus {
-  outline-color: transparent;
-}
-
-
-/* btn-blow */
-.TVbtn-blow::after {
-  content: "";
-  width: 120px;
-  height: 120px;
-  background-color: rgba(0,0,0,.2);
-  position: absolute;
-  top: calc(50% - 60px);
-  left: calc(50% - 60px);
-  opacity: 0;
-  z-index: -4;
-  transition-duration: .4s;
-  pointer-events: none;
-}
-
-.TVbtn-blow:focus::after {
-  opacity: 1;
-  transform: scale(1);
-}
-.TVbtn-blow:focus:hover::after {
-  transform: scale(1.2);
-}
-
-.TVbtn-blow {
-  width: 100px;
-  height: 100px;  
-}
-
-.TVbtn-blow * {
-  pointer-events: none;
-}
-
-.TVbtn-blow span {
-  position: relative;
-  overflow: hidden;
-  display: flex;
-  left:-50px;
-  width: 200px;
-  height: 100px;
-  justify-content: center;
-  align-items: center;
-  border-radius: 0;
-  transition: transform .4s, border-radius .4s;  
-  transition-timing-function: cubic-bezier(.5,2.4,.7,.5);
-}
-.TVbtn-blow span::before {
-  content: "";
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  background-color: hotpink;
-  background-image: radial-gradient(circle, #ff69b4 0%, #e23a8e 30%, #e23a8e 100%);
-  background-size: 200% 200%;
-  background-repeat: no-repeat;
-  background-position: center;
-  top: 0;
-  left: 0;
-  transform: rotate(90deg);
-  z-index: -1;  
-  border-radius: 0;
-  transition: all .4s;
-  
-}
-.TVbtn-blow:hover span {
-  transform: scale(1.3);
-  transition: transform .8s, border-radius .4s;  
-  border-radius: 50%;  
-}
-.TVbtn-blow:hover span::before {
-  transition: background-size .8s, border-radius .4s; 
-  border-radius: 50%;
-  background-size: 120% 120%;
-}
-  
 .polaroidwrapper { 
   box-sizing: border-box;
   /*width: 100%;*/
@@ -3627,3 +3322,19 @@ background-size: 1800% 1800%;
     50%{background-position:100% 19%}
     100%{background-position:0% 82%}
 }
+
+#screen {
+	width:100%;
+	height:100%;
+	margin:auto auto;
+	position: fixed;
+	top: 0; 
+	bottom: 0;
+	left: 0; 
+	right: 0;
+        z-index: 999999999;
+	/*background: #000;*/
+	cursor: pointer;
+        pointer-events:none;
+}
+
