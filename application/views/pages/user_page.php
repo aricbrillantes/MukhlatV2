@@ -127,16 +127,16 @@ include(APPPATH . 'views/header.php');
                                         else: $theme="";
                                         endif;?>
                                 <div class = "polaroiditem polaroid homepostsborder <?php echo $theme?>" style = "margin-bottom: 10px; border-radius: 20px">
-                                    <div class = "user-post-heading no-margin" style="border-radius: 20px 20px 0px 0px">
-                                        <a class = "btn btn-link no-padding text1color" href = "<?php echo base_url('user/profile/' . $post->user_id); ?>">
+                                    <div class = "user-post-heading no-margin" style="border-radius: 20px 20px 0px 0px;background-color: white">
+                                        <a class = "text1color" href = "<?php echo base_url('user/profile/' . $post->user_id); ?>">
                                             <strong style = "font-size: 21px"><?php echo $post->first_name; ?></strong>
                                         </a> 
                                         <?php if (empty($post->parent)): ?>
-                                            <span>said in</span> 
+                                        <span style="color:black">said in</span> 
                                         <?php else: ?>
-                                            <span>said in</span> 
+                                            <span style="color:black">said in</span> 
                                         <?php endif; ?>
-                                        <a class = "btn btn-link no-padding text1color" href = "<?php echo base_url('topic/view/' . $post->topic_id); ?>">
+                                        <a class = "text1color" href = "<?php echo base_url('topic/view/' . $post->topic_id); ?>">
                                             <strong style = "font-size: 22px"><?php echo utf8_decode($post->topic_name); ?></strong>
                                         </a>
                                         <?php if (!empty($post->parent)): ?>
@@ -166,22 +166,24 @@ include(APPPATH . 'views/header.php');
 
                                             <?php endif; ?>
                                             <!--<span class = "text-muted pull-right"> <i style = "font-size: 18px;padding-right: 10px"><?php echo date("F d, Y", strtotime($post->date_posted)); ?></i></span>-->
-                                            <p class = "home-content-body" style = "border-right: none;white-space: pre-wrap; margin-left: 10px"><?php echo utf8_decode($post->post_content); ?></p>
+                                            <hr>
+                                            <div class="polaroidwrapper">
+                                            <p class = "" style = "border-right: none;white-space: pre-wrap; margin-left: 10px"><?php echo utf8_decode($post->post_content); ?></p>
                                             <?php $attachments = $CI->attachment_model->get_post_attachments($post->post_id);?>
                                         
                                                 <?php //print_r($attachments); ?>
 
                                                 <?php foreach ($attachments as $attachment):
                                                     if ($attachment->attachment_type_id === '1'):?>
-                                                        <img src = "<?= base_url($attachment->file_url); ?>" width = "75%"  style="position:relative;" />
+                                                        <img src = "<?= base_url($attachment->file_url); ?>" width = "75%"  style="position:relative;margin-left: 15%" />
                                                         
 
                                                     <?php elseif ($attachment->attachment_type_id === '2'): ?>
-                                                        <audio src = "<?= base_url($attachment->file_url); ?>" style="width: 100%" controls></audio>
+                                                        <audio src = "<?= base_url($attachment->file_url); ?>" style="width: 100%;margin-left: 10%" controls></audio>
                                                         
 
                                                     <?php elseif ($attachment->attachment_type_id === '3'): ?>
-                                                        <video src = "<?= base_url($attachment->file_url); ?>" width = "100%" controls/></video>
+                                                        <video src = "<?= base_url($attachment->file_url); ?>" width = "100%" style="margin-left: 10%" controls/></video>
                                                     
 
                                                     <?php elseif ($attachment->attachment_type_id === '4'): ?>
@@ -190,9 +192,8 @@ include(APPPATH . 'views/header.php');
                                                 <?php endif; ?>
                                         
                                                     
-                                                <?php endforeach;
-
-                                                ?>
+                                                <?php endforeach;?>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
