@@ -617,6 +617,8 @@
                     .charLimitMessage{background:' + getCookie("ButtonHColor") + ';}\n\
                     .topic-grid1{background-color: #'+ randomColor +';}\n\
                     .homepostsborder{border-color:' + getCookie("ButtonColor") + ';}\n\
+                    #backgroundcloud-wrap{display:' + getCookie("cloudbg1") + '!important;}\n\
+                    .rainbowwrapper{display:' + getCookie("rainbowbg1") + '!important;}\n\
                     .ptopcolor{background:' + getCookie("ButtonColor") + ';}<\/style>');
     
     if(getCookie("MouseTrail")==='0')
@@ -776,7 +778,31 @@
 		border-bottom-color: #EEEEEE;
 		background-color: #FAFAFA;
 	}
-</style>-->
+</style>--> 
+<div class="rainbowwrapper" style="display:none"></div>
+<!--moving clouds effect-->
+<div id="backgroundcloud-wrap" style="display:none;">
+    <div class="x1">
+        <div class="cloud"></div>
+    </div>
+
+    <div class="x2">
+        <div class="cloud"></div>
+    </div>
+
+    <div class="x3">
+        <div class="cloud"></div>
+    </div>
+
+    <div class="x4">
+        <div class="cloud"></div>
+    </div>
+
+    <div class="x5">
+        <div class="cloud"></div>
+    </div>
+</div>
+
     <!--snowflakes falling effect-->
 <div class="snowflakebg" style="display: none;">       
     <div class="snowflakes" aria-hidden="true">
