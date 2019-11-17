@@ -31,10 +31,30 @@
                             <?php
                             if (!empty($topics)):
                                 foreach ($topics as $topic):
-                                    ?>
-                                    <a class = "roomthemes " href = "topic/view/<?php echo $topic->topic_id; ?>">
+                                    ?><?php if($topic->theme==1): $theme="roomthemes roomtheme-arrow";
+                        elseif($topic->theme==2): $theme="roomthemes roomtheme-zigzag";
+                        elseif($topic->theme==3): $theme="roomthemes roomtheme-scales";
+                        elseif($topic->theme==4): $theme="roomthemes roomtheme-halfrhombe";
+                        elseif($topic->theme==5): $theme="roomthemes roomtheme-marrakesh";
+                        elseif($topic->theme==6): $theme="roomthemes roomtheme-hearts";
+                        elseif($topic->theme==7): $theme="roomthemes roomtheme-stars";
+                        elseif($topic->theme==8): $theme="roomthemes roomtheme-seigaiha";
+                        elseif($topic->theme==9): $theme="roomthemes roomtheme-bricks";
+                        elseif($topic->theme==10): $theme="roomthemes roomtheme-diacheckerboard";
+                        elseif($topic->theme==11): $theme="roomthemes roomtheme-tablecloth";
+                        elseif($topic->theme==12): $theme="roomthemes roomtheme-brady";
+                        elseif($topic->theme==13): $theme="roomthemes roomtheme-argyle";
+                        elseif($topic->theme==14): $theme="roomthemes roomtheme-shippo";
+                        elseif($topic->theme==15): $theme="roomthemes roomtheme-waves";
+                        elseif($topic->theme==16): $theme="roomthemes roomtheme-polkadot";
+                        elseif($topic->theme==17): $theme="roomthemes roomtheme-honeycomb";
+                        elseif($topic->theme==18): $theme="roomthemes roomtheme-chocolateweave";
+                        elseif($topic->theme==19): $theme="roomthemes roomtheme-crosseddot";
+                        else: $theme="topic-grid1 col-md-3";
+                        endif;?> 
+                                    <a class = "roomthemes <?php echo $theme?>" href = "topic/view/<?php echo $topic->topic_id; ?>">
                                         <!--<img class = "img-circle" style = "margin: 10px 0px;" width = "40px" height = "40px" src = "<?php echo $topic->user->profile_url ? base_url($topic->user->profile_url) : base_url('images/default.jpg'); ?>"/>--> 
-                                        <h4 class = "text-info no-padding no-margin" style = "display: inline-block;"><?php echo $topic->user->first_name . " " . $topic->user->last_name; ?>'s Room</h4>
+                                        <h4 class = "text-info no-padding no-margin  text1color topicheader" style = "display: inline-block;"><?php echo $topic->topic_name;?></h4>
                                         <!--<small><i>by <?php echo $topic->user->first_name . " " . $topic->user->last_name; ?></i></small>-->
 <!--                                        <div class = "pull-right">
                                             <span class = "label label-info follower-label"><i class = "fa fa-group"></i> <?php echo $topic->followers ? count($topic->followers) : '0'; ?></span>
