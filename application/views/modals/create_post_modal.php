@@ -176,8 +176,12 @@ $topic = $_SESSION['current_topic'];
 
             </form>
             <label id = "record-label" >
-            <div >
-                    <button id="btnStart">Record My Voice!</button>
+            <button id="btnStart">Record My Voice!</button>
+            <button id="btnStart2">Take a video!</button>
+            <h4 id="startrec" style="display: none">You are now recording!</h4>
+
+            <div id="recaud" style="display: none">
+                    
                     <button id="btnStop" >Im done recording!</button></p>
         
                     
@@ -186,8 +190,9 @@ $topic = $_SESSION['current_topic'];
                     <a id="dl"  download="My Voice">download</a>
 
             </div>
-            <div >
-                    <button id="btnStart2">Take a video!</button>
+            
+            <div id="recvid" style="display: none">
+                    
                     <button id="btnStop2">Im done recording!</button></p>
         
                     
@@ -319,11 +324,18 @@ let constraintObj = {
             let chunks = [];
             
             start.addEventListener('click', (ev)=>{
+                $('[id$=recaud]').show();
+                $('[id$=startrec]').show();
+                $('[id$=btnStart]').hide();
+                $('[id$=btnStop]').show();
                 mediaRecorder.start();
                 console.log(mediaRecorder.state);
                 
             })
             stop.addEventListener('click', (ev)=>{
+              $('[id$=startrec]').hide();
+              $('[id$=btnStart]').show();
+              $('[id$=btnStop]').hide();
                 mediaRecorder.stop();
                 console.log(mediaRecorder.state);
                
@@ -401,11 +413,19 @@ let constraintObj2 = {
             let chunks2 = [];
             
             start2.addEventListener('click', (ev)=>{
+                $('[id$=recvid]').show();
+                $('[id$=startrec]').show();
+                $('[id$=btnStart2]').hide();
+                $('[id$=btnStop2]').show();
                 mediaRecorder2.start();
                 console.log(mediaRecorder2.state);
                 
             })
             stop2.addEventListener('click', (ev)=>{
+              $('[id$=startrec]').hide();
+              $('[id$=btnStart2]').show();
+              $('[id$=btnStop2]').hide();
+
                 mediaRecorder2.stop();
                 console.log(mediaRecorder2.state);
             });
