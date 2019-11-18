@@ -2877,7 +2877,7 @@ border: 2px outset  #000;
 }
 .polaroiditem:hover {
   filter: none;
-  transform: scale(1.1) rotate(0deg) !important;
+  transform:  rotate(0deg) !important;
   transition: all 0.35s;
 }
 .polaroiditem:hover .polaroid:before {

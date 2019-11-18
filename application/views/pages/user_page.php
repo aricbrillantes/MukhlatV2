@@ -126,8 +126,10 @@ include(APPPATH . 'views/header.php');
                                         elseif($post->theme==19): $theme="roomtheme-crosseddot";
                                         else: $theme="";
                                         endif;?>
-                                <div class = "polaroiditem polaroid homepostsborder <?php echo $theme?>" style = "margin-bottom: 10px; border-radius: 20px">
-                                    <div class = "user-post-heading no-margin" style="border-radius: 20px 20px 0px 0px;background-color: white">
+                                <div class = "polaroiditem polaroid homepostsborder col-xs-12 <?php echo $theme?>" style = "margin-bottom: 10px; border-radius: 20px;margin-right: 1%;">
+                                    <div class = "user-post-heading" style="border-radius: 20px 20px 0px 0px;background-color: white">
+                                        <img class = "img-circle" style = "margin: 10px 0px;" width = "40px" height = "40px" src = "<?php echo $post->profile_url ? base_url($post->profile_url) : base_url('images/default.jpg'); ?>"/> 
+                                        
                                         <a class = "text1color" href = "<?php echo base_url('user/profile/' . $post->user_id); ?>">
                                             <strong style = "font-size: 21px"><?php echo $post->first_name; ?></strong>
                                         </a> 
@@ -145,13 +147,12 @@ include(APPPATH . 'views/header.php');
                                         :
                                         <br>
                                         
-                                            <span class = "text-muted"> <i style = "font-size: 18px;padding-right: 10px"><?php echo date("F d, Y", strtotime($post->date_posted)); ?></i></span>
+                                            <span class = "text-muted"> <i style = "font-size: 18px;padding-left: 10px"><?php echo date("F d, Y", strtotime($post->date_posted)); ?></i></span>
                                     </div>
-                                    <div class = "col-xs-12 user-post-content no-padding" style="border-radius: 0px 0px 20px 20px">
+                                    <div class = "col-xs-12 user-post-content" style="border-radius: 0px 0px 20px 20px">
 <!--                                        <div class = "col-xs-2 text-center no-padding" style = "padding-left: 10px;">
                                             <img width = "40px" height = "40px" class = "img-circle" style = "margin: 10px 0px;" src = "<?php echo $user->profile_url ? base_url($user->profile_url) : base_url('images/default.jpg'); ?>"/>
                                         </div>-->
-                                        <div class = "col-xs-10 no-padding" style = "margin-top: 5px;">
                                             <?php if (!empty($post->post_title)): ?>
                                                 <!--<h5 class = "no-padding no-margin text-muted wrap"><strong style = "font-size: 21px"><?php echo utf8_decode($post->post_title); ?></strong></h5>-->
 <!--                                                <i class = "text-muted">
@@ -168,22 +169,22 @@ include(APPPATH . 'views/header.php');
                                             <!--<span class = "text-muted pull-right"> <i style = "font-size: 18px;padding-right: 10px"><?php echo date("F d, Y", strtotime($post->date_posted)); ?></i></span>-->
                                             <hr>
                                             <div class="polaroidwrapper">
-                                            <p class = "" style = "border-right: none;white-space: pre-wrap; margin-left: 10px"><?php echo utf8_decode($post->post_content); ?></p>
+                                            <p class = "whitebg" style = ""><?php echo utf8_decode($post->post_content); ?></p>
                                             <?php $attachments = $CI->attachment_model->get_post_attachments($post->post_id);?>
                                         
                                                 <?php //print_r($attachments); ?>
 
                                                 <?php foreach ($attachments as $attachment):
                                                     if ($attachment->attachment_type_id === '1'):?>
-                                                        <img src = "<?= base_url($attachment->file_url); ?>" width = "75%"  style="position:relative;margin-left: 15%" />
+                                                        <img src = "<?= base_url($attachment->file_url); ?>" width = "75%"  style="position:relative;" />
                                                         
 
                                                     <?php elseif ($attachment->attachment_type_id === '2'): ?>
-                                                        <audio src = "<?= base_url($attachment->file_url); ?>" style="width: 100%;margin-left: 10%" controls></audio>
+                                                        <audio src = "<?= base_url($attachment->file_url); ?>" style="width: 100%" controls></audio>
                                                         
 
                                                     <?php elseif ($attachment->attachment_type_id === '3'): ?>
-                                                        <video src = "<?= base_url($attachment->file_url); ?>" width = "100%" style="margin-left: 10%" controls/></video>
+                                                        <video src = "<?= base_url($attachment->file_url); ?>" width = "100%" controls/></video>
                                                     
 
                                                     <?php elseif ($attachment->attachment_type_id === '4'): ?>
@@ -193,7 +194,7 @@ include(APPPATH . 'views/header.php');
                                         
                                                     
                                                 <?php endforeach;?>
-                                            </div>
+                                            
                                         </div>
                                     </div>
                                 </div>

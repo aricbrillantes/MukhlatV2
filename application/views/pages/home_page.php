@@ -102,7 +102,7 @@
                                         elseif($post->theme==19): $theme="roomtheme-crosseddot";
                                         else: $theme="";
                                         endif;?>
-                                         <div class="polaroiditem polaroid homepostsborder <?php echo $theme?>" style="margin: 1%;">
+                                         <div class="polaroiditem polaroid homepostsborder col-xs-12 <?php echo $theme?>" style="margin: 1%;">
                                      
                                         <div class="whitebg">
                                         <img class = "img-circle" style = "margin: 10px 0px;" width = "40px" height = "40px" src = "<?php echo $post->profile_url ? base_url($post->profile_url) : base_url('images/default.jpg'); ?>"/> 
@@ -143,12 +143,14 @@
 
                                         <!-- <p style="font-size: 24px; display:inline"><?php echo $post->first_name . " " . $post->last_name ?> says:</p> -->
                                         
-                                        <br>
+                                        
+                                        <span class = "text-muted"> <i style = "font-size: 18px;padding-left: 15px"><?php echo date("F d, Y", strtotime($post->date_posted)); ?></i></span>
                                             <!-- <a class = "text1color" href = "<?php echo base_url('topic/view/' . $post->topic_id); ?>">
                                                 <p style="color: white"></p>
                                             </a> -->
+                                        <hr>
                                         <div class="polaroidwrapper">
-                                        <p class = "whitebg" style = "">"<?php echo utf8_decode($post->post_content); ?>"</p>
+                                        <p class = "whitebg" style = ""><?php echo utf8_decode($post->post_content); ?></p>
                                         
                                         <?php $attachments = $CI->attachment_model->get_post_attachments($post->post_id);?>
                                         
