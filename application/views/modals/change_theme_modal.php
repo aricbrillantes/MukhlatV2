@@ -1,5 +1,13 @@
 <link href="<?php echo base_url('lib/css/emoji.css'); ?>" rel="stylesheet">
+<style>
+.selected{ 
+   box-shadow:0px 0px 0px 15px #000;
+}
+.blocks{
+    ;
+}
 
+</style>
 <!-- Create Topic Modal -->
 <div id="edit-topic-modal" class="modal fade" role="dialog">
     <div class="modal-dialog">
@@ -34,39 +42,39 @@
                             <p id = "image-text2" class = "attach-btn-text"><i class = "fa fa-file-image-o"></i> Add Cover Image</p>
                         </label>
 </div>-->
-<div class="" style="transform: scale(0.4); position: absolute; top:-70%;left:-75%;" >
+<div class="" style="transform: scale(0.4); position: absolute; top:-65%;left:-80%;" >
     <table>
         <tr>
-            <td><div  class="editroomthemes roomtheme-arrow" style="" onclick="roomtheme(1)"></div></td>
-            <td><div  class="editroomthemes roomtheme-zigzag" style="" onclick="roomtheme(2)"></div></td>
-            <td><div  class="editroomthemes roomtheme-scales" style="" onclick="roomtheme(3)"></div></td>
-            <td><div  class="editroomthemes roomtheme-halfrhombe" style="" onclick="roomtheme(4)"></div></td>
+            <td><div  class="editroomthemes roomtheme-arrow blocks" style="" onclick="roomtheme(1)"></div></td>
+            <td><div  class="editroomthemes roomtheme-zigzag blocks" style="" onclick="roomtheme(2)"></div></td>
+            <td><div  class="editroomthemes roomtheme-scales blocks" style="" onclick="roomtheme(3)"></div></td>
+            <td><div  class="editroomthemes roomtheme-halfrhombe blocks" style="" onclick="roomtheme(4)"></div></td>
         </tr>
         <tr>
-            <td><div  class="editroomthemes roomtheme-marrakesh" style="" onclick="roomtheme(5)"></div></td>
-            <td><div  class="editroomthemes roomtheme-hearts" style="" onclick="roomtheme(6)"></div></td>
-            <td><div  class="editroomthemes roomtheme-stars" style="" onclick="roomtheme(7)"></div></td>
-            <td><div  class="editroomthemes roomtheme-seigaiha" style="" onclick="roomtheme(8)"></div></td>
+            <td><div  class="editroomthemes roomtheme-marrakesh blocks" style="" onclick="roomtheme(5)"></div></td>
+            <td><div  class="editroomthemes roomtheme-hearts blocks" style="" onclick="roomtheme(6)"></div></td>
+            <td><div  class="editroomthemes roomtheme-stars blocks" style="" onclick="roomtheme(7)"></div></td>
+            <td><div  class="editroomthemes roomtheme-seigaiha blocks" style="" onclick="roomtheme(8)"></div></td>
         </tr>
         <tr>
-            <td><div  class="editroomthemes roomtheme-bricks" style="" onclick="roomtheme(9)"></div></td>
-            <td><div  class="editroomthemes roomtheme-diacheckerboard" style="" onclick="roomtheme(10)"></div></td>
-            <td><div  class="editroomthemes roomtheme-tablecloth" style="" onclick="roomtheme(11)"></div></td>
-            <td><div  class="editroomthemes roomtheme-brady" style="" onclick="roomtheme(12)"></div></td>
+            <td><div  class="editroomthemes roomtheme-bricks blocks" style="" onclick="roomtheme(9)"></div></td>
+            <td><div  class="editroomthemes roomtheme-diacheckerboard blocks" style="" onclick="roomtheme(10)"></div></td>
+            <td><div  class="editroomthemes roomtheme-tablecloth blocks" style="" onclick="roomtheme(11)"></div></td>
+            <td><div  class="editroomthemes roomtheme-brady blocks" style="" onclick="roomtheme(12)"></div></td>
         </tr>
         <tr>
-            <td><div  class="editroomthemes roomtheme-argyle" style="" onclick="roomtheme(13)"></div></td>
-            <td><div  class="editroomthemes roomtheme-shippo" style="" onclick="roomtheme(14)"></div></td>
-            <td><div  class="editroomthemes roomtheme-waves" style="" onclick="roomtheme(15)"></div></td>
-            <td><div  class="editroomthemes roomtheme-polkadot" style="" onclick="roomtheme(16)"></div></td>
+            <td><div  class="editroomthemes roomtheme-argyle blocks" style="" onclick="roomtheme(13)"></div></td>
+            <td><div  class="editroomthemes roomtheme-shippo blocks" style="" onclick="roomtheme(14)"></div></td>
+            <td><div  class="editroomthemes roomtheme-waves blocks" style="" onclick="roomtheme(15)"></div></td>
+            <td><div  class="editroomthemes roomtheme-polkadot blocks" style="" onclick="roomtheme(16)"></div></td>
         </tr>
         <tr>
-            <td><div  class="editroomthemes roomtheme-honeycomb" style="" onclick="roomtheme(17)"></div></td>
-            <td><div  class="editroomthemes roomtheme-chocolateweave" style="" onclick="roomtheme(18)"></div></td>
-            <td><div  class="editroomthemes roomtheme-crosseddot" style="" onclick="roomtheme(19)"></div></td>
+            <td><div  class="editroomthemes roomtheme-honeycomb blocks" style="" onclick="roomtheme(17)"></div></td>
+            <td><div  class="editroomthemes roomtheme-chocolateweave blocks" style="" onclick="roomtheme(18)"></div></td>
+            <td><div  class="editroomthemes roomtheme-crosseddot blocks" style="" onclick="roomtheme(19)"></div></td>
         </tr>
     </table>
-</div><br><br><br><br><br><br><br><br><br><br><br>
+</div><br><br><br><br><br><br><br><br><br><br><br><br><br>
                     <select style="width:110px; height:40px;display: none"  class="form-control" name="change_topic_theme" id="change-topic-theme" onclick="">
                         <option value="1">Theme 1</option>
                         <option value="2">Theme 2</option>
@@ -90,7 +98,7 @@
                     </select>
 
                 </div>
-                <div class = "modal-footer" style = "padding: 5px; border-top: none; padding-bottom: 10px; padding-right: 10px;">
+                <div class = "" style = "padding: 5px; border-top: none; padding-bottom: 10px; padding-right: 10px;text-align: center;transform: scale(2);">
                     <button onmouseenter="playclip()" value = "<?php echo $c_topic->topic_id ?>" id = "edit-topic-save" class = "btn btn-primary btn-sm">Save</button>
                 </div>
             </form>
@@ -103,4 +111,9 @@
         function roomtheme(v){
             $('[id$=change-topic-theme]').val(v);
         }
+        
+           $('.blocks').click(function(){
+           $('.selected').removeClass('selected'); // removes the previous selected class
+           $(this).addClass('selected'); // adds the class to the clicked image
+       });
     </script>
