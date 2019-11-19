@@ -101,8 +101,12 @@ include(APPPATH . 'views/header.php');
                     </div>-->
 
                     <!-- User Activities -->
-                    <div class = "col-md-12 user-topic-container">
+                    <div class = "col-md-12 user-topic-container">                
+                    <?php if ($user->user_id === $logged_user->user_id): ?>
                         <h3 class = "text-info text-center user-activities-header modalbg"><strong class="textoutliner">My Activities</strong></h3>
+                    <?php else: ?>
+                        <h3 class = "text-info text-center user-activities-header modalbg"><strong class="textoutliner"><?php echo utf8_decode($user->first_name); ?>'s Activities</strong></h3>
+                    <?php endif; ?>   
                         <div class = "col-sm-12 user-activities-div">
                             <!-- POST PREVIEW -->
                             <?php foreach ($user->activities as $post): ?> <?php if($post->theme==1): $theme="roomtheme-arrow";

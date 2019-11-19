@@ -73,7 +73,7 @@ $topic = $_SESSION['current_topic'];
         <div class="modal-content" id="text">
             <div class="modal-header modal-heading modalbg notetextfix" id="margin">
                 <button type="button" class="close" style = "padding: 5px;" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title"><strong id="modaltitle">Share to <?php echo utf8_decode($topic->topic_name); ?></strong></h4>
+                <h4 class="modal-title textoutliner"><strong id="modaltitle">Share to <?php echo utf8_decode($topic->topic_name); ?></strong></h4>
             </div>
             <form enctype = "multipart/form-data" action = "<?php echo base_url('topic/post'); ?>" id = "create-post-form" method = "POST">
                 <div class="modal-body">
@@ -487,7 +487,7 @@ let constraintObj2 = {
         
         if(p==="text")
         {
-          $('[id$=modaltitle]').text("Add to diary");
+          $('[id$=modaltitle]').text("Add to board");
           $('[id$=post-title]').val(" ");
         }
 

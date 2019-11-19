@@ -5,7 +5,7 @@
         <div class="modal-content">
             <div class="modal-header modal-heading modalbg">
                 <button type="button" class="close" style = "padding: 5px;" data-dismiss="modal">&times;</button>
-                <h4 id = "reply-user" class="modal-title"><strong>Edit Profile</strong></h4>
+                <h4 id = "reply-user" class="modal-title textoutliner"><strong>Edit Profile</strong></h4>
             </div>
             <?php echo form_open_multipart('user/update/', array('id' => 'edit-profile-form')); ?>
             <div class="modal-body">

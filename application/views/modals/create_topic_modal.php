@@ -12,7 +12,7 @@
         <div class="modal-content" id="text">
             <div class="modal-header modal-heading modalbg notetextfix">
                 <button type="button" class="close" style = "padding: 5px;" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title"><strong>Choosing your room style</strong></h4>
+                <h4 class="modal-title textoutliner"><strong>Choosing your room style</strong></h4>
             </div>
             <form enctype = "multipart/form-data" id = "create-topic-form" action = "topic/create" method = "POST">
                 <div class="modal-body">

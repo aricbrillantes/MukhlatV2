@@ -29,8 +29,9 @@ $logged_user = $_SESSION['logged_user'];
            <?php endif;?>
             
             <div>
-                                <img class = "img-circle nav-prof-pic iconin" src = "<?php echo $post->user->profile_url ? base_url($post->user->profile_url) : base_url('images/default.jpg'); ?>"/>
-                <h4 class = "ellipsis"><strong><?php echo utf8_decode($post->post_title); ?></strong> <small><i><?php echo $post->user->first_name . " " . $post->user->last_name; ?></i></small></h4>
+                <a href="<?php echo base_url('user/profile/' . $post->user_id); ?>"><img class = "img-circle nav-prof-pic iconin" src = "<?php echo $post->user->profile_url ? base_url($post->user->profile_url) : base_url('images/default.jpg'); ?>"/></a>
+                <h4 class = "ellipsis"><strong><?php echo utf8_decode($post->post_title); ?></strong> 
+                    <small><a href="<?php echo base_url('user/profile/' . $post->user_id); ?>"><?php echo $post->user->first_name . " " . $post->user->last_name; ?></a></small></h4>
                 <p style="white-space: pre-wrap;"><?php echo utf8_decode($post->post_content); ?></p>
             </div>
         <!--                                    <div class = "col-xs-3 text-center" style = "padding: 0px;">

@@ -2164,9 +2164,10 @@ body::-webkit-scrollbar-thumb {
   position: relative;
   float: left;
   margin: 0 20px;
+  transition: transform 0.25s;
 }
 .picture:hover{
-    transform: scale(1.35);
+    transform: rotate(8deg) scale(1.10);
 
 }
 .hook {
@@ -2292,9 +2293,9 @@ body::-webkit-scrollbar-thumb {
     box-shadow:10px 10px 7px rgba(0,0,0,.7);
     -moz-box-shadow:10px 10px 7px rgba(0,0,0,.7);
     -webkit-box-shadow: 10px 10px 7px rgba(0,0,0,.7);
-    -webkit-transform: scale(1.25);
-    -moz-transform: scale(1.25);
-    -o-transform: scale(1.25);
+    -webkit-transform:scale(1.10) rotate(6deg);
+    -o-transform:scale(1.10) rotate(6deg);
+    -moz-transform:scale(1.10) rotate(6deg);
     position:relative;
     z-index:5;
 }

@@ -53,15 +53,16 @@ include(APPPATH . 'views/header.php');
         else: $theme="dooroom";
         endif;?>
         <div class="<?php echo $theme?> col-sm-12 col-md-11">
-        
+        <div class="col-sm-12 col-md-11">
             <center><div class="nameframe">
             <h4><strong><?php echo utf8_decode($c_topic->user->first_name); ?>'s Room</strong></h4>
             </div></center>
 
             <!--<strong>Theme: <?php echo utf8_decode($c_topic->theme); ?></strong>-->
             <a onmouseenter="playclip()" id="crettop" class ="btn btn-primary buttonsbgcolor textoutliner" href="#edit-topic-modal" data-toggle = "modal" style="margin:1%; width:20%"><img  src = "<?php echo base_url('icons/pencil.png'); ?>" style="width:10%;height:auto;cursor: pointer"/> Edit Room</a>
-            
-            
+        
+        </div>
+            <div>
             <!--Pictures-->
             <div class="col-sm-3"><br><br><br>
                 <a class="picture" href="#room_media_modal" data-toggle = "modal" style="color: black">
@@ -135,7 +136,7 @@ include(APPPATH . 'views/header.php');
             <?php if ($c_topic->creator_id === $logged_user->user_id): ?>
                     <center> <button onmouseenter="playclip()" onclick="toggleButton('text')" id="crettop" class = "btn btn-primary buttonsbgcolor textoutliner" href="#create-post-modal" data-toggle = "modal" style="font-size:22px;margin-left: 5%;margin-top: 1%">My Board</button></center><br><br>
                 <?php endif;?></div>
-                
+            </div>  
         </div>
    </div>
 <!--        <div class="doorroom col-sm-12 col-md-11">

@@ -3,7 +3,7 @@
         <div class="modal-content text-center">
             <div class="modal-header modal-heading modalbg">
                 <button type="button" class="close" style = "padding: 5px;" data-dismiss="modal">&times;</button>
-                <h4 id = "" class="modal-title"><strong>Log Out</strong></h4>
+                <h4 id = "" class="modal-title textoutliner"><strong>Log Out</strong></h4>
             </div>
             <div class="modal-body">
                 <span class = "text-warning"><i class = "fa fa-warning"></i> <strong style="font-size: 24px;">Are you sure you want to log out?</strong></span>
