@@ -22,19 +22,25 @@
 
                                                 <?php foreach ($attachments as $attachment):
                                                     if ($attachment->attachment_type_id === '1'):?>
-                                                        <div class="col-md-3">
-                                                        <p><?php echo utf8_decode($post->post_content); ?></p>
-                                                        <img src = "<?= base_url($attachment->file_url); ?>" width = "75%"  style="position:relative;" />
+                                                        <div class="col-md-3 <?php echo $theme?> polaroiditem polaroid homepostsborder" style="margin-right:1%;margin-bottom:1%">
+                                                            <div class="whitebg">
+                                                                <p><?php echo utf8_decode($post->post_content); ?></p>
+                                                                <img src = "<?= base_url($attachment->file_url); ?>" width = "75%"  style="position:relative;" />
+                                                            </div>
                                                         </div>
                                                 <?php elseif ($attachment->attachment_type_id === '2'):?>
-                                                        <div class="col-md-3">
-                                                        <p><?php echo utf8_decode($post->post_content); ?></p>
-                                                        <audio src = "<?= base_url($attachment->file_url); ?>" controls></audio>
+                                                        <div class="col-md-3 <?php echo $theme?> polaroiditem polaroid homepostsborder" style="margin-right:1%;margin-bottom:1%">
+                                                            <div class="whitebg">
+                                                                <p><?php echo utf8_decode($post->post_content); ?></p>
+                                                                <audio src = "<?= base_url($attachment->file_url); ?>" controls></audio>
+                                                            </div>
                                                         </div>
                                                 <?php elseif ($attachment->attachment_type_id === '3'):?>
-                                                        <div class="col-md-3">
-                                                        <p><?php echo utf8_decode($post->post_content); ?></p>
-                                                        <video src = "<?= base_url($attachment->file_url); ?>" width = "300px" controls/></video>
+                                                        <div class="col-md-3 <?php echo $theme?> polaroiditem polaroid homepostsborder" style="margin-right:1%;margin-bottom:1%">
+                                                            <div class="whitebg">
+                                                                <p><?php echo utf8_decode($post->post_content); ?></p>
+                                                                <video src = "<?= base_url($attachment->file_url); ?>" width = "300px" controls/></video>
+                                                            </div>
                                                         </div>
                     
                     

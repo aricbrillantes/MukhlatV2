@@ -111,4 +111,17 @@ $(document).ready(function() {
             }
         });
     });
+    
+//    sticker text to image
+//    var find = ";yum;";
+//    var repl = "<img src='" + "/MukhlatV2/images/stickers/yum.png'";
+//    var page = document.body.innerHTML;
+//    while (page.indexOf(find) >= 0) {
+//    var i = page.indexOf(find);
+//    var j = find.length;
+//    page = page.substr(0,i) + repl + page.substr(i+j);
+//    document.body.innerHTML = page;
+//    }
+    
+    
 });

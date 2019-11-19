@@ -1,6 +1,6 @@
 <link href="<?php echo base_url('lib/css/emoji.css'); ?>" rel="stylesheet">
 <style>
-.selected{ 
+.selected2{ 
    box-shadow:0px 0px 0px 15px #000;
 }
 
@@ -201,9 +201,9 @@
         function roomtheme(v){
             $('[id$=topic-theme]').val(v);
         }
-        $('.blocks').click(function(){
-           $('.selected').removeClass('selected'); // removes the previous selected class
-           $(this).addClass('selected'); // adds the class to the clicked image
+           $('.editroomthemes ').click(function(){
+           $('.selected2').removeClass('selected2'); // removes the previous selected class
+           $(this).addClass('selected2'); // adds the class to the clicked image
        });
     </script>
     
