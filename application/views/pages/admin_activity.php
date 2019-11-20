@@ -217,7 +217,7 @@
                         <h3 class = "no-padding text-info" style = "margin-top: 5px; margin-bottom: 5px; "><strong><?php echo $child->first_name . " " . $child->last_name ?></strong></h3>
                         <small class = "no-padding no-margin"><?php echo $child->email ?></small>
                         
-                        <p class = "wrap text-muted" style = ""><i><?php echo $child->description ? $child->description : 'Hello World!'; ?></i></p>
+                        <!-- <p class = "wrap text-muted" style = ""><i><?php echo $child->description ? $child->description : 'Hello World!'; ?></i></p> -->
                     </div>
                 </div>    
             </div>                 
@@ -229,6 +229,10 @@
                         <strong><?php echo $child->first_name; ?>'s Use Statistics</strong><br>
                     </h3>
                     <br>
+
+                    <div class=" col-md-12 col-sm-12 col-xs-12">
+                        <i><strong class = "" style = "display: inline-block; margin-right: 20px"><h5>(Last updated: <?php echo date_format(date_create($child->updated),"m/d/Y"); ?> )</h5></strong></i>
+                    </div><br><br><br>
 
                     <div class=" col-md-4 col-sm-4 col-xs-4">
                         <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Swears this week: </h4></strong> <h2 class = "" style = "display: inline-block;"><?php echo $child->current_total; ?></h2>
@@ -243,7 +247,7 @@
                     </div>
 
                     <div class=" col-md-12 col-sm-12 col-xs-12">
-                        <br><br><br>
+                        <br><br>
                     </div>
 
                     <div class="col-md-6 col-sm-6 col-xs-6">
