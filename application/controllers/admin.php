@@ -39,7 +39,64 @@ class Admin extends CI_Controller {
 
     public function activity() 
     {
+        $user_id = $this->uri->segment(3);
+
         $this->load->view('pages/admin_activity');
+
+        $this->db->select('*');
+        $this->db->from('tbl_infractions');
+        $this->db->where(array('tbl_infractions.user_id' => $user_id));
+
+        $infractions = $this->db->get();
+
+        if(!empty($infractions->result()))
+        {
+            $currentWeekInfractions = $infractions->row()->current_total;
+            $overallInfractions = $infractions->row()->overall_total;
+
+            $lastDate=date_create($infractions->row()->updated);
+            $curDate=date_create(date('Y-m-d'));
+
+            $FirstDay = date_create(date("Y-m-d", strtotime('sunday last week')));  
+            $LastDay = date_create(date("Y-m-d", strtotime('sunday this week')));               
+
+            //if table was updated last week, update for both stats for this week and last week
+            if(!($lastDate > $FirstDay && $lastDate < $LastDay))
+            {
+                $data = array
+                (
+                    'user_id' => $user_id,
+                    'last_total' => ($infractions->row()->current_total),
+                    'current_total' => 0,
+                    'overall_total' => 0+$overallInfractions,
+                    'current_avg' => 0,
+                    'last_avg' => ($infractions->row()->current_total)/7,
+                    'updated' => date('Y-m-d')
+                );
+
+                $this->db->select('*');
+                $this->db->from('tbl_infractions');
+                $this->db->where('user_id', $user_id);
+                $this->db->update('tbl_infractions', $data); 
+
+                header("Refresh:0");
+            }
+        } 
+
+        else
+        {
+            $data = array
+            (
+                'user_id' => $user_id,
+                'current_total' => 0,
+                'overall_total' => 0,
+                'current_avg' => 0/7,
+                'updated' => date('Y-m-d')
+            );
+
+            $this->db->insert('tbl_infractions', $data);
+            header("Refresh:0");
+        }
     }
 
     public function parent() 

@@ -265,7 +265,7 @@
                     <div class = "col-xs-6 no-padding no-margin" style="float: right; margin-bottom: 0px;">
                         <a class = "pull-right btn " style = "display: inline-block; float: right" href="<?php echo base_url('parents/settings/' . $child->user_id) ?>">
                             <h3 class = "no-padding text-info" style = "margin-bottom: 0px; float: right">
-                                <strong><h4>Manage <?php echo $child->first_name ?>'s Schedule</h4></strong>
+                                <u><strong><h4>Manage <?php echo $child->first_name ?>'s Schedule</h4></strong></u>
                             </h3> 
                         </a>
                         
