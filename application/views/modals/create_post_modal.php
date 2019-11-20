@@ -248,6 +248,9 @@ function readURL(input) {
   $('[id$=audio-text]').text('Add Sound');
   $('[id$=aud]').hide();
   $('[id$=vid]').hide();
+  $('[id$=pic_h]').hide();
+  $('[id$=vid_h]').hide();
+  $('[id$=snd_h]').hide();
   if (input.files && input.files[0]) {
     
     
@@ -283,6 +286,9 @@ function readVid(input){
   $('[id$=audio-text]').text('Add Sound');
   $('[id$=aud]').hide();
   $('[id$=pic]').hide();
+  $('[id$=pic_h]').hide();
+  $('[id$=vid_h]').hide();
+  $('[id$=snd_h]').hide();
   if(input.files[0] && input.files[0].size < 2000000) { 
         //Submit form
         $('[id$=vid_h]').hide();  
@@ -307,6 +313,9 @@ function readAud(input){
   $('[id$=video-text]').text('Add Video');
   $('[id$=pic]').hide();
   $('[id$=vid]').hide();
+  $('[id$=pic_h]').hide();
+  $('[id$=vid_h]').hide();
+  $('[id$=snd_h]').hide();
   if(input.files[0] && input.files[0].size < 2000000) { 
         //Submit form    
         $('[id$=snd_h]').hide();   
