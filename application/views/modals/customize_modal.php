@@ -2,13 +2,6 @@
 <!-- Customize Modal -->
 <head>
 
-<style>
-.selected{ 
-   box-shadow:0px 0px 0px 5px #000;
-}
-
-</style>
-
 </head>
 
 <div id="customize-theme" class="modal fade" role="dialog">
@@ -261,10 +254,7 @@
             }
             return "";
         }
-   $('.blocks').click(function(){
-   $('.selected').removeClass('selected'); // removes the previous selected class
-   $(this).addClass('selected'); // adds the class to the clicked image
-});
+
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close12")[0];
 var modal = document.getElementById('customize-theme');

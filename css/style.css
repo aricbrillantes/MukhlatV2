@@ -361,14 +361,14 @@ z-index: 50;
 }
 
 
-.blocks{
+.blocks, .blocks2{
     cursor: pointer;
     height:80px;
     width:80px;
     margin:10px;
     transition: transform 0.25s;
 }
-.blocks:hover{
+.blocks:hover, .blocks2:hover{
     transform: rotate(8deg) scale(1.25);
 }
 
@@ -3339,3 +3339,9 @@ background-size: 1800% 1800%;
         pointer-events:none;
 }
 
+.selected2{ 
+   box-shadow:0px 0px 0px 15px #000;
+}
+.selected{ 
+   box-shadow:0px 0px 0px 5px #000;
+}

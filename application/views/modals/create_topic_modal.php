@@ -1,10 +1,5 @@
 <link href="<?php echo base_url('lib/css/emoji.css'); ?>" rel="stylesheet">
-<style>
-.selected2{ 
-   box-shadow:0px 0px 0px 15px #000;
-}
 
-</style>
 <!-- Create Topic Modal -->
 <div id="create-topic-modal" class="modal fade" role="dialog">
     <div class="modal-dialog">
@@ -42,33 +37,33 @@
 <div class="" style="transform: scale(0.4); position: absolute; top:-60%;left:-80%;" >
     <table>
         <tr>
-            <td><div  class="editroomthemes roomtheme-arrow blocks" style="" onclick="roomtheme(1)"></div></td>
-            <td><div  class="editroomthemes roomtheme-zigzag blocks" style="" onclick="roomtheme(2)"></div></td>
-            <td><div  class="editroomthemes roomtheme-scales blocks" style="" onclick="roomtheme(3)"></div></td>
-            <td><div  class="editroomthemes roomtheme-halfrhombe blocks" style="" onclick="roomtheme(4)"></div></td>
+            <td><div  class="editroomthemes roomtheme-arrow blocks2" style="" onclick="roomtheme(1)"></div></td>
+            <td><div  class="editroomthemes roomtheme-zigzag blocks2" style="" onclick="roomtheme(2)"></div></td>
+            <td><div  class="editroomthemes roomtheme-scales blocks2" style="" onclick="roomtheme(3)"></div></td>
+            <td><div  class="editroomthemes roomtheme-halfrhombe blocks2" style="" onclick="roomtheme(4)"></div></td>
         </tr>
         <tr>
-            <td><div  class="editroomthemes roomtheme-marrakesh blocks" style="" onclick="roomtheme(5)"></div></td>
-            <td><div  class="editroomthemes roomtheme-hearts blocks" style="" onclick="roomtheme(6)"></div></td>
-            <td><div  class="editroomthemes roomtheme-stars blocks" style="" onclick="roomtheme(7)"></div></td>
-            <td><div  class="editroomthemes roomtheme-seigaiha blocks" style="" onclick="roomtheme(8)"></div></td>
+            <td><div  class="editroomthemes roomtheme-marrakesh blocks2" style="" onclick="roomtheme(5)"></div></td>
+            <td><div  class="editroomthemes roomtheme-hearts blocks2" style="" onclick="roomtheme(6)"></div></td>
+            <td><div  class="editroomthemes roomtheme-stars blocks2" style="" onclick="roomtheme(7)"></div></td>
+            <td><div  class="editroomthemes roomtheme-seigaiha blocks2" style="" onclick="roomtheme(8)"></div></td>
         </tr>
         <tr>
-            <td><div  class="editroomthemes roomtheme-bricks blocks" style="" onclick="roomtheme(9)"></div></td>
-            <td><div  class="editroomthemes roomtheme-diacheckerboard blocks" style="" onclick="roomtheme(10)"></div></td>
-            <td><div  class="editroomthemes roomtheme-tablecloth blocks" style="" onclick="roomtheme(11)"></div></td>
-            <td><div  class="editroomthemes roomtheme-brady blocks" style="" onclick="roomtheme(12)"></div></td>
+            <td><div  class="editroomthemes roomtheme-bricks blocks2" style="" onclick="roomtheme(9)"></div></td>
+            <td><div  class="editroomthemes roomtheme-diacheckerboard blocks2" style="" onclick="roomtheme(10)"></div></td>
+            <td><div  class="editroomthemes roomtheme-tablecloth blocks2" style="" onclick="roomtheme(11)"></div></td>
+            <td><div  class="editroomthemes roomtheme-brady blocks2" style="" onclick="roomtheme(12)"></div></td>
         </tr>
         <tr>
-            <td><div  class="editroomthemes roomtheme-argyle blocks" style="" onclick="roomtheme(13)"></div></td>
-            <td><div  class="editroomthemes roomtheme-shippo blocks" style="" onclick="roomtheme(14)"></div></td>
-            <td><div  class="editroomthemes roomtheme-waves blocks" style="" onclick="roomtheme(15)"></div></td>
-            <td><div  class="editroomthemes roomtheme-polkadot blocks" style="" onclick="roomtheme(16)"></div></td>
+            <td><div  class="editroomthemes roomtheme-argyle blocks2" style="" onclick="roomtheme(13)"></div></td>
+            <td><div  class="editroomthemes roomtheme-shippo blocks2" style="" onclick="roomtheme(14)"></div></td>
+            <td><div  class="editroomthemes roomtheme-waves blocks2" style="" onclick="roomtheme(15)"></div></td>
+            <td><div  class="editroomthemes roomtheme-polkadot blocks2" style="" onclick="roomtheme(16)"></div></td>
         </tr>
         <tr>
-            <td><div  class="editroomthemes roomtheme-honeycomb blocks" style="" onclick="roomtheme(17)"></div></td>
-            <td><div  class="editroomthemes roomtheme-chocolateweave blocks" style="" onclick="roomtheme(18)"></div></td>
-            <td><div  class="editroomthemes roomtheme-crosseddot blocks" style="" onclick="roomtheme(19)"></div></td>
+            <td><div  class="editroomthemes roomtheme-honeycomb blocks2" style="" onclick="roomtheme(17)"></div></td>
+            <td><div  class="editroomthemes roomtheme-chocolateweave blocks2" style="" onclick="roomtheme(18)"></div></td>
+            <td><div  class="editroomthemes roomtheme-crosseddot blocks2" style="" onclick="roomtheme(19)"></div></td>
         </tr>
     </table>
 </div><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
@@ -201,10 +196,6 @@
         function roomtheme(v){
             $('[id$=topic-theme]').val(v);
         }
-           $('.editroomthemes ').click(function(){
-           $('.selected2').removeClass('selected2'); // removes the previous selected class
-           $(this).addClass('selected2'); // adds the class to the clicked image
-       });
     </script>
     
 <!-- END SCRIPTS -->

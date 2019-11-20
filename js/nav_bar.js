@@ -113,15 +113,24 @@ $(document).ready(function() {
     });
     
 //    sticker text to image
-//    var find = ";yum;";
-//    var repl = "<img src='" + "/MukhlatV2/images/stickers/yum.png'";
-//    var page = document.body.innerHTML;
-//    while (page.indexOf(find) >= 0) {
-//    var i = page.indexOf(find);
-//    var j = find.length;
-//    page = page.substr(0,i) + repl + page.substr(i+j);
-//    document.body.innerHTML = page;
-//    }
+    var find = ";yum;";
+    var repl = "<img  width='50%' src='" + "/MukhlatV2/images/stickers/yum.png'";
+    var page = document.body.innerHTML;
+    while (page.indexOf(find) >= 0) {
+    var i = page.indexOf(find);
+    var j = find.length;
+    page = page.substr(0,i) + repl + page.substr(i+j);
+    document.body.innerHTML = page;
+    }
     
+    $('.editroomthemes').click(function(){
+           $('.selected2').removeClass('selected2'); // removes the previous selected class
+           $(this).addClass('selected2'); // adds the class to the clicked image
+       });
+       
+    $('.blocks').click(function(){
+    $('.selected').removeClass('selected'); // removes the previous selected class
+    $(this).addClass('selected'); // adds the class to the clicked image
+});
     
 });
