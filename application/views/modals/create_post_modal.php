@@ -72,7 +72,7 @@ $topic = $_SESSION['current_topic'];
         <!-- Create Topic Modal Content-->
         <div class="modal-content" id="text">
             <div class="modal-header modal-heading modalbg notetextfix" id="margin">
-                <button type="button" class="close" style = "padding: 5px;" data-dismiss="modal">&times;</button>
+                <button type="button" class="close" style = "padding: 5px;" data-dismiss="modal" >&times;</button>
                 <h4 class="modal-title textoutliner"><strong id="modaltitle">Share to <?php echo utf8_decode($topic->topic_name); ?></strong></h4>
             </div>
             <form enctype = "multipart/form-data" action = "<?php echo base_url('topic/post'); ?>" id = "create-post-form" method = "POST">
@@ -83,7 +83,7 @@ $topic = $_SESSION['current_topic'];
                     <div class="form-group" id="post-title-container"><!-- check if title is already taken -->
                         <!--<label for = "title">Make a title for your post:</label>-->
                         <!--<p class="lead emoji-picker-container">-->
-                        <input type="text" style="height: 50px;" maxlength = "100"  required class="form-control" name = "post_title" id = "post-title" placeholder = "My title"  data-emojiable="true" value=""/>
+                        <input class="title-text" type="text" style="height: 50px;" maxlength = "100"  required class="form-control" name = "post_title" id = "post-title"  placeholder = "My title"  data-emojiable="true" value="" />
                         <!--<p id="charsRemaining3">Characters Left: 100</p>-->
                         <div class="charLimitMessage" id="charLimitMessage3"><center>Oops! You've used up all the letters and numbers for your title!</center></div>
                         <!--<span id="start_button" onclick="startDictation2(event)" style="display: inline-block;"><img border="0" alt="Start" id="start_img" src="https://www.google.com/intl/en/chrome/assets/common/images/content/mic.gif"></span>-->
@@ -105,7 +105,7 @@ $topic = $_SESSION['current_topic'];
                     <div class="form-group" ><!-- check if description exceeds n words-->
                         <!--<label for = "content">Make the content of your post:</label>-->
                         <!--<p class="lead emoji-picker-container">-->
-                        <textarea class = "form-control" style="height: 100px;" maxlength = "16000" required name = "post_content" id = "post-content" placeholder = "My thoughts" data-emojiable="true"></textarea>
+                        <textarea class = "form-control" style="height: 100px;" maxlength = "16000" required name = "post_content" id = "post-content" placeholder = "My thoughts" data-emojiable="false"></textarea>
                         <!--<p id="charsRemaining4">Characters Left: 16000</p>-->
                         <div class="charLimitMessage" id="charLimitMessage4"><center>Oops! You've used up all the letters and numbers for your message!</center></div>
                     </div>
@@ -133,19 +133,20 @@ $topic = $_SESSION['current_topic'];
                         <!-- Attach a file: -->
                         <!--IMAGE-->
                         <label id = "img-label" class="btn btn-primary buttonsbgcolor borderbuttonoutline">
-                            <input id = "attach-img" accept = "image/*" type="file" name = "post_image" style = "display: none;" onchange="readURL(this);">
+                            <input id = "attach-img" accept = "image/*" type="file" name = "post_image" style = "display: none;" onchange="fileAdded();readURL(this);">
                             <p id = "image-text" class = "attach-btn-text"><i class = "fa fa-file-image-o"></i> Add Picture</p>
                         </label>
 
                         <!--AUDIO-->
                         <label id = "audio-label" class="btn btn-primary buttonsbgcolor borderbuttonoutline">
-                            <input id = "attach-audio" accept = "audio/*" type="file" name = "post_audio" style = "display: none;" onchange="readAud(this);">
+                            <input id = "attach-audio" accept = "audio/*" type="file" name = "post_audio" style = "display: none;" onchange="fileAdded();readAud(this);">
                             <p id = "audio-text" class = "attach-btn-text"><i class = "fa fa-file-audio-o"></i> Add Sound</p>
+ 
                         </label>
 
                         <!--VIDEO-->
                         <label id = "video-label" class="btn btn-primary buttonsbgcolor borderbuttonoutline">
-                            <input id = "attach-video" accept = "video/*" type="file" name = "post_video" style = "display: none;" onchange="readVid(this);">
+                            <input id = "attach-video" accept = "video/*" type="file" name = "post_video" style = "display: none;" onchange="fileAdded();readVid(this);">
                             <p id = "video-text" class = "attach-btn-text"><i class = "fa fa-file-video-o"></i> Add Video</p>
                         </label>
 
@@ -165,12 +166,15 @@ $topic = $_SESSION['current_topic'];
                   <source src="#" id="video_here">
                   hi
               </video>  
+              <h2 id="addwarning" > add something to share! <h2>
               <h2 id="pic_h" style="display: none">The picture you used is too big sorry!</h2>
               <h2 id="vid_h" style="display: none">The video you used is too big sorry!</h2>
               <h2 id="snd_h" style="display: none">The sound you used is too big sorry!</h2>
+              <h2 id="titlewarning" style="display: none">Add a title!</h2>
+              <h2 id="contentwarning" style="display: none">Write your thoughts!</h2>
                 </div>
                 <div class = "modal-footer" style = "padding: 5px; border-top: none; padding-bottom: 10px; padding-right: 10px;">
-                    <a id = "create-post-btn" class ="btn btn-primary buttonsbgcolor" data-toggle = "modal" onClick="putImage()">Share</a>
+                    <a id = "create-post-btn" class ="btn btn-primary buttonsbgcolor" data-toggle = "modal" onclick="" style="display: none">Share</a>
                 </div>
                 
 
@@ -213,60 +217,122 @@ $topic = $_SESSION['current_topic'];
 
 
 <script>
+var hasfile=0;
+var toggle;
+function fileAdded()
+{
+  if(document.getElementById('post-content').value=="")
+            {
+              $('[id$=create-post-btn]').hide();
+              $('[id$=contentwarning]').show();
+            }
+            else{
+              $('[id$=create-post-btn]').show();
+              $('[id$=contentwarning]').hide();
+            }
+  hasfile=1;
+  $('[id$=addwarning]').hide();
+}
+
+// close()
+// {
+//   document.getElementById('').value=""
+// }
+
 
 function readURL(input) {
-
+  $('[id$=attach-audio]').val("");
+  $('[id$=attach-video]').val("");
+  $('[id$=image-text]').text('Change Picture');
+  $('[id$=video-text]').text('Add Video');
+  $('[id$=audio-text]').text('Add Sound');
+  $('[id$=aud]').hide();
+  $('[id$=vid]').hide();
   if (input.files && input.files[0]) {
     
     
-    if(input.files[0] && input.files[0].size < 2000000) { // 10 MB (this size is in bytes)
-        //Submit form        
+    if(input.files[0] && input.files[0].size < 2000000) { 
+        //Submit form   
+        $('[id$=pic_h]').hide();    
+        if (input.files && input.files[0]) {
+        var reader = new FileReader();
+    
+        reader.onload = function(e) {
+        $('#pic').attr('src', e.target.result);
+        }
+    
+        reader.readAsDataURL(input.files[0]);
+        }
+  $('[id$=pic]').show(); 
     } else {
       $('[id$=pic_h]').show();
+      $('[id$=pic]').hide();
+      $('[id$=create-post-btn]').hide();
     }
   }
   
-  if (input.files && input.files[0]) {
-    var reader = new FileReader();
-    
-    reader.onload = function(e) {
-      $('#pic').attr('src', e.target.result);
-    }
-    
-    reader.readAsDataURL(input.files[0]);
-  }
-  $('[id$=pic]').show();
+ 
+  
 }
 
 function readVid(input){
-
-  if(input.files[0] && input.files[0].size < 2000000) { // 10 MB (this size is in bytes)
-        //Submit form        
-    } else {
-      $('[id$=vid_h]').show();
-    }
-
-  var $source = $('#video_here');
+  $('[id$=attach-audio]').val("");
+  $('[id$=attach-img]').val("");
+  $('[id$=video-text]').text('Change Video');
+  $('[id$=image-text]').text('Add Image');
+  $('[id$=audio-text]').text('Add Sound');
+  $('[id$=aud]').hide();
+  $('[id$=pic]').hide();
+  if(input.files[0] && input.files[0].size < 2000000) { 
+        //Submit form
+        $('[id$=vid_h]').hide();  
+        var $source = $('#video_here');
   $source[0].src = URL.createObjectURL(input.files[0]);
   $source.parent()[0].load();
-  $('[id$=vid]').show();
+  $('[id$=vid]').show();        
+    } else {
+      $('[id$=vid_h]').show();
+      $('[id$=vid]').hide();
+      $('[id$=create-post-btn]').hide();
+    }
+
+  
 }
 
 function readAud(input){
-
-  if(input.files[0] && input.files[0].size < 2000000) { // 10 MB (this size is in bytes)
-        //Submit form        
-    } else {
-      $('[id$=snd_h]').show();
-    }
-    
-  var $source = $('#audio_here');
+  $('[id$=attach-video]').val("");
+  $('[id$=attach-img]').val("");
+  $('[id$=audio-text]').text('Change Sound');
+  $('[id$=image-text]').text('Add Image');
+  $('[id$=video-text]').text('Add Video');
+  $('[id$=pic]').hide();
+  $('[id$=vid]').hide();
+  if(input.files[0] && input.files[0].size < 2000000) { 
+        //Submit form    
+        $('[id$=snd_h]').hide();   
+        var $source = $('#audio_here');
   $source[0].src = URL.createObjectURL(input.files[0]);
   $source.parent()[0].load();
-  $('[id$=aud]').show();
+  $('[id$=aud]').show();   
+    } else {
+      $('[id$=snd_h]').show();
+      $('[id$=aud]').hide();
+      $('[id$=create-post-btn]').hide();
+    }
+    
+ 
 }
 
-
+// function inputchange(input)
+// {
+//   if(input.value)
+//   {
+//     $('[id$=create-post-btn]').show();
+//   }
+//   else{
+//     $('[id$=create-post-btn]').hide();
+//   }
+// }
 
 
 
@@ -457,6 +523,7 @@ let constraintObj2 = {
         $('[id$=reply]').val(0);
         $('[id$=shout]').val(0);
         $('[id$=post-title]').val("");
+        toggle=p;
         
 
         if(p==="media")
@@ -467,6 +534,7 @@ let constraintObj2 = {
           $('[id$=attachment-preview]').show();
           $('[id$=modaltitle]').text("Add stuff");
           $('[id$=post-title]').val(" ");
+          $('[id$=titlewarning]').hide();
         }
 
         if(p==="audio")
@@ -489,6 +557,11 @@ let constraintObj2 = {
         {
           $('[id$=modaltitle]').text("Add to board");
           $('[id$=post-title]').val(" ");
+          $('[id$=addwarning]').hide();
+          $('[id$=btnStart]').hide();
+          $('[id$=btnStart2]').hide();
+          $('[id$=contentwarning]').show();
+          $('[id$=titlewarning]').hide();
         }
 
         if(p==="shout")
@@ -496,10 +569,17 @@ let constraintObj2 = {
           $('[id$=post-title-container]').show();
           $('[id$=shout]').val(1);
           $('[id$=modaltitle]').text("Give a shout out!");
+          $('[id$=addwarning]').hide();
+          $('[id$=btnStart]').hide();
+          $('[id$=btnStart2]').hide();
+          $('[id$=titlewarning]').show();
         }
         
         if(p==="reply")
         {
+          $('[id$=addwarning]').show();
+          $('[id$=btnStart]').show();
+          $('[id$=btnStart2]').show();
           $('[id$=img-label]').show();
           $('[id$=audio-label]').show();
           $('[id$=video-label]').show();
@@ -507,39 +587,37 @@ let constraintObj2 = {
           $('[id$=reply]').val(1);
           $('[id$=post-title]').val(" ");
           $('[id$=modaltitle]').text("Share it on the chat room");
+          $('[id$=titlewarning]').hide();
         }
         
     }
 
-</script>
 
 
-<script type="text/javascript">
 
+  // function showImage(src, target) 
+  // {
+  //   var fr = new FileReader();
 
-  function showImage(src, target) 
-  {
-    var fr = new FileReader();
+  //   fr.onload = function()
+  //   {
+  //     // target.src = fr.result;
+  //   }
 
-    fr.onload = function()
-    {
-      // target.src = fr.result;
-    }
-
-    fr.readAsDataURL(src.files[0]);
+  //   fr.readAsDataURL(src.files[0]);
 
     
-  }
+  // }
 
-  function putImage() 
-  {
-    var src = document.getElementById("attach-img");
-    var target = document.getElementById("target");
-    // showImage(src, target);
+  // function putImage() 
+  // {
+  //   var src = document.getElementById("attach-img");
+  //   var target = document.getElementById("target");
+  //   // showImage(src, target);
 
-    if((src.files[0].size * 0.000001) > 1.6)
-      alert("file too big!");
-  }
+  //   if((src.files[0].size * 0.000001) > 1.6)
+  //     alert("file too big!");
+  // }
 
 
     var warningCount=0, count=0;
@@ -550,7 +628,7 @@ let constraintObj2 = {
     {
         
 //        document.getElementById('charsRemaining3').innerHTML='Characters Left: '+(charCount1-document.getElementById('post-title').value.length);
-        document.getElementById('charsRemaining4').innerHTML='Characters Left: '+(charCount2-document.getElementById('post-content').value.length);
+        // document.getElementById('charsRemaining4').innerHTML='Characters Left: '+(charCount2-document.getElementById('post-content').value.length);
         
 //        document.getElementById('post-title').value=document.getElementById('post-title').value.replace("❤","❤");
 //        document.getElementById('post-title').value=document.getElementById('post-title').value.replace("😞","☹");
@@ -584,10 +662,15 @@ let constraintObj2 = {
             else
             {
 //                    document.getElementById("profanityWarning").innerHTML = '';
+              
                 x.style.display = "none";
                 document.getElementById('create-post-btn').style.background=getCookie("ButtonColor");
                 document.getElementById('create-post-btn').innerHTML="Share";
                 document.getElementById('create-post-btn').style.pointerEvents="auto";
+                if(hasfile==0)
+              {
+                $('[id$=create-post-btn]').hide();
+              }
             }
 ////              
 //            if(document.getElementById('post-title').value.length>=100)
@@ -606,6 +689,29 @@ let constraintObj2 = {
             else
                 document.getElementById('charLimitMessage4').style.display = "none";
 
+            if(document.getElementById('post-title').value=="" && toggle=="shout")
+            {
+              $('[id$=create-post-btn]').hide();
+              $('[id$=titlewarning]').show();
+            }
+            else
+            {
+              $('[id$=create-post-btn]').show();
+              $('[id$=titlewarning]').hide();
+              
+            }
+            if(document.getElementById('post-content').value=="")
+            {
+              $('[id$=create-post-btn]').hide();
+              $('[id$=contentwarning]').show();
+            }
+            else{
+              if(hasfile==1)
+              {
+                $('[id$=create-post-btn]').show();
+              }
+              $('[id$=contentwarning]').hide();
+            }
     });  
 </script>
                     
