@@ -337,7 +337,7 @@ a
 }
 
 .user-topic-header{
-    background-color: #297d62;
+    background-color: #1f8478;
     color: white;
     margin-top: 0px;
     padding: 5px;
@@ -447,7 +447,7 @@ a
 }
 
 .user-activities-header{
-    background-color: #297d62;
+    background-color: #1f8478;
     color: white;
     margin-top: 0px;
     margin-bottom: 0px;
@@ -492,7 +492,7 @@ p{
 }
 
 .modal-heading{
-    background-color: #297d62; 
+    background-color: #1f8478; 
     padding-bottom: 5px; 
     padding-top: 5px;
     border-top-left-radius: 4px;
