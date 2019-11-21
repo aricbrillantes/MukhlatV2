@@ -59,17 +59,26 @@
 </nav><br><br><br>
 
 <body class = "sign-in">
+
+   
+
     <div id = "admin-page" class = "container" style = "margin-top: 30px;">
         <div class = "row">
             <!-- Admin Header -->
             <div class = "col-md-8 col-md-offset-2 content-container container-fluid" style = "margin-bottom: 0px;">
-                <h3 class = "text-info no-margin" style = "display: inline-block; padding-left: 10px; margin-top: 5px;"><strong><?php echo $logged_user->first_name . " " . $logged_user->last_name ?></strong></h3>
+                <h3 class = "text-info no-margin" style = "display: inline-block; margin-top: 5px;"><strong><?php echo $logged_user->first_name . " " . $logged_user->last_name ?></strong></h3>
+                
+
+                <a href = "#create-announcement-modal" data-toggle = "modal" class = "btn btn-primary btn-block" style="font-size:14px; margin-top: 15px;"><i class = "fa fa-globe"></i> Create Announcement</a> 
+
+                <!-- <button id="crettop" class = "container col-md-6 btn btn-primary  textoutliner" href="#"  >Create Announcement</button> -->
+
                 <!-- <a href = "<?php echo base_url('signin/logout'); ?>" class = "pull-right btn btn-primary btn-md" style = "margin-right: 20px;">Log Out</a> --><br><br>
 
                 <!-- <a href = "<?php echo base_url('admin/network'); ?>" class = "btn btn-primary btn-block"><i class = "fa fa-globe"></i> View Interaction Network of Mukhlat</a> -->
+                 
             </div>
-            
-            
+
             <!-- Admin Content -->
             <div class = "col-md-8 col-md-offset-2 content-container">
                 <!-- <div class = "col-md-12">
@@ -193,5 +202,6 @@
 
 <?php
     //include(APPPATH . "views/modals/user_record_modal.php");
+    include(APPPATH . 'views/modals/create_announcement_modal.php');
     include(APPPATH . 'views/modals/logout_confirm_modal_parents.php');
 ?>

@@ -234,7 +234,8 @@ class Topic extends CI_Controller {
             if(isset($_SESSION['logged_user']))
             $logged_user = $_SESSION['logged_user'];
 
-        $topic = $_SESSION['current_topic'];
+        if(isset($_SESSION['current_topic']))
+            $topic = $_SESSION['current_topic'];
 
         $data = array
         (
@@ -829,5 +830,31 @@ class Topic extends CI_Controller {
 
         echo $html;
     }
+
+
+    // ANNOUNCEMENT FUNCTION
+   
+    public function announcement() 
+    {
+
+       $input = $this->input;
+
+        if(isset($_SESSION['logged_user']))
+            $logged_user = $_SESSION['logged_user'];
+
+        $data = array
+        (
+            'user_id' => $logged_user->user_id,
+            'announcement' => utf8_encode(htmlspecialchars($input->post('announcement_content'))),
+            
+        );
+
+        $this->db->insert("tbl_announcements", $data);
+
+        redirect(base_url('home'));
+    }
+    
+
+
 
 }

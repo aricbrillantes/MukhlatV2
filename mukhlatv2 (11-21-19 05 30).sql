@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 4.9.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 14, 2019 at 10:25 AM
--- Server version: 5.7.17-log
--- PHP Version: 7.1.11
+-- Generation Time: Nov 21, 2019 at 10:30 AM
+-- Server version: 8.0.18
+-- PHP Version: 7.3.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -29,6 +29,27 @@ USE mukhlatv2;
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tbl_announcements`
+--
+
+CREATE TABLE `tbl_announcements` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `announcement` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `tbl_announcements`
+--
+
+INSERT INTO `tbl_announcements` (`id`, `user_id`, `announcement`) VALUES
+(1, 1, 'Aye'),
+(2, 2, 'Hello'),
+(3, 2, 'This is an announcement');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tbl_attachments`
 --
 
@@ -45,44 +66,44 @@ CREATE TABLE `tbl_attachments` (
 -- Dumping data for table `tbl_attachments`
 --
 
-INSERT INTO `tbl_attachments` (`attachment_id`, `post_id`, `file_url`, `attachment_type_id`, `date_uploaded`, `caption`) VALUES
-(1, 216, './uploads/_216/49318f6b15a05f9409acffc819759967.png', 1, '2019-11-05 05:35:08', ''),
-(2, 218, './uploads/_218/569bedb8643c7eea983287ed34a6f941.mp3', 2, '2019-11-05 05:39:45', ''),
-(3, 221, './uploads/_221/cc57a683745d8d6820b6733a48061a72.png', 1, '2019-11-05 05:44:51', ''),
-(4, 222, './uploads/_222/42edd60e020aa17d3c5edca08f5c1647.mp3', 2, '2019-11-05 05:45:06', ''),
-(5, 228, './uploads/_228/d34d721e9714a625ec987afed85c50e5.png', 1, '2019-11-05 05:49:29', ''),
-(6, 229, './uploads/_229/1ee7bd163a7ef95ec715982ddfc8d3ff.mp3', 2, '2019-11-05 05:51:05', ''),
-(7, 234, './uploads/_234/7facbffda2ed8f76a1b0e412e11a418a.png', 1, '2019-11-05 05:53:56', ''),
-(8, 237, './uploads/_237/f7da0a7668d5fe8e2b5a63856b363f15.mp3', 2, '2019-11-05 05:55:09', ''),
-(9, 241, './uploads/_241/67b1f3d12ce1efeb1e087422a7499453.png', 1, '2019-11-05 05:56:30', ''),
-(10, 244, './uploads/_244/d297292a6e803418a76405464e1de746.mp3', 2, '2019-11-05 05:57:10', ''),
-(11, 246, './uploads/_246/3b0ad71588c2fc00e2f61740d77fec89.png', 1, '2019-11-05 06:00:35', ''),
-(12, 247, './uploads/_247/4fc84da3cdb6c45b73b429b31a3fe44c.mp3', 2, '2019-11-05 06:00:51', ''),
-(13, 252, './uploads/_252/4c3b73231382be91f211501b21e71cdc.png', 1, '2019-11-05 06:04:59', ''),
-(14, 255, './uploads/_255/38d7fb93ac0f250346a6c5679a81a95d.mp3', 2, '2019-11-05 06:12:48', ''),
-(15, 259, './uploads/_259/5155f9c06f104a2f1b50b2344e077d48.png', 1, '2019-11-05 06:33:30', ''),
-(16, 263, './uploads/_263/e8cef2fbbca20aed42f5c5b131607100.mp3', 2, '2019-11-05 06:39:24', ''),
-(17, 268, './uploads/_268/ae09a2b99ac96a5fcadd845b955f93d4.png', 1, '2019-11-05 06:40:49', ''),
-(18, 269, './uploads/_269/a9c43c7f5ecb876c8ccf2f21ab090e0b.mp3', 2, '2019-11-05 06:41:00', ''),
-(19, 271, './uploads/_271/09b9538ded2f2c0f122b282fae9dbb77.png', 1, '2019-11-05 06:41:47', ''),
-(20, 273, './uploads/_273/1a3c0b4c63169043280f03ecfdf5f4ad.mp3', 2, '2019-11-05 06:42:24', ''),
-(21, 280, './uploads/_280/cc0496db195c1ec537c607114e269a02.png', 1, '2019-11-05 06:43:55', ''),
-(22, 281, './uploads/_281/ecdfecee2c8f3ea3e47092dc0060a000.mp3', 2, '2019-11-05 06:44:04', ''),
-(23, 284, './uploads/_284/728962afbb8d426f2ceb3fea5ae95ddb.png', 1, '2019-11-05 06:45:03', ''),
-(24, 285, './uploads/_285/a3a1cb06738e9929c38b705ddaabdce3.png', 1, '2019-11-05 06:45:09', ''),
-(25, 286, './uploads/_286/5c8d063322bfcf63776508e0c733e9d4.mp3', 2, '2019-11-05 06:45:25', ''),
-(26, 293, './uploads/_293/862dd45c0d5d188d04fc5484d769060f.JPG', 1, '2019-11-05 06:55:14', ''),
-(27, 294, './uploads/_294/2354c7f9c9e010b74fff1ed2e596a9ec.JPG', 1, '2019-11-05 06:55:23', ''),
-(28, 295, './uploads/_295/bd412734e42f0d81ad56c4fff259ced5.JPG', 1, '2019-11-05 06:55:34', ''),
-(29, 299, './uploads/_299/ad4bb0eaecbc05535faac23ee24b15b9.png', 1, '2019-11-05 07:20:15', ''),
-(30, 302, './uploads/_302/057985b3378fc6b20eb411ba3f6ae4f2.png', 1, '2019-11-05 07:20:49', ''),
-(31, 303, './uploads/_303/cfb53ddcfde025245c30e012f6f225b2.mp3', 2, '2019-11-05 07:21:00', ''),
-(32, 309, './uploads/_309/0aa22bc190e3b556dbdd5d3d353586f4.png', 1, '2019-11-06 00:56:05', ''),
-(33, 310, './uploads/_310/9468f444b33b6cf78e60b7fdfe99a7cb.png', 1, '2019-11-06 00:56:21', ''),
-(34, 311, './uploads/_311/3d00b246711587aadf09439856ed94e3.png', 1, '2019-11-06 00:56:37', ''),
-(35, 312, './uploads/_312/ad51799902efef5e87c17892f0a16624.mp3', 2, '2019-11-06 00:57:54', ''),
-(36, 313, './uploads/_313/d10d4e08c9d774587ae1e13c1aa50a37.mp4', 3, '2019-11-06 00:58:42', ''),
-(37, 315, './uploads/_315/35a2e874cd67a4c8cdf0ee0e912a2578.mp3', 2, '2019-11-06 02:54:25', '');
+INSERT INTO `tbl_attachments` (`attachment_id`, `post_id`, `file_url`, `attachment_type_id`, `caption`) VALUES
+(1, 216, './uploads/_216/49318f6b15a05f9409acffc819759967.png', 1, ''),
+(2, 218, './uploads/_218/569bedb8643c7eea983287ed34a6f941.mp3', 2, ''),
+(3, 221, './uploads/_221/cc57a683745d8d6820b6733a48061a72.png', 1, ''),
+(4, 222, './uploads/_222/42edd60e020aa17d3c5edca08f5c1647.mp3', 2, ''),
+(5, 228, './uploads/_228/d34d721e9714a625ec987afed85c50e5.png', 1, ''),
+(6, 229, './uploads/_229/1ee7bd163a7ef95ec715982ddfc8d3ff.mp3', 2, ''),
+(7, 234, './uploads/_234/7facbffda2ed8f76a1b0e412e11a418a.png', 1, ''),
+(8, 237, './uploads/_237/f7da0a7668d5fe8e2b5a63856b363f15.mp3', 2, ''),
+(9, 241, './uploads/_241/67b1f3d12ce1efeb1e087422a7499453.png', 1, ''),
+(10, 244, './uploads/_244/d297292a6e803418a76405464e1de746.mp3', 2, ''),
+(11, 246, './uploads/_246/3b0ad71588c2fc00e2f61740d77fec89.png', 1, ''),
+(12, 247, './uploads/_247/4fc84da3cdb6c45b73b429b31a3fe44c.mp3', 2, ''),
+(13, 252, './uploads/_252/4c3b73231382be91f211501b21e71cdc.png', 1, ''),
+(14, 255, './uploads/_255/38d7fb93ac0f250346a6c5679a81a95d.mp3', 2, ''),
+(15, 259, './uploads/_259/5155f9c06f104a2f1b50b2344e077d48.png', 1, ''),
+(16, 263, './uploads/_263/e8cef2fbbca20aed42f5c5b131607100.mp3', 2, ''),
+(17, 268, './uploads/_268/ae09a2b99ac96a5fcadd845b955f93d4.png', 1, ''),
+(18, 269, './uploads/_269/a9c43c7f5ecb876c8ccf2f21ab090e0b.mp3', 2, ''),
+(19, 271, './uploads/_271/09b9538ded2f2c0f122b282fae9dbb77.png', 1, ''),
+(20, 273, './uploads/_273/1a3c0b4c63169043280f03ecfdf5f4ad.mp3', 2, ''),
+(21, 280, './uploads/_280/cc0496db195c1ec537c607114e269a02.png', 1, ''),
+(22, 281, './uploads/_281/ecdfecee2c8f3ea3e47092dc0060a000.mp3', 2, ''),
+(23, 284, './uploads/_284/728962afbb8d426f2ceb3fea5ae95ddb.png', 1, ''),
+(24, 285, './uploads/_285/a3a1cb06738e9929c38b705ddaabdce3.png', 1, ''),
+(25, 286, './uploads/_286/5c8d063322bfcf63776508e0c733e9d4.mp3', 2, ''),
+(26, 293, './uploads/_293/862dd45c0d5d188d04fc5484d769060f.JPG', 1, ''),
+(27, 294, './uploads/_294/2354c7f9c9e010b74fff1ed2e596a9ec.JPG', 1, ''),
+(28, 295, './uploads/_295/bd412734e42f0d81ad56c4fff259ced5.JPG', 1, ''),
+(29, 299, './uploads/_299/ad4bb0eaecbc05535faac23ee24b15b9.png', 1, ''),
+(30, 302, './uploads/_302/057985b3378fc6b20eb411ba3f6ae4f2.png', 1, ''),
+(31, 303, './uploads/_303/cfb53ddcfde025245c30e012f6f225b2.mp3', 2, ''),
+(32, 309, './uploads/_309/0aa22bc190e3b556dbdd5d3d353586f4.png', 1, ''),
+(33, 310, './uploads/_310/9468f444b33b6cf78e60b7fdfe99a7cb.png', 1, ''),
+(34, 311, './uploads/_311/3d00b246711587aadf09439856ed94e3.png', 1, ''),
+(35, 312, './uploads/_312/ad51799902efef5e87c17892f0a16624.mp3', 2, ''),
+(36, 313, './uploads/_313/d10d4e08c9d774587ae1e13c1aa50a37.mp4', 3, ''),
+(37, 315, './uploads/_315/35a2e874cd67a4c8cdf0ee0e912a2578.mp3', 2, '');
 
 -- --------------------------------------------------------
 
@@ -209,20 +230,20 @@ CREATE TABLE `tbl_infractions` (
 --
 
 INSERT INTO `tbl_infractions` (`id`, `user_id`, `current_total`, `last_total`, `overall_total`, `last_avg`, `current_avg`, `updated`) VALUES
-(1, 26, 0, 0, 0, 0, 0, '0000-00-00 00:00:00'),
-(2, 27, 0, 0, 0, 0, 0, '0000-00-00 00:00:00'),
-(3, 28, 0, 0, 0, 0, 0, '0000-00-00 00:00:00'),
-(4, 29, 0, 0, 0, 0, 0, '0000-00-00 00:00:00'),
-(5, 30, 0, 0, 0, 0, 0, '0000-00-00 00:00:00'),
-(6, 31, 0, 0, 0, 0, 0, '0000-00-00 00:00:00'),
-(7, 32, 0, 0, 0, 0, 0, '0000-00-00 00:00:00'),
-(8, 33, 0, 0, 0, 0, 0, '0000-00-00 00:00:00'),
-(9, 34, 0, 0, 0, 0, 0, '0000-00-00 00:00:00'),
-(10, 35, 0, 0, 0, 0, 0, '0000-00-00 00:00:00'),
-(11, 36, 0, 0, 0, 0, 0, '0000-00-00 00:00:00'),
-(12, 37, 0, 0, 0, 0, 0, '0000-00-00 00:00:00'),
-(19, 38, 4, 1, 29, 0.142857, 0.571429, '2019-11-14 00:00:00'),
-(14, 39, 0, 0, 0, 0, 0, '0000-00-00 00:00:00');
+(1, 26, 0, 0, 0, 0, 0, '2019-11-20 00:00:00'),
+(2, 27, 0, 0, 0, 0, 0, '2019-11-12 00:00:00'),
+(3, 28, 0, 0, 0, 0, 0, '2019-11-14 00:00:00'),
+(4, 29, 0, 0, 0, 0, 0, '2019-11-01 00:00:00'),
+(5, 30, 0, 0, 0, 0, 0, '2019-11-15 00:00:00'),
+(6, 31, 0, 0, 0, 0, 0, '2019-11-13 00:00:00'),
+(7, 32, 0, 0, 0, 0, 0, '2019-11-14 00:00:00'),
+(8, 33, 0, 0, 0, 0, 0, '2019-11-16 00:00:00'),
+(9, 34, 0, 0, 0, 0, 0, '2019-11-10 00:00:00'),
+(10, 35, 0, 0, 0, 0, 0, '2019-11-15 00:00:00'),
+(11, 36, 0, 0, 0, 0, 0, '2019-11-14 00:00:00'),
+(12, 37, 0, 0, 13, 0, 0, '2019-11-20 00:00:00'),
+(13, 38, 2, 4, 33, 0.571429, 0.285714, '2019-11-20 00:00:00'),
+(14, 39, 0, 0, 0, 0, 0, '2019-11-20 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -451,9 +472,7 @@ INSERT INTO `tbl_posts` (`post_id`, `root_id`, `parent_id`, `user_id`, `topic_id
 (312, 312, 0, 38, 38, ' ', 'i dont play no games unless we talkin fortniteÂ ððð', '2019-11-06 08:57:54', 0, 0, 0),
 (313, 313, 0, 38, 38, ' ', 'fortnietÂ ððððð', '2019-11-06 08:58:42', 0, 0, 0),
 (315, 315, 0, 38, 38, ' ', 'hello', '2019-11-06 10:54:25', 0, 0, 0),
-(316, 316, 0, 38, 38, ' ', 'ðððððð¡ð¡ð¡ð¡ð¡ð¡ð¡ð¡', '2019-11-06 11:24:07', 0, 0, 0),
-(361, 361, 0, 38, 38, ' ', 'this is shit', '2019-11-14 17:14:03', 0, 0, 0),
-(362, 362, 0, 38, 38, ' ', 'fuck shit ass', '2019-11-14 17:19:14', 0, 1, 0);
+(316, 316, 0, 38, 38, ' ', 'ðððððð¡ð¡ð¡ð¡ð¡ð¡ð¡ð¡', '2019-11-06 11:24:07', 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -961,6 +980,12 @@ INSERT INTO `tbl_usertimes` (`id`, `user_id`, `time_setting`, `warning`, `keep`,
 --
 
 --
+-- Indexes for table `tbl_announcements`
+--
+ALTER TABLE `tbl_announcements`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `tbl_attachments`
 --
 ALTER TABLE `tbl_attachments`
@@ -1062,10 +1087,16 @@ ALTER TABLE `tbl_usertimes`
 --
 
 --
+-- AUTO_INCREMENT for table `tbl_announcements`
+--
+ALTER TABLE `tbl_announcements`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `tbl_attachments`
 --
 ALTER TABLE `tbl_attachments`
-  MODIFY `attachment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `attachment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT for table `tbl_chatmsgs`
@@ -1077,7 +1108,7 @@ ALTER TABLE `tbl_chatmsgs`
 -- AUTO_INCREMENT for table `tbl_infractions`
 --
 ALTER TABLE `tbl_infractions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `tbl_moderator_invite`
@@ -1101,7 +1132,7 @@ ALTER TABLE `tbl_notifications`
 -- AUTO_INCREMENT for table `tbl_posts`
 --
 ALTER TABLE `tbl_posts`
-  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=363;
+  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=367;
 
 --
 -- AUTO_INCREMENT for table `tbl_topics`
@@ -1113,13 +1144,13 @@ ALTER TABLE `tbl_topics`
 -- AUTO_INCREMENT for table `tbl_users`
 --
 ALTER TABLE `tbl_users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
 -- AUTO_INCREMENT for table `tbl_usertimes`
 --
 ALTER TABLE `tbl_usertimes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

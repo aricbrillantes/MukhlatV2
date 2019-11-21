@@ -98,7 +98,7 @@
 
                                     <div class = "col-xs-12 col-sm-12 col-md-12 content-container container-fluid row" style="margin-left: 5px">
                                         <select class = "form-control col-md-6 col-sm-12 col-xs-12" style="height:auto;max-width:45%;max-height:30px;font-size:auto" id="DOBMonth" onclick="choosebday()">
-                                            <option>Month</option>
+                                            <option value="00">Month</option>
                                             <option value="01">January</option>
                                             <option value="02">February</option>
                                             <option value="03">March</option>
@@ -114,7 +114,7 @@
                                         </select>
 
                                         <select class = "form-control col-md-12 col-sm-4 col-xs-4" style="height:auto;max-width:25%;max-height:30px;font-size: auto" id="DOBDay" onclick="choosebday()">
-                                            <option>Day</option>
+                                            <option value="00">Day</option>
                                             <option value="01">1</option>
                                             <option value="02">2</option>
                                             <option value="03">3</option>
@@ -149,7 +149,7 @@
                                         </select>
 
                                         <select class = "form-control col-md-12 col-sm-4 col-xs-4" style="height:auto;max-width:100%;max-height:30px;font-size: auto" id="DOBYear" onclick="choosebday()">
-                                            <option>Year</option>
+                                            <option value="0000">Year</option>
                                             <option value="2006">2006</option>
                                             <option value="2007">2007</option>
                                             <option value="2008">2008</option>
@@ -229,12 +229,13 @@
             document.getElementById("sign_up_email_parent").value = document.getElementById("sign_up_email").value;
             document.getElementById("sign-up-birthday").style.visibility = "visible";
             // document.getElementById("birthday-2").style.visibility = "visible";
+
         }
 
         else
         {
             document.getElementById("parent-email").style.visibility = "hidden";
-            document.getElementById("sign-up-birthday").style.visibility = "hidden";
+            // document.getElementById("sign-up-birthday").style.visibility = "hidden";
             // document.getElementById("birthday-2").style.visibility = "hidden";
         }
     };
