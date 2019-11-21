@@ -19,8 +19,7 @@ class Signin extends CI_Controller {
         $fields = array('email' => $input->post('sign_up_email'));
         $user = $this->user->get_user(false, false, $fields);
 
-        if (!$user 
-            && !empty(htmlspecialchars($input->post('sign_up_birthday', TRUE))) ) 
+        if (!$user && $input->post('sign_up_role', TRUE == 2)) 
         {
             $data = array(
                 'first_name' => utf8_encode(htmlspecialchars($input->post('first_name', TRUE))),
@@ -32,14 +31,12 @@ class Signin extends CI_Controller {
                 'role_id' => htmlspecialchars($input->post('sign_up_role', TRUE)),
                 'is_enabled' => false,
             );
+
             $this->db->insert('tbl_users', $data);
-            
-            // echo 1;
+
         } 
 
-        else if (!$user 
-            && empty(htmlspecialchars($input->post('sign_up_birthday', TRUE))) 
-            &&  empty(htmlspecialchars($input->post('sign_up_email_parent', TRUE))) ) 
+        else if (!$user && $input->post('sign_up_role', TRUE == 1) || $input->post('sign_up_role', TRUE == 3)) 
         {
             $data = array(
                 'first_name' => utf8_encode(htmlspecialchars($input->post('first_name', TRUE))),
