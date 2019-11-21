@@ -66,11 +66,22 @@ class Topic extends CI_Controller {
                 //check if user is a moderator or the creator
 
                 $this->load->view('pages/topic_page', $data);
-            } else {
-                $this->load->view('errors/error_404');
+            } 
+
+            else 
+            {
+                // $this->load->view('errors/error_404');
+                $homeURL = base_url('home');
+                header("Location: $homeURL");
             }
-        } else {
-            $this->load->view('errors/error_404');
+
+        } 
+
+        else 
+        {
+            // $this->load->view('errors/error_404');
+            $homeURL = base_url('home');
+            header("Location: $homeURL");
         }
     }
 

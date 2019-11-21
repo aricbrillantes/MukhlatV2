@@ -29,8 +29,14 @@ class User extends CI_Controller {
             $data['user'] = $this->users->get_user(true, true, array('user_id' => $user_id));
 
             $this->load->view('pages/user_page', $data);
-        } else {
-            $this->load->view('errors/error_404');
+        } 
+
+        else 
+        {
+            // $this->load->view('errors/error_404');
+            // $this->load->view('errors/error_404');
+            $homeURL = base_url('home');
+            header("Location: $homeURL");
         }
     }
 

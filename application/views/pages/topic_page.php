@@ -1,6 +1,8 @@
 <?php
-include(APPPATH . 'views/header.php');
-    $c_topic = $_SESSION['current_topic'];
+    include(APPPATH . 'views/header.php');
+    
+    if(isset($_SESSION['current_topic']))
+        $c_topic = $_SESSION['current_topic'];
 
     $CI =&get_instance();
     $CI->load->model('attachment_model');
