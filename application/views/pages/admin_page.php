@@ -94,7 +94,7 @@
                         <li class="active"><a data-toggle="pill" href="#user-list-1">Children</a></li>
                         <li class=""><a data-toggle="pill" href="#user-list-2">Parents</a></li>
                         <li class=""><a data-toggle="pill" href="#user-list-3">Administrators</a></li>
-                        
+                        <li class=""><a data-toggle="pill" href="#announcements">Announcements</a></li>
                     </ul>
                 </div>
 
@@ -187,6 +187,33 @@
                        
                             <?php endif; ?> 
 
+                        <?php endforeach; ?>
+                    </ul>
+
+                    <ul id = "announcements" class = "list-group tab-pane fade container-fluid">
+                        <?php 
+                            //load models
+                            $CI->load->model('topic_model');
+                            $CI->load->model('user_model');
+
+                            //get announcements
+                            $announcements = $CI->topic_model->get_announcements();
+
+                            //get teacher's details for each announcement
+                            foreach ($announcements as $announcement):
+
+                                $details = $CI->user_model->view_adult($announcement->user_id);
+
+                                foreach ($details->result() as $teacher) //store teacher's details in array
+                                    $data['user'] = $CI->user_model->get_details(true, true, array('user_id' => $announcement->user_id));
+                                
+                        ?>
+
+                            <li class = "list-group-item admin-list-item">
+                                <h4 class = "no-padding admin-list-name">Teacher <?php echo $teacher->first_name?> says: </h4> 
+                                <h3 class = "no-padding admin-list-name">"<?php echo $announcement->announcement ?>"</h3>
+                            </li>                                    
+                       
                         <?php endforeach; ?>
                     </ul>
                 </div>

@@ -26,7 +26,7 @@
 
     $CI->load->model('user_model');
 
-    $email = $CI->user_model->get_email($id);
+    $email = $CI->user_model->get_details($id);
 
     // print_r($email);
 
@@ -41,13 +41,13 @@
     { 
         $CI =&get_instance();
             
-        $data['user'] = $CI->user_model->get_user(true, true, array('user_id' => $details->user_id));
+        $data['user'] = $CI->user_model->get_details(true, true, array('user_id' => $details->user_id));
 
-        print($details->user_id);
+        // print($details->email);
 
     }
 
-    $parent = $CI->user_model->view_parent($id);
+    $parent = $CI->user_model->view_adult($id);
 
     $children = $CI->user_model->view_child($details->email);
     

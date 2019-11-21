@@ -236,4 +236,14 @@ class Topic_model extends CI_Model {
         $user->moderated_topics = $this->get_moderated_topics($user->user_id);
     }
 
+    public function get_announcements() 
+    {
+        $announcements = $this->db->select('*')
+                ->from('tbl_announcements');
+
+        $announcements = $this->db->get()->result();
+
+        return $announcements;
+    }
+
 }

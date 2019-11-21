@@ -27,7 +27,7 @@ class User_model extends CI_Model {
         return $query->get()->result();
     }
 
-    public function get_email($id) 
+    public function get_details($id) 
     {
         $query = $this->db->select('user_id, email')
                 ->from('tbl_users')
@@ -116,8 +116,8 @@ class User_model extends CI_Model {
         return $query;
     }
 
-    //function for getting specific child's data
-    public function view_parent($user_id) 
+    //function for getting specific parent or teacher's data
+    public function view_adult($user_id) 
     {        
         $query = $this->db->select('*')
                 ->from('tbl_users')
