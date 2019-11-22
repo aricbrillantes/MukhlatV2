@@ -995,7 +995,18 @@
                                 <p class="iconin" style="font-size:14px !important;text-align: left !important;"><img  src = "<?php echo base_url('icons/paintbrush.png'); ?>" class="iconin" style="width:100%;height:auto"/><!Style></p>
                                 <span class="tooltiptext">Change what you see!</span>
                             </a>
-                                    </a>
+                            
+                                    
+
+                            <a onmouseenter="playclip()" class="navbaricons" href="#view-notes-modal" data-toggle = "modal">
+                                <p class="iconin" style="font-size:14px !important;text-align: left !important;"><img  src = "<?php echo base_url('icons/notif.png'); ?>" class="iconin" style="width:100%;height:auto"/><!Style></p>
+                                <span class="tooltiptext">Notes</span>
+                            </a>
+
+                            <a onmouseenter="playclip()" class="navbaricons" href="#view-announcements-modal" data-toggle = "modal">
+                                <p class="iconin" style="font-size:14px !important;text-align: left !important;"><img  src = "<?php echo base_url('icons/notif.png'); ?>" class="iconin" style="width:100%;height:auto"/><!Style></p>
+                                <span class="tooltiptext">Announcements</span>
+                            </a>
                             
 <!--                            <a onmouseenter="playclip()" class="navbaricons" id = "notif-btn" href="#notif-modal" data-toggle = "modal" <?php echo (int) $logged_user->unread_notifs > 0 ? "data-value = \"" . $logged_user->unread_notifs . "\"" : "" ?>>
                                     <?php if ((int) $logged_user->unread_notifs > 0): ?>
@@ -2232,7 +2243,8 @@ function readcontent(value) {
     </script>
 <!-- End Nav Bar -->
 
-
+<?php include(APPPATH . 'views/modals/parent_notes_modal.php'); ?>
+<?php include(APPPATH . 'views/modals/teacher_announcements_modal.php'); ?>
 <?php include(APPPATH . 'views/modals/logout_confirm_modal.php'); ?>
 <?php include(APPPATH . 'views/modals/notifications_modal.php'); ?>
 <?php include(APPPATH . 'views/modals/customize_modal.php'); ?>

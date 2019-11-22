@@ -32,6 +32,30 @@ class Parents extends CI_Controller {
         $this->load->view('modals/user_record_modal', $data);
     }
 
+    // PARENT NOTE FUNCTION
+   
+    public function note() 
+    {
+        $input = $this->input;
+
+        $this->load->helper('url');
+        $child_id = $this->uri->segment(3);
+
+        if(isset($_SESSION['logged_user']))
+            $logged_user = $_SESSION['logged_user'];
+
+        $data = array
+        (
+            'child_id' => $child_id,
+            'parent_id' => $logged_user->user_id,
+            'note' => utf8_encode(htmlspecialchars($input->post('note_content'))),
+        );
+
+        $this->db->insert("tbl_notes", $data);
+
+        redirect('parents/activity/' . $child_id);
+    }
+
     public function activity() 
     {
         $user_id = $this->uri->segment(3);

@@ -189,6 +189,7 @@
 
 <body class = "sign-in">
     <div class = "container" style = "">
+        
         <div class = "row" >
 
             <?php foreach ($children->result() as $child): 
@@ -243,6 +244,7 @@
                 }
             
             ?>
+            <a href = "#create-note-modal" data-toggle = "modal" class = "btn btn-primary btn-block" style="font-size:14px; margin-top: 15px;"><i class = "fa fa-globe"></i> Send a Note to <?php echo $child->first_name?></a> 
 
              <div class = "col-xs-16 col-md-8 col-md-offset-2 content-container container-fluid " style = "margin-bottom: 5px;">
                 <div class = "col-xs-16 col-md-16 col-md-offset-0 content-container container-fluid" style="border:0px; margin-bottom: 0px;">
@@ -281,20 +283,21 @@
                     </h3>
                     <br>
 
+                    
                     <div class=" col-md-12 col-sm-12 col-xs-12">
-                        <i><strong class = "" style = "display: inline-block; margin-right: 20px"><h5>(Last updated: <?php echo date_format(date_create($child->updated),"m/d/Y"); ?> )</h5></strong></i>
-                    </div><br><br><br>
+                        <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Notes to <?php echo $child->first_name;?>: </h4></strong> <h2 class = "" style = "display: inline-block;"></h2>
+                        <?php 
+                            
+                            $CI->load->model('user_model'); //load models
+                            $notes = $CI->user_model->get_notes($id); //get notes
 
-                    <div class=" col-md-4 col-sm-4 col-xs-4">
-                        <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Swears this week: </h4></strong> <h2 class = "" style = "display: inline-block;"><?php echo $child->current_total; ?></h2>
-                    </div>
+                            foreach ($notes as $note): ?>
 
-                    <div class=" col-md-4 col-sm-4 col-xs-4">
-                        <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Swears last week: </h4></strong> <h2 class = "" style = "display: inline-block;"><?php echo $child->last_total; ?></h2>
-                    </div>
-
-                    <div class=" col-md-4 col-sm-4 col-xs-4">
-                        <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Lifetime swears: </h4></strong> <h2 class = "" style = "display: inline-block;"><?php echo $child->overall_total; ?></h2>
+                            <li class = "list-group-item admin-list-item">
+                                <h3 class = "no-padding admin-list-name">"<?php echo $note->note ?>"</h3>
+                            </li>
+                                                               
+                        <?php endforeach; ?>
                     </div>
 
                     <div class=" col-md-12 col-sm-12 col-xs-12">
@@ -321,7 +324,36 @@
                         <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Shout outs: </h4></strong> <h2 class = "" style = "display: inline-block;"><?php echo $shoutOuts; ?></h2>
                     </div>
 
+
+                    <div class=" col-md-12 col-sm-12 col-xs-12">
+                        <br><br>
+                    </div>
+
+
+
+
+                    <div class=" col-md-12 col-sm-12 col-xs-12">
+                        <i><strong class = "" style = "display: inline-block; margin-right: 20px"><h5>(Last updated: <?php echo date_format(date_create($child->updated),"m/d/Y"); ?> )</h5></strong></i>
+                    </div><br><br><br>
+
+                    <div class=" col-md-4 col-sm-4 col-xs-4">
+                        <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Swears this week: </h4></strong> <h2 class = "" style = "display: inline-block;"><?php echo $child->current_total; ?></h2>
+                    </div>
+
+                    <div class=" col-md-4 col-sm-4 col-xs-4">
+                        <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Swears last week: </h4></strong> <h2 class = "" style = "display: inline-block;"><?php echo $child->last_total; ?></h2>
+                    </div>
+
+                    <div class=" col-md-4 col-sm-4 col-xs-4">
+                        <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Lifetime swears: </h4></strong> <h2 class = "" style = "display: inline-block;"><?php echo $child->overall_total; ?></h2>
+                    </div>
+
+                    <div class=" col-md-12 col-sm-12 col-xs-12">
+                        <br><br>
+                    </div>
+
                     
+
 
                     <div class = "col-sm-12 " style = "margin-bottom: 40px">
                         <ul class="nav nav-pills nav-justified">
@@ -480,6 +512,7 @@
 </html>
 <script type="text/javascript" src="<?php echo base_url("/js/parent.js"); ?>"></script>
 <?php
+    include(APPPATH . 'views/modals/create_note_modal.php');
     include(APPPATH . 'views/modals/network_view_modal.php');
     include(APPPATH . 'views/modals/logout_confirm_modal_parents.php');
 ?>

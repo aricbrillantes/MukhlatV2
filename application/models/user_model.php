@@ -209,6 +209,17 @@ class User_model extends CI_Model {
         header("Refresh:0");
     }
 
+    public function get_notes($child_id) 
+    {
+        $notes = $this->db->select('*')
+                ->from('tbl_notes')
+                ->where("child_id = ", $child_id);
+
+        $notes = $this->db->get()->result();
+
+        return $notes;
+    }
+
     public function get_child_records($user_id) 
     {
         $this->load->model('topic_model', 'topics');
