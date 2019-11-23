@@ -18,7 +18,7 @@
             </div>
             
             <div class="modal-body content-container container-fluid">
-                <div class = "row col-md-12">
+                <div class = "row col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                          <?php
                             foreach ($c_topic->posts as $post):
                                 if($post->reply==0):?>
@@ -26,7 +26,7 @@
 
                                                 <?php foreach ($attachments as $attachment):
                                                     if ($attachment->attachment_type_id === '1'):?>
-                                                        <div class="col-md-3 <?php echo $theme?> polaroiditem polaroid homepostsborder" style="margin-right:1%;margin-bottom:1%">
+                                                        <div class=" <?php echo $theme?> elements-resizer col-xs-12 col-sm-12 polaroid homepostsborder" style="margin-right:1%;margin-bottom:1%">
                                                             <div class="whitebg">
                                                             <img class = "img-circle" style = "margin: 10px 0px;" width = "40px" height = "40px" src = "<?php echo $post->user->profile_url ? base_url($post->user->profile_url) : base_url('images/default.jpg'); ?>"/>
                                                             <small><a href="<?php echo base_url('user/profile/' . $post->user_id); ?>"><?php echo $post->user->first_name;?></a></small>
@@ -35,12 +35,12 @@
                                                             <hr>
                                                             <div class=" polaroidwrapper">
                                                                 <p><?php echo utf8_decode($post->post_content); ?></p>
-                                                                <img src = "<?= base_url($attachment->file_url); ?>" width = "75%"  style="position:relative;" />
+                                                                <img src = "<?= base_url($attachment->file_url); ?>" width = "98%"  style="position:relative;" />
                                                             </div>
                                                             </div>
                                                         </div>
                                                 <?php elseif ($attachment->attachment_type_id === '2'):?>
-                                                        <div class="col-md-3 <?php echo $theme?> polaroiditem polaroid homepostsborder" style="margin-right:1%;margin-bottom:1%">
+                                                        <div class="<?php echo $theme?> elements-resizer col-xs-12 col-sm-12 polaroid homepostsborder" style="margin-right:1%;margin-bottom:1%">
                                                             <div class="whitebg">
                                                             <img class = "img-circle" style = "margin: 10px 0px;" width = "40px" height = "40px" src = "<?php echo $post->user->profile_url ? base_url($post->user->profile_url) : base_url('images/default.jpg'); ?>"/>
                                                             <small><a href="<?php echo base_url('user/profile/' . $post->user_id); ?>"><?php echo $post->user->first_name;?></a></small>
@@ -49,12 +49,12 @@
                                                             <hr>
                                                             <div class=" polaroidwrapper">
                                                                 <p><?php echo utf8_decode($post->post_content); ?></p>
-                                                                <audio src = "<?= base_url($attachment->file_url); ?>" controls></audio>
+                                                                <audio src = "<?= base_url($attachment->file_url); ?>" style="width: 99%" controls></audio>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                 <?php elseif ($attachment->attachment_type_id === '3'):?>
-                                                        <div class="col-md-3 <?php echo $theme?> polaroiditem polaroid homepostsborder" style="margin-right:1%;margin-bottom:1%">
+                                                        <div class="<?php echo $theme?> elements-resizer col-xs-12 col-sm-12 polaroid homepostsborder" style="margin-right:1%;margin-bottom:1%">
                                                             <div class="whitebg">
                                                             <img class = "img-circle" style = "margin: 10px 0px;" width = "40px" height = "40px" src = "<?php echo $post->user->profile_url ? base_url($post->user->profile_url) : base_url('images/default.jpg'); ?>"/>
                                                             <small><a href="<?php echo base_url('user/profile/' . $post->user_id); ?>"><?php echo $post->user->first_name;?></a></small>
@@ -63,7 +63,7 @@
                                                             <hr>
                                                             <div class=" polaroidwrapper">
                                                                 <p><?php echo utf8_decode($post->post_content); ?></p>
-                                                                <video src = "<?= base_url($attachment->file_url); ?>" width = "300px" controls/></video>
+                                                                <video src = "<?= base_url($attachment->file_url); ?>" width = "99%" controls/></video>
                                                             </div>
                                                             </div>
                                                         </div>
