@@ -105,7 +105,7 @@ $topic = $_SESSION['current_topic'];
                     <div class="form-group" ><!-- check if description exceeds n words-->
                         <!--<label for = "content">Make the content of your post:</label>-->
                         <!--<p class="lead emoji-picker-container">-->
-                        <textarea class = "form-control" style="height: 100px;" maxlength = "16000" required name = "post_content" id = "post-content" placeholder = "My thoughts" data-emojiable="false"></textarea>
+                        <textarea class = "form-control" style="height: 100px;" maxlength = "16000" required name = "post_content" id = "post-content" placeholder = "My thoughts" data-emojiable="true"></textarea>
                         <!--<p id="charsRemaining4">Characters Left: 16000</p>-->
                         <div class="charLimitMessage" id="charLimitMessage4"><center>Oops! You've used up all the letters and numbers for your message!</center></div>
                     </div>
