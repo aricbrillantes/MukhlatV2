@@ -31,7 +31,7 @@
     <?php
         include(APPPATH . 'views/navigation_bar.php'); ?>
        
-   <div class = "col-sm-12 col-md-10"> 
+   <div class = "col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12"> 
         <!--<div id = "topic-page" class = "container page" style = "min-height: 100%; height: 100%;">test</div>-->
         <?php if($c_topic->theme==1): $theme="roomtheme-arrow";
         elseif($c_topic->theme==2): $theme="roomtheme-zigzag";
@@ -54,8 +54,8 @@
         elseif($c_topic->theme==19): $theme="roomtheme-crosseddot";
         else: $theme="dooroom";
         endif;?>
-        <div class="<?php echo $theme?> col-sm-12 col-md-11">
-        <div class="col-sm-12 col-md-11">
+        <div class="<?php echo $theme?> col-xs-12 col-sm-12 col-md-9 col-lg-9 col-xl-9">
+        <div class="col-sm-12 col-md-12 col-xs-12">
             <center><div class="nameframe">
             <h4><strong><?php echo utf8_decode($c_topic->user->first_name); ?>'s Room</strong></h4>
             </div></center>
@@ -66,7 +66,7 @@
         </div>
             <div>
             <!--Pictures-->
-            <div class="col-sm-3"><br><br><br>
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3"><br><br><br>
                 <a class="picture" href="#room_media_modal" data-toggle = "modal" style="color: black">
                     <div style="margin-left: 60px;margin-bottom: 100%">
                         <figure class="boxside boxtop"><i class = "glyphicon glyphicon-picture fa-2x" style="margin-top: 25px"></i></figure>
@@ -101,7 +101,7 @@
             </div>
               
                 <!--Shout out-->
-           <ul class="stickynote col-sm-3">
+           <ul class="stickynote col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
                <li class="stickytext">
                    <a href="#room_shout_modal" data-toggle = "modal" class="stickyact">
                         <?php
@@ -123,7 +123,7 @@
                 
                 <!--regular text, emojis and stickers-->
                 <div>
-                <div  class="col-sm-3 pull-right chalkboard" style="min-height:300px; max-height:300px">
+                <div  class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 pull-right chalkboard" style="min-height:300px; max-height:300px">
                     <?php
                         foreach ($c_topic->posts as $post):
                             if($post->shout==0 && $post->reply==0):?>
@@ -140,7 +140,82 @@
                 <?php endif;?></div>
             </div>  
         </div>
+        
+<div class="" >
+    <!--<div class = "home-sidebar content-container" style="background:darkgray;">-->
+    <!--Header-->
+
+    <!-- Topic Post List -->
+                    
+    <div class = "topic-post-list col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3" style = "padding-top:70px">
+        <!--<div class = "list-group" style = "padding-top: 15%">-->
+           <!--List Entry--> 
+           <?php
+           foreach ($c_topic->posts as $post):
+                                    if($post->reply==1):
+            ?>
+            <!--<a href = "javascript: void(0);" class = "btn btn-link list-group-item list-entry no-up-down-pad topic-post-entry" data-value = "<?php echo $post->post_id; ?>">-->
+          
+           <!--if logged user sent the message-->
+           <?php if ($post->user->user_id === $logged_user->user_id): ?> 
+           <div class = "col-xs-11 messagesender">
+          
+          <!--if another user sent message-->
+           <?php else: ?> 
+           <div class = "col-xs-11 messagereceiver">
+           <?php endif;?>
+            
+            <div>
+                <a href="<?php echo base_url('user/profile/' . $post->user_id); ?>"><img class = "img-circle nav-prof-pic iconin" src = "<?php echo $post->user->profile_url ? base_url($post->user->profile_url) : base_url('images/default.jpg'); ?>"/></a>
+                <h4 class = "ellipsis"><strong><?php echo utf8_decode($post->post_title); ?></strong> 
+                    <small><a href="<?php echo base_url('user/profile/' . $post->user_id); ?>"><?php echo $post->user->first_name . " " . $post->user->last_name; ?></a></small></h4>
+                <p style="white-space: pre-wrap;"><?php echo utf8_decode($post->post_content); ?></p>
+            </div>
+        <!--                                    <div class = "col-xs-3 text-center" style = "padding: 0px;">
+        <p style = "padding-top: 10px; font-size: 18px !important;color: #78909C;"><i><?php echo date("F d, Y", strtotime($post->date_posted)); ?></i></p>
+        </div>-->
+        
+
+        <?php $attachments = $CI->attachment_model->get_post_attachments($post->post_id);
+
+                        // print_r($attachments);
+
+        foreach ($attachments as $attachment):
+            if ($attachment->attachment_type_id === '1'):?>
+                <img src = "<?= base_url($attachment->file_url); ?>" width="200px"/>
+
+                <?php elseif ($attachment->attachment_type_id === '2'): ?>
+                <audio src = "<?= base_url($attachment->file_url); ?>" style="width:200px"  controls></audio>
+
+                    <?php elseif ($attachment->attachment_type_id === '3'): ?>
+                        <video src = "<?= base_url($attachment->file_url); ?>" width = "200px" controls/></video>
+
+                        <?php elseif ($attachment->attachment_type_id === '4'): ?>
+                            <a href = "<?= base_url($attachment->file_url); ?>" download><i class = "fa fa-file-o"></i> <i class = "text" style = "font-size: 12px;"><?= utf8_decode($attachment->caption); ?></i></a>
+
+                            <?php 
+
+                        endif;
+                    endforeach;
+                    
+                    ?> 
+                    </div>
+                    <!--                                </a>-->
+                    <?php 
+                endif;
+                endforeach; ?>
+                <!--</div>-->
+            </div>
+        <div>
+            
+                <button onmouseenter="playclip()" onclick="toggleButton('reply')" id="crettop" class = "btn btn-primary buttonsbgcolor textoutliner" href="#create-post-modal" data-toggle = "modal" style="font-size:22px">Say something</button>
+           
+        </div>
+    
+</div>
+</div>
    </div>
+    
 <!--        <div class="doorroom col-sm-12 col-md-11">
             <div class="wrapper col-sm-3">
                 <a class="picture" href="#room_sounds_modal" data-toggle = "modal">
@@ -427,7 +502,7 @@
     </div>-->
 
     <?php
-     include(APPPATH . 'views/side_postbar.php');
+//     include(APPPATH . 'views/side_postbar.php');
     include(APPPATH . 'views/modals/room_media_modal.php');
     include(APPPATH . 'views/modals/room_shout_modal.php');
     include(APPPATH . 'views/modals/room_sounds_modal.php');

@@ -76,6 +76,7 @@ $logged_user = $_SESSION['logged_user'];
         </div>
     
 </div>
+</div>
 
 <!-- SCRIPTS -->
 <!-- END SCRIPTS -->
