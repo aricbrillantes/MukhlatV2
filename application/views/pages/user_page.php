@@ -46,7 +46,7 @@ include(APPPATH . 'views/header.php');
    
     <div class = "container page">
         <div class = "row">
-            <div class = "col-md-12 content-container" style = "padding-top: 20px;">
+            <div class = "col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 content-container" style = "padding-top: 20px;">
                 <div class = "col-md-6">
                     <!-- User Info -->
                     <div class = "col-md-12" style = "height: 160px;">
@@ -130,7 +130,7 @@ include(APPPATH . 'views/header.php');
                                         elseif($post->theme==19): $theme="roomtheme-crosseddot";
                                         else: $theme="";
                                         endif;?>
-                                <div class = "polaroiditem polaroid homepostsborder col-xs-12 <?php echo $theme?>" style = "margin-bottom: 10px; border-radius: 20px;margin-right: 1%;">
+                                <div class = "polaroid homepostsborder elements-resizer col-xs-12 col-sm-12 <?php echo $theme?>" style = "margin-bottom: 10px; border-radius: 20px;margin-right: 1%;">
                                     <div class = "user-post-heading" style="border-radius: 20px 20px 0px 0px;background-color: white">
                                         <img class = "img-circle" style = "margin: 10px 0px;" width = "40px" height = "40px" src = "<?php echo $post->profile_url ? base_url($post->profile_url) : base_url('images/default.jpg'); ?>"/> 
                                         

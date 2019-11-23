@@ -39,7 +39,7 @@ include(APPPATH . 'views/header.php');
 
     <div class = "container page">
         <div class = "row">
-            <div class = "col-md-12 home-container">
+            <div class = "col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 home-container">
                 <div class = "col-md-12 home-container">
                     <!-- HEADER -->
                     <div class = "clearfix content-container" style="border-radius:20px;">
@@ -73,7 +73,7 @@ include(APPPATH . 'views/header.php');
                     </form>
                 </div>
 
-                <div class = "col-md-12 content-container" style="border-radius:20px;">
+                <div class = "col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 content-container" style="border-radius:20px;">
 <!--                    <div id = "sort-dropdown" class = "dropdown text-muted" style="font-size: 22px">
                         Sort Topics by: <br>
                         <button id = "chosen-sort" class="btn btn-gray dropdown-toggle" type="button" data-toggle="dropdown"><strong style="font-size: 20px"><i class = "fa fa-clock-o"></i> Date Created</strong>
@@ -110,7 +110,7 @@ include(APPPATH . 'views/header.php');
                         endif;?>  
                         
                        <div>
-                            <a class="<?php echo $theme?>"  href = "<?php echo base_url('topic/view/' . $topic->topic_id); ?>">
+                            <a class="<?php echo $theme?> elements-resizer"  href = "<?php echo base_url('topic/view/' . $topic->topic_id); ?>">
                                 <h4 class = "text-info no-padding text1color topicheader" style="margin-top:50px;margin-left: 13px"><?php echo utf8_decode($topic->topic_name); ?></h4><br>
                             </a>
                        </div>

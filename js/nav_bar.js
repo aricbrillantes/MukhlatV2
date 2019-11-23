@@ -132,5 +132,38 @@ $(document).ready(function() {
     $('.selected').removeClass('selected'); // removes the previous selected class
     $(this).addClass('selected'); // adds the class to the clicked image
 });
+
+//screen resizing for mobile compaitibility
+var w = window.innerWidth;
+window.addEventListener("resize", function() {
+  w=window.innerWidth;
+//alert(w);
+if(w<768){ //sm and xs
+    $('.elements-resizer').removeClass('colly-lg-3');
+    $('.elements-resizer').removeClass('colly-md-3');
+    $('.roomthemes').addClass('colly-sm-3');
+}
+else if(w>=1200){ //xl
+    $('.elements-resizer').addClass('colly-lg-3');
+    $('.elements-resizer').removeClass('colly-md-3');
+    $('.roomthemes').removeClass('colly-sm-3');
+}
+else if(w>=768 && w<1200){ //lg and md
+    $('.elements-resizer').addClass('colly-md-3');
+    $('.elements-resizer').removeClass('colly-lg-3');
+    $('.roomthemes').removeClass('colly-sm-3');
+}
+
+});
+if(w<768){
+    $('.roomthemes').addClass('colly-sm-3');
+}
+else if(w>=1200){
+    $('.elements-resizer').addClass('colly-lg-3');
+}
+else if(w>=768 && w<1200){
+    $('.elements-resizer').addClass('colly-md-3');
+}
+
     
 });

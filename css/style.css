@@ -2852,6 +2852,7 @@ border: 2px outset  #000;
 }
 .polaroid {box-sizing: border-box;
   background: #fff;
+  margin-bottom: 1%;
   /*padding: 1rem;*/
   box-shadow: 0 0.2rem 1.2rem rgba(0,0,0,0.2);
   
@@ -2868,6 +2869,7 @@ border: 2px outset  #000;
 .polaroiditem {
   width: 30%;
   display: inline-block;
+  margin:1%;
   /*margin-top: 2rem;*/
 }
 .polaroiditem .polaroid:before {
@@ -3344,4 +3346,22 @@ background-size: 1800% 1800%;
 }
 .selected{ 
    box-shadow:0px 0px 0px 5px #000;
+}
+
+.colly-lg-3{
+    width:31%;
+    display: inline-block;
+    margin:1%;
+}
+
+.colly-md-3{
+    width:48%;
+    display: inline-block;
+    margin:1%;
+}
+
+.colly-sm-3{
+    width:97%;
+    display: inline-block;
+    margin-bottom:1%;
 }

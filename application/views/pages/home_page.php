@@ -71,7 +71,7 @@
                     </div>-->
 
                     <!-- CONTENT -->
-                    <div class = "col-sm-12 content-container" style="border-radius:20px;">
+                    <div class = "col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 content-container" style="border-radius:20px;">
                         
                             <!-- POST PREVIEW -->
                             <?php
@@ -102,7 +102,8 @@
                                         elseif($post->theme==19): $theme="roomtheme-crosseddot";
                                         else: $theme="";
                                         endif;?>
-                                         <div class="polaroiditem polaroid homepostsborder col-xs-12 <?php echo $theme?>" style="margin: 1%;">
+
+                                    <div class=" polaroid homepostsborder elements-resizer col-xs-12 col-sm-12 <?php echo $theme?>" >
                                      
                                         <div class="whitebg">
                                         <img class = "img-circle" style = "margin: 10px 0px;" width = "40px" height = "40px" src = "<?php echo $post->profile_url ? base_url($post->profile_url) : base_url('images/default.jpg'); ?>"/> 
@@ -142,7 +143,7 @@
                                         <!-- <small class="topicheader2"><i>by <?php echo $topic->user->first_name . " " . $topic->user->last_name; ?></i></small> -->
 
                                         <!-- <p style="font-size: 24px; display:inline"><?php echo $post->first_name . " " . $post->last_name ?> says:</p> -->
-                                        
+                                            <br>
                                         
                                         <span class = "text-muted"> <i style = "font-size: 18px;padding-left: 15px"><?php echo date("F d, Y", strtotime($post->date_posted)); ?></i></span>
                                             <!-- <a class = "text1color" href = "<?php echo base_url('topic/view/' . $post->topic_id); ?>">
@@ -178,7 +179,7 @@
                                                 <?php endforeach;
 
                                                 ?>
-                                    </div></div></div>
+                                        </div></div></div>
 
                                     <?php
                                 endforeach;
