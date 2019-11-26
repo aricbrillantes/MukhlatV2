@@ -65,11 +65,11 @@
     <div id = "admin-page" class = "container" style = "margin-top: 30px;">
         <div class = "row">
             <!-- Admin Header -->
-            <div class = "col-md-8 col-md-offset-2 content-container container-fluid" style = "margin-bottom: 0px;">
+            <div class = "col-md-8 col-md-offset-2 content-container container-fluid text-center" style = "margin-bottom: 0px;">
                 <h3 class = "text-info no-margin" style = "display: inline-block; margin-top: 5px;"><strong><?php echo $logged_user->first_name . " " . $logged_user->last_name ?></strong></h3>
                 
-
-                <a href = "#create-announcement-modal" data-toggle = "modal" class = "btn btn-primary btn-block" style="font-size:14px; margin-top: 15px;"><i class = "fa fa-globe"></i> Create Announcement</a> 
+                <br>
+                <a href = "#create-announcement-modal" data-toggle = "modal" class = "btn btn-primary col-md-6 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1" style="font-size:14px; margin-top: 15px;"><i class = "fa fa-globe"></i> Create Announcement</a> 
 
                 <!-- <button id="crettop" class = "container col-md-6 btn btn-primary  textoutliner" href="#"  >Create Announcement</button> -->
 
@@ -80,16 +80,10 @@
             </div>
 
             <!-- Admin Content -->
-            <div class = "col-md-8 col-md-offset-2 content-container">
-                <!-- <div class = "col-md-12">
-                    <form action = "javascript:void(0);" role="search">
-                        <div class="input-group" style = "width: 100%">
-                            <input type="text" class="form-control search-text" placeholder="&#xF002; Search for a user" id = "search-user-list">
-                        </div>
-                    </form>
-                </div> -->
+            <div class = "col-md-8 col-md-offset-2 content-container row">
 
-                <div class = "content-container container-fluid col-md-10 col-md-offset-1 col-sm-offset-1 col-sm-10 col-xs-offset-1 col-xs-10">
+
+                <div class = "content-container container-fluid col-md-12 col-md-offset-0 col-sm-offset-1 col-sm-10 col-xs-offset-1 col-xs-10">
                     <ul class="nav nav-pills nav-justified" style="">
                         <li class="active"><a data-toggle="pill" href="#user-list-1">Children</a></li>
                         <li class=""><a data-toggle="pill" href="#user-list-2">Parents</a></li>
@@ -98,18 +92,18 @@
                     </ul>
                 </div>
 
-                <div class = "col-md-12 container-fluid tab-content">
-                    <div id = "user-list-1" class = "list-group tab-pane fade in active container-fluid">
+                <div class = "col-md-12 col-sm-12 col-xs-12 container-fluid tab-content">
+                    <div id = "user-list-1" class = "list-group tab-pane fade in active content-container container-fluid">
                         <?php foreach ($users as $user): 
 
                             if ($user->role_id === '2'):?>
 
-                                <li class = "list-group-item admin-list-item">
+                                <li class = "list-group-item admin-list-item container-fluid">
                                     <img src = "<?php echo $user->profile_url ? base_url($user->profile_url) : base_url('images/default.jpg') ?>" class = "no-padding pull-left img-circle" width = "45px" height = "45px"/> 
 
                                     <h4 class = "no-padding admin-list-name"><?php echo $user->first_name . " " . $user->last_name ?></h4>
 
-                                    <a value = "" href="<?php echo base_url('admin/activity/' . $user->user_id)?>" class = " btn btn-link btn-xs"><i class = "fa fa-question-circle-o"></i> <i><?php echo $user->first_name ?>'s record</i></a>
+                                    <a value = "" href="<?php echo base_url('admin/activity/' . $user->user_id)?>" class = " btn btn-link btn-xs"> <i>View record</i></a>
 
                                     <?php
                                         if ($logged_user->user_id !== $user->user_id):
@@ -129,17 +123,17 @@
                         <?php endforeach; ?>
                     </div>
 
-                    <div id = "user-list-2" class = "list-group tab-pane fade container-fluid">
+                    <div id = "user-list-2" class = "list-group tab-pane fade content-container container-fluid">
                         <?php foreach ($users as $user): 
 
                             if ($user->role_id === '3'):?>
 
-                                <li class = "list-group-item admin-list-item">
+                                <li class = "list-group-item admin-list-item container-fluid">
                                     <img src = "<?php echo $user->profile_url ? base_url($user->profile_url) : base_url('images/default.jpg') ?>" class = "no-padding pull-left img-circle" width = "45px" height = "45px"/> 
 
                                     <h4 class = "no-padding admin-list-name"><?php echo $user->first_name . " " . $user->last_name ?></h4>
 
-                                    <a value = "" href="<?php echo base_url('admin/parent/' . $user->user_id)?>" class = " btn btn-link btn-xs"><i class = "fa fa-question-circle-o"></i> <i>Children of <?php echo $user->first_name ?></i></a>
+                                    <a value = "" href="<?php echo base_url('admin/parent/' . $user->user_id)?>" class = " btn btn-link btn-xs"> <i>Children of <?php echo $user->first_name ?></i></a>
 
                                     <?php
                                         if ($logged_user->user_id !== $user->user_id):
@@ -160,17 +154,17 @@
                         
                     </div>
 
-                    <ul id = "user-list-3" class = "list-group tab-pane fade container-fluid">
+                    <div id = "user-list-3" class = "list-group tab-pane fade content-container  container-fluid">
                         
                         <?php foreach ($users as $user): 
 
                             if ($user->role_id === '1'):?>
 
-                                <li class = "list-group-item admin-list-item">
+                                <li class = "list-group-item admin-list-item container-fluid">
                                     <img src = "<?php echo $user->profile_url ? base_url($user->profile_url) : base_url('images/default.jpg') ?>" class = "no-padding pull-left img-circle" width = "45px" height = "45px"/> 
                                     <h4 class = "no-padding admin-list-name"><?php echo $user->first_name . " " . $user->last_name ?></h4>
                                     
-                                        <i class = "text-muted btn-sm no-padding">Administrator <?php echo ($logged_user->user_id === $user->user_id) ? '(You)' : '' ?></i>
+                                        <i class = "text-muted btn-sm no-padding"><?php echo ($logged_user->user_id === $user->user_id) ? '(You)' : '' ?></i>
 
                                     <?php
                                         if ($logged_user->user_id !== $user->user_id):
@@ -188,9 +182,9 @@
                             <?php endif; ?> 
 
                         <?php endforeach; ?>
-                    </ul>
+                    </div>
 
-                    <ul id = "announcements" class = "list-group tab-pane fade container-fluid">
+                    <div id = "announcements" class = "list-group tab-pane fade content-container container-fluid">
                         <?php 
                             //load models
                             $CI->load->model('topic_model');
@@ -210,12 +204,12 @@
                         ?>
 
                             <li class = "list-group-item admin-list-item">
-                                <h4 class = "no-padding admin-list-name">Teacher <?php echo $teacher->first_name?> says: </h4> 
-                                <h3 class = "no-padding admin-list-name">"<?php echo $announcement->announcement ?>"</h3>
+                                <h5 class = "no-padding admin-list-name">Teacher <?php echo $teacher->first_name?> says: </h5> <br>
+                                <h4 class = "no-padding admin-list-name">"<?php echo $announcement->announcement ?>"</h4>
                             </li>                                    
                        
                         <?php endforeach; ?>
-                    </ul>
+                    </div>
                 </div>
             </div>
         </div>

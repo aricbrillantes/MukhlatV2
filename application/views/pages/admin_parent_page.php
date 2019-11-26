@@ -223,7 +223,7 @@
                             </div>
 
                         </div>  
-                        <a href = "<?php echo base_url('admin/activity/' . $child->user_id); ?>" class = "btn btn-primary btn-block" style = "margin-bottom: 10px; "><i class = "fa fa-globe"></i> View <?php echo $child->first_name ?>'s activity</a>  
+                        <a href = "<?php echo base_url('admin/activity/' . $child->user_id); ?>" class = "btn btn-primary btn-block" style = "margin-bottom: 10px; "><i class = "glyphicon glyphicon-user"></i> View <?php echo $child->first_name ?>'s activity</a>  
                     </div>     
                 <?php endforeach; ?>
 

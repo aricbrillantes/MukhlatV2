@@ -151,8 +151,8 @@
             
         <?php if (!$mobile): ?>
 
-            <ul class = "nav navbar-nav navbar-right pull-right" style = "margin-right: 5px;">
-                <li class="dropdown">
+            <ul class = "nav navbar-nav navbar-right pull-right" style = "margin-right: 5px; color: black;" >
+                <li class="dropdown" style="color: black;">
 
                     <a class="dropdown-toggle pull-right" data-toggle="dropdown" href="#">
                         Monitoring: <b><?php echo $child->first_name ?></b>
@@ -244,11 +244,11 @@
                 }
             
             ?>
-            <a href = "#create-note-modal" data-toggle = "modal" class = "btn btn-primary btn-block" style="font-size:14px; margin-top: 15px;"><i class = "fa fa-globe"></i> Send a Note to <?php echo $child->first_name?></a> 
+            
 
-             <div class = "col-xs-16 col-md-8 col-md-offset-2 content-container container-fluid " style = "margin-bottom: 5px;">
-                <div class = "col-xs-16 col-md-16 col-md-offset-0 content-container container-fluid" style="border:0px; margin-bottom: 0px;">
-                    <div class = "col-xs-6 no-padding no-margin"> 
+            <div class = "col-xs-12 col-sm-12 col-md-12 col-md-offset-0 content-container container-fluid " style = "margin-bottom: 5px;">
+                <div class = "col-xs-12 col-sm-12 col-md-12 col-md-offset-0 content-container container-fluid" style="border:0px; margin-bottom: 0px;">
+                    <div class = "col-xs-6 col-md-6 col-sm-6 text-center"> 
                         <h3 class = "no-padding text-info" style = "margin-top: 5px; margin-bottom: 5px; "><strong><?php echo $child->first_name . " " . $child->last_name ?></strong></h3>
                         <small class = "no-padding no-margin"><?php echo $child->email ?></small>
                         
@@ -264,45 +264,37 @@
                         endif;
                     ?> -->
 
-                    <div class = "col-xs-6 no-padding no-margin" style="float: right; margin-bottom: 0px;">
-                        <a class = "pull-right btn " style = "display: inline-block; float: right" href="<?php echo base_url('parents/settings/' . $child->user_id) ?>">
-                            <h3 class = "no-padding text-info" style = "margin-bottom: 0px; float: right">
-                                <u><strong><h4>Manage <?php echo $child->first_name ?>'s Schedule</h4></strong></u>
-                            </h3> 
-                        </a>
-                        
+                    <div class = "col-xs-6 col-sm-6 col-md-6 no-padding no-margin text-center row" style="float: right; margin-bottom: 0px;">
+                        <a class = "btn btn-primary col-md-10 col-sm-10 col-xs-10 col-md-offset-1 col-sm-offset-1 col-xs-offset-1" style="font-size:14px; margin-top: 15px;" href = "#create-note-modal" data-toggle = "modal" ><i class = "glyphicon glyphicon-envelope"></i> 
+                            <?php if (!$mobile): ?>
+                                Send a Note to <?php echo $child->first_name?>
+
+                            <?php else: ?>
+                                Send a Note
+
+                            <?php endif; ?>
+                        </a>  
+
+                        <a class = "btn btn-primary col-md-10 col-sm-10 col-xs-10 col-md-offset-1 col-sm-offset-1 col-xs-offset-1" style="font-size:14px; margin-top: 15px;" href = "<?php echo base_url('parents/settings/' . $child->user_id) ?>" ><i class = "glyphicon glyphicon-time"></i> 
+                            <?php if (!$mobile): ?>
+                                Manage <?php echo $child->first_name?>'s Schedule
+
+                            <?php else: ?>
+                                Schedule
+
+                            <?php endif; ?>
+                        </a>    
                     </div>
                 </div>    
             </div>                 
 
             <div class = "content-container container-fluid" >
                 <!-- User Room -->
-                <div class = "col-xs-12 col-md-6 content-container container-fluid row" style = "margin-bottom: 0px margin-left: 0px">
+                <div class = "col-xs-12 col-sm-6 col-md-6 content-container container-fluid row" style = "margin-bottom: 0px; margin-left: 0px">
                     <h3 class = "text-info text-center user-activities-header">
                         <strong><?php echo $child->first_name; ?>'s Use Statistics</strong><br>
                     </h3>
                     <br>
-
-                    
-                    <div class=" col-md-12 col-sm-12 col-xs-12">
-                        <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Notes to <?php echo $child->first_name;?>: </h4></strong> <h2 class = "" style = "display: inline-block;"></h2>
-                        <?php 
-                            
-                            $CI->load->model('user_model'); //load models
-                            $notes = $CI->user_model->get_notes($id); //get notes
-
-                            foreach ($notes as $note): ?>
-
-                            <li class = "list-group-item admin-list-item">
-                                <h3 class = "no-padding admin-list-name">"<?php echo $note->note ?>"</h3>
-                            </li>
-                                                               
-                        <?php endforeach; ?>
-                    </div>
-
-                    <div class=" col-md-12 col-sm-12 col-xs-12">
-                        <br><br>
-                    </div>
 
                     <div class="col-md-6 col-sm-6 col-xs-6">
                         <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Posts to others</h4></strong> <h2 class = "" style = "display: inline-block;"><?php echo $otherPosts; ?></h2>
@@ -353,8 +345,6 @@
                     </div>
 
                     
-
-
                     <div class = "col-sm-12 " style = "margin-bottom: 40px">
                         <ul class="nav nav-pills nav-justified">
                             <!-- <li class="active "><a data-toggle="pill" href="#user-topic-created">Created Posts</a></li> -->
@@ -437,12 +427,12 @@
                 </div>
 
                 <!-- Activity -->
-                <div class = "col-xs-12 col-md-6 content-container container-fluid" style = "margin-bottom: 5px; margin-left: 0px">
+                <div class = "col-xs-12 col-md-6 col-sm-6 content-container container-fluid" style = "margin-bottom: 0px; margin-left: 0px">
                     <h3 class = "text-info text-center user-activities-header">
                         <strong><?php echo $child->first_name; ?>'s Activity</strong>
                     </h3>
                     
-                    <div class = "col-sm-12 " style = "margin-bottom: 40px">
+                    <div class = "col-sm-12 col-xs-12 col-md-12" style = "margin-bottom: 40px">
                         <!-- POST PREVIEW -->
                         <?php foreach ($activities as $post): ?> 
                             <div class = "col-xs-12 no-padding post-container" style = "margin-top: 10px;">

@@ -13,7 +13,7 @@
         <div class="modal-content" id="text">
             <div class="modal-header modal-heading modalbg notetextfix" id="margin">
                 <button type="button" class="close" style = "padding: 5px;" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title textoutliner"><strong id="modaltitle">Note</strong></h4>
+                <h4 class="modal-title textoutliner"><strong id="modaltitle">Say something to <?php echo $child->first_name; ?></strong></h4>
             </div>
             <form enctype = "multipart/form-data" action = "<?php echo base_url('parents/note/').$id; ?>" id = "create-note-form" method = "POST">
                 <div class="modal-body">
@@ -25,12 +25,35 @@
                         <!-- <p id="charsRemaining4">Characters Left: 16000</p> -->
               
                     </div>
-                  <div class = "modal-footer" style = "padding: 5px; border-top: none; padding-bottom: 10px; padding-right: 10px;">
-                    <button id = "create-note-btn" class ="btn btn-primary buttonsbgcolor" data-toggle = "modal" >Share</button>
-                  </div>
+
+                    <div class=" col-md-12 col-sm-12 col-xs-12">
+                        <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Notes to <?php echo $child->first_name;?>: </h4></strong> <h2 class = "" style = "display: inline-block;"></h2>
+                        <?php 
+                            
+                            $CI->load->model('user_model'); //load models       
+                            $notes = $CI->user_model->get_notes($id); //get notes
+
+                            foreach ($notes as $note): ?>
+
+                            <li class = "list-group-item admin-list-item">
+                                <h3 class = "no-padding admin-list-name">"<?php echo $note->note ?>"</h3>
+                            </li>
+                                                               
+                        <?php endforeach; ?>
+                    </div>
+
+
+                    <div class = "modal-footer" style = "padding: 5px; border-top: none; padding-bottom: 10px; padding-right: 10px;">
+                        <button id = "create-note-btn" class ="btn btn-primary buttonsbgcolor" data-toggle = "modal" >Send</button>
+                    </div>
+                
                 </div>
             </form> 
+
+
         </div>
+
+
     </div>
 </div>
 
