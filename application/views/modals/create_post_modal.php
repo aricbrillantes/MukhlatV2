@@ -83,7 +83,8 @@ $topic = $_SESSION['current_topic'];
                     <div class="form-group" id="post-title-container"><!-- check if title is already taken -->
                         <!--<label for = "title">Make a title for your post:</label>-->
                         <!--<p class="lead emoji-picker-container">-->
-                        <input class="title-text" type="text" style="height: 50px;" maxlength = "100"  required class="form-control" name = "post_title" id = "post-title"  placeholder = "My title"  data-emojiable="true" value="" />
+                        <h2 id="titlewarning" style="display: none">Add a title!</h2>
+                        <input class="title-text" type="text" style="height: 50px;" maxlength = "100"  required class="form-control" name = "post_title" id = "post-title"  placeholder = "My title"  data-emojiable="true" value="" required />
                         <!--<p id="charsRemaining3">Characters Left: 100</p>-->
                         <div class="charLimitMessage" id="charLimitMessage3"><center>Oops! You've used up all the letters and numbers for your title!</center></div>
                         <!--<span id="start_button" onclick="startDictation2(event)" style="display: inline-block;"><img border="0" alt="Start" id="start_img" src="https://www.google.com/intl/en/chrome/assets/common/images/content/mic.gif"></span>-->
@@ -105,7 +106,8 @@ $topic = $_SESSION['current_topic'];
                     <div class="form-group" ><!-- check if description exceeds n words-->
                         <!--<label for = "content">Make the content of your post:</label>-->
                         <!--<p class="lead emoji-picker-container">-->
-                        <textarea class = "form-control" style="height: 100px;" maxlength = "16000" required name = "post_content" id = "post-content" placeholder = "My thoughts" data-emojiable="true"></textarea>
+                        <h2 id="contentwarning" style="display: none">Write your thoughts!</h2>
+                        <textarea class = "form-control" style="height: 100px;" maxlength = "16000" required name = "post_content" id = "post-content" placeholder = "My thoughts" data-emojiable="true" required></textarea>
                         <!--<p id="charsRemaining4">Characters Left: 16000</p>-->
                         <div class="charLimitMessage" id="charLimitMessage4"><center>Oops! You've used up all the letters and numbers for your message!</center></div>
                     </div>
@@ -170,11 +172,11 @@ $topic = $_SESSION['current_topic'];
               <h2 id="pic_h" style="display: none">The picture you used is too big sorry!</h2>
               <h2 id="vid_h" style="display: none">The video you used is too big sorry!</h2>
               <h2 id="snd_h" style="display: none">The sound you used is too big sorry!</h2>
-              <h2 id="titlewarning" style="display: none">Add a title!</h2>
-              <h2 id="contentwarning" style="display: none">Write your thoughts!</h2>
+              
+              
                 </div>
                 <div class = "modal-footer" style = "padding: 5px; border-top: none; padding-bottom: 10px; padding-right: 10px;">
-                    <a id = "create-post-btn" class ="btn btn-primary buttonsbgcolor" data-toggle = "modal" onclick="" style="display: none">Share</a>
+                    <a id = "create-post-btn" class ="btn btn-primary buttonsbgcolor" data-toggle = "modal" onclick="" >Share</a>
                 </div>
                 
 
@@ -196,11 +198,12 @@ $topic = $_SESSION['current_topic'];
             </div>
             
             <div id="recvid" style="display: none">
-                    
+                    <video width="400" id="vidprev"  controls muted></video><br>
                     <button id="btnStop2">Im done recording!</button></p>
+                    
         
                     
-                    <video width="400" id="vid1" controls></video><br>
+                    <video width="400" id="vid1" style="display: none" controls></video><br>
         
                     <a id="dl2"  download="My Video">download</a>
 
@@ -223,11 +226,11 @@ function fileAdded()
 {
   if(document.getElementById('post-content').value=="")
             {
-              $('[id$=create-post-btn]').hide();
+              
               $('[id$=contentwarning]').show();
             }
             else{
-              $('[id$=create-post-btn]').show();
+              
               $('[id$=contentwarning]').hide();
             }
   hasfile=1;
@@ -240,108 +243,7 @@ function fileAdded()
 // }
 
 
-function readURL(input) {
-  $('[id$=attach-audio]').val("");
-  $('[id$=attach-video]').val("");
-  $('[id$=image-text]').text('Change Picture');
-  $('[id$=video-text]').text('Add Video');
-  $('[id$=audio-text]').text('Add Sound');
-  $('[id$=aud]').hide();
-  $('[id$=vid]').hide();
-  $('[id$=pic_h]').hide();
-  $('[id$=vid_h]').hide();
-  $('[id$=snd_h]').hide();
-  if (input.files && input.files[0]) {
-    
-    
-    if(input.files[0] && input.files[0].size < 2000000) { 
-        //Submit form   
-        $('[id$=pic_h]').hide();    
-        if (input.files && input.files[0]) {
-        var reader = new FileReader();
-    
-        reader.onload = function(e) {
-        $('#pic').attr('src', e.target.result);
-        }
-    
-        reader.readAsDataURL(input.files[0]);
-        }
-  $('[id$=pic]').show(); 
-    } else {
-      $('[id$=pic_h]').show();
-      $('[id$=pic]').hide();
-      $('[id$=create-post-btn]').hide();
-    }
-  }
-  
- 
-  
-}
 
-function readVid(input){
-  $('[id$=attach-audio]').val("");
-  $('[id$=attach-img]').val("");
-  $('[id$=video-text]').text('Change Video');
-  $('[id$=image-text]').text('Add Image');
-  $('[id$=audio-text]').text('Add Sound');
-  $('[id$=aud]').hide();
-  $('[id$=pic]').hide();
-  $('[id$=pic_h]').hide();
-  $('[id$=vid_h]').hide();
-  $('[id$=snd_h]').hide();
-  if(input.files[0] && input.files[0].size < 2000000) { 
-        //Submit form
-        $('[id$=vid_h]').hide();  
-        var $source = $('#video_here');
-  $source[0].src = URL.createObjectURL(input.files[0]);
-  $source.parent()[0].load();
-  $('[id$=vid]').show();        
-    } else {
-      $('[id$=vid_h]').show();
-      $('[id$=vid]').hide();
-      $('[id$=create-post-btn]').hide();
-    }
-
-  
-}
-
-function readAud(input){
-  $('[id$=attach-video]').val("");
-  $('[id$=attach-img]').val("");
-  $('[id$=audio-text]').text('Change Sound');
-  $('[id$=image-text]').text('Add Image');
-  $('[id$=video-text]').text('Add Video');
-  $('[id$=pic]').hide();
-  $('[id$=vid]').hide();
-  $('[id$=pic_h]').hide();
-  $('[id$=vid_h]').hide();
-  $('[id$=snd_h]').hide();
-  if(input.files[0] && input.files[0].size < 2000000) { 
-        //Submit form    
-        $('[id$=snd_h]').hide();   
-        var $source = $('#audio_here');
-  $source[0].src = URL.createObjectURL(input.files[0]);
-  $source.parent()[0].load();
-  $('[id$=aud]').show();   
-    } else {
-      $('[id$=snd_h]').show();
-      $('[id$=aud]').hide();
-      $('[id$=create-post-btn]').hide();
-    }
-    
- 
-}
-
-// function inputchange(input)
-// {
-//   if(input.value)
-//   {
-//     $('[id$=create-post-btn]').show();
-//   }
-//   else{
-//     $('[id$=create-post-btn]').hide();
-//   }
-// }
 
 
 
@@ -435,6 +337,101 @@ let constraintObj = {
         
 ///////////////
 
+
+function readURL(input) {
+  $('[id$=attach-audio]').val("");
+  $('[id$=attach-video]').val("");
+  $('[id$=image-text]').text('Change Picture');
+  $('[id$=video-text]').text('Add Video');
+  $('[id$=audio-text]').text('Add Sound');
+  $('[id$=aud]').hide();
+  $('[id$=vid]').hide();
+  $('[id$=pic_h]').hide();
+  $('[id$=vid_h]').hide();
+  $('[id$=snd_h]').hide();
+  if (input.files && input.files[0]) {
+    
+    
+    if(input.files[0] && input.files[0].size < 2000000) { 
+        //Submit form   
+        $('[id$=pic_h]').hide();    
+        if (input.files && input.files[0]) {
+        var reader = new FileReader();
+    
+        reader.onload = function(e) {
+        $('#pic').attr('src', e.target.result);
+        }
+    
+        reader.readAsDataURL(input.files[0]);
+        }
+  $('[id$=pic]').show(); 
+    } else {
+      $('[id$=pic_h]').show();
+      $('[id$=pic]').hide();
+      
+    }
+  }
+  
+ 
+  
+}
+
+function readVid(input){
+  $('[id$=attach-audio]').val("");
+  $('[id$=attach-img]').val("");
+  $('[id$=video-text]').text('Change Video');
+  $('[id$=image-text]').text('Add Image');
+  $('[id$=audio-text]').text('Add Sound');
+  $('[id$=aud]').hide();
+  $('[id$=pic]').hide();
+  $('[id$=pic_h]').hide();
+  $('[id$=vid_h]').hide();
+  $('[id$=snd_h]').hide();
+  if(input.files[0] && input.files[0].size < 2000000) { 
+        //Submit form
+        $('[id$=vid_h]').hide();  
+        var $source = $('#video_here');
+  $source[0].src = URL.createObjectURL(input.files[0]);
+  $source.parent()[0].load();
+  $('[id$=vid]').show();        
+    } else {
+      $('[id$=vid_h]').show();
+      $('[id$=vid]').hide();
+      
+    }
+
+  
+}
+
+function readAud(input){
+  $('[id$=attach-video]').val("");
+  $('[id$=attach-img]').val("");
+  $('[id$=audio-text]').text('Change Sound');
+  $('[id$=image-text]').text('Add Image');
+  $('[id$=video-text]').text('Add Video');
+  $('[id$=pic]').hide();
+  $('[id$=vid]').hide();
+  $('[id$=pic_h]').hide();
+  $('[id$=vid_h]').hide();
+  $('[id$=snd_h]').hide();
+  if(input.files[0] && input.files[0].size < 2000000) { 
+        //Submit form    
+        $('[id$=snd_h]').hide();   
+        var $source = $('#audio_here');
+  $source[0].src = URL.createObjectURL(input.files[0]);
+  $source.parent()[0].load();
+  $('[id$=aud]').show();   
+    } else {
+      $('[id$=snd_h]').show();
+      $('[id$=aud]').hide();
+      
+    }
+    
+ 
+}
+
+///////////////
+
 let constraintObj2 = { 
             audio: true, 
             video: true
@@ -465,19 +462,19 @@ let constraintObj2 = {
         }
         navigator.mediaDevices.getUserMedia(constraintObj2)
         .then(function(mediaStreamObj2) {
-            //connect the media stream to the first audio element
-            // let audio = document.querySelector('audio');
-            // if ("srcObject" in audio) {
-            //     audio.srcObject = mediaStreamObj;
-            // } else {
-            //     //old version
-            //     audio.src = window.URL.createObjectURL(mediaStreamObj);
-            // }
+            //connect the media stream to the first video element
+            let video = document.getElementById('vidprev');
+            if ("srcObject" in video) {
+                video.srcObject = mediaStreamObj2;
+            } else {
+                //old version
+                video.src = window.URL.createObjectURL(mediaStreamObj2);
+            }
             
-            // audio.onloadedmetadata = function(ev) {
-            //     //show in the audio element what is being captured by the webcam
-            //     audio.play();
-            // };
+            video.onloadedmetadata = function(ev) {
+                //show in the video element what is being captured by the webcam
+                video.play();
+            };
             
             //add listeners for saving audio/audio
             let dl2 = document.getElementById('dl2');
@@ -488,15 +485,18 @@ let constraintObj2 = {
             let chunks2 = [];
             
             start2.addEventListener('click', (ev)=>{
-                $('[id$=recvid]').show();
+              $('[id$=recvid]').show();
                 $('[id$=startrec]').show();
                 $('[id$=btnStart2]').hide();
                 $('[id$=btnStop2]').show();
+                $('[id$=vidprev]').show();
                 mediaRecorder2.start();
                 console.log(mediaRecorder2.state);
                 
             })
             stop2.addEventListener('click', (ev)=>{
+              $('[id$=vid1]').show();
+              $('[id$=vidprev]').hide();
               $('[id$=startrec]').hide();
               $('[id$=btnStart2]').show();
               $('[id$=btnStop2]').hide();
@@ -544,6 +544,8 @@ let constraintObj2 = {
           $('[id$=modaltitle]').text("Add stuff");
           $('[id$=post-title]').val(" ");
           $('[id$=titlewarning]').hide();
+          $('[id$=contentwarning]').show();
+
         }
 
         if(p==="audio")
@@ -678,7 +680,7 @@ let constraintObj2 = {
                 document.getElementById('create-post-btn').style.pointerEvents="auto";
                 if(hasfile==0)
               {
-                $('[id$=create-post-btn]').hide();
+                
               }
             }
 ////              
@@ -700,24 +702,24 @@ let constraintObj2 = {
 
             if(document.getElementById('post-title').value=="" && toggle=="shout")
             {
-              $('[id$=create-post-btn]').hide();
+              
               $('[id$=titlewarning]').show();
             }
             else
             {
-              $('[id$=create-post-btn]').show();
+              
               $('[id$=titlewarning]').hide();
               
             }
             if(document.getElementById('post-content').value=="")
             {
-              $('[id$=create-post-btn]').hide();
+              
               $('[id$=contentwarning]').show();
             }
             else{
               if(hasfile==1)
               {
-                $('[id$=create-post-btn]').show();
+                
               }
               $('[id$=contentwarning]').hide();
             }
