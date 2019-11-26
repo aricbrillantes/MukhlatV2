@@ -224,31 +224,11 @@
 
             <div class = "content-container container-fluid" >
                 <!-- User Posts -->
-                <div class = "col-xs-12 col-md-6 content-container container-fluid" style = "margin-bottom: 0px margin-left: 0px">
+                <div class = "col-xs-12 col-sm-6 col-md-6 content-container container-fluid row" style = "margin-bottom: 0px; margin-left: 0px">
                     <h3 class = "text-info text-center user-activities-header">
                         <strong><?php echo $child->first_name; ?>'s Use Statistics</strong><br>
                     </h3>
                     <br>
-
-                    <div class=" col-md-12 col-sm-12 col-xs-12">
-                        <i><strong class = "" style = "display: inline-block; margin-right: 20px"><h5>(Last updated: <?php echo date_format(date_create($child->updated),"m/d/Y"); ?> )</h5></strong></i>
-                    </div><br><br><br>
-
-                    <div class=" col-md-4 col-sm-4 col-xs-4">
-                        <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Swears this week: </h4></strong> <h2 class = "" style = "display: inline-block;"><?php echo $child->current_total; ?></h2>
-                    </div>
-
-                    <div class=" col-md-4 col-sm-4 col-xs-4">
-                        <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Swears last week: </h4></strong> <h2 class = "" style = "display: inline-block;"><?php echo $child->last_total; ?></h2>
-                    </div>
-
-                    <div class=" col-md-4 col-sm-4 col-xs-4">
-                        <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Lifetime swears: </h4></strong> <h2 class = "" style = "display: inline-block;"><?php echo $child->overall_total; ?></h2>
-                    </div>
-
-                    <div class=" col-md-12 col-sm-12 col-xs-12">
-                        <br><br>
-                    </div>
 
                     <div class="col-md-6 col-sm-6 col-xs-6">
                         <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Posts to others</h4></strong> <h2 class = "" style = "display: inline-block;"><?php echo $otherPosts; ?></h2>
@@ -270,109 +250,193 @@
                         <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Shout outs: </h4></strong> <h2 class = "" style = "display: inline-block;"><?php echo $shoutOuts; ?></h2>
                     </div>
 
-                    <div class = "col-sm-12 " style = "margin-bottom: 40px">
-                        <!-- <ul class="nav nav-pills nav-justified">
-                            <li class="active "><a data-toggle="pill" href="#user-topic-created">Created Posts</a></li>
-                            <li class=""><a data-toggle="pill" href="#user-topic-moderated">Moderated Posts</a></li>
-                            <li class=""><a data-toggle="pill" href="#user-topic-followed">Followed Posts</a></li>
-                        </ul> -->
-                        <br>
 
-                        <div class="tab-content">
-                            <div id="user-topic-created" class="tab-pane fade in active">
-                                <div class = "col-sm-12 no-padding">
-                                    <!-- <div class = "user-header">
-                                        <h4 class = "text-center"><strong>Posts Created by <?php echo $child->first_name; ?></strong></h4>
-                                    </div> -->
-                                    <div class = "">
-                                        <ul class="nav">
-                                            <!-- <li>
-                                                <strong class = "" style = "display: inline-block; margin-right: 20px"><h3>Updated: </h3></strong>
-                                                <h4 class = "" style = "display: inline-block;"><?php echo $child->updated; ?></h4>
-                                            </li>-->
-
-                                            <!-- <?php foreach ($user_topics as $topic): ?>
-                                                <li>
-                                                    <a class = "user-topic-item" href="#" style = "padding: 5px 30px;">
-                                                        <h4 class = "no-padding no-margin" style = "display: inline-block;"><?php echo utf8_decode($topic->topic_name); ?></h4>
-                                                        <span class = "pull-right label label-info follower-label"><i class = "fa fa-group"></i> <?php echo $topic->followers ? count($topic->followers) : '0' ?></span>
-                                                    </a>
-                                                </li>
-                                            <?php endforeach; ?> -->
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    <div class=" col-md-12 col-sm-12 col-xs-12">
+                        <br><br>
                     </div>
+
+
+
+
+                    <div class=" col-md-12 col-sm-12 col-xs-12">
+                        <i><strong class = "" style = "display: inline-block; margin-right: 20px"><h5>(Last updated: <?php echo date_format(date_create($child->updated),"m/d/Y"); ?> )</h5></strong></i>
+                    </div><br><br><br>
+
+                    <div class=" col-md-4 col-sm-4 col-xs-4">
+                        <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Swears this week: </h4></strong> <h2 class = "" style = "display: inline-block;"><?php echo $child->current_total; ?></h2>
+                    </div>
+
+                    <div class=" col-md-4 col-sm-4 col-xs-4">
+                        <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Swears last week: </h4></strong> <h2 class = "" style = "display: inline-block;"><?php echo $child->last_total; ?></h2>
+                    </div>
+
+                    <div class=" col-md-4 col-sm-4 col-xs-4">
+                        <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Lifetime swears: </h4></strong> <h2 class = "" style = "display: inline-block;"><?php echo $child->overall_total; ?></h2>
+                    </div>
+
+                    <div class=" col-md-12 col-sm-12 col-xs-12">
+                        <br><br>
+                    </div>
+                    
                 </div>
 
                 <!-- Activity -->
-                <div class = "col-xs-12 col-md-6 content-container container-fluid" style = "margin-bottom: 5px; margin-left: 0px">
+                <div class = "col-xs-12 col-md-6 col-sm-6 content-container container-fluid " style = "margin-bottom: 0px; margin-left: 0px">
                     <h3 class = "text-info text-center user-activities-header">
                         <strong><?php echo $child->first_name; ?>'s Activity</strong>
                     </h3>
                     
-                    <div class = "col-sm-12 " style = "margin-bottom: 40px">
-                        <!-- POST PREVIEW -->
-                        <?php foreach ($activities as $post): ?> 
-                            <div class = "col-xs-12 no-padding post-container" style = "margin-top: 10px;">
-                                <div class = "user-post-heading no-margin">
-                                    
-                                    <?php if ($topic->topic_id == $post->topic_id): ?>
-                                        <span>posted to <strong>their room</strong> </span>
+                    <br>
+                    <ul class="nav nav-pills nav-justified">
+                        <li class="active "><a data-toggle="pill" href="#all-posts">All</a></li>
+                        <li class=""><a data-toggle="pill" href="#room-posts">Room Posts</a></li>
+                        <li class=""><a data-toggle="pill" href="#other-posts">Posts in other rooms</a></li>
+                    </ul>
 
-                                    <?php else: ?>
-                                        <span>posted in <strong><?php echo $post->topic_name; ?></strong> </span> 
+                    <div class="tab-content">
 
-                                    <?php endif; ?>
-                                    
-                                    <!-- <strong><?php echo utf8_decode($post->topic_name); ?></strong> -->
-                                    <span class = "text-muted"> <i style = "font-size: 11px">(<?php echo date("M-d-y", strtotime($post->date_posted)); ?>)</i></span>
-                                   
-                                    <!-- <?php if (!empty($post->parent)): ?>
-                                        <span class = "text-muted" style = "font-size: 1vw;">( <i class = "fa fa-reply"></i> <i>in reply to <?php echo $post->parent->user->first_name . " " . $post->parent->user->last_name; ?> )</i></span>
-                                    <?php endif; ?> -->
-                                    :
-                                </div>
-                                <div class = "col-xs-12 user-post-content no-padding">
-                                    
-                                    <div class = "col-xs-10 no-padding" style = "margin-top: 1vw; margin-left: 1vw;">
-                                        <?php if (!empty($post->post_title)): ?>
-                                            <h5 class = "no-padding no-margin text-muted wrap"><strong><?php echo utf8_decode($post->post_title); ?></strong></h5>
-                                            
+                        <!-- ALL POSTS -->
+                        <div id="all-posts" class = "col-sm-12 col-xs-12 col-md-12 tab-pane fade in active" style = "margin-bottom: 40px; ">
+                            <?php foreach ($activities as $post): ?> 
+                                <div class = "col-xs-12 no-padding post-container " style = "margin-top: 10px;">
+                                    <div class = "user-post-heading no-margin">
+                                        
+                                        <?php if ($topic->topic_id == $post->topic_id): ?>
+                                            <span>posted to <strong>their room</strong> </span>
+
                                         <?php else: ?>
-                                            <!-- <h5 class = "no-padding no-margin text-muted wrap"><a class = "btn btn-link no-padding no-margin"><strong><?php echo $post->first_name . " " . $post->last_name; ?></strong></a></h5> -->
+                                            <span>posted in <strong><?php echo $post->topic_name; ?></strong> </span> 
 
                                         <?php endif; ?>
                                         
-                                        <p class = "home-content-body" style = "border-right: none;"><?php echo utf8_decode($post->post_content); ?></p>
+                                        <span class = "text-muted"> <i style = "font-size: 11px">(<?php echo date("M-d-y", strtotime($post->date_posted)); ?>)</i></span>
+                                       
+                                    </div>
+                                    <div class = "col-xs-12 user-post-content no-padding">
+                                        
+                                        <div class = "col-xs-10 no-padding" style = "margin-top: 1vw; margin-left: 1vw;">
+                                            <?php if (!empty($post->post_title)): ?>
+                                                <h5 class = "no-padding no-margin text-muted wrap"><strong><?php echo utf8_decode($post->post_title); ?></strong></h5>
+                                                
+                                            <?php else: ?>
+                                                <!-- <h5 class = "no-padding no-margin text-muted wrap"><a class = "btn btn-link no-padding no-margin"><strong><?php echo $post->first_name . " " . $post->last_name; ?></strong></a></h5> -->
 
-                                        <?php $attachments = $CI->attachment_model->get_post_attachments($post->post_id);?>
+                                            <?php endif; ?>
+                                            
+                                            <p class = "home-content-body" style = "border-right: none;"><?php echo utf8_decode($post->post_content); ?></p>
 
-                                        <?php foreach ($attachments as $attachment):
-                                                    if ($attachment->attachment_type_id === '1'):?>
-                                                        <img src = "<?= base_url($attachment->file_url); ?>" width = "75%"  style="position:relative; width:auto; max-height: 200px; max-width: 300px;" />
-                                                        
+                                            <?php $attachments = $CI->attachment_model->get_post_attachments($post->post_id);?>
 
-                                                    <?php elseif ($attachment->attachment_type_id === '2'): ?>
-                                                        <audio src = "<?= base_url($attachment->file_url); ?>" style="width: 100%" controls></audio>
-                                                        
-
-                                                    <?php elseif ($attachment->attachment_type_id === '3'): ?>
-                                                        <video src = "<?= base_url($attachment->file_url); ?>" width = "100%" style="height: 100%; width:auto; max-height: 250px;" controls/></video>
+                                            <?php foreach ($attachments as $attachment):
+                                                if ($attachment->attachment_type_id === '1'):?>
+                                                    <img src = "<?= base_url($attachment->file_url); ?>" width = "75%"  style="position:relative; width:auto; max-height: 200px; max-width: 300px;" />
                                                     
 
-                                                    <?php elseif ($attachment->attachment_type_id === '4'): ?>
-                                                        <a href = "<?= base_url($attachment->file_url); ?>" download><i class = "fa fa-file-o"></i> <i class = "text" style = "font-size: 12px;"><?= utf8_decode($attachment->caption); ?></i></a>
+                                                <?php elseif ($attachment->attachment_type_id === '2'): ?>
+                                                    <audio src = "<?= base_url($attachment->file_url); ?>" style="width: 100%" controls></audio>
                                                     
-                                                <?php endif; endforeach; ?>
 
+                                                <?php elseif ($attachment->attachment_type_id === '3'): ?>
+                                                    <video src = "<?= base_url($attachment->file_url); ?>" width = "100%" style="height: 100%; width:auto; max-height: 250px;" controls/></video>
+                                                
+
+                                                <?php elseif ($attachment->attachment_type_id === '4'): ?>
+                                                    <a href = "<?= base_url($attachment->file_url); ?>" download><i class = "fa fa-file-o"></i> <i class = "text" style = "font-size: 12px;"><?= utf8_decode($attachment->caption); ?></i></a>
+                                                
+                                            <?php endif; endforeach; ?>
+                                        </div>
                                     </div>
                                 </div>
+                            <?php endforeach; ?>
+                        </div>
+
+                        <!-- POSTS IN OWN ROOM -->
+                        <div id="room-posts" class = "col-sm-12 col-xs-12 col-md-12 tab-pane fade" style = "margin-bottom: 40px">
+                            <?php foreach ($activities as $post): 
+                                if ($topic->topic_id == $post->topic_id):?> 
                                 
-                            </div>
-                        <?php endforeach; ?>
+                                <div class = "col-xs-12 no-padding post-container " style = "margin-top: 10px;">
+                                    <div class = "user-post-heading no-margin">
+                                        
+                                        
+                                        <span>posted to <strong>their room</strong> </span>
+                                        <!-- <strong><?php echo utf8_decode($post->topic_name); ?></strong> -->
+                                        <span class = "text-muted"> <i style = "font-size: 11px">(<?php echo date("M-d-y", strtotime($post->date_posted)); ?>)</i></span>
+                                       
+                                    </div>
+
+                                    <div class = "col-xs-12 user-post-content no-padding">
+                                        <div class = "col-xs-10 no-padding" style = "margin-top: 1vw; margin-left: 1vw;">
+                                            <p class = "home-content-body" style = "border-right: none;"><?php echo utf8_decode($post->post_content); ?></p>
+
+                                            <?php $attachments = $CI->attachment_model->get_post_attachments($post->post_id);?>
+
+                                            <?php foreach ($attachments as $attachment):
+                                                if ($attachment->attachment_type_id === '1'):?>
+                                                    <img src = "<?= base_url($attachment->file_url); ?>" width = "75%"  style="position:relative; width:auto; max-height: 200px; max-width: 300px;" />
+                                                    
+                                                <?php elseif ($attachment->attachment_type_id === '2'): ?>
+                                                    <audio src = "<?= base_url($attachment->file_url); ?>" style="width: 100%" controls></audio>
+                                                    
+
+                                                <?php elseif ($attachment->attachment_type_id === '3'): ?>
+                                                    <video src = "<?= base_url($attachment->file_url); ?>" width = "100%" style="height: 100%; width:auto; max-height: 250px;" controls/></video>
+                                                
+
+                                                <?php elseif ($attachment->attachment_type_id === '4'): ?>
+                                                    <a href = "<?= base_url($attachment->file_url); ?>" download><i class = "fa fa-file-o"></i> <i class = "text" style = "font-size: 12px;"><?= utf8_decode($attachment->caption); ?></i></a>
+                                                
+                                            <?php endif; endforeach; ?>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php endif;
+                            endforeach; ?>
+                        </div>
+
+                        <!-- POSTS IN OTHER ROOMS -->
+                        <div id="other-posts" class = "col-sm-12 col-xs-12 col-md-12 tab-pane fade" style = "margin-bottom: 40px">
+                            <?php foreach ($activities as $post): 
+                                if (!($topic->topic_id == $post->topic_id)):?> 
+                                
+                                <div class = "col-xs-12 no-padding post-container " style = "margin-top: 10px;">
+                                    <div class = "user-post-heading no-margin">
+                                        
+                                        
+                                        <span>posted in <strong><?php echo $post->topic_name; ?></strong> </span> 
+                                        <!-- <strong><?php echo utf8_decode($post->topic_name); ?></strong> -->
+                                        <span class = "text-muted"> <i style = "font-size: 11px">(<?php echo date("M-d-y", strtotime($post->date_posted)); ?>)</i></span>
+                                       
+                                    </div>
+
+                                    <div class = "col-xs-12 user-post-content no-padding">
+                                        <div class = "col-xs-10 no-padding" style = "margin-top: 1vw; margin-left: 1vw;">
+                                            <p class = "home-content-body" style = "border-right: none;"><?php echo utf8_decode($post->post_content); ?></p>
+
+                                            <?php $attachments = $CI->attachment_model->get_post_attachments($post->post_id);?>
+
+                                            <?php foreach ($attachments as $attachment):
+                                                if ($attachment->attachment_type_id === '1'):?>
+                                                    <img src = "<?= base_url($attachment->file_url); ?>" width = "75%"  style="position:relative; width:auto; max-height: 200px; max-width: 300px;" />
+                                                    
+                                                <?php elseif ($attachment->attachment_type_id === '2'): ?>
+                                                    <audio src = "<?= base_url($attachment->file_url); ?>" style="width: 100%" controls></audio>
+                                                    
+
+                                                <?php elseif ($attachment->attachment_type_id === '3'): ?>
+                                                    <video src = "<?= base_url($attachment->file_url); ?>" width = "100%" style="height: 100%; width:auto; max-height: 250px;" controls/></video>
+                                                
+
+                                                <?php elseif ($attachment->attachment_type_id === '4'): ?>
+                                                    <a href = "<?= base_url($attachment->file_url); ?>" download><i class = "fa fa-file-o"></i> <i class = "text" style = "font-size: 12px;"><?= utf8_decode($attachment->caption); ?></i></a>
+                                                
+                                            <?php endif; endforeach; ?>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php endif;
+                            endforeach; ?>
+                        </div>
                     </div>
                 </div>
             </div>

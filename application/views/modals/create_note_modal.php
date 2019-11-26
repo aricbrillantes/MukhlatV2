@@ -26,8 +26,11 @@
               
                     </div>
 
-                    <div class=" col-md-12 col-sm-12 col-xs-12">
-                        <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Notes to <?php echo $child->first_name;?>: </h4></strong> <h2 class = "" style = "display: inline-block;"></h2>
+                    <div class = "modal-footer" style = "padding: 5px; border-top: none; padding-bottom: 10px; padding-right: 10px;">
+                        <button id = "create-note-btn" class ="btn btn-primary buttonsbgcolor" data-toggle = "modal" >Send</button>
+                    </div>
+
+                    <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Notes to <?php echo $child->first_name;?>: </h4></strong> <h2 class = "" style = "display: inline-block;"></h2>
                         <?php 
                             
                             $CI->load->model('user_model'); //load models       
@@ -40,20 +43,10 @@
                             </li>
                                                                
                         <?php endforeach; ?>
-                    </div>
-
-
-                    <div class = "modal-footer" style = "padding: 5px; border-top: none; padding-bottom: 10px; padding-right: 10px;">
-                        <button id = "create-note-btn" class ="btn btn-primary buttonsbgcolor" data-toggle = "modal" >Send</button>
-                    </div>
-                
+                    
                 </div>
             </form> 
-
-
         </div>
-
-
     </div>
 </div>
 

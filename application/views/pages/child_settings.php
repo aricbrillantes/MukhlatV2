@@ -300,7 +300,7 @@
 
                 <div class = "content-container container-fluid " style = "margin-bottom: 4.5px;">
 
-                    <div class = "col-xs-12 form-group register-field" style = "">
+                    <div class = "col-xs-12 form-group register-field text-center" style = "">
                         <h3 class = "col-xs-12 no-padding text-info pull-left"style = "margin-bottom: 0px; margin-top: 0px;">Manage <b><?php echo $child->first_name ?>'s </b>Schedule</h3>
                         
                     </div>
