@@ -55,51 +55,47 @@
         else: $theme="dooroom";
         endif;?>
         <div class="<?php echo $theme?> col-xs-12 col-sm-12 col-md-9 col-lg-9 col-xl-9">
-        <div class="col-sm-12 col-md-12 col-xs-12">
-            <center><div class="nameframe">
+        <div class="col-sm-12 col-md-12 col-xs-12 col-lg-12 col-xl-12"> 
+            
+            <div class="">
+                <center><div class="nameframe">
             <h4><strong><?php echo utf8_decode($c_topic->user->first_name); ?>'s Room</strong></h4>
-            </div></center>
-
-            <!--<strong>Theme: <?php echo utf8_decode($c_topic->theme); ?></strong>-->
-            <a onmouseenter="playclip()" id="crettop" class ="btn btn-primary buttonsbgcolor textoutliner" href="#edit-topic-modal" data-toggle = "modal" style="margin:1%; width:20%"><img  src = "<?php echo base_url('icons/pencil.png'); ?>" style="width:10%;height:auto;cursor: pointer"/> Edit Room</a>
-        
-        </div>
-            <div>
-            <!--Pictures-->
-            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3"><br><br><br>
-                <a class="picture" href="#room_media_modal" data-toggle = "modal" style="color: black">
-                    <div style="margin-left: 60px;margin-bottom: 100%">
-                        <figure class="boxside boxtop"><i class = "glyphicon glyphicon-picture fa-2x" style="margin-top: 25px"></i></figure>
-                    <figure class="boxside boxleft"><i class = "glyphicon glyphicon-volume-up fa-2x" style="margin-top: 25px"></i></figure>
-                    <figure class="boxside boxright"><i class = "fa fa-play fa-2x" style="margin-top: 25px"></i></figure>
-                    </div>
-                    <!--<div class="hook"></div>-->
-<!--                    <div class="frame">
-                        <div class="inside"><strong><center>Pictures</center></strong>
-                        <?php $once=0;
-                            foreach ($c_topic->posts as $post):
-                                if($post->reply==0):?>
-                            <?php $attachments = $CI->attachment_model->get_post_attachments($post->post_id);?>
-
-                                <?php foreach ($attachments as $attachment):
-                                    if ($attachment->attachment_type_id === '1' && $once==0):?>
-                                        <img src = "<?= base_url($attachment->file_url); ?>" width = "75%"  style="position:relative;" />
-                                                
-                                <?php 
-                                    $once++;
-                                    endif;
-                                endforeach; ?>
-
-                        <?php endif; endforeach; ?></div>
-                    </div>-->
-                </a>
-
-                <?php if ($c_topic->creator_id === $logged_user->user_id): ?>
-                    <button onmouseenter="playclip()" onclick="toggleButton('media')" id="crettop" class = "btn btn-primary buttonsbgcolor textoutliner" href="#create-post-modal" data-toggle = "modal" style="font-size:22px;margin-top: 2%; margin-left: 30%">My Stuff</button><br><br>
-                <?php endif;?>
-
             </div>
-              
+                    <br>
+<!--<strong>Theme: <?php echo utf8_decode($c_topic->theme); ?></strong>-->
+            <a onmouseenter="playclip()" id="crettop" class ="btn btn-primary buttonsbgcolor textoutliner" href="#edit-topic-modal" data-toggle = "modal" style="margin-top:-8%; width:20%"><img  src = "<?php echo base_url('icons/pencil.png'); ?>" style="width:10%;height:auto;cursor: pointer"/> Edit Room</a>
+                </center></div>
+        </div>
+            
+            
+            <div class="col-sm-12 col-md-12 col-xs-12 col-lg-12 col-xl-12"> 
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 white-board" style="min-height:300px; max-height:300px">
+            <?php 
+                    //load models
+                    $CI =&get_instance();
+                    $CI->load->model('topic_model');
+                    $CI->load->model('user_model');
+
+                    //get announcements
+                    $announcements = $CI->topic_model->get_announcements();
+
+                    //get teacher's details for each announcement
+                    foreach ($announcements as $announcement):
+
+                        $details = $CI->user_model->view_adult($announcement->user_id);
+
+                        foreach ($details->result() as $teacher): //store teacher's details in array
+                            $data['user'] = $CI->user_model->get_details(true, true, array('user_id' => $announcement->user_id));
+                        
+                ?>
+
+                    <li class = "">
+                        <h4 class = "no-padding admin-list-name">Teacher <?php echo $teacher->first_name?> says: </h4> 
+                        <h3 class = "no-padding admin-list-name">"<?php echo $announcement->announcement ?>"</h3>
+                    </li>
+                    <?php  endforeach; endforeach; ?>
+            </div>
+                
                 <!--Shout out-->
            <ul class="stickynote col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
                <li class="stickytext">
@@ -116,27 +112,89 @@
                 </li>
 
             <?php if ($c_topic->creator_id === $logged_user->user_id): ?>
-                <button onmouseenter="playclip()" onclick="toggleButton('shout')" id="crettop" class = "btn btn-primary buttonsbgcolor textoutliner" href="#create-post-modal" data-toggle = "modal" style="font-size:22px;margin-top: 2%; margin-left: 17%">Shoutout!</button><br><br>
+                <button onmouseenter="playclip()" onclick="toggleButton('shout')" id="crettop" class = "btn btn-primary buttonsbgcolor textoutliner" href="#create-post-modal" data-toggle = "modal" style="font-size:22px;margin-top: 2%; margin-left: 30%">Shoutout!</button><br><br>
                 <?php endif;?>
             </ul>
+                
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
+                <?php 
+                    $CI =&get_instance();
+                    $CI->load->model('user_model'); //load models
+                    $notes = $CI->user_model->get_notes($logged_user->user_id); //get notes
+
+                    foreach ($notes as $note): ?>
+
+                    <li class = "list-item ">
+                        <h3 class = "no-padding admin-list-name">"<?php echo $note->note ?>"</h3>
+                    </li>
+                                                       
+                <?php endforeach; ?>
+            </div>
+        </div>
+            
+            <div class="col-sm-12 col-md-12 col-xs-12 col-lg-12 col-xl-12"> 
+            <!--Pictures-->
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3"><br><br><br><br><br><br>
+                <a class="picture" href="#room_media_modal" data-toggle = "modal" style="color: black">
+                    <div style="margin-left: 60px;">
+                        <figure class="boxside boxtop"><i class = "glyphicon glyphicon-picture fa-2x" style="margin-top: 25px"></i></figure>
+                    <figure class="boxside boxleft"><i class = "glyphicon glyphicon-volume-up fa-2x" style="margin-top: 25px"></i></figure>
+                    <figure class="boxside boxright"><i class = "fa fa-play fa-2x" style="margin-top: 25px"></i></figure>
+                    </div>
+                    <!--<div class="hook"></div>-->
+<!--                    <div class="frame">
+                        <div class="inside"><strong><center>Pictures</center></strong>-->
+                        
+<!--            </div>
+                    </div>-->
+                </a>
+                
+                <?php if ($c_topic->creator_id === $logged_user->user_id): ?>
+                    <button onmouseenter="playclip()" onclick="toggleButton('media')" id="crettop" class = "btn btn-primary buttonsbgcolor textoutliner" href="#create-post-modal" data-toggle = "modal" style="font-size:22px;margin-top:210px; margin-left: 75px">My Stuff</button><br><br>
+                <?php endif;?>
+
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
+                <div class="mystuffpreview"
+            <?php 
+                            foreach ($c_topic->posts as $post):
+                                if($post->reply==0):?>
+                            <?php $attachments = $CI->attachment_model->get_post_attachments($post->post_id);?>
+
+                                <?php foreach ($attachments as $attachment):
+                                    if ($attachment->attachment_type_id === '1'):?>
+                     <img class="mySlides fade" src = "<?= base_url($attachment->file_url); ?>" width = "100%" height="100%"  style="position:relative;" />
+                                <?php elseif ($attachment->attachment_type_id === '2'): ?>
+                                        <audio class="mySlides fade" src = "<?= base_url($attachment->file_url); ?>" style="width:100%"  controls></audio>
+                                <?php elseif ($attachment->attachment_type_id === '3'): ?>
+                                        <video class="mySlides fade" src = "<?= base_url($attachment->file_url); ?>" width = "100%" controls/></video>
+                                <?php 
+                                    endif;
+                                endforeach; ?>
+
+                        <?php endif; endforeach; ?>
+                </div>
+              </div>
+                
                 
                 
                 <!--regular text, emojis and stickers-->
                 <div>
-                <div  class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 pull-right chalkboard" style="min-height:300px; max-height:300px">
+                <div  class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 pull-right chalkboard" style="min-height:300px; max-height:300px">
                     <?php
                         foreach ($c_topic->posts as $post):
                             if($post->shout==0 && $post->reply==0):?>
                     <?php $attachments = $CI->attachment_model->get_post_attachments($post->post_id);?>
                     <?php if(!$attachments):?>
-                            <p style = "border-right: none; max-width: 714px;padding: 3%;max-height: 50%;font-family: KGChasingPavements"><?php echo utf8_decode($post->post_content); ?></p>
+                            <p style = "border-right: none; max-width: 714px;padding: 3%;max-height: 50%;font-family: KGChasingPavements"><?php echo utf8_decode($post->post_content); ?>
+                                                <button class = "btn btn-primary pull-right" id="text2speak" style = "margin-right: 3px;border-radius: 20px;" onclick="readcontent('<?php $stringy = utf8_decode($post->post_content); $stringy1 = str_replace('\'', '`', $stringy); echo trim(preg_replace('/[^A-Za-z0-9()#,%\/?@$*.:+=_~`-]/', ' ', $stringy1)); ?>')"><i class="glyphicon glyphicon-volume-up" style="padding-top: 5px;"></i></button></p>
                     <?php endif;
                           endif;
                           endforeach; ?>
                             
                     </div>
             <?php if ($c_topic->creator_id === $logged_user->user_id): ?>
-                    <center> <button onmouseenter="playclip()" onclick="toggleButton('text')" id="crettop" class = "btn btn-primary buttonsbgcolor textoutliner" href="#create-post-modal" data-toggle = "modal" style="font-size:22px;margin-left: 5%;margin-top: 1%">My Board</button></center><br><br>
+                    <center> <button onmouseenter="playclip()" onclick="toggleButton('text')" id="crettop" class = "btn btn-primary buttonsbgcolor textoutliner" href="#create-post-modal" data-toggle = "modal" style="font-size:22px;margin-left: 58%;margin-top: 1%">My Board</button></center><br><br>
                 <?php endif;?></div>
             </div>  
         </div>
@@ -500,7 +558,22 @@
 
             
     </div>-->
+<script>
+var slideIndex = 0;
+showSlides();
 
+function showSlides() {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";  
+  }
+  slideIndex++;
+  if (slideIndex > slides.length) {slideIndex = 1};
+  slides[slideIndex-1].style.display = "block";  
+  setTimeout(showSlides, 2000); // Change image every 2 seconds
+}
+</script>
     <?php
 //     include(APPPATH . 'views/side_postbar.php');
     include(APPPATH . 'views/modals/room_media_modal.php');

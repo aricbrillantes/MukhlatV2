@@ -995,7 +995,7 @@ textarea{
     background-color: #ECEFF1; 
     border-radius: 4px;
     margin-top: 10px;
-    height: 550px;
+    height: 600px;
     overflow-y: auto;
 }
 
@@ -2392,6 +2392,18 @@ border: 2px outset  #000;
     border-width: 5px;
 }
 
+.mystuffpreview{
+    margin-bottom:5px;
+    margin-top: 5px;
+    margin-left: -20px;
+    padding: 10px;
+    background-color: white;
+    border:solid;
+    border-radius: 20px 20px 20px 0px;
+    border-width: 5px;
+    height: 150px;
+}
+
 /*** OPEN BOOK ***/
 .open-book {
     width:40%;
@@ -3368,4 +3380,22 @@ background-size: 1800% 1800%;
 
 .hideme{
     display: none !important;
+}
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
 }

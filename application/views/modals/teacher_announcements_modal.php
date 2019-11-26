@@ -20,7 +20,7 @@
             
             <div class=" col-md-12 col-sm-12 col-xs-12">
                 <br>
-
+ 
                 <?php 
                     //load models
                     $CI =&get_instance();
@@ -35,7 +35,7 @@
 
                         $details = $CI->user_model->view_adult($announcement->user_id);
 
-                        foreach ($details->result() as $teacher) //store teacher's details in array
+                        foreach ($details->result() as $teacher): //store teacher's details in array
                             $data['user'] = $CI->user_model->get_details(true, true, array('user_id' => $announcement->user_id));
                         
                 ?>
@@ -46,7 +46,7 @@
                     </li>
                     <br>                                    
                
-                <?php endforeach; ?>
+                        <?php  endforeach; endforeach; ?>
             </div>
 
         </div>
@@ -55,4 +55,3 @@
 
     
 <script type="text/javascript" src="<?php echo base_url("/js/topic.js"); ?>"></script>
-<!-- END SCRIPTS -->

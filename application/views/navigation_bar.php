@@ -617,6 +617,7 @@
                     .charLimitMessage{background:' + getCookie("ButtonHColor") + ';}\n\
                     .topic-grid1{background-color: #'+ randomColor +';}\n\
                     .homepostsborder{border-color:' + getCookie("ButtonColor") + ';}\n\
+                    .mystuffpreview{border-color:' + getCookie("ButtonColor") + ';}\n\
                     #backgroundcloud-wrap{display:' + getCookie("cloudbg1") + '!important;}\n\
                     .rainbowwrapper{display:' + getCookie("rainbowbg1") + '!important;}\n\
                     .ptopcolor{background:' + getCookie("ButtonColor") + ';}<\/style>');
@@ -1317,7 +1318,15 @@ document.addEventListener('keydown', function(e) {
 
 <!--read post content reader script-->
         <script>
-function readcontent(value) {
+function readcontent(value) { //piles the clicks
+   
+    var value2 = value.replace(/`/g, "'");
+    var reader = new SpeechSynthesisUtterance(value2);
+    window.speechSynthesis.speak(reader);
+    
+  }
+  
+function readcontent2(value) { //only talks when no more talking
     if(!(speechSynthesis.speaking)){
     var value2 = value.replace(/`/g, "'");
     var reader = new SpeechSynthesisUtterance(value2);

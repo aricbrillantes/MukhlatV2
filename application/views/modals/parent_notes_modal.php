@@ -19,7 +19,7 @@
             </div>
             
             <div class=" col-md-12 col-sm-12 col-xs-12">
-                <br>
+                <br> 
 
                 <?php 
                     $CI =&get_instance();
