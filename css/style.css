@@ -2105,7 +2105,7 @@ body::-webkit-scrollbar-thumb {
   display:inline-block;
   margin:10vh 10vw;
   height:20%;
-  width:20%;
+  min-width:200px;
   padding:1vmin;
   position:relative;
   text-align:center;}
@@ -3364,4 +3364,8 @@ background-size: 1800% 1800%;
     width:97%;
     display: inline-block;
     margin-bottom:1%;
+}
+
+.hideme{
+    display: none !important;
 }

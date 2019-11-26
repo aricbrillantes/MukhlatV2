@@ -155,7 +155,7 @@ else if(w>=768 && w<1200){ //lg and md
 }
 
 });
-if(w<768){
+if(w<768){ //very small screen
     $('.roomthemes').addClass('colly-sm-3');
 }
 else if(w>=1200){
