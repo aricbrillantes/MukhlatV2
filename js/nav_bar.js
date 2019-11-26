@@ -123,6 +123,81 @@ $(document).ready(function() {
     page = document.body.innerHTML;
     findstickers(find, repl, page);
     
+    find = ";woohoo;";
+    repl = "<img  width='50%' src='" + "/MukhlatV2/images/stickers/woohoo.png'>";
+    page = document.body.innerHTML;
+    findstickers(find, repl, page);
+    
+    find = ";cool;";
+    repl = "<img  width='50%' src='" + "/MukhlatV2/images/stickers/cool.png'>";
+    page = document.body.innerHTML;
+    findstickers(find, repl, page);
+    
+    find = ";eww;";
+    repl = "<img  width='50%' src='" + "/MukhlatV2/images/stickers/eww.png'>";
+    page = document.body.innerHTML;
+    findstickers(find, repl, page);
+    
+    find = ";zzz;";
+    repl = "<img  width='50%' src='" + "/MukhlatV2/images/stickers/zzz.png'>";
+    page = document.body.innerHTML;
+    findstickers(find, repl, page);
+    
+    find = ";joke;";
+    repl = "<img  width='50%' src='" + "/MukhlatV2/images/stickers/joke.png'>";
+    page = document.body.innerHTML;
+    findstickers(find, repl, page);
+    
+    find = ";amazing;";
+    repl = "<img  width='50%' src='" + "/MukhlatV2/images/stickers/amazing.png'>";
+    page = document.body.innerHTML;
+    findstickers(find, repl, page);
+    
+    find = ";what;";
+    repl = "<img  width='50%' src='" + "/MukhlatV2/images/stickers/what.png'>";
+    page = document.body.innerHTML;
+    findstickers(find, repl, page);
+    
+    find = ";haha;";
+    repl = "<img  width='50%' src='" + "/MukhlatV2/images/stickers/haha.png'>";
+    page = document.body.innerHTML;
+    findstickers(find, repl, page);
+    
+    find = ";happy;";
+    repl = "<img  width='50%' src='" + "/MukhlatV2/images/stickers/happy.png'>";
+    page = document.body.innerHTML;
+    findstickers(find, repl, page);
+    
+    find = ";yuck;";
+    repl = "<img  width='50%' src='" + "/MukhlatV2/images/stickers/yuck.png'>";
+    page = document.body.innerHTML;
+    findstickers(find, repl, page);
+    
+    find = ";angry;";
+    repl = "<img  width='50%' src='" + "/MukhlatV2/images/stickers/angry.png'>";
+    page = document.body.innerHTML;
+    findstickers(find, repl, page);
+    
+    find = ";sad;";
+    repl = "<img  width='50%' src='" + "/MukhlatV2/images/stickers/sad.png'>";
+    page = document.body.innerHTML;
+    findstickers(find, repl, page);
+    
+    find = ";love;";
+    repl = "<img  width='50%' src='" + "/MukhlatV2/images/stickers/love.png'>";
+    page = document.body.innerHTML;
+    findstickers(find, repl, page);
+    
+    find = ";laughing crying;";
+    repl = "<img  width='50%' src='" + "/MukhlatV2/images/stickers/laughing crying.png'>";
+    page = document.body.innerHTML;
+    findstickers(find, repl, page);
+    
+    find = ";love 2;";
+    repl = "<img  width='50%' src='" + "/MukhlatV2/images/stickers/love 2.png'>";
+    page = document.body.innerHTML;
+    findstickers(find, repl, page);
+    
     function findstickers(find, repl, page){
     while (page.indexOf(find) >= 0) {
     var i = page.indexOf(find);
@@ -130,6 +205,8 @@ $(document).ready(function() {
     page = page.substr(0,i) + repl + page.substr(i+j);
     document.body.innerHTML = page;
     }}
+    
+    
     
     $('.editroomthemes').click(function(){
            $('.selected2').removeClass('selected2'); // removes the previous selected class
@@ -140,6 +217,8 @@ $(document).ready(function() {
     $('.selected').removeClass('selected'); // removes the previous selected class
     $(this).addClass('selected'); // adds the class to the clicked image
 });
+
+
 
 //screen resizing for mobile compaitibility
 var w = window.innerWidth;
