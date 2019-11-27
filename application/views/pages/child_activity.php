@@ -264,8 +264,8 @@
                         endif;
                     ?> -->
 
-                    <div class = "col-xs-12 col-sm-6 col-md-6 no-padding no-margin text-center row" style="float: right; margin-bottom: 0px;">
-                        <a class = "btn btn-primary col-md-10 col-sm-10 col-xs-10 col-md-offset-1 col-sm-offset-1 col-xs-offset-1" style="font-size:14px; margin-top: 15px;" href = "#create-note-modal" data-toggle = "modal" ><i class = "glyphicon glyphicon-envelope"></i> 
+                    <div class = "col-xs-12 col-sm-6 col-md-6 col-md-offset-0 no-padding no-margin text-center row" style="float: right; margin-bottom: 0px;">
+                       <!--  <a class = "btn btn-primary col-md-10 col-sm-10 col-xs-10 col-md-offset-1 col-sm-offset-1 col-xs-offset-1" style="font-size:14px; margin-top: 15px;" href = "#create-note-modal" data-toggle = "modal" ><i class = "glyphicon glyphicon-envelope"></i> 
                             <?php if (!$mobile): ?>
                                 Send a Note to <?php echo $child->first_name?>
 
@@ -273,7 +273,7 @@
                                 Send a Note
 
                             <?php endif; ?>
-                        </a>  
+                        </a>   -->
 
                         <a class = "btn btn-primary col-md-10 col-sm-10 col-xs-10 col-md-offset-1 col-sm-offset-1 col-xs-offset-1" style="font-size:14px; margin-top: 15px;" href = "<?php echo base_url('parents/settings/' . $child->user_id) ?>" ><i class = "glyphicon glyphicon-time"></i> 
                             <?php if (!$mobile): ?>
@@ -343,8 +343,50 @@
                     <div class=" col-md-12 col-sm-12 col-xs-12">
                         <br><br>
                     </div>
+
+
+                    <!-- User Room -->
+                    <div class = "col-xs-12 col-sm-12 col-md-12 col-md-offset-0 content-container container-fluid row" style = "margin-bottom: 0px; margin-left: 0px">
+                        <h3 class = "text-info text-center user-activities-header">
+                            <strong>Say something to <?php echo $child->first_name; ?></strong><br>
+                        </h3>
+                    </div>
+
+                    <form enctype = "multipart/form-data" action = "<?php echo base_url('parents/note/').$id; ?>" id = "create-note-form" method = "POST">
+                        <div class="modal-body">
+
+                            <div class="form-group" ><!-- check if description exceeds n words-->
+                                <!--<label for = "content">Make the content of your post:</label>-->
+                                <!--<p class="lead emoji-picker-container">-->
+                                <textarea class = "form-control" style="height: 100px;" maxlength = "200" required name = "note_content" id = "note-content" placeholder = "Write your note here:" ></textarea>
+                                <!-- <p id="charsRemaining4">Characters Left: 16000</p> -->
+                      
+                            </div>
+
+                            <div class = "modal-footer" style = "padding: 5px; border-top: none; padding-bottom: 10px; padding-right: 10px;">
+                                <button id = "create-note-btn" class ="btn btn-primary buttonsbgcolor" data-toggle = "modal" >Send</button>
+                            </div>
+
+                            <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Previous notes to <?php echo $child->first_name;?>: </h4></strong> <h2 class = "" style = "display: inline-block;"></h2>
+                                <?php 
+                                    
+                                    $CI->load->model('user_model'); //load models       
+                                    $notes = $CI->user_model->get_notes($id); //get notes
+
+                                    foreach (array_reverse($notes) as $note): ?>
+
+                                    <li class = "list-group-item admin-list-item">
+                                        <h3 class = "no-padding admin-list-name">"<?php echo $note->note ?>"</h3>
+                                    </li>
+                                                                       
+                                <?php endforeach; ?>
+                            
+                        </div>
+                    </form> 
                     
                 </div>
+
+
 
                 <!-- Activity -->
                 <div class = "col-xs-12 col-md-6 col-sm-6 content-container container-fluid tab-content" style = "margin-bottom: 0px; margin-left: 0px">
@@ -500,6 +542,7 @@
                             endforeach; ?>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>

@@ -152,11 +152,16 @@
                      <div class = "col-xs-12 col-md-12 col-md-offset-0 content-container container-fluid" style = "margin-bottom: 5px; border:0">
                         
                         <h3 class = "no-padding text-info" style = "margin-bottom: 0px;"><strong><?php echo $child->first_name . " " . $child->last_name ?></strong></h3>
-                        
+
+                        <?php if($child->is_enabled == 0):?>
+                            <h4 style="color:red;"><i>(Account Unverified)</i></h4>
+                        <?php endif; ?>
+
                         <small class = "no-padding no-margin"><?php echo $child->email ?></small>
-                        
+
                         <p class = "wrap text-muted" style = ""><i><?php echo $child->description ? $child->description : 'Hello World!'; ?></i></p>
                         <a href = "<?php echo base_url('parents/activity/' . $child->user_id); ?>" class = "btn btn-primary btn-block" style = "margin-bottom: 10px; "><i class = "glyphicon glyphicon-user"></i> View <?php echo $child->first_name ?>'s activity</a>
+
                     </div>
                 </div>    
             <?php endforeach; ?>

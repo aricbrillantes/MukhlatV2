@@ -52,7 +52,29 @@
         
         <a class = "navbar-brand" href = "<?php echo base_url('home') ?>"><img id = "nav-logo" src = "<?php echo base_url('images/logo/mukhlatlogo_side_basic.png'); ?>"/></a>
 
-        <a href="#logout-modal-parents" data-toggle = "modal" class = "pull-right btn btn-primary btn-md" style = "margin-right: 20px; margin-top: 10px; margin-bottom: 10px; background:#c73838; border-color: #c73838;">Log Out</a>
+        <?php if (!$mobile): ?>
+
+            <ul class = "nav navbar-nav navbar-right pull-right" style = "margin-right: 5px;">
+                <li class="dropdown">
+
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <!-- <img class = "img-rounded nav-prof-pic" src = "<?php echo $logged_user->profile_url ? base_url($logged_user->profile_url) : base_url('images/default.jpg') ?>"/>  -->
+                        <?php echo $logged_user->first_name . " " . $logged_user->last_name; ?>
+                        
+                        <span class="caret"></span>
+                    </a>                 
+                
+                    <ul class="dropdown-menu">
+                        <li><a href="<?php echo base_url('signin/logout');?>"><i class = "glyphicon glyphicon-log-out" style="color:red"></i> Logout</a></li>
+
+                    </ul>
+                </li>
+            </ul>
+
+        <?php else: ?>
+            <a href="#logout-modal-parents" data-toggle = "modal" class = "pull-right btn btn-primary btn-md" style = "margin-right: 20px; margin-top: 10px; margin-bottom: 10px; background:#c73838; border-color: #c73838;">Log Out</a>
+                            
+        <?php endif; ?>
                             
     </div>
     
@@ -60,16 +82,13 @@
 
 <body class = "sign-in">
 
-   
-
-    <div id = "admin-page" class = "container" style = "margin-top: 30px;">
+    <div id = "admin-page" class = "container" style = "margin-top: 0px;">
         <div class = "row">
             <!-- Admin Header -->
             <div class = "col-md-8 col-md-offset-2 content-container container-fluid text-center" style = "margin-bottom: 0px;">
                 <h3 class = "text-info no-margin" style = "display: inline-block; margin-top: 5px;"><strong><?php echo $logged_user->first_name . " " . $logged_user->last_name ?></strong></h3>
                 
-                <br>
-                <a href = "#create-announcement-modal" data-toggle = "modal" class = "btn btn-primary col-md-6 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1" style="font-size:14px; margin-top: 15px;"><i class = "fa fa-globe"></i> Create Announcement</a> 
+                <!-- <a href = "#create-announcement-modal" data-toggle = "modal" class = "btn btn-primary col-md-6 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1" style="font-size:14px; margin-top: 15px;"><i class = "fa fa-globe"></i> Create Announcement</a>  -->
 
                 <!-- <button id="crettop" class = "container col-md-6 btn btn-primary  textoutliner" href="#"  >Create Announcement</button> -->
 
@@ -80,7 +99,7 @@
             </div>
 
             <!-- Admin Content -->
-            <div class = "col-md-8 col-md-offset-2 content-container row">
+            <div class = "col-md-8 col-md-offset-0 col-sm-8 col-xs-12 col-md-offset-0 col-xs-offset-0 content-container row">
 
 
                 <div class = "content-container container-fluid col-md-12 col-md-offset-0 col-sm-offset-1 col-sm-10 col-xs-offset-1 col-xs-10">
@@ -93,7 +112,7 @@
                 </div>
 
                 <div class = "col-md-12 col-sm-12 col-xs-12 container-fluid tab-content">
-                    <div id = "user-list-1" class = "list-group tab-pane fade in active content-container container-fluid">
+                    <div id = "user-list-1" class = "list-group tab-pane fade in active ">
                         <?php foreach ($users as $user): 
 
                             if ($user->role_id === '2'):?>
@@ -123,7 +142,7 @@
                         <?php endforeach; ?>
                     </div>
 
-                    <div id = "user-list-2" class = "list-group tab-pane fade content-container container-fluid">
+                    <div id = "user-list-2" class = "list-group tab-pane fade">
                         <?php foreach ($users as $user): 
 
                             if ($user->role_id === '3'):?>
@@ -154,7 +173,7 @@
                         
                     </div>
 
-                    <div id = "user-list-3" class = "list-group tab-pane fade content-container  container-fluid">
+                    <div id = "user-list-3" class = "list-group tab-pane fade">
                         
                         <?php foreach ($users as $user): 
 
@@ -184,33 +203,60 @@
                         <?php endforeach; ?>
                     </div>
 
-                    <div id = "announcements" class = "list-group tab-pane fade content-container container-fluid">
-                        <?php 
-                            //load models
-                            $CI->load->model('topic_model');
-                            $CI->load->model('user_model');
-
-                            //get announcements
-                            $announcements = $CI->topic_model->get_announcements();
-
-                            //get teacher's details for each announcement
-                            foreach ($announcements as $announcement):
-
-                                $details = $CI->user_model->view_adult($announcement->user_id);
-
-                                foreach ($details->result() as $teacher) //store teacher's details in array
-                                    $data['user'] = $CI->user_model->get_details(true, true, array('user_id' => $announcement->user_id));
-                                
-                        ?>
-
-                            <li class = "list-group-item admin-list-item">
-                                <h5 class = "no-padding admin-list-name">Teacher <?php echo $teacher->first_name?> says: </h5> <br>
-                                <h4 class = "no-padding admin-list-name">"<?php echo $announcement->announcement ?>"</h4>
-                            </li>                                    
-                       
-                        <?php endforeach; ?>
-                    </div>
+                    
                 </div>
+            </div>
+
+            <div class = "col-md-4 col-sm-4 col-xs-12 col-md-offset-0 col-xs-offset-0 col-sm-offset-0 content-container row">
+                <!-- <h3 style="margin-left: 15px">Announcements</h3> -->
+                <br><h3 class = "text-info text-center user-activities-header col-md-offset-0">Announcements</h3><br>
+                <form enctype = "multipart/form-data" action = "<?php echo base_url('topic/announcement'); ?>" id = "create-announcement-form" method = "POST">
+                    <div class="form-group container-fluid" ><!-- check if description exceeds n words-->
+                        <!--<label for = "content">Make the content of your post:</label>-->
+                        <!--<p class="lead emoji-picker-container">-->
+                        <textarea class = "form-control" style="height: 100px;" maxlength = "200" required name = "announcement_content" id = "announcement-content" placeholder = "Write your announcement here:" ></textarea>
+                        <!-- <p id="charsRemaining4">Characters Left: 16000</p> -->
+                        
+                        <div class = "modal-footer" style = "">
+                            <button id = "create-announcement-btn" class ="btn btn-primary buttonsbgcolor" data-toggle = "modal" >Share</button>
+                        </div>
+
+                    </div>
+                    
+                    
+                    
+                </form>  
+
+                <div id = "announcements" class = "list-group  content-container container-fluid">
+                    <?php 
+                        //load models
+                        $CI->load->model('topic_model');
+                        $CI->load->model('user_model');
+
+                        //get announcements
+                        $announcements = $CI->topic_model->get_announcements();
+
+                        //get teacher's details for each announcement
+                        foreach (array_reverse($announcements) as $announcement):
+
+                            $details = $CI->user_model->view_adult($announcement->user_id);
+
+                            foreach ($details->result() as $teacher) //store teacher's details in array
+                                $data['user'] = $CI->user_model->get_details(true, true, array('user_id' => $announcement->user_id));
+                            
+                    ?>
+
+                        <li class = "list-group-item admin-list-item">
+                            <!-- <?php echo ($logged_user->user_id === $teacher->user_id) ? 'You:' : $teacher->first_name ?> -->
+                            <h5><?php echo ($logged_user->user_id === $teacher->user_id) ? 'You:' : $teacher->first_name." ".$teacher->last_name.":" ?></h5>
+                            <!-- <h5 class = "no-padding admin-list-name">Teacher <?php echo $teacher->first_name?> says: </h5> -->
+                            <h4 class = "no-padding admin-list-name">"<?php echo $announcement->announcement ?>"</h4>
+                        </li>                                    
+                   
+                    <?php endforeach; ?>
+                </div>
+
+                 
             </div>
         </div>
     </div>
@@ -223,6 +269,6 @@
 
 <?php
     //include(APPPATH . "views/modals/user_record_modal.php");
-    include(APPPATH . 'views/modals/create_announcement_modal.php');
+    // include(APPPATH . 'views/modals/create_announcement_modal.php');
     include(APPPATH . 'views/modals/logout_confirm_modal_parents.php');
 ?>
