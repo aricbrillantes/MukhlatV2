@@ -2212,7 +2212,7 @@ body::-webkit-scrollbar-thumb {
 .white-board{
   background-color: #f2f2f2;
   position: relative;
-  width: 40%;
+  min-width: 40%;
   height: 80%;
   border-radius: 5px;
   border: 10px solid #adb2bd;
@@ -2761,7 +2761,7 @@ border: 2px outset  #000;
   color: #E8E8E8;
   font-family: "Walter Turncoat", cursive;
   display: block;
-  width: 40%;
+  min-width: 40%;
   height: 40%;
   min-height: auto;
   margin: 30px auto 0 auto;
@@ -3398,4 +3398,30 @@ background-size: 1800% 1800%;
 @keyframes fade {
   from {opacity: .4} 
   to {opacity: 1}
+}
+
+.pad-header, .pad { min-width: 350px;max-width: 350px; }
+.pad-header {
+  height: 50px;
+  background-color: #623B18;
+  border-radius: 20px 20px 0px 0px;
+}
+
+.pad { 
+  box-shadow: 10px 2px 20px #0A0A0A;
+  overflow:auto;
+  height:250px;
+}
+
+.padol { 
+  min-height: 250px;
+	background: linear-gradient(#6496b9, #E1E9A0 2px);
+	background-size: 90px 30px;
+  margin:0;
+  padding: 0;
+}
+
+.padli { 
+  line-height: 30px; 
+  position: relative;
 }

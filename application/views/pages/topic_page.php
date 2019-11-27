@@ -30,10 +30,7 @@
 
     <?php
         include(APPPATH . 'views/navigation_bar.php'); ?>
-       
-   <div class = "col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12"> 
-        <!--<div id = "topic-page" class = "container page" style = "min-height: 100%; height: 100%;">test</div>-->
-        <?php if($c_topic->theme==1): $theme="roomtheme-arrow";
+       <?php if($c_topic->theme==1): $theme="roomtheme-arrow";
         elseif($c_topic->theme==2): $theme="roomtheme-zigzag";
         elseif($c_topic->theme==3): $theme="roomtheme-scales";
         elseif($c_topic->theme==4): $theme="roomtheme-halfrhombe";
@@ -54,7 +51,10 @@
         elseif($c_topic->theme==19): $theme="roomtheme-crosseddot";
         else: $theme="dooroom";
         endif;?>
-        <div class="<?php echo $theme?> col-xs-12 col-sm-12 col-md-9 col-lg-9 col-xl-9">
+   <div class = "<?php echo $theme?> col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12"> 
+        <!--<div id = "topic-page" class = "container page" style = "min-height: 100%; height: 100%;">test</div>-->
+        
+        <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 col-xl-9">
         <div class="col-sm-12 col-md-12 col-xs-12 col-lg-12 col-xl-12"> 
             
             <div class="">
@@ -115,8 +115,12 @@
                 <button onmouseenter="playclip()" onclick="toggleButton('shout')" id="crettop" class = "btn btn-primary buttonsbgcolor textoutliner" href="#create-post-modal" data-toggle = "modal" style="font-size:22px;margin-top: 2%; margin-left: 30%">Shoutout!</button><br><br>
                 <?php endif;?>
             </ul>
-                
+                	
             <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
+
+                <div class = "pad-header"><span class="textoutliner" style="color:white;margin:90px">Guardian's notes</span></div>
+                <div class = "pad">
+                    <div class="padol">
                 <?php 
                     $CI =&get_instance();
                     $CI->load->model('user_model'); //load models
@@ -124,11 +128,13 @@
 
                     foreach ($notes as $note): ?>
 
-                    <li class = "list-item ">
-                        <h3 class = "no-padding admin-list-name">"<?php echo $note->note ?>"</h3>
-                    </li>
+                    <div class = "padli">
+                        <h3 class = " admin-list-name"><?php echo $note->note ?></h3>
+                    </div>
                                                        
                 <?php endforeach; ?>
+                    </div>
+                </div>
             </div>
         </div>
             
