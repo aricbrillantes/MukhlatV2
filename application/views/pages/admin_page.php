@@ -248,9 +248,13 @@
 
                         <li class = "list-group-item admin-list-item">
                             <!-- <?php echo ($logged_user->user_id === $teacher->user_id) ? 'You:' : $teacher->first_name ?> -->
-                            <h5><?php echo ($logged_user->user_id === $teacher->user_id) ? 'You:' : $teacher->first_name." ".$teacher->last_name.":" ?></h5>
                             <!-- <h5 class = "no-padding admin-list-name">Teacher <?php echo $teacher->first_name?> says: </h5> -->
-                            <h4 class = "no-padding admin-list-name">"<?php echo $announcement->announcement ?>"</h4>
+
+                            <i class = "pull-left"><?php echo ($logged_user->user_id === $teacher->user_id) ? 'You:' : $teacher->first_name." ".$teacher->last_name.":" ?></i>
+                            <i class = "pull-right">(<?php echo date_format(date_create($announcement->date),"M d Y - H:i");?>)</i>
+                            
+
+                            <br><br><h4 class = "no-padding admin-list-name">"<?php echo $announcement->announcement ?>"</h4>
                         </li>                                    
                    
                     <?php endforeach; ?>

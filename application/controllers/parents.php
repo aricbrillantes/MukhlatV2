@@ -44,11 +44,14 @@ class Parents extends CI_Controller {
         if(isset($_SESSION['logged_user']))
             $logged_user = $_SESSION['logged_user'];
 
+        date_default_timezone_set('Asia/Manila');
+
         $data = array
         (
             'child_id' => $child_id,
             'parent_id' => $logged_user->user_id,
             'note' => utf8_encode(htmlspecialchars($input->post('note_content'))),
+            'date' => date('Y-m-d H:i:s')
         );
 
         $this->db->insert("tbl_notes", $data);

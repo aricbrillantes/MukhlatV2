@@ -853,11 +853,13 @@ class Topic extends CI_Controller {
         if(isset($_SESSION['logged_user']))
             $logged_user = $_SESSION['logged_user'];
 
+        date_default_timezone_set('Asia/Manila');
+
         $data = array
         (
             'user_id' => $logged_user->user_id,
             'announcement' => utf8_encode(htmlspecialchars($input->post('announcement_content'))),
-            
+            'date' => date('Y-m-d H:i:s')
         );
 
         $this->db->insert("tbl_announcements", $data);

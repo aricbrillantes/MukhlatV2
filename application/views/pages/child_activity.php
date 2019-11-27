@@ -348,7 +348,7 @@
                     <!-- User Room -->
                     <div class = "col-xs-12 col-sm-12 col-md-12 col-md-offset-0 content-container container-fluid row" style = "margin-bottom: 0px; margin-left: 0px">
                         <h3 class = "text-info text-center user-activities-header">
-                            <strong>Say something to <?php echo $child->first_name; ?></strong><br>
+                            <strong>Leave a note for <?php echo $child->first_name; ?></strong><br>
                         </h3>
                     </div>
 
@@ -376,7 +376,9 @@
                                     foreach (array_reverse($notes) as $note): ?>
 
                                     <li class = "list-group-item admin-list-item">
+                                        <i class = "pull-right">(<?php echo date_format(date_create($note->date),"M d Y - H:i");?>)</i>
                                         <h3 class = "no-padding admin-list-name">"<?php echo $note->note ?>"</h3>
+
                                     </li>
                                                                        
                                 <?php endforeach; ?>
