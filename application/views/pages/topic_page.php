@@ -169,11 +169,11 @@
 
                                 <?php foreach ($attachments as $attachment):
                                     if ($attachment->attachment_type_id === '1'):?>
-                     <img class="mySlides fade" src = "<?= base_url($attachment->file_url); ?>" width = "100%" height="100%"  style="position:relative;" />
+                                        <img class="mySlides fader" src = "<?= base_url($attachment->file_url); ?>" width = "100%" height="100%"  style="position:relative;" />
                                 <?php elseif ($attachment->attachment_type_id === '2'): ?>
-                                        <audio class="mySlides fade" src = "<?= base_url($attachment->file_url); ?>" style="width:100%"  controls></audio>
+                                        <audio class="mySlides fader" src = "<?= base_url($attachment->file_url); ?>" style="width:100%"  controls></audio>
                                 <?php elseif ($attachment->attachment_type_id === '3'): ?>
-                                        <video class="mySlides fade" src = "<?= base_url($attachment->file_url); ?>" width = "100%" controls/></video>
+                                        <video class="mySlides fader" src = "<?= base_url($attachment->file_url); ?>" width = "100%" controls/></video>
                                 <?php 
                                     endif;
                                 endforeach; ?>
