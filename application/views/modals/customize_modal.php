@@ -99,7 +99,7 @@
                                     <tr>
                                         <td><div class="blocks"><div class="btn btn-primary buttonsbgcolor textoutliner" onClick="buttonDance();" style="animation: dance 3s infinite;">Dancing Buttons</div></div></td>
                                         <td><div class="blocks" onClick="toggleRandomColors();addRainbowAnimation('block');"><img src = "<?php echo base_url('images/extras/randomcolors.png'); ?>"/>Random Colors</div></td>
-                                        <td><div class="blocks" onClick="addBGclouds('block');"><img src = "<?php echo base_url('images/extras/randomcolors.png'); ?>"/>Clouds</div></td>
+                                        <td><div class="blocks" onClick="addBGclouds('block');"><img src = "<?php echo base_url('images/extras/clouds.png'); ?>"/>Clouds</div></td>
                                     </tr>
                                 <!--<tr><td><div class="blocks" onClick="addBGfirework('block');">Fireworks</div></td></tr>-->
                                 
