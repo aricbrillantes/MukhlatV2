@@ -441,21 +441,17 @@
         else if( (int)date("i")>=30)
             $currentTimeSlot = date("G")."30"." ".date("l");
 
-        // if(in_array($currentTimeSlot,$restrictions2))
-        //     print("<br>" . $currentTimeSlot);
+        if(in_array($currentTimeSlot,$restrictions2))
+        {
+            // print("<br>" . $currentTimeSlot);
+        }    
 
-        // else
-        // {
-        //     print("you cant use xd ");
-        //     $restrict = base_url('restrict');
-        //     header("Location: $restrict");
-        // }    
-
-        // print("<b>Current time:</b> " . (int) date("G") . ": " . date("i") . " ". date("l"));
-        // print("<br>");
-        // print($currentTime . "<br>");
-        // print($currentTimeSlot);
-        
+        else
+        {
+            // print("you cant use xd ");
+            $restrict = base_url('restrict');
+            // header("Location: $restrict");
+        }            
     }
 
     else
@@ -473,10 +469,160 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="<?php echo base_url("/css/style.css"); ?>" /> 
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <!-- Nav Bar -->
 
 <script type="text/javascript">
     
+    /*  
+        function to check how many minutes until the child cannot use
+        this function reads a PHP array of "timeslots"
+        (10:30-11:00 is a timeslot)
+
+        EXAMPLE:
+        if the actual current time is 2:15
+        and the child can only use until 2:30,
+
+        the "CURRENT timeslot" will be 2:00-2:30
+        and the "NEXT timeslot" will be 2:30-3:00
+
+        the function repeatedly checks the current time and once
+        it sees that the child cannot use during the current timeslot,
+        it will redirect to the restriction page
+
+    */
+
+    function checkRestriction()
+    {
+        var canUseNext = 1;
+        var canUse = 1;
+        
+        //get current time
+        var today = new Date();
+        var hour, min, day;
+        var curTime, curHour, curMinute;
+
+        //for checking time 30 minutes after
+        var nextTime, nextHour, nextMinute;
+
+        //convert day to word format
+        switch(today.getDay())
+        {
+            case 0:day="Sunday";break;
+            case 1:day="Monday";break;
+            case 2:day="Tuesday";break;
+            case 3:day="Wednesday";break;
+            case 4:day="Thursday";break;
+            case 5:day="Friday";break;
+            case 6:day="Saturday";break;
+        }
+        
+
+        //formatting "current timeslot" and "next timeslot"
+        if(today.getMinutes()>=0 && today.getMinutes()<=30)
+        {
+            curHour=today.getHours();
+            curMinute=0;
+
+            nextHour=today.getHours();
+            nextMinute=30;
+
+            if(curHour==0)
+            {
+                curTime = "00" + curMinute + " " + day;
+                nextTime = "0030 "+day;
+            }
+
+            else
+            {
+                curTime = curHour + "00 " + day;
+                nextTime = nextHour+""+nextMinute+" "+day;
+            }
+        }    
+
+        else if(today.getMinutes()>=30)
+        {
+            curHour=today.getHours();
+            curMinute=30;
+
+            if(curHour==23)
+            {
+                nextHour=0;
+                nextMinute=60;
+
+                switch((today.getDay())+1)
+                {
+                    case 0:day="Sunday";break;
+                    case 1:day="Monday";break;
+                    case 2:day="Tuesday";break;
+                    case 3:day="Wednesday";break;
+                    case 4:day="Thursday";break;
+                    case 5:day="Friday";break;
+                    case 6:day="Saturday";break;
+                }
+
+                curTime = curHour + "" + curMinute + " " + day;
+                nextTime = "0000 "+day;
+            }
+
+            else
+            {
+                nextHour=today.getHours()+1;
+                nextMinute=60;
+
+                curTime = curHour + "" + curMinute + " " + day;
+                nextTime = nextHour+"00 "+day;
+            }
+
+        }    
+
+        // alert(curTime);
+        // alert(nextTime);
+
+
+        // get actual current time
+        var time = today.getHours() + "" + today.getMinutes() + " " + day;
+
+        // get available times from PHP array that parents set
+        var restrictions =  <?php echo json_encode($restrictions2); ?>;
+        
+
+        // checks if child cannot use for the current timeslot
+        if(!(restrictions.includes(curTime)))
+            canUse=0;
+
+        // checks if child cannot use for the next timeslot
+        if(!(restrictions.includes(nextTime)))
+            canUseNext=0;
+
+
+        // if child cannot use for the current timeslot
+        // redirect to restriction page
+        if(canUse==0)
+        {
+            // alert("You can't use Mukhlat!");
+
+            location.href="<?php echo base_url('restrict');?>"; //uncomment this line for actual testing
+        }
+        
+        // if child cannot use for the next timeslot
+        if(canUseNext==0)
+        {
+            // alert("You have " + (nextMinute-today.getMinutes()) + " minutes left to use Mukhlat!");
+
+
+            // add the falling numbers function call here
+        }    
+        
+        // repeat function to check every 30 seconds
+        setTimeout(checkRestriction, 30000); //seconds x 1000
+
+    }
+
+    checkRestriction();
+
+
     function getCookie(cname) 
     {
         var name = cname + "=";
@@ -504,7 +650,7 @@
     var start = document.getElementById("start");
     var dis = document.getElementById("afktimer");
     var finishTime;
-    var timerLength = 60000; // 600 seconds or 10 minutes
+    var timerLength = 600; // 600 seconds or 10 minutes
     var timeoutID;
     dis.innerHTML = "Time Left: " + timerLength;
     
@@ -512,7 +658,7 @@
     { 
         //reset timer and hide AFK popup
         StartTimer();
-        $('#afkpopup').modal('hide'); 
+        // $('#afkpopup').modal('hide'); 
     };
     
     StartTimer();
@@ -532,9 +678,9 @@
         dis.innerHTML = "Time Left: " + Math.max(timeLeft/1000,0);
         timeoutID = window.setTimeout(Update, 100);
 
-        if(timeLeft<=480*1000) //display AFK popup after 2 minutes
+        if(timeLeft<=120*1000) //display AFK popup after 2 minutes
         {
-            $('#afkpopup').modal('show');
+            // $('#afkpopup').modal('show'); 
         }
         
         if(timeLeft<=10*1000) // logout user if AFK
@@ -557,7 +703,7 @@
         if(!getCookie("birthday") && getCookie("birthday")!==1)
         {
             document.cookie = "birthday=1;" + ";path=/"; 
-            $('#birthdaypopup').modal('show');
+            // $('#birthdaypopup').modal('show');
         }    
     }
 
@@ -827,8 +973,7 @@
 </div>    
 
 </head>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    
     
     <!--<script src="/intl/en/chrome/assets/common/js/chrome.min.js"></script>-->     
     

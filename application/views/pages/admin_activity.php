@@ -145,7 +145,29 @@
             </h3>
         </a>
 
-        <a href="#logout-modal-parents" data-toggle = "modal" class = "pull-right btn btn-primary btn-md" style = "margin-right: 20px; margin-top: 10px; margin-bottom: 10px; background:#c73838; border-color: #c73838;">Log Out</a>
+        <?php if (!$mobile): ?>
+
+            <ul class = "nav navbar-nav navbar-right pull-right" style = "margin-right: 5px;">
+                <li class="dropdown">
+
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <!-- <img class = "img-rounded nav-prof-pic" src = "<?php echo $logged_user->profile_url ? base_url($logged_user->profile_url) : base_url('images/default.jpg') ?>"/>  -->
+                        <?php echo $logged_user->first_name . " " . $logged_user->last_name; ?>
+                        
+                        <span class="caret"></span>
+                    </a>                 
+                
+                    <ul class="dropdown-menu">
+                        <li><a href="<?php echo base_url('signin/logout');?>"><i class = "glyphicon glyphicon-log-out" style="color:red"></i> Logout</a></li>
+
+                    </ul>
+                </li>
+            </ul>
+
+        <?php else: ?>
+            <a href="#logout-modal-parents" data-toggle = "modal" class = "pull-right btn btn-primary btn-md" style = "margin-right: 20px; margin-top: 10px; margin-bottom: 10px; background:#c73838; border-color: #c73838;">Log Out</a>
+                            
+        <?php endif; ?>
                             
     </div>
     
@@ -215,7 +237,9 @@
                 <div class = "col-xs-12 col-sm-12 col-md-12 col-md-offset-0 content-container container-fluid" style="border:0px; margin-bottom: 0px;">
                     <div class = "col-xs-12 col-md-12 col-sm-12 text-center"> 
                         <h3 class = "no-padding text-info" style = "margin-top: 5px; margin-bottom: 5px; "><strong><?php echo $child->first_name . " " . $child->last_name ?></strong></h3>
-                        <small class = "no-padding no-margin"><?php echo $child->email ?></small>
+                        <h5 class = "no-padding no-margin"><?php echo $child->email ?></h5>
+                        <br>
+                        <h5 class = "no-padding no-margin"><b>Parent's email: </b><?php echo $child->parent ?></h5>
                         
                         <!-- <p class = "wrap text-muted" style = ""><i><?php echo $child->description ? $child->description : 'Hello World!'; ?></i></p> -->
                     </div>

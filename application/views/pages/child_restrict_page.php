@@ -1,7 +1,7 @@
 <?php
     include(APPPATH . 'views/header.php');
 
-    header("Refresh: 300");
+    // header("Refresh: 60");
 
     $CI =&get_instance();
     $CI->load->model('attachment_model');
@@ -440,10 +440,10 @@
         {
             //comment out this line for testing
             $home = base_url('home');
-            header("Location: $home");
+            // header("Location: $home");
         }    
 
-        else if(in_array($currentTimeSlot,$restrictions2))
+        else if(!in_array($currentTimeSlot,$restrictions2))
         {
             // print("<br>you cant use xd");
             // $restrict = base_url('restrict');
@@ -463,6 +463,91 @@
         header("Location: $homeURL");
     }
 ?>
+
+<script>
+    var restrictions =  <?php echo json_encode($restrictions2); ?>;
+    
+    function checkRestriction2()
+    {
+        
+        var today = new Date();
+
+        var time = today.getHours() + "" + today.getMinutes() + " " + day;
+
+        var hour, min, day;
+        var curTime, curHour, curMinute;
+
+        switch(today.getDay())
+        {
+            case 0:day="Sunday";break;
+            case 1:day="Monday";break;
+            case 2:day="Tuesday";break;
+            case 3:day="Wednesday";break;
+            case 4:day="Thursday";break;
+            case 5:day="Friday";break;
+            case 6:day="Saturday";break;
+        }
+
+        //formatting "current timeslot" and "next timeslot"
+        if(today.getMinutes()>=0 && today.getMinutes()<=30)
+        {
+            curHour=today.getHours();
+            curMinute=0;
+
+            if(curHour==0)
+                curTime = "00" + curMinute + " " + day;
+            
+
+            else
+                curTime = curHour + "00 " + day;
+            
+        }    
+
+        else if(today.getMinutes()>=30)
+        {
+            curHour=today.getHours();
+            curMinute=30;
+
+            if(curHour==23)
+            {
+                switch((today.getDay())+1)
+                {
+                    case 0:day="Sunday";break;
+                    case 1:day="Monday";break;
+                    case 2:day="Tuesday";break;
+                    case 3:day="Wednesday";break;
+                    case 4:day="Thursday";break;
+                    case 5:day="Friday";break;
+                    case 6:day="Saturday";break;
+                }
+
+                curTime = curHour + "" + curMinute + " " + day;
+            }
+
+            else
+                curTime = curHour + "" + curMinute + " " + day;
+            
+
+        }
+
+        // checks if child cannot use for the current timeslot
+        if(restrictions.includes(curTime))
+        {
+
+            // location.href="<?php echo base_url('home');?>";
+        }
+
+        // alert(curTime);
+
+        setTimeout(checkRestriction2, 10000); //seconds x 1000
+    } 
+
+    checkRestriction2();
+    
+
+</script>
+
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="<?php echo base_url("/css/style.css"); ?>" /> 
 <body style="background-color: #f4fff6;">

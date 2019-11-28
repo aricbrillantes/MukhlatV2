@@ -122,6 +122,10 @@
 
                                     <h4 class = "no-padding admin-list-name"><?php echo $user->first_name . " " . $user->last_name ?></h4>
 
+                                <?php if (!($user->is_enabled)):?>
+                                    <small class = "no-padding admin-list-name">(Parent: <?php echo $user->parent?>)</small><br>
+
+                                <?php endif;?>
                                     <a value = "" href="<?php echo base_url('admin/activity/' . $user->user_id)?>" class = " btn btn-link btn-xs"> <i>View record</i></a>
 
                                     <?php
@@ -129,6 +133,7 @@
                                             if ($user->is_enabled):
                                                 ?>
                                                 <button type = "button" value = "<?php echo $user->user_id ?>" class = "toggle-account pull-right btn btn-danger admin-list-btn">Disable</button>
+                                                
                                             <?php else: ?>
                                                 <button type = "button" value = "<?php echo $user->user_id ?>" class = "toggle-account pull-right btn btn-success admin-list-btn">Enable</button>
                                             <?php
