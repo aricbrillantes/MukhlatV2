@@ -12,6 +12,10 @@
 
         $CI =&get_instance();
         $CI->load->model('user_model');
+        $CI->load->library('user_agent');
+
+        $mobile=$CI->agent->is_mobile();
+
 
         $usertimes = $CI->user_model->get_usertimes($logged_user->user_id);
         // print_r($usertimes->row()->time_setting);
@@ -601,9 +605,9 @@
         // redirect to restriction page
         if(canUse==0)
         {
-            // alert("You can't use Mukhlat!");
+            alert("You can't use Mukhlat right now!");
 
-            location.href="<?php echo base_url('restrict');?>"; //uncomment this line for actual testing
+            // location.href="<?php echo base_url('restrict');?>"; //uncomment this line for actual testing
         }
         
         // if child cannot use for the next timeslot
