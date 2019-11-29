@@ -260,11 +260,11 @@
     { 
         //reset timer and hide AFK popup
         StartTimer();
-        // $('#afkpopup').modal('hide'); 
+//         $('#afkpopup').modal('hide'); 
     };
     
     StartTimer();
-
+    
     function StartTimer() 
     {
         localStorage.setItem('myTime', ((new Date()).getTime() + timerLength * 1000));
@@ -282,7 +282,7 @@
 
         if(timeLeft<=120*1000) //display AFK popup after 2 minutes
         {
-            // $('#afkpopup').modal('show'); 
+             $('#afkpopup').modal('show'); 
         }
         
         if(timeLeft<=10*1000) // logout user if AFK
@@ -305,10 +305,10 @@
         if(!getCookie("birthday") && getCookie("birthday")!==1)
         {
             document.cookie = "birthday=1;" + ";path=/"; 
-            // $('#birthdaypopup').modal('show');
+             $('#birthdaypopup').modal('show');
         }    
     }
-
+    
     var randomColor = Math.floor(Math.random()*16777215).toString(16);
     var randomColor2 = Math.floor(Math.random()*16777215).toString(16);
     var randomColor3 = Math.floor(Math.random()*16777215).toString(16);
