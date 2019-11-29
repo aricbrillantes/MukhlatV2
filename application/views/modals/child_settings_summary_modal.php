@@ -84,7 +84,7 @@
 
 </style>
 
-<div id="confirm-modal" class="modal fade" role="dialog">
+<div id="child-settings-summary-modal" class="modal fade" role="dialog">
     <div class="modal-dialog">
         <!-- Notification Modal Content-->
         <div class="modal-content">
@@ -106,9 +106,10 @@
 
                 <div class = "content-container container-fluid col-md-10 col-md-offset-1 col-sm-offset-1 col-sm-10 col-xs-offset-1 col-xs-10">
                     <ul class="nav nav-pills nav-justified" style="">
-                        <li class="active"><a data-toggle="pill" href="#timetable-1-summary">AM</a></li>
+                        <li class="active"><a data-toggle="pill" href="#timetable-3-summary">All</a></li>
+                        <li class=""><a data-toggle="pill" href="#timetable-1-summary">AM</a></li>
                         <li class=""><a data-toggle="pill" href="#timetable-2-summary">PM</a></li>
-                        <li class=""><a data-toggle="pill" href="#timetable-3-summary">All</a></li>
+                        
                         <!-- <li class=""><a data-toggle="pill" href="#timetable-4-summary">Afternoon</a></li>
                         <li class=""><a data-toggle="pill" href="#timetable-5-summary">Night</a></li>
                         <li class=""><a data-toggle="pill" href="#timetable-6-summary">Late Night</a></li> -->
@@ -119,7 +120,7 @@
                  <!-- The table -->
                  <div id="time-table-summary" class="container-fluid tab-content col-xs-16">
 
-                    <table id="timetable-1-summary" class="sumTable container-fluid tab-pane fade in active">
+                    <table id="timetable-1-summary" class="sumTable container-fluid tab-pane fade ">
                         <tr>
                             <th style="background-color: #a83b3b"><center>Time</center></th>
                             <th><center>M<center></th>
@@ -660,7 +661,7 @@
 
                     </table>
 
-                    <table id="timetable-3-summary" class="sumTable container-fluid tab-pane fade">
+                    <table id="timetable-3-summary" class="sumTable container-fluid tab-pane fade in active">
                         <tr>
                             <th style="background-color: #a83b3b"><center>Time</center></th>
                             <th><center>M<center></th>

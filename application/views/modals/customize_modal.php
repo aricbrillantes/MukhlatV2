@@ -45,12 +45,12 @@
                                     <td><div id="chocoice" class="blocks" onClick="changeBGColor(':#ffe3b9', '#6b3e26', '#6b3e26','#542a0c','#2a1506');addBGclouds('none');"><div style="color:white;">Chocolate</div> Ice cream</div></td>
                                     <td><div id="FB" class="blocks" onClick="changeBGColor(':#e9ebee', '#4267b2', '#4267b2','#3B5CA0','#3B5CA0');addBGclouds('none');">fb</div></td>
                                 </tr>
-                                
+
                                 <!-- image and more backgrounds-->
                                 <tr>
                                     <td><div id="galaxy" class="blocks" onClick="changeBGColor('-image: url(<?php echo base_url('images/galaxy.jpg'); ?>)', '#060707','#404a4d','#1d2223','whitesmoke');addBGclouds('none');">Galaxy</div></td>
                                     <td><div id="rainbow" class="blocks" onClick="changeBGColor(':linear-gradient(124deg, #FF9AA2, #FFB7B2, #FFDAC1, #E2F0CB, #B5EAD7, #C7CEEA);', '#5BC0EB','#5BC0EB');document.cookie='activaterain=1;path=/;';addBGclouds('none');">Rainbow</div></td>
-    <!--                            <td><div id="soundswitch" class="blocks" onClick="addBGsound('none');">No Sound</div></td>
+                                    <!-- <td><div id="soundswitch" class="blocks" onClick="addBGsound('none');">No Sound</div></td>
                                     <td><div id="soundswitch1" class="blocks" onClick="addBGsound('block');">Sound</div>
                                     </td>-->
                                 </tr>
@@ -99,7 +99,7 @@
                             <div id="invites-div" class="tab-pane fade in">
                                 <table style="width:100%">
                                     <tr>
-    <!--                                <td><div id="soundswitch" class="blocks" onClick="addBGsound('none');">No Sound</div></td>
+                                        <!-- <td><div id="soundswitch" class="blocks" onClick="addBGsound('none');">No Sound</div></td>
                                         <td><div id="soundswitch1" class="blocks" onClick="addBGsound('block');">Sound</div>-->
                                         <td><div class="blocks" onClick="extrasRemover();">None</div></td>
                                         <td><div class="blocks" onClick="addBGsound('block');"><img src = "<?php echo base_url('images/extras/sound.png'); ?>"/>Sound</div></td>

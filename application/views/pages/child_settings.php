@@ -1292,14 +1292,14 @@
             else if(late==1)
             {
                 document.getElementById("save-settings").style.display = "block";
-                $("#confirm-modal").modal();
+                $("#child-settings-summary-modal").modal();
 
             }
 
             else
             {
                 document.getElementById("save-settings").style.display = "none";
-                $("#confirm-modal").modal();
+                $("#child-settings-summary-modal").modal();
 
             }   
         }
@@ -1307,7 +1307,7 @@
     </script>
 <?php //endforeach; 
 
-    include(APPPATH . 'views/modals/confirm_modal.php');
+    include(APPPATH . 'views/modals/child_settings_summary_modal.php');
     include(APPPATH . 'views/modals/empty_warning_modal.php');
     include(APPPATH . 'views/modals/late_warning_modal.php');
     include(APPPATH . 'views/modals/default_time_modal.php');
