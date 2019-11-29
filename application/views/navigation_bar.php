@@ -60,6 +60,7 @@
         header("Location: $homeURL");
     }
 
+    // include(APPPATH . 'views/header.php');
     include(APPPATH . 'views/modals/birthday_modal.php'); 
     include(APPPATH . 'views/modals/afk_warning_modal.php'); 
 ?>
@@ -203,7 +204,7 @@
         // redirect to restriction page
         if(canUse==0)
         {
-            alert("You can't use Mukhlat right now!");
+            // alert("You can't use Mukhlat right now!");
 
             // location.href="<?php echo base_url('restrict');?>"; //uncomment this line for actual testing
         }
@@ -262,6 +263,11 @@
         StartTimer();
 //         $('#afkpopup').modal('hide'); 
     };
+
+    document.onscroll = function()
+    { 
+        StartTimer();
+    };
     
     StartTimer();
     
@@ -282,7 +288,7 @@
 
         if(timeLeft<=120*1000) //display AFK popup after 2 minutes
         {
-             $('#afkpopup').modal('show'); 
+            // $('#afkpopup').modal('show'); 
         }
         
         if(timeLeft<=10*1000) // logout user if AFK
@@ -305,7 +311,7 @@
         if(!getCookie("birthday") && getCookie("birthday")!==1)
         {
             document.cookie = "birthday=1;" + ";path=/"; 
-             $('#birthdaypopup').modal('show');
+            $('#birthdaypopup').modal('show');
         }    
     }
     
