@@ -24,6 +24,8 @@
         $restrictions2 = [];
         // print_r($restrictions);
 
+        $sessionLimit = $usertimes->row()->use_limit;
+
         include(APPPATH . 'views/scripts/restrictions.php');
 
         // print_r($restrictions2);
@@ -91,10 +93,12 @@
 
     */
 
+    var canUseNext = 1;
+    var canUse = 1;
+
     function checkRestriction()
     {
-        var canUseNext = 1;
-        var canUse = 1;
+        
         
         //get current time
         var today = new Date();
@@ -240,7 +244,7 @@
         }
         return "";
     }
-     
+    
 
 /*------------------------- AFK Timer Script -------------------------*/
     
