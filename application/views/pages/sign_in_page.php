@@ -17,7 +17,7 @@
 <link rel="stylesheet" href="<?php echo base_url("/css/sign_in.css"); ?>" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<body id = "mainbody" class = "sign-in" style="background: #f2f2f2">
+<body id = "mainbody" class = "sign-in" style="background: #daf0eb">
     <div class = "container-fluid col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1">
         <!-- Logo -->
         <div class = "row sign-in-logo"><img src = "<?php echo base_url('images/logo/mukhlatlogo1.png'); ?>" style="max-width: 30%; height: auto;"></div>
@@ -416,7 +416,7 @@
         
         if (toggle==1) 
         {
-            document.getElementById("mainbody").style.background = "#f2f2f2";
+            document.getElementById("mainbody").style.background = "#daf0eb";
             document.getElementById("sign-up").style.display = "none";
             document.getElementById("change-sign-in-2").style.display = "none";
             document.getElementById("change-sign-in-1").style.display = "block";
@@ -426,7 +426,7 @@
 
         else 
         {
-            document.getElementById("mainbody").style.background = "#daf0eb";
+            document.getElementById("mainbody").style.background = "#f2f2f2";
             document.getElementById("sign-up").style.display = "block";
             document.getElementById("change-sign-in-1").style.display = "none";
             document.getElementById("change-sign-in-2").style.display = "block";

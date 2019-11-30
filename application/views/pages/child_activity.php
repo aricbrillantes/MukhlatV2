@@ -249,9 +249,14 @@
             <div class = "col-xs-12 col-sm-12 col-md-12 col-md-offset-0 content-container container-fluid " style = "margin-bottom: 5px;">
                 <div class = "col-xs-12 col-sm-12 col-md-12 col-md-offset-0 content-container container-fluid" style="border:0px; margin-bottom: 0px;">
                     <div class = "col-xs-12 col-md-6 col-sm-6 text-center"> 
+                        <?php if($child->is_enabled === '0'):?>
+                            <h4 class = "no-padding no-margin" style="color:red;"><b>Account Unverified</h4></b><br>
+
+                        <?php endif;?>
+
                         <h3 class = "no-padding text-info" style = "margin-top: 5px; margin-bottom: 5px; "><strong><?php echo $child->first_name . " " . $child->last_name ?></strong></h3>
                         <h5 class = "no-padding no-margin" style = "margin-top: 5px; margin-bottom: 5px; "><?php echo $child->email ?></h5>
-                        <h5 class = "no-padding no-margin" style = "margin-top: 5px; margin-bottom: 5px; "><?php echo $child->birthdate ?></h5>
+                        <h5 class = "no-padding no-margin" style = "margin-top: 5px; margin-bottom: 5px; "><?php echo date_format(date_create($child->birthdate),"M d, Y") ?></h5>
                         
                         <!-- <p class = "wrap text-muted" style = ""><i><?php echo $child->description ? $child->description : 'Hello World!'; ?></i></p> -->
                     </div>

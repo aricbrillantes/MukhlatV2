@@ -128,12 +128,12 @@
                                     <?php if (!($user->is_enabled)):?>
 
                                         <?php if($user->parent === "" || !($user->parent)):?>
-                                        <br><small class = "no-padding no-margin" style="color:red;"><b>(No Parent/Guardian Email)</small>
+                                        <br><small class = "no-padding no-margin" style="color:red;"><b>(No Parent/Guardian Email)</b></small>
 
                                         <?php else:?>
                                         <br><small class = "no-padding no-margin">(Parent/Guardian: <?php echo $user->parent?>)</small>
                                                            
-                                    <?php endif;?>
+                                        <?php endif;?>
                                     
                                     <?php endif;?>
                                     <a value = "" href="<?php echo base_url('admin/activity/' . $user->user_id)?>" class = "btn-link btn-xs"> <i>View record</i></a>

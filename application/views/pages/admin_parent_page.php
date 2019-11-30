@@ -220,6 +220,9 @@
                                 <h3 class = "no-padding text-info" style = "margin-top: 5px; margin-bottom: 5px; "><strong><?php echo $child->first_name . " " . $child->last_name ?></strong></h3>
                                 <small class = "no-padding no-margin"><?php echo $child->email ?></small>
                                 
+                                <?php if($child->is_enabled == 0):?>
+                                    <h4 style="color:red;"><i>(Account Unverified)</i></h4>
+                                <?php endif; ?>
                             </div>
 
                         </div>  

@@ -236,19 +236,26 @@
             <div class = "col-xs-12 col-sm-12 col-md-12 col-md-offset-0 content-container container-fluid " style = "margin-bottom: 5px;">
                 <div class = "col-xs-12 col-sm-12 col-md-12 col-md-offset-0 content-container container-fluid" style="border:0px; margin-bottom: 0px;">
                     <div class = "col-xs-12 col-md-12 col-sm-12 text-center"> 
+                        <?php if($child->is_enabled === '0'):?>
+                            <h4 class = "no-padding no-margin" style="color:red;"><b>Unverified Account</h4></b><br>
+
+                        <?php endif;?>
+
                         <h3 class = "no-padding text-info" style = "margin-top: 5px; margin-bottom: 5px; "><strong><?php echo $child->first_name . " " . $child->last_name ?></strong></h3>
                         <h5 class = "no-padding no-margin"><?php echo $child->email ?></h5>
+                        <h5 class = "no-padding no-margin" style = "margin-top: 5px; margin-bottom: 5px; "><?php echo date_format(date_create($child->birthdate),"M d, Y") ?></h5>
                         <br>
                         <!-- <h5 class = "no-padding no-margin"><b>Parent's email: </b><?php echo $child->parent ?></h5> -->
                         <!-- <h5 class = "no-padding no-margin"><?php echo ($child->parent === "") ? $child->parent : 'NO EMAIL' ?></h5> -->
 
                         <?php if($child->parent === "" || !($child->parent)):?>
-                            <h5 class = "no-padding no-margin" style="color:red;"><b>No Parent/Guardian Email</h5>
+                            <h5 class = "no-padding no-margin" style="color:red;"><b>No Parent/Guardian Email</b></h5>
 
                         <?php else:?>
-                            <h5 class = "no-padding no-margin"><b>Parent's email: </b><?php echo $child->parent ?></h5>
+                            <h5 class = "no-padding no-margin"><b>Parent's email: </b><?php echo $child->parent ?></h5></h5>
                                            
                         <?php endif;?>
+
                         <!-- <p class = "wrap text-muted" style = ""><i><?php echo $child->description ? $child->description : 'Hello World!'; ?></i></p> -->
                     </div>
                 </div>    
