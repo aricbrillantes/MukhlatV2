@@ -164,7 +164,7 @@
                         
                         <?php foreach ($children_display->result() as $child):$data['user'] = $CI->user_model->get_user(true, true, array('user_id' =>  $child->user_id));?>
 
-                        <li><a href="<?php echo base_url('parents/activity/' . $child->user_id); ?>"><i class = "fa fa-user" style="color:green"></i> <?php echo $child->first_name . " " . $child->last_name ?></a></li>    
+                        <li><a href="<?php echo base_url('parents/activity/' . $child->user_id); ?>"><i class = "fa fa-user" style="color:green"></i> <?php echo $child->first_name?></a></li>    
                         <?php endforeach; ?>
 
                         <li><span style="color:white">______</span></li>
@@ -250,7 +250,8 @@
                 <div class = "col-xs-12 col-sm-12 col-md-12 col-md-offset-0 content-container container-fluid" style="border:0px; margin-bottom: 0px;">
                     <div class = "col-xs-12 col-md-6 col-sm-6 text-center"> 
                         <h3 class = "no-padding text-info" style = "margin-top: 5px; margin-bottom: 5px; "><strong><?php echo $child->first_name . " " . $child->last_name ?></strong></h3>
-                        <small class = "no-padding no-margin"><?php echo $child->email ?></small>
+                        <h5 class = "no-padding no-margin" style = "margin-top: 5px; margin-bottom: 5px; "><?php echo $child->email ?></h5>
+                        <h5 class = "no-padding no-margin" style = "margin-top: 5px; margin-bottom: 5px; "><?php echo $child->birthdate ?></h5>
                         
                         <!-- <p class = "wrap text-muted" style = ""><i><?php echo $child->description ? $child->description : 'Hello World!'; ?></i></p> -->
                     </div>

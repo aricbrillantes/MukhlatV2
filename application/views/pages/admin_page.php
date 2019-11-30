@@ -65,6 +65,8 @@
                     </a>                 
                 
                     <ul class="dropdown-menu">
+                        <li><a href = "#edit-profile-modal-admin" data-toggle = "modal"><i class = "fa fa-pencil"></i> Edit Profile</a></li>
+                        <li><span style="color:white">______</span></li>
                         <li><a href="<?php echo base_url('signin/logout');?>"><i class = "glyphicon glyphicon-log-out" style="color:red"></i> Logout</a></li>
 
                     </ul>
@@ -72,6 +74,7 @@
             </ul>
 
         <?php else: ?>
+            <a href="#edit-profile-modal-admin" data-toggle = "modal" class = "btn btn-primary btn-md" style = "margin-right: 20px; margin-top: 10px; margin-bottom: 10px; background:#269588; border-color: #269588;">Edit Profile</a>
             <a href="#logout-modal-parents" data-toggle = "modal" class = "pull-right btn btn-primary btn-md" style = "margin-right: 20px; margin-top: 10px; margin-bottom: 10px; background:#c73838; border-color: #c73838;">Log Out</a>
                             
         <?php endif; ?>
@@ -122,16 +125,22 @@
 
                                     <h4 class = "no-padding admin-list-name"><?php echo $user->first_name . " " . $user->last_name ?></h4>
 
-                                <?php if (!($user->is_enabled)):?>
-                                    <small class = "no-padding admin-list-name">(Parent: <?php echo $user->parent?>)</small><br>
+                                    <?php if (!($user->is_enabled)):?>
 
-                                <?php endif;?>
-                                    <a value = "" href="<?php echo base_url('admin/activity/' . $user->user_id)?>" class = " btn btn-link btn-xs"> <i>View record</i></a>
+                                        <?php if($user->parent === "" || !($user->parent)):?>
+                                        <br><small class = "no-padding no-margin" style="color:red;"><b>(No Parent/Guardian Email)</small>
+
+                                        <?php else:?>
+                                        <br><small class = "no-padding no-margin">(Parent/Guardian: <?php echo $user->parent?>)</small>
+                                                           
+                                    <?php endif;?>
+                                    
+                                    <?php endif;?>
+                                    <a value = "" href="<?php echo base_url('admin/activity/' . $user->user_id)?>" class = "btn-link btn-xs"> <i>View record</i></a>
 
                                     <?php
                                         if ($logged_user->user_id !== $user->user_id):
-                                            if ($user->is_enabled):
-                                                ?>
+                                            if ($user->is_enabled): ?>
                                                 <button type = "button" value = "<?php echo $user->user_id ?>" class = "toggle-account pull-right btn btn-danger admin-list-btn">Disable</button>
                                                 
                                             <?php else: ?>
@@ -279,5 +288,7 @@
 <?php
     //include(APPPATH . "views/modals/user_record_modal.php");
     // include(APPPATH . 'views/modals/create_announcement_modal.php');
+
+    include(APPPATH . 'views/modals/edit_profile_modal_admins.php');
     include(APPPATH . 'views/modals/logout_confirm_modal_parents.php');
 ?>

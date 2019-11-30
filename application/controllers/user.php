@@ -40,7 +40,8 @@ class User extends CI_Controller {
         }
     }
 
-    public function update() {
+    public function update() 
+    {
         
         if(isset($_SESSION['logged_user']))
             $user = $_SESSION['logged_user'];
@@ -76,18 +77,49 @@ class User extends CI_Controller {
         $input = $this->input;
         $firstname = utf8_encode(htmlspecialchars($input->post('edit_first')));
         $lastname = utf8_encode(htmlspecialchars($input->post('edit_last')));
-        $password = $input->post('edit_pass');
-        $email = utf8_encode(htmlspecialchars($input->post('edit_email')));
-        $description = utf8_encode(htmlspecialchars($input->post('edit_description')));
 
-        $edit_pass = (empty($password) ? $user->password : $password);
-        $data = array('first_name' => $firstname,
-            'last_name' => $lastname,
-            'password' => $edit_pass,
-            'description' => $description,
-            'email' => $email,
-            'profile_url' => $path,
-        );
+        if($input->post('edit_pass', TRUE)!="" && $input->post('edit_pass', TRUE)!=NULL)
+        {
+            $password = hash('sha256', htmlspecialchars($input->post('edit_pass', TRUE)));
+            $edit_pass = $password;
+        }    
+
+        else
+        {
+            $edit_pass = $user->password;
+        }    
+
+        $email = utf8_encode(htmlspecialchars($input->post('edit_email')));
+       
+        if($user->role_id=='2')
+        {
+            $parent = utf8_encode(htmlspecialchars($input->post('edit_parent_email')));
+            $description = utf8_encode(htmlspecialchars($input->post('edit_description')));
+
+            $data = array
+            (   
+                'first_name' => $firstname,
+                'last_name' => $lastname,
+                'password' => $edit_pass,
+                'description' => $description,
+                'email' => $email,
+                'parent' => $parent,
+                'profile_url' => $path
+            );
+        }
+
+        else if($user->role_id=='1' || $user->role_id=='3')
+        {
+            $data = array
+            (   
+                'first_name' => $firstname,
+                'last_name' => $lastname,
+                'password' => $edit_pass,
+                'email' => $email,
+                'profile_url' => $path
+            );
+        }
+
 
         $this->users->update_profile($user->user_id, $data);
 

@@ -107,13 +107,16 @@
                     </a>                 
                 
                     <ul class="dropdown-menu">
+                        <li><a href = "#edit-profile-modal-parent" data-toggle = "modal"><i class = "fa fa-pencil"></i> Edit Profile</a></li>
+                        <li><span style="color:white">______</span></li>
                         <li><a href="<?php echo base_url('signin/logout');?>"><i class = "glyphicon glyphicon-log-out" style="color:red"></i> Logout</a></li>
-
+           
                     </ul>
                 </li>
             </ul>
 
         <?php else: ?>
+            <a href="#edit-profile-modal-parent" data-toggle = "modal" class = "btn btn-primary btn-md" style = "margin-right: 20px; margin-top: 10px; margin-bottom: 10px; background:#269588; border-color: #269588;">Edit Profile</a>
             <a href="#logout-modal-parents" data-toggle = "modal" class = "pull-right btn btn-primary btn-md" style = "margin-right: 20px; margin-top: 10px; margin-bottom: 10px; background:#c73838; border-color: #c73838;">Log Out</a>
                             
         <?php endif; ?>
@@ -186,5 +189,6 @@
 </html>
 
 <?php
+    include(APPPATH . 'views/modals/edit_profile_modal_parents.php');
     include(APPPATH . 'views/modals/logout_confirm_modal_parents.php');
 ?>

@@ -182,9 +182,6 @@
             
                 <ul class="dropdown-menu container container-fluid col-md-4 col-xs-4 col-sm-4">
 
-                    <li><span style="margin-left: 10px"> Children: </span>  
-                    </li>
-
                     <?php foreach ($children_display->result() as $children):$data['user'] = $CI->user_model->get_user(true, true, array('user_id' =>  $children->user_id));?>
 
                     <li><a href="<?php echo base_url('parents/settings/' . $children->user_id); ?>"><i class = "fa fa-user" style="color:green"></i> <?php echo $children->first_name ?> </a></li>    
@@ -1115,7 +1112,7 @@
                         </div>
                     </li>
 
-                    <li class = "active text-center">
+                    <!-- <li class = "active text-center">
                         <div class = "text-center form-group register-field container-fluid" style="margin-bottom: 10px; margin-top: 0px;">
                             
                             <div class = "text-center col-xs-12 col-md-auto col-sm-offset-1 col-sm-8 form-group register-field" style = "font-size:14px;">
@@ -1129,7 +1126,7 @@
                                 <br>
                             </div>
                         </div>
-                    </li>
+                    </li> -->
                 </ul>
                     
 
