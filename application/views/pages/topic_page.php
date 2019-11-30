@@ -51,25 +51,44 @@
         elseif($c_topic->theme==19): $theme="roomtheme-crosseddot";
         else: $theme="dooroom";
         endif;?>
-   <div class = "<?php echo $theme?> col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12"> 
+    <div class = "<?php echo $theme?> col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12" style="margin-top:20px"> 
         <!--<div id = "topic-page" class = "container page" style = "min-height: 100%; height: 100%;">test</div>-->
         
-        <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 col-xl-9">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-9 col-xl-9">
+            
         <div class="col-sm-12 col-md-12 col-xs-12 col-lg-12 col-xl-12"> 
             
             <div class="">
-                <center><div class="nameframe">
+                <center><div class="nameframe" style="margin-top:50px; margin-left: -10px;margin-bottom: 15px">
             <h4><strong><?php echo utf8_decode($c_topic->user->first_name); ?>'s Room</strong></h4>
             </div>
                     <br>
 <!--<strong>Theme: <?php echo utf8_decode($c_topic->theme); ?></strong>-->
             <?php if ($c_topic->creator_id === $logged_user->user_id): ?>
-                <a onmouseenter="playclip()" id="crettop" class ="btn btn-primary buttonsbgcolor textoutliner" href="#edit-topic-modal" data-toggle = "modal" style="margin-top:-8%; width:20%"><img  src = "<?php echo base_url('icons/pencil.png'); ?>" style="width:10%;height:auto;cursor: pointer"/> Edit Room</a>
-            <?php endif;?>
-                </center></div>
+                <a onmouseenter="playclip()" id="crettop" class ="btn btn-primary buttonsbgcolor textoutliner" href="#edit-topic-modal" data-toggle = "modal" style="min-width:20%"><img  src = "<?php echo base_url('icons/pencil.png'); ?>" style="width:10%;height:auto;cursor: pointer"/> Edit Room</a>
+            <?php endif;?></center>
+                </div>
         </div>
             
-            
+            <div class="col-sm-12 col-md-12 col-xs-12 col-lg-12 col-xl-12">
+                <?php if($mobile):?>
+                <div class="hidertab">
+            <div class="col-sm-6 col-md-6 col-xs-6 col-lg-6 col-xl-6" style="margin-top:50px">
+                            <a onmouseenter="playclip()"  href="#view-announcements-modal" data-toggle = "modal">
+                                <p class="iconin" style="font-size:14px !important;text-align: left !important;"><img  src = "<?php echo base_url('icons/whiteboard.png'); ?>" class="iconin" style="width:60%;height:auto"/><!Style></p>
+                                <span class="tooltiptext" style="width:140px">Announcements</span>
+                            </a>
+            </div>
+            <div class="col-sm-6 col-md-6 col-xs-6 col-lg-6 col-xl-6" style="margin-top:50px"> 
+            <a onmouseenter="playclip()" href="#view-notes-modal" data-toggle = "modal">
+                                <p class="iconin" style="font-size:14px !important;text-align: left !important;"><img  src = "<?php echo base_url('icons/parentnotes.png'); ?>" class="iconin" style="width:60%;height:auto"/><!Style></p>
+                                <span class="tooltiptext">Guardian's Notes</span>
+                            </a>
+            </div>
+                </div>
+            <?php endif;?>
+                
+            </div>
             <div class="col-sm-12 col-md-12 col-xs-12 col-lg-12 col-xl-12"> 
             <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 white-board hider" style="min-height:300px; max-height:300px">
             <?php 
@@ -99,7 +118,11 @@
             </div>
                 
                 <!--Shout out-->
-           <ul class="stickynote col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
+            <?php if ($c_topic->creator_id === $logged_user->user_id): ?>
+            <ul class="stickynote col-xs-12 col-sm-4 col-md-3 col-lg-3 col-xl-3">
+            <?php else: ?>
+            <ul class="stickynote col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 pull-right">
+            <?php endif; ?>
                <li class="stickytext">
                    <a href="#room_shout_modal" data-toggle = "modal" class="stickyact">
                         <?php
@@ -114,13 +137,13 @@
                 </li>
 
             <?php if ($c_topic->creator_id === $logged_user->user_id): ?>
-                <button onmouseenter="playclip()" onclick="toggleButton('shout')" id="crettop" class = "btn btn-primary buttonsbgcolor textoutliner" href="#create-post-modal" data-toggle = "modal" style="font-size:22px;margin-top: 2%; margin-left: 30%">Shoutout!</button><br><br>
+                <button onmouseenter="playclip()" onclick="toggleButton('shout')" id="crettop" class = "btn btn-primary buttonsbgcolor textoutliner" href="#create-post-modal" data-toggle = "modal" style="font-size:22px;margin-top: 2%;margin-left: 50px; margin-right: 100%">Shoutout!</button><br><br>
                 <?php endif;?>
             </ul>
             <?php if ($c_topic->creator_id === $logged_user->user_id): ?>
-            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 hider">
+            <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3 col-xl-3 hider">
 
-                <div class = "pad-header"><span class="textoutliner" style="color:white;margin:90px">Guardian's notes</span></div>
+                <div class = "pad-header"><span class="textoutliner" style="color:white;margin:28%">Guardian's notes</span></div>
                 <div class = "pad">
                     <div class="padol">
                 <?php 
@@ -143,7 +166,7 @@
             
             <div class="col-sm-12 col-md-12 col-xs-12 col-lg-12 col-xl-12"> 
             <!--Pictures-->
-            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3"><br><br><br><br><br><br>
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3"> <div class="hider"><br><br><br><br><br><br></div>
                 <a class="picture" href="#room_media_modal" data-toggle = "modal" style="color: black">
                     <div style="margin-left: 60px;">
                         <figure class="boxside boxtop"><i class = "glyphicon glyphicon-picture fa-2x" style="margin-top: 25px"></i></figure>
@@ -189,7 +212,7 @@
                 
                 <!--regular text, emojis and stickers-->
                 <div>
-                <div  class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 pull-right chalkboard" style="min-height:300px; max-height:300px">
+                <div  class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 pull-right chalkboard" style="min-height:300px; max-height:300px;">
                     <?php
                         foreach ($c_topic->posts as $post):
                             if($post->shout==0 && $post->reply==0):?>
@@ -214,7 +237,7 @@
 
     <!-- Topic Post List -->
                     
-    <div class = "topic-post-list col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3" style = "padding-top:70px">
+    <div class = "topic-post-list col-xs-12 col-sm-12 col-md-12 col-lg-3 col-xl-3" style = "padding-top:70px">
         <!--<div class = "list-group" style = "padding-top: 15%">-->
            <!--List Entry--> 
            <?php
