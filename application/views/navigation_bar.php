@@ -263,7 +263,7 @@
         StartTimer();
 //         $('#afkpopup').modal('hide'); 
     };
-$('#afkpopup').modal('show'); 
+// $('#afkpopup').modal('show'); 
     document.onscroll = function()
     { 
         StartTimer();
@@ -275,9 +275,11 @@ $('#afkpopup').modal('show');
     {
         localStorage.setItem('myTime', ((new Date()).getTime() + timerLength * 1000));
 
-        if (timeoutID !== undefined) window.clearTimeout(timeoutID);
+        if (timeoutID !== undefined) 
+            window.clearTimeout(timeoutID);
+
             Update();
-    };
+    }
 
     function Update() 
     {

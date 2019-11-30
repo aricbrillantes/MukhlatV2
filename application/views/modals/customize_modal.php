@@ -17,11 +17,12 @@
                 <div class = "row">
                     <div class = "col-md-12">
                         <ul class="nav nav-pills nav-justified" style = "margin-bottom: 10px;">
+                            <li class = "active"><a data-toggle="pill" href="#requests-div"><strong style="cursor: pointer">Colors</strong></a></li>
+                            <li><a data-toggle="pill" href="#invites-div"><strong style="cursor: pointer">Extras</strong></a></li>
                             <?php if(!$mobile):?>
-                                <li class = "active"><a data-toggle="pill" href="#requests-div"><strong style="cursor: pointer">Colors</strong></a></li>
                                  <!-- <li><a data-toggle="pill" href="#fonts-div"><strong style="cursor: pointer">Fonts</strong></a></li> -->
                                 <li><a data-toggle="pill" href="#cursors-div"><strong style="cursor: pointer">Pointers</strong></a></li>
-                                <li><a data-toggle="pill" href="#invites-div"><strong style="cursor: pointer">Extras</strong></a></li>
+                                
                             <?php endif;?>
                         </ul>
                     </div></canvas>
@@ -102,15 +103,20 @@
                                         <!-- <td><div id="soundswitch" class="blocks" onClick="addBGsound('none');">No Sound</div></td>
                                         <td><div id="soundswitch1" class="blocks" onClick="addBGsound('block');">Sound</div>-->
                                         <td><div class="blocks" onClick="extrasRemover();">None</div></td>
-                                        <td><div class="blocks" onClick="addBGsound('block');"><img src = "<?php echo base_url('images/extras/sound.png'); ?>"/>Sound</div></td>
-                                        <td><div class="blocks" onClick="addBGsnow('block');"><img src = "<?php echo base_url('images/extras/snowflake.png'); ?>"/>Snowflake</div></td>
-                                        <td><div class="blocks" onClick="addBGspark('block');"><img src = "<?php echo base_url('images/extras/sparkles.png'); ?>"/>Sparkles</div></td>
-                                        <td><div class="blocks" onClick="addBGbubble('block');"><img src = "<?php echo base_url('images/extras/bubbles.png'); ?>"/>Bubbles</div></td>
-                                    </tr>    
+
+                                        <?php if(!$mobile):?>
+                                            <td><div class="blocks" onClick="addBGsound('block');"><img src = "<?php echo base_url('images/extras/sound.png'); ?>"/>Sound</div></td>
+                                            <td><div class="blocks" onClick="addBGsnow('block');"><img src = "<?php echo base_url('images/extras/snowflake.png'); ?>"/>Snowflake</div></td>
+                                            <td><div class="blocks" onClick="addBGspark('block');"><img src = "<?php echo base_url('images/extras/sparkles.png'); ?>"/>Sparkles</div></td>
+                                            <td><div class="blocks" onClick="addBGclouds('block');"><img src = "<?php echo base_url('images/extras/clouds.png'); ?>"/>Clouds</div></td>
+                                            <td><div class="blocks" onClick="addBGbubble('block');"><img src = "<?php echo base_url('images/extras/bubbles.png'); ?>"/>Bubbles</div></td>
+                                        <?php endif;?>
+                                        
+                                        </tr>    
                                     <tr>
                                         <td><div class="blocks"><div class="btn btn-primary buttonsbgcolor textoutliner" onClick="buttonDance();" style="animation: dance 3s infinite;">Dancing Buttons</div></div></td>
                                         <td><div class="blocks" onClick="toggleRandomColors();addRainbowAnimation('block');"><img src = "<?php echo base_url('images/extras/randomcolors.png'); ?>"/>Random Colors</div></td>
-                                        <td><div class="blocks" onClick="addBGclouds('block');"><img src = "<?php echo base_url('images/extras/clouds.png'); ?>"/>Clouds</div></td>
+                                        
                                     </tr>
                                 <!--<tr><td><div class="blocks" onClick="addBGfirework('block');">Fireworks</div></td></tr>-->
                                 
