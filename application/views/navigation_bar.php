@@ -753,13 +753,13 @@
                                     
 
                             <a onmouseenter="playclip()" class="navbaricons" href="#view-notes-modal" data-toggle = "modal">
-                                <p class="iconin" style="font-size:14px !important;text-align: left !important;"><img  src = "<?php echo base_url('icons/notif.png'); ?>" class="iconin" style="width:100%;height:auto"/><!Style></p>
-                                <span class="tooltiptext">Notes</span>
+                                <p class="iconin" style="font-size:14px !important;text-align: left !important;"><img  src = "<?php echo base_url('icons/parentnotes.png'); ?>" class="iconin" style="width:100%;height:auto"/><!Style></p>
+                                <span class="tooltiptext">Guardian's Notes</span>
                             </a>
 
                             <a onmouseenter="playclip()" class="navbaricons" href="#view-announcements-modal" data-toggle = "modal">
-                                <p class="iconin" style="font-size:14px !important;text-align: left !important;"><img  src = "<?php echo base_url('icons/notif.png'); ?>" class="iconin" style="width:100%;height:auto"/><!Style></p>
-                                <span class="tooltiptext">Announcements</span>
+                                <p class="iconin" style="font-size:14px !important;text-align: left !important;"><img  src = "<?php echo base_url('icons/whiteboard.png'); ?>" class="iconin" style="width:100%;height:auto"/><!Style></p>
+                                <span class="tooltiptext" style="width:140px">Announcements</span>
                             </a>
                             
 <!--                            <a onmouseenter="playclip()" class="navbaricons" id = "notif-btn" href="#notif-modal" data-toggle = "modal" <?php echo (int) $logged_user->unread_notifs > 0 ? "data-value = \"" . $logged_user->unread_notifs . "\"" : "" ?>>
