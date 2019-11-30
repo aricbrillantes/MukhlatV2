@@ -39,26 +39,26 @@
 
                         <div class = "col-sm-12 col-xs-12 col-md-12 no-padding" style = "margin-bottom: 30px;">
                             <div class = "col-xs-12 col-md-6 col-sm-6 no-padding">
-                                <span class = "text-muted"><strong>Type your new password: </strong></span>
+                                <span class = "text-muted"><strong>New Password: </strong></span>
                                 <div class = "col-xs-12" style = "padding: 2px;">
                                     <input type = "password" name = "edit_pass" class = "form-control" placeholder = "Password">
                                 </div>
                             </div>
 
                             <div class = "col-xs-12 col-md-6 col-sm-6 no-padding">
-                                <span class = "text-muted"><strong>Type your new password: </strong></span>
+                                <span class = "text-muted"><strong>Confirm New Password: </strong></span>
                                 <div class = "col-xs-12" style = "padding: 2px;">
                                     <input type = "Password" class = "form-control" placeholder = "Confirm Password">
                                 </div>
                             </div>
                         </div>
 
-                        <div class = "col-xs-12 col-sm-12 col-md-12 no-padding" style = "margin-bottom: 30px;">
+                        <!-- <div class = "col-xs-12 col-sm-12 col-md-12 no-padding" style = "margin-bottom: 30px;">
                             <div class = "col-xs-12 col-sm-6 col-md-6 no-padding" style = "margin-bottom: 15px;">    
                                 <span class = "text-muted"><strong>Email: </strong></span>
                                 <input required type = "email" name = "edit_email" maxlength = "45" class = "form-control" placeholder = "Email Address" value = "<?php echo $logged_user->email; ?>">
                             </div>
-                   </div>
+                        </div> -->
 
                         
                     </div>

@@ -89,7 +89,7 @@ class User extends CI_Controller {
             $edit_pass = $user->password;
         }    
 
-        $email = utf8_encode(htmlspecialchars($input->post('edit_email')));
+        // $email = utf8_encode(htmlspecialchars($input->post('edit_email')));
        
         if($user->role_id=='2')
         {
@@ -102,7 +102,7 @@ class User extends CI_Controller {
                 'last_name' => $lastname,
                 'password' => $edit_pass,
                 'description' => $description,
-                'email' => $email,
+                // 'email' => $email,
                 'parent' => $parent,
                 'profile_url' => $path
             );
@@ -115,7 +115,7 @@ class User extends CI_Controller {
                 'first_name' => $firstname,
                 'last_name' => $lastname,
                 'password' => $edit_pass,
-                'email' => $email,
+                // 'email' => $email,
                 'profile_url' => $path
             );
         }

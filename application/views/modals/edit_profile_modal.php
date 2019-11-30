@@ -1,4 +1,4 @@
-<!-- Edit Profile Modal -->
+Edit Profile Modal -->
 <div id="edit-profile-modal" class="modal fade" role="dialog">
     <div class="modal-dialog">
         <!-- Edit Profile Modal Content-->
@@ -54,10 +54,10 @@
                         </div>
 
                         <div class = "col-xs-12 col-sm-12 col-md-12 no-padding" style = "margin-bottom: 30px;">
-                            <div class = "col-xs-12 col-sm-6 col-md-6 no-padding" style = "margin-bottom: 15px;">    
+                            <!-- <div class = "col-xs-12 col-sm-6 col-md-6 no-padding" style = "margin-bottom: 15px;">    
                                 <span class = "text-muted"><strong>Email: </strong></span>
                                 <input required type = "email" name = "edit_email" maxlength = "45" class = "form-control" placeholder = "Email Address" value = "<?php echo $logged_user->email; ?>">
-                            </div>
+                            </div> -->
 
                             <div class = "col-xs-12 col-sm-6 col-md-6 no-padding">   
                                 <span class = "text-muted"><strong>Parent's Email: </strong></span> 
@@ -99,4 +99,4 @@
 
 <!-- SCRIPTS -->
 <script type="text/javascript" src="<?php echo base_url("/js/topic.js"); ?>"></script>
-<!-- END SCRIPTS -->
+<!-- END SCRIPTS
