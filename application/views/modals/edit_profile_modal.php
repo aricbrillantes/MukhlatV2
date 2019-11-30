@@ -75,7 +75,7 @@ Edit Profile Modal -->
                     </div>
                 </div>
                 <div class = "modal-footer" style = "padding: 5px; border-top: none; padding-bottom: 10px; padding-right: 10px;">
-                    <button id = "save-profile-edit" class ="btn btn-primary" data-toggle = "modal">I'm done changing my profile!</button>
+                    <button id = "save-profile-edit" class ="btn btn-primary" data-toggle = "modal">I'm done!</button>
                 </div>
             </form>
         </div>
