@@ -296,8 +296,10 @@ class Topic extends CI_Controller {
             $lastDate=date_create($infractions->row()->updated);
             $curDate=date_create(date('Y-m-d'));
 
-            $FirstDay = date_create(date("Y-m-d", strtotime('sunday last week')));  
-            $LastDay = date_create(date("Y-m-d", strtotime('sunday this week')));               
+
+            $sunLastWeek = date_create(date("Y-m-d", strtotime('sunday last week')));      
+            $satLastWeek = date_create(date("Y-m-d", strtotime('saturday last week')));  
+            $sunThisWeek = date_create(date("Y-m-d", strtotime('sunday this week')));               
 
             // echo $lastDate->format('Y-m-d') . "<br>";
             // echo $subDate->format('Y-m-d') . "<br>";
@@ -306,16 +308,33 @@ class Topic extends CI_Controller {
             // echo date('D', strtotime($curDate->format('Y-m-d')));
 
             //if table was updated within the week, update for this week
-            if($lastDate > $FirstDay && $lastDate < $LastDay)
+            if($lastDate < $sunThisWeek)
             {
-                $data = array
-                (
-                    'user_id' => $logged_user->user_id,
-                    'current_total' => $swears+$currentWeekInfractions,
-                    'overall_total' => $swears+$overallInfractions,
-                    'current_avg' => ($swears+$currentWeekInfractions)/7,
-                    'updated' => date('Y-m-d')
-                );
+                if($lastDate < $sunLastWeek)
+                {
+                    $data = array
+                    (
+                        'user_id' => $logged_user->user_id,
+                        'current_total' => $swears,
+                        'last_total' => 0,
+                        'overall_total' => $swears+$overallInfractions,
+                        'updated' => date('Y-m-d')
+                    );
+                }
+
+                else
+                {
+                    $data = array
+                    (
+                        'user_id' => $logged_user->user_id,
+                        'current_total' => $swears,
+                        'last_total' => $infractions->row()->current_total,
+                        'overall_total' => $swears+$overallInfractions,
+                        // 'current_avg' => $swears/7,
+                        // 'last_avg' => ($infractions->row()->current_total)/7,
+                        'updated' => date('Y-m-d')
+                    );
+                }
 
             }
 
@@ -325,16 +344,12 @@ class Topic extends CI_Controller {
                 $data = array
                 (
                     'user_id' => $logged_user->user_id,
-                    'current_total' => $swears,
-                    'last_total' => ($infractions->row()->current_total),
+                    'current_total' => $swears+$infractions->row()->current_total,
                     'overall_total' => $swears+$overallInfractions,
-                    'current_avg' => $swears/7,
-                    'last_avg' => ($infractions->row()->current_total)/7,
                     'updated' => date('Y-m-d')
                 );
             }
             
-
             // $this->db->delete('tbl_infractions', array('user_id' => $logged_user->user_id));
             // $this->db->insert('tbl_infractions', $data);
 
@@ -351,7 +366,7 @@ class Topic extends CI_Controller {
                 'user_id' => $logged_user->user_id,
                 'current_total' => $swears,
                 'overall_total' => $swears,
-                'current_avg' => ($swears+$currentWeekInfractions)/7,
+                // 'current_avg' => ($swears+$currentWeekInfractions)/7,
                 'updated' => date('Y-m-d')
             );
 
@@ -360,9 +375,11 @@ class Topic extends CI_Controller {
 
 
         // ATTACHMENTS
-        if (!file_exists('./uploads/_' . $post_id . '/')) {
+        if (!file_exists('./uploads/_' . $post_id . '/')) 
+        {
             mkdir('./uploads/_' . $post_id . '/', 0777, true);
         }
+
         $config['upload_path'] = './uploads/_' . $post_id . '/';
         $config['encrypt_name'] = TRUE;
         $config['allowed_types'] = '*';

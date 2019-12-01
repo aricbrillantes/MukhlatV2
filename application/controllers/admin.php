@@ -41,8 +41,6 @@ class Admin extends CI_Controller {
     {
         $user_id = $this->uri->segment(3);
 
-        $this->load->view('pages/admin_activity');
-
         $this->db->select('*');
         $this->db->from('tbl_infractions');
         $this->db->where(array('tbl_infractions.user_id' => $user_id));
@@ -57,46 +55,63 @@ class Admin extends CI_Controller {
             $lastDate=date_create($infractions->row()->updated);
             $curDate=date_create(date('Y-m-d'));
 
-            $FirstDay = date_create(date("Y-m-d", strtotime('sunday last week')));  
-            $LastDay = date_create(date("Y-m-d", strtotime('sunday this week')));               
+            $sunLastWeek = date_create(date("Y-m-d", strtotime('sunday last week')));  
+            $sunThisWeek = date_create(date("Y-m-d", strtotime('sunday this week')));           
 
             //if table was updated last week, update for both stats for this week and last week
-            if(!($lastDate > $FirstDay && $lastDate < $LastDay))
+            if($lastDate < $sunThisWeek)
             {
-                $data = array
-                (
-                    'user_id' => $user_id,
-                    'last_total' => ($infractions->row()->current_total),
-                    'current_total' => 0,
-                    'overall_total' => 0+$overallInfractions,
-                    'current_avg' => 0,
-                    'last_avg' => ($infractions->row()->current_total)/7,
-                    'updated' => date('Y-m-d')
-                );
+                if($lastDate < $sunLastWeek)
+                {
+                    $data = array
+                    (
+                        'user_id' => $user_id,
+                        'last_total' => 0,
+                        'current_total' => 0,
+                        'updated' => date('Y-m-d')
+                    );
+                }
+
+                else
+                {
+                    $data = array
+                    (
+                        'user_id' => $user_id,
+                        'last_total' => ($infractions->row()->current_total),
+                        'current_total' => 0,
+                        // 'overall_total' => $overallInfractions,
+                        // 'current_avg' => 0,
+                        // 'last_avg' => ($infractions->row()->current_total)/7,
+                        'updated' => date('Y-m-d')
+                    );
+                }
+                
 
                 $this->db->select('*');
                 $this->db->from('tbl_infractions');
                 $this->db->where('user_id', $user_id);
                 $this->db->update('tbl_infractions', $data); 
 
-                header("Refresh:0");
+                // header("Refresh:0");
             }
         } 
 
-        else
+        else if(empty($infractions->result()))
         {
             $data = array
             (
                 'user_id' => $user_id,
                 'current_total' => 0,
                 'overall_total' => 0,
-                'current_avg' => 0/7,
+                // 'current_avg' => 0/7,
                 'updated' => date('Y-m-d')
             );
 
             $this->db->insert('tbl_infractions', $data);
-            header("Refresh:0");
+            // header("Refresh:0");
         }
+
+        $this->load->view('pages/admin_activity');
     }
 
     public function parent() 

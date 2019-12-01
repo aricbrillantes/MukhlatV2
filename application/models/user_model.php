@@ -146,7 +146,7 @@ class User_model extends CI_Model {
     public function get_usertimes($user_id) 
     {
         // $this->db->select('user_id, time_setting, warning, keep, use_limit');
-        $this->db->select('user_id, time_setting, keep, use_limit');
+        $this->db->select('*');
         $this->db->from('tbl_usertimes');
         $this->db->where(array('tbl_usertimes.user_id' => $user_id));
         
@@ -177,7 +177,6 @@ class User_model extends CI_Model {
             );
 
             $this->db->insert('tbl_usertimes',$data);   
-            header("Refresh:0");
         }
     }
 

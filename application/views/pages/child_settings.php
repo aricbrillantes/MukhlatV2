@@ -144,7 +144,7 @@
     document.cookie = "updatetime=0;path=/";
     document.cookie = "selectedWarning=0;path=/";   
     document.cookie = "selectedLimit=180;path=/"; 
-    document.cookie = "selectedKeep=1;path=/"; 
+    // document.cookie = "selectedKeep=1;path=/"; 
     var ctr = 0;
     var toggle = 0;
     var m, n;
@@ -268,8 +268,8 @@
 
                     clearTable();
 
-                    if(document.getElementById("keep").checked == false)
-                        document.getElementById("keep").checked = true;
+                    // if(document.getElementById("keep").checked == false)
+                    //     document.getElementById("keep").checked = true;
 
                     document.getElementById("time-limit").options[3].selected = true;
 
@@ -1172,13 +1172,13 @@
 
 
         //keep settings
-        var keep = parseInt("<?php echo $row->keep; ?>");
+        // var keep = parseInt("<?php echo $row->keep; ?>");
 
-        if(keep==1)
-            document.getElementById("keep").checked = true;
+        // if(keep==1)
+        //     document.getElementById("keep").checked = true;
 
-        else
-            document.getElementById("keep").checked = false;
+        // else
+        //     document.getElementById("keep").checked = false;
 
 
         //use limit
@@ -1236,11 +1236,11 @@
             document.cookie = "selectedLimit=" + selectedLimit + ";path=/"; 
 
 
-            if(document.getElementById("keep").checked)
-                document.cookie = "selectedKeep=1;path=/";
+            // if(document.getElementById("keep").checked)
+            //     document.cookie = "selectedKeep=1;path=/";
 
-            else
-                document.cookie = "selectedKeep=0;path=/";
+            // else
+            //     document.cookie = "selectedKeep=0;path=/";
 
 
             if(string==null || string=="" || string==" ")
