@@ -229,16 +229,22 @@ if(w<768){ //sm and xs
     $('.elements-resizer').removeClass('colly-lg-3');
     $('.elements-resizer').removeClass('colly-md-3');
     $('.roomthemes').addClass('colly-sm-3');
+    $('.themesmodal').addClass('themesmodal2');
+    $('.themesmodal').removeClass('themesmodal');
 }
 else if(w>=1200){ //xl
     $('.elements-resizer').addClass('colly-lg-3');
     $('.elements-resizer').removeClass('colly-md-3');
     $('.roomthemes').removeClass('colly-sm-3');
+    $('.themesmodal2').addClass('themesmodal');
+    $('.themesmodal2').removeClass('themesmodal2');
 }
 else if(w>=768 && w<1200){ //lg and md
     $('.elements-resizer').addClass('colly-md-3');
     $('.elements-resizer').removeClass('colly-lg-3');
     $('.roomthemes').removeClass('colly-sm-3');
+    $('.themesmodal2').addClass('themesmodal');
+    $('.themesmodal2').removeClass('themesmodal2');
 }
 
 });
@@ -246,6 +252,8 @@ else if(w>=768 && w<1200){ //lg and md
 if(w<768){ //very small screen
     $('.roomthemes').addClass('colly-sm-3');
     $('.hider').addClass('hideme');
+    $('.themesmodal').addClass('themesmodal2');
+    $('.themesmodal').removeClass('themesmodal');
 }
 else if(w>=1200){
     $('.elements-resizer').addClass('colly-lg-3');

@@ -3425,3 +3425,16 @@ background-size: 1800% 1800%;
   line-height: 30px; 
   position: relative;
 }
+
+.themesmodal{
+    transform: scale(0.4);
+    position: absolute;
+    top:-270px;
+    left:-80%;
+}
+.themesmodal2{
+    transform: scale(0.3);
+    position: absolute;
+    top:-300px;
+    left:-370px;
+}

@@ -34,7 +34,9 @@
                             <p id = "image-text2" class = "attach-btn-text"><i class = "fa fa-file-image-o"></i> Add Cover Image</p>
                         </label>
                      </div>-->
-<div class="" style="transform: scale(0.4); position: absolute; top:-60%;left:-80%;" >
+<div>Choose what you like.
+You can change it later.</div>
+<div class="themesmodal">
     <table>
         <tr>
             <td><div  class="editroomthemes roomtheme-arrow blocks2" style="" onclick="roomtheme(1)"></div></td>
