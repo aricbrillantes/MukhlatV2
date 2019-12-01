@@ -20,6 +20,8 @@
             <div class="modal-body">
                 <div class = "row"><center>
                     <span style="font-size: 32px">Happy Birthday, <?php echo $logged_user->first_name; ?>!<br></span>
+                    <br>
+                    <button type="button" class="btn btn-primary buttonsbgcolor" data-dismiss="modal">Thanks!</button>
                     </center>
                 </div>
             </div>

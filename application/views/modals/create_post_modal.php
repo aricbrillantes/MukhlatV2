@@ -175,8 +175,6 @@ $topic = $_SESSION['current_topic'];
 	top:1px;
 }
 
-
-}
   </style>
  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
   <link href="<?php echo base_url('lib/css/emoji.css'); ?>" rel="stylesheet">
