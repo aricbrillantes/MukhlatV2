@@ -213,13 +213,12 @@
     
     function mouseTrail()
     {
-        if(getCookie("MouseTrail")==='0')
-            document.cookie = "MouseTrail=1;" + ";path=/";
+        if(getCookie("MouseTrail")==='1')
+            document.cookie = "MouseTrail=0;" + ";path=/";
         
         else
         {
-            if(getCookie("MouseTrail")==='1')
-                document.cookie = "MouseTrail=0;" + ";path=/";
+                document.cookie = "MouseTrail=1;" + ";path=/";
         }
         
     }

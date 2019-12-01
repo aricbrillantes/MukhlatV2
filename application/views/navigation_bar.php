@@ -257,12 +257,12 @@
     var timeoutID;
     dis.innerHTML = "Time Left: " + timerLength;
     
-    document.onmousemove = function()
-    { 
+    addEventListener("mousemove", function() {
+    
         //reset timer and hide AFK popup
         StartTimer();
 //         $('#afkpopup').modal('hide'); 
-    };
+    });
 // $('#afkpopup').modal('show'); 
     document.onscroll = function()
     { 
@@ -378,8 +378,8 @@
                     .rainbowwrapper{display:' + getCookie("rainbowbg1") + '!important;}\n\
                     .ptopcolor{background:' + getCookie("ButtonColor") + ';}<\/style>');
     
-    if(getCookie("MouseTrail")==='0')
-            document.write('<style type="text/css">.trail{display:none;}<\/style>');
+    if(getCookie("MouseTrail")==='1')
+            document.write('<style type="text/css">.trail{display:block;}<\/style>');
         
     if(getCookie("bubblesbg1")==='block')
         document.write('<style type="text/css"> #logom .bubbletooltip{visibility:visible;}<\/style>');
