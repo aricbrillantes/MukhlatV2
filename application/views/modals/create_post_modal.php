@@ -64,6 +64,120 @@ $topic = $_SESSION['current_topic'];
         }
                                 
     </script>-->
+  <style>
+  i.down {
+  border: solid red;
+  border-width: 0 5px 5px 0;
+  display: inline-block;
+  padding: 5px;
+  }
+  i.up {
+  border: solid red;
+  border-width: 0 5px 5px 0;
+  display: inline-block;
+  padding: 5px;
+  }
+  .up {
+  transform: rotate(-135deg);
+  -webkit-transform: rotate(-135deg);
+  }
+
+  .down {
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  }
+
+  .btnrecord {
+	box-shadow:inset 0px 34px 0px -15px #b54b3a;
+	background-color:#a73f2d;
+	border:1px solid #241d13;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:9px 23px;
+	text-decoration:none;
+  text-shadow:0px -1px 0px #7a2a1d;
+  border-radius:24px;
+}
+.btnrecord:hover {
+	background-color:#b34332;
+}
+.btnrecord:active {
+	position:relative;
+	top:1px;
+}
+
+
+.btnstopcss {
+	box-shadow: 3px 4px 0px 0px #899599;
+	background:linear-gradient(to bottom, #ededed 5%, #bab1ba 100%);
+	background-color:#ededed;
+	border:1px solid #d6bcd6;
+	display:inline-block;
+	cursor:pointer;
+	color:#000000;
+	font-family:Arial;
+	font-size:17px;
+	padding:7px 25px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #e1e2ed;
+}
+.btnstopcss:hover {
+	background:linear-gradient(to bottom, #bab1ba 5%, #ededed 100%);
+	background-color:#bab1ba;
+}
+.btnstopcss:active {
+	position:relative;
+	top:1px;
+}
+#scissors {
+        height: 43px; /* image height */
+        width: 90%;
+        margin: auto auto;
+        background-image: url('http://i.stack.imgur.com/cXciH.png');
+        background-repeat: no-repeat;
+        background-position: right;
+        position: relative;
+        overflow: hidden;
+    }
+    #scissors:after {
+        content: "";
+        position: relative;
+        top: 50%;
+        display: block;
+        border-top: 3px dashed black;
+        margin-top: -3px;
+    }
+    .dlbutton {
+	box-shadow: 0px 0px 0px 2px #9fb4f2;
+	background:linear-gradient(to bottom, #7892c2 5%, #476e9e 100%);
+	background-color:#7892c2;
+	border-radius:10px;
+	border:1px solid #4e6096;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:19px;
+	padding:12px 37px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #283966;
+}
+.dlbutton:hover {
+	background:linear-gradient(to bottom, #476e9e 5%, #7892c2 100%);
+	background-color:#476e9e;
+}
+.dlbutton:active {
+	position:relative;
+	top:1px;
+}
+
+
+}
+  </style>
  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
   <link href="<?php echo base_url('lib/css/emoji.css'); ?>" rel="stylesheet">
 <!-- Create Post Modal -->
@@ -83,7 +197,7 @@ $topic = $_SESSION['current_topic'];
                     <div class="form-group" id="post-title-container"><!-- check if title is already taken -->
                         <!--<label for = "title">Make a title for your post:</label>-->
                         <!--<p class="lead emoji-picker-container">-->
-                        <h2 id="titlewarning" style="display: none">Add a title!</h2>
+                        <h3 id="titlewarning" style="display: none;color:red;"><i class="arrow down"></i> Add a title here! <i class="arrow down"></i></h3>
                         <p class="emoji-picker-container"><input class="title-text" type="text" style="height: 50px;" maxlength = "100"  required class="form-control" name = "post_title" id = "post-title"  placeholder = "My title"  data-emojiable="true" value="" required /></p>
                         <!--<p id="charsRemaining3">Characters Left: 100</p>-->
                         <div class="charLimitMessage" id="charLimitMessage3"><center>Oops! You've used up all the letters and numbers for your title!</center></div>
@@ -106,7 +220,7 @@ $topic = $_SESSION['current_topic'];
                     <div class="form-group" ><!-- check if description exceeds n words-->
                         <!--<label for = "content">Make the content of your post:</label>-->
                         <!--<p class="lead emoji-picker-container">-->
-                        <h2 id="contentwarning" style="display: none">Write your thoughts!</h2>
+                        <h3 id="contentwarning" style="display: none;color:red;"><i class="arrow down"></i> Write your thoughts here! <i class="arrow down"></i></h3>
                         <p class="emoji-picker-container"><textarea class = "form-control" style="height: 100px;" maxlength = "16000" required name = "post_content" id = "post-content" placeholder = "My thoughts" data-emojiable="true" required></textarea></p>
                         <!--<p id="charsRemaining4">Characters Left: 16000</p>-->
                         <div class="charLimitMessage" id="charLimitMessage4"><center>Oops! You've used up all the letters and numbers for your message!</center></div>
@@ -168,7 +282,7 @@ $topic = $_SESSION['current_topic'];
                   <source src="#" id="video_here">
                   hi
               </video>  
-              <h2 id="addwarning" > add something to share! <h2>
+              <h2 id="addwarning" style="display:none;color:red;" ><i class="arrow up"></i> add something to share! <h2>
               <h2 id="pic_h" style="display: none">The picture you used is too big sorry!</h2>
               <h2 id="vid_h" style="display: none">The video you used is too big sorry!</h2>
               <h2 id="snd_h" style="display: none">The sound you used is too big sorry!</h2>
@@ -176,36 +290,40 @@ $topic = $_SESSION['current_topic'];
               
                 </div>
                 <div class = "modal-footer" style = "padding: 5px; border-top: none; padding-bottom: 10px; padding-right: 10px;">
-                    <a id = "create-post-btn" class ="btn btn-primary buttonsbgcolor" data-toggle = "modal" onclick="" >Share</a>
+                    <a id = "create-post-btn" class ="btn btn-primary buttonsbgcolor" data-toggle = "modal" onclick="shareclick()" >Share</a>
                 </div>
                 
 
             </form>
+            <div id="scissors"></div>
             <label id = "record-label" >
-            <button id="btnStart">Record My Voice!</button>
-            <button id="btnStart2">Take a video!</button>
+            <button id="btnStart" class="btnrecord">Record My Voice!</button>
+            <button id="btnStart2" class="btnrecord">Take a video!</button>
+            <br>
+            <br>  
             <h4 id="startrec" style="display: none">You are now recording!</h4>
 
             <div id="recaud" style="display: none">
                     
-                    <button id="btnStop" >Im done recording!</button></p>
+                    
         
                     
                     <audio id="aud1" controls></audio><br>
-        
-                    <a id="dl"  download="My Voice">download</a>
+                    <button id="btnStop" class="btnstopcss">Im done recording!</button></p>
+                    <a id="dl" class="dlbutton" style="display: none" download="My Voice">Save my Voice</a>
 
             </div>
             
             <div id="recvid" style="display: none">
                     <video width="400" id="vidprev"  controls muted></video><br>
-                    <button id="btnStop2">Im done recording!</button></p>
                     
         
                     
                     <video width="400" id="vid1" style="display: none" controls></video><br>
-        
-                    <a id="dl2"  download="My Video">download</a>
+                    <button id="btnStop2" class="btnstopcss">Im done recording!</button></p>
+                    
+                    <a id="dl2" class="dlbutton" style="display: none" download="My Video">Save my Video</a>
+                    
 
             </div>
             </label>
@@ -305,6 +423,7 @@ let constraintObj = {
                 $('[id$=startrec]').show();
                 $('[id$=btnStart]').hide();
                 $('[id$=btnStop]').show();
+                $('[id$=dl]').hide();
                 mediaRecorder.start();
                 console.log(mediaRecorder.state);
                 
@@ -313,6 +432,7 @@ let constraintObj = {
               $('[id$=startrec]').hide();
               $('[id$=btnStart]').show();
               $('[id$=btnStop]').hide();
+              $('[id$=dl]').show();
                 mediaRecorder.stop();
                 console.log(mediaRecorder.state);
                
@@ -490,6 +610,7 @@ let constraintObj2 = {
                 $('[id$=btnStart2]').hide();
                 $('[id$=btnStop2]').show();
                 $('[id$=vidprev]').show();
+                $('[id$=dl2]').hide();
                 mediaRecorder2.start();
                 console.log(mediaRecorder2.state);
                 
@@ -500,7 +621,7 @@ let constraintObj2 = {
               $('[id$=startrec]').hide();
               $('[id$=btnStart2]').show();
               $('[id$=btnStop2]').hide();
-
+              $('[id$=dl2]').show();
                 mediaRecorder2.stop();
                 console.log(mediaRecorder2.state);
             });
@@ -532,6 +653,8 @@ let constraintObj2 = {
         $('[id$=reply]').val(0);
         $('[id$=shout]').val(0);
         $('[id$=post-title]').val("");
+        $('[id$=titlewarning]').hide();
+        $('[id$=contentwarning]').hide();
         toggle=p;
         
 
@@ -543,8 +666,9 @@ let constraintObj2 = {
           $('[id$=attachment-preview]').show();
           $('[id$=modaltitle]').text("Add stuff");
           $('[id$=post-title]').val(" ");
-          $('[id$=titlewarning]').hide();
-          $('[id$=contentwarning]').show();
+          
+          $('[id$=btnStart]').show();
+          $('[id$=btnStart2]').show();
 
         }
 
@@ -571,7 +695,7 @@ let constraintObj2 = {
           $('[id$=addwarning]').hide();
           $('[id$=btnStart]').hide();
           $('[id$=btnStart2]').hide();
-          $('[id$=contentwarning]').show();
+          $('[id$=contentwarning]').hide();
           $('[id$=titlewarning]').hide();
         }
 
@@ -583,7 +707,7 @@ let constraintObj2 = {
           $('[id$=addwarning]').hide();
           $('[id$=btnStart]').hide();
           $('[id$=btnStart2]').hide();
-          $('[id$=titlewarning]').show();
+          $('[id$=titlewarning]').hide();
         }
         
         if(p==="reply")
@@ -603,7 +727,42 @@ let constraintObj2 = {
         
     }
 
+function shareclick()
+{
+  if(document.getElementById('post-content').value.length>=16000)
+            {  
+                document.getElementById('charLimitMessage4').style.display = "block";
+            }  
+                
+            else
+                document.getElementById('charLimitMessage4').style.display = "none";
 
+            if(document.getElementById('post-title').value=="" && toggle=="shout")
+            {
+              
+              $('[id$=titlewarning]').show();
+            }
+            else
+            {
+              
+              $('[id$=titlewarning]').hide();
+              
+            }
+            if(document.getElementById('post-content').value=="")
+            {
+              
+              $('[id$=contentwarning]').show();
+            }
+            else{
+              
+              $('[id$=contentwarning]').hide();
+            }
+            if(hasfile!=1 && toggle!="shout" && toggle!="text")
+              {
+                $('[id$=addwarning]').show();
+              }
+            
+}
 
 
   // function showImage(src, target) 
@@ -692,37 +851,7 @@ let constraintObj2 = {
 //            else
 //                document.getElementById('charLimitMessage3').style.display = "none";
 
-            if(document.getElementById('post-content').value.length>=16000)
-            {  
-                document.getElementById('charLimitMessage4').style.display = "block";
-            }  
-                
-            else
-                document.getElementById('charLimitMessage4').style.display = "none";
-
-            if(document.getElementById('post-title').value=="" && toggle=="shout")
-            {
-              
-              $('[id$=titlewarning]').show();
-            }
-            else
-            {
-              
-              $('[id$=titlewarning]').hide();
-              
-            }
-            if(document.getElementById('post-content').value=="")
-            {
-              
-              $('[id$=contentwarning]').show();
-            }
-            else{
-              if(hasfile==1)
-              {
-                
-              }
-              $('[id$=contentwarning]').hide();
-            }
+            
     });  
 </script>
                     
