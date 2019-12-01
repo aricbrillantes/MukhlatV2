@@ -81,17 +81,19 @@
 </script>
 
 <?php if ($logged_user->role_id == 2): ?>
-            <link rel="stylesheet" href="<?php echo base_url("/css/style.css"); ?>" />
+<link rel="stylesheet" href="<?php echo base_url("/css/style.css"); ?>" />
 
-        <?php else: ?>
-            <link rel="stylesheet" href="<?php echo base_url("/css/style_parentview.css"); ?>" />
+<?php else: ?>
+    <link rel="stylesheet" href="<?php echo base_url("/css/style_parentview.css"); ?>" />
 
-        <?php endif; ?>
+<?php endif; ?>
 
 <link href="https://fonts.googleapis.com/css?family=Cabin|Muli|Oswald" rel="stylesheet"/>
 <link rel="stylesheet" href="<?php echo base_url("/css/style_parentview.css"); ?>" />
 <style>div.content-container{border:0px;}</style>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="<?php echo base_url('lib/css/emoji.css'); ?>"/>
 
 <?php if ($logged_user->role_id == 2): ?>
     <link rel="stylesheet" href="<?php echo base_url("/css/style.css"); ?>" />
@@ -361,12 +363,19 @@
                     <form enctype = "multipart/form-data" action = "<?php echo base_url('parents/note/').$id; ?>" id = "create-note-form" method = "POST">
                         <div class="modal-body">
 
-                            <div class="form-group" ><!-- check if description exceeds n words-->
-                                <!--<label for = "content">Make the content of your post:</label>-->
-                                <!--<p class="lead emoji-picker-container">-->
-                                <textarea class = "form-control" style="height: 100px;" maxlength = "200" required name = "note_content" id = "note-content" placeholder = "Write your note here:" ></textarea>
-                                <!-- <p id="charsRemaining4">Characters Left: 16000</p> -->
-                      
+                            <div class="form-group"><!-- check if description exceeds n words-->
+                                
+                                <?php if(!$mobile): ?>
+                                <p class="emoji-picker-container">
+                                    <textarea class = "form-control" data-emojiable="true" style="height: 100px;" maxlength = "200" required name = "note_content" id = "note-content" placeholder = "Write your note here:" ></textarea>
+                                </p>
+
+                                <?php else:?>
+                                    <textarea class = "form-control" style="height: 100px;" maxlength = "200" required name = "note_content" id = "note-content" placeholder = "Write your note here:" ></textarea>
+                                
+                                <?php endif;?>
+
+                                
                             </div>
 
                             <div class = "modal-footer" style = "padding: 5px; border-top: none; padding-bottom: 10px; padding-right: 10px;">
@@ -558,9 +567,34 @@
         </div>
     </div>
 
+<script type="text/javascript" src="<?php echo base_url("/js/admin.js"); ?>"></script>
+<script type="text/javascript" src="<?php echo base_url("/js/search.js"); ?>"></script>
+<script src="<?php echo base_url('lib/js/config.js');?>"></script>
+<script src="<?php echo base_url('lib/js/util.js');?>"></script>
+<script src="<?php echo base_url('lib/js/jquery.emojiarea.js');?>"></script>
+<script src="<?php echo base_url('lib/js/emoji-picker.js');?>"></script>
+<!-- End emoji-picker JavaScript -->
+
+<script>
+  $(function() {
+    // Initializes and creates emoji set from sprite sheet
+    window.emojiPicker = new EmojiPicker({
+      emojiable_selector: '[data-emojiable=true]',
+      assetsPath: '<?php echo base_url('lib/img/');?>',
+      popupButtonClasses: 'fa fa-smile-o'
+    });
+    // Finds all elements with `emojiable_selector` and converts them to rich emoji input fields
+    // You may want to delay this step if you have dynamically created input fields that appear later in the loading process
+    // It can be called as many times as necessary; previously converted input fields will not be converted again
+    window.emojiPicker.discover();
+  });
+</script>
+
+<script type="text/javascript" src="<?php echo base_url("/js/parent.js"); ?>"></script>
+
 </body>
 </html>
-<script type="text/javascript" src="<?php echo base_url("/js/parent.js"); ?>"></script>
+
 <?php
     include(APPPATH . 'views/modals/create_note_modal.php');
     include(APPPATH . 'views/modals/network_view_modal.php');

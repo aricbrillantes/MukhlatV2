@@ -25,7 +25,7 @@
 <?php endif; ?>
 
 <?php if($mobile):?>
-    <!-- <script>alert('mobile!');</script> -->
+    
     <style>
 
         body.sign-in
@@ -44,6 +44,9 @@
 
     </style>
 <?php endif; ?>
+
+<link rel="stylesheet" href="<?php echo base_url('lib/css/emoji.css'); ?>"/>
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- Nav Bar -->
@@ -134,18 +137,26 @@
                                         <br><small class = "no-padding no-margin">(Parent/Guardian: <?php echo $user->parent?>)</small>
                                                            
                                         <?php endif;?>
-                                    
+
+                                    <?php else:?>
+                                        <?php if($user->parent === "" || !($user->parent)):?>
+                                        <br><small class = "no-padding no-margin" style="color:red;"><b>(No Parent/Guardian Email)</b></small>
+
+                                        <?php endif;?>
+
                                     <?php endif;?>
                                     <a value = "" href="<?php echo base_url('admin/activity/' . $user->user_id)?>" class = "btn-link btn-xs"> <i>View record</i></a>
 
                                     <?php
                                         if ($logged_user->user_id !== $user->user_id):
-                                            if ($user->is_enabled): ?>
-                                                <button type = "button" value = "<?php echo $user->user_id ?>" class = "toggle-account pull-right btn btn-danger admin-list-btn">Disable</button>
+                                            if(!($user->parent === "" || !($user->parent))):
+                                                if ($user->is_enabled): ?>
+                                                    <button type = "button" value = "<?php echo $user->user_id ?>" class = "toggle-account pull-right btn btn-danger admin-list-btn">Disable</button>
                                                 
-                                            <?php else: ?>
-                                                <button type = "button" value = "<?php echo $user->user_id ?>" class = "toggle-account pull-right btn btn-success admin-list-btn">Enable</button>
+                                                <?php else: ?>
+                                                    <button type = "button" value = "<?php echo $user->user_id ?>" class = "toggle-account pull-right btn btn-success admin-list-btn">Enable</button>
                                             <?php
+                                                endif;
                                             endif;
                                         endif;
                                     ?>
@@ -225,11 +236,17 @@
                 <!-- <h3 style="margin-left: 15px">Announcements</h3> -->
                 <br><h3 class = "text-info text-center user-activities-header col-md-offset-0">Announcements</h3><br>
                 <form enctype = "multipart/form-data" action = "<?php echo base_url('topic/announcement'); ?>" id = "create-announcement-form" method = "POST">
-                    <div class="form-group container-fluid" ><!-- check if description exceeds n words-->
-                        <!--<label for = "content">Make the content of your post:</label>-->
-                        <!--<p class="lead emoji-picker-container">-->
-                        <textarea class = "form-control" style="height: 100px;" maxlength = "200" required name = "announcement_content" id = "announcement-content" placeholder = "Write your announcement here:" ></textarea>
-                        <!-- <p id="charsRemaining4">Characters Left: 16000</p> -->
+                    <div class="form-group container-fluid" >
+
+                        <?php if(!$mobile): ?>
+                        <p class="emoji-picker-container">
+                            <textarea class = "form-control" data-emojiable="true" style="height: 100px;" maxlength = "200" required name = "announcement_content" id = "announcement-content" placeholder = "Write your announcement here:" ></textarea>
+                        </p>
+
+                        <?php else:?>
+                            <textarea class = "form-control" style="height: 100px;" maxlength = "200" required name = "announcement_content" id = "announcement-content" placeholder = "Write your announcement here:" ></textarea>
+                        
+                        <?php endif;?>
                         
                         <div class = "modal-footer" style = "">
                             <button id = "create-announcement-btn" class ="btn btn-primary buttonsbgcolor" data-toggle = "modal" >Share</button>
@@ -268,7 +285,7 @@
                             <i class = "pull-right">(<?php echo date_format(date_create($announcement->date),"M d Y - H:i");?>)</i>
                             
 
-                            <br><br><h4 class = "no-padding admin-list-name">"<?php echo $announcement->announcement ?>"</h4>
+                            <br><br><h4 class = "">"<?php echo utf8_decode($announcement->announcement) ?>"</h4>
                         </li>                                    
                    
                     <?php endforeach; ?>
@@ -279,8 +296,28 @@
         </div>
     </div>
 
-    <script type="text/javascript" src="<?php echo base_url("/js/admin.js"); ?>"></script>
-    <script type="text/javascript" src="<?php echo base_url("/js/search.js"); ?>"></script>
+<script type="text/javascript" src="<?php echo base_url("/js/admin.js"); ?>"></script>
+<script type="text/javascript" src="<?php echo base_url("/js/search.js"); ?>"></script>
+<script src="<?php echo base_url('lib/js/config.js');?>"></script>
+<script src="<?php echo base_url('lib/js/util.js');?>"></script>
+<script src="<?php echo base_url('lib/js/jquery.emojiarea.js');?>"></script>
+<script src="<?php echo base_url('lib/js/emoji-picker.js');?>"></script>
+<!-- End emoji-picker JavaScript -->
+
+<script>
+  $(function() {
+    // Initializes and creates emoji set from sprite sheet
+    window.emojiPicker = new EmojiPicker({
+      emojiable_selector: '[data-emojiable=true]',
+      assetsPath: '<?php echo base_url('lib/img/');?>',
+      popupButtonClasses: 'fa fa-smile-o'
+    });
+    // Finds all elements with `emojiable_selector` and converts them to rich emoji input fields
+    // You may want to delay this step if you have dynamically created input fields that appear later in the loading process
+    // It can be called as many times as necessary; previously converted input fields will not be converted again
+    window.emojiPicker.discover();
+  });
+</script>
 
 </body>
 </html>
