@@ -322,7 +322,7 @@ class Topic extends CI_Controller {
                     );
                 }
 
-                else
+                else 
                 {
                     $data = array
                     (
@@ -339,7 +339,7 @@ class Topic extends CI_Controller {
             }
 
             //if table was updated last week, update for both stats for this week and last week
-            else
+            else if($lastDate >= $sunThisWeek)
             {
                 $data = array
                 (

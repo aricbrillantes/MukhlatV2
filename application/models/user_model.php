@@ -208,6 +208,17 @@ class User_model extends CI_Model {
         header("Refresh:0");
     }
 
+    public function get_swears($user_id)
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_infractions');
+        $this->db->where(array('tbl_infractions.user_id' => $user_id));
+
+        $infractions = $this->db->get();
+
+        return $infractions;
+    }
+
     public function get_notes($child_id) 
     {
         $notes = $this->db->select('*')

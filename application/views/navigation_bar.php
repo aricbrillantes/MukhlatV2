@@ -16,6 +16,28 @@
 
         $mobile=$CI->agent->is_mobile();
 
+        $infractions = $CI->user_model->get_swears($logged_user->user_id); //swears
+
+        if(!empty($infractions->result()))
+        {
+            // print($infractions->row()->current_total);
+            // print("<br>");
+            // print($infractions->row()->last_total);
+            // print("<br>");
+            // print($infractions->row()->overall_total);
+
+            $thisWeekTotal = $infractions->row()->current_total;
+            $lastWeekTotal = $infractions->row()->last_total;
+            $overallTotal = $infractions->row()->overall_total;
+        }
+
+        else
+        {
+            $thisWeekTotal = 0;
+            $lastWeekTotal = 0;
+            $overallTotal = 0;
+        }
+
 
         $usertimes = $CI->user_model->get_usertimes($logged_user->user_id);
         // print_r($usertimes->row()->time_setting);
@@ -94,13 +116,29 @@
 
     */
 
+    var thisWeekTotal = <?php echo $thisWeekTotal ?>;
+    var lastWeekTotal = <?php echo $lastWeekTotal ?>;
+    var overallTotal = <?php echo $overallTotal ?>;
+
+    // alert(lastWeekTotal);
+
+    // $('#afkpopup').modal('show'); 
+
+    // if(thisWeekTotal>=3)
+    //     alert("you've been swearing a lot lately! choose your words carefully");
+
+    // if(lastWeekTotal>=3)
+    //     alert("you've been swearing a lot lately! choose your words carefully");
+
+    // if(overallTotal>=5)
+    //     alert("you've been swearing a lot lately! choose your words carefully");
+
+
     var canUseNext = 1;
     var canUse = 1;
 
     function checkRestriction()
-    {
-        
-        
+    {        
         //get current time
         var today = new Date();
         var hour, min, day;
