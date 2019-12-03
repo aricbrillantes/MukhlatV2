@@ -53,24 +53,7 @@
 
     $mobile=$CI->agent->is_mobile();
 
-    if($mobile):?>
-    <!-- <script>alert('mobile!');</script> -->
-    <style>
-        body.sign-in
-        {
-            background-image: none;
-            background-color: #f9f9f9;
-            font-family: 'Cabin', 'Muli', sans-serif;
-            height: 500px;
-        }
-
-        div.content-container{
-            border:0px;
-            background-color: #f9f9f9;
-        }
-    </style>
-
-<?php endif; ?>
+?>
 
 <script>
     document.cookie = "updatetime=0;path=/";
@@ -93,7 +76,7 @@
 <style>div.content-container{border:0px;}</style>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link rel="stylesheet" href="<?php echo base_url('lib/css/emoji.css'); ?>"/>
+<link rel="stylesheet" href="<?php echo base_url('lib/css/emoji_parentview.css'); ?>"/>
 
 <?php if ($logged_user->role_id == 2): ?>
     <link rel="stylesheet" href="<?php echo base_url("/css/style.css"); ?>" />
@@ -101,27 +84,6 @@
 <?php else: ?>
     <link rel="stylesheet" href="<?php echo base_url("/css/style_parentview.css"); ?>" />
 
-<?php endif; ?>
-
-<?php if($mobile):?>
-    <!-- <script>alert('mobile!');</script> -->
-    <style>
-
-        body.sign-in
-        {
-            background-image: none;
-            background-color: #f9f9f9;
-            font-family: 'Cabin', 'Muli', sans-serif;
-            height: 500px;
-        }
-
-
-        div.content-container{
-            border:0px;
-            background-color: #f9f9f9;
-        }
-
-    </style>
 <?php endif; ?>
 
 
@@ -250,40 +212,20 @@
 
             <div class = "col-xs-12 col-sm-12 col-md-12 col-md-offset-0 content-container container-fluid " style = "margin-bottom: 5px;">
                 <div class = "col-xs-12 col-sm-12 col-md-12 col-md-offset-0 content-container container-fluid" style="border:0px; margin-bottom: 0px;">
-                    <div class = "col-xs-12 col-md-6 col-sm-6 text-center"> 
+                    <div class = "col-xs-12 col-md-12 col-sm-12 text-center"> 
                         <?php if($child->is_enabled === '0'):?>
                             <h4 class = "no-padding no-margin" style="color:red;"><b>Account Unverified</h4></b><br>
-
                         <?php endif;?>
 
+                        <img id = "user-pic-display" class = "img-circle" width = "100px" height = "100px" src = "<?php echo $child->profile_url ? base_url($child->profile_url) : base_url('images/default.jpg') ?>" style = "margin-bottom: 5px;">
+                        <br>
                         <h3 class = "no-padding text-info" style = "margin-top: 5px; margin-bottom: 5px; "><strong><?php echo $child->first_name . " " . $child->last_name ?></strong></h3>
                         <h5 class = "no-padding no-margin" style = "margin-top: 5px; margin-bottom: 5px; "><?php echo $child->email ?></h5>
                         <h5 class = "no-padding no-margin" style = "margin-top: 5px; margin-bottom: 5px; "><?php echo date_format(date_create($child->birthdate),"M d, Y") ?></h5>
                         
                         <!-- <p class = "wrap text-muted" style = ""><i><?php echo $child->description ? $child->description : 'Hello World!'; ?></i></p> -->
-                    </div>
-                    <!-- <?php
-                    if ($child->is_enabled):
-                            ?>
-                            <button type = "button" value = "<?php echo $child->user_id ?>" class = "toggle-account-parent pull-right btn btn-danger admin-list-btn">Disable</button>
-                        <?php else: ?>
-                            <button type = "button" value = "<?php echo $child->user_id ?>" class = "toggle-account-parent pull-right btn btn-success admin-list-btn">Enable</button>
-                        <?php
-                        endif;
-                    ?> -->
-
-                    <div class = "col-xs-12 col-sm-6 col-md-6 col-md-offset-0 no-padding no-margin text-center row" style="float: right; margin-bottom: 0px;">
-                       <!--  <a class = "btn btn-primary col-md-10 col-sm-10 col-xs-10 col-md-offset-1 col-sm-offset-1 col-xs-offset-1" style="font-size:14px; margin-top: 15px;" href = "#create-note-modal" data-toggle = "modal" ><i class = "glyphicon glyphicon-envelope"></i> 
-                            <?php if (!$mobile): ?>
-                                Send a Note to <?php echo $child->first_name?>
-
-                            <?php else: ?>
-                                Send a Note
-
-                            <?php endif; ?>
-                        </a>   -->
-
-                        <a class = "btn btn-primary col-md-10 col-sm-10 col-xs-10 col-md-offset-1 col-sm-offset-1 col-xs-offset-1" style="font-size:14px; margin-top: 15px;" href = "<?php echo base_url('parents/settings/' . $child->user_id) ?>" ><i class = "glyphicon glyphicon-time"></i> 
+                    
+                        <a class = "btn btn-primary col-md-6 col-sm-6 col-xs-6 col-md-offset-3 col-sm-offset-3 col-xs-offset-3" style="font-size:14px; margin-top: 15px;" href = "<?php echo base_url('parents/settings/' . $child->user_id) ?>" ><i class = "glyphicon glyphicon-time"></i> 
                             <?php if (!$mobile): ?>
                                 Manage <?php echo $child->first_name?>'s Schedule
 
@@ -291,8 +233,11 @@
                                 Schedule
 
                             <?php endif; ?>
-                        </a>    
+                        </a>
+
                     </div>
+                    
+
                 </div>    
             </div>                 
 
@@ -304,32 +249,30 @@
                     </h3>
                     <br>
 
-                    <div class="col-md-6 col-sm-6 col-xs-6">
-                        <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Posts to others</h4></strong> <h2 class = "" style = "display: inline-block;"><?php echo $otherPosts; ?></h2>
+                    <div class="col-md-4 col-sm-4 col-xs-4">
+                        <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Posts to others</h4></strong> <br><h2 class = "" style = "display: inline-block;"><?php echo $otherPosts; ?></h2>
                     </div>
 
-                    <div class="col-md-6 col-sm-6 col-xs-6">
-                        <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Total posts: </h4></strong> <h2 class = "" style = "display: inline-block;"><?php echo $totalRoomPosts; ?></h2>
+                    <div class="col-md-4 col-sm-4 col-xs-4">
+                        <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Total posts: </h4></strong> <br><h2 class = "" style = "display: inline-block;"><?php echo $totalRoomPosts; ?></h2>
                     </div>
 
-                    <div class="col-md-6 col-sm-6 col-xs-6">
-                        <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Stuff shared: </h4></strong> <h2 class = "" style = "display: inline-block;"><?php echo $selfPosts; ?></h2>
-                    </div>
-
-                    <div class=" col-md-4 col-sm-4 col-xs-4">
-                        <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Replies: </h4></strong> <h2 class = "" style = "display: inline-block;"><?php echo $roomPosts; ?></h2>
+                    <div class="col-md-4 col-sm-4 col-xs-4">
+                        <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Stuff shared: </h4></strong><br> <h2 class = "" style = "display: inline-block;"><?php echo $selfPosts; ?></h2><br><br><br>
                     </div>
 
                     <div class=" col-md-4 col-sm-4 col-xs-4">
-                        <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Shout outs: </h4></strong> <h2 class = "" style = "display: inline-block;"><?php echo $shoutOuts; ?></h2>
+                        <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Replies: </h4></strong><br> <h2 class = "" style = "display: inline-block;"><?php echo $roomPosts; ?></h2>
+                    </div>
+
+                    <div class=" col-md-4 col-sm-4 col-xs-4">
+                        <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Shout outs: </h4></strong><br> <h2 class = "" style = "display: inline-block;"><?php echo $shoutOuts; ?></h2>
                     </div>
 
 
                     <div class=" col-md-12 col-sm-12 col-xs-12">
                         <br><br>
                     </div>
-
-
 
 
                     <div class=" col-md-12 col-sm-12 col-xs-12">
@@ -392,8 +335,7 @@
 
                                     <li class = "list-group-item admin-list-item">
                                         <i class = "pull-right">(<?php echo date_format(date_create($note->date),"M d Y - H:i");?>)</i>
-                                        <h3 class = "no-padding admin-list-name">"<?php echo $note->note ?>"</h3>
-
+                                        <h3 class = "no-padding admin-list-name"><?php echo utf8_decode($note->note); ?></h3>
                                     </li>
                                                                        
                                 <?php endforeach; ?>

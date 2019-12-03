@@ -106,7 +106,7 @@ class User_model extends CI_Model {
     {
         // echo $parent_id . "<br>";
         
-        $query = $this->db->select('user_id, first_name, last_name, parent, email, description, is_enabled, role_id')
+        $query = $this->db->select('*')
                 ->from('tbl_users')
                 ->where('parent', $parent_email);
 

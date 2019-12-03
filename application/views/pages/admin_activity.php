@@ -44,24 +44,7 @@
 
     $mobile=$CI->agent->is_mobile();
 
-    if($mobile):?>
-    <!-- <script>alert('mobile!');</script> -->
-    <style>
-        body.sign-in
-        {
-            background-image: none;
-            background-color: #f9f9f9;
-            font-family: 'Cabin', 'Muli', sans-serif;
-            height: 500px;
-        }
-
-        div.content-container{
-            border:0px;
-            background-color: #f9f9f9;
-        }
-    </style>
-
-<?php endif; ?>
+?>
 
 <script>
     document.cookie = "updatetime=0;path=/";
@@ -83,27 +66,6 @@
 <link rel="stylesheet" href="<?php echo base_url("/css/style_parentview.css"); ?>" />
 <style>div.content-container{border:0px;}</style>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<?php if($mobile):?>
-    <!-- <script>alert('mobile!');</script> -->
-    <style>
-
-        body.sign-in
-        {
-            background-image: none;
-            background-color: #f9f9f9;
-            font-family: 'Cabin', 'Muli', sans-serif;
-            height: 500px;
-        }
-
-
-        div.content-container{
-            border:0px;
-            background-color: #f9f9f9;
-        }
-
-    </style>
-<?php endif; ?>
 
 <?php foreach ($children->result() as $child): 
 
@@ -232,7 +194,8 @@
                             <h4 class = "no-padding no-margin" style="color:red;"><b>Unverified Account</h4></b><br>
 
                         <?php endif;?>
-
+                        <img id = "user-pic-display" class = "img-circle" width = "100px" height = "100px" src = "<?php echo $child->profile_url ? base_url($child->profile_url) : base_url('images/default.jpg') ?>" style = "margin-bottom: 5px;">
+                        <br>
                         <h3 class = "no-padding text-info" style = "margin-top: 5px; margin-bottom: 5px; "><strong><?php echo $child->first_name . " " . $child->last_name ?></strong></h3>
                         <h5 class = "no-padding no-margin"><?php echo $child->email ?></h5>
                         <h5 class = "no-padding no-margin" style = "margin-top: 5px; margin-bottom: 5px; "><?php echo date_format(date_create($child->birthdate),"M d, Y") ?></h5>
@@ -261,24 +224,24 @@
                     </h3>
                     <br>
 
-                    <div class="col-md-6 col-sm-6 col-xs-6">
-                        <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Posts to others</h4></strong> <h2 class = "" style = "display: inline-block;"><?php echo $otherPosts; ?></h2>
+                    <div class="col-md-4 col-sm-4 col-xs-4">
+                        <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Posts to others</h4></strong> <br><h2 class = "" style = "display: inline-block;"><?php echo $otherPosts; ?></h2>
                     </div>
 
-                    <div class="col-md-6 col-sm-6 col-xs-6">
-                        <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Total posts: </h4></strong> <h2 class = "" style = "display: inline-block;"><?php echo $totalRoomPosts; ?></h2>
+                    <div class="col-md-4 col-sm-4 col-xs-4">
+                        <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Total posts: </h4></strong> <br><h2 class = "" style = "display: inline-block;"><?php echo $totalRoomPosts; ?></h2>
                     </div>
 
-                    <div class="col-md-6 col-sm-6 col-xs-6">
-                        <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Stuff shared: </h4></strong> <h2 class = "" style = "display: inline-block;"><?php echo $selfPosts; ?></h2>
-                    </div>
-
-                    <div class=" col-md-4 col-sm-4 col-xs-4">
-                        <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Replies: </h4></strong> <h2 class = "" style = "display: inline-block;"><?php echo $roomPosts; ?></h2>
+                    <div class="col-md-4 col-sm-4 col-xs-4">
+                        <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Stuff shared: </h4></strong><br> <h2 class = "" style = "display: inline-block;"><?php echo $selfPosts; ?></h2><br><br><br>
                     </div>
 
                     <div class=" col-md-4 col-sm-4 col-xs-4">
-                        <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Shout outs: </h4></strong> <h2 class = "" style = "display: inline-block;"><?php echo $shoutOuts; ?></h2>
+                        <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Replies: </h4></strong><br> <h2 class = "" style = "display: inline-block;"><?php echo $roomPosts; ?></h2>
+                    </div>
+
+                    <div class=" col-md-4 col-sm-4 col-xs-4">
+                        <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Shout outs: </h4></strong><br> <h2 class = "" style = "display: inline-block;"><?php echo $shoutOuts; ?></h2>
                     </div>
 
 

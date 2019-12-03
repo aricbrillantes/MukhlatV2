@@ -24,28 +24,15 @@
 
 <?php endif; ?>
 
-<?php if($mobile):?>
-    
-    <style>
+<link rel="stylesheet" href="<?php echo base_url('lib/css/emoji_parentview.css'); ?>"/>
 
-        body.sign-in
-        {
-            background-image: none;
-            background-color: #f9f9f9;
-            font-family: 'Cabin', 'Muli', sans-serif;
-            height: 500px;
-        }
-
-
-        div.content-container{
-            border:0px;
-            background-color: #f9f9f9;
-        }
-
-    </style>
-<?php endif; ?>
-
-<link rel="stylesheet" href="<?php echo base_url('lib/css/emoji.css'); ?>"/>
+<style>
+    .emoji-picker-icon 
+    {
+        margin-top: 0px;
+        position: absolute; 
+    }
+</style>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -307,7 +294,8 @@
 <script>
   $(function() {
     // Initializes and creates emoji set from sprite sheet
-    window.emojiPicker = new EmojiPicker({
+    window.emojiPicker = new EmojiPicker
+    ({
       emojiable_selector: '[data-emojiable=true]',
       assetsPath: '<?php echo base_url('lib/img/');?>',
       popupButtonClasses: 'fa fa-smile-o'

@@ -54,34 +54,7 @@
     $CI->load->library('user_agent');
     $mobile=$CI->agent->is_mobile();
 
-    if($mobile):?>
-    <!-- <script>alert('mobile!');</script> -->
-    <style>
-
-        body.sign-in
-        {
-            background-image: none;
-            background-color: #f9f9f9;
-            font-family: 'Cabin', 'Muli', sans-serif;
-            height: 500px;
-        }
-
-
-        div.content-container{
-            border:0px;
-            background-color: #f9f9f9;
-        }
-
-    </style>
-<?php endif; ?>
-
-<script>
-    document.cookie = "updatetime=0;path=/";
-    document.cookie = "selectedWarning=0;path=/";   
-    document.cookie = "selectedLimit=180;path=/"; 
-    document.cookie = "selectedKeep=1;path=/"; 
-    var ctr = 0;
-</script>
+?>
 
 <style>div.content-container{border:0px;}</style>
 

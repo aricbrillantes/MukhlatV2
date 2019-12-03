@@ -322,7 +322,7 @@ class Topic extends CI_Controller {
                     );
                 }
 
-                else 
+                else if($lastDate <= $satLastWeek)
                 {
                     $data = array
                     (
@@ -332,6 +332,17 @@ class Topic extends CI_Controller {
                         'overall_total' => $swears+$overallInfractions,
                         // 'current_avg' => $swears/7,
                         // 'last_avg' => ($infractions->row()->current_total)/7,
+                        'updated' => date('Y-m-d')
+                    );
+                }
+
+                else
+                {
+                    $data = array
+                    (
+                        'user_id' => $logged_user->user_id,
+                        'current_total' => $swears+$infractions->row()->current_total,
+                        'overall_total' => $swears+$overallInfractions,
                         'updated' => date('Y-m-d')
                     );
                 }
