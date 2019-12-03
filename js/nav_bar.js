@@ -234,6 +234,10 @@ if(w<768){ //sm and xs
     $('#navbaricons2').addClass('hideme');
     $('#navtoggler').removeClass('hideme');
     
+//    $('.hider').addClass('hideme');
+    $('.hidertab').removeClass('hideme');
+    $('.mystuffpreview').addClass('hideme');
+    
     $('#nav-logo3').removeClass('hideme');
     $('#nav-logo').addClass('hideme');
     $('#nav-logo2').addClass('hideme');
@@ -252,6 +256,10 @@ else if(w>=1200){ //xl
     $('#navbaricons2').removeClass('hideme');
     $('#navtoggler').addClass('hideme');
     
+    $('.hidertab').addClass('hideme');
+    $('.hider').removeClass('hideme');
+    $('.mystuffpreview').removeClass('hideme');
+    
 }
 else if(w>=768 && w<1200){ //lg and md
     $('.elements-resizer').addClass('colly-md-3');
@@ -261,6 +269,10 @@ else if(w>=768 && w<1200){ //lg and md
     $('.themesmodal2').removeClass('themesmodal2');
     $('#navbaricons2').addClass('hideme');
     $('#navtoggler').removeClass('hideme');
+    
+    $('.mystuffpreview').removeClass('hideme');
+    $('.hidertab').addClass('hideme');
+    $('.hider').removeClass('hideme');
     
     $('#nav-logo3').addClass('hideme');
     $('#nav-logo').removeClass('hideme');
@@ -287,7 +299,7 @@ else if(w>=1200){
 }
 else if(w>=768 && w<1200){
     $('.elements-resizer').addClass('colly-md-3');
-    $('.mystuffpreview').addClass('hideme');
+    $('.mystuffpreview').removeClass('hideme');
     $('.hidertab').addClass('hideme');
     $('#navbaricons2').addClass('hideme');
     

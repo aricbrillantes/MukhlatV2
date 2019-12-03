@@ -166,7 +166,7 @@
             
             <div class="col-sm-12 col-md-12 col-xs-12 col-lg-12 col-xl-12"> 
             <!--Pictures-->
-            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3"> <div class="hider"><br><br><br><br><br><br></div>
+            <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 col-xl-3"> <div class="hider"><br><br><br><br><br><br></div>
                 <a class="picture" href="#room_media_modal" data-toggle = "modal" style="color: black">
                     <div style="margin-left: 60px;">
                         <figure class="boxside boxtop"><i class = "glyphicon glyphicon-picture fa-2x" style="margin-top: 25px"></i></figure>
@@ -186,7 +186,7 @@
                 <?php endif;?>
 
             </div>
-            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 hider">
+            <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 col-xl-3 hider">
                 <div class="mystuffpreview">
             <?php 
                             foreach ($c_topic->posts as $post):
@@ -212,7 +212,7 @@
                 
                 <!--regular text, emojis and stickers-->
                 <div>
-                <div  class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 pull-right chalkboard" style="min-height:300px; max-height:300px;">
+                <div  class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 pull-right chalkboard" style="min-height:300px; max-height:300px;">
                     <?php
                         foreach ($c_topic->posts as $post):
                             if($post->shout==0 && $post->reply==0):?>
