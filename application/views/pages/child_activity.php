@@ -238,7 +238,7 @@
 
                                 <?php endif; ?>
                             </a>
-                        </h4>
+                            </h4>
                         </div>
                     </div>   
 
@@ -324,7 +324,7 @@
                             </div>
 
                             <strong class = "text-info" style = "display: inline-block; margin-right: 20px"><h4>Previous notes to <?php echo $child->first_name;?>: </h4></strong> <h2 class = "" style = "display: inline-block;"></h2>
-                                <div style="max-height:300px; overflow-x: hidden; overflow-y: scroll">
+                                <div style="max-height:200px; overflow-x: hidden; overflow-y: scroll">
                                     <?php 
                                     
                                     $CI->load->model('user_model'); //load models       

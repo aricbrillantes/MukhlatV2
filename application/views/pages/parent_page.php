@@ -95,7 +95,7 @@
             </ul>
 
         <?php else: ?>
-            <a href="#edit-profile-modal-parent" data-toggle = "modal" class = "btn btn-primary btn-md" style = "margin-right: 20px; margin-top: 10px; margin-bottom: 10px; background:#269588; border-color: #269588;">Edit Profile</a>
+            <!-- <a href="#edit-profile-modal-parent" data-toggle = "modal" class = "btn btn-primary btn-md" style = "margin-right: 20px; margin-top: 10px; margin-bottom: 10px; background:#269588; border-color: #269588;">Edit Profile</a> -->
             <a href="#logout-modal-parents" data-toggle = "modal" class = "pull-right btn btn-primary btn-md" style = "margin-right: 20px; margin-top: 10px; margin-bottom: 10px; background:#c73838; border-color: #c73838;">Log Out</a>
                             
         <?php endif; ?>
@@ -113,9 +113,22 @@
 ?>
 <body class = "sign-in">
 
-    <div class = "container col-sm-10 col-md-10 col-md-offset-1 col-sm-offset-1" style = "">
+    <div class = "col-xs-12 col-md-12 col-sm-12 text-center" style="border:0px; margin-bottom: 10px;"> 
+        <br><br><img id = "user-pic-display" class = "img-circle" width = "80px" height = "80px" src = "<?php echo $logged_user->profile_url ? base_url($logged_user->profile_url) : base_url('images/default.jpg') ?>" style = "margin-bottom: 5px;">
+        
+        <h3 class = "no-padding text-info" style = "margin-top: 5px; margin-bottom: 5px; "><strong><?php echo $logged_user->first_name . " " . $logged_user->last_name ?></strong></h3>
+        <h5 class = "no-padding no-margin" style = "margin-top: 5px; margin-bottom: 5px; "><?php echo $logged_user->email ?></h5>
+        
+        <?php if ($mobile): ?>
+            <a class = "btn btn-primary col-md-4 col-sm-4 col-xs-4 col-md-offset-4 col-sm-offset-4 col-xs-offset-4" style="font-size:14px; margin-top: 15px;" href = "#edit-profile-modal-parent" data-toggle="modal">
+                Edit Profile
+            </a>
+        <?php endif;?>
+    </div>
+
+    <div class = " col-sm-10 col-md-10 col-md-offset-1 col-sm-offset-1" style = "">
         <?php if ($count>0): ?>
-        <div class = "row">
+        <div class = "">
 
             <?php foreach ($children->result() as $child): 
 

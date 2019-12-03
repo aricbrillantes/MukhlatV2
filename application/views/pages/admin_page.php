@@ -64,7 +64,7 @@
             </ul>
 
         <?php else: ?>
-            <a href="#edit-profile-modal-admin" data-toggle = "modal" class = "btn btn-primary btn-md" style = "margin-right: 20px; margin-top: 10px; margin-bottom: 10px; background:#269588; border-color: #269588;">Edit Profile</a>
+            <!-- <a href="#edit-profile-modal-admin" data-toggle = "modal" class = "btn btn-primary btn-md" style = "margin-right: 20px; margin-top: 10px; margin-bottom: 10px; background:#269588; border-color: #269588;">Edit Profile</a> -->
             <a href="#logout-modal-parents" data-toggle = "modal" class = "pull-right btn btn-primary btn-md" style = "margin-right: 20px; margin-top: 10px; margin-bottom: 10px; background:#c73838; border-color: #c73838;">Log Out</a>
                             
         <?php endif; ?>
@@ -76,11 +76,8 @@
 <body class = "sign-in">
 
     <div id = "admin-page" class = "container" style = "margin-top: 0px;">
+
         <div class = "row">
-            <!-- Admin Header -->
-            <div class = "col-md-8 col-md-offset-2 content-container container-fluid text-center" style = "margin-bottom: 0px;">
-                <!-- <h3 class = "text-info no-margin" style = "display: inline-block; margin-top: 5px;"><strong><?php echo $logged_user->first_name . " " . $logged_user->last_name ?></strong></h3> -->
-            </div>
 
             <!-- Admin Content -->
             <div class = "col-md-8 col-md-offset-0 col-sm-8 col-xs-12 col-md-offset-0 col-xs-offset-0 content-container row">
@@ -216,6 +213,14 @@
                                     <h4 class = "no-padding admin-list-name"><?php echo $user->first_name . " " . $user->last_name ?></h4>
                                     
                                         <i class = "text-muted btn-sm no-padding"><?php echo ($logged_user->user_id === $user->user_id) ? '(You)' : '' ?></i>
+
+                                        <?php if ($mobile && $logged_user->user_id === $user->user_id): ?>
+                                            <a class = "pull-right btn btn-primary admin-list-btn" style="font-size:14px; " href = "#edit-profile-modal-admin" data-toggle="modal">
+                                                Edit Profile
+                                            </a>
+
+
+                                        <?php endif;?>
 
                                     <?php
                                         if ($logged_user->user_id !== $user->user_id):
