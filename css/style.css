@@ -39,6 +39,7 @@ text-shadow:
     font-size:48px !important;
     color: red; 
     opacity: 1;
+    box-shadow: none;
 }
 
 .whitebg{
@@ -3438,3 +3439,63 @@ background-size: 1800% 1800%;
     top:-300px;
     left:-370px;
 }
+
+.navr {
+	position: fixed;
+	top: 66px;
+	right: 0;
+        background-color: #c2c5cc;
+}
+	.navr a {
+		display: none;
+		text-align: center;
+		padding: 20px;
+		font-size: 40px;
+		width: 100px;
+		height: 100px;
+		transition-property: margin-left;
+    	transition-duration: 0.2s;
+    	transition-timing-function: ease;
+	}
+
+
+#navtoggler {
+	width: auto;
+	height: auto;
+	border: none;
+        background: transparent;
+        box-shadow: none;
+	font-size: 30px;
+	transition: transform 0.2s ease;
+	padding: 0;
+        position: fixed;
+        top:10px;
+	right: 90px;
+}
+	#navtoggler:after {
+		content: "\f0c9";
+                
+		font-family: 'FontAwesome';
+	}
+	#navtoggler:focus {
+		outline: none;
+	}
+	
+
+
+	.open-nav .navr a {
+		margin-left: 0;
+                display: block;
+	}
+	.open-nav #navtoggler {
+		transform: rotate(-180deg);
+	}
+	.open-nav #navtoggler:after {
+			content: "\f00d";
+		}
+	
+
+
+
+
+
