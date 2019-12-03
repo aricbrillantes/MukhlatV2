@@ -3,7 +3,7 @@
         <!-- Play Modal Content-->
         <div class="modal-content">
             <div class="modal-header modal-heading modalbg">
-                <h4 class="modal-title text-center textoutliner"><strong><?php echo $child->first_name; ?>'s Pictures</strong></h4>
+                <h4 class="modal-title text-center textoutliner"><strong><?php echo $child->first_name; ?>'s Uploaded Media</strong></h4>
             </div>
 
             <div class="modal-body content-container container-fluid tab-content">

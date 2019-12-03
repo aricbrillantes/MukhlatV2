@@ -113,7 +113,7 @@
 ?>
 <body class = "sign-in">
 
-    <div class = "container" style = "">
+    <div class = "container col-sm-10 col-md-10 col-md-offset-1 col-sm-offset-1" style = "">
         <?php if ($count>0): ?>
         <div class = "row">
 
@@ -130,7 +130,7 @@
 
                 ?>
 
-                <div class = "col-xs-12 col-md-10 col-sm-10 col-md-offset-0 col-sm-offset-0 content-container container-fluid" style = "margin-bottom: 5px;">
+                <div class = "col-xs-12 col-md-6 col-sm-6 col-md-offset-0 col-sm-offset-0 content-container container-fluid" style = "margin-bottom: 5px; ">
                     <div class="col-xs-3 col-md-3 col-sm-3">
                         <center>
                             <img id = "user-pic-display" class = "img-circle" width = "64px" height = "64px" src = "<?php echo $child->profile_url ? base_url($child->profile_url) : base_url('images/default.jpg') ?>" style = "margin-top: 30px;">
@@ -139,15 +139,17 @@
 
                     <div class = "col-xs-9 col-md-9 col-sm-9 col-md-offset-0 content-container container-fluid" style = "margin-bottom: 5px; border:0">
                         
-                        <h3 class = "no-padding text-info" style = "margin-bottom: 0px;"><strong><?php echo $child->first_name . " " . $child->last_name ?></strong></h3>
-
                         <?php if($child->is_enabled == 0):?>
-                            <h4 style="color:red;"><i>(Account Unverified)</i></h4>
+                            <h3 class = "no-padding text-info" style = "margin-bottom: 0px; color:red;"><strong><?php echo $child->first_name . " " . $child->last_name ?></strong></h3>
+                        
+                        <?php elseif($child->is_enabled == 1):?>
+                            <h3 class = "no-padding text-info" style = "margin-bottom: 0px;"><strong><?php echo $child->first_name . " " . $child->last_name ?></strong></h3>
+
                         <?php endif; ?>
 
                         <small class = "no-padding no-margin"><?php echo $child->email ?></small>
 
-                        <p class = "wrap text-muted" style = ""><i><?php echo $child->description ? $child->description : 'Hello World!'; ?></i></p>
+                        <!-- <p class = "wrap text-muted" style = ""><i><?php echo $child->description ? $child->description : 'Hello World!'; ?></i></p> -->
                         <a href = "<?php echo base_url('parents/activity/' . $child->user_id); ?>" class = "btn btn-primary btn-block" style = "margin-bottom: 10px; "><i class = "glyphicon glyphicon-user"></i> View <?php echo $child->first_name ?>'s activity</a>
 
                     </div>

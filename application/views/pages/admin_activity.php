@@ -187,72 +187,75 @@
                 }
             ?>
 
-            <div class = "col-xs-12 col-sm-12 col-md-12 col-md-offset-0 content-container container-fluid " style = "margin-bottom: 5px;">
-                <div class = "col-xs-12 col-sm-12 col-md-12 col-md-offset-0 content-container container-fluid" style="border:0px; margin-bottom: 0px;">
-                    <div class = "col-xs-12 col-md-12 col-sm-12 text-center"> 
-                        <?php if($child->is_enabled === '0'):?>
-                            <h4 class = "no-padding no-margin" style="color:red;"><b>Unverified Account</h4></b><br>
-
-                        <?php endif;?>
-                        <img id = "user-pic-display" class = "img-circle" width = "100px" height = "100px" src = "<?php echo $child->profile_url ? base_url($child->profile_url) : base_url('images/default.jpg') ?>" style = "margin-bottom: 5px;">
-                        <br>
-                        <h3 class = "no-padding text-info" style = "margin-top: 5px; margin-bottom: 5px; "><strong><?php echo $child->first_name . " " . $child->last_name ?></strong></h3>
-                        <h5 class = "no-padding no-margin"><?php echo $child->email ?></h5>
-                        <h5 class = "no-padding no-margin" style = "margin-top: 5px; margin-bottom: 5px; "><?php echo date_format(date_create($child->birthdate),"M d, Y") ?></h5>
-                        <br>
-                        <!-- <h5 class = "no-padding no-margin"><b>Parent's email: </b><?php echo $child->parent ?></h5> -->
-                        <!-- <h5 class = "no-padding no-margin"><?php echo ($child->parent === "") ? $child->parent : 'NO EMAIL' ?></h5> -->
-
-                        <?php 
-                            $CI =&get_instance();
-                            $CI->load->model('user_model'); //load model       
-                            $parentExists = $CI->user_model->user_exists_email($child->parent); //check if email exists
-
-                            // print_r($parentExists);
-                        ?>
-
-                        <?php if($child->parent === "" || !($child->parent)):?>
-                            <h5 class = "no-padding no-margin" style="color:red;"><b>No Parent/Guardian Email</b></h5>
-
-                        <?php elseif(empty($parentExists)):?>
-                            <h5 class = "no-padding no-margin" style="color:red;"><b><?php echo $child->parent ?></b> is not a valid Parent/Guardian email</h5>
-
-                        <?php else:?>
-                            <h5 class = "no-padding no-margin"><b>Parent's email: </b><?php echo $child->parent ?></h5></h5>
-                                           
-                        <?php endif;?>
-
-                        <!-- <p class = "wrap text-muted" style = ""><i><?php echo $child->description ? $child->description : 'Hello World!'; ?></i></p> -->
-                    </div>
-                </div>    
+            <div class = "col-xs-12 col-sm-12 col-md-12 col-md-offset-0 content-container container-fluid " style = "margin-top: -15px; margin-bottom: -15px;">
+                
             </div>                 
 
             <div class = "content-container container-fluid" >
                 <!-- User Posts -->
-                <div class = "col-xs-12 col-sm-6 col-md-6 content-container container-fluid row" style = "margin-bottom: 0px; margin-left: 0px">
-                    <h3 class = "text-info text-center user-activities-header">
-                        <strong><?php echo $child->first_name; ?>'s Use Statistics</strong><br>
-                    </h3>
-                    <br>
+                <div class = "col-xs-12 col-sm-6 col-md-6 content-container container-fluid row" style = "margin-top: -15px;  margin-bottom: 0px; margin-left: 0px">
+                    <div class = "col-xs-12 col-sm-12 col-md-12 col-md-offset-0 content-container container-fluid" style="border:0px; margin-bottom: 0px;">
+                        <div class = "col-xs-12 col-md-12 col-sm-12 text-center"> 
+                            <?php if($child->is_enabled === '0'):?>
+                                <h4 class = "" style="color:red;"><b>Unverified Account</h4></b>
 
-                    <div class="col-md-4 col-sm-4 col-xs-4">
-                        <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Posts to others</h4></strong> <br><h2 class = "" style = "display: inline-block;"><?php echo $otherPosts; ?></h2>
+                            <?php endif;?>
+                            <img id = "user-pic-display" class = "img-circle" width = "72px" height = "72px" src = "<?php echo $child->profile_url ? base_url($child->profile_url) : base_url('images/default.jpg') ?>" style = "margin-bottom: 0px;">
+                            <br>
+                            <h3 class = "no-padding text-info" style = "margin-top: 5px; margin-bottom: 5px; "><strong><?php echo $child->first_name . " " . $child->last_name ?></strong></h3>
+                            <h5 class = "no-padding no-margin"><?php echo $child->email ?></h5>
+                            <h5 class = "no-padding no-margin" style = "margin-top: 5px; margin-bottom: 5px; "><?php echo date_format(date_create($child->birthdate),"M d, Y") ?></h5>
+                            <br>
+                            <!-- <h5 class = "no-padding no-margin"><b>Parent's email: </b><?php echo $child->parent ?></h5> -->
+                            <!-- <h5 class = "no-padding no-margin"><?php echo ($child->parent === "") ? $child->parent : 'NO EMAIL' ?></h5> -->
+
+                            <?php 
+                                $CI =&get_instance();
+                                $CI->load->model('user_model'); //load model       
+                                $parentExists = $CI->user_model->user_exists_email($child->parent); //check if email exists
+
+                                // print_r($parentExists);
+                            ?>
+
+                            <?php if($child->parent === "" || !($child->parent)):?>
+                                <h5 class = "no-padding no-margin" style="color:red;"><b>No Parent/Guardian Email</b></h5>
+
+                            <?php elseif(empty($parentExists)):?>
+                                <h5 class = "no-padding no-margin" style="color:red;"><b><?php echo $child->parent ?></b> is not a valid Parent/Guardian email</h5>
+
+                            <?php else:?>
+                                <h5 class = "no-padding no-margin"><b>Parent's email: </b><?php echo $child->parent ?></h5></h5>
+                                               
+                            <?php endif;?>
+
+                            <!-- <p class = "wrap text-muted" style = ""><i><?php echo $child->description ? $child->description : 'Hello World!'; ?></i></p> -->
+                        </div>
+                    </div>    
+
+                    <div class=" col-md-12 col-sm-12 col-xs-12" style="margin-top: 10px; margin-bottom: 10px;">
+                        <h3 class = "text-info text-center user-activities-header">
+                            <strong><?php echo $child->first_name; ?>'s Use Statistics</strong><br>
+                        </h3>
                     </div>
 
                     <div class="col-md-4 col-sm-4 col-xs-4">
-                        <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Total posts: </h4></strong> <br><h2 class = "" style = "display: inline-block;"><?php echo $totalRoomPosts; ?></h2>
+                        <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Other rooms:</h4></strong> <br><h3 class = "" style = "display: inline-block;"><?php echo $otherPosts; ?></h3>
                     </div>
 
                     <div class="col-md-4 col-sm-4 col-xs-4">
-                        <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Stuff shared: </h4></strong><br> <h2 class = "" style = "display: inline-block;"><?php echo $selfPosts; ?></h2><br><br><br>
+                        <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Total posts: </h4></strong> <br><h3 class = "" style = "display: inline-block;"><?php echo $totalRoomPosts; ?></h3>
+                    </div>
+
+                    <div class="col-md-4 col-sm-4 col-xs-4">
+                        <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Stuff shared: </h4></strong><br> <h3 class = "" style = "display: inline-block;"><?php echo $selfPosts; ?></h3><br><br>
                     </div>
 
                     <div class=" col-md-4 col-sm-4 col-xs-4">
-                        <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Replies: </h4></strong><br> <h2 class = "" style = "display: inline-block;"><?php echo $roomPosts; ?></h2>
+                        <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Replies: </h4></strong><br> <h3 class = "" style = "display: inline-block;"><?php echo $roomPosts; ?></h3>
                     </div>
 
                     <div class=" col-md-4 col-sm-4 col-xs-4">
-                        <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Shout outs: </h4></strong><br> <h2 class = "" style = "display: inline-block;"><?php echo $shoutOuts; ?></h2>
+                        <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Shout outs: </h4></strong><br> <h3 class = "" style = "display: inline-block;"><?php echo $shoutOuts; ?></h3>
                     </div>
 
 
@@ -260,27 +263,20 @@
                         <br><br>
                     </div>
 
-
-
-
-                    <div class=" col-md-12 col-sm-12 col-xs-12">
-                        <i><strong class = "" style = "display: inline-block; margin-right: 20px"><h5>(Last updated: <?php echo date_format(date_create($child->updated),"m/d/Y"); ?> )</h5></strong></i>
-                    </div><br><br><br>
-
-                    <div class=" col-md-4 col-sm-4 col-xs-4">
-                        <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Swears this week: </h4></strong> <h2 class = "" style = "display: inline-block;"><?php echo $child->current_total; ?></h2>
+                    <!-- <div class=" col-md-12 col-sm-12 col-xs-12">
+                        <i><small class = "" style = "display: inline-block; margin-right: 20px">(Last updated: <?php echo date_format(date_create($child->updated),"m/d/Y"); ?> )</small></i>
+                    </div><br> -->
+                    
+                    <div class="col-md-4 col-sm-4 col-xs-4">
+                        <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Swears this week: </h4></strong><br> <h3 class = "" style = "display: inline-block;"><?php echo $child->current_total; ?></h3><br><br>
                     </div>
 
                     <div class=" col-md-4 col-sm-4 col-xs-4">
-                        <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Swears last week: </h4></strong> <h2 class = "" style = "display: inline-block;"><?php echo $child->last_total; ?></h2>
+                        <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Swears last week: </h4></strong><br> <h3 class = "" style = "display: inline-block;"><?php echo $child->last_total; ?></h3>
                     </div>
 
                     <div class=" col-md-4 col-sm-4 col-xs-4">
-                        <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Lifetime swears: </h4></strong> <h2 class = "" style = "display: inline-block;"><?php echo $child->overall_total; ?></h2>
-                    </div>
-
-                    <div class=" col-md-12 col-sm-12 col-xs-12">
-                        <br><br>
+                        <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Lifetime total: </h4></strong><br> <h3 class = "" style = "display: inline-block;"><?php echo $child->overall_total; ?></h3>
                     </div>
                     
                 </div>
@@ -288,18 +284,18 @@
                 <!-- Activity -->
                 <div class = "col-xs-12 col-md-6 col-sm-6 content-container container-fluid " style = "margin-bottom: 0px; margin-left: 0px">
                     <h3 class = "text-info text-center user-activities-header">
-                        <strong><?php echo $child->first_name; ?>'s Activity</strong>
+                        <strong><?php echo $child->first_name; ?>'s Posts</strong>
                     </h3>
                     
                     <br>
                     <ul class="nav nav-pills nav-justified">
+                        <li class="active"><a data-toggle="pill" href="#all-posts">All</a></li>
+                        <li class=""><a data-toggle="pill" href="#room-posts">In Room</a></li>
+                        <li class=""><a data-toggle="pill" href="#other-posts">In Other Rooms</a></li>
                         <li class=""><a data-toggle="modal" href="#child-activity-modal-parents">Media</a></li>
-                        <li class="active "><a data-toggle="pill" href="#all-posts">All</a></li>
-                        <li class=""><a data-toggle="pill" href="#room-posts">Room Posts</a></li>
-                        <li class=""><a data-toggle="pill" href="#other-posts">Posts in other rooms</a></li>
-                    </ul>
+                    </ul><br>
 
-                    <div class="tab-content" style="max-height:600px; overflow-x: hidden; overflow-y: scroll">
+                    <div class="tab-content" style="max-height:500px; overflow-x: hidden; overflow-y: scroll">
 
                         <!-- ALL POSTS -->
                         <div id="all-posts" class = "col-sm-12 col-xs-12 col-md-12 tab-pane fade in active" style = "margin-bottom: 40px; ">

@@ -79,21 +79,12 @@
         <div class = "row">
             <!-- Admin Header -->
             <div class = "col-md-8 col-md-offset-2 content-container container-fluid text-center" style = "margin-bottom: 0px;">
-                <h3 class = "text-info no-margin" style = "display: inline-block; margin-top: 5px;"><strong><?php echo $logged_user->first_name . " " . $logged_user->last_name ?></strong></h3>
-                
-                <!-- <a href = "#create-announcement-modal" data-toggle = "modal" class = "btn btn-primary col-md-6 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1" style="font-size:14px; margin-top: 15px;"><i class = "fa fa-globe"></i> Create Announcement</a>  -->
-
-                <!-- <button id="crettop" class = "container col-md-6 btn btn-primary  textoutliner" href="#"  >Create Announcement</button> -->
-
-                <!-- <a href = "<?php echo base_url('signin/logout'); ?>" class = "pull-right btn btn-primary btn-md" style = "margin-right: 20px;">Log Out</a> --><br><br>
-
-                <!-- <a href = "<?php echo base_url('admin/network'); ?>" class = "btn btn-primary btn-block"><i class = "fa fa-globe"></i> View Interaction Network of Mukhlat</a> -->
-                 
+                <!-- <h3 class = "text-info no-margin" style = "display: inline-block; margin-top: 5px;"><strong><?php echo $logged_user->first_name . " " . $logged_user->last_name ?></strong></h3> -->
             </div>
 
             <!-- Admin Content -->
             <div class = "col-md-8 col-md-offset-0 col-sm-8 col-xs-12 col-md-offset-0 col-xs-offset-0 content-container row">
-
+                <h3 class = "text-info text-center user-activities-header col-md-10 col-sm-10 col-xs-12 col-md-offset-1 col-sm-offset-1">Users of Mukhlat</h3>
 
                 <div class = "content-container container-fluid col-md-12 col-md-offset-0 col-sm-offset-1 col-sm-10 col-xs-offset-1 col-xs-10">
                     <ul class="nav nav-pills nav-justified" style="">
@@ -250,7 +241,7 @@
 
             <div class = "col-md-4 col-sm-4 col-xs-12 col-md-offset-0 col-xs-offset-0 col-sm-offset-0 content-container row">
                 <!-- <h3 style="margin-left: 15px">Announcements</h3> -->
-                <br><h3 class = "text-info text-center user-activities-header col-md-offset-0">Announcements</h3><br>
+                <h3 class = "text-info text-center user-activities-header col-md-offset-0">Announcements</h3><br>
                 <form enctype = "multipart/form-data" action = "<?php echo base_url('topic/announcement'); ?>" id = "create-announcement-form" method = "POST">
                     <div class="form-group container-fluid" >
 

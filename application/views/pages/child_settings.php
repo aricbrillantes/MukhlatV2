@@ -271,7 +271,7 @@
                     // if(document.getElementById("keep").checked == false)
                     //     document.getElementById("keep").checked = true;
 
-                    document.getElementById("time-limit").options[3].selected = true;
+                    // document.getElementById("time-limit").options[3].selected = true;
 
                     // document.getElementById("time-warning").options[2].selected = true;
                     
@@ -304,9 +304,9 @@
 
                     <ul class="nav nav-pills nav-justified" style = "margin-bottom: 10px; margin-top: 10px;">
    
-                        <li class = "active text-center">
+                        <!-- <li class = "active text-center">
                             <h4 class = "no-padding text-info" style = "margin-top: 15px;">Session Time Limit</h4>
-                                <!-- <?php echo $row->use_limit?> -->
+                                
 
                             <select style="width:110px; height:20px" id="time-limit" onclick="">
                                 <option value="30">30 minutes</option>
@@ -315,14 +315,10 @@
                                 <option value="120">2 hours</option>
                                 <option value="150">2 hrs 30 mins</option>
                                 <option value="180">3 hours</option>
-                                <!-- <option value="210">3 hrs 30 mins</option>
-                                <option value="240">4 hours</option>
-                                <option value="270">4 hours 30 mins</option>
-                                <option value="300">5 hours</option> -->
                             </select>
 
                             <p class = "no-padding " style = "margin-bottom: 0px; margin-top: 15px;">As parents, you can set how long your child can use Mukhlat for each session.<br></p>
-                        </li>
+                        </li> -->
 
                         <!-- <li class = "active text-center">
                             <p class = "no-padding " style = "margin-bottom: 0px; margin-top: 15px;">Mukhlat has a feature that warns children that they can<br>only use Mukhlat for a limited time, and that their session is about to end.</p>
@@ -1182,18 +1178,18 @@
 
 
         //use limit
-        var limit = parseInt("<?php echo $row->use_limit; ?>");
-        switch(limit)
-        {
-            case 30:document.getElementById("time-limit").options[0].selected = true;break;
-            case 60:document.getElementById("time-limit").options[1].selected = true;break;
-            case 90:document.getElementById("time-limit").options[2].selected = true;break;
-            case 120:document.getElementById("time-limit").options[3].selected = true;break;
-            case 150:document.getElementById("time-limit").options[4].selected = true;break;
-            case 180:document.getElementById("time-limit").options[5].selected = true;break;
-            case 210:document.getElementById("time-limit").options[6].selected = true;break;
-            case 240:document.getElementById("time-limit").options[7].selected = true;break;
-        }
+        // var limit = parseInt("<?php echo $row->use_limit; ?>");
+        // switch(limit)
+        // {
+        //     case 30:document.getElementById("time-limit").options[0].selected = true;break;
+        //     case 60:document.getElementById("time-limit").options[1].selected = true;break;
+        //     case 90:document.getElementById("time-limit").options[2].selected = true;break;
+        //     case 120:document.getElementById("time-limit").options[3].selected = true;break;
+        //     case 150:document.getElementById("time-limit").options[4].selected = true;break;
+        //     case 180:document.getElementById("time-limit").options[5].selected = true;break;
+        //     case 210:document.getElementById("time-limit").options[6].selected = true;break;
+        //     case 240:document.getElementById("time-limit").options[7].selected = true;break;
+        // }
         
 
         // var warning = parseInt("<?//php echo $row->warning; ?>");
@@ -1231,9 +1227,9 @@
             // var selectedWarning = warning.options[warning.selectedIndex].value;
             // document.cookie = "selectedWarning=" + selectedWarning + ";path=/";   
 
-            var limit = document.getElementById("time-limit");
-            var selectedLimit = limit.options[limit.selectedIndex].value;
-            document.cookie = "selectedLimit=" + selectedLimit + ";path=/"; 
+            // var limit = document.getElementById("time-limit");
+            // var selectedLimit = limit.options[limit.selectedIndex].value;
+            // document.cookie = "selectedLimit=" + selectedLimit + ";path=/"; 
 
 
             // if(document.getElementById("keep").checked)

@@ -152,7 +152,7 @@
 <script type="text/javascript" src="<?php echo base_url("/js/nav_bar.js"); ?>"></script>
 
 <body class = "sign-in">
-    <div class = "container" style = "">
+    <div class = "container col-md-10 col-sm-12 col-xs-12 col-md-offset-1" style = "">
         
         <div class = "row" >
             <?php foreach ($children->result() as $child): 
@@ -207,67 +207,70 @@
                 }
             
             ?>
-            
+            <div class = "col-xs-12 col-sm-12 col-md-12 col-md-offset-0 content-container container-fluid " style = "margin-top: -15px; margin-bottom: -15px;">
+                
+            </div> 
 
-            <div class = "col-xs-12 col-sm-12 col-md-12 col-md-offset-0 content-container container-fluid " style = "margin-bottom: 5px;">
-                <div class = "col-xs-12 col-sm-12 col-md-12 col-md-offset-0 content-container container-fluid" style="border:0px; margin-bottom: 0px;">
-                    <div class = "col-xs-12 col-md-12 col-sm-12 text-center"> 
-                        <?php if($child->is_enabled === '0'):?>
-                            <h4 class = "no-padding no-margin" style="color:red;"><b>Account Unverified</h4></b><br>
-                        <?php endif;?>
+            <div class = "content-container container-fluid" style = "margin-top: -15px;">
 
-                        <img id = "user-pic-display" class = "img-circle" width = "100px" height = "100px" src = "<?php echo $child->profile_url ? base_url($child->profile_url) : base_url('images/default.jpg') ?>" style = "margin-bottom: 5px;">
-                        <br>
-                        <h3 class = "no-padding text-info" style = "margin-top: 5px; margin-bottom: 5px; "><strong><?php echo $child->first_name . " " . $child->last_name ?></strong></h3>
-                        <h5 class = "no-padding no-margin" style = "margin-top: 5px; margin-bottom: 5px; "><?php echo $child->email ?></h5>
-                        <h5 class = "no-padding no-margin" style = "margin-top: 5px; margin-bottom: 5px; "><?php echo date_format(date_create($child->birthdate),"M d, Y") ?></h5>
-                        
-                        <!-- <p class = "wrap text-muted" style = ""><i><?php echo $child->description ? $child->description : 'Hello World!'; ?></i></p> -->
-                    
-                        <a class = "btn btn-primary col-md-6 col-sm-6 col-xs-6 col-md-offset-3 col-sm-offset-3 col-xs-offset-3" style="font-size:14px; margin-top: 15px;" href = "<?php echo base_url('parents/settings/' . $child->user_id) ?>" ><i class = "glyphicon glyphicon-time"></i> 
-                            <?php if (!$mobile): ?>
-                                Manage <?php echo $child->first_name?>'s Schedule
-
-                            <?php else: ?>
-                                Schedule
-
-                            <?php endif; ?>
-                        </a>
-
-                    </div>
-                    <!-- <a href="#child-activity-modal-parents" data-toggle = "modal" class = "pull-right btn btn-primary btn-md" style = "margin-right: 20px; margin-top: 10px; margin-bottom: 10px; background:#c73838; border-color: #c73838;">Pictures</a> -->
-           
-            
-
-                </div>    
-            </div>                 
-
-            <div class = "content-container container-fluid" >
                 <!-- User Room -->
-                <div class = "col-xs-12 col-sm-6 col-md-6 content-container container-fluid row" style = "margin-bottom: 0px; margin-left: 0px">
-                    <h3 class = "text-info text-center user-activities-header">
-                        <strong><?php echo $child->first_name; ?>'s Use Statistics</strong><br>
-                    </h3>
-                    <br>
+                <div class = "col-xs-12 col-sm-6 col-md-6 content-container container-fluid row" style = "margin-top: -15px; margin-left: 0px">
+                    <div class = "col-xs-12 col-sm-12 col-md-12 col-md-offset-0 content-container container-fluid" style="border:0px; margin-bottom: 0px;">
+                        <div class = "col-xs-12 col-md-12 col-sm-12 text-center" style="border:0px; margin-bottom: 0px;"> 
+                            <?php if($child->is_enabled === '0'):?>
+                                <h4 class = "no-padding " style="color:red;"><b>Account Unverified</h4></b>
+                            <?php endif;?>
+
+                            <img id = "user-pic-display" class = "img-circle" width = "80px" height = "80px" src = "<?php echo $child->profile_url ? base_url($child->profile_url) : base_url('images/default.jpg') ?>" style = "margin-bottom: 5px;">
+                            
+                            <h3 class = "no-padding text-info" style = "margin-top: 5px; margin-bottom: 5px; "><strong><?php echo $child->first_name . " " . $child->last_name ?></strong></h3>
+                            <h5 class = "no-padding no-margin" style = "margin-top: 5px; margin-bottom: 5px; "><?php echo $child->email ?></h5>
+                            <h5 class = "no-padding no-margin" style = "margin-top: 5px; margin-bottom: 5px; "><?php echo date_format(date_create($child->birthdate),"M d, Y") ?></h5>
+                            
+                            <!-- <p class = "wrap text-muted" style = ""><i><?php echo $child->description ? $child->description : 'Hello World!'; ?></i></p> -->
+                        
+                            <a class = "btn btn-primary col-md-6 col-sm-6 col-xs-6 col-md-offset-3 col-sm-offset-3 col-xs-offset-3" style="font-size:14px; margin-top: 15px;" href = "<?php echo base_url('parents/settings/' . $child->user_id) ?>" ><i class = "glyphicon glyphicon-time"></i> 
+                                <?php if (!$mobile): ?>
+                                    Manage <?php echo $child->first_name;?>'s Schedule
+
+                                <?php else: ?>
+                                    Schedule
+
+                                <?php endif; ?>
+                            </a>
+                        </h4>
+                        </div>
+                    </div>   
+
+                    
+                    <div class=" col-md-12 col-sm-12 col-xs-12">
+                        <br>
+                        <h3 class = "text-info text-center user-activities-header">
+                            <strong><?php echo $child->first_name; ?>'s Use Statistics</strong>
+                        </h3>
+
+                    </div>
+                    
+                    <h5 style="visibility: hidden">_</h5>
 
                     <div class="col-md-4 col-sm-4 col-xs-4">
-                        <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Posts to others</h4></strong> <br><h2 class = "" style = "display: inline-block;"><?php echo $otherPosts; ?></h2>
+                        <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Other rooms:</h4></strong> <br><h3 class = "" style = "display: inline-block;"><?php echo $otherPosts; ?></h3>
                     </div>
 
                     <div class="col-md-4 col-sm-4 col-xs-4">
-                        <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Total posts: </h4></strong> <br><h2 class = "" style = "display: inline-block;"><?php echo $totalRoomPosts; ?></h2>
+                        <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Total posts: </h4></strong> <br><h3 class = "" style = "display: inline-block;"><?php echo $totalRoomPosts; ?></h3>
                     </div>
 
                     <div class="col-md-4 col-sm-4 col-xs-4">
-                        <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Stuff shared: </h4></strong><br> <h2 class = "" style = "display: inline-block;"><?php echo $selfPosts; ?></h2><br><br><br>
+                        <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Stuff shared: </h4></strong><br> <h3 class = "" style = "display: inline-block;"><?php echo $selfPosts; ?></h3><br><br>
                     </div>
 
                     <div class=" col-md-4 col-sm-4 col-xs-4">
-                        <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Replies: </h4></strong><br> <h2 class = "" style = "display: inline-block;"><?php echo $roomPosts; ?></h2>
+                        <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Replies: </h4></strong><br> <h3 class = "" style = "display: inline-block;"><?php echo $roomPosts; ?></h3>
                     </div>
 
                     <div class=" col-md-4 col-sm-4 col-xs-4">
-                        <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Shout outs: </h4></strong><br> <h2 class = "" style = "display: inline-block;"><?php echo $shoutOuts; ?></h2>
+                        <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Shout outs: </h4></strong><br> <h3 class = "" style = "display: inline-block;"><?php echo $shoutOuts; ?></h3>
                     </div>
 
 
@@ -275,30 +278,24 @@
                         <br><br>
                     </div>
 
+                   <!--  <div class=" col-md-12 col-sm-12 col-xs-12">
+                        <i><small class = "" style = "display: inline-block; margin-right: 20px">(Last updated: <?php echo date_format(date_create($child->updated),"m/d/Y"); ?> )</small></i>
+                    </div><br><br> -->
 
-                    <div class=" col-md-12 col-sm-12 col-xs-12">
-                        <i><strong class = "" style = "display: inline-block; margin-right: 20px"><h5>(Last updated: <?php echo date_format(date_create($child->updated),"m/d/Y"); ?> )</h5></strong></i>
-                    </div><br><br><br>
-
-                    <div class=" col-md-4 col-sm-4 col-xs-4">
-                        <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Swears this week: </h4></strong> <h2 class = "" style = "display: inline-block;"><?php echo $child->current_total; ?></h2>
+                     <div class="col-md-4 col-sm-4 col-xs-4">
+                        <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Swears this week: </h4></strong><br> <h3 class = "" style = "display: inline-block;"><?php echo $child->current_total; ?></h3><br><br>
                     </div>
 
                     <div class=" col-md-4 col-sm-4 col-xs-4">
-                        <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Swears last week: </h4></strong> <h2 class = "" style = "display: inline-block;"><?php echo $child->last_total; ?></h2>
+                        <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Swears last week: </h4></strong><br> <h3 class = "" style = "display: inline-block;"><?php echo $child->last_total; ?></h3>
                     </div>
 
                     <div class=" col-md-4 col-sm-4 col-xs-4">
-                        <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Lifetime swears: </h4></strong> <h2 class = "" style = "display: inline-block;"><?php echo $child->overall_total; ?></h2>
+                        <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Lifetime total: </h4></strong><br> <h3 class = "" style = "display: inline-block;"><?php echo $child->overall_total; ?></h3>
                     </div>
-
-                    <div class=" col-md-12 col-sm-12 col-xs-12">
-                        <br><br>
-                    </div>
-
 
                     <!-- User Room -->
-                    <div class = "col-xs-12 col-sm-12 col-md-12 col-md-offset-0 content-container container-fluid row" style = "margin-bottom: 0px; margin-left: 0px">
+                    <div class = "col-xs-12 col-sm-12 col-md-12 col-md-offset-0 content-container container-fluid row" style = "margin-top: 50px; margin-left: 0px">
                         <h3 class = "text-info text-center user-activities-header">
                             <strong>Leave a note for <?php echo $child->first_name; ?></strong><br>
                         </h3>
@@ -326,7 +323,7 @@
                                 <button id = "create-note-btn" class ="btn btn-primary buttonsbgcolor" data-toggle = "modal" >Send</button>
                             </div>
 
-                            <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Previous notes to <?php echo $child->first_name;?>: </h4></strong> <h2 class = "" style = "display: inline-block;"></h2>
+                            <strong class = "text-info" style = "display: inline-block; margin-right: 20px"><h4>Previous notes to <?php echo $child->first_name;?>: </h4></strong> <h2 class = "" style = "display: inline-block;"></h2>
                                 <div style="max-height:300px; overflow-x: hidden; overflow-y: scroll">
                                     <?php 
                                     
@@ -337,7 +334,7 @@
 
                                     <li class = "list-group-item admin-list-item" >
                                         <i class = "pull-right">(<?php echo date_format(date_create($note->date),"M d Y - H:i");?>)</i>
-                                        <h3 class = "no-padding admin-list-name"><?php echo utf8_decode($note->note); ?></h3>
+                                        <h4 class = "no-padding admin-list-name"><?php echo utf8_decode($note->note); ?></h4>
                                     </li>
                                                                        
                                 <?php endforeach; ?>
@@ -345,26 +342,25 @@
                             
                         </div>
                     </form> 
-                    
+                    </h4>
+
                 </div>
 
-
-
                 <!-- Activity -->
-                <div class = "col-xs-12 col-md-6 col-sm-6 content-container container-fluid tab-content" style = "margin-bottom: 0px; margin-left: 0px">
+                <div class = "col-xs-12 col-md-6 col-sm-6 col-md-offset-0 content-container container-fluid tab-content" style = "margin-bottom: 0px; margin-left: 0px">
                     <h3 class = "text-info text-center user-activities-header">
-                        <strong><?php echo $child->first_name; ?>'s Activity</strong>
+                        <strong><?php echo $child->first_name; ?>'s Posts</strong>
                     </h3>
                     
                     <br>
                     <ul class="nav nav-pills nav-justified">
-                        <li class=""><a data-toggle="modal" href="#child-activity-modal-parents">Media</a></li>
                         <li class="active"><a data-toggle="pill" href="#all-posts">All</a></li>
-                        <li class=""><a data-toggle="pill" href="#room-posts">Room Posts</a></li>
-                        <li class=""><a data-toggle="pill" href="#other-posts">Posts in other rooms</a></li>
-                    </ul>
+                        <li class=""><a data-toggle="pill" href="#room-posts">In Room</a></li>
+                        <li class=""><a data-toggle="pill" href="#other-posts">In Other Rooms</a></li>
+                        <li class=""><a data-toggle="modal" href="#child-activity-modal-parents">Media</a></li>
+                    </ul><br>
 
-                    <div class="tab-content" style="max-height:1000px; overflow-x: hidden; overflow-y: scroll">
+                    <div class="tab-content" style="max-height:550px; overflow-x: hidden; overflow-y: scroll">
                         <!-- ALL POSTS -->
                         <div id="all-posts" class = "col-sm-12 col-xs-12 col-md-12 tab-pane fade in active" style = "margin-bottom: 40px; ">
                             <?php foreach ($activities as $post): ?> 

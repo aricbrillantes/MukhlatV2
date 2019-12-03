@@ -182,8 +182,8 @@ class User_model extends CI_Model {
                 'user_id' => $user_id,
                 'time_setting'=> $settings,
                 // 'warning' => $warning,
-                'keep' => $keep,
-                'use_limit' => $limit
+                // 'keep' => $keep,
+                // 'use_limit' => $limit
             );
 
             $this->db->insert('tbl_usertimes',$data);   
@@ -197,16 +197,16 @@ class User_model extends CI_Model {
 
         $settings = htmlspecialchars($_COOKIE["timeSetting"]);
         // $warning = htmlspecialchars($_COOKIE["selectedWarning"]);
-        $keep = htmlspecialchars($_COOKIE["selectedKeep"]);
-        $limit = htmlspecialchars($_COOKIE["selectedLimit"]);
+        // $keep = htmlspecialchars($_COOKIE["selectedKeep"]);
+        // $limit = htmlspecialchars($_COOKIE["selectedLimit"]);
 
         $data = array
         (
             'user_id' => $user_id,
             'time_setting'=> $settings,
             // 'warning' => $warning,
-            'keep' => $keep,
-            'use_limit' => $limit
+            // 'keep' => $keep,
+            // 'use_limit' => $limit
         );
 
         // $this->db->insert('tbl_usertimes',$data);   
@@ -349,8 +349,8 @@ class User_model extends CI_Model {
                 'user_id' => $user_id,
                 'time_setting'=> $settings,
                 // 'warning' => $warning,
-                'keep' => $keep,
-                'use_limit' => $limit
+                // 'keep' => $keep,
+                // 'use_limit' => $limit
             );
 
             $this->db->insert('tbl_usertimes',$data);   
