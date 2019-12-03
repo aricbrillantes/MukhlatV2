@@ -34,7 +34,7 @@
                             <p id = "image-text2" class = "attach-btn-text"><i class = "fa fa-file-image-o"></i> Add Cover Image</p>
                         </label>
 </div>-->
-<span>Change up your room style</span>
+<strong style="font-size: 24px;">Change up your room style</strong>
 <div class="themesmodal">
     <table>
         <tr>
@@ -67,7 +67,7 @@
             <td><div  class="editroomthemes roomtheme-crosseddot blocks2" style="" onclick="roomtheme(19)"></div></td>
         </tr>
     </table>
-</div><br><br><br><br><br><br><br><br><br><br><br><br><br>  <div class="hider"><br><br></div>
+</div><br><br><br><br><br><br><br><br><br><br><br><br><br><br>  <div class="hider"><br><br></div>
                     <select style="width:110px; height:40px;display: none"  class="form-control" name="change_topic_theme" id="change-topic-theme" onclick="">
                         <option value="1">Theme 1</option>
                         <option value="2">Theme 2</option>
@@ -92,7 +92,7 @@
 
                 </div>
                 <div class = "" style = "padding: 5px; border-top: none; padding-bottom: 10px; padding-right: 10px;text-align: center;transform: scale(2);">
-                    <button onmouseenter="playclip()" value = "<?php echo $c_topic->topic_id ?>" id = "edit-topic-save" class = "btn btn-primary btn-sm">Save</button>
+                    <button onmouseenter="playclip()" value = "<?php echo $c_topic->topic_id ?>" id = "edit-topic-save" class = "btn btn-primary btn-sm buttonsbgcolor">Done!</button>
                 </div>
             </form>
             

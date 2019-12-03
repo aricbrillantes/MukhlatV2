@@ -34,8 +34,8 @@
                             <p id = "image-text2" class = "attach-btn-text"><i class = "fa fa-file-image-o"></i> Add Cover Image</p>
                         </label>
                      </div>-->
-<div>Choose what you like.
-You can change it later.</div>
+<strong style="font-size: 24px;">Choose what you like.
+You can change it later.</strong>
 <div class="themesmodal">
     <table>
         <tr>
@@ -68,7 +68,7 @@ You can change it later.</div>
             <td><div  class="editroomthemes roomtheme-crosseddot blocks2" style="" onclick="roomtheme(19)"></div></td>
         </tr>
     </table>
-</div><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</div><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
                     <select style="width:110px; height:40px;display: none"  class="form-control" name="topic_theme" id="topic-theme" onclick="">
                         <option value="1">Theme 1</option>
                         <option value="2">Theme 2</option>
