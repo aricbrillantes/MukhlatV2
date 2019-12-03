@@ -214,6 +214,5 @@ include(APPPATH . 'views/header.php');
     <?php
   //  include(APPPATH . 'views/chat/chat.php');
     // include(APPPATH . 'views/side_navbar.php');
-    include(APPPATH . 'views/modals/edit_profile_modal.php');
-            include(APPPATH . 'views/modals/create_topic_modal.php');
+    include(APPPATH . 'views/modals/edit_profile_modal.php');?>
     

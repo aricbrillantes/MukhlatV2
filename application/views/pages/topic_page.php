@@ -187,7 +187,7 @@
 
             </div>
             <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 hider">
-                <div class="mystuffpreview"
+                <div class="mystuffpreview">
             <?php 
                             foreach ($c_topic->posts as $post):
                                 if($post->reply==0):?>

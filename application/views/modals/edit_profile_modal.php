@@ -1,4 +1,4 @@
-Edit Profile Modal -->
+<!--Edit Profile Modal -->
 <div id="edit-profile-modal" class="modal fade" role="dialog">
     <div class="modal-dialog">
         <!-- Edit Profile Modal Content-->

@@ -1377,6 +1377,11 @@ END CHAT
     width: auto;
 }
 
+#nav-logo3{
+    height: 30px;
+    width: auto;
+}
+
 .wrap{
     word-wrap: break-word;
     white-space: normal;
@@ -3442,21 +3447,25 @@ background-size: 1800% 1800%;
 
 .navr {
 	position: fixed;
-	top: 66px;
+	top: 60px;
 	right: 0;
         background-color: #c2c5cc;
 }
 	.navr a {
 		display: none;
-		text-align: center;
-		padding: 20px;
-		font-size: 40px;
-		width: 100px;
-		height: 100px;
+		/*text-align: center;*/
+		/*padding: 20px;*/
+		/*font-size: 40px;*/
+/*		width: 100px;
+		height: 100px;*/
 		transition-property: margin-left;
     	transition-duration: 0.2s;
     	transition-timing-function: ease;
+        transition: transform 0.25s;
 	}
+        .navr a:hover{
+            transform: scale(1.35);
+        }
 
 
 #navtoggler {
@@ -3469,8 +3478,8 @@ background-size: 1800% 1800%;
 	transition: transform 0.2s ease;
 	padding: 0;
         position: fixed;
-        top:10px;
-	right: 90px;
+        top:6px;
+	right: 30px;
 }
 	#navtoggler:after {
 		content: "\f0c9";

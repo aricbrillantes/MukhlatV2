@@ -34,7 +34,7 @@
                             <p id = "image-text2" class = "attach-btn-text"><i class = "fa fa-file-image-o"></i> Add Cover Image</p>
                         </label>
 </div>-->
-<div>Change up your room style</div>
+<span>Change up your room style</span>
 <div class="themesmodal">
     <table>
         <tr>
