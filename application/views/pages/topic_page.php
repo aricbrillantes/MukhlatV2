@@ -112,7 +112,7 @@
 
                     <li class = "">
                         <h4 class = "no-padding admin-list-name">Teacher <?php echo $teacher->first_name?> says: </h4> 
-                        <h3 class = "no-padding admin-list-name">"<?php echo $announcement->announcement ?>"</h3>
+                        <h3 class = "no-padding admin-list-name">"<?php echo utf8_decode($announcement->announcement) ?>"</h3>
                     </li>
                     <?php  endforeach; endforeach; ?>
             </div>
@@ -154,7 +154,7 @@
                     foreach ($notes as $note): ?>
 
                     <div class = "padli">
-                        <h3 class = " admin-list-name"><?php echo $note->note ?></h3>
+                        <h3 class = " admin-list-name"><?php echo utf8_decode($note->note) ?></h3>
                     </div>
                                                        
                 <?php endforeach; ?>

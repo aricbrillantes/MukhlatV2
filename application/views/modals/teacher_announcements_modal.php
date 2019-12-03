@@ -42,7 +42,7 @@
 
                     <li class = "">
                         <h4 class = "no-padding admin-list-name">Teacher <?php echo $teacher->first_name?> says: </h4> 
-                        <h3 class = "no-padding admin-list-name">"<?php echo $announcement->announcement ?>"</h3>
+                        <h3 class = "no-padding admin-list-name">"<?php echo utf8_decode($announcement->announcement) ?>"</h3>
                     </li>
                     <br>                                    
                

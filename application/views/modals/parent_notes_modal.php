@@ -29,7 +29,7 @@
                     foreach ($notes as $note): ?>
 
                     <li class = "list-item ">
-                        <h3 class = "no-padding admin-list-name">"<?php echo $note->note ?>"</h3>
+                        <h3 class = "no-padding admin-list-name">"<?php echo utf8_decode($note->note) ?>"</h3>
                     </li>
                                                        
                 <?php endforeach; ?>
