@@ -203,8 +203,19 @@
                         <!-- <h5 class = "no-padding no-margin"><b>Parent's email: </b><?php echo $child->parent ?></h5> -->
                         <!-- <h5 class = "no-padding no-margin"><?php echo ($child->parent === "") ? $child->parent : 'NO EMAIL' ?></h5> -->
 
+                        <?php 
+                            $CI =&get_instance();
+                            $CI->load->model('user_model'); //load model       
+                            $parentExists = $CI->user_model->user_exists_email($child->parent); //check if email exists
+
+                            // print_r($parentExists);
+                        ?>
+
                         <?php if($child->parent === "" || !($child->parent)):?>
                             <h5 class = "no-padding no-margin" style="color:red;"><b>No Parent/Guardian Email</b></h5>
+
+                        <?php elseif(empty($parentExists)):?>
+                            <h5 class = "no-padding no-margin" style="color:red;"><b><?php echo $child->parent ?></b> is not a valid Parent/Guardian email</h5>
 
                         <?php else:?>
                             <h5 class = "no-padding no-margin"><b>Parent's email: </b><?php echo $child->parent ?></h5></h5>

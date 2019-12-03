@@ -158,14 +158,14 @@
 
         <?php elseif ($count<1): ?>
 
-        <div class = "row">
+            <div class = "row text-center">
 
-            <div class = "col-xs-16 col-md-8 col-md-offset-2 content-container container-fluid" style = "margin-bottom: 5px;">
-                <div class = "col-xs-16 col-md-12 col-md-offset-0 content-container container-fluid" style = "margin-bottom: 5px; border:0">
-                    <h3 class = "no-padding text-info" style = "margin-bottom: 0px;"><strong>You currently have no children registered!</strong></h3>
-                </div>
-            </div>    
-        </div>
+                <div class = "col-xs-16 col-md-8 col-md-offset-2 content-container container-fluid" style = "margin-bottom: 5px;">
+                    <div class = "col-xs-16 col-md-12 col-md-offset-0 content-container container-fluid" style = "margin-bottom: 5px; border:0">
+                        <h2 class = "no-padding text-info" style = "margin-bottom: 0px;"><strong>You currently have no children registered!</strong></h2>
+                    </div>
+                </div>    
+            </div>
 
         <?php endif; ?>
     </div>

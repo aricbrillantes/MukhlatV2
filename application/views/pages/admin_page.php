@@ -115,20 +115,48 @@
 
                                     <h4 class = "no-padding admin-list-name"><?php echo $user->first_name . " " . $user->last_name ?></h4>
 
+                                    <?php 
+                                        $CI =&get_instance();
+                                        $CI->load->model('user_model'); //load model       
+                                        $parentExists = $CI->user_model->user_exists_email($user->parent); //check if email exists
+
+                                        // print_r($parentExists);
+                                    ?>
+
                                     <?php if (!($user->is_enabled)):?>
 
                                         <?php if($user->parent === "" || !($user->parent)):?>
                                         <br><small class = "no-padding no-margin" style="color:red;"><b>(No Parent/Guardian Email)</b></small>
 
                                         <?php else:?>
-                                        <br><small class = "no-padding no-margin">(Parent/Guardian: <?php echo $user->parent?>)</small>
+
+                                            <?php if (!empty($parentExists)):?>
+                                                <br><small class = "no-padding no-margin">(Parent/Guardian: <?php echo $user->parent?>)</small>
+
+                                            <?php else:?>
+                                                <br><small class = "no-padding no-margin" style="color:red;"><b><?php echo $user->parent?></b> is not a valid Parent/Guardian Email</small><br>
+                                            
+                                            <?php endif;?>
+                                            
                                                            
                                         <?php endif;?>
 
                                     <?php else:?>
+
                                         <?php if($user->parent === "" || !($user->parent)):?>
                                         <br><small class = "no-padding no-margin" style="color:red;"><b>(No Parent/Guardian Email)</b></small>
 
+                                        <?php else:?>
+
+                                            <?php if (!empty($parentExists) && !$user->is_enabled):?>
+                                                <br><small class = "no-padding no-margin">(Parent/Guardian: <?php echo $user->parent?>)</small>
+
+                                            <?php elseif (empty($parentExists)):?>
+                                                <br><small class = "no-padding no-margin" style="color:red;"><b><?php echo $user->parent?></b> is not a valid Parent/Guardian Email</small><br>
+                                            
+                                            <?php endif;?>
+                                            
+                                                           
                                         <?php endif;?>
 
                                     <?php endif;?>
@@ -136,14 +164,15 @@
 
                                     <?php
                                         if ($logged_user->user_id !== $user->user_id):
-                                            if(!($user->parent === "" || !($user->parent))):
-                                                if ($user->is_enabled): ?>
+                                            if ($user->is_enabled && !empty($parentExists)): ?>
+                                                    <button type = "button" value = "<?php echo $user->user_id ?>" class = "toggle-account pull-right btn btn-danger admin-list-btn">Disable</button>
+
+                                                <?php elseif ($user->is_enabled && empty($parentExists)): ?>
                                                     <button type = "button" value = "<?php echo $user->user_id ?>" class = "toggle-account pull-right btn btn-danger admin-list-btn">Disable</button>
                                                 
-                                                <?php else: ?>
+                                                <?php elseif(!$user->is_enabled && !empty($parentExists)): ?>
                                                     <button type = "button" value = "<?php echo $user->user_id ?>" class = "toggle-account pull-right btn btn-success admin-list-btn">Enable</button>
                                             <?php
-                                                endif;
                                             endif;
                                         endif;
                                     ?>
@@ -164,7 +193,7 @@
 
                                     <h4 class = "no-padding admin-list-name"><?php echo $user->first_name . " " . $user->last_name ?></h4>
 
-                                    <a value = "" href="<?php echo base_url('admin/parent/' . $user->user_id)?>" class = " btn btn-link btn-xs"> <i>Children of <?php echo $user->first_name ?></i></a>
+                                    <a value = "" href="<?php echo base_url('admin/parent/' . $user->user_id)?>" class = " btn btn-link btn-xs"> <i>View Children</i></a>
 
                                     <?php
                                         if ($logged_user->user_id !== $user->user_id):

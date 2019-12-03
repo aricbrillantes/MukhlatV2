@@ -160,24 +160,19 @@
 
                 ?>
                 
-                <div class = "col-xs-16 col-md-8 col-md-offset-2 content-container container-fluid " style = "margin-bottom: 5px;">
-                    <div class = "col-xs-16 col-md-16 col-md-offset-0 content-container container-fluid" style="border:0px; margin-bottom: 0px;">
-                        <div class = "col-xs-6 no-padding no-margin"> 
-                            <h3 class = "no-padding text-info" style = "margin-top: 5px; margin-bottom: 5px; "><strong><?php echo $user->first_name . " " . $user->last_name ?></strong></h3>
+               <div class = "col-md-12 col-sm-12 col-xs-12 content-container container-fluid text-center" style = "">
+                    <img id = "user-pic-display" class = "img-circle" width = "100px" height = "100px" src = "<?php echo $user->profile_url ? base_url($user->profile_url) : base_url('images/default.jpg') ?>" style = "margin-bottom: 5px;">
+                    
+                    <h3 class = "no-padding text-info" style = ""><strong><?php echo $user->first_name . " " . $user->last_name ?></strong></h3>
                             <small class = "no-padding no-margin"><?php echo $user->email ?></small>
-                            
-                        </div>
-                    </div>    
                 </div>     
             <?php endforeach; ?>
 
                 
             
             <?php if($count>0): ?>
-                <div class="content-container container-fluid col-md-8 col-md-offset-2" >
-                    <div class = "col-xs-16 col-md-16 col-md-offset-0 content-container container-fluid" style="border:0px; margin-bottom: 0px;">
-                        <h3 class = "no-padding text-info "><strong>Children of <?php echo $user->first_name . " " . $user->last_name ?></strong></h3>
-                    </div>  
+                <div class="content-container container-fluid col-md-12 col-xs-12 col-sm-12 " >
+                    <!-- <h3 class = "text-info "><strong>Children of <?php echo $user->first_name . " " . $user->last_name ?></strong></h3>  -->
 
                 <?php foreach ($children->result() as $child): 
 
@@ -187,9 +182,17 @@
 
                     ?>
                     
-                    <div class = "col-xs-16 col-md-8 col-md-offset-2 content-container container-fluid " style = "margin-bottom: 5px;">
+                    <div class="col-xs-3 col-md-2 col-sm-3 col-md-offset-1">
+                        <center>
+                            <img id = "user-pic-display" class = "img-circle" width = "64px" height = "64px" src = "<?php echo $child->profile_url ? base_url($child->profile_url) : base_url('images/default.jpg') ?>" style = "margin-top: 30px;">
+                        </center>
+                    </div>
+
+                        
+
+                    <div class = "col-xs-9 col-md-7 col-sm-8 content-container container-fluid " style = "margin-bottom: 5px;">
                         <div class = "col-xs-16 col-md-16 col-md-offset-0 content-container container-fluid" style="border:0px; margin-bottom: 0px;">
-                            <div class = "col-xs-6 no-padding no-margin"> 
+                            <div class = "col-xs-12 col-md-12 col-sm-12 no-padding no-margin"> 
                                 <h3 class = "no-padding text-info" style = "margin-top: 5px; margin-bottom: 5px; "><strong><?php echo $child->first_name . " " . $child->last_name ?></strong></h3>
                                 <small class = "no-padding no-margin"><?php echo $child->email ?></small>
                                 
@@ -197,21 +200,22 @@
                                     <h4 style="color:red;"><i>(Account Unverified)</i></h4>
                                 <?php endif; ?>
                             </div>
+                        </div> 
 
-                        </div>  
                         <a href = "<?php echo base_url('admin/activity/' . $child->user_id); ?>" class = "btn btn-primary btn-block" style = "margin-bottom: 10px; "><i class = "glyphicon glyphicon-user"></i> View <?php echo $child->first_name ?>'s activity</a>  
                     </div>     
                 <?php endforeach; ?>
+                </div>
 
             <?php elseif($count<1): ?>
-                <div class = "col-xs-16 col-md-8 col-md-offset-2 content-container container-fluid" style = "margin-bottom: 5px;">
-                    <div class = "col-xs-16 col-md-12 col-md-offset-0 content-container container-fluid" style = "margin-bottom: 5px; border:0">
+                <div class = "col-xs-12 col-md-12 col-sm-12 col-md-offset-0 content-container container-fluid text-center" style = "margin-bottom: 5px;">
+                    <div class = "col-xs-12 col-md-12 col-sm-12 col-md-offset-0 content-container container-fluid" style = "margin-bottom: 5px; border:0">
                         <h3 class = "no-padding text-info" style = "margin-bottom: 0px;"><strong><?php echo $user->first_name . " " . $user->last_name ?> has no children registered!</strong></h3>
                     </div>
                 </div>     
 
             <?php endif; ?>
-            </div>
+            
         </div>
 
         
