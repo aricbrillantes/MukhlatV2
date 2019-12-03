@@ -155,7 +155,6 @@
     <div class = "container" style = "">
         
         <div class = "row" >
-
             <?php foreach ($children->result() as $child): 
 
                 //read data of child 
@@ -236,7 +235,9 @@
                         </a>
 
                     </div>
-                    
+                    <!-- <a href="#child-activity-modal-parents" data-toggle = "modal" class = "pull-right btn btn-primary btn-md" style = "margin-right: 20px; margin-top: 10px; margin-bottom: 10px; background:#c73838; border-color: #c73838;">Pictures</a> -->
+           
+            
 
                 </div>    
             </div>                 
@@ -326,19 +327,21 @@
                             </div>
 
                             <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Previous notes to <?php echo $child->first_name;?>: </h4></strong> <h2 class = "" style = "display: inline-block;"></h2>
-                                <?php 
+                                <div style="max-height:300px; overflow-x: hidden; overflow-y: scroll">
+                                    <?php 
                                     
                                     $CI->load->model('user_model'); //load models       
                                     $notes = $CI->user_model->get_notes($id); //get notes
 
                                     foreach (array_reverse($notes) as $note): ?>
 
-                                    <li class = "list-group-item admin-list-item">
+                                    <li class = "list-group-item admin-list-item" >
                                         <i class = "pull-right">(<?php echo date_format(date_create($note->date),"M d Y - H:i");?>)</i>
                                         <h3 class = "no-padding admin-list-name"><?php echo utf8_decode($note->note); ?></h3>
                                     </li>
                                                                        
                                 <?php endforeach; ?>
+                                </div>
                             
                         </div>
                     </form> 
@@ -355,12 +358,13 @@
                     
                     <br>
                     <ul class="nav nav-pills nav-justified">
-                        <li class="active "><a data-toggle="pill" href="#all-posts">All</a></li>
+                        <li class=""><a data-toggle="modal" href="#child-activity-modal-parents">Media</a></li>
+                        <li class="active"><a data-toggle="pill" href="#all-posts">All</a></li>
                         <li class=""><a data-toggle="pill" href="#room-posts">Room Posts</a></li>
                         <li class=""><a data-toggle="pill" href="#other-posts">Posts in other rooms</a></li>
                     </ul>
 
-                    <div class="tab-content">
+                    <div class="tab-content" style="max-height:1000px; overflow-x: hidden; overflow-y: scroll">
                         <!-- ALL POSTS -->
                         <div id="all-posts" class = "col-sm-12 col-xs-12 col-md-12 tab-pane fade in active" style = "margin-bottom: 40px; ">
                             <?php foreach ($activities as $post): ?> 
@@ -538,6 +542,7 @@
 </html>
 
 <?php
+    include(APPPATH . 'views/modals/child_activity_modal_parents.php');
     include(APPPATH . 'views/modals/create_note_modal.php');
     include(APPPATH . 'views/modals/network_view_modal.php');
     include(APPPATH . 'views/modals/logout_confirm_modal_parents.php');

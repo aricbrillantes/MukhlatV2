@@ -293,12 +293,13 @@
                     
                     <br>
                     <ul class="nav nav-pills nav-justified">
+                        <li class=""><a data-toggle="modal" href="#child-activity-modal-parents">Media</a></li>
                         <li class="active "><a data-toggle="pill" href="#all-posts">All</a></li>
                         <li class=""><a data-toggle="pill" href="#room-posts">Room Posts</a></li>
                         <li class=""><a data-toggle="pill" href="#other-posts">Posts in other rooms</a></li>
                     </ul>
 
-                    <div class="tab-content">
+                    <div class="tab-content" style="max-height:600px; overflow-x: hidden; overflow-y: scroll">
 
                         <!-- ALL POSTS -->
                         <div id="all-posts" class = "col-sm-12 col-xs-12 col-md-12 tab-pane fade in active" style = "margin-bottom: 40px; ">
@@ -460,6 +461,7 @@
 </html>
 
 <?php
+    include(APPPATH . 'views/modals/child_activity_modal_parents.php');
     include(APPPATH . 'views/modals/network_view_modal.php');
     include(APPPATH . 'views/modals/logout_confirm_modal_parents.php');
 ?>

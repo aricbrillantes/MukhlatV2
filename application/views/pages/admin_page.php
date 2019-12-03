@@ -104,7 +104,7 @@
                     </ul>
                 </div>
 
-                <div class = "col-md-12 col-sm-12 col-xs-12 container-fluid tab-content">
+                <div class = "col-md-12 col-sm-12 col-xs-12 container-fluid tab-content " style="max-height:500px; overflow-x: hidden; overflow-y: scroll">
                     <div id = "user-list-1" class = "list-group tab-pane fade in active ">
                         <?php foreach ($users as $user): 
 
@@ -274,7 +274,7 @@
                     
                 </form>  
 
-                <div id = "announcements" class = "list-group  content-container container-fluid">
+                <div id = "announcements" class = "list-group  content-container container-fluid" style="max-height:300px; overflow-x: hidden; overflow-y: scroll">
                     <?php 
                         //load models
                         $CI->load->model('topic_model');
