@@ -72,20 +72,20 @@
             
             <div class="col-sm-12 col-md-12 col-xs-12 col-lg-12 col-xl-12">
                 <?php if($mobile):?>
-                <div class="hidertab">
-            <div class="col-sm-6 col-md-6 col-xs-6 col-lg-6 col-xl-6" style="margin-top:50px">
+                    <div class="hidertab">
+                        <div class="col-sm-6 col-md-6 col-xs-6 col-lg-6 col-xl-6" style="margin-top:50px">
                             <a onmouseenter="playclip()"  href="#view-announcements-modal" data-toggle = "modal">
                                 <p class="iconin" style="font-size:14px !important;text-align: left !important;"><img  src = "<?php echo base_url('icons/whiteboard.png'); ?>" class="iconin" style="width:60%;height:auto"/><!Style></p>
-                                <span class="tooltiptext" style="width:140px">Announcements</span>
+                                <!--<span class ="btn btn-primary buttonsbgcolor textoutliner" style="width:140px">Announcements</span>-->
                             </a>
-            </div>
-            <div class="col-sm-6 col-md-6 col-xs-6 col-lg-6 col-xl-6" style="margin-top:50px"> 
-            <a onmouseenter="playclip()" href="#view-notes-modal" data-toggle = "modal">
+                        </div>
+                        <div class="col-sm-6 col-md-6 col-xs-6 col-lg-6 col-xl-6" style="margin-top:50px"> 
+                            <a onmouseenter="playclip()" href="#view-notes-modal" data-toggle = "modal">
                                 <p class="iconin" style="font-size:14px !important;text-align: left !important;"><img  src = "<?php echo base_url('icons/parentnotes.png'); ?>" class="iconin" style="width:60%;height:auto"/><!Style></p>
-                                <span class="tooltiptext">Guardian's Notes</span>
+                                <!--<span class ="btn btn-primary buttonsbgcolor textoutliner">Guardian's Notes</span>-->
                             </a>
-            </div>
-                </div>
+                        </div>
+                    </div>
             <?php endif;?>
                 
             </div>
@@ -211,7 +211,7 @@
                 
                 
                 <!--regular text, emojis and stickers-->
-                <div>
+                <div> <div class="hideinbig"><br><br><br><br><br><br><br><br><br></div>
                 <div  class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 pull-right chalkboard" style="min-height:300px; max-height:300px;">
                     <?php
                         foreach ($c_topic->posts as $post):
