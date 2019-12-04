@@ -581,7 +581,7 @@
 </style>--> 
  
 <!--falling time-->
-<!--<canvas id="screen" style="opacity:0;"></canvas>-->
+<!--<canvas id="screen"></canvas>-->
 <!--rainbow changing background-->
 <div class="rainbowwrapper" style="display:none"></div>
 
