@@ -101,7 +101,7 @@
                     $announcements = $CI->topic_model->get_announcements();
 
                     //get teacher's details for each announcement
-                    foreach ($announcements as $announcement):
+                    foreach (array_reverse($announcements) as $announcement):
 
                         $details = $CI->user_model->view_adult($announcement->user_id);
 
@@ -151,7 +151,7 @@
                     $CI->load->model('user_model'); //load models
                     $notes = $CI->user_model->get_notes($logged_user->user_id); //get notes
 
-                    foreach ($notes as $note): ?>
+                    foreach (array_reverse($notes) as $note): ?>
 
                     <div class = "padli">
                         <h3 class = " admin-list-name"><?php echo utf8_decode($note->note) ?></h3>
