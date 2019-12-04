@@ -254,7 +254,7 @@
 //             alert("You have " + (nextMinute-today.getMinutes()) + " minutes left to use Mukhlat!");
              
              if((nextMinute-today.getMinutes())<=5 && fallingone===0){
-//                 document.getElementById("screen").style.opacity = "1";
+                 document.getElementById("screen").style.opacity = "1";
                  fallingone++;
 //                 alert("You have " + (nextMinute-today.getMinutes()) + " minutes left to use Mukhlat!");
                 
@@ -581,7 +581,7 @@
 </style>--> 
  
 <!--falling time-->
-<!--<canvas id="screen"></canvas>-->
+<canvas id="screen" style="pointer-events:none;opacity: 0;"></canvas>
 <!--rainbow changing background-->
 <div class="rainbowwrapper" style="display:none"></div>
 
@@ -1192,7 +1192,7 @@ function readcontent2(value) { //only talks when no more talking
 			var o = screen.elem;
 			screen.width = o.offsetWidth;
 			screen.height = o.offsetHeight;
-			for (screen.left = 0, screen.top = 0; o != null; o = o.offsetParent)
+			for (screen.left = 0, screen.top = 0; o !== null; o = o.offsetParent)
 			{
 				screen.left += o.offsetLeft;
 				screen.top += o.offsetTop;
@@ -1208,16 +1208,16 @@ function readcontent2(value) { //only talks when no more talking
 				PHY2D.rectangle(screen.width + 50, 0, 100, screen.height * 4, 0, 0);
 			}
 		}
-	}
+	};
 
 	screen.elem.onselectstart = function ()
 	{
 		return false;
-	}
+	};
 	screen.elem.ondrag = function ()
 	{
 		return false;
-	}
+	};
 	var ctx = screen.elem.getContext("2d");
 	window.addEventListener('resize', screen.resize, false);
 
@@ -1255,39 +1255,41 @@ function readcontent2(value) { //only talks when no more talking
 				this.pos.y = p.clientY - screen.top;
 			}
 		}
-	}
+	};
 
-	if ('ontouchstart' in window)
-	{
-		screen.elem.ontouchstart = function (e)
-		{
-			pointer.down(e, true);
-		}.bind(pointer);
-		screen.elem.ontouchmove = function (e)
-		{
-			pointer.move(e, true);
-		}.bind(pointer);
-		screen.elem.ontouchend = function (e)
-		{
-			pointer.up(e, true);
-		}.bind(pointer);
-		screen.elem.ontouchcancel = function (e)
-		{
-			pointer.up(e, true);
-		}.bind(pointer);
-	}
-	document.addEventListener("mousedown", function (e)
-	{
-		pointer.down(e, false);
-	}.bind(pointer), true);
-	document.addEventListener("mousemove", function (e)
-	{
-		pointer.move(e, false);
-	}.bind(pointer), true);
-	document.addEventListener("mouseup", function (e)
-	{
-		pointer.up(e, false);
-	}.bind(pointer), true);
+    /* ==== Interaction to the falling numbers ==== */
+
+//	if ('ontouchstart' in window)
+//	{
+//		screen.elem.ontouchstart = function (e)
+//		{
+//			pointer.down(e, true);
+//		}.bind(pointer);
+//		screen.elem.ontouchmove = function (e)
+//		{
+//			pointer.move(e, true);
+//		}.bind(pointer);
+//		screen.elem.ontouchend = function (e)
+//		{
+//			pointer.up(e, true);
+//		}.bind(pointer);
+//		screen.elem.ontouchcancel = function (e)
+//		{
+//			pointer.up(e, true);
+//		}.bind(pointer);
+//	}
+//	document.addEventListener("mousedown", function (e)
+//	{
+//		pointer.down(e, false);
+//	}.bind(pointer), true);
+//	document.addEventListener("mousemove", function (e)
+//	{
+//		pointer.move(e, false);
+//	}.bind(pointer), true);
+//	document.addEventListener("mouseup", function (e)
+//	{
+//		pointer.up(e, false);
+//	}.bind(pointer), true);
 
 	/* ==== vector 2D library ==== */
 
