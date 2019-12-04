@@ -171,8 +171,8 @@
                     <!-- <h2>You can click this green button to check if you can use it again!😊.<br><br></h2>
                     <button class="container btn col-xs-4 col-xs-offset-4 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4" style="background-color: green; color: white; font-size: 24px;" onclick="location.href='<?php echo base_url('home');?>'">Home</button> -->
                     
-                    <h2>Or you can say goodbye for now 👋.<br><br></h2>
-                    <button class="container btn col-xs-4 col-xs-offset-4 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4" style="background-color: orange; color: white; font-size: 24px;" onclick="location.href='<?php echo base_url('signin/logout');?>'">Goodbye!</button>
+                    <!-- <h2>Or you can say goodbye for now 👋.</h2> -->
+                    <br><br><button class="container btn col-xs-4 col-xs-offset-4 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4" style="background-color: orange; color: white; font-size: 24px;" onclick="location.href='<?php echo base_url('signin/logout');?>'">Goodbye!</button>
                     
                     <!-- <br><br><button class = "btn" data-dismiss="modal" style="background-color: orange; color: black; font-size: 24px">No, take me back!</button> -->
                 </div>

@@ -293,7 +293,7 @@
 
             </script>
 
-            <div class = "col-md-12 col-sm-14 col-xs-16 col-md-offset-0 content-container container-fluid" style = "margin-bottom: 1vw;"><br>
+            <div class = "col-md-12 col-sm-14 col-xs-16 col-md-offset-0 content-container container-fluid" style = "margin-bottom: 0px;">
 
                 <div class = "content-container container-fluid " style = "margin-bottom: 4.5px;">
 
@@ -302,9 +302,9 @@
                         
                     </div>
 
-                    <ul class="nav nav-pills nav-justified" style = "margin-bottom: 10px; margin-top: 10px;">
+                    <ul class="nav nav-pills nav-justified" style = "margin-bottom:0px; margin-top:0px;">
    
-                        <!-- <li class = "active text-center">
+                        <li class = "active text-center">
                             <h4 class = "no-padding text-info" style = "margin-top: 15px;">Session Time Limit</h4>
                                 
 
@@ -318,7 +318,7 @@
                             </select>
 
                             <p class = "no-padding " style = "margin-bottom: 0px; margin-top: 15px;">As parents, you can set how long your child can use Mukhlat for each session.<br></p>
-                        </li> -->
+                        </li><br>
 
                         <!-- <li class = "active text-center">
                             <p class = "no-padding " style = "margin-bottom: 0px; margin-top: 15px;">Mukhlat has a feature that warns children that they can<br>only use Mukhlat for a limited time, and that their session is about to end.</p>
@@ -340,14 +340,14 @@
                         </li> -->
 
 
-                    </ul><br>
+                    </ul>
 
                     <div class = "content-container container-fluid col-md-10 col-md-offset-1 col-sm-offset-1 col-sm-10 col-xs-offset-1 col-xs-10">
                         <ul class="nav nav-pills nav-justified" style="">
-                            <li class="" style="background-color: #f0f0f0"><a style="padding: 10px;" data-toggle="pill" href="#timetable-1">12:00 AM to 06:00 AM</a></li>
-                            <li class="active" style="background-color: #f0f0f0"><a style="padding: 10px;" data-toggle="pill" href="#timetable-2">06:00 AM to 12:00 PM</a></li>
-                            <li class="" style="background-color: #f0f0f0"><a style="padding: 10px;" data-toggle="pill" href="#timetable-3">12:00 PM to 06:00 PM</a></li>
-                            <li class="" style="background-color: #f0f0f0"><a style="padding: 10px;" data-toggle="pill" href="#timetable-4">06:00 PM to 12:00 AM</a></li>
+                            <li class="" style="background-color: #f0f0f0"><a style="" data-toggle="pill" href="#timetable-1">12:00 AM to 06:00 AM</a></li>
+                            <li class="active" style="background-color: #f0f0f0"><a style="" data-toggle="pill" href="#timetable-2">06:00 AM to 12:00 PM</a></li>
+                            <li class="" style="background-color: #f0f0f0"><a style="" data-toggle="pill" href="#timetable-3">12:00 PM to 06:00 PM</a></li>
+                            <li class="" style="background-color: #f0f0f0"><a style="" data-toggle="pill" href="#timetable-4">06:00 PM to 12:00 AM</a></li>
                             <!-- <li class="" style="background-color: #f0f0f0"><a style="padding: 10px;" data-toggle="pill" href="#timetable-5">Night</a></li>
                             <li class="" style="background-color: #f0f0f0"><a style="padding: 10px;" data-toggle="pill" href="#timetable-6">Late Night</a></li> -->
                             
@@ -1063,7 +1063,7 @@
 
                 </div>
 
-                <br><br>
+                <br>
 
                 
                 <?php $row = $usertimes->row(); ?>
@@ -1072,7 +1072,7 @@
    
                     <li class = "active text-center">
                         <div class = "text-center form-group register-field container-fluid" style="margin-bottom: -25px; ">
-                            <div class = "text-center col-xs-12 col-md-auto col-sm-offset-2 col-sm-6 form-group register-field" style = "font-size:14px;">
+                            <div class = "text-center col-xs-12 col-md-6 col-sm-offset-2 col-sm-6 form-group register-field" style = "font-size:14px;">
                                 
                                 <a id = "notif-btn"  href="#">
                                     <h4 class = "no-padding text-info" onclick="clearTable();" style = "margin-top: 10px;">Clear All Timeslots</h4>
@@ -1087,7 +1087,7 @@
 
                     <li class = "active text-center">
                         <div class = "text-center form-group register-field container-fluid" style="margin-bottom: 10px; ">
-                            <div class = "text-center col-xs-12 col-md-auto col-sm-offset-1 col-sm-8 form-group register-field" style = "font-size:14px;">
+                            <div class = "text-center col-xs-12 col-md-8 col-sm-offset-1 col-sm-8 form-group register-field" style = "font-size:14px;">
                                 
                                 <!-- <a id = "notif-btn" data-toggle = "modal" href="#default-time-modal">
                                     <h4 class = "no-padding text-info" style = "margin-top: 10px;">Use Default Settings</h4>
@@ -1097,13 +1097,19 @@
                                     <h4 class = "no-padding text-info" onclick="defaultTable();" style = "margin-top: 10px;">Reset to Default Settings</h4>
                                 </a>
 
-                                <p class = "no-padding " style = "margin-bottom: 0px; margin-top: 0px;">Use Mukhlat's default settings of:<br><br>
-                                    Monday-Friday:<br> 05:00AM - 07:30PM<br><br>
-                                    Saturday-Sunday:<br> 08:00AM - 10:00AM,<br> 03:00PM - 06:00PM<br>
+                                <p class = "no-padding " style = "margin-bottom: 0px; margin-top: 0px;">Use Mukhlat's default settings of:<br></p>
                                     
-                                </p>
                                 
-                                <br>
+
+                                <p class = "no-padding " style = "margin-bottom: 0px; margin-top: 0px;">
+                                    <b>Monday-Friday: </b>05:00AM - 07:30PM<br>
+                                </p>
+
+                                <p class = "no-padding " style = "margin-bottom: 0px; margin-top: 0px;">
+                                    <b>Saturday-Sunday: </b>08:00AM - 10:00AM, 03:00PM - 06:00PM
+                                </p>
+                                    
+                                
                             </div>
                         </div>
                     </li>
@@ -1129,9 +1135,8 @@
             <?php //endforeach; ?>
 
                 <div class = "text-center">
-                    <br>
                     <a id = "confirm-btn" data-toggle = "modal">
-                        <button onclick="updateSummary(); ifEmpty('time-table', 'td', 'cell'); " data-toggle = "modal" class = "btn btn-success container-fluid col-xs-12" style="font-size:24px; margin-top: 10px; margin-bottom: 10px">Save Changes</button>
+                        <button onclick="updateSummary(); ifEmpty('time-table', 'td', 'cell'); " data-toggle = "modal" class = "btn btn-success container-fluid col-xs-12" style="font-size:24px; margin-top: 10px; margin-bottom: 0px">Save Changes</button>
                     </a>
                 </div>
             </div>
@@ -1178,18 +1183,18 @@
 
 
         //use limit
-        // var limit = parseInt("<?php echo $row->use_limit; ?>");
-        // switch(limit)
-        // {
-        //     case 30:document.getElementById("time-limit").options[0].selected = true;break;
-        //     case 60:document.getElementById("time-limit").options[1].selected = true;break;
-        //     case 90:document.getElementById("time-limit").options[2].selected = true;break;
-        //     case 120:document.getElementById("time-limit").options[3].selected = true;break;
-        //     case 150:document.getElementById("time-limit").options[4].selected = true;break;
-        //     case 180:document.getElementById("time-limit").options[5].selected = true;break;
-        //     case 210:document.getElementById("time-limit").options[6].selected = true;break;
-        //     case 240:document.getElementById("time-limit").options[7].selected = true;break;
-        // }
+        var limit = parseInt("<?php echo $row->use_limit; ?>");
+        switch(limit)
+        {
+            case 30:document.getElementById("time-limit").options[0].selected = true;break;
+            case 60:document.getElementById("time-limit").options[1].selected = true;break;
+            case 90:document.getElementById("time-limit").options[2].selected = true;break;
+            case 120:document.getElementById("time-limit").options[3].selected = true;break;
+            case 150:document.getElementById("time-limit").options[4].selected = true;break;
+            case 180:document.getElementById("time-limit").options[5].selected = true;break;
+            case 210:document.getElementById("time-limit").options[6].selected = true;break;
+            case 240:document.getElementById("time-limit").options[7].selected = true;break;
+        }
         
 
         // var warning = parseInt("<?//php echo $row->warning; ?>");
@@ -1227,9 +1232,9 @@
             // var selectedWarning = warning.options[warning.selectedIndex].value;
             // document.cookie = "selectedWarning=" + selectedWarning + ";path=/";   
 
-            // var limit = document.getElementById("time-limit");
-            // var selectedLimit = limit.options[limit.selectedIndex].value;
-            // document.cookie = "selectedLimit=" + selectedLimit + ";path=/"; 
+            var limit = document.getElementById("time-limit");
+            var selectedLimit = limit.options[limit.selectedIndex].value;
+            document.cookie = "selectedLimit=" + selectedLimit + ";path=/"; 
 
 
             // if(document.getElementById("keep").checked)

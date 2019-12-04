@@ -63,6 +63,12 @@ class Parents extends CI_Controller {
     {
         $user_id = $this->uri->segment(3);
 
+        if(!$user_id)
+        {
+            redirect('home');
+        }
+        
+
         $this->db->select('*');
         $this->db->from('tbl_infractions');
         $this->db->where(array('tbl_infractions.user_id' => $user_id));
@@ -145,6 +151,11 @@ class Parents extends CI_Controller {
     public function settings() 
     {
         $user_id = $this->uri->segment(3);
+
+        if(!$user_id)
+        {
+            redirect('home');
+        }
 
         $this->db->select('*');
         $this->db->from('tbl_usertimes');

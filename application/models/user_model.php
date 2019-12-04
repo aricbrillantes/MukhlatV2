@@ -198,7 +198,7 @@ class User_model extends CI_Model {
         $settings = htmlspecialchars($_COOKIE["timeSetting"]);
         // $warning = htmlspecialchars($_COOKIE["selectedWarning"]);
         // $keep = htmlspecialchars($_COOKIE["selectedKeep"]);
-        // $limit = htmlspecialchars($_COOKIE["selectedLimit"]);
+        $limit = htmlspecialchars($_COOKIE["selectedLimit"]);
 
         $data = array
         (
@@ -206,7 +206,7 @@ class User_model extends CI_Model {
             'time_setting'=> $settings,
             // 'warning' => $warning,
             // 'keep' => $keep,
-            // 'use_limit' => $limit
+            'use_limit' => $limit
         );
 
         // $this->db->insert('tbl_usertimes',$data);   
