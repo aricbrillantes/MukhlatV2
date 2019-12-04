@@ -539,7 +539,7 @@
 
 <?php
     include(APPPATH . 'views/modals/child_activity_modal_parents.php');
-    include(APPPATH . 'views/modals/create_note_modal.php');
+//    include(APPPATH . 'views/modals/create_note_modal.php');
     include(APPPATH . 'views/modals/network_view_modal.php');
     include(APPPATH . 'views/modals/logout_confirm_modal_parents.php');
 ?>

@@ -206,6 +206,29 @@ $(document).ready(function() {
 //    document.body.innerHTML = page;
 //    }}
     
+//var oneonly=0;
+////alert(oneonly);
+//if(oneonly===0){oneonly=1;
+////alert(oneonly);
+//var list = new Array();
+//list[0] = ";love 2;^<img  width='50%' src='" + "/MukhlatV2/images/stickers/love 2.png'>";
+//list[1] = ";laughing crying;^<img  width='50%' src='" + "/MukhlatV2/images/stickers/laughing crying.png'>";
+//list[2] = ";love;^<img  width='50%' src='" + "/MukhlatV2/images/stickers/love.png'>";
+//var j, k, find, item, repl;
+//var page = document.body.innerHTML;
+//for (var i=0; i<list.length; i++) {
+//item = list[i].split("^");
+//find = item[0];
+//repl = item[1];
+//while (page.indexOf(find) >= 0) {
+//var j = page.indexOf(find);
+//var k = find.length;
+//page = page.substr(0,j) + repl + page.substr(j+k);
+//}
+//}
+//document.body.innerHTML = page;
+//}
+
     
     
     $('.editroomthemes').click(function(){

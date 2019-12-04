@@ -86,10 +86,10 @@
     include(APPPATH . 'views/modals/birthday_modal.php'); 
     include(APPPATH . 'views/modals/afk_warning_modal.php'); 
 ?>
-<p id="afktimer" style="float: right; display:none;">Time Left: 9999<p>
+<p id="afktimer" style="float: right; display:none;">Time Left: 9999</p>
 
 <!-- scale to device resolution -->
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="<?php echo base_url("/css/style.css"); ?>" /> 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -247,13 +247,14 @@
 
             // location.href="<?php echo base_url('restrict');?>"; //uncomment this line for actual testing
         }
-        
+         
         // if child cannot use for the next timeslot
         if(canUseNext==0)
         {
 //             alert("You have " + (nextMinute-today.getMinutes()) + " minutes left to use Mukhlat!");
              
-             if((nextMinute-today.getMinutes())<=7 && fallingone===0){
+             if((nextMinute-today.getMinutes())<=5 && fallingone===0){
+//                 document.getElementById("screen").style.opacity = "1";
                  fallingone++;
 //                 alert("You have " + (nextMinute-today.getMinutes()) + " minutes left to use Mukhlat!");
                 
@@ -505,8 +506,7 @@
 <!--<script type="text/javascript" src="https://panzi.github.io/Browser-Ponies/basecfg.js" id="browser-ponies-config"></script>
 <script type="text/javascript" src="https://panzi.github.io/Browser-Ponies/browserponies.js" id="browser-ponies-script"></script>-->
 <!--<script type="text/javascript">/* <![CDATA[ */ (function (cfg) {BrowserPonies.setBaseUrl(cfg.baseurl);BrowserPonies.loadConfig(BrowserPoniesBaseConfig);BrowserPonies.loadConfig(cfg);})({"baseurl":"https://panzi.github.io/Browser-Ponies/","fadeDuration":500,"volume":1,"fps":25,"speed":3,"audioEnabled":false,"showFps":false,"showLoadProgress":true,"speakProbability":0.1,"spawn":{"winona":1},"autostart":true}); /* ]]> */</script>-->
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <script type="text/javascript" src="<?php echo base_url('sound-mouseover/sound-mouseover.js'); ?>"></script>
     
     <!--<link rel="stylesheet" type="text/css" href="<?php echo base_url('clippy.js-master/build/clippy.css'); ?>" media="all">-->
@@ -579,10 +579,9 @@
 		background-color: #FAFAFA;
 	}
 </style>--> 
-  
+ 
 <!--falling time-->
-<!--<canvas id="screen" style="opacity:1;"></canvas>-->
-    
+<!--<canvas id="screen" style="opacity:0;"></canvas>-->
 <!--rainbow changing background-->
 <div class="rainbowwrapper" style="display:none"></div>
 
@@ -2092,5 +2091,5 @@ function readcontent2(value) { //only talks when no more talking
 <?php include(APPPATH . 'views/modals/parent_notes_modal.php'); ?>
 <?php include(APPPATH . 'views/modals/teacher_announcements_modal.php'); ?>
 <?php include(APPPATH . 'views/modals/logout_confirm_modal.php'); ?>
-<?php include(APPPATH . 'views/modals/notifications_modal.php'); ?>
+<?php // include(APPPATH . 'views/modals/notifications_modal.php'); ?>
 <?php include(APPPATH . 'views/modals/customize_modal.php'); ?>

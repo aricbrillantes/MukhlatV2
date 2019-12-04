@@ -280,10 +280,10 @@ $topic = $_SESSION['current_topic'];
                   <source src="#" id="video_here">
                   hi
               </video>  
-              <h2 id="addwarning" style="display:none;color:red;" ><i class="arrow up"></i> add something to share! <h2>
-              <h2 id="pic_h" style="display: none">The picture you used is too big sorry!</h2>
-              <h2 id="vid_h" style="display: none">The video you used is too big sorry!</h2>
-              <h2 id="snd_h" style="display: none">The sound you used is too big sorry!</h2>
+              <h2 id="addwarning" style="display:none;color:red;" ><i class="arrow up"></i> add something to share! </h2>
+              <h2 id="pic_h" style="display: none">The picture you used is too big, sorry!</h2>
+              <h2 id="vid_h" style="display: none">The video you used is too big, sorry!</h2>
+              <h2 id="snd_h" style="display: none">The sound you used is too big, sorry!</h2>
               
               
                 </div>
@@ -307,7 +307,7 @@ $topic = $_SESSION['current_topic'];
         
                     
                     <audio id="aud1" controls></audio><br>
-                    <button id="btnStop" class="btnstopcss">Im done recording!</button></p>
+                    <button id="btnStop" class="btnstopcss">Im done recording!</button>
                     <a id="dl" class="dlbutton" style="display: none" download="My Voice">Save my Voice</a>
 
             </div>
@@ -318,7 +318,7 @@ $topic = $_SESSION['current_topic'];
         
                     
                     <video width="400" id="vid1" style="display: none" controls></video><br>
-                    <button id="btnStop2" class="btnstopcss">Im done recording!</button></p>
+                    <button id="btnStop2" class="btnstopcss">Im done recording!</button>
                     
                     <a id="dl2" class="dlbutton" style="display: none" download="My Video">Save my Video</a>
                     

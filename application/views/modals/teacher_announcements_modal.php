@@ -52,6 +52,3 @@
         </div>
     </div>
 </div>
-
-    
-<script type="text/javascript" src="<?php echo base_url("/js/topic.js"); ?>"></script>
