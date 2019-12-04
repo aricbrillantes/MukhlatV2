@@ -375,7 +375,7 @@
 
                                         <?php endif; ?>
                                         
-                                        <span class = "text-muted"> <i style = "font-size: 11px">(<?php echo date("M-d-y", strtotime($post->date_posted)); ?>)</i></span>
+                                        <span class = "text-muted"> <i style = "font-size: 11px">(<?php echo date("M-d-y - H:i", strtotime($post->date_posted)); ?>)</i></span>
                                        
                                     </div>
                                     <div class = "col-xs-12 user-post-content no-padding">
@@ -425,7 +425,7 @@
                                     <div class = "user-post-heading no-margin">
                                         
                                         <span>posted to <strong>their room</strong> </span>
-                                        <span class = "text-muted"> <i style = "font-size: 11px">(<?php echo date("M-d-y", strtotime($post->date_posted)); ?>)</i></span>
+                                        <span class = "text-muted"> <i style = "font-size: 11px">(<?php echo date("M-d-y - H:i", strtotime($post->date_posted)); ?>)</i></span>
                                        
                                     </div>
 
@@ -468,7 +468,7 @@
                  
                                         <span>posted in <strong><?php echo $post->topic_name; ?></strong> </span> 
                                         
-                                        <span class = "text-muted"> <i style = "font-size: 11px">(<?php echo date("M-d-y", strtotime($post->date_posted)); ?>)</i></span>
+                                        <span class = "text-muted"> <i style = "font-size: 11px">(<?php echo date("M-d-y - H:i", strtotime($post->date_posted)); ?>)</i></span>
                                        
                                     </div>
 

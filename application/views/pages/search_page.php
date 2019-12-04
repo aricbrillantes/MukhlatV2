@@ -64,7 +64,7 @@
                                 endforeach;
                             else:
                                 ?>
-                                <h3 class = "text-warning">No topics were found for <i><?php echo $keyword ?></i></h3>
+                                <h3 class = "text-warning">Oops, it looks like we can't find "<i><?php echo $keyword ?>" anywhere!</i></h3>
                             <?php
                             endif;
                             ?>

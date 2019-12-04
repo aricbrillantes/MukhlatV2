@@ -159,7 +159,7 @@
 
                                                 <?php foreach ($attachments as $attachment):
                                                     if ($attachment->attachment_type_id === '1'):?>
-                                                        <img src = "<?= base_url($attachment->file_url); ?>" width = "75%"  style="position:relative;" />
+                                                        <img src = "<?= base_url($attachment->file_url); ?>" width = "75%"  style="position:relative; width:auto; max-height: 200px; max-width: 300px;" />
                                                         
 
                                                     <?php elseif ($attachment->attachment_type_id === '2'): ?>
@@ -167,7 +167,7 @@
                                                         
 
                                                     <?php elseif ($attachment->attachment_type_id === '3'): ?>
-                                                        <video src = "<?= base_url($attachment->file_url); ?>" width = "100%" controls/></video>
+                                                        <video src = "<?= base_url($attachment->file_url); ?>" width = "100%" style="height: 100%; width:auto; max-height: 220px;" controls/></video>
                                                     
 
                                                     <?php elseif ($attachment->attachment_type_id === '4'): ?>
@@ -203,27 +203,30 @@
         </div>
     </div>
     <!--back to top and go to bottom script-->
-    <script>
-window.addEventListener('load', function (){
-    scrollFunction();
-});
-window.onscroll = function() {scrollFunction();};
+    <?php if(!$mobile): ?>
 
-function scrollFunction() {
-    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-        document.getElementById("topbut").style.display = "block";
-        document.getElementById('topbut').className = 'balloon';
-    } else {
-        document.getElementById("topbut").style.display = "none";
-        document.getElementById('topbut').className = '';
-    }
-    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-        document.getElementById("botbut").style.display = "none";
-    }
-    else {
-        document.getElementById("botbut").style.display = "block";
-    }
-}
+    <script>
+        window.addEventListener('load', function (){
+            scrollFunction();
+        });
+
+        window.onscroll = function() {scrollFunction();};
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                document.getElementById("topbut").style.display = "block";
+                document.getElementById('topbut').className = 'balloon';
+            } else {
+                document.getElementById("topbut").style.display = "none";
+                document.getElementById('topbut').className = '';
+            }
+            if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+                document.getElementById("botbut").style.display = "none";
+            }
+            else {
+                document.getElementById("botbut").style.display = "block";
+            }
+        }
             // When the user clicks on the button, scroll to the top of the document
             function topFunction() {                
                 var whistleup = new Audio('<?php echo base_url('images/Slide Whistle up1.mp3'); ?>');
@@ -245,11 +248,11 @@ function scrollFunction() {
 
         <script type="text/javascript" src="<?php echo base_url("/js/search.js"); ?>"></script>
         <!--back to top and go to bottom buttons-->
-        <div onclick="topFunction()" id="topbut" style="text-align:center;"><p style="padding-top:50%;cursor:pointer;">Up!</p></div>
-        <div onclick="botFunction()" id="botbut"><img class="rock1 goingdown" src = "<?php echo base_url('images/rock bottom.png'); ?>"/><p class="centeredbot">Bottom!</p></div>
+
+        
+            <div onclick="topFunction()" id="topbut" style="text-align:center;"><p style="padding-top:50%;cursor:pointer;">Up!</p></div>
+            <div onclick="botFunction()" id="botbut"><img class="rock1 goingdown" src = "<?php echo base_url('images/rock bottom.png'); ?>"/><p class="centeredbot">Bottom!</p></div>
+
+    <?php endif;?>
 
     <script type="text/javascript" src="<?php echo base_url("/js/post.js"); ?>"></script>
-    
-
-    <?php
-//    include(APPPATH . 'views/chat/chat.php');

@@ -144,13 +144,13 @@
                 ?>
 
                 <div class = "col-xs-12 col-md-6 col-sm-6 col-md-offset-0 col-sm-offset-0 content-container container-fluid" style = "margin-bottom: 5px; ">
-                    <div class="col-xs-3 col-md-3 col-sm-3">
+                    <div class="col-xs-3 col-md-4 col-sm-4">
                         <center>
                             <img id = "user-pic-display" class = "img-circle" width = "64px" height = "64px" src = "<?php echo $child->profile_url ? base_url($child->profile_url) : base_url('images/default.jpg') ?>" style = "margin-top: 30px;">
                         </center>
                     </div>
 
-                    <div class = "col-xs-9 col-md-9 col-sm-9 col-md-offset-0 content-container container-fluid" style = "margin-bottom: 5px; border:0">
+                    <div class = "col-xs-9 col-md-8 col-sm-8 col-md-offset-0 content-container container-fluid" style = "margin-bottom: 5px; border:0">
                         
                         <?php if($child->is_enabled == 0):?>
                             <h3 class = "no-padding text-info" style = "margin-bottom: 0px; color:red;"><strong><?php echo $child->first_name . " " . $child->last_name ?></strong></h3>
