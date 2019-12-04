@@ -85,6 +85,7 @@
     // include(APPPATH . 'views/header.php');
     include(APPPATH . 'views/modals/birthday_modal.php'); 
     include(APPPATH . 'views/modals/afk_warning_modal.php'); 
+    include(APPPATH . 'views/modals/schedule_warning_modal.php');
 ?>
 <p id="afktimer" style="float: right; display:none;">Time Left: 9999</p>
 
@@ -170,7 +171,7 @@
             nextHour=today.getHours();
             nextMinute=30;
 
-            if(curHour==0)
+            if(curHour===0)
             {
                 curTime = "00" + curMinute + " " + day;
                 nextTime = "0030 "+day;
@@ -188,7 +189,7 @@
             curHour=today.getHours();
             curMinute=30;
 
-            if(curHour==23)
+            if(curHour===23)
             {
                 nextHour=0;
                 nextMinute=60;
@@ -241,7 +242,7 @@
 
         // if child cannot use for the current timeslot
         // redirect to restriction page
-        if(canUse==0)
+        if(canUse===0)
         {
             // alert("You can't use Mukhlat right now!");
 
@@ -249,11 +250,12 @@
         }
          
         // if child cannot use for the next timeslot
-        if(canUseNext==0)
+        if(canUseNext===0)
         {
 //             alert("You have " + (nextMinute-today.getMinutes()) + " minutes left to use Mukhlat!");
              
              if((nextMinute-today.getMinutes())<=5 && fallingone===0){
+                 $('#schedule-warning-modal').modal('show');
                  document.getElementById("screen").style.opacity = "1";
                  fallingone++;
 //                 alert("You have " + (nextMinute-today.getMinutes()) + " minutes left to use Mukhlat!");
@@ -2090,8 +2092,8 @@ function readcontent2(value) { //only talks when no more talking
     </script>
 <!-- End Nav Bar -->
 
-<?php include(APPPATH . 'views/modals/parent_notes_modal.php'); ?>
-<?php include(APPPATH . 'views/modals/teacher_announcements_modal.php'); ?>
-<?php include(APPPATH . 'views/modals/logout_confirm_modal.php'); ?>
-<?php // include(APPPATH . 'views/modals/notifications_modal.php'); ?>
-<?php include(APPPATH . 'views/modals/customize_modal.php'); ?>
+<?php include(APPPATH . 'views/modals/parent_notes_modal.php');
+      include(APPPATH . 'views/modals/teacher_announcements_modal.php');
+      include(APPPATH . 'views/modals/logout_confirm_modal.php'); 
+   // include(APPPATH . 'views/modals/notifications_modal.php');
+      include(APPPATH . 'views/modals/customize_modal.php'); ?>
