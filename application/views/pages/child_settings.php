@@ -309,6 +309,7 @@
                                 
 
                             <select style="width:110px; height:20px" id="time-limit" onclick="">
+                                <option value="0">None</option>
                                 <option value="30">30 minutes</option>
                                 <option value="60">1 hour</option>
                                 <option value="90">1 hr 30 mins</option>

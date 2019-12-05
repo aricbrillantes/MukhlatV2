@@ -70,6 +70,9 @@ class Signin extends CI_Controller {
 
             $_SESSION['logged_user'] = $user;
 
+            date_default_timezone_set('Asia/Manila');
+            $_SESSION['login_time'] = date('H:i');
+
             echo 1;
         } else {
             echo 0;

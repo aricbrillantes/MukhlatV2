@@ -10,6 +10,12 @@
             exit(0);
         }
 
+        if(isset($_SESSION['login_time']))
+        {
+            $login_time = $_SESSION['login_time'];
+            // print($login_time);
+        }
+
         $CI =&get_instance();
         $CI->load->model('user_model');
         $CI->load->library('user_agent');
@@ -138,6 +144,82 @@
     var canUseNext = 1;
     var canUse = 1;
     var fallingone = 0;
+
+    var loginTime = "<?php echo $login_time; ?>".split(":");
+    var loginHour = parseInt(loginTime[0]);
+    var loginMin = parseInt(loginTime[1]);
+
+    var sessionLimit = parseInt("<?php echo $sessionLimit; ?>");
+    var sessionLimitHour=99, sessionLimitMin=99;
+
+    var sessionHoursLeft = 99, sessionMinsLeft = 99;
+
+    if(sessionLimit!=0)
+    {
+        if(sessionLimit==30)
+        {
+            if(loginMin >= 30)
+            {
+                sessionLimitHour = loginHour+1;
+                sessionLimitMin  = loginMin-30;
+            }
+
+            else if(loginMin < 30)
+            {
+                sessionLimitHour = loginHour;
+                sessionLimitMin  = loginMin+30;
+            }
+        }
+
+        else if(sessionLimit==60)
+        {
+            sessionLimitHour = loginHour+1;
+            sessionLimitMin = loginMin;
+        }
+
+        else if(sessionLimit==90)
+        {
+            if(loginMin >= 30)
+            {
+                sessionLimitHour = loginHour+2;
+                sessionLimitMin  = loginMin-30;
+            }
+
+            else if(loginMin < 30)
+            {
+                sessionLimitHour = loginHour+1;
+                sessionLimitMin  = loginMin+30;
+            }
+        }
+
+        else if(sessionLimit==120)
+        {
+            sessionLimitHour = loginHour+2;
+            sessionLimitMin = loginMin;
+        }
+
+        else if(sessionLimit==150)
+        {
+            if(loginMin >= 30)
+            {
+                sessionLimitHour = loginHour+3;
+                sessionLimitMin  = loginMin-30;
+            }
+
+            else if(loginMin < 30)
+            {
+                sessionLimitHour = loginHour+2;
+                sessionLimitMin  = loginMin+30;
+            }
+        }
+
+        else if(sessionLimit==180)
+        {
+            sessionLimitHour = loginHour+3;
+            sessionLimitMin = loginMin;
+        }
+        
+    }
     
     function checkRestriction()
     {        
@@ -223,9 +305,20 @@
         // alert(curTime);
         // alert(nextTime);
 
+        // alert("<?php echo $login_time; ?>");
+        
+        // alert(sessionLimit);
+        
+        if(sessionLimit!=0)
+            alert(loginHour + ":" + loginMin + " to " + sessionLimitHour + ":" + sessionLimitMin);
 
-        // get actual current time
-        var time = today.getHours() + "" + today.getMinutes() + " " + day;
+        if(today.getHours() == sessionLimitHour && today.getMinutes() > sessionLimitMin)
+        {
+            // alert("time's up!");
+
+            // location.href="<?php echo base_url('restrict');?>";
+        }    
+
 
         // get available times from PHP array that parents set
         var restrictions =  <?php echo json_encode($restrictions2); ?>;
@@ -254,7 +347,8 @@
         {
 //             alert("You have " + (nextMinute-today.getMinutes()) + " minutes left to use Mukhlat!");
              
-             if((nextMinute-today.getMinutes())<=5 && fallingone===0){
+             if((nextMinute-today.getMinutes())<=5 && fallingone===0)
+             {
                  $('#schedule-warning-modal').modal('show');
                  document.getElementById("screen").style.opacity = "1";
                  fallingone++;
@@ -2024,7 +2118,7 @@ function readcontent2(value) { //only talks when no more talking
 
 		// hour
 
-		if (hr != hb)
+		if (hr  != hb)
 		{
 			hue = (Math.random() * 360) | 0;
 			hsl = "hsl(" + hue + ", 70%, 80%)";
