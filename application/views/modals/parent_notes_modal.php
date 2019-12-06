@@ -3,7 +3,7 @@
 ?>
 <!--<script src="/intl/en/chrome/assets/common/js/chrome.min.js"></script>-->     
     <!--Voice Search Script-->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>-->
     <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
 
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
@@ -26,7 +26,7 @@
                     $CI->load->model('user_model'); //load models
                     $notes = $CI->user_model->get_notes($logged_user->user_id); //get notes
 
-                    foreach ($notes as $note): ?>
+                    foreach (array_reverse($notes) as $note): ?>
 
                     <li class = "list-item ">
                         <h3 class = "no-padding admin-list-name">"<?php echo utf8_decode($note->note) ?>"</h3>

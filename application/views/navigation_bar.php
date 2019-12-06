@@ -104,6 +104,9 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <!-- Nav Bar -->
 
+<!--falling time-->
+<canvas id="screen" style="pointer-events:none;opacity: 0;"></canvas>
+
 <script type="text/javascript">
 
     //get cookies
@@ -522,7 +525,7 @@
         // if child cannot use for the next timeslot
         if(canUseNext===0)
         {
-            // alert("You have " + (nextMinute-today.getMinutes()) + " minutes left to use Mukhlat!");
+//             alert("You have " + (nextMinute-today.getMinutes()) + " minutes left to use Mukhlat!");
              
              if((nextMinute-today.getMinutes())<=5 && fallingone===0 && sessionMinutes>=5)
              {
@@ -832,8 +835,7 @@
 	}
 </style>--> 
  
-<!--falling time-->
-<canvas id="screen" style="pointer-events:none;opacity: 0;"></canvas>
+
 <!--rainbow changing background-->
 <div class="rainbowwrapper" style="display:none"></div>
 
