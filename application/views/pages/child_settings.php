@@ -1187,14 +1187,15 @@
         var limit = parseInt("<?php echo $row->use_limit; ?>");
         switch(limit)
         {
-            case 30:document.getElementById("time-limit").options[0].selected = true;break;
-            case 60:document.getElementById("time-limit").options[1].selected = true;break;
-            case 90:document.getElementById("time-limit").options[2].selected = true;break;
-            case 120:document.getElementById("time-limit").options[3].selected = true;break;
-            case 150:document.getElementById("time-limit").options[4].selected = true;break;
-            case 180:document.getElementById("time-limit").options[5].selected = true;break;
-            case 210:document.getElementById("time-limit").options[6].selected = true;break;
-            case 240:document.getElementById("time-limit").options[7].selected = true;break;
+            case 0:document.getElementById("time-limit").options[0].selected = true;break;
+            case 30:document.getElementById("time-limit").options[1].selected = true;break;
+            case 60:document.getElementById("time-limit").options[2].selected = true;break;
+            case 90:document.getElementById("time-limit").options[3].selected = true;break;
+            case 120:document.getElementById("time-limit").options[4].selected = true;break;
+            case 150:document.getElementById("time-limit").options[5].selected = true;break;
+            case 180:document.getElementById("time-limit").options[6].selected = true;break;
+            case 210:document.getElementById("time-limit").options[7].selected = true;break;
+            case 240:document.getElementById("time-limit").options[8].selected = true;break;
         }
         
 

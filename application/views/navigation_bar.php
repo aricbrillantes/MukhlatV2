@@ -91,6 +91,7 @@
     // include(APPPATH . 'views/header.php');
     include(APPPATH . 'views/modals/birthday_modal.php'); 
     include(APPPATH . 'views/modals/afk_warning_modal.php'); 
+    include(APPPATH . 'views/modals/session_warning_modal.php');
     include(APPPATH . 'views/modals/schedule_warning_modal.php');
 ?>
 <p id="afktimer" style="float: right; display:none;">Time Left: 9999</p>
@@ -104,6 +105,29 @@
 <!-- Nav Bar -->
 
 <script type="text/javascript">
+
+    //get cookies
+    function getCookie(cname) 
+    {
+        var name = cname + "=";
+        var ca = document.cookie.split(';');
+        for(var i = 0; i < ca.length; i++) 
+        {
+            var c = ca[i];
+            while (c.charAt(0) === ' ') 
+            {
+                c = c.substring(1);
+            }
+
+            if (c.indexOf(name) === 0) 
+            {
+                return c.substring(name.length, c.length);
+            }
+        }
+        return "";
+    }
+
+
     
     /*  
         function to check how many minutes until the child cannot use
@@ -152,7 +176,7 @@
     var sessionLimit = parseInt("<?php echo $sessionLimit; ?>");
     var sessionLimitHour=99, sessionLimitMin=99;
 
-    var sessionHoursLeft = 99, sessionMinsLeft = 99;
+    // var sessionHoursLeft = 99, sessionMinsLeft = 99;
 
     if(sessionLimit!=0)
     {
@@ -160,7 +184,12 @@
         {
             if(loginMin >= 30)
             {
-                sessionLimitHour = loginHour+1;
+                if(loginHour==23)
+                    sessionLimitHour = 0;
+
+                else
+                    sessionLimitHour = loginHour+1;
+
                 sessionLimitMin  = loginMin-30;
             }
 
@@ -173,7 +202,12 @@
 
         else if(sessionLimit==60)
         {
-            sessionLimitHour = loginHour+1;
+            if(loginHour==23)
+                sessionLimitHour = 0;
+
+            else
+                sessionLimitHour = loginHour+1;
+
             sessionLimitMin = loginMin;
         }
 
@@ -181,20 +215,41 @@
         {
             if(loginMin >= 30)
             {
-                sessionLimitHour = loginHour+2;
+                if(loginHour==22)
+                    sessionLimitHour = 0;
+
+                else if(loginHour==23)
+                    sessionLimitHour = 1;
+
+                else
+                    sessionLimitHour = loginHour+2;
+
                 sessionLimitMin  = loginMin-30;
             }
 
             else if(loginMin < 30)
             {
-                sessionLimitHour = loginHour+1;
+                if(loginHour==23)
+                    sessionLimitHour = 0;
+
+                else
+                    sessionLimitHour = loginHour+1;
+
                 sessionLimitMin  = loginMin+30;
             }
         }
 
         else if(sessionLimit==120)
         {
-            sessionLimitHour = loginHour+2;
+            if(loginHour==22)
+                sessionLimitHour = 0;
+
+            else if(loginHour==23)
+                sessionLimitHour = 1;
+
+            else
+                sessionLimitHour = loginHour+2;
+
             sessionLimitMin = loginMin;
         }
 
@@ -202,29 +257,65 @@
         {
             if(loginMin >= 30)
             {
-                sessionLimitHour = loginHour+3;
+                if(loginHour==21)
+                    sessionLimitHour = 0;
+
+                else if(loginHour==22)
+                    sessionLimitHour = 1;
+
+                else if(loginHour==23)
+                    sessionLimitHour = 2;
+
+                else
+                    sessionLimitHour = loginHour+3;
+
                 sessionLimitMin  = loginMin-30;
             }
 
             else if(loginMin < 30)
             {
-                sessionLimitHour = loginHour+2;
+                if(loginHour==22)
+                    sessionLimitHour = 0;
+
+                else if(loginHour==23)
+                    sessionLimitHour = 1;
+
+                else
+                    sessionLimitHour = loginHour+2;
+
                 sessionLimitMin  = loginMin+30;
             }
         }
 
         else if(sessionLimit==180)
         {
-            sessionLimitHour = loginHour+3;
+            if(loginHour==21)
+               sessionLimitHour = 0;
+
+            else if(loginHour==22)
+                sessionLimitHour = 1;
+
+            else if(loginHour==23)
+                sessionLimitHour = 2;
+
+            else
+                sessionLimitHour = loginHour+3;
+
             sessionLimitMin = loginMin;
         }
         
     }
+
+    var today = new Date();
+
+    var computeLimitHour1="00", computeLimitMin1="00";
+    var computeLimitHour2="00", computeLimitMin2="00";
     
     function checkRestriction()
     {        
         //get current time
-        var today = new Date();
+        today = new Date();
+        
         var hour, min, day;
         var curTime, curHour, curMinute;
 
@@ -302,28 +393,115 @@
 
         }    
 
-        // alert(curTime);
-        // alert(nextTime);
 
-        // alert("<?php echo $login_time; ?>");
-        
-        // alert(sessionLimit);
-        
-        if(sessionLimit!=0)
-            alert(loginHour + ":" + loginMin + " to " + sessionLimitHour + ":" + sessionLimitMin);
+        /*  
+            function to compute the time remaining until the child's session endds
+            (regardless if they are not restricted by time settings)
+        */
 
-        if(today.getHours() == sessionLimitHour && today.getMinutes() > sessionLimitMin)
+        //session limit
+        if(sessionLimitHour<10)
+            computeLimitHour1="0"+sessionLimitHour;
+
+        else
+            computeLimitHour1=""+sessionLimitHour;
+
+        if(sessionLimitMin<10)
+            computeLimitMin1="0"+sessionLimitMin;
+
+        else
+            computeLimitMin1=""+sessionLimitMin;
+
+
+        //current time
+        if(today.getHours()<10)
+            computeLimitHour2="0"+today.getHours();
+
+        else
+            computeLimitHour2=""+today.getHours();
+
+        if(today.getMinutes()<10)
+            computeLimitMin2="0"+today.getMinutes();
+
+        else
+            computeLimitMin2=""+today.getMinutes();
+
+        var a,b;
+
+        if(sessionLimitHour>0 && (loginHour==23 || loginHour==22 || loginHour==21))
         {
-            // alert("time's up!");
+            a = ("2019-12-07T"+computeLimitHour1+":"+computeLimitMin1);
+            b = ("2019-12-06T"+computeLimitHour2+":"+computeLimitMin2);
+        }
 
-            // location.href="<?php echo base_url('restrict');?>";
-        }    
+        if(sessionLimitHour==0 && (loginHour==23 || loginHour==22 || loginHour==21))
+        {
+            a = ("2019-12-07T"+computeLimitHour1+":"+computeLimitMin1);
+            b = ("2019-12-07T"+computeLimitHour2+":"+computeLimitMin2);
+        }
 
+        else 
+        {
+            a = ("2019-12-06T"+computeLimitHour1+":"+computeLimitMin1);
+            b = ("2019-12-06T"+computeLimitHour2+":"+computeLimitMin2);
+        }
+        
+
+        if(sessionLimit!=0)
+        {
+            var milliseconds = ((new Date(a)) - (new Date(b)));
+
+            var sessionMinutes = milliseconds / (60000);
+
+            if(sessionLimit==0)
+                sessionMinutes = 999999;
+
+            // alert(b);
+            // alert(a);
+
+            // alert(curTime);
+            // alert(nextTime);
+
+            // alert("<?php echo $login_time; ?>");
+            
+            // alert(sessionLimit);
+            
+            // alert(loginHour + ":" + loginMin + " to " + sessionLimitHour + ":" + sessionLimitMin);
+
+            // alert("You have " + sessionMinutes + " minutes left");
+
+            if(sessionMinutes<=10 && sessionMinutes>0 && (getCookie('sessionWarning')=='0'))
+            {
+                // alert("You may have been using Mukhlat for too long! You have "+sessionMinutes+" minutes left!");
+
+                $('#session-popup').modal('show');
+
+                document.cookie = "sessionWarning=1;" + ";path=/"; 
+            } 
+            
+            //if(sessionMinutes<=0 || (today.getHours() == sessionLimitHour && today.getMinutes() > sessionLimitMin))
+            if(sessionMinutes<=0)
+            {
+                // alert("time's up!");
+
+                // location.href="<?php echo base_url('restrict');?>";
+            } 
+
+            else if(sessionMinutes<5)
+            {               
+                //PUT FALLING TIME FUNCTION CALL HERE
+            } 
+        }
+        
+
+        else if(sessionLimit==0)
+        {
+            sessionMinutes = 999999;
+        }
 
         // get available times from PHP array that parents set
         var restrictions =  <?php echo json_encode($restrictions2); ?>;
         
-
         // checks if child cannot use for the current timeslot
         if(!(restrictions.includes(curTime)))
             canUse=0;
@@ -333,8 +511,7 @@
             canUseNext=0;
 
 
-        // if child cannot use for the current timeslot
-        // redirect to restriction page
+        // if child cannot use for the current timeslot, redirect to restriction page
         if(canUse===0)
         {
             // alert("You can't use Mukhlat right now!");
@@ -345,17 +522,16 @@
         // if child cannot use for the next timeslot
         if(canUseNext===0)
         {
-//             alert("You have " + (nextMinute-today.getMinutes()) + " minutes left to use Mukhlat!");
+            // alert("You have " + (nextMinute-today.getMinutes()) + " minutes left to use Mukhlat!");
              
-             if((nextMinute-today.getMinutes())<=5 && fallingone===0)
+             if((nextMinute-today.getMinutes())<=5 && fallingone===0 && sessionMinutes>=5)
              {
                  $('#schedule-warning-modal').modal('show');
                  document.getElementById("screen").style.opacity = "1";
                  fallingone++;
-//                 alert("You have " + (nextMinute-today.getMinutes()) + " minutes left to use Mukhlat!");
+                //  alert("You have " + (nextMinute-today.getMinutes()) + " minutes left to use Mukhlat!");
                 
              }
-            // add the falling numbers function call here}
         }    
         
         // repeat function to check every 30 seconds
@@ -364,27 +540,6 @@
     }
 
     checkRestriction();
-
-
-    function getCookie(cname) 
-    {
-        var name = cname + "=";
-        var ca = document.cookie.split(';');
-        for(var i = 0; i < ca.length; i++) 
-        {
-            var c = ca[i];
-            while (c.charAt(0) === ' ') 
-            {
-                c = c.substring(1);
-            }
-
-            if (c.indexOf(name) === 0) 
-            {
-                return c.substring(name.length, c.length);
-            }
-        }
-        return "";
-    }
     
 
 /*------------------------- AFK Timer Script -------------------------*/
@@ -403,7 +558,8 @@
         StartTimer();
 //         $('#afkpopup').modal('hide'); 
     });
-// $('#afkpopup').modal('show'); 
+
+
     document.onscroll = function()
     { 
         StartTimer();
@@ -2186,8 +2342,10 @@ function readcontent2(value) { //only talks when no more talking
     </script>
 <!-- End Nav Bar -->
 
-<?php include(APPPATH . 'views/modals/parent_notes_modal.php');
-      include(APPPATH . 'views/modals/teacher_announcements_modal.php');
-      include(APPPATH . 'views/modals/logout_confirm_modal.php'); 
-   // include(APPPATH . 'views/modals/notifications_modal.php');
-      include(APPPATH . 'views/modals/customize_modal.php'); ?>
+<?php
+    include(APPPATH . 'views/modals/parent_notes_modal.php');
+    include(APPPATH . 'views/modals/teacher_announcements_modal.php');
+    include(APPPATH . 'views/modals/logout_confirm_modal.php'); 
+    // include(APPPATH . 'views/modals/notifications_modal.php');
+    include(APPPATH . 'views/modals/customize_modal.php'); 
+?>
