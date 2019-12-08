@@ -410,40 +410,25 @@ $(document).ready(function () {
 
     $(document).on('change', '#attach-img', function () {
         //disable attachment buttons
-        $("#image-text").html('<i class = "fa fa-file-image-o"></i> Change Image');
-        $("#image-text2").html('<i class = "fa fa-file-image-o"></i> Change Image');
-        $("#attach-audio").attr('disabled', 'true');
-        $("#audio-label").addClass('disabled');
-        $("#attach-video").attr('disabled', 'true');
-        $("#video-label").addClass('disabled');
-        $("#attach-file").attr('disabled', 'true');
-        $("#file-label").addClass('disabled');
+        $("#image-text").html('<img src="http://localhost/MukhlatV2/icons/pic.png" style="display:block;margin: 0 auto;"> Change Pix ');
+        $("#audio-text").html('<img src="http://localhost/MukhlatV2/icons/note.png" style="display:block;margin: 0 auto;"> Sound ');
+        $("#video-text").html('<img src="http://localhost/MukhlatV2/icons/video.png" style="display:block;margin: 0 auto;"> Vid ');
         changeAttachment();
     });
 
     $(document).on('change', '#attach-audio', function () {
         //disable attachment buttons
-        $("#audio-text").html('<i class = "fa fa-file-audio-o"></i> Change Audio');
-        $("#attach-img").attr('disabled', 'true');
-        $("#img-label").addClass('disabled');
-        $("#attach-video").attr('disabled', 'true');
-        $("#video-label").addClass('disabled');
-        $("#attach-file").attr('disabled', 'true');
-        $("#file-label").addClass('disabled');
-
+        $("#image-text").html('<img src="http://localhost/MukhlatV2/icons/pic.png" style="display:block;margin: 0 auto;"> Pix ');
+        $("#audio-text").html('<img src="http://localhost/MukhlatV2/icons/note.png" style="display:block;margin: 0 auto;">Change Sound ');
+        $("#video-text").html('<img src="http://localhost/MukhlatV2/icons/video.png" style="display:block;margin: 0 auto;"> Vid ');
         changeAttachment();
     });
 
     $(document).on('change', '#attach-video', function () {
         //disable attachment buttons
-        $("#video-text").html('<i class = "fa fa-file-video-o"></i> Change Video');
-        $("#attach-img").attr('disabled', 'true');
-        $("#img-label").addClass('disabled');
-        $("#attach-audio").attr('disabled', 'true');
-        $("#audio-label").addClass('disabled');
-        $("#attach-file").attr('disabled', 'true');
-        $("#file-label").addClass('disabled');
-
+        $("#image-text").html('<img src="http://localhost/MukhlatV2/icons/pic.png" style="display:block;margin: 0 auto;"> Pix ');
+        $("#audio-text").html('<img src="http://localhost/MukhlatV2/icons/note.png" style="display:block;margin: 0 auto;"> Sound ');
+        $("#video-text").html('<img src="http://localhost/MukhlatV2/icons/video.png" style="display:block;margin: 0 auto;"> Change Vid ');
         changeAttachment();
     });
 

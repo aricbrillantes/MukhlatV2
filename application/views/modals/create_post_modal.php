@@ -87,52 +87,7 @@ $topic = $_SESSION['current_topic'];
   -webkit-transform: rotate(45deg);
   }
 
-  .btnrecord {
-	box-shadow:inset 0px 34px 0px -15px #b54b3a;
-	background-color:#a73f2d;
-	border:1px solid #241d13;
-	display:inline-block;
-	cursor:pointer;
-	color:#ffffff;
-	font-family:Arial;
-	font-size:15px;
-	font-weight:bold;
-	padding:9px 23px;
-	text-decoration:none;
-  text-shadow:0px -1px 0px #7a2a1d;
-  border-radius:24px;
-}
-.btnrecord:hover {
-	background-color:#b34332;
-}
-.btnrecord:active {
-	position:relative;
-	top:1px;
-}
-
-
-.btnstopcss {
-	box-shadow: 3px 4px 0px 0px #899599;
-	background:linear-gradient(to bottom, #ededed 5%, #bab1ba 100%);
-	background-color:#ededed;
-	border:1px solid #d6bcd6;
-	display:inline-block;
-	cursor:pointer;
-	color:#000000;
-	font-family:Arial;
-	font-size:17px;
-	padding:7px 25px;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #e1e2ed;
-}
-.btnstopcss:hover {
-	background:linear-gradient(to bottom, #bab1ba 5%, #ededed 100%);
-	background-color:#bab1ba;
-}
-.btnstopcss:active {
-	position:relative;
-	top:1px;
-}
+  
 #scissors {
         height: 43px; /* image height */
         width: 90%;
@@ -148,32 +103,73 @@ $topic = $_SESSION['current_topic'];
         position: relative;
         top: 50%;
         display: block;
-        border-top: 3px dashed black;
-        margin-top: -3px;
+        border-top: 2px dashed black;
+        margin-top: -2px;
     }
-    .dlbutton {
-	box-shadow: 0px 0px 0px 2px #9fb4f2;
-	background:linear-gradient(to bottom, #7892c2 5%, #476e9e 100%);
-	background-color:#7892c2;
-	border-radius:10px;
-	border:1px solid #4e6096;
-	display:inline-block;
-	cursor:pointer;
-	color:#ffffff;
-	font-family:Arial;
-	font-size:19px;
-	padding:12px 37px;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #283966;
-}
-.dlbutton:hover {
-	background:linear-gradient(to bottom, #476e9e 5%, #7892c2 100%);
-	background-color:#476e9e;
-}
-.dlbutton:active {
-	position:relative;
-	top:1px;
-}
+    #scissors-mid {
+        height: 43px; /* image height */
+        width: 90%;
+        margin: auto auto;
+        background-image: url('http://i.stack.imgur.com/cXciH.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        position: relative;
+        overflow: hidden;
+    }
+    #scissors-mid:after {
+        content: "";
+        position: relative;
+        top: 50%;
+        display: block;
+        border-top: 2px dashed black;
+        margin-top: -2px;
+    }
+
+    .drawnbutton{
+     
+      background:transparent;
+      
+      
+      transition:all .5s ease;
+      color:#41403E;
+      font-size:2rem;
+      letter-spacing:1px;
+      outline:none;
+      box-shadow: 20px 38px 34px -26px hsla(0,0%,0%,.2);
+      border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+    }
+      .drawnbutton:hover{
+         box-shadow:2px 8px 4px -6px hsla(0,0%,0%,.4);
+      } 
+      .drawnbutton.lined.thick{
+         border:solid 5px #009900;
+      }
+      .drawnbutton.dotted.thick{
+         border:dotted 5px #41403E;
+         width:30%;
+      }
+      .drawnbutton.dashed.thick{
+        border:dashed 5px #41403E;
+        text-align:center;
+        
+  
+      }
+      .drawnbutton.lined.thin{
+         border:solid 2px #41403E;
+      }
+      .drawnbutton.dotted.thin{
+         border:dotted 2px #41403E;
+         width:30%;
+      }
+      .drawnbutton.dashed.thin{
+        border:dashed 2px #41403E;
+      }
+    
+    @media (max-width:620px){
+      .drawnbutton{
+        margin-bottom:2rem;
+      }
+    }
 
   </style>
  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
@@ -239,29 +235,63 @@ $topic = $_SESSION['current_topic'];
                                 </div>
                             </div></center>
                         </div>-->
+                        
+            <div id="scissors"></div>
+            <label id = "record-label" >
+            <button type="button" id="btnStart" class="drawnbutton lined thin" onclick="recordaudio();">Tick Talk!</button>
+            <button type="button" id="btnStart2" class="drawnbutton lined thin" onclick="recordvideo();"><img src="http://localhost/MukhlatV2/icons/Recordvid.png" style="display:block;margin: 0 auto;"></img>Video Time!</button>
+            <br>
+            <h4 id="startrec" style="display: none;text-align:center;">You are now recording!</h4>
+
+            <div id="recaud" style="display: none">
+                    
+                    
+        
+                    
+                    <audio id="aud1" controls></audio><br>
+                    <div style="text-align: center;">
+                    <button type="button" id="btnStop" class="drawnbutton dashed thick">Im done recording!</button>
+                    <button id="dlbutton" class="drawnbutton dashed thick"  style="display: none;"><a id="dl" download="My Voice">Save my Voice</a></button>
+                    </div>
+            </div>
+            
+            <div id="recvid" style="display: none">
+                    <video width="400" id="vidprev"  controls muted></video><br>
+                    
+        
+                    
+                    <video width="400" id="vid1" style="display: none" controls></video><br>
+                    <div style="text-align: center;">
+                    <button type="button" id="btnStop2" class="drawnbutton dashed thick">Im done recording!</button>
+                    <button id="dl2button" class="drawnbutton dashed thick"  style="display: none;"><a id="dl2"  download="My Video" style="text-decoration: none;">Save my Video</a></button>
+                    </div>
+
+            </div>
+            <br>
+            </label>
+            <div id="scissors-mid"></div>
                          
-                         <br><br>
                          
                     <div id = "attachment-buttons" class = "form-group">
                       <!--<img id="target"/>-->
                         <!-- Attach a file: -->
                         <!--IMAGE-->
-                        <label id = "img-label" class="btn btn-primary buttonsbgcolor borderbuttonoutline">
+                        <label id = "img-label" class="drawnbutton dotted thin">
                             <input id = "attach-img" accept = "image/*" type="file" name = "post_image" style = "display: none;" onchange="fileAdded();readURL(this);">
-                            <p id = "image-text" class = "attach-btn-text"><i class = "fa fa-file-image-o"></i> Add Picture</p>
+                            <p id = "image-text" class = "attach-btn-text" style="text-align: center;"><img src="http://localhost/MukhlatV2/icons/pic.png" style="display:block;margin: 0 auto;"> Pix </p>
                         </label>
 
                         <!--AUDIO-->
-                        <label id = "audio-label" class="btn btn-primary buttonsbgcolor borderbuttonoutline">
+                        <label id = "audio-label" class="drawnbutton dotted thin">
                             <input id = "attach-audio" accept = "audio/*" type="file" name = "post_audio" style = "display: none;" onchange="fileAdded();readAud(this);">
-                            <p id = "audio-text" class = "attach-btn-text"><i class = "fa fa-file-audio-o"></i> Add Sound</p>
+                            <p id = "audio-text" class = "attach-btn-text" style="text-align: center;"><img src="http://localhost/MukhlatV2/icons/note.png" style="display:block;margin: 0 auto;"> Sounds </p>
  
                         </label>
 
                         <!--VIDEO-->
-                        <label id = "video-label" class="btn btn-primary buttonsbgcolor borderbuttonoutline">
+                        <label id = "video-label" class="drawnbutton dotted thin">
                             <input id = "attach-video" accept = "video/*" type="file" name = "post_video" style = "display: none;" onchange="fileAdded();readVid(this);">
-                            <p id = "video-text" class = "attach-btn-text"><i class = "fa fa-file-video-o"></i> Add Video</p>
+                            <p id = "video-text" class = "attach-btn-text" style="text-align: center;"><img src="http://localhost/MukhlatV2/icons/video.png" style="display:block;margin: 0 auto;"> Vids </p>
                         </label>
 
                         <!--FILE-->
@@ -288,43 +318,12 @@ $topic = $_SESSION['current_topic'];
               
                 </div>
                 <div class = "modal-footer" style = "padding: 5px; border-top: none; padding-bottom: 10px; padding-right: 10px;">
-                    <a id = "create-post-btn" class ="btn btn-primary buttonsbgcolor" data-toggle = "modal" onclick="shareclick()" >Share</a>
+                    <button class="drawnbutton lined thick"><a id = "create-post-btn" style="font-size: 30px;text-decoration: none;" data-toggle = "modal" onclick="shareclick()" >Share</a></button>
                 </div>
                 
 
             </form>
-            <div id="scissors"></div>
-            <label id = "record-label" >
-            <button id="btnStart" class="btnrecord">Record My Voice!</button>
-            <button id="btnStart2" class="btnrecord">Take a video!</button>
-            <br>
-            <br>  
-            <h4 id="startrec" style="display: none">You are now recording!</h4>
-
-            <div id="recaud" style="display: none">
-                    
-                    
-        
-                    
-                    <audio id="aud1" controls></audio><br>
-                    <button id="btnStop" class="btnstopcss">Im done recording!</button>
-                    <a id="dl" class="dlbutton" style="display: none" download="My Voice">Save my Voice</a>
-
-            </div>
             
-            <div id="recvid" style="display: none">
-                    <video width="400" id="vidprev"  controls muted></video><br>
-                    
-        
-                    
-                    <video width="400" id="vid1" style="display: none" controls></video><br>
-                    <button id="btnStop2" class="btnstopcss">Im done recording!</button>
-                    
-                    <a id="dl2" class="dlbutton" style="display: none" download="My Video">Save my Video</a>
-                    
-
-            </div>
-            </label>
 
         </div>
     </div>
@@ -351,6 +350,26 @@ function fileAdded()
             }
   hasfile=1;
   $('[id$=addwarning]').hide();
+}
+
+function recordaudio()
+{
+  $('[id$=recaud]').show();
+  $('[id$=startrec]').show();
+  $('[id$=btnStart]').hide();
+  $('[id$=btnStop]').show();
+  $('[id$=dlbutton]').hide();
+  $('[id$=btnStart2]').hide();
+}
+function recordvideo()
+{
+  $('[id$=recvid]').show();
+  $('[id$=startrec]').show();
+  $('[id$=btnStart2]').hide();
+  $('[id$=btnStop2]').show();
+  $('[id$=vidprev]').show();
+  $('[id$=dl2button]').hide();
+  $('[id$=btnStart]').hide();
 }
 
 // close()
@@ -417,11 +436,7 @@ let constraintObj = {
             let chunks = [];
             
             start.addEventListener('click', (ev)=>{
-                $('[id$=recaud]').show();
-                $('[id$=startrec]').show();
-                $('[id$=btnStart]').hide();
-                $('[id$=btnStop]').show();
-                $('[id$=dl]').hide();
+                
                 mediaRecorder.start();
                 console.log(mediaRecorder.state);
                 
@@ -430,7 +445,8 @@ let constraintObj = {
               $('[id$=startrec]').hide();
               $('[id$=btnStart]').show();
               $('[id$=btnStop]').hide();
-              $('[id$=dl]').show();
+              $('[id$=dlbutton]').show();
+              $('[id$=btnStart2]').show();
                 mediaRecorder.stop();
                 console.log(mediaRecorder.state);
                
@@ -459,14 +475,16 @@ let constraintObj = {
 function readURL(input) {
   $('[id$=attach-audio]').val("");
   $('[id$=attach-video]').val("");
-  $('[id$=image-text]').text('Change Picture');
-  $('[id$=video-text]').text('Add Video');
-  $('[id$=audio-text]').text('Add Sound');
+  
+  
   $('[id$=aud]').hide();
   $('[id$=vid]').hide();
   $('[id$=pic_h]').hide();
   $('[id$=vid_h]').hide();
   $('[id$=snd_h]').hide();
+  document.getElementById("video-label").className = "drawnbutton dotted thin";
+  document.getElementById("audio-label").className = "drawnbutton dotted thin";
+  document.getElementById("img-label").className = "drawnbutton dotted thick";
   if (input.files && input.files[0]) {
     
     
@@ -498,13 +516,15 @@ function readVid(input){
   $('[id$=attach-audio]').val("");
   $('[id$=attach-img]').val("");
   $('[id$=video-text]').text('Change Video');
-  $('[id$=image-text]').text('Add Image');
-  $('[id$=audio-text]').text('Add Sound');
+  
   $('[id$=aud]').hide();
   $('[id$=pic]').hide();
   $('[id$=pic_h]').hide();
   $('[id$=vid_h]').hide();
   $('[id$=snd_h]').hide();
+  document.getElementById("img-label").className = "drawnbutton dotted thin";
+  document.getElementById("audio-label").className = "drawnbutton dotted thin";
+  document.getElementById("video-label").className = "drawnbutton dotted thick";
   if(input.files[0] && input.files[0].size < 2000000) { 
         //Submit form
         $('[id$=vid_h]').hide();  
@@ -518,20 +538,22 @@ function readVid(input){
       
     }
 
-  
+    $('[id$=recvid]').hide();
 }
 
 function readAud(input){
   $('[id$=attach-video]').val("");
   $('[id$=attach-img]').val("");
   $('[id$=audio-text]').text('Change Sound');
-  $('[id$=image-text]').text('Add Image');
-  $('[id$=video-text]').text('Add Video');
+ 
   $('[id$=pic]').hide();
   $('[id$=vid]').hide();
   $('[id$=pic_h]').hide();
   $('[id$=vid_h]').hide();
   $('[id$=snd_h]').hide();
+  document.getElementById("video-label").className = "drawnbutton dotted thin";
+  document.getElementById("img-label").className = "drawnbutton dotted thin";
+  document.getElementById("audio-label").className = "drawnbutton dotted thick";
   if(input.files[0] && input.files[0].size < 2000000) { 
         //Submit form    
         $('[id$=snd_h]').hide();   
@@ -545,7 +567,7 @@ function readAud(input){
       
     }
     
- 
+    $('[id$=recaud]').hide();
 }
 
 ///////////////
@@ -603,12 +625,7 @@ let constraintObj2 = {
             let chunks2 = [];
             
             start2.addEventListener('click', (ev)=>{
-              $('[id$=recvid]').show();
-                $('[id$=startrec]').show();
-                $('[id$=btnStart2]').hide();
-                $('[id$=btnStop2]').show();
-                $('[id$=vidprev]').show();
-                $('[id$=dl2]').hide();
+              
                 mediaRecorder2.start();
                 console.log(mediaRecorder2.state);
                 
@@ -619,7 +636,8 @@ let constraintObj2 = {
               $('[id$=startrec]').hide();
               $('[id$=btnStart2]').show();
               $('[id$=btnStop2]').hide();
-              $('[id$=dl2]').show();
+              $('[id$=dl2button]').show();
+              $('[id$=btnStart]').show();
                 mediaRecorder2.stop();
                 console.log(mediaRecorder2.state);
             });
@@ -667,6 +685,7 @@ let constraintObj2 = {
           
           $('[id$=btnStart]').show();
           $('[id$=btnStart2]').show();
+          $('[id$=scissors]').show();
 
         }
 
@@ -695,6 +714,7 @@ let constraintObj2 = {
           $('[id$=btnStart2]').hide();
           $('[id$=contentwarning]').hide();
           $('[id$=titlewarning]').hide();
+          $('[id$=scissors]').hide();
         }
 
         if(p==="shout")
@@ -706,11 +726,12 @@ let constraintObj2 = {
           $('[id$=btnStart]').hide();
           $('[id$=btnStart2]').hide();
           $('[id$=titlewarning]').hide();
+          $('[id$=scissors]').hide();
         }
         
         if(p==="reply")
         {
-          $('[id$=addwarning]').show();
+          $('[id$=addwarning]').hide();
           $('[id$=btnStart]').show();
           $('[id$=btnStart2]').show();
           $('[id$=img-label]').show();
@@ -721,6 +742,7 @@ let constraintObj2 = {
           $('[id$=post-title]').val(" ");
           $('[id$=modaltitle]').text("Share it on the chat room");
           $('[id$=titlewarning]').hide();
+          $('[id$=scissors]').show();
         }
         
     }
@@ -728,37 +750,37 @@ let constraintObj2 = {
 function shareclick()
 {
   if(document.getElementById('post-content').value.length>=16000)
-            {  
-                document.getElementById('charLimitMessage4').style.display = "block";
-            }  
-                
-            else
-                document.getElementById('charLimitMessage4').style.display = "none";
+  {  
+    $('[id$=charLimitMessage4]').show();
+  }  
+      
+  else
+  $('[id$=charLimitMessage4]').hide();
 
-            if(document.getElementById('post-title').value=="" && toggle=="shout")
-            {
-              
-              $('[id$=titlewarning]').show();
-            }
-            else
-            {
-              
-              $('[id$=titlewarning]').hide();
-              
-            }
-            if(document.getElementById('post-content').value=="")
-            {
-              
-              $('[id$=contentwarning]').show();
-            }
-            else{
-              
-              $('[id$=contentwarning]').hide();
-            }
-            if(hasfile!=1 && toggle!="shout" && toggle!="text")
-              {
-                $('[id$=addwarning]').show();
-              }
+  if(document.getElementById('post-title').value=="" && toggle=="shout")
+  {
+    
+    $('[id$=titlewarning]').show();
+  }
+  else
+  {
+    
+    $('[id$=titlewarning]').hide();
+    
+  }
+  if(document.getElementById('post-content').value=="")
+  {
+    
+    $('[id$=contentwarning]').show();
+  }
+  else{
+    
+    $('[id$=contentwarning]').hide();
+  }
+  if(hasfile!=1 && toggle!="shout" && toggle!="text" && toggle!="reply")
+    {
+      $('[id$=addwarning]').show();
+    }
             
 }
 
@@ -822,7 +844,7 @@ function shareclick()
 //                  responsiveVoice.speak("Hey there! That's a bad word!","UK English Male",{rate: 1, pitch: 1.2});
 //                  document.getElementById("profanityWarning").innerHTML = 'NO SWEARING!';
                 x.style.display = "block";
-                document.getElementById('create-post-btn').style.background="red";
+                document.getElementById('create-post-btn').style.color="red";
                 document.getElementById('create-post-btn').innerHTML="You should remove bad words from your message!";
                 document.getElementById('create-post-btn').style.pointerEvents="none";
             }  
@@ -832,7 +854,7 @@ function shareclick()
 //                    document.getElementById("profanityWarning").innerHTML = '';
               
                 x.style.display = "none";
-                document.getElementById('create-post-btn').style.background=getCookie("ButtonColor");
+                document.getElementById('create-post-btn').style.color="#41403E";
                 document.getElementById('create-post-btn').innerHTML="Share";
                 document.getElementById('create-post-btn').style.pointerEvents="auto";
                 if(hasfile==0)
