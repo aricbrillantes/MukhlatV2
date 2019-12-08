@@ -482,22 +482,27 @@
                 document.cookie = "sessionWarning=1;" + ";path=/"; 
             } 
             
+            else if(sessionMinutes<5 && sessionMinutes>0)
+            {               
+                document.getElementById("screen").style.opacity = "1";
+                $('#session-popup').modal('show');
+                fallingone++;
+
+            } 
+
             //if(sessionMinutes<=0 || (today.getHours() == sessionLimitHour && today.getMinutes() > sessionLimitMin))
-            if(sessionMinutes<=0)
+            else if(sessionMinutes<=0)
             {
                 // alert("time's up!");
 
                 // location.href="<?php echo base_url('restrict');?>";
             } 
 
-            else if(sessionMinutes<5)
-            {               
-                //PUT FALLING TIME FUNCTION CALL HERE
-            } 
+             
         }
         
 
-        else if(sessionLimit==0)
+        else if(sessionLimit==0 && fallingone===0)
         {
             sessionMinutes = 999999;
         }
@@ -519,7 +524,7 @@
         {
             // alert("You can't use Mukhlat right now!");
 
-            // location.href="<?php echo base_url('restrict');?>"; //uncomment this line for actual testing
+            location.href="<?php echo base_url('restrict');?>"; //uncomment this line for actual testing
         }
          
         // if child cannot use for the next timeslot
@@ -555,11 +560,12 @@
     var timeoutID;
     dis.innerHTML = "Time Left: " + timerLength;
     
-    addEventListener("mousemove", function() {
+    addEventListener("mousemove", function() 
+    {
     
         //reset timer and hide AFK popup
         StartTimer();
-//         $('#afkpopup').modal('hide'); 
+        $('#afkpopup').modal('hide'); 
     });
 
 
@@ -587,9 +593,9 @@
         dis.innerHTML = "Time Left: " + Math.max(timeLeft/1000,0);
         timeoutID = window.setTimeout(Update, 100);
 
-        if(timeLeft<=120*1000) //display AFK popup after 2 minutes
+        if(timeLeft<=480*1000) //display AFK popup after 2 minutes
         {
-            // $('#afkpopup').modal('show'); 
+            $('#afkpopup').modal('show'); 
         }
         
         if(timeLeft<=10*1000) // logout user if AFK
