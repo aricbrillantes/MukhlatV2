@@ -42,6 +42,26 @@
             background-color: #f9f9f9;
         }
 
+        @media ( max-width: 568px ) 
+        {
+            .img-child-list 
+            {
+                height:48px;
+                width:48px;
+            }
+            
+        }
+
+        @media ( min-width: 768px ) 
+        {
+            .img-child-list 
+            {
+                height:50px;
+                width:50px;
+            }
+            
+        }
+
     </style>
 <?php endif; ?>
 
@@ -126,64 +146,102 @@
         <?php endif;?>
     </div>
 
-    <div class = " col-sm-10 col-md-10 col-md-offset-1 col-sm-offset-1" style = "">
-        <?php if ($count>0): ?>
-        <div class = "">
+    
+    <?php if ($count>0): ?>
 
-            <?php foreach ($children->result() as $child): 
+        <?php if ($count<=3): ?>
+        <div class = " col-sm-10 col-md-10 col-md-offset-0 col-sm-offset-0" style = "">
 
-                $data['user'] = $this->users->get_user(true, true, array('user_id' => $child->user_id));
-                
-                $CI =&get_instance();
-                $CI->load->model('topic_model');
+        <?php elseif ($count>3): ?>
+        <div class = " col-sm-10 col-md-10 col-md-offset-1 col-sm-offset-1" style = "">
 
-                $user_topics = $CI->topic_model->get_user_topics($child->user_id);
-                $user_moderated_topics = $CI->topic_model->get_moderated_topics($child->user_id);
-                $user_followed_topics = $CI->topic_model->get_followed_topics($child->user_id);
+        <?php endif; ?>   
 
-                ?>
+            <div class = "">
 
-                <div class = "col-xs-12 col-md-6 col-sm-6 col-md-offset-0 col-sm-offset-0 content-container container-fluid" style = "margin-bottom: 5px; ">
-                    <div class="col-xs-3 col-md-4 col-sm-4">
-                        <center>
-                            <img id = "user-pic-display" class = "img-circle" width = "64px" height = "64px" src = "<?php echo $child->profile_url ? base_url($child->profile_url) : base_url('images/default.jpg') ?>" style = "margin-top: 30px;">
-                        </center>
-                    </div>
+                <?php foreach ($children->result() as $child): 
 
-                    <div class = "col-xs-9 col-md-8 col-sm-8 col-md-offset-0 content-container container-fluid" style = "margin-bottom: 5px; border:0">
-                        
-                        <?php if($child->is_enabled == 0):?>
-                            <h3 class = "no-padding text-info" style = "margin-bottom: 0px; color:red;"><strong><?php echo $child->first_name . " " . $child->last_name ?></strong></h3>
-                        
-                        <?php elseif($child->is_enabled == 1):?>
-                            <h3 class = "no-padding text-info" style = "margin-bottom: 0px;"><strong><?php echo $child->first_name . " " . $child->last_name ?></strong></h3>
+                    $data['user'] = $this->users->get_user(true, true, array('user_id' => $child->user_id));
+                    
+                    $CI =&get_instance();
+                    $CI->load->model('topic_model');
 
-                        <?php endif; ?>
+                    $user_topics = $CI->topic_model->get_user_topics($child->user_id);
+                    $user_moderated_topics = $CI->topic_model->get_moderated_topics($child->user_id);
+                    $user_followed_topics = $CI->topic_model->get_followed_topics($child->user_id);
 
-                        <small class = "no-padding no-margin"><?php echo $child->email ?></small>
+                    ?>
 
-                        <!-- <p class = "wrap text-muted" style = ""><i><?php echo $child->description ? $child->description : 'Hello World!'; ?></i></p> -->
-                        <a href = "<?php echo base_url('parents/activity/' . $child->user_id); ?>" class = "btn btn-primary btn-block" style = "margin-bottom: 10px; "><i class = "glyphicon glyphicon-user"></i> View <?php echo $child->first_name ?>'s activity</a>
+                    <?php if ($count<=3): ?>
+                    <div class = "col-xs-12 col-md-10 col-sm-10 col-md-offset-2 col-sm-offset-2 content-container container-fluid" style = "margin-bottom: 0px; ">
+                        <div class="col-xs-3 col-md-3 col-sm-3">
+                            <center>
+                                <img id = "user-pic-display" class = "img-circle img-child-list" max-width = "80px" height = "80px" src = "<?php echo $child->profile_url ? base_url($child->profile_url) : base_url('images/default.jpg') ?>" style = "margin-top: 30px;">
+                            </center>
+                        </div>
 
-                    </div>
-                </div>    
-            <?php endforeach; ?>
+                        <div class = "col-xs-9 col-md-8 col-sm-8 col-md-offset-0 content-container container-fluid" style = "margin-bottom: 5px; border:0">
+                            
+                            <?php if($child->is_enabled == 0):?>
+                                <h3 class = "no-padding text-info" style = "margin-bottom: 0px; color:red;"><strong><?php echo $child->first_name . " " . $child->last_name ?></strong></h3>
+                            
+                            <?php elseif($child->is_enabled == 1):?>
+                                <h3 class = "no-padding text-info" style = "margin-bottom: 0px;"><strong><?php echo $child->first_name . " " . $child->last_name ?></strong></h3>
+
+                            <?php endif; ?>
+
+                            <small class = "no-padding no-margin"><?php echo $child->email ?></small>
+
+                            <!-- <p class = "wrap text-muted" style = ""><i><?php echo $child->description ? $child->description : 'Hello World!'; ?></i></p> -->
+                            <a href = "<?php echo base_url('parents/activity/' . $child->user_id); ?>" class = "btn btn-primary btn-block" style = "margin-bottom: 10px; "><i class = "glyphicon glyphicon-user"></i> View <?php echo $child->first_name ?>'s activity</a>
+
+                        </div>
+                    </div>    
+
+                    <?php elseif ($count>3): ?>
+                    <div class = "col-xs-12 col-md-6 col-sm-6 col-md-offset-0 col-sm-offset-0 content-container container-fluid" style = "margin-bottom: 0px; ">
+                        <div class="col-xs-3 col-md-3 col-sm-3">
+                            <center>
+                                <img id = "user-pic-display" class = "img-circle img-child-list" max-width = "80px" height = "80px" src = "<?php echo $child->profile_url ? base_url($child->profile_url) : base_url('images/default.jpg') ?>" style = "margin-top: 30px;">
+                            </center>
+                        </div>
+
+                        <div class = "col-xs-9 col-md-8 col-sm-8 col-md-offset-0 content-container container-fluid" style = "margin-bottom: 5px; border:0">
+                            
+                            <?php if($child->is_enabled == 0):?>
+                                <h3 class = "no-padding text-info" style = "margin-bottom: 0px; color:red;"><strong><?php echo $child->first_name . " " . $child->last_name ?></strong></h3>
+                            
+                            <?php elseif($child->is_enabled == 1):?>
+                                <h3 class = "no-padding text-info" style = "margin-bottom: 0px;"><strong><?php echo $child->first_name . " " . $child->last_name ?></strong></h3>
+
+                            <?php endif; ?>
+
+                            <small class = "no-padding no-margin"><?php echo $child->email ?></small>
+
+                            <!-- <p class = "wrap text-muted" style = ""><i><?php echo $child->description ? $child->description : 'Hello World!'; ?></i></p> -->
+                            <a href = "<?php echo base_url('parents/activity/' . $child->user_id); ?>" class = "btn btn-primary btn-block" style = "margin-bottom: 10px; "><i class = "glyphicon glyphicon-user"></i> View <?php echo $child->first_name ?>'s activity</a>
+
+                        </div>
+                    </div>    
+
+                    <?php endif; ?>
+                <?php endforeach; ?>
+
+            </div>
 
         </div>
 
-        <?php elseif ($count<1): ?>
+    <?php elseif ($count<1): ?>
 
-            <div class = "row text-center">
+        <div class = "row text-center">
+            <div class = "col-xs-16 col-md-8 col-md-offset-2 content-container container-fluid" style = "margin-bottom: 5px;">
+                <div class = "col-xs-16 col-md-12 col-md-offset-0 content-container container-fluid" style = "margin-bottom: 5px; border:0">
+                    <h2 class = "no-padding text-info" style = "margin-bottom: 0px;"><strong>You currently have no children registered!</strong></h2>
+                </div>
+            </div>    
+        </div>
 
-                <div class = "col-xs-16 col-md-8 col-md-offset-2 content-container container-fluid" style = "margin-bottom: 5px;">
-                    <div class = "col-xs-16 col-md-12 col-md-offset-0 content-container container-fluid" style = "margin-bottom: 5px; border:0">
-                        <h2 class = "no-padding text-info" style = "margin-bottom: 0px;"><strong>You currently have no children registered!</strong></h2>
-                    </div>
-                </div>    
-            </div>
-
-        <?php endif; ?>
-    </div>
+    <?php endif; ?>
 
 </body>
 </html>

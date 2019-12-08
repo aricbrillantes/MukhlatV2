@@ -80,7 +80,7 @@
         <div class = "row">
 
             <!-- Admin Content -->
-            <div class = "col-md-8 col-md-offset-0 col-sm-8 col-xs-12 col-md-offset-0 col-xs-offset-0 content-container row">
+            <div class = "col-md-7 col-md-offset-0 col-sm-7 col-xs-12 col-md-offset-0 col-xs-offset-0 content-container row">
                 <h3 class = "text-info text-center user-activities-header col-md-10 col-sm-10 col-xs-12 col-md-offset-1 col-sm-offset-1">Users of Mukhlat</h3>
 
                 <div class = "content-container container-fluid col-md-12 col-md-offset-0 col-sm-offset-1 col-sm-10 col-xs-offset-1 col-xs-10">
@@ -101,7 +101,7 @@
                                 <li class = "list-group-item admin-list-item container-fluid">
                                     <img src = "<?php echo $user->profile_url ? base_url($user->profile_url) : base_url('images/default.jpg') ?>" class = "no-padding pull-left img-circle" width = "45px" height = "45px"/> 
 
-                                    <h4 class = "no-padding admin-list-name"><?php echo $user->first_name . " " . $user->last_name ?></h4>
+                                    <h4 class = "no-padding admin-list-name text-info"><a class="text-info" href="<?php echo base_url('admin/activity/' . $user->user_id)?>"><?php echo $user->first_name . " " . $user->last_name ?></a></h4>
 
                                     <?php 
                                         $CI =&get_instance();
@@ -148,7 +148,7 @@
                                         <?php endif;?>
 
                                     <?php endif;?>
-                                    <a value = "" href="<?php echo base_url('admin/activity/' . $user->user_id)?>" class = "btn-link btn-xs"> <i>View record</i></a>
+                                    <!-- <a value = "" href="<?php echo base_url('admin/activity/' . $user->user_id)?>" class = "btn-link btn-xs"> <i>View record</i></a> -->
 
                                     <?php
                                         if ($logged_user->user_id !== $user->user_id):
@@ -179,9 +179,10 @@
                                 <li class = "list-group-item admin-list-item container-fluid">
                                     <img src = "<?php echo $user->profile_url ? base_url($user->profile_url) : base_url('images/default.jpg') ?>" class = "no-padding pull-left img-circle" width = "45px" height = "45px"/> 
 
-                                    <h4 class = "no-padding admin-list-name"><?php echo $user->first_name . " " . $user->last_name ?></h4>
+                                    <h4 class = "no-padding admin-list-name text-info"><a class="text-info" href="<?php echo base_url('admin/parent/' . $user->user_id)?>"><?php echo $user->first_name . " " . $user->last_name ?></a></h4>
+                                    <!-- <h4 class = "no-padding admin-list-name"><?php echo $user->first_name . " " . $user->last_name ?></h4> -->
 
-                                    <a value = "" href="<?php echo base_url('admin/parent/' . $user->user_id)?>" class = " btn btn-link btn-xs"> <i>View Children</i></a>
+                                    <!-- <a value = "" href="<?php echo base_url('admin/parent/' . $user->user_id)?>" class = " btn btn-link btn-xs"> <i>View Children</i></a> -->
 
                                     <?php
                                         if ($logged_user->user_id !== $user->user_id):
@@ -244,7 +245,7 @@
                 </div>
             </div>
 
-            <div class = "col-md-4 col-sm-4 col-xs-12 col-md-offset-0 col-xs-offset-0 col-sm-offset-0 content-container row">
+            <div class = "col-md-5 col-sm-5 col-xs-12 col-md-offset-0 col-xs-offset-0 col-sm-offset-0 content-container row">
                 <!-- <h3 style="margin-left: 15px">Announcements</h3> -->
                 <h3 class = "text-info text-center user-activities-header col-md-offset-0">Announcements</h3><br>
                 <form enctype = "multipart/form-data" action = "<?php echo base_url('topic/announcement'); ?>" id = "create-announcement-form" method = "POST">

@@ -83,14 +83,24 @@
         }
 
 
-        div.content-container{
+        div.content-container
+        {
             border:0px;
             background-color: #f9f9f9;
         }
 
+        @media ( max-width: 568px ) 
+        {
+            .img-child-list 
+            {
+                height:48px;
+                width:48px;
+            }
+            
+        }
+
     </style>
 <?php endif; ?>
-
 
 
 <!-- Nav Bar -->
@@ -139,17 +149,12 @@
     $count=0;
 
     foreach ($children->result() as $child)
-    {
         $count++;
-    }
-
+    
     // echo($count);
-
 ?>
 <body class = "sign-in">
-
     <div class = "container" style = "">
-        
         <div class = "row">
 
             <?php foreach ($parent->result() as $user): 
