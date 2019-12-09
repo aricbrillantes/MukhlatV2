@@ -75,12 +75,12 @@
 
 <body class = "sign-in">
 
-    <div id = "admin-page" class = "container" style = "margin-top: 0px;">
+    <div id = "admin-page" class = "container" style = "margin-top: 15px;">
 
         <div class = "row">
 
             <!-- Admin Content -->
-            <div class = "col-md-7 col-md-offset-0 col-sm-7 col-xs-12 col-md-offset-0 col-xs-offset-0 content-container row">
+            <div class = "col-md-7 col-md-offset-0 col-sm-7 col-xs-12 col-md-offset-0 col-xs-offset-0 ">
                 <h3 class = "text-info text-center user-activities-header col-md-10 col-sm-10 col-xs-12 col-md-offset-1 col-sm-offset-1">Users of Mukhlat</h3>
 
                 <div class = "content-container container-fluid col-md-12 col-md-offset-0 col-sm-offset-1 col-sm-10 col-xs-offset-1 col-xs-10">
@@ -92,14 +92,14 @@
                     </ul>
                 </div>
 
-                <div class = "col-md-12 col-sm-12 col-xs-12 container-fluid tab-content " style="max-height:500px; overflow-x: hidden; overflow-y: scroll">
+                <div class = "col-md-12 col-sm-12 col-xs-12 container-fluid tab-content " style="max-height:520px; overflow-x: hidden; overflow-y: scroll">
                     <div id = "user-list-1" class = "list-group tab-pane fade in active ">
                         <?php foreach ($users as $user): 
 
                             if ($user->role_id === '2'):?>
 
                                 <li class = "list-group-item admin-list-item container-fluid">
-                                    <img src = "<?php echo $user->profile_url ? base_url($user->profile_url) : base_url('images/default.jpg') ?>" class = "no-padding pull-left img-circle" width = "45px" height = "45px"/> 
+                                    <img src = "<?php echo $user->profile_url ? base_url($user->profile_url) : base_url('images/default.jpg') ?>" class = "no-padding pull-left img-circle" width = "45px" height = "45px" style="margin-right: 10px; margin-top:5px"/> 
 
                                     <h4 class = "no-padding admin-list-name text-info"><a class="text-info" href="<?php echo base_url('admin/activity/' . $user->user_id)?>"><?php echo $user->first_name . " " . $user->last_name ?></a></h4>
 
@@ -153,13 +153,13 @@
                                     <?php
                                         if ($logged_user->user_id !== $user->user_id):
                                             if ($user->is_enabled && !empty($parentExists)): ?>
-                                                    <button type = "button" value = "<?php echo $user->user_id ?>" class = "toggle-account pull-right btn btn-danger admin-list-btn">Disable</button>
+                                                    <button type = "button" value = "<?php echo $user->user_id ?>" class = "toggle-account pull-right btn btn-danger admin-list-btn" style="margin-top:10px">Disable</button>
 
                                                 <?php elseif ($user->is_enabled && empty($parentExists)): ?>
-                                                    <button type = "button" value = "<?php echo $user->user_id ?>" class = "toggle-account pull-right btn btn-danger admin-list-btn">Disable</button>
+                                                    <button type = "button" value = "<?php echo $user->user_id ?>" class = "toggle-account pull-right btn btn-danger admin-list-btn" style="margin-top:10px">Disable</button>
                                                 
                                                 <?php elseif(!$user->is_enabled && !empty($parentExists)): ?>
-                                                    <button type = "button" value = "<?php echo $user->user_id ?>" class = "toggle-account pull-right btn btn-success admin-list-btn">Enable</button>
+                                                    <button type = "button" value = "<?php echo $user->user_id ?>" class = "toggle-account pull-right btn btn-success admin-list-btn" style="margin-top:10px">Enable</button>
                                             <?php
                                             endif;
                                         endif;
@@ -177,7 +177,7 @@
                             if ($user->role_id === '3'):?>
 
                                 <li class = "list-group-item admin-list-item container-fluid">
-                                    <img src = "<?php echo $user->profile_url ? base_url($user->profile_url) : base_url('images/default.jpg') ?>" class = "no-padding pull-left img-circle" width = "45px" height = "45px"/> 
+                                    <img src = "<?php echo $user->profile_url ? base_url($user->profile_url) : base_url('images/default.jpg') ?>" class = "no-padding pull-left img-circle" width = "45px" height = "45px" style="margin-right: 10px; margin-top:5px"/> 
 
                                     <h4 class = "no-padding admin-list-name text-info"><a class="text-info" href="<?php echo base_url('admin/parent/' . $user->user_id)?>"><?php echo $user->first_name . " " . $user->last_name ?></a></h4>
                                     <!-- <h4 class = "no-padding admin-list-name"><?php echo $user->first_name . " " . $user->last_name ?></h4> -->
@@ -188,9 +188,9 @@
                                         if ($logged_user->user_id !== $user->user_id):
                                             if ($user->is_enabled):
                                                 ?>
-                                                <button type = "button" value = "<?php echo $user->user_id ?>" class = "toggle-account pull-right btn btn-danger admin-list-btn">Disable</button>
+                                                <button type = "button" value = "<?php echo $user->user_id ?>" class = "toggle-account pull-right btn btn-danger admin-list-btn" style="margin-top:10px">Disable</button>
                                             <?php else: ?>
-                                                <button type = "button" value = "<?php echo $user->user_id ?>" class = "toggle-account pull-right btn btn-success admin-list-btn">Enable</button>
+                                                <button type = "button" value = "<?php echo $user->user_id ?>" class = "toggle-account pull-right btn btn-success admin-list-btn" style="margin-top:10px">Enable</button>
                                             <?php
                                             endif;
                                         endif;
@@ -210,7 +210,7 @@
                             if ($user->role_id === '1'):?>
 
                                 <li class = "list-group-item admin-list-item container-fluid">
-                                    <img src = "<?php echo $user->profile_url ? base_url($user->profile_url) : base_url('images/default.jpg') ?>" class = "no-padding pull-left img-circle" width = "45px" height = "45px"/> 
+                                    <img src = "<?php echo $user->profile_url ? base_url($user->profile_url) : base_url('images/default.jpg') ?>" class = "no-padding pull-left img-circle" width = "45px" height = "45px" style="margin-right: 10px; "/> 
                                     <h4 class = "no-padding admin-list-name"><?php echo $user->first_name . " " . $user->last_name ?></h4>
                                     
                                         <i class = "text-muted btn-sm no-padding"><?php echo ($logged_user->user_id === $user->user_id) ? '(You)' : '' ?></i>
@@ -227,9 +227,9 @@
                                         if ($logged_user->user_id !== $user->user_id):
                                             if ($user->is_enabled):
                                                 ?>
-                                                <button type = "button" value = "<?php echo $user->user_id ?>" class = "toggle-account pull-right btn btn-danger admin-list-btn">Disable</button>
+                                                <button type = "button" value = "<?php echo $user->user_id ?>" class = "toggle-account pull-right btn btn-danger admin-list-btn" style="margin-top:10px">Disable</button>
                                             <?php else: ?>
-                                                <button type = "button" value = "<?php echo $user->user_id ?>" class = "toggle-account pull-right btn btn-success admin-list-btn">Enable</button>
+                                                <button type = "button" value = "<?php echo $user->user_id ?>" class = "toggle-account pull-right btn btn-success admin-list-btn" style="margin-top:10px">Enable</button>
                                             <?php
                                             endif;
                                         endif;
@@ -245,7 +245,7 @@
                 </div>
             </div>
 
-            <div class = "col-md-5 col-sm-5 col-xs-12 col-md-offset-0 col-xs-offset-0 col-sm-offset-0 content-container row">
+            <div class = "col-md-5 col-sm-5 col-xs-12 col-md-offset-0 col-xs-offset-0 col-sm-offset-0">
                 <!-- <h3 style="margin-left: 15px">Announcements</h3> -->
                 <h3 class = "text-info text-center user-activities-header col-md-offset-0">Announcements</h3><br>
                 <form enctype = "multipart/form-data" action = "<?php echo base_url('topic/announcement'); ?>" id = "create-announcement-form" method = "POST">
