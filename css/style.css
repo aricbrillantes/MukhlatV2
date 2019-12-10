@@ -3504,6 +3504,13 @@ background-size: 1800% 1800%;
 	.open-nav #navtoggler:after {
 			content: "\f00d";
 		}
+.stickerhov{
+   
+    transition: transform 0.25s; 
+}
+.stickerhov:hover{
+    transform: rotate(8deg) scale(1.25);
+}
 	
 
 

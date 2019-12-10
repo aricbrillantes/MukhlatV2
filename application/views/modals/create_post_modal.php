@@ -221,6 +221,28 @@ $topic = $_SESSION['current_topic'];
                         <div class="charLimitMessage" id="charLimitMessage4"><center>Oops! You've used up all the letters and numbers for your message!</center></div>
                     </div>
                     
+                    
+            <div id="stickerchoices">
+            <img class="stickerhov iconin" width="20%" height="auto" src="<?php echo base_url('images/stickers/happy.png'); ?>" onclick="var keep= $('[id$=post-content]').val();doBack();emojisICON();keeper(keep, ';happy;');"/>
+            <img class="stickerhov iconin" width="20%" height="auto" src="<?php echo base_url('images/stickers/sad.png'); ?>" onclick="var keep= $('[id$=post-content]').val();doBack();emojisICON();keeper(keep, ';sad;');"/>
+            <img class="stickerhov iconin" width="20%" height="auto" src="<?php echo base_url('images/stickers/angry.png'); ?>" onclick="var keep= $('[id$=post-content]').val();doBack();emojisICON();keeper(keep, ';angry;');"/>
+            <img class="stickerhov iconin" width="20%" height="auto" src="<?php echo base_url('images/stickers/love.png'); ?>" onclick="var keep= $('[id$=post-content]').val();doBack();emojisICON();keeper(keep, ';love;');"/>
+            <img class="stickerhov iconin" width="20%" height="auto"src="<?php echo base_url('images/stickers/love 2.png'); ?>" onclick="var keep= $('[id$=post-content]').val();doBack();emojisICON();keeper(keep, ';love 2;');"/>
+            <img class="stickerhov iconin" width="20%" height="auto"src="<?php echo base_url('images/stickers/laughing crying.png'); ?>" onclick="var keep= $('[id$=post-content]').val();doBack();emojisICON();keeper(keep, ';laughing crying;');"/>
+            <img class="stickerhov iconin" width="20%" height="auto"src="<?php echo base_url('images/stickers/yum.png'); ?>" onclick="var keep= $('[id$=post-content]').val();doBack();emojisICON();keeper(keep, ';yum;');"/>
+            <img class="stickerhov iconin" width="20%" height="auto"src="<?php echo base_url('images/stickers/yuck.png'); ?>" onclick="var keep= $('[id$=post-content]').val();doBack();emojisICON();keeper(keep, ';yuck;');"/>
+            <img class="stickerhov iconin" width="20%" height="auto"src="<?php echo base_url('images/stickers/amazing.png'); ?>" onclick="var keep= $('[id$=post-content]').val();doBack();emojisICON();keeper(keep, ';amazing;');"/>
+            <img class="stickerhov iconin" width="20%" height="auto"src="<?php echo base_url('images/stickers/woohoo.png'); ?>" onclick="var keep= $('[id$=post-content]').val();doBack();emojisICON();keeper(keep, ';woohoo;');"/>
+            <img class="stickerhov iconin" width="20%" height="auto"src="<?php echo base_url('images/stickers/what.png'); ?>" onclick="var keep= $('[id$=post-content]').val();doBack();emojisICON();keeper(keep, ';what;');"/>
+            <img class="stickerhov iconin" width="20%" height="auto"src="<?php echo base_url('images/stickers/eww.png'); ?>" onclick="var keep= $('[id$=post-content]').val();doBack();emojisICON();keeper(keep, ';eww;');"/>
+            <img class="stickerhov iconin" width="20%" height="auto"src="<?php echo base_url('images/stickers/cool.png'); ?>" onclick="var keep= $('[id$=post-content]').val();doBack();emojisICON();keeper(keep, ';cool;');"/>
+            <img class="stickerhov iconin" width="20%" height="auto"src="<?php echo base_url('images/stickers/joke.png'); ?>" onclick="var keep= $('[id$=post-content]').val();doBack();emojisICON();keeper(keep, ';joke;');"/>
+            <img class="stickerhov iconin" width="20%" height="auto"src="<?php echo base_url('images/stickers/haha.png'); ?>" onclick="var keep= $('[id$=post-content]').val();doBack();emojisICON();keeper(keep, ';haha;');"/>
+            <img class="stickerhov iconin" width="20%" height="auto"src="<?php echo base_url('images/stickers/zzz.png'); ?>" onclick="var keep= $('[id$=post-content]').val();doBack();emojisICON();keeper(keep, ';zzz;');"/>
+            <img class="stickerhov iconin" width="20%" height="auto"src="<?php echo base_url('images/stickers/pretty.gif'); ?>" onclick="var keep= $('[id$=post-content]').val();doBack();emojisICON();keeper(keep, ';pretty;');"/>
+            
+            </div>
+                    
                    <!-- <div class="profanityWarning" id="profanityWarning"><center>Hey there! It looks like you used a bad word!</center></div> -->
 
 <!--                    <div data-toggle="collapse" data-target="#camera" class="dropbtn" style = "background: #D7eadd; cursor: pointer;"><center><div>Take Picture</div>
@@ -324,8 +346,7 @@ $topic = $_SESSION['current_topic'];
                 
 
             </form>
-            
-            <img src="<?php echo base_url('images/stickers/love.png'); ?>" onclick="var keep= $('[id$=post-content]').val();doBack();emojisICON();keeper(keep, ';love;');"/>
+
         </div>
     </div>
 </div>
@@ -673,6 +694,8 @@ let constraintObj2 = {
         $('[id$=post-title]').val("");
         $('[id$=titlewarning]').hide();
         $('[id$=contentwarning]').hide();
+        $('[id$=stickerchoices]').show();
+        
         toggle=p;
         emojisICON();
         
@@ -730,6 +753,7 @@ let constraintObj2 = {
           $('[id$=btnStart2]').hide();
           $('[id$=titlewarning]').hide();
           $('[id$=scissors]').hide();
+          $('[id$=stickerchoices]').hide();
         }
         
         if(p==="reply")
