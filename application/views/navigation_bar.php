@@ -1137,7 +1137,7 @@
         <!--smaller screens-->
         
                         <button id="navtoggler"></button><div class="navr">
-                            <div class="">
+                            <div class="" style="margin-left:50px">
                                 <br>
                                 <a onmouseenter="playclip()" class="" href="<?php echo base_url('user/profile/' . $logged_user->user_id); ?>" >
                                 <img class = "img-circle nav-prof-pic iconin" src = "<?php echo $logged_user->profile_url ? base_url($logged_user->profile_url) : base_url('images/default.jpg') ?>"/> 
@@ -1162,7 +1162,8 @@
                                 <!--<span class="tooltiptext">Change what you see!</span>-->
                                 </a>
                                 
-                                <a onclick="window.speechSynthesis.cancel();" onmouseenter="playclip()" id="logout-btn" href="#logout-modal" data-toggle = "modal" class="" href="<?php echo base_url('signin/logout'); ?>" style="margin-right:4%;"><p class="iconin" style="font-size:14px !important;text-align: left !important;"><img  src = "<?php echo base_url('icons/logout.png'); ?>" class="iconin" style="width:60%;height:auto"/><!Bye!></p>
+                                <a onclick="window.speechSynthesis.cancel();" onmouseenter="playclip()" id="logout-btn" href="#logout-modal" data-toggle = "modal" class="" href="<?php echo base_url('signin/logout'); ?>">
+                                <p class="iconin" style="font-size:14px !important;text-align: left !important;"><img  src = "<?php echo base_url('icons/logout.png'); ?>" class="iconin" style="width:60%;height:auto"/><!Bye!></p>
                                 <!--<span class="tooltiptext">Goodbye Mukhlat!</span>-->
                                 </a>
                                 

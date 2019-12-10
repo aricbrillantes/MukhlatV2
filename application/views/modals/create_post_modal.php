@@ -183,7 +183,7 @@ $topic = $_SESSION['current_topic'];
                 <button type="button" class="close" style = "padding: 5px;" data-dismiss="modal" >&times;</button>
                 <h4 class="modal-title textoutliner"><strong id="modaltitle">Share to <?php echo utf8_decode($topic->topic_name); ?></strong></h4>
             </div>
-            <form name="formy" enctype = "multipart/form-data" action = "<?php echo base_url('topic/post'); ?>" id = "create-post-form" method = "POST">
+            <form enctype = "multipart/form-data" action = "<?php echo base_url('topic/post'); ?>" id = "create-post-form" method = "POST">
                 <div class="modal-body">
                     
                     

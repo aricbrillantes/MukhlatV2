@@ -117,7 +117,10 @@ var page;
 var page2;
 var page3;
 var inroompage=0;
-var oneonly=0;
+var oneonly=1;
+if(document.getElementById("chalkb") && document.getElementById("Mposts") && document.getElementById("messageb") || document.getElementById("UHposts")){
+    oneonly=0;
+}
 //alert(oneonly);
 if(oneonly===0){oneonly=1;
 //alert(oneonly);
@@ -140,7 +143,7 @@ list[14] = ";woohoo;^<img  width='50%' src='" + "/MukhlatV2/images/stickers/wooh
 list[15] = ";pretty;^<img  width='50%' src='" + "/MukhlatV2/images/stickers/pretty.gif'>";
 list[16] = ";yum;^<img  width='50%' src='" + "/MukhlatV2/images/stickers/yum.png'>";
 var j, k, find, item, repl;
-if(document.getElementById("chalkb") && document.getElementById("Mposts")){
+if(document.getElementById("chalkb") && document.getElementById("Mposts") && document.getElementById("messageb")){
     page = document.getElementById("chalkb").innerHTML;
     page2 = document.getElementById("Mposts").innerHTML;
     page3 = document.getElementById("messageb").innerHTML;
