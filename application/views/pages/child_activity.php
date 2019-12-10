@@ -375,7 +375,7 @@
                         <li class=""><a data-toggle="modal" href="#child-activity-modal-parents">Media</a></li>
                     </ul><br>
 
-                    <div class="tab-content" style="max-height:550px; overflow-x: hidden; overflow-y: scroll">
+                    <div id="UHposts" class="tab-content" style="max-height:550px; overflow-x: hidden; overflow-y: scroll">
                         <!-- ALL POSTS -->
                         <div id="all-posts" class = "col-sm-12 col-xs-12 col-md-12 tab-pane fade in active" style = "margin-bottom: 40px; ">
                             <?php foreach ($activities as $post): ?> 
