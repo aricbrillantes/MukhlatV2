@@ -238,7 +238,7 @@ $topic = $_SESSION['current_topic'];
                         
             <div id="scissors"></div>
             <label id = "record-label" >
-            <button type="button" id="btnStart" class="drawnbutton lined thin" onclick="recordaudio();">Tick Talk!</button>
+            <button type="button" id="btnStart" class="drawnbutton lined thin" onclick="recordaudio();"><img src="http://localhost/MukhlatV2/icons/mic.png" style="display:block;margin: 0 auto;margin-bottom: 15px;margin-top: 10px"></img>Tick Talk!</button>
             <button type="button" id="btnStart2" class="drawnbutton lined thin" onclick="recordvideo();"><img src="http://localhost/MukhlatV2/icons/Recordvid.png" style="display:block;margin: 0 auto;"></img>Video Time!</button>
             <br>
             <h4 id="startrec" style="display: none;text-align:center;">You are now recording!</h4>
