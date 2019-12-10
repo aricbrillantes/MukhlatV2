@@ -77,7 +77,7 @@
         else
         {
             // print("you cant use xd ");
-            $restrict = base_url('restrict');
+            // $restrict = base_url('restrict');
             // header("Location: $restrict");
         }            
     }
@@ -347,11 +347,28 @@
             nextHour=today.getHours();
             nextMinute=30;
 
-            if(curHour===0)
+            if(curHour<10)
             {
-                curTime = "00" + curMinute + " " + day;
-                nextTime = "0030 "+day;
+                if(curHour===0)
+                {
+                    curTime = "00" + curMinute + " " + day;
+                    nextTime = "0030 "+day;
+                }
+
+                else if(curHour===9)
+                {
+                    curTime = "09" + curMinute + " " + day;
+                    nextTime = "0930 "+day;
+                }
+
+                else 
+                {
+                    curTime = "0" + curHour + curMinute + " " + day;
+                    nextTime = "0" + nextHour+""+nextMinute+" "+day;
+                }
+
             }
+
 
             else
             {
@@ -365,7 +382,26 @@
             curHour=today.getHours();
             curMinute=30;
 
-            if(curHour===23)
+            if(curHour<10)
+            {
+                nextHour=today.getHours()+1;
+                nextMinute=60;
+
+                if(curHour===9)
+                {
+                    curTime = "09" + curMinute + " " + day;
+                    nextTime = "1000 "+day;
+                }
+
+                else
+                {
+                    curTime = "0" + curHour + curMinute + " " + day;
+                    nextTime = "0" + nextHour+"00 "+day;
+                }
+                
+            }
+
+            else if(curHour===23)
             {
                 nextHour=0;
                 nextMinute=60;
@@ -465,6 +501,8 @@
             // alert(curTime);
             // alert(nextTime);
 
+            // alert(curTime + " " +nextTime);
+
             // alert("<?php echo $login_time; ?>");
             
             // alert(sessionLimit);
@@ -524,7 +562,7 @@
         {
             // alert("You can't use Mukhlat right now!");
 
-            location.href="<?php echo base_url('restrict');?>"; //uncomment this line for actual testing
+            // location.href="<?php echo base_url('restrict');?>"; //uncomment this line for actual testing
         }
          
         // if child cannot use for the next timeslot
