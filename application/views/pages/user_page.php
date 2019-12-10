@@ -107,7 +107,7 @@ include(APPPATH . 'views/header.php');
                     <?php else: ?>
                         <h3 class = "text-info text-center user-activities-header modalbg"><strong class="textoutliner"><?php echo utf8_decode($user->first_name); ?>'s Activities</strong></h3>
                     <?php endif; ?>   
-                        <div class = "col-sm-12 user-activities-div">
+                        <div id="UHposts" class = "col-sm-12 user-activities-div">
                             <!-- POST PREVIEW -->
                             <?php foreach ($user->activities as $post): ?> <?php if($post->theme==1): $theme="roomtheme-arrow";
                                         elseif($post->theme==2): $theme="roomtheme-zigzag";

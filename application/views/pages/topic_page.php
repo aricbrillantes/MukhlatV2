@@ -212,7 +212,7 @@
                 
                 <!--regular text, emojis and stickers-->
                 <div> <div class="hideinbig"><br><br><br><br><br><br><br><br><br></div>
-                <div  class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 pull-right chalkboard" style="min-height:300px; max-height:300px;">
+                <div id="chalkb" class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 pull-right chalkboard" style="min-height:300px; max-height:300px;">
                     <?php
                         foreach ($c_topic->posts as $post):
                             if($post->shout==0 && $post->reply==0):?>
@@ -237,7 +237,7 @@
 
     <!-- Topic Post List -->
                     
-    <div class = "topic-post-list col-xs-12 col-sm-12 col-md-12 col-lg-3 col-xl-3" style = "padding-top:70px">
+    <div id="messageb" class = "topic-post-list col-xs-12 col-sm-12 col-md-12 col-lg-3 col-xl-3" style = "padding-top:70px">
         <!--<div class = "list-group" style = "padding-top: 15%">-->
            <!--List Entry--> 
            <?php

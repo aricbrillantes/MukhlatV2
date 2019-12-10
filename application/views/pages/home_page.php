@@ -71,7 +71,7 @@
                     </div>-->
 
                     <!-- CONTENT -->
-                    <div class = "col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 content-container" style="border-radius:20px;">
+                    <div id="UHposts" class = "col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 content-container" style="border-radius:20px;">
                         
                             <!-- POST PREVIEW -->
                             <?php

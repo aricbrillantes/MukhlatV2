@@ -112,123 +112,84 @@ $(document).ready(function() {
         });
     });
     
-//    sticker text to image
-//    var find = ";yum;";
-//    var repl = "<img  width='50%' src='" + "/MukhlatV2/images/stickers/yum.png'>";
-//    var page = document.body.innerHTML;
-//    findstickers(find, repl, page);
-//    
-//    find = ";pretty;";
-//    repl = "<img  width='50%' src='" + "/MukhlatV2/images/stickers/pretty.gif'>";
-//    page = document.body.innerHTML;
-//    findstickers(find, repl, page);
-//    
-//    find = ";woohoo;";
-//    repl = "<img  width='50%' src='" + "/MukhlatV2/images/stickers/woohoo.png'>";
-//    page = document.body.innerHTML;
-//    findstickers(find, repl, page);
-//    
-//    find = ";cool;";
-//    repl = "<img  width='50%' src='" + "/MukhlatV2/images/stickers/cool.png'>";
-//    page = document.body.innerHTML;
-//    findstickers(find, repl, page);
-//    
-//    find = ";eww;";
-//    repl = "<img  width='50%' src='" + "/MukhlatV2/images/stickers/eww.png'>";
-//    page = document.body.innerHTML;
-//    findstickers(find, repl, page);
-//    
-//    find = ";zzz;";
-//    repl = "<img  width='50%' src='" + "/MukhlatV2/images/stickers/zzz.png'>";
-//    page = document.body.innerHTML;
-//    findstickers(find, repl, page);
-//    
-//    find = ";joke;";
-//    repl = "<img  width='50%' src='" + "/MukhlatV2/images/stickers/joke.png'>";
-//    page = document.body.innerHTML;
-//    findstickers(find, repl, page);
-//    
-//    find = ";amazing;";
-//    repl = "<img  width='50%' src='" + "/MukhlatV2/images/stickers/amazing.png'>";
-//    page = document.body.innerHTML;
-//    findstickers(find, repl, page);
-//    
-//    find = ";what;";
-//    repl = "<img  width='50%' src='" + "/MukhlatV2/images/stickers/what.png'>";
-//    page = document.body.innerHTML;
-//    findstickers(find, repl, page);
-//    
-//    find = ";haha;";
-//    repl = "<img  width='50%' src='" + "/MukhlatV2/images/stickers/haha.png'>";
-//    page = document.body.innerHTML;
-//    findstickers(find, repl, page);
-//    
-//    find = ";happy;";
-//    repl = "<img  width='50%' src='" + "/MukhlatV2/images/stickers/happy.png'>";
-//    page = document.body.innerHTML;
-//    findstickers(find, repl, page);
-//    
-//    find = ";yuck;";
-//    repl = "<img  width='50%' src='" + "/MukhlatV2/images/stickers/yuck.png'>";
-//    page = document.body.innerHTML;
-//    findstickers(find, repl, page);
-//    
-//    find = ";angry;";
-//    repl = "<img  width='50%' src='" + "/MukhlatV2/images/stickers/angry.png'>";
-//    page = document.body.innerHTML;
-//    findstickers(find, repl, page);
-//    
-//    find = ";sad;";
-//    repl = "<img  width='50%' src='" + "/MukhlatV2/images/stickers/sad.png'>";
-//    page = document.body.innerHTML;
-//    findstickers(find, repl, page);
-//    
-//    find = ";love;";
-//    repl = "<img  width='50%' src='" + "/MukhlatV2/images/stickers/love.png'>";
-//    page = document.body.innerHTML;
-//    findstickers(find, repl, page);
-//    
-//    find = ";laughing crying;";
-//    repl = "<img  width='50%' src='" + "/MukhlatV2/images/stickers/laughing crying.png'>";
-//    page = document.body.innerHTML;
-//    findstickers(find, repl, page);
-//    
-//    find = ";love 2;";
-//    repl = "<img  width='50%' src='" + "/MukhlatV2/images/stickers/love 2.png'>";
-//    page = document.body.innerHTML;
-//    findstickers(find, repl, page);
-//    
-//    function findstickers(find, repl, page){
-//    while (page.indexOf(find) >= 0) {
-//    var i = page.indexOf(find);
-//    var j = find.length;
-//    page = page.substr(0,i) + repl + page.substr(i+j);
-//    document.body.innerHTML = page;
-//    }}
     
-//var oneonly=0;
-////alert(oneonly);
-//if(oneonly===0){oneonly=1;
-////alert(oneonly);
-//var list = new Array();
-//list[0] = ";love 2;^<img  width='50%' src='" + "/MukhlatV2/images/stickers/love 2.png'>";
-//list[1] = ";laughing crying;^<img  width='50%' src='" + "/MukhlatV2/images/stickers/laughing crying.png'>";
-//list[2] = ";love;^<img  width='50%' src='" + "/MukhlatV2/images/stickers/love.png'>";
-//var j, k, find, item, repl;
-//var page = document.body.innerHTML;
-//for (var i=0; i<list.length; i++) {
-//item = list[i].split("^");
-//find = item[0];
-//repl = item[1];
-//while (page.indexOf(find) >= 0) {
-//var j = page.indexOf(find);
-//var k = find.length;
-//page = page.substr(0,j) + repl + page.substr(j+k);
-//}
-//}
-//document.body.innerHTML = page;
-//}
+var page;
+var page2;
+var page3;
+var inroompage=0;
+var oneonly=0;
+//alert(oneonly);
+if(oneonly===0){oneonly=1;
+//alert(oneonly);
+var list = new Array();
+list[0] = ";love 2;^<img  width='50%' src='" + "/MukhlatV2/images/stickers/love 2.png'>";
+list[1] = ";laughing crying;^<img  width='50%' src='" + "/MukhlatV2/images/stickers/laughing crying.png'>";
+list[2] = ";love;^<img  width='50%' src='" + "/MukhlatV2/images/stickers/love.png'>";
+list[3] = ";sad;^<img  width='50%' src='" + "/MukhlatV2/images/stickers/sad.png'>";
+list[4] = ";angry;^<img  width='50%' src='" + "/MukhlatV2/images/stickers/angry.png'>";
+list[5] = ";yuck;^<img  width='50%' src='" + "/MukhlatV2/images/stickers/yuck.png'>";
+list[6] = ";happy;^<img  width='50%' src='" + "/MukhlatV2/images/stickers/happy.png'>";
+list[7] = ";what;^<img  width='50%' src='" + "/MukhlatV2/images/stickers/what.png'>";
+list[8] = ";haha;^<img  width='50%' src='" + "/MukhlatV2/images/stickers/haha.png'>";
+list[9] = ";amazing;^<img  width='50%' src='" + "/MukhlatV2/images/stickers/amazing.png'>";
+list[10] = ";joke;^<img  width='50%' src='" + "/MukhlatV2/images/stickers/joke.png'>";
+list[11] = ";zzz;^<img  width='50%' src='" + "/MukhlatV2/images/stickers/zzz.png'>";
+list[12] = ";eww;^<img  width='50%' src='" + "/MukhlatV2/images/stickers/eww.png'>";
+list[13] = ";cool;^<img  width='50%' src='" + "/MukhlatV2/images/stickers/cool.png'>";
+list[14] = ";woohoo;^<img  width='50%' src='" + "/MukhlatV2/images/stickers/woohoo.png'>";
+list[15] = ";pretty;^<img  width='50%' src='" + "/MukhlatV2/images/stickers/pretty.gif'>";
+list[16] = ";yum;^<img  width='50%' src='" + "/MukhlatV2/images/stickers/yum.png'>";
+var j, k, find, item, repl;
+if(document.getElementById("chalkb") && document.getElementById("Mposts")){
+    page = document.getElementById("chalkb").innerHTML;
+    page2 = document.getElementById("Mposts").innerHTML;
+    page3 = document.getElementById("messageb").innerHTML;
+    inroompage=1;
+    }
+else if(document.getElementById("UHposts"))
+    page = document.getElementById("UHposts").innerHTML;
 
+for (var i=0; i<list.length; i++) {
+item = list[i].split("^");
+find = item[0];
+repl = item[1];
+while (page.indexOf(find) >= 0) {
+var j = page.indexOf(find);
+var k = find.length;
+page = page.substr(0,j) + repl + page.substr(j+k);
+}
+}
+
+if(inroompage===1){
+    for (var i=0; i<list.length; i++) {
+    item = list[i].split("^");
+    find = item[0];
+    repl = item[1];
+    while (page2.indexOf(find) >= 0) {
+        var j = page2.indexOf(find);
+        var k = find.length;
+        page2 = page2.substr(0,j) + repl + page2.substr(j+k);
+        }
+    }
+    for (var i=0; i<list.length; i++) {
+    item = list[i].split("^");
+    find = item[0];
+    repl = item[1];
+    while (page3.indexOf(find) >= 0) {
+        var j = page3.indexOf(find);
+        var k = find.length;
+        page3 = page3.substr(0,j) + repl + page3.substr(j+k);
+        }
+    }
+}
+if(document.getElementById("chalkb") && document.getElementById("Mposts") && document.getElementById("messageb")){
+    document.getElementById("chalkb").innerHTML = page;
+    document.getElementById("Mposts").innerHTML = page2;
+    document.getElementById("messageb").innerHTML = page3;
+    }
+else if(document.getElementById("UHposts"))
+    document.getElementById("UHposts").innerHTML = page;
+}
     
     
     $('.editroomthemes').click(function(){

@@ -18,7 +18,7 @@
             </div>
             
             <div class="modal-body content-container container-fluid">
-                <div class = "row col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <div id="Mposts" class = "row col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                          <?php
                             foreach ($c_topic->posts as $post):
                                 if($post->reply==0):?>
