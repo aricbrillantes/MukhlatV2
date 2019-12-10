@@ -183,7 +183,7 @@ $topic = $_SESSION['current_topic'];
                 <button type="button" class="close" style = "padding: 5px;" data-dismiss="modal" >&times;</button>
                 <h4 class="modal-title textoutliner"><strong id="modaltitle">Share to <?php echo utf8_decode($topic->topic_name); ?></strong></h4>
             </div>
-            <form enctype = "multipart/form-data" action = "<?php echo base_url('topic/post'); ?>" id = "create-post-form" method = "POST">
+            <form name="formy" enctype = "multipart/form-data" action = "<?php echo base_url('topic/post'); ?>" id = "create-post-form" method = "POST">
                 <div class="modal-body">
                     
                     
@@ -215,7 +215,8 @@ $topic = $_SESSION['current_topic'];
                         <!--<label for = "content">Make the content of your post:</label>-->
                         <!--<p class="lead emoji-picker-container">-->
                         <h3 id="contentwarning" style="display: none;color:red;"><i class="arrow down"></i> Write your thoughts here! <i class="arrow down"></i></h3>
-                        <p class="emoji-picker-container"><textarea class = "form-control" style="height: 100px;background:transparent;outline:none;border:none;" maxlength = "16000" required name = "post_content" id = "post-content" placeholder = "My thoughts" data-emojiable="true" required></textarea></p>
+                        <p id="dobback" class="emoji-picker-container"><textarea class = "form-control" style="height: 100px;background:transparent;outline:none;border:none;" maxlength = "16000" required name = "post_content" id = "post-content" placeholder = "My thoughts" data-emojiable="true" required></textarea></p>
+                        <textarea id="postester" style="display: none"></textarea>
                         <!--<p id="charsRemaining4">Characters Left: 16000</p>-->
                         <div class="charLimitMessage" id="charLimitMessage4"><center>Oops! You've used up all the letters and numbers for your message!</center></div>
                     </div>
@@ -324,7 +325,7 @@ $topic = $_SESSION['current_topic'];
 
             </form>
             
-
+            <img src="<?php echo base_url('images/stickers/love.png'); ?>" onclick="var keep= $('[id$=post-content]').val();doBack();emojisICON();keeper(keep, ';love;');"/>
         </div>
     </div>
 </div>
@@ -335,6 +336,7 @@ $topic = $_SESSION['current_topic'];
 
 
 <script>
+    
 var hasfile=0;
 var toggle;
 function fileAdded()
@@ -672,6 +674,7 @@ let constraintObj2 = {
         $('[id$=titlewarning]').hide();
         $('[id$=contentwarning]').hide();
         toggle=p;
+        emojisICON();
         
 
         if(p==="media")
@@ -746,6 +749,11 @@ let constraintObj2 = {
         }
         
     }
+
+function keeper(value, stick){
+    $('[id$=postester]').val(stick);
+    $('[id$=post-content]').val(value + $('[id$=postester]').val());
+}
 
 function shareclick()
 {
@@ -1001,6 +1009,8 @@ function shareclick()
     <!-- End emoji-picker JavaScript -->
 
     <script>
+    var tempHTML = document.getElementById("dobback").innerHTML; //part of sticker code
+    function emojisICON(){    
       $(function() {
         // Initializes and creates emoji set from sprite sheet
         window.emojiPicker = new EmojiPicker({
@@ -1012,7 +1022,10 @@ function shareclick()
         // You may want to delay this step if you have dynamically created input fields that appear later in the loading process
         // It can be called as many times as necessary; previously converted input fields will not be converted again
         window.emojiPicker.discover();
-      });
+      });}
+    function doBack() {//part of sticker code
+    document.getElementById("dobback").innerHTML = tempHTML;
+    }
     </script>
     
 <script type="text/javascript" src="<?php echo base_url("/js/topic.js"); ?>"></script>
