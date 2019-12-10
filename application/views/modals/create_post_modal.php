@@ -220,7 +220,7 @@ $topic = $_SESSION['current_topic'];
                         <div class="charLimitMessage" id="charLimitMessage4"><center>Oops! You've used up all the letters and numbers for your message!</center></div>
                     </div>
                     
-                   <div class="profanityWarning" id="profanityWarning"><center>Hey there! It looks like you used a bad word!</center></div>
+                   <!-- <div class="profanityWarning" id="profanityWarning"><center>Hey there! It looks like you used a bad word!</center></div> -->
 
 <!--                    <div data-toggle="collapse" data-target="#camera" class="dropbtn" style = "background: #D7eadd; cursor: pointer;"><center><div>Take Picture</div>
                             <div id="camera" class="collapse">
@@ -811,68 +811,68 @@ function shareclick()
 
 
     var warningCount=0, count=0;
-    var x = document.getElementById("profanityWarning");
+    // var x = document.getElementById("profanityWarning");
     var charCount1=100, charCount2=16000;
     
-    $('.modal-body').keyup(function(event) 
-    {
+//     $('.modal-body').keyup(function(event) 
+//     {
         
-//        document.getElementById('charsRemaining3').innerHTML='Characters Left: '+(charCount1-document.getElementById('post-title').value.length);
-        // document.getElementById('charsRemaining4').innerHTML='Characters Left: '+(charCount2-document.getElementById('post-content').value.length);
+// //        document.getElementById('charsRemaining3').innerHTML='Characters Left: '+(charCount1-document.getElementById('post-title').value.length);
+//         // document.getElementById('charsRemaining4').innerHTML='Characters Left: '+(charCount2-document.getElementById('post-content').value.length);
         
-//        document.getElementById('post-title').value=document.getElementById('post-title').value.replace("❤","❤");
-//        document.getElementById('post-title').value=document.getElementById('post-title').value.replace("😞","☹");
-//        document.getElementById('post-title').value=document.getElementById('post-title').value.replace("🙂","🙂");
-//        document.getElementById('post-title').value=document.getElementById('post-title').value.replace("😀","😀");
-//        document.getElementById('post-title').value=document.getElementById('post-title').value.replace("XD","🤣");
-//        document.getElementById('post-title').value=document.getElementById('post-title').value.replace("😐","😐");
+// //        document.getElementById('post-title').value=document.getElementById('post-title').value.replace("❤","❤");
+// //        document.getElementById('post-title').value=document.getElementById('post-title').value.replace("😞","☹");
+// //        document.getElementById('post-title').value=document.getElementById('post-title').value.replace("🙂","🙂");
+// //        document.getElementById('post-title').value=document.getElementById('post-title').value.replace("😀","😀");
+// //        document.getElementById('post-title').value=document.getElementById('post-title').value.replace("XD","🤣");
+// //        document.getElementById('post-title').value=document.getElementById('post-title').value.replace("😐","😐");
 
-        document.getElementById('post-content').value=document.getElementById('post-content').value.replace("❤","❤");
-        document.getElementById('post-content').value=document.getElementById('post-content').value.replace("😞","☹");
-        document.getElementById('post-content').value=document.getElementById('post-content').value.replace("🙂","🙂");
-        document.getElementById('post-content').value=document.getElementById('post-content').value.replace("😀","😀");
-        document.getElementById('post-content').value=document.getElementById('post-content').value.replace("XD","🤣");
-        document.getElementById('post-content').value=document.getElementById('post-content').value.replace("😐","😐");
+//         document.getElementById('post-content').value=document.getElementById('post-content').value.replace("❤","❤");
+//         document.getElementById('post-content').value=document.getElementById('post-content').value.replace("😞","☹");
+//         document.getElementById('post-content').value=document.getElementById('post-content').value.replace("🙂","🙂");
+//         document.getElementById('post-content').value=document.getElementById('post-content').value.replace("😀","😀");
+//         document.getElementById('post-content').value=document.getElementById('post-content').value.replace("XD","🤣");
+//         document.getElementById('post-content').value=document.getElementById('post-content').value.replace("😐","😐");
 
-            if(
-//                document.getElementById('post-title').value.includes("fuck")||
-//                document.getElementById('post-title').value.includes("shit")||
-                document.getElementById('post-content').value.includes("fuck")||
-                document.getElementById('post-content').value.includes("shit")
-            )
-            {  
-//                  responsiveVoice.speak("Hey there! That's a bad word!","UK English Male",{rate: 1, pitch: 1.2});
-//                  document.getElementById("profanityWarning").innerHTML = 'NO SWEARING!';
-                x.style.display = "block";
-                document.getElementById('create-post-btn').style.color="red";
-                document.getElementById('create-post-btn').innerHTML="You should remove bad words from your message!";
-                document.getElementById('create-post-btn').style.pointerEvents="none";
-            }  
+//             if(
+// //                document.getElementById('post-title').value.includes("fuck")||
+// //                document.getElementById('post-title').value.includes("shit")||
+//                 document.getElementById('post-content').value.includes("fuck")||
+//                 document.getElementById('post-content').value.includes("shit")
+//             )
+//             {  
+// //                  responsiveVoice.speak("Hey there! That's a bad word!","UK English Male",{rate: 1, pitch: 1.2});
+// //                  document.getElementById("profanityWarning").innerHTML = 'NO SWEARING!';
+//                 // x.style.display = "block";
+//                 // document.getElementById('create-post-btn').style.color="red";
+//                 // document.getElementById('create-post-btn').innerHTML="You should remove bad words from your message!";
+//                 // document.getElementById('create-post-btn').style.pointerEvents="none";
+//             }  
 
-            else
-            {
-//                    document.getElementById("profanityWarning").innerHTML = '';
+//             else
+//             {
+// //                    document.getElementById("profanityWarning").innerHTML = '';
               
-                x.style.display = "none";
-                document.getElementById('create-post-btn').style.color="#41403E";
-                document.getElementById('create-post-btn').innerHTML="Share";
-                document.getElementById('create-post-btn').style.pointerEvents="auto";
-                if(hasfile==0)
-              {
+//                 // x.style.display = "none";
+//                 document.getElementById('create-post-btn').style.color="#41403E";
+//                 document.getElementById('create-post-btn').innerHTML="Share";
+//                 document.getElementById('create-post-btn').style.pointerEvents="auto";
+//                 if(hasfile==0)
+//               {
                 
-              }
-            }
-////              
-//            if(document.getElementById('post-title').value.length>=100)
-//            {  
-//                document.getElementById('charLimitMessage3').style.display = "block";
-//            }  
-//            
-//            else
-//                document.getElementById('charLimitMessage3').style.display = "none";
+//               }
+//             }
+// ////              
+// //            if(document.getElementById('post-title').value.length>=100)
+// //            {  
+// //                document.getElementById('charLimitMessage3').style.display = "block";
+// //            }  
+// //            
+// //            else
+// //                document.getElementById('charLimitMessage3').style.display = "none";
 
             
-    });  
+//     });  
 </script>
                     
                     <!--camera-->
