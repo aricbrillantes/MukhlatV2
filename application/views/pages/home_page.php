@@ -108,7 +108,7 @@
                                         <div class="whitebg">
                                         <img class = "img-circle" style = "margin: 10px 0px;" width = "40px" height = "40px" src = "<?php echo $post->profile_url ? base_url($post->profile_url) : base_url('images/default.jpg'); ?>"/> 
                                         
-                                        <?php if($post->user_id === $logged_user->user_id): ?>
+                                        <?php if($post->creator_id === $logged_user->user_id): ?>
                                             <a class = "text1color" href = "<?php echo base_url('user/profile/' . $post->user_id); ?>">
                                                 <strong style = "font-size: 21px">You</strong>
                                             </a> 
