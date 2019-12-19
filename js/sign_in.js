@@ -33,17 +33,41 @@ function sign_up() {
             data: $("#sign-up-form").serialize(),
             success: function (data) 
             {
-                if (data != '0') 
+
+                /*
+                    0 email taken
+                    1 or 2 success
+                    3
+                    4 birthday empty
+                    5 parent email is blank or doesnt exist
+                    6
+                    7
+                    8
+                    9 
+                */
+
+                if (data == '1' || data == '2') 
                 {
-                    
                     $("<div id = \"sign-up-message\" class = \"col-md-12 text-center\" style = \"padding-bottom: 10px;\"><span class = \"text-success\"><i class = \"fa fa-check\"></i> <i>Signing up successful! Your account is pending activation from an Administrator</i></span></div>").hide().appendTo("#sign-up-container").show("fast");
                     $("#sign-up-form").trigger("reset");
                 } 
 
-                else 
+                else if (data == '4')
+                {
+                    $("<div id = \"sign-up-message\" class = \"col-md-12 text-center\" style = \"padding-bottom: 10px;\"><span class = \"text-warning\"><i class = \"fa fa-warning\"></i> <i>Oops! You haven't entered your birth date!</i></span></div>").hide()
+                        .appendTo("#sign-up-container").show("fast");
+                }
+
+                else if (data == '5')
+                {
+                    $("<div id = \"sign-up-message\" class = \"col-md-12 text-center\" style = \"padding-bottom: 10px;\"><span class = \"text-warning\"><i class = \"fa fa-warning\"></i> <i>Oops! That parent email does not exist!</i></span></div>").hide()
+                        .appendTo("#sign-up-container").show("fast");
+                }
+
+                else if (data == '0')
                 {
                     $("<div id = \"sign-up-message\" class = \"col-md-12 text-center\" style = \"padding-bottom: 10px;\"><span class = \"text-warning\"><i class = \"fa fa-warning\"></i> <i>Oops! The e-mail address you entered is already taken!</i></span></div>").hide()
-                            .appendTo("#sign-up-container").show("fast");
+                        .appendTo("#sign-up-container").show("fast");
                 }
             }
         });
@@ -52,7 +76,7 @@ function sign_up() {
     else 
     {
         $(".password-field").addClass("has-error");
-        $("<div id = \"sign-up-message\" class = \"col-md-12 text-center\" style = \"padding-bottom: 10px;\"><span class = \"text-warning\"><i class = \"fa fa-warning\"></i> <i>Passwords do not match!</i></span></div>").hide().appendTo("#sign-up-container").show("fast");
+        $("<div id = \"sign-up-message\" class = \"col-md-12 text-center\" style = \"padding-bottom: 10px;\"><span class = \"text-warning\"><i class = \"fa fa-warning\"></i> <i>Oops! Passwords do not match!</i></span></div>").hide().appendTo("#sign-up-container").show("fast");
     }
     return false;
 }

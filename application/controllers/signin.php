@@ -19,21 +19,70 @@ class Signin extends CI_Controller {
         $fields = array('email' => $input->post('sign_up_email'));
         $user = $this->user->get_user(false, false, $fields);
 
-        if (!$user && $input->post('sign_up_role', TRUE == 2)) 
+        $parentEmail = $input->post('sign_up_email_parent', TRUE);
+
+        $parentExists = $this->db->select('*')
+            ->from('tbl_users')
+            ->where('email', $parentEmail)
+            ->where('role_id', "3");
+
+        /*
+            0 email taken
+            1 or 2 success
+            3
+            4 birthday empty
+            5 parent email is blank or doesnt exist
+            6
+            7
+            8
+            9 
+        */
+
+        if($user || !empty($user))
         {
-            $data = array(
-                'first_name' => utf8_encode(htmlspecialchars($input->post('first_name', TRUE))),
-                'last_name' => utf8_encode(htmlspecialchars($input->post('last_name', TRUE))),
-                'email' => htmlspecialchars($input->post('sign_up_email', TRUE)),
-                'password' => hash('sha256', htmlspecialchars($input->post('sign_up_password', TRUE))),
-                'birthdate' => htmlspecialchars($input->post('sign_up_birthday', TRUE)),
-                'parent' => htmlspecialchars($input->post('sign_up_email_parent', TRUE)),
-                'role_id' => htmlspecialchars($input->post('sign_up_role', TRUE)),
-                'is_enabled' => false,
-            );
+            echo 0;
+            return 0;
+        }
 
-            $this->db->insert('tbl_users', $data);
+        else if ((!$user || empty($user)) && $input->post('sign_up_role', TRUE == 2)) 
+        {
+            if(empty($parentExists->get()->result()) || empty($input->post('sign_up_email_parent', TRUE)) || $input->post('sign_up_email_parent', TRUE) == '')
+            {
+                echo 5;
+                return 5;
+            }
 
+            if(empty($input->post('sign_up_birthday', TRUE)))
+            {
+                echo 4;
+                return 4;
+            }
+
+            else if(empty($user))
+            {
+                $data = array
+                (
+                    'first_name' => utf8_encode(htmlspecialchars($input->post('first_name', TRUE))),
+                    'last_name' => utf8_encode(htmlspecialchars($input->post('last_name', TRUE))),
+                    'email' => htmlspecialchars($input->post('sign_up_email', TRUE)),
+                    'password' => hash('sha256', htmlspecialchars($input->post('sign_up_password', TRUE))),
+                    'birthdate' => htmlspecialchars($input->post('sign_up_birthday', TRUE)),
+                    'parent' => htmlspecialchars($input->post('sign_up_email_parent', TRUE)),
+                    'role_id' => htmlspecialchars($input->post('sign_up_role', TRUE)),
+                    'is_enabled' => false,
+                );
+
+                $this->db->insert('tbl_users', $data);
+
+                echo 1;
+                return 1;
+            }
+
+            else
+            {
+                echo 0;
+                return 0;
+            }
         } 
 
         else if (!$user && $input->post('sign_up_role', TRUE == 1) || $input->post('sign_up_role', TRUE == 3)) 
@@ -47,11 +96,15 @@ class Signin extends CI_Controller {
                 'is_enabled' => false,
             );
             $this->db->insert('tbl_users', $data); 
+
+            echo 2;
+            return 2;
         } 
 
         else
         {
-            // echo 0;
+            echo 0;
+            return ($this->db->affected_rows() != 1) ? 0 : 1;
         }
     }
 
