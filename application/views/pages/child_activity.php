@@ -524,6 +524,127 @@
         </div>
     </div>
 
+    <style> 
+    
+        #cookieConsent 
+        {
+            background-color: rgba(20,20,20,0.8);
+            min-height: 26px;
+            font-size: 15px;
+            color: #FFFFFF;
+            line-height: 26px;
+            padding: 8px 0 8px 0;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            display: none;
+            z-index: 9999;
+        }
+
+        #cookieConsent a 
+        {
+            color: #269588;
+            text-decoration: none;
+        }
+
+        #closeCookieConsent 
+        {
+            float: right;
+            display: inline-block;
+            cursor: pointer;
+            height: 20px;
+            width: 20px;
+            margin: -15px 0 0 0;
+        }
+
+        #closeCookieConsent:hover 
+        {
+            color: #FFF;
+        }
+
+        #cookieConsent a.cookieConsentOK 
+        {
+            background-color: #269588;
+            color: #FFFFFF;
+            display: inline-block;
+            border-radius: 5px;
+            font-size: 18px;
+            padding: 6px 20px;
+            cursor: pointer;
+            float: center;
+        }
+
+        #cookieConsent a.cookieConsentOK:hover 
+        {
+            background-color: #d6e4e1;
+            color: #000000;
+        }
+
+    </style>
+
+    
+
+    <div id="cookieConsent" class="text-center">
+        <div id="closeCookieConsent">x</div>
+        <div class="col-md-10 col-sm-9 col-xs-12">
+            To enhance you and your child's user experience, <i>Mukhlat</i> uses cookies.
+            By continuing to use the website, you agree that we may store and access cookies on your device.
+            You are free to disable cookies in your Web Browser's settings, but some features of Mukhlat may not work properly.<br> 
+
+            <!-- <a href="#" target="_blank">(Click here for more info)</a> -->
+        </div>
+
+        <div class="col-md-2 col-sm-3 col-xs-12">
+             <a class="cookieConsentOK" onclick="toogleCookieWarning();">I accept!</a>
+        </div>
+    </div>
+
+<script>
+    function getCookie(cname) 
+    {
+        var name = cname + "=";
+        var ca = document.cookie.split(';');
+        for(var i = 0; i < ca.length; i++) 
+        {
+            var c = ca[i];
+            while (c.charAt(0) === ' ') 
+            {
+                c = c.substring(1);
+            }
+
+            if (c.indexOf(name) === 0) 
+            {
+                return c.substring(name.length, c.length);
+            }
+        }
+        return "";
+    }
+
+    function toogleCookieWarning()
+    {
+        if(getCookie("cookiewarning") == 0 || getCookie("cookiewarning")=="0")
+        {
+            document.cookie = "cookiewarning=1;" + ";path=/"; 
+            // document.getElementById("cookiewarning").style.display= "none";
+            document.getElementById("cookieConsent").style.display= "none";
+            
+        }
+    }
+
+    if(getCookie("cookiewarning") == 0 || getCookie("cookiewarning")=="0")
+    {
+        // document.getElementById("cookiewarning").style.display= "block";
+        document.getElementById("cookieConsent").style.display= "block";
+    }
+
+    if(getCookie("cookiewarning") == 1 || getCookie("cookiewarning")=="1")
+    {
+        // document.getElementById("cookiewarning").style.display= "none";
+        document.getElementById("cookieConsent").style.display= "none";
+    }
+</script>
+
 <script type="text/javascript" src="<?php echo base_url("/js/admin.js"); ?>"></script>
 <script type="text/javascript" src="<?php echo base_url("/js/search.js"); ?>"></script>
 <script src="<?php echo base_url('lib/js/config.js');?>"></script>

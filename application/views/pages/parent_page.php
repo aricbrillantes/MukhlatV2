@@ -14,7 +14,7 @@
 
     $this->load->model('user_model', 'users');
 
-    echo($logged_user->email);
+    // echo($logged_user->email);
 
     $children = $this->users->view_child($logged_user->email);
 
@@ -122,7 +122,7 @@
 
     </div>
     
-</nav><br><br><br>
+</nav><br><br>
 <?php 
     
     $count=0;
@@ -176,7 +176,7 @@
                     <div class = "col-xs-12 col-md-10 col-sm-10 col-md-offset-2 col-sm-offset-2 content-container container-fluid" style = "margin-bottom: 0px; ">
                         <div class="col-xs-3 col-md-3 col-sm-3">
                             <center>
-                                <img id = "user-pic-display" class = "img-circle img-child-list" max-width = "80px" height = "80px" src = "<?php echo $child->profile_url ? base_url($child->profile_url) : base_url('images/default.jpg') ?>" style = "margin-top: 30px;">
+                                <img id = "user-pic-display" class = "img-circle img-child-list" width = "80px" height = "80px" src = "<?php echo $child->profile_url ? base_url($child->profile_url) : base_url('images/default.jpg') ?>" style = "margin-top: 30px;">
                             </center>
                         </div>
 
@@ -202,7 +202,7 @@
                     <div class = "col-xs-12 col-md-6 col-sm-6 col-md-offset-0 col-sm-offset-0 content-container container-fluid" style = "margin-bottom: 0px; ">
                         <div class="col-xs-3 col-md-3 col-sm-3">
                             <center>
-                                <img id = "user-pic-display" class = "img-circle img-child-list" max-width = "80px" height = "80px" src = "<?php echo $child->profile_url ? base_url($child->profile_url) : base_url('images/default.jpg') ?>" style = "margin-top: 30px;">
+                                <img id = "user-pic-display" class = "img-circle img-child-list" width = "80px" height = "80px" src = "<?php echo $child->profile_url ? base_url($child->profile_url) : base_url('images/default.jpg') ?>" style = "margin-top: 30px;">
                             </center>
                         </div>
 
@@ -243,6 +243,82 @@
 
     <?php endif; ?>
 
+    <style> 
+    
+        #cookieConsent 
+        {
+            background-color: rgba(20,20,20,0.8);
+            min-height: 26px;
+            font-size: 15px;
+            color: #FFFFFF;
+            line-height: 26px;
+            padding: 8px 0 8px 0;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            display: none;
+            z-index: 9999;
+        }
+
+        #cookieConsent a 
+        {
+            color: #269588;
+            text-decoration: none;
+        }
+
+        #closeCookieConsent 
+        {
+            float: right;
+            display: inline-block;
+            cursor: pointer;
+            height: 20px;
+            width: 20px;
+            margin: -15px 0 0 0;
+        }
+
+        #closeCookieConsent:hover 
+        {
+            color: #FFF;
+        }
+
+        #cookieConsent a.cookieConsentOK 
+        {
+            background-color: #269588;
+            color: #FFFFFF;
+            display: inline-block;
+            border-radius: 5px;
+            font-size: 18px;
+            padding: 6px 20px;
+            cursor: pointer;
+            float: center;
+        }
+
+        #cookieConsent a.cookieConsentOK:hover 
+        {
+            background-color: #d6e4e1;
+            color: #000000;
+        }
+
+    </style>
+
+    
+
+    <div id="cookieConsent" class="text-center">
+        <div id="closeCookieConsent">x</div>
+        <div class="col-md-10 col-sm-9 col-xs-12">
+            To enhance you and your child's user experience, <i>Mukhlat</i> uses cookies.
+            By continuing to use the website, you agree that we may store and access cookies on your device.
+            You are free to disable cookies in your Web Browser's settings, but some features of Mukhlat may not work properly.<br> 
+
+            <!-- <a href="#" target="_blank">(Click here for more info)</a> -->
+        </div>
+
+        <div class="col-md-2 col-sm-3 col-xs-12">
+             <a class="cookieConsentOK" onclick="toogleCookieWarning();">I accept!</a>
+        </div>
+    </div>
+
 </body>
 </html>
 
@@ -250,3 +326,50 @@
     include(APPPATH . 'views/modals/edit_profile_modal_parents.php');
     include(APPPATH . 'views/modals/logout_confirm_modal_parents.php');
 ?>
+
+<script>
+
+    function getCookie(cname) 
+    {
+        var name = cname + "=";
+        var ca = document.cookie.split(';');
+        for(var i = 0; i < ca.length; i++) 
+        {
+            var c = ca[i];
+            while (c.charAt(0) === ' ') 
+            {
+                c = c.substring(1);
+            }
+
+            if (c.indexOf(name) === 0) 
+            {
+                return c.substring(name.length, c.length);
+            }
+        }
+        return "";
+    }
+
+    function toogleCookieWarning()
+    {
+        if(getCookie("cookiewarning") == 0 || getCookie("cookiewarning")=="0")
+        {
+            document.cookie = "cookiewarning=1;" + ";path=/"; 
+            // document.getElementById("cookiewarning").style.display= "none";
+            document.getElementById("cookieConsent").style.display= "none";
+            
+        }
+    }
+
+    if(getCookie("cookiewarning") == 0 || getCookie("cookiewarning")=="0")
+    {
+        // document.getElementById("cookiewarning").style.display= "block";
+        document.getElementById("cookieConsent").style.display= "block";
+    }
+
+    if(getCookie("cookiewarning") == 1 || getCookie("cookiewarning")=="1")
+    {
+        // document.getElementById("cookiewarning").style.display= "none";
+        document.getElementById("cookieConsent").style.display= "none";
+    }
+
+</script>

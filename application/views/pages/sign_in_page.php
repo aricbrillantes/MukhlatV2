@@ -317,6 +317,7 @@
 <script>
 
     document.cookie = "sessionWarning=0;" + ";path=/"; 
+    document.cookie = "cookiewarning=0;" + ";path=/"; 
    
    function choosebday() 
     {
