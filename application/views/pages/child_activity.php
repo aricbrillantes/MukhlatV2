@@ -375,10 +375,26 @@
                         <li class=""><a data-toggle="modal" href="#child-activity-modal-parents">Media</a></li>
                     </ul><br>
 
+                    <style>
+                        @media (max-width: 768px) {
+                          .pages> li {
+                            display: table-cell;
+                            width: 1%;
+                          }
+                          .pages> li > a  {
+                            border-bottom: 0px solid #ddd !important;
+                            border-radius: 0px 0px 0 0 !important;
+                            margin-bottom: 0 !important;
+                          }
+                        }
+                    </style>
+
+                    
+
                     <div id="UHposts" class="tab-content" style="max-height:500px;">
                         <!-- ALL POSTS -->
-                        <div id="all-posts" class = "tab-pane fade in active tab-content" >
-                            <ul class="nav nav-pills nav-justified">
+                        <div id="all-posts" class = "tab-pane fade in active tab-content " >
+                            <ul class="nav nav-pills nav-justified row text-center pages" style="overflow-x: auto; overflow-y: hidden">
                             <?php 
                                 /*
                                     $totalPosts=0;
@@ -393,24 +409,26 @@
                                 $y = 0;
                                 $z = 0;
 
-                                for ($x = 0; $x <= $totalPosts; $x+=20): $y++; ?>
+                                for ($x = 0; $x <= $totalPosts; $x+=40): $y++; ?>
 
-                                    <?php if($totalPosts>20):
+                                    <?php if($totalPosts>40):
 
                                     if($x==0): ?>
-                                        <li class="active"><a data-toggle="pill" href="#all-page-<?php echo $y;?>"><?php echo $y;?></a></li>
+                                        <li class="active col-md-2 col-xs-2" ><a data-toggle="pill" href="#all-page-<?php echo $y;?>"><?php echo $y;?></a></li>
+                                        
 
                                         <?php else:?>
-                                        <li class=""><a data-toggle="pill" href="#all-page-<?php echo $y;?>"><?php echo $y;?></a></li>
+                                        <li class="col-md-2 col-xs-2 "><a data-toggle="pill" href="#all-page-<?php echo $y;?>"><?php echo $y;?></a></li>
+                                        
 
                                     <?php endif;
                                     endif;?>
                                 <?php endfor;?>
                             </ul>
 
-                            <div class = "tab-content" style="max-height:500px; overflow-x: hidden; overflow-y: scroll">
+                            <div class = "tab-content" style="max-height:480px; overflow-x: hidden; overflow-y: scroll">
                                 <?php $index = -1;
-                                for ($x = 0; $x <= $totalPosts; $x+=20): $z++; $index++;?>
+                                for ($x = 0; $x <= $totalPosts; $x+=40): $z++; $index++;?>
 
                                 <?php if($x==0):?>
                                     <div id="all-page-<?php echo $z;?>" class = "tab-content col-sm-12 col-xs-12 col-md-12 tab-pane fade in active" style = "margin-bottom: 40px; ">
@@ -422,7 +440,7 @@
                                 
                                 <?php 
 
-                                    $activities_chunks = array_chunk($activities, 20);
+                                    $activities_chunks = array_chunk($activities, 40);
                                     
                                     foreach ($activities_chunks[$index] as $n=>$post): $i++;?> 
                                     <div id="" class = "col-xs-12 no-padding post-container " style = "margin-top: 10px;">
@@ -482,28 +500,28 @@
 
                         <!-- POSTS IN OWN ROOM-->
                         <div id="room-posts" class = "tab-pane fade tab-content" >
-                            <ul class="nav nav-pills nav-justified">
+                            <ul class="nav nav-pills nav-justified row text-center pages" style="overflow-x: auto; overflow-y: hidden">
                             <?php 
                                 $i = 0;
                                 $y = 0;
                                 $z = 0;
 
-                                for ($x = 0; $x <= $totalRoomPosts; $x+=20): $y++; ?>
+                                for ($x = 0; $x <= $totalRoomPosts; $x+=40): $y++; ?>
 
-                                    <?php if($totalRoomPosts>20):
+                                    <?php if($totalRoomPosts>40):
 
                                     if($x==0): ?>
-                                        <li class="active"><a data-toggle="pill" href="#room-page-<?php echo $y;?>"><?php echo $y;?></a></li>
+                                        <li class="active col-md-2 col-xs-2"><a data-toggle="pill" href="#room-page-<?php echo $y;?>"><?php echo $y;?></a></li>
 
                                         <?php else:?>
-                                        <li class=""><a data-toggle="pill" href="#room-page-<?php echo $y;?>"><?php echo $y;?></a></li>
+                                        <li class="col-md-2 col-xs-2"><a data-toggle="pill" href="#room-page-<?php echo $y;?>"><?php echo $y;?></a></li>
 
                                     <?php endif;
                                     endif;?>
                                 <?php endfor;?>
                             </ul>
 
-                            <div class = "tab-content" style="max-height:500px; overflow-x: hidden; overflow-y: scroll">
+                            <div class = "tab-content" style="max-height:480px; overflow-x: hidden; overflow-y: scroll">
                                 <?php $index = -1;
 
                                 $roomArray = array();
@@ -514,7 +532,7 @@
                                         array_push($roomArray,$activity);
                                 }
 
-                                for ($x = 0; $x <= $totalRoomPosts; $x+=20): $z++; $index++;?>
+                                for ($x = 0; $x <= $totalRoomPosts; $x+=40): $z++; $index++;?>
 
                                 <?php if($x==0):?>
                                     <div id="room-page-<?php echo $z;?>" class = "tab-content col-sm-12 col-xs-12 col-md-12 tab-pane fade in active" style = "margin-bottom: 40px; ">
@@ -526,7 +544,7 @@
                                 
                                 <?php 
 
-                                    $roomArray_chunks = array_chunk($roomArray, 20);
+                                    $roomArray_chunks = array_chunk($roomArray, 40);
                                     
                                     foreach ($roomArray_chunks[$index] as $n=>$post): $i++;
 
@@ -585,28 +603,28 @@
 
                         <!-- POSTS IN OTHER ROOM-->
                         <div id="other-posts" class = "tab-pane tab-content fade" >
-                            <ul class="nav nav-pills nav-justified">
+                            <ul class="nav nav-pills nav-justified row text-center pages" style="overflow-x: auto; overflow-y: hidden">
                             <?php 
                                 $i = 0;
                                 $y = 0;
                                 $z = 0;
 
-                                for ($x = 0; $x <= $otherPosts; $x+=20): $y++; ?>
+                                for ($x = 0; $x <= $otherPosts; $x+=40): $y++; ?>
 
-                                    <?php if($otherPosts>20):
+                                    <?php if($otherPosts>40):
 
                                     if($x==0): ?>
-                                        <li class="active"><a data-toggle="pill" href="#other-page-<?php echo $y;?>"><?php echo $y;?></a></li>
+                                        <li class="active col-md-2 col-xs-2"><a data-toggle="pill" href="#other-page-<?php echo $y;?>"><?php echo $y;?></a></li>
 
                                         <?php else:?>
-                                        <li class=""><a data-toggle="pill" href="#other-page-<?php echo $y;?>"><?php echo $y;?></a></li>
+                                        <li class="col-md-2 col-xs-2"><a data-toggle="pill" href="#other-page-<?php echo $y;?>"><?php echo $y;?></a></li>
 
                                     <?php endif;
                                     endif;?>
                                 <?php endfor;?>
                             </ul>
 
-                            <div class = "tab-content" style="max-height:500px; overflow-x: hidden; overflow-y: scroll">
+                            <div class = "tab-content" style="max-height:480px; overflow-x: hidden; overflow-y: scroll">
                                 <?php $index = -1; 
 
                                 $othersArray = array();
@@ -618,16 +636,16 @@
                                 }
 
 
-                                for ($x = 0; $x <= $otherPosts; $x+=20): $z++; $index++; ?>
+                                for ($x = 0; $x <= $otherPosts; $x+=40): $z++; $index++; ?>
 
                                 <?php 
-                                    if($otherPosts>20 && $x==0):?>
+                                    if($otherPosts>40 && $x==0):?>
                                         <div id="other-page-<?php echo $z;?>" class = "tab-content col-sm-12 col-xs-12 col-md-12 tab-pane fade in active" style = "margin-bottom: 40px; ">
 
-                                    <?php elseif($otherPosts>20):?>
+                                    <?php elseif($otherPosts>40):?>
                                         <div id="other-page-<?php echo $z;?>" class = "tab-content col-sm-12 col-xs-12 col-md-12 tab-pane fade" style = "margin-bottom: 40px; ">
 
-                                    <?php elseif($otherPosts<20):?>
+                                    <?php elseif($otherPosts<40):?>
                                         <div id="other-page-<?php echo $z;?>" class = "tab-content col-sm-12 col-xs-12 col-md-12 tab-pane fade in active" style = "margin-bottom: 40px; ">
 
                                 <?php endif;
@@ -635,7 +653,7 @@
                                 
                                 <?php 
                                     
-                                    $others_chunks = array_chunk($othersArray, 20);
+                                    $others_chunks = array_chunk($othersArray, 40);
 
                                     foreach ($others_chunks[$index] as $post): $i++;
 
@@ -690,7 +708,6 @@
                                 <?php endfor;?>
                             </div>
                         </div>                        
-
                         
                     </div>
 

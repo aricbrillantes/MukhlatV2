@@ -4,7 +4,7 @@ include(APPPATH . 'views/header.php');
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<body>
+<body style="overflow-y:hidden">
     <?php
     include(APPPATH . 'views/navigation_bar.php');
 //    include(APPPATH . 'views/topic_side_bar.php');
@@ -90,38 +90,133 @@ include(APPPATH . 'views/header.php');
                             <li><a href="#" data-value = "3"><i class = "fa fa-comments"></i> Post Count</a></li>
                         </ul>
                     </div>-->
-                    <div id = "topic-list" class = "list-group">
-                        <?php foreach ($topics as $topic): ?>
+
+                    <style>
+                        @media (max-width: 768px) {
+                          .pages> li {
+                            display: table-cell;
+                            width: 1%;
+                          }
+                          .pages> li > a  {
+                            border-bottom: 0px solid #ddd !important;
+                            border-radius: 0px 0px 0 0 !important;
+                            margin-bottom: 0 !important;
+                          }
+                        }
+                    </style>
+                    
+                    <div id = "topic-list" class = "list-group tab-content ">
+                        <ul class="nav nav-pills nav-justified row text-center pages" style="overflow-x: auto; overflow-y: hidden">
+                        <?php 
+                           $i = 0;
+                            $y = 0;
+                            $z = 0;
+
+                            for ($x = 0; $x <= count($topics); $x+=6): $y++; ?>
+
+                                <?php if(count($topics)>6):
+
+                                if($x==0): ?>
+                                    <li class="active col-md-2 col-xs-2" ><a data-toggle="pill" href="#topics-page-<?php echo $y;?>"><?php echo $y;?></a></li>
+                                    
+
+                                    <?php else:?>
+                                    <li class="col-md-2 col-xs-2 "><a data-toggle="pill" href="#topics-page-<?php echo $y;?>"><?php echo $y;?></a></li>
+                                    
+
+                                <?php endif;
+                                endif;?>
+                            <?php endfor;?>
+                        </ul>
+
+                         <?php $index = -1;
+                                for ($x = 0; $x <= count($topics); $x+=6): 
+                                    $z++; 
+                                    $index++; ?>
+
+                                <?php if($x==0):?>
+                                <div id="topics-page-<?php echo $z;?>" class = "tab-content tab-pane fade in active">
+                                <?php 
+                                    $topics_chunks = array_chunk($topics, 6);
+
+                                    foreach ($topics_chunks[$index] as $topic): 
+                                        if($topic->theme==1): $theme="roomthemes roomtheme-arrow";
+                                        elseif($topic->theme==2): $theme="roomthemes roomtheme-zigzag";
+                                        elseif($topic->theme==3): $theme="roomthemes roomtheme-scales";
+                                        elseif($topic->theme==4): $theme="roomthemes roomtheme-halfrhombe";
+                                        elseif($topic->theme==5): $theme="roomthemes roomtheme-marrakesh";
+                                        elseif($topic->theme==6): $theme="roomthemes roomtheme-hearts";
+                                        elseif($topic->theme==7): $theme="roomthemes roomtheme-stars";
+                                        elseif($topic->theme==8): $theme="roomthemes roomtheme-seigaiha";
+                                        elseif($topic->theme==9): $theme="roomthemes roomtheme-bricks";
+                                        elseif($topic->theme==10): $theme="roomthemes roomtheme-diacheckerboard";
+                                        elseif($topic->theme==11): $theme="roomthemes roomtheme-tablecloth";
+                                        elseif($topic->theme==12): $theme="roomthemes roomtheme-brady";
+                                        elseif($topic->theme==13): $theme="roomthemes roomtheme-argyle";
+                                        elseif($topic->theme==14): $theme="roomthemes roomtheme-shippo";
+                                        elseif($topic->theme==15): $theme="roomthemes roomtheme-waves";
+                                        elseif($topic->theme==16): $theme="roomthemes roomtheme-polkadot";
+                                        elseif($topic->theme==17): $theme="roomthemes roomtheme-honeycomb";
+                                        elseif($topic->theme==18): $theme="roomthemes roomtheme-chocolateweave";
+                                        elseif($topic->theme==19): $theme="roomthemes roomtheme-crosseddot";
+                                        else: $theme="topic-grid1 col-md-3";
+                                        endif;
+                                    ?>  
                         
-                        <?php if($topic->theme==1): $theme="roomthemes roomtheme-arrow";
-                        elseif($topic->theme==2): $theme="roomthemes roomtheme-zigzag";
-                        elseif($topic->theme==3): $theme="roomthemes roomtheme-scales";
-                        elseif($topic->theme==4): $theme="roomthemes roomtheme-halfrhombe";
-                        elseif($topic->theme==5): $theme="roomthemes roomtheme-marrakesh";
-                        elseif($topic->theme==6): $theme="roomthemes roomtheme-hearts";
-                        elseif($topic->theme==7): $theme="roomthemes roomtheme-stars";
-                        elseif($topic->theme==8): $theme="roomthemes roomtheme-seigaiha";
-                        elseif($topic->theme==9): $theme="roomthemes roomtheme-bricks";
-                        elseif($topic->theme==10): $theme="roomthemes roomtheme-diacheckerboard";
-                        elseif($topic->theme==11): $theme="roomthemes roomtheme-tablecloth";
-                        elseif($topic->theme==12): $theme="roomthemes roomtheme-brady";
-                        elseif($topic->theme==13): $theme="roomthemes roomtheme-argyle";
-                        elseif($topic->theme==14): $theme="roomthemes roomtheme-shippo";
-                        elseif($topic->theme==15): $theme="roomthemes roomtheme-waves";
-                        elseif($topic->theme==16): $theme="roomthemes roomtheme-polkadot";
-                        elseif($topic->theme==17): $theme="roomthemes roomtheme-honeycomb";
-                        elseif($topic->theme==18): $theme="roomthemes roomtheme-chocolateweave";
-                        elseif($topic->theme==19): $theme="roomthemes roomtheme-crosseddot";
-                        else: $theme="topic-grid1 col-md-3";
-                        endif;?>  
+                                   <div>
+                                        <a class="<?php echo $theme?> elements-resizer"  href = "<?php echo base_url('topic/view/' . $topic->topic_id); ?>">
+                                            <h4 class = "text-info no-padding text1color topicheader" style="margin-top:50px;margin-left: 13px"><?php echo utf8_decode($topic->topic_name); ?></h4><br>
+                                        </a>
+                                   </div>
+                                   <?php endforeach; ?>
+
+                               </div>
+
+                                    
+                                <?php else:?>
+                                <div id="topics-page-<?php echo $z;?>" class = "tab-content tab-pane fade" >
+                                <?php 
+                                    $topics_chunks = array_chunk($topics, 6);
+
+                                    foreach ($topics_chunks[$index] as $topic): 
+                                        if($topic->theme==1): $theme="roomthemes roomtheme-arrow";
+                                        elseif($topic->theme==2): $theme="roomthemes roomtheme-zigzag";
+                                        elseif($topic->theme==3): $theme="roomthemes roomtheme-scales";
+                                        elseif($topic->theme==4): $theme="roomthemes roomtheme-halfrhombe";
+                                        elseif($topic->theme==5): $theme="roomthemes roomtheme-marrakesh";
+                                        elseif($topic->theme==6): $theme="roomthemes roomtheme-hearts";
+                                        elseif($topic->theme==7): $theme="roomthemes roomtheme-stars";
+                                        elseif($topic->theme==8): $theme="roomthemes roomtheme-seigaiha";
+                                        elseif($topic->theme==9): $theme="roomthemes roomtheme-bricks";
+                                        elseif($topic->theme==10): $theme="roomthemes roomtheme-diacheckerboard";
+                                        elseif($topic->theme==11): $theme="roomthemes roomtheme-tablecloth";
+                                        elseif($topic->theme==12): $theme="roomthemes roomtheme-brady";
+                                        elseif($topic->theme==13): $theme="roomthemes roomtheme-argyle";
+                                        elseif($topic->theme==14): $theme="roomthemes roomtheme-shippo";
+                                        elseif($topic->theme==15): $theme="roomthemes roomtheme-waves";
+                                        elseif($topic->theme==16): $theme="roomthemes roomtheme-polkadot";
+                                        elseif($topic->theme==17): $theme="roomthemes roomtheme-honeycomb";
+                                        elseif($topic->theme==18): $theme="roomthemes roomtheme-chocolateweave";
+                                        elseif($topic->theme==19): $theme="roomthemes roomtheme-crosseddot";
+                                        else: $theme="topic-grid1 col-md-3";
+                                        endif;
+                                    ?>  
                         
-                       <div>
-                            <a class="<?php echo $theme?> elements-resizer"  href = "<?php echo base_url('topic/view/' . $topic->topic_id); ?>">
-                                <h4 class = "text-info no-padding text1color topicheader" style="margin-top:50px;margin-left: 13px"><?php echo utf8_decode($topic->topic_name); ?></h4><br>
-                            </a>
-                       </div>
-                        <?php endforeach; ?>
-                        </div>
+                                   <div>
+                                        <a class="<?php echo $theme?> elements-resizer"  href = "<?php echo base_url('topic/view/' . $topic->topic_id); ?>">
+                                            <h4 class = "text-info no-padding text1color topicheader" style="margin-top:50px;margin-left: 13px"><?php echo utf8_decode($topic->topic_name); ?></h4><br>
+                                        </a>
+                                   </div>
+                                   <?php endforeach; ?>
+
+                               </div>
+                                <?php endif;?>
+
+                        
+                        
+                        
+                        
+                        <?php endfor;?>
                 </div>
             </div>
             <?php

@@ -166,7 +166,7 @@
                 ?>
                 
                <div class = "col-md-12 col-sm-12 col-xs-12 content-container container-fluid text-center" style = "">
-                    <img id = "user-pic-display" class = "img-circle" width = "100px" height = "100px" src = "<?php echo $user->profile_url ? base_url($user->profile_url) : base_url('images/default.jpg') ?>" style = "margin-bottom: 5px;">
+                    <img id = "user-pic-display" class = "img-circle" width = "80px" height = "80px" src = "<?php echo $user->profile_url ? base_url($user->profile_url) : base_url('images/default.jpg') ?>" style = "margin-bottom: 0px;">
                     
                     <h3 class = "no-padding text-info" style = ""><strong><?php echo $user->first_name . " " . $user->last_name ?></strong></h3>
                             <small class = "no-padding no-margin"><?php echo $user->email ?></small>
@@ -214,7 +214,7 @@
                 </div>
 
             <?php elseif($count<1): ?>
-                <div class = "col-xs-12 col-md-12 col-sm-12 col-md-offset-0 content-container container-fluid text-center" style = "margin-bottom: 5px;">
+                <div class = "col-xs-12 col-md-12 col-sm-12 col-md-offset-0 content-container container-fluid text-center" style = "margin-bottom: 0px;">
                     <div class = "col-xs-12 col-md-12 col-sm-12 col-md-offset-0 content-container container-fluid" style = "margin-bottom: 5px; border:0">
                         <h3 class = "no-padding text-info" style = "margin-bottom: 0px;"><strong><?php echo $user->first_name . " " . $user->last_name ?> has no children registered!</strong></h3>
                     </div>
