@@ -110,14 +110,14 @@
                                         
                                         <?php if($post->creator_id === $logged_user->user_id): ?>
                                             <a class = "text1color" href = "<?php echo base_url('user/profile/' . $post->user_id); ?>">
-                                                <strong style = "font-size: 21px">You</strong>
+                                                <strong class="clicker" style = "font-size: 21px;">You</strong>
                                             </a> 
                                             <p style="font-size: 24px; display:inline"> decorated </p>
                                             <a style="max-width: 500px; overflow: hidden; text-overflow: ellipsis; display:inline " class = "" href = "<?php echo base_url('topic/view/' . $post->topic_id); ?>">your room! </a>
 
                                         <?php elseif($post->creator_id === $post->user_id): ?>
                                             <a class = "text1color" href = "<?php echo base_url('user/profile/' . $post->user_id); ?>">
-                                                <strong style = "font-size: 21px"><?php echo $post->first_name;?></strong>
+                                                <strong class="clicker" style = "font-size: 21px"><?php echo $post->first_name;?></strong>
                                             </a>
                                             <p style="font-size: 24px; display:inline"> decorated </p> 
                                             <a style="max-width: 500px; overflow: hidden; text-overflow: ellipsis; display:inline " class = "" href = "<?php echo base_url('topic/view/' . $post->topic_id); ?>">their room! </a>
@@ -133,7 +133,7 @@
                                             
                                             <?php endif;?>
                                             <a class = "text1color" href = "<?php echo base_url('user/profile/' . $post->user_id); ?>">
-                                                <strong style = "font-size: 21px"><?php echo $post->first_name;?></strong>
+                                                <strong class="clicker" style = "font-size: 21px"><?php echo $post->first_name;?></strong>
                                             </a>
                                             <p style="font-size: 24px; display:inline"> says:</p>
                                         

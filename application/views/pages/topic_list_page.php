@@ -165,7 +165,7 @@ include(APPPATH . 'views/header.php');
                         
                                    <div>
                                         <a class="<?php echo $theme?> elements-resizer"  href = "<?php echo base_url('topic/view/' . $topic->topic_id); ?>">
-                                            <h4 class = "text-info no-padding text1color topicheader" style="margin-top:50px;margin-left: 13px"><?php echo utf8_decode($topic->topic_name); ?></h4><br>
+                                            <h4 class = "text-info no-padding text1color topicheader clicker" style="margin-top:50px;margin-left: 13px"><?php echo utf8_decode($topic->topic_name); ?></h4><br>
                                         </a>
                                    </div>
                                    <?php endforeach; ?>

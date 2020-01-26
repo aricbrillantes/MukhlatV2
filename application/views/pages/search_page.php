@@ -54,7 +54,7 @@
                         endif;?> 
                                     <a class = "roomthemes elements-resizer <?php echo $theme?>" href = "topic/view/<?php echo $topic->topic_id; ?>">
                                         <!--<img class = "img-circle" style = "margin: 10px 0px;" width = "40px" height = "40px" src = "<?php echo $topic->user->profile_url ? base_url($topic->user->profile_url) : base_url('images/default.jpg'); ?>"/>--> 
-                                        <h4 class = "text-info no-padding no-margin  text1color topicheader" style = "display: inline-block;"><?php echo $topic->topic_name;?></h4>
+                                        <h4 class = "text-info no-padding no-margin  text1color topicheader clicker" style = "display: inline-block;"><?php echo $topic->topic_name;?></h4>
                                         <!--<small><i>by <?php echo $topic->user->first_name . " " . $topic->user->last_name; ?></i></small>-->
 <!--                                        <div class = "pull-right">
                                             <span class = "label label-info follower-label"><i class = "fa fa-group"></i> <?php echo $topic->followers ? count($topic->followers) : '0'; ?></span>

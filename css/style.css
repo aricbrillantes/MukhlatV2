@@ -118,7 +118,9 @@ a{
     font-size: 19px;
     cursor:pointer !important;
 }
-
+a:hover{
+    cursor:pointer !important;
+}
 small{
     font-size: 18px;
 }
@@ -2111,6 +2113,7 @@ body::-webkit-scrollbar-thumb {
   box-sizing:border-box;
   display:inline-block;
   height:20%;
+  min-height: 180px;
   min-width:200px;
   padding:1vmin;
   position:relative;
@@ -3512,7 +3515,9 @@ background-size: 1800% 1800%;
     transform: rotate(8deg) scale(1.25);
 }
 	
-
+.clicker{
+    cursor:pointer !important;
+}
 
 
 

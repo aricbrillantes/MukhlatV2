@@ -135,7 +135,7 @@ include(APPPATH . 'views/header.php');
                                         <img class = "img-circle" style = "margin: 10px 0px;" width = "40px" height = "40px" src = "<?php echo $post->profile_url ? base_url($post->profile_url) : base_url('images/default.jpg'); ?>"/> 
                                         
                                         <a class = "text1color" href = "<?php echo base_url('user/profile/' . $post->user_id); ?>">
-                                            <strong style = "font-size: 21px"><?php echo $post->first_name; ?></strong>
+                                            <strong class="clicker" style = "font-size: 21px"><?php echo $post->first_name; ?></strong>
                                         </a> 
                                         <?php if (empty($post->parent)): ?>
                                         <span style="color:black">said in</span> 
@@ -143,7 +143,7 @@ include(APPPATH . 'views/header.php');
                                             <span style="color:black">said in</span> 
                                         <?php endif; ?>
                                         <a class = "text1color" href = "<?php echo base_url('topic/view/' . $post->topic_id); ?>">
-                                            <strong style = "font-size: 22px"><?php echo utf8_decode($post->topic_name); ?></strong>
+                                            <strong class="clicker" style = "font-size: 22px"><?php echo utf8_decode($post->topic_name); ?></strong>
                                         </a>
                                         <?php if (!empty($post->parent)): ?>
                                             <span class = "text-muted" style = "font-size: 18px;">( <i class = "fa fa-reply"></i> <i>in reply to <a class = "btn btn-link btn-xs no-padding no-margin text1color" href = "<?php echo base_url('user/profile/' . $post->parent->user->user_id); ?>"><?php echo $post->parent->user->first_name . " " . $post->parent->user->last_name; ?></a> )</i></span>
