@@ -151,7 +151,7 @@
 <!-- Nav Bar Script -->
 <script type="text/javascript" src="<?php echo base_url("/js/nav_bar.js"); ?>"></script>
 
-<body class = "sign-in">
+<body class = "sign-in" style="overflow-y: hidden">
     <div class = "container col-md-10 col-sm-12 col-xs-12 col-md-offset-1" style = "">
         
         <div class = "row" >
@@ -281,7 +281,7 @@
                         </div>
 
                         <div class=" col-md-4 col-sm-4 col-xs-4" style="border-right: 1px solid #dedede">
-                            <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Shout-outs posted: </h4></strong><br> <h3 class = "" style = "display: inline-block;"><?php echo $shoutOuts; ?></h3>
+                            <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Shout-outs: </h4></strong><br> <h3 class = "" style = "display: inline-block;"><?php echo $shoutOuts; ?></h3>
                         </div>
 
                         <div class="col-md-4 col-sm-4 col-xs-4">
@@ -394,7 +394,7 @@
                     <div id="UHposts" class="tab-content" style="max-height:500px;">
                         <!-- ALL POSTS -->
                         <div id="all-posts" class = "tab-pane fade in active tab-content " >
-                            <ul class="nav nav-pills nav-justified row text-center pages" style="overflow-x: auto; overflow-y: hidden">
+                            <ul class="nav nav-pills nav-justified row text-center pages" style="margin-left:5px; overflow-x: auto; overflow-y: hidden">
                             <?php 
                                 /*
                                     $totalPosts=0;
@@ -416,7 +416,6 @@
                                     if($x==0): ?>
                                         <li class="active col-md-2 col-xs-2" ><a data-toggle="pill" href="#all-page-<?php echo $y;?>"><?php echo $y;?></a></li>
                                         
-
                                         <?php else:?>
                                         <li class="col-md-2 col-xs-2 "><a data-toggle="pill" href="#all-page-<?php echo $y;?>"><?php echo $y;?></a></li>
                                         

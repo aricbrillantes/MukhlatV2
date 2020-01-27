@@ -27,6 +27,15 @@ class User_model extends CI_Model {
         return $query->get()->result();
     }
 
+    public function checkUserType($id) 
+    {
+        $query = $this->db->select('*')
+                ->from('tbl_users')
+                ->where('user_id',$id);
+
+        return $query->get()->result();
+    }
+
     public function get_details($id) 
     {
         $query = $this->db->select('user_id, email')
@@ -142,6 +151,15 @@ class User_model extends CI_Model {
     //function for getting specific child's data
     public function view_specific_child($user_id) 
     {        
+        //get user ID of child being monitored (from the URL)
+        $id = $this->uri->segment(3);
+
+        if(!$id) //if there is no user ID in the URL, redirect to home page
+        {
+            $homeURL = base_url('home');
+            header("Location: $homeURL");
+        }
+        
         $query = $this->db->select('*')
                 ->from('tbl_users')
                 ->join('tbl_infractions', 'tbl_infractions.user_id = tbl_users.user_id')

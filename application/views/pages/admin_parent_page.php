@@ -13,6 +13,7 @@
     }
 
     $CI =&get_instance();
+    $CI->load->model('user_model');
 
     //get user ID of parent being monitored (from the URL)
     $id = $this->uri->segment(3);
@@ -24,7 +25,26 @@
         exit(0);
     }
 
-    $CI->load->model('user_model');
+    $isParent = $CI->user_model->checkUserType($id);
+
+    if($isParent)
+    {
+        foreach ($isParent as $check)
+        {
+            if($check->role_id != 3)
+            {
+                $homeURL = base_url('home');
+                header("Location: $homeURL");
+            }
+        }
+    }
+
+    else
+    {
+        $homeURL = base_url('home');
+        header("Location: $homeURL");
+    }
+
 
     $email = $CI->user_model->get_details($id);
 

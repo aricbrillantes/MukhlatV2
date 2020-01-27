@@ -25,11 +25,30 @@
         header("Location: $homeURL");
     }
 
-    $children_display = $CI->user_model->view_child($logged_user->user_id);
+    $isChild = $CI->user_model->checkUserType($id);
 
-    //get data of child being monitored
+    if($isChild)
+    {
+        foreach ($isChild as $check)
+        {
+            if($check->role_id != 2)
+            {
+                $homeURL = base_url('home');
+                header("Location: $homeURL");
+            }
+        }
+    }
+
+    else
+    {
+        $homeURL = base_url('home');
+        header("Location: $homeURL");
+    }
+
+    // $children_display = $CI->user_model->view_child($logged_user->user_id);
+
+   //get data of child being monitored
     $children = $CI->user_model->view_specific_child($id);
-
 
     //load topic model
     $CI =&get_instance();
@@ -131,7 +150,7 @@
 <!-- Nav Bar Script -->
 <script type="text/javascript" src="<?php echo base_url("/js/nav_bar.js"); ?>"></script>
 
-<body class = "sign-in">
+<body class = "sign-in" style="overflow-y: hidden">
     <div class = "container" style = "">
         <div class = "row" >
 
@@ -261,7 +280,7 @@
                     </div>
 
                     <div class=" col-md-4 col-sm-4 col-xs-4" style="border-right: 1px solid #dedede">
-                        <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Shout-outs posted: </h4></strong><br> <h3 class = "" style = "display: inline-block;"><?php echo $shoutOuts; ?></h3>
+                        <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Shout-outs: </h4></strong><br> <h3 class = "" style = "display: inline-block;"><?php echo $shoutOuts; ?></h3>
                     </div>
 
                     <div class="col-md-4 col-sm-4 col-xs-4">
@@ -307,7 +326,7 @@
                     <div id="UHposts" class="tab-content" style="max-height:500px;">
                         <!-- ALL POSTS -->
                         <div id="all-posts" class = "tab-pane fade in active tab-content " >
-                            <ul class="nav nav-pills nav-justified row text-center pages" style="overflow-x: auto; overflow-y: hidden">
+                            <ul class="nav nav-pills nav-justified row text-center pages" style="margin-left:5px; overflow-x: auto; overflow-y: hidden">
                             <?php 
                                 /*
                                     $totalPosts=0;
@@ -641,7 +660,7 @@
 </html>
 
 <?php
-    include(APPPATH . 'views/modals/child_activity_modal_parents.php');
+    // include(APPPATH . 'views/modals/child_activity_modal_parents.php');
     include(APPPATH . 'views/modals/network_view_modal.php');
     include(APPPATH . 'views/modals/logout_confirm_modal_parents.php');
 ?>
