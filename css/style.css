@@ -3372,7 +3372,7 @@ background-size: 1800% 1800%;
    box-shadow:0px 0px 0px 5px #000;
 }
 
-/*.colly-lg-3{
+.colly-lg-3{
     width:31%;
     display: inline-block;
     margin:1%;
@@ -3388,7 +3388,7 @@ background-size: 1800% 1800%;
     width:97%;
     display: inline-block;
     margin-bottom:1%;
-}*/
+}
 
 .hideme{
     display: none !important;
@@ -3563,4 +3563,8 @@ background-size: 1800% 1800%;
 .mediapreview{
     overflow-x: auto;
     white-space: nowrap;
+}
+
+#chalkb img{
+    width: 25%;
 }
