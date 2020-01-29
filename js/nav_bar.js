@@ -142,6 +142,12 @@ list[13] = ";cool;^<img  width='30%' src='" + "/MukhlatV2/images/stickers/cool.p
 list[14] = ";woohoo;^<img  width='30%' src='" + "/MukhlatV2/images/stickers/woohoo.png'>";
 list[15] = ";pretty;^<img  width='30%' src='" + "/MukhlatV2/images/stickers/pretty.gif'>";
 list[16] = ";yum;^<img  width='30%' src='" + "/MukhlatV2/images/stickers/yum.png'>";
+list[17] = ";wenk hi;^<img  width='30%' src='" + "/MukhlatV2/images/stickers/wenk hi.png'>";
+list[18] = ";wenk facepalm;^<img  width='30%' src='" + "/MukhlatV2/images/stickers/wenk facepalm.png'>";
+list[19] = ";wenk haha;^<img  width='30%' src='" + "/MukhlatV2/images/stickers/wenk haha.png'>";
+list[20] = ";spidab;^<img  width='30%' src='" + "/MukhlatV2/images/stickers/spidab.png'>";
+list[21] = ";busy;^<img  width='30%' src='" + "/MukhlatV2/images/stickers/busy.png'>";
+list[2] = ";sweet;^<img  width='30%' src='" + "/MukhlatV2/images/stickers/sweet.png'>";
 var j, k, find, item, repl;
 if(document.getElementById("chalkb") && document.getElementById("Mposts") && document.getElementById("messageb")){
     page = document.getElementById("chalkb").innerHTML;
