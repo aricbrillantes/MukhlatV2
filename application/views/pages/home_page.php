@@ -12,6 +12,8 @@
     $logged_user = $_SESSION['logged_user'];
 
     ?>
+    <script src="<?php echo base_url("/js/responsive_waterfall.js"); ?>"></script>
+
 <!--    <script src='https://code.responsivevoice.org/responsivevoice.js'></script>-->
     <div class = "container page">
         <div class = "row">
@@ -71,7 +73,7 @@
                     </div>-->
 
                     <!-- CONTENT -->
-                    <div id="UHposts" class = "col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 content-container" style="border-radius:20px;">
+                    <div id="UHposts" class = "col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 content-container wf-container" style="border-radius:20px;">
                         
                             <!-- POST PREVIEW -->
                             <?php
@@ -103,7 +105,7 @@
                                         else: $theme="";
                                         endif;?>
 
-                                    <div class=" polaroid homepostsborder elements-resizer col-xs-12 col-sm-12 <?php echo $theme?>" >
+                                    <div class=" polaroid homepostsborder wf-box <?php echo $theme?>" >
                                      
                                         <div class="whitebg">
                                         <img class = "img-circle" style = "margin: 10px 0px;" width = "40px" height = "40px" src = "<?php echo $post->profile_url ? base_url($post->profile_url) : base_url('images/default.jpg'); ?>"/> 
@@ -245,7 +247,13 @@
                 fallrock.play();
             }
         </script>
-
+        
+        <script>var waterfall = new Waterfall({ 
+        containerSelector: '.wf-container',
+        boxSelector: '.wf-box',
+        minBoxWidth: 300
+        });</script>
+        
         <script type="text/javascript" src="<?php echo base_url("/js/search.js"); ?>"></script>
         <!--back to top and go to bottom buttons-->
 

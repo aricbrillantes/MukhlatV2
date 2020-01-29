@@ -3519,6 +3519,36 @@ background-size: 1800% 1800%;
     cursor:pointer !important;
 }
 
+.wf-container { margin: 0 auto; }
+
+.wf-container:before,
+.wf-container:after {
+  content: '';
+  display: table;
+}
+
+.wf-container:after { clear: both; }
+
+.wf-box { margin: 10px; }
 
 
 
+.wf-column { float: left;}
+
+@media screen and (min-width: 768px) {
+
+.wf-container { width: 750px; }
+
+}
+
+@media screen and (min-width: 992px) {
+
+.wf-container { width: 970px; }
+
+}
+
+@media screen and (min-width: 1200px) {
+
+.wf-container { width: 1170px; }
+
+}
