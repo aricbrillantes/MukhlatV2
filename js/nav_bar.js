@@ -205,6 +205,12 @@ else if(document.getElementById("UHposts"))
     $(this).addClass('selected'); // adds the class to the clicked image
 });
 
+    $('.blocks3').click(function(){
+    $('.selected3').removeClass('selected3'); // removes the previous selected class
+    $(this).addClass('selected3'); // adds the class to the clicked image
+});
+
+
 
 
 //screen resizing for mobile compaitibility
