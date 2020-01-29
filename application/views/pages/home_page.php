@@ -161,7 +161,7 @@
 
                                                 <?php foreach ($attachments as $attachment):
                                                     if ($attachment->attachment_type_id === '1'):?>
-                                                        <img src = "<?= base_url($attachment->file_url); ?>" width = "75%"  style="position:relative; width:auto; max-height: 200px; max-width: 300px;" />
+                                                        <img src = "<?= base_url($attachment->file_url); ?>" width = "75%"  style="position:relative;  max-height: 200px; max-width: 300px;" />
                                                         
 
                                                     <?php elseif ($attachment->attachment_type_id === '2'): ?>
@@ -169,7 +169,7 @@
                                                         
 
                                                     <?php elseif ($attachment->attachment_type_id === '3'): ?>
-                                                        <video src = "<?= base_url($attachment->file_url); ?>" width = "100%" style="height: 100%; width:auto; max-height: 220px;" controls/></video>
+                                                        <video src = "<?= base_url($attachment->file_url); ?>" width = "100%" style="height: 100%; max-height: 220px;" controls/></video>
                                                     
 
                                                     <?php elseif ($attachment->attachment_type_id === '4'): ?>
