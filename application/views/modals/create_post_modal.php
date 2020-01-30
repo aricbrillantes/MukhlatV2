@@ -291,13 +291,13 @@ $topic = $_SESSION['current_topic'];
                             </div></center>
                         </div>-->
                         
+                        <div style="text-align:center" id="choose">
             
-            <label id = "record-label" >
-            <div style="text-align:center" id="choose">
+            
             <button type="button" id="choosepic" class="drawnbutton lined thick" onclick="chosepic()"><img src="http://localhost/MukhlatV2/icons/pic.png" style="display:block;margin: 0 auto;"> Pix </button>
             <button type="button" id="choosenote" class="drawnbutton lined thick" onclick="chosenote()"><img src="http://localhost/MukhlatV2/icons/note.png" style="display:block;margin: 0 auto;"> Sound </button>
             <button type="button" id="choosevid" class="drawnbutton lined thick" onclick="chosevid()"><img src="http://localhost/MukhlatV2/icons/video.png" style="display:block;margin: 0 auto;"> Vids </button>
-            </div><br>
+            <br>
             <div style="text-align:center" >
             <button type="button" id="btnStart" class="drawnbutton lined thin" onclick="recordaudio();"style = "display: none;"><img src="http://localhost/MukhlatV2/icons/mic.png" style="display:block;margin: 0 auto;margin-bottom: 15px;margin-top: 10px"></img>Tick Talk!</button>
             <button type="button" id="btnStart2" class="drawnbutton lined thin" onclick="recordvideo();"style = "display: none;"><img src="http://localhost/MukhlatV2/icons/Recordvid.png" style="display:block;margin: 0 auto;"></img>Video Time!</button>
@@ -331,7 +331,8 @@ $topic = $_SESSION['current_topic'];
             </div>
             <br>
             
-            </label>
+            
+           
             
                          
                          
@@ -364,12 +365,12 @@ $topic = $_SESSION['current_topic'];
                         </label> -->
 
                     </div>
-                    <img id="pic" src="#" style="display: none" width="400" />
-              <audio id="aud" style="display: none" controls>
+                    <img id="pic" src="#" style="display: none" width="100%" />
+              <audio id="aud" width="100%" style="display: none" controls>
               <source src="#" id="audio_here">
               hi
               </audio>
-              <video id="vid" width="400" style="display: none" controls>
+              <video id="vid" width="100%" style="display: none" controls>
                   <source src="#" id="video_here">
                   hi
               </video>  
@@ -386,7 +387,7 @@ $topic = $_SESSION['current_topic'];
                 
 
             </form>
-
+            </div>
         </div>
     </div>
 </div>
