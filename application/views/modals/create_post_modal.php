@@ -294,13 +294,13 @@ $topic = $_SESSION['current_topic'];
                         <div style="text-align:center" id="choose">
             
             
-            <button type="button" id="choosepic" class="drawnbutton lined thick" onclick="chosepic()"><img src="http://localhost/MukhlatV2/icons/pic.png" style="display:block;margin: 0 auto;"> Pix </button>
-            <button type="button" id="choosenote" class="drawnbutton lined thick" onclick="chosenote()"><img src="http://localhost/MukhlatV2/icons/note.png" style="display:block;margin: 0 auto;"> Sound </button>
-            <button type="button" id="choosevid" class="drawnbutton lined thick" onclick="chosevid()"><img src="http://localhost/MukhlatV2/icons/video.png" style="display:block;margin: 0 auto;"> Vids </button>
+            <button type="button" id="choosepic" class="drawnbutton lined thick" onclick="chosepic()"><img src="<?php echo base_url('icons/pic.png'); ?>" style="display:block;margin: 0 auto;width:100%"> Pix </button>
+            <button type="button" id="choosenote" class="drawnbutton lined thick" onclick="chosenote()"><img src="<?php echo base_url('icons/note.png'); ?>" style="display:block;margin: 0 auto;width:100%"> Sound </button>
+            <button type="button" id="choosevid" class="drawnbutton lined thick" onclick="chosevid()"><img src="<?php echo base_url('icons/video.png'); ?>" style="display:block;margin: 0 auto;width:100%"> Vids </button>
             <br>
             <div style="text-align:center" >
-            <button type="button" id="btnStart" class="drawnbutton lined thin" onclick="recordaudio();"style = "display: none;"><img src="http://localhost/MukhlatV2/icons/mic.png" style="display:block;margin: 0 auto;margin-bottom: 15px;margin-top: 10px"></img>Tick Talk!</button>
-            <button type="button" id="btnStart2" class="drawnbutton lined thin" onclick="recordvideo();"style = "display: none;"><img src="http://localhost/MukhlatV2/icons/Recordvid.png" style="display:block;margin: 0 auto;"></img>Video Time!</button>
+            <button type="button" id="btnStart" class="drawnbutton lined thin" onclick="recordaudio();"style = "display: none;"><img src="<?php echo base_url('icons/mic.png'); ?>" style="display:block;margin: 0 auto;margin-bottom: 15px;margin-top: 10px"></img>Tick Talk!</button>
+            <button type="button" id="btnStart2" class="drawnbutton lined thin" onclick="recordvideo();"style = "display: none;"><img src="<?php echo base_url('icons/Recordvid.png'); ?>"></img>Video Time!</button>
             
             <h4 id="startrec" style="display: none;text-align:center;">You are now recording!</h4>
 
@@ -342,20 +342,20 @@ $topic = $_SESSION['current_topic'];
                         <!--IMAGE-->
                         <label id = "img-label" class="drawnbutton dotted thin" style = "display: none;">
                             <input id = "attach-img" accept = "image/*" type="file" name = "post_image" style = "display: none;" onchange="fileAdded();readURL(this);">
-                            <p id = "image-text" class = "attach-btn-text" style="text-align: center;"><img src="http://localhost/MukhlatV2/icons/pic.png" style="display:block;margin: 0 auto;"> Choose Pix </p>
+                            <p id = "image-text" class = "attach-btn-text" style="text-align: center;"><img src="<?php echo base_url('icons/pic.png'); ?>" style="display:block;margin: 0 auto;"> Choose Pix </p>
                         </label>
 
                         <!--AUDIO-->
                         <label id = "audio-label" class="drawnbutton dotted thin" style = "display: none;">
                             <input id = "attach-audio" accept = "audio/*" type="file" name = "post_audio" style = "display: none;" onchange="fileAdded();readAud(this);">
-                            <p id = "audio-text" class = "attach-btn-text" style="text-align: center;"><img src="http://localhost/MukhlatV2/icons/note.png" style="display:block;margin: 0 auto;"> Choose Sounds </p>
+                            <p id = "audio-text" class = "attach-btn-text" style="text-align: center;"><img src="<?php echo base_url('icons/note.png'); ?>" style="display:block;margin: 0 auto;"> Choose Sounds </p>
  
                         </label>
 
                         <!--VIDEO-->
                         <label id = "video-label" class="drawnbutton dotted thin" style = "display: none;">
                             <input id = "attach-video" accept = "video/*" type="file" name = "post_video" style = "display: none;" onchange="fileAdded();readVid(this);">
-                            <p id = "video-text" class = "attach-btn-text" style="text-align: center;"><img src="http://localhost/MukhlatV2/icons/video.png" style="display:block;margin: 0 auto;"> Choose Vids </p>
+                            <p id = "video-text" class = "attach-btn-text" style="text-align: center;"><img src="<?php echo base_url('icons/video.png'); ?>" style="display:block;margin: 0 auto;"> Choose Vids </p>
                         </label>
 
                         <!--FILE-->
@@ -675,7 +675,11 @@ function readAud(input){
 
 let constraintObj2 = { 
             audio: true, 
-            video: true
+            video:{ 
+                facingMode: "user", 
+                width: { min: 640, ideal: 1280, max: 1920 },
+                height: { min: 480, ideal: 720, max: 1080 } 
+            } 
         }; 
       
         if (navigator.mediaDevices === undefined) {
