@@ -58,16 +58,33 @@
             
         <div class="col-sm-12 col-md-12 col-xs-12 col-lg-12 col-xl-12"> 
             
-            <div class="">
-                <center><div class="nameframe" style="margin-top:50px; margin-left: -10px;margin-bottom: 15px">
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
+                <div class="nameframe" style="margin-top:62px; margin-left: -10px;margin-bottom: 15px">
+                    <br>
             <h4><strong><?php echo utf8_decode($c_topic->user->first_name); ?>'s Room</strong></h4>
             </div>
                     <br>
 <!--<strong>Theme: <?php echo utf8_decode($c_topic->theme); ?></strong>-->
             <?php if ($c_topic->creator_id === $logged_user->user_id): ?>
-                <a onmouseenter="playclip()" id="crettop" class ="btn btn-primary buttonsbgcolor textoutliner" href="#edit-topic-modal" data-toggle = "modal" style="min-width:20%"><img  src = "<?php echo base_url('icons/pencil.png'); ?>" style="width:10%;height:auto;cursor: pointer"/> Edit Room</a>
-            <?php endif;?></center>
+                <a onmouseenter="playclip()" id="crettop" class ="btn btn-primary buttonsbgcolor textoutliner" href="#edit-topic-modal" data-toggle = "modal" style="min-width:20%"><img  src = "<?php echo base_url('icons/pencil.png'); ?>" style="width:10%;height:auto;cursor: pointer"/> Change Wallpaper</a>
+            <?php endif;?>
                 </div>
+            <div id="chalkb" class="col-xs-12 col-sm-12 col-md-9 col-lg-9 col-xl-9 chalkboard" style="min-height:250px; max-height:250px;margin-top: 60px">
+                    <?php
+                        foreach ($c_topic->posts as $post):
+                            if($post->shout==0 && $post->reply==0):?>
+                    <?php $attachments = $CI->attachment_model->get_post_attachments($post->post_id);?>
+                    <?php if(!$attachments):?>
+                            <p style = "border-right: none; max-width: 714px;padding: 3%;max-height: 50%;font-family: KGChasingPavements"><?php echo utf8_decode($post->post_content); ?>
+                                                <button class = "btn btn-primary pull-right" id="text2speak" style = "margin-right: 3px;border-radius: 20px;" onclick="readcontent('<?php $stringy = utf8_decode($post->post_content); $stringy1 = str_replace('\'', '`', $stringy); echo trim(preg_replace('/[^A-Za-z0-9()#,%\/?@$*.:+=_~`-]/', ' ', $stringy1)); ?>')"><i class="glyphicon glyphicon-volume-up" style="padding-top: 5px;"></i></button></p>
+                    <?php endif;
+                          endif;
+                          endforeach; ?>
+                            
+                    </div>
+                <?php if ($c_topic->creator_id === $logged_user->user_id): ?>
+                    <button onmouseenter="playclip()" onclick="toggleButton('text')" id="crettop" class = "btn btn-primary buttonsbgcolor textoutliner pull-right" href="#create-post-modal" data-toggle = "modal" style="font-size:22px;">My Board</button><br><br>
+                <?php endif;?>
         </div>
             
             <div class="col-sm-12 col-md-12 col-xs-12 col-lg-12 col-xl-12">
@@ -79,12 +96,14 @@
                                 <!--<span class ="btn btn-primary buttonsbgcolor textoutliner" style="width:140px">Announcements</span>-->
                             </a>
                         </div>
+                        <?php if ($c_topic->creator_id === $logged_user->user_id): ?>
                         <div class="col-sm-6 col-md-6 col-xs-6 col-lg-6 col-xl-6" style="margin-top:50px"> 
                             <a onmouseenter="playclip()" href="#view-notes-modal" data-toggle = "modal">
                                 <p class="iconin" style="font-size:14px !important;text-align: left !important;"><img  src = "<?php echo base_url('icons/parentnotes.png'); ?>" class="iconin" style="width:60%;height:auto"/><!Style></p>
                                 <!--<span class ="btn btn-primary buttonsbgcolor textoutliner">Guardian's Notes</span>-->
                             </a>
                         </div>
+                        <?php endif; ?>
                     </div>
             <?php endif;?>
                 
@@ -116,13 +135,29 @@
                     </li>
                     <?php  endforeach; endforeach; ?>
             </div>
+                <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3 col-xl-3"> <div class="hider"><br><br></div>
+                <a class="picture" href="#room_media_modal" data-toggle = "modal" style="color: black">
+                    <div style="margin-left: 60px;">
+                        <figure class="boxside boxtop"><i class = "glyphicon glyphicon-picture fa-2x" style="margin-top: 25px"></i></figure>
+                    <figure class="boxside boxleft"><i class = "glyphicon glyphicon-volume-up fa-2x" style="margin-top: 25px"></i></figure>
+                    <figure class="boxside boxright"><i class = "fa fa-play fa-2x" style="margin-top: 25px"></i></figure>
+                    </div>
+                    <!--<div class="hook"></div>-->
+<!--                    <div class="frame">
+                        <div class="inside"><strong><center>Pictures</center></strong>-->
+                        
+<!--            </div>
+                    </div>-->
+                </a>
+                
+                <?php if ($c_topic->creator_id === $logged_user->user_id): ?>
+                    <button onmouseenter="playclip()" onclick="toggleButton('media')" id="crettop" class = "btn btn-primary buttonsbgcolor textoutliner" href="#create-post-modal" data-toggle = "modal" style="font-size:22px;margin-top:210px; margin-left: 75px">My Stuff</button><br><br>
+                <?php endif;?>
+
+            </div>
                 
                 <!--Shout out-->
-            <?php if ($c_topic->creator_id === $logged_user->user_id): ?>
             <ul class="stickynote col-xs-12 col-sm-4 col-md-3 col-lg-3 col-xl-3">
-            <?php else: ?>
-            <ul class="stickynote col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 pull-right">
-            <?php endif; ?>
                <li class="stickytext">
                    <a href="#room_shout_modal" data-toggle = "modal" class="stickyact">
                         <?php
@@ -140,7 +175,11 @@
                 <button onmouseenter="playclip()" onclick="toggleButton('shout')" id="crettop" class = "btn btn-primary buttonsbgcolor textoutliner" href="#create-post-modal" data-toggle = "modal" style="font-size:22px;margin-top: 2%;margin-left: 50px; margin-right: 100%">Shoutout!</button><br><br>
                 <?php endif;?>
             </ul>
-            <?php if ($c_topic->creator_id === $logged_user->user_id): ?>
+            
+        </div>
+            
+            <div class="col-sm-12 col-md-12 col-xs-12 col-lg-12 col-xl-12"> 
+                <?php if ($c_topic->creator_id === $logged_user->user_id): ?>
             <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3 col-xl-3 hider">
 
                 <div class = "pad-header"><span class="textoutliner" style="color:white;margin:28%">Guardian's notes</span></div>
@@ -162,31 +201,9 @@
                 </div>
             </div>
             <?php endif;?>
-        </div>
-            
-            <div class="col-sm-12 col-md-12 col-xs-12 col-lg-12 col-xl-12"> 
             <!--Pictures-->
-            <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 col-xl-3"> <div class="hider"><br><br><br><br><br><br></div>
-                <a class="picture" href="#room_media_modal" data-toggle = "modal" style="color: black">
-                    <div style="margin-left: 60px;">
-                        <figure class="boxside boxtop"><i class = "glyphicon glyphicon-picture fa-2x" style="margin-top: 25px"></i></figure>
-                    <figure class="boxside boxleft"><i class = "glyphicon glyphicon-volume-up fa-2x" style="margin-top: 25px"></i></figure>
-                    <figure class="boxside boxright"><i class = "fa fa-play fa-2x" style="margin-top: 25px"></i></figure>
-                    </div>
-                    <!--<div class="hook"></div>-->
-<!--                    <div class="frame">
-                        <div class="inside"><strong><center>Pictures</center></strong>-->
-                        
-<!--            </div>
-                    </div>-->
-                </a>
-                
-                <?php if ($c_topic->creator_id === $logged_user->user_id): ?>
-                    <button onmouseenter="playclip()" onclick="toggleButton('media')" id="crettop" class = "btn btn-primary buttonsbgcolor textoutliner" href="#create-post-modal" data-toggle = "modal" style="font-size:22px;margin-top:210px; margin-left: 75px">My Stuff</button><br><br>
-                <?php endif;?>
-
-            </div>
-            <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 col-xl-3 hider">
+            
+<!--            <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 col-xl-3 hider">
                 <div class="mystuffpreview">
             <?php 
                             foreach ($c_topic->posts as $post):
@@ -199,19 +216,19 @@
                                 <?php elseif ($attachment->attachment_type_id === '2'): ?>
                                         <audio class="mySlides fader" src = "<?= base_url($attachment->file_url); ?>" style="width:100%"  controls></audio>
                                 <?php elseif ($attachment->attachment_type_id === '3'): ?>
-                                        <video class="mySlides fader" src = "<?= base_url($attachment->file_url); ?>" width = "100%" controls/></video>
+                                        <video class="mySlides fader" src = "<?= base_url($attachment->file_url); ?>" width = "100%" height="100%" controls/></video>
                                 <?php 
                                     endif;
                                 endforeach; ?>
 
                         <?php endif; endforeach; ?>
                 </div>
-              </div>
+              </div>-->
                 
                 
                 
                 <!--regular text, emojis and stickers-->
-                <div> <div class="hideinbig"><br><br><br><br><br><br><br><br><br></div>
+<!--                <div> <div class="hideinbig"><br><br><br><br><br><br><br><br><br></div>
                 <div id="chalkb" class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 pull-right chalkboard" style="min-height:300px; max-height:300px;">
                     <?php
                         foreach ($c_topic->posts as $post):
@@ -227,7 +244,7 @@
                     </div>
             <?php if ($c_topic->creator_id === $logged_user->user_id): ?>
                     <center> <button onmouseenter="playclip()" onclick="toggleButton('text')" id="crettop" class = "btn btn-primary buttonsbgcolor textoutliner" href="#create-post-modal" data-toggle = "modal" style="font-size:22px;margin-left: 58%;margin-top: 1%">My Board</button></center><br><br>
-                <?php endif;?></div>
+                <?php endif;?></div>-->
             </div>  
         </div>
         
@@ -301,11 +318,202 @@
                 <button onmouseenter="playclip()" onclick="toggleButton('reply')" id="crettop" class = "btn btn-primary buttonsbgcolor textoutliner" href="#create-post-modal" data-toggle = "modal" style="font-size:22px">Say something</button>
            
         </div>
-    
+           
+           <!--Direct post modal for chatting-->
+           
+<!--    <form enctype = "multipart/form-data" action = "<?php echo base_url('topic/post'); ?>" id = "create-post-form" method = "POST">
+                <div class="modal-body">
+                    
+                    
+                    
+                    <div class="form-group" id="post-title-container"> check if title is already taken 
+                        <label for = "title">Make a title for your post:</label>
+                        <p class="lead emoji-picker-container">
+                        <h3 id="titlewarning" style="display: none;color:red;"><i class="arrow down"></i> Add a title here! <i class="arrow down"></i></h3>
+                        <p class="emoji-picker-container"><input class="title-text" type="text" style="height: 50px;background:transparent;outline:none;border:none;" maxlength = "100"  required class="form-control" name = "post_title" id = "post-title"  placeholder = "My title"  data-emojiable="true" value=" " required /></p>
+                        <p id="charsRemaining3">Characters Left: 100</p>
+                        <div class="charLimitMessage" id="charLimitMessage3"><center>Oops! You've used up all the letters and numbers for your title!</center></div>
+                        <span id="start_button" onclick="startDictation2(event)" style="display: inline-block;"><img border="0" alt="Start" id="start_img" src="https://www.google.com/intl/en/chrome/assets/common/images/content/mic.gif"></span>
+                            <a href="#" class="voicesearch" id="voicesearch" onclick="stopDictation2(event)"><img border="0" id="voicesearchicon" class="voicesearchicon" alt="START" src="images/microphone_start.png" height="50" width="50"></a>
+                            <button onclick="startDictation2(event)">Try it</button>
+                    </div>
+                    
+                    <div style="display: none">
+                        <input maxlength = "1"  required class="form-control" name = "reply" id = "reply"  value="1"/>
+                        <input maxlength = "1"  required class="form-control" name = "shout" id = "shout"  value="0"/>
+                    </div>
+                    
+                    
+                    <div id="results" style="display: none" border="1px">
+                        <span id="final_span2" class="final"></span>
+                        <span id="interim_span2" class="interim"></span>
+                    </div>
+                    
+                    <div class="form-group" > check if description exceeds n words
+                        <label for = "content">Make the content of your post:</label>
+                        <p class="lead emoji-picker-container">
+                        <h3 id="contentwarning" style="display: none;color:red;"><i class="arrow down"></i> Write your thoughts here! <i class="arrow down"></i></h3>
+                        <p id="dobback" class="emoji-picker-container"><textarea class = "form-control" style="height: 100px;background:transparent;outline:none;border:none;" maxlength = "16000" required name = "post_content" id = "post-content" placeholder = "My thoughts" data-emojiable="true" required></textarea></p>
+                        <textarea id="postester" style="display: none"></textarea>
+                        <p id="charsRemaining4">Characters Left: 16000</p>
+                        <div class="charLimitMessage" id="charLimitMessage4"><center>Oops! You've used up all the letters and numbers for your message!</center></div>
+                    </div>
+            <div id="stickerchoices">     
+                <ul class="nav nav-pills nav-justified" style = "margin-bottom: 10px;">
+                    <li class = "active"><a data-toggle="pill" href="#emoticats"><strong style="cursor: pointer"><img width="50%" height="auto" src="<?php echo base_url('images/stickers/happy.png'); ?>"/> EmotiCats</strong></a></li>
+                                <li><a data-toggle="pill" href="#textiful"><strong style="cursor: pointer"><img width="80%" height="auto" src="<?php echo base_url('images/stickers/amazing.png'); ?>"/> Textiful</strong></a></li>
+
+                                      <li><a data-toggle="pill" href="#wenk"><strong style="cursor: pointer"><img width="90%" height="auto" src="<?php echo base_url('images/stickers/wenk haha.png'); ?>"/> Wenk</strong></a></li> 
+                                    <li><a data-toggle="pill" href="#buggy"><strong style="cursor: pointer"><img width="80%" height="auto" src="<?php echo base_url('images/stickers/spidab.png'); ?>"/> Buggy</strong></a></li>
+
+                </ul>
+                <div class="tab-content">
+                    <div id="emoticats" class="tab-pane fade in active">
+                        <img class="stickerhov iconin" width="20%" height="auto" src="<?php echo base_url('images/stickers/happy.png'); ?>" onclick="var keep= $('[id$=post-content]').val();doBack();emojisICON();keeper(keep, ';happy;');"/>
+                        <img class="stickerhov iconin" width="20%" height="auto" src="<?php echo base_url('images/stickers/sad.png'); ?>" onclick="var keep= $('[id$=post-content]').val();doBack();emojisICON();keeper(keep, ';sad;');"/>
+                        <img class="stickerhov iconin" width="20%" height="auto" src="<?php echo base_url('images/stickers/angry.png'); ?>" onclick="var keep= $('[id$=post-content]').val();doBack();emojisICON();keeper(keep, ';angry;');"/>
+                        <img class="stickerhov iconin" width="20%" height="auto" src="<?php echo base_url('images/stickers/love.png'); ?>" onclick="var keep= $('[id$=post-content]').val();doBack();emojisICON();keeper(keep, ';love;');"/>
+                        <img class="stickerhov iconin" width="20%" height="auto"src="<?php echo base_url('images/stickers/love 2.png'); ?>" onclick="var keep= $('[id$=post-content]').val();doBack();emojisICON();keeper(keep, ';love 2;');"/>
+                        <img class="stickerhov iconin" width="20%" height="auto"src="<?php echo base_url('images/stickers/laughing crying.png'); ?>" onclick="var keep= $('[id$=post-content]').val();doBack();emojisICON();keeper(keep, ';laughing crying;');"/>
+                        <img class="stickerhov iconin" width="20%" height="auto"src="<?php echo base_url('images/stickers/yum.png'); ?>" onclick="var keep= $('[id$=post-content]').val();doBack();emojisICON();keeper(keep, ';yum;');"/>
+                        <img class="stickerhov iconin" width="20%" height="auto"src="<?php echo base_url('images/stickers/yuck.png'); ?>" onclick="var keep= $('[id$=post-content]').val();doBack();emojisICON();keeper(keep, ';yuck;');"/>
+                    </div>
+
+                    <div id="textiful" class="tab-pane fade in">
+                        <img class="stickerhov iconin" width="20%" height="auto"src="<?php echo base_url('images/stickers/amazing.png'); ?>" onclick="var keep= $('[id$=post-content]').val();doBack();emojisICON();keeper(keep, ';amazing;');"/>
+                        <img class="stickerhov iconin" width="20%" height="auto"src="<?php echo base_url('images/stickers/woohoo.png'); ?>" onclick="var keep= $('[id$=post-content]').val();doBack();emojisICON();keeper(keep, ';woohoo;');"/>
+                        <img class="stickerhov iconin" width="20%" height="auto"src="<?php echo base_url('images/stickers/what.png'); ?>" onclick="var keep= $('[id$=post-content]').val();doBack();emojisICON();keeper(keep, ';what;');"/>
+                        <img class="stickerhov iconin" width="20%" height="auto"src="<?php echo base_url('images/stickers/eww.png'); ?>" onclick="var keep= $('[id$=post-content]').val();doBack();emojisICON();keeper(keep, ';eww;');"/>
+                        <img class="stickerhov iconin" width="20%" height="auto"src="<?php echo base_url('images/stickers/cool.png'); ?>" onclick="var keep= $('[id$=post-content]').val();doBack();emojisICON();keeper(keep, ';cool;');"/>
+                        <img class="stickerhov iconin" width="20%" height="auto"src="<?php echo base_url('images/stickers/joke.png'); ?>" onclick="var keep= $('[id$=post-content]').val();doBack();emojisICON();keeper(keep, ';joke;');"/>
+                        <img class="stickerhov iconin" width="20%" height="auto"src="<?php echo base_url('images/stickers/haha.png'); ?>" onclick="var keep= $('[id$=post-content]').val();doBack();emojisICON();keeper(keep, ';haha;');"/>
+                        <img class="stickerhov iconin" width="20%" height="auto"src="<?php echo base_url('images/stickers/zzz.png'); ?>" onclick="var keep= $('[id$=post-content]').val();doBack();emojisICON();keeper(keep, ';zzz;');"/>
+                        <img class="stickerhov iconin" width="20%" height="auto"src="<?php echo base_url('images/stickers/pretty.gif'); ?>" onclick="var keep= $('[id$=post-content]').val();doBack();emojisICON();keeper(keep, ';pretty;');"/>
+                    </div>
+                    <div id="wenk" class="tab-pane fade in">
+                        <img class="stickerhov iconin" width="30%" height="auto"src="<?php echo base_url('images/stickers/wenk hi.png'); ?>" onclick="var keep= $('[id$=post-content]').val();doBack();emojisICON();keeper(keep, ';wenk hi;');"/>
+                        <img class="stickerhov iconin" width="30%" height="auto"src="<?php echo base_url('images/stickers/wenk facepalm.png'); ?>" onclick="var keep= $('[id$=post-content]').val();doBack();emojisICON();keeper(keep, ';wenk facepalm;');"/>
+                        <img class="stickerhov iconin" width="30%" height="auto"src="<?php echo base_url('images/stickers/wenk haha.png'); ?>" onclick="var keep= $('[id$=post-content]').val();doBack();emojisICON();keeper(keep, ';wenk haha;');"/>
+                    </div>
+                    <div id="buggy" class="tab-pane fade in">
+                        <img class="stickerhov iconin" width="30%" height="auto"src="<?php echo base_url('images/stickers/spidab.png'); ?>" onclick="var keep= $('[id$=post-content]').val();doBack();emojisICON();keeper(keep, ';spidab;');"/>
+                        <img class="stickerhov iconin" width="30%" height="auto"src="<?php echo base_url('images/stickers/busy.png'); ?>" onclick="var keep= $('[id$=post-content]').val();doBack();emojisICON();keeper(keep, ';busy;');"/>
+                        <img class="stickerhov iconin" width="30%" height="auto"src="<?php echo base_url('images/stickers/sweet.png'); ?>" onclick="var keep= $('[id$=post-content]').val();doBack();emojisICON();keeper(keep, ';sweet;');"/>
+                    </div>
+                </div>
+            </div>
+                    
+                    <div class="profanityWarning" id="profanityWarning"><center>Hey there! It looks like you used a bad word!</center></div> 
+
+                    <div data-toggle="collapse" data-target="#camera" class="dropbtn" style = "background: #D7eadd; cursor: pointer;"><center><div>Take Picture</div>
+                            <div id="camera" class="collapse">
+                                <div class="camera">
+                                <video id="video" style="width:95%;height:90%;"></video>
+                                </div>
+                                <canvas id="canvas"></canvas>
+                                <div class="output"></div>
+                                <div id = "img-label" class="btn btn-primary">
+                                    <input id = "attach-img" accept = "image/*" type="file" name = "post_image" style = "display: none;">
+                                    <p id="startbutton" class = "attach-btn-text"><i class = "fa fa-file-image-o" onclick="takepicture();"></i> Take Photo</p>
+                                </div>
+                            </div></center>
+                        </div>
+                        
+            <div id="scissors"></div>
+            <label id = "record-label" >
+            <button type="button" id="btnStart" class="drawnbutton lined thin" onclick="recordaudio();"><img src="http://localhost/MukhlatV2/icons/mic.png" style="display:block;margin: 0 auto;margin-bottom: 15px;margin-top: 10px"></img>Tick Talk!</button>
+            <button type="button" id="btnStart2" class="drawnbutton lined thin" onclick="recordvideo();"><img src="http://localhost/MukhlatV2/icons/Recordvid.png" style="display:block;margin: 0 auto;"></img>Video Time!</button>
+            <br>
+            <h4 id="startrec" style="display: none;text-align:center;">You are now recording!</h4>
+
+            <div id="recaud" style="display: none">
+                    
+                    
+        
+                    
+                    <audio id="aud1" controls></audio><br>
+                    <div style="text-align: center;">
+                    <button type="button" id="btnStop" class="drawnbutton dashed thick">Im done recording!</button>
+                    <button id="dlbutton" class="drawnbutton dashed thick"  style="display: none;"><a id="dl" download="My Voice">Save my Voice</a></button>
+                    </div>
+            </div>
+            
+            <div id="recvid" style="display: none">
+                    <video width="400" id="vidprev"  controls muted></video><br>
+                    
+        
+                    
+                    <video width="400" id="vid1" style="display: none" controls></video><br>
+                    <div style="text-align: center;">
+                    <button type="button" id="btnStop2" class="drawnbutton dashed thick">Im done recording!</button>
+                    <button id="dl2button" class="drawnbutton dashed thick"  style="display: none;"><a id="dl2"  download="My Video" style="text-decoration: none;">Save my Video</a></button>
+                    </div>
+
+            </div>
+            <br>
+            </label>
+            <div id="scissors-mid"></div>
+                         
+                         
+                    <div id = "attachment-buttons" class = "form-group">
+                      <img id="target"/>
+                         Attach a file: 
+                        IMAGE
+                        <label id = "img-label" class="drawnbutton dotted thin">
+                            <input id = "attach-img" accept = "image/*" type="file" name = "post_image" style = "display: none;" onchange="fileAdded();readURL(this);">
+                            <p id = "image-text" class = "attach-btn-text" style="text-align: center;"><img src="http://localhost/MukhlatV2/icons/pic.png" style="display:block;margin: 0 auto;"> Pix </p>
+                        </label>
+
+                        AUDIO
+                        <label id = "audio-label" class="drawnbutton dotted thin">
+                            <input id = "attach-audio" accept = "audio/*" type="file" name = "post_audio" style = "display: none;" onchange="fileAdded();readAud(this);">
+                            <p id = "audio-text" class = "attach-btn-text" style="text-align: center;"><img src="http://localhost/MukhlatV2/icons/note.png" style="display:block;margin: 0 auto;"> Sounds </p>
+ 
+                        </label>
+
+                        VIDEO
+                        <label id = "video-label" class="drawnbutton dotted thin">
+                            <input id = "attach-video" accept = "video/*" type="file" name = "post_video" style = "display: none;" onchange="fileAdded();readVid(this);">
+                            <p id = "video-text" class = "attach-btn-text" style="text-align: center;"><img src="http://localhost/MukhlatV2/icons/video.png" style="display:block;margin: 0 auto;"> Vids </p>
+                        </label>
+
+                        FILE
+                         <label id = "file-label" class="btn btn-primary buttonsbgcolor">
+                            <input id = "attach-file" type="file" name = "post_file" style = "display: none;">
+                            <p id = "file-text" class = "attach-btn-text"><i class = "fa fa-file-o"></i> Add File</p>
+                        </label> 
+
+                    </div>
+                    <img id="pic" src="#" style="display: none" width="400" />
+              <audio id="aud" style="display: none" controls>
+              <source src="#" id="audio_here">
+              hi
+              </audio>
+              <video id="vid" width="400" style="display: none" controls>
+                  <source src="#" id="video_here">
+                  hi
+              </video>  
+              <h2 id="addwarning" style="display:none;color:red;" ><i class="arrow up"></i> add something to share! </h2>
+              <h2 id="pic_h" style="display: none">The picture you used is too big, sorry!</h2>
+              <h2 id="vid_h" style="display: none">The video you used is too big, sorry!</h2>
+              <h2 id="snd_h" style="display: none">The sound you used is too big, sorry!</h2>
+              
+              
+                </div>
+                <div class = "modal-footer" style = "padding: 5px; border-top: none; padding-bottom: 10px; padding-right: 10px;">
+                    <button class="drawnbutton lined thick"><a id = "create-post-btn" style="font-size: 30px;text-decoration: none;" data-toggle = "modal" onclick="shareclick()" >Share</a></button>
+                </div>
+                
+
+            </form>-->
+           
+           
 </div>
 </div>
    </div>
     
+    
+    <!--for deletion in the future-->
 <!--        <div class="doorroom col-sm-12 col-md-11">
             <div class="wrapper col-sm-3">
                 <a class="picture" href="#room_sounds_modal" data-toggle = "modal">
@@ -590,22 +798,7 @@
 
             
     </div>-->
-<script>
-var slideIndex = 0;
-showSlides();
 
-function showSlides() {
-  var i;
-  var slides = document.getElementsByClassName("mySlides");
-  for (i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";  
-  }
-  slideIndex++;
-  if (slideIndex > slides.length) {slideIndex = 1};
-  slides[slideIndex-1].style.display = "block";  
-  setTimeout(showSlides, 2000); // Change image every 2 seconds
-}
-</script>
     <?php
 //     include(APPPATH . 'views/side_postbar.php');
     include(APPPATH . 'views/modals/room_media_modal.php');
