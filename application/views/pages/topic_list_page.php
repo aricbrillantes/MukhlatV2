@@ -91,10 +91,8 @@ include(APPPATH . 'views/header.php');
                         </ul>
                     </div>-->
 
-                    <div id = "topic-list" class = "list-group tab-content ">
-                        <ul class="nav nav-pills nav-justified row text-center pages" style="overflow-x: auto; overflow-y: hidden">
+                    <div id = "topic-list" class = "list-group">
                         
-                                <div id="topics-page-<?php echo $z;?>" class = "tab-content tab-pane fade in active">
                                 <?php 
                                     foreach ($topics as $topic): 
                                         if($topic->theme==1): $theme="roomthemes roomtheme-arrow";
