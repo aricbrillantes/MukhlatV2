@@ -142,7 +142,12 @@ $topic = $_SESSION['current_topic'];
          box-shadow:2px 8px 4px -6px hsla(0,0%,0%,.4);
       } 
       .drawnbutton.lined.thick{
-         border:solid 5px #009900;
+         border:solid 4px #009900;
+         width:30%;
+      }
+      .drawnbutton.lined.thick.gray{
+         border:solid 4px #a9a9a9;
+         width:30%;
       }
       .drawnbutton.dotted.thick{
          border:dotted 5px #41403E;
@@ -156,13 +161,17 @@ $topic = $_SESSION['current_topic'];
       }
       .drawnbutton.lined.thin{
          border:solid 2px #41403E;
+         width:70%;
+         
       }
       .drawnbutton.dotted.thin{
          border:dotted 2px #41403E;
-         width:30%;
+         width:70%;
+         
       }
       .drawnbutton.dashed.thin{
         border:dashed 2px #41403E;
+
       }
     
     @media (max-width:620px){
@@ -220,7 +229,9 @@ $topic = $_SESSION['current_topic'];
                         <!--<p id="charsRemaining4">Characters Left: 16000</p>-->
                         <div class="charLimitMessage" id="charLimitMessage4"><center>Oops! You've used up all the letters and numbers for your message!</center></div>
                     </div>
-            <div id="stickerchoices">     
+                    
+                    
+                    <div id="stickerchoices">     
                 <ul class="nav nav-pills nav-justified" style = "margin-bottom: 10px;">
                     <li class = "active"><a data-toggle="pill" href="#emoticats"><strong style="cursor: pointer"><img width="50%" height="auto" src="<?php echo base_url('images/stickers/happy.png'); ?>"/> EmotiCats</strong></a></li>
                                 <li><a data-toggle="pill" href="#textiful"><strong style="cursor: pointer"><img width="80%" height="auto" src="<?php echo base_url('images/stickers/amazing.png'); ?>"/> Textiful</strong></a></li>
@@ -263,7 +274,6 @@ $topic = $_SESSION['current_topic'];
                         <img class="stickerhov iconin" width="30%" height="auto"src="<?php echo base_url('images/stickers/sweet.png'); ?>" onclick="var keep= $('[id$=post-content]').val();doBack();emojisICON();keeper(keep, ';sweet;');"/>
                     </div>
                 </div>
-            </div>
                     
                    <!-- <div class="profanityWarning" id="profanityWarning"><center>Hey there! It looks like you used a bad word!</center></div> -->
 
@@ -281,62 +291,70 @@ $topic = $_SESSION['current_topic'];
                             </div></center>
                         </div>-->
                         
-            <div id="scissors"></div>
+            
             <label id = "record-label" >
-            <button type="button" id="btnStart" class="drawnbutton lined thin" onclick="recordaudio();"><img src="http://localhost/MukhlatV2/icons/mic.png" style="display:block;margin: 0 auto;margin-bottom: 15px;margin-top: 10px"></img>Tick Talk!</button>
-            <button type="button" id="btnStart2" class="drawnbutton lined thin" onclick="recordvideo();"><img src="http://localhost/MukhlatV2/icons/Recordvid.png" style="display:block;margin: 0 auto;"></img>Video Time!</button>
-            <br>
+            <div style="text-align:center" id="choose">
+            <button type="button" id="choosepic" class="drawnbutton lined thick" onclick="chosepic()"><img src="http://localhost/MukhlatV2/icons/pic.png" style="display:block;margin: 0 auto;"> Pix </button>
+            <button type="button" id="choosenote" class="drawnbutton lined thick" onclick="chosenote()"><img src="http://localhost/MukhlatV2/icons/note.png" style="display:block;margin: 0 auto;"> Sound </button>
+            <button type="button" id="choosevid" class="drawnbutton lined thick" onclick="chosevid()"><img src="http://localhost/MukhlatV2/icons/video.png" style="display:block;margin: 0 auto;"> Vids </button>
+            </div><br>
+            <div style="text-align:center" >
+            <button type="button" id="btnStart" class="drawnbutton lined thin" onclick="recordaudio();"style = "display: none;"><img src="http://localhost/MukhlatV2/icons/mic.png" style="display:block;margin: 0 auto;margin-bottom: 15px;margin-top: 10px"></img>Tick Talk!</button>
+            <button type="button" id="btnStart2" class="drawnbutton lined thin" onclick="recordvideo();"style = "display: none;"><img src="http://localhost/MukhlatV2/icons/Recordvid.png" style="display:block;margin: 0 auto;"></img>Video Time!</button>
+            
             <h4 id="startrec" style="display: none;text-align:center;">You are now recording!</h4>
 
-            <div id="recaud" style="display: none">
-                    
-                    
-        
-                    
-                    <audio id="aud1" controls></audio><br>
-                    <div style="text-align: center;">
-                    <button type="button" id="btnStop" class="drawnbutton dashed thick">Im done recording!</button>
-                    <button id="dlbutton" class="drawnbutton dashed thick"  style="display: none;"><a id="dl" download="My Voice">Save my Voice</a></button>
-                    </div>
-            </div>
-            
-            <div id="recvid" style="display: none">
-                    <video width="400" id="vidprev"  controls muted></video><br>
-                    
-        
-                    
-                    <video width="400" id="vid1" style="display: none" controls></video><br>
-                    <div style="text-align: center;">
-                    <button type="button" id="btnStop2" class="drawnbutton dashed thick">Im done recording!</button>
-                    <button id="dl2button" class="drawnbutton dashed thick"  style="display: none;"><a id="dl2"  download="My Video" style="text-decoration: none;">Save my Video</a></button>
-                    </div>
+              <div id="recaud" style="display: none">
+                      
+                      
+          
+                      
+                      <audio id="aud1" controls></audio><br>
+                      <div style="text-align: center;">
+                      <button type="button" id="btnStop" class="drawnbutton dashed thick">Im done recording!</button>
+                      <button id="dlbutton" class="drawnbutton dashed thick"  style="display: none;"><a id="dl" download="My Voice">Save my Voice</a></button>
+                      </div>
+              </div>
+              
+              <div id="recvid" style="display: none">
+                      <video width="400" id="vidprev"  controls muted></video><br>
+                      
+          
+                      
+                      <video width="400" id="vid1" style="display: none" controls></video><br>
+                      <div style="text-align: center;">
+                      <button type="button" id="btnStop2" class="drawnbutton dashed thick">Im done recording!</button>
+                      <button id="dl2button" class="drawnbutton dashed thick"  style="display: none;"><a id="dl2"  download="My Video" style="text-decoration: none;">Save my Video</a></button>
+                      </div>
 
+              </div>
             </div>
             <br>
+            
             </label>
-            <div id="scissors-mid"></div>
+            
                          
                          
-                    <div id = "attachment-buttons" class = "form-group">
+                    <div id = "attachment-buttons" class = "form-group"style="text-align:center">
                       <!--<img id="target"/>-->
                         <!-- Attach a file: -->
                         <!--IMAGE-->
-                        <label id = "img-label" class="drawnbutton dotted thin">
+                        <label id = "img-label" class="drawnbutton dotted thin" style = "display: none;">
                             <input id = "attach-img" accept = "image/*" type="file" name = "post_image" style = "display: none;" onchange="fileAdded();readURL(this);">
-                            <p id = "image-text" class = "attach-btn-text" style="text-align: center;"><img src="http://localhost/MukhlatV2/icons/pic.png" style="display:block;margin: 0 auto;"> Pix </p>
+                            <p id = "image-text" class = "attach-btn-text" style="text-align: center;"><img src="http://localhost/MukhlatV2/icons/pic.png" style="display:block;margin: 0 auto;"> Choose Pix </p>
                         </label>
 
                         <!--AUDIO-->
-                        <label id = "audio-label" class="drawnbutton dotted thin">
+                        <label id = "audio-label" class="drawnbutton dotted thin" style = "display: none;">
                             <input id = "attach-audio" accept = "audio/*" type="file" name = "post_audio" style = "display: none;" onchange="fileAdded();readAud(this);">
-                            <p id = "audio-text" class = "attach-btn-text" style="text-align: center;"><img src="http://localhost/MukhlatV2/icons/note.png" style="display:block;margin: 0 auto;"> Sounds </p>
+                            <p id = "audio-text" class = "attach-btn-text" style="text-align: center;"><img src="http://localhost/MukhlatV2/icons/note.png" style="display:block;margin: 0 auto;"> Choose Sounds </p>
  
                         </label>
 
                         <!--VIDEO-->
-                        <label id = "video-label" class="drawnbutton dotted thin">
+                        <label id = "video-label" class="drawnbutton dotted thin" style = "display: none;">
                             <input id = "attach-video" accept = "video/*" type="file" name = "post_video" style = "display: none;" onchange="fileAdded();readVid(this);">
-                            <p id = "video-text" class = "attach-btn-text" style="text-align: center;"><img src="http://localhost/MukhlatV2/icons/video.png" style="display:block;margin: 0 auto;"> Vids </p>
+                            <p id = "video-text" class = "attach-btn-text" style="text-align: center;"><img src="http://localhost/MukhlatV2/icons/video.png" style="display:block;margin: 0 auto;"> Choose Vids </p>
                         </label>
 
                         <!--FILE-->
@@ -422,7 +440,44 @@ function recordvideo()
 //   document.getElementById('').value=""
 // }
 
-
+function chosepic()
+{
+  $('[id$=img-label]').show();
+  $('[id$=audio-label]').hide();
+  $('[id$=btnStart]').hide();
+  $('[id$=video-label]').hide();
+  $('[id$=btnStart2]').hide();
+  $('[id$=recvid]').hide();
+  $('[id$=recaud]').hide();
+  document.getElementById("choosepic").className = "drawnbutton lined thick gray";
+  document.getElementById("choosenote").className = "drawnbutton lined thick";
+  document.getElementById("choosevid").className = "drawnbutton lined thick";
+  
+}
+function chosenote()
+{
+  $('[id$=audio-label]').show();
+  $('[id$=btnStart]').show();
+  $('[id$=img-label]').hide();
+  $('[id$=video-label]').hide();
+  $('[id$=btnStart2]').hide();
+  $('[id$=recvid]').hide();
+  document.getElementById("choosenote").className = "drawnbutton lined thick gray";
+  document.getElementById("choosepic").className = "drawnbutton lined thick";
+  document.getElementById("choosevid").className = "drawnbutton lined thick";
+}
+function chosevid()
+{
+  $('[id$=video-label]').show();
+  $('[id$=btnStart2]').show();
+  $('[id$=audio-label]').hide();
+  $('[id$=btnStart]').hide();
+  $('[id$=img-label]').hide();
+  $('[id$=recaud]').hide();
+  document.getElementById("choosevid").className = "drawnbutton lined thick gray";
+  document.getElementById("choosenote").className = "drawnbutton lined thick";
+  document.getElementById("choosepic").className = "drawnbutton lined thick";
+}
 
 
 
@@ -491,7 +546,7 @@ let constraintObj = {
               $('[id$=btnStart]').show();
               $('[id$=btnStop]').hide();
               $('[id$=dlbutton]').show();
-              $('[id$=btnStart2]').show();
+             
                 mediaRecorder.stop();
                 console.log(mediaRecorder.state);
                
@@ -682,7 +737,7 @@ let constraintObj2 = {
               $('[id$=btnStart2]').show();
               $('[id$=btnStop2]').hide();
               $('[id$=dl2button]').show();
-              $('[id$=btnStart]').show();
+              
                 mediaRecorder2.stop();
                 console.log(mediaRecorder2.state);
             });
@@ -724,15 +779,18 @@ let constraintObj2 = {
 
         if(p==="media")
         {
-          $('[id$=img-label]').show();
-          $('[id$=audio-label]').show();
-          $('[id$=video-label]').show();
+          // $('[id$=img-label]').show();
+          // $('[id$=audio-label]').show();
+          // $('[id$=video-label]').show();
+          $('[id$=choosepic]').show();
+          $('[id$=choosenote]').show();
+          $('[id$=choosevid]').show();
           $('[id$=attachment-preview]').show();
           $('[id$=modaltitle]').text("Add stuff");
           $('[id$=post-title]').val(" ");
           
-          $('[id$=btnStart]').show();
-          $('[id$=btnStart2]').show();
+          // $('[id$=btnStart]').show();
+          // $('[id$=btnStart2]').show();
           $('[id$=scissors]').show();
 
         }
@@ -763,6 +821,9 @@ let constraintObj2 = {
           $('[id$=contentwarning]').hide();
           $('[id$=titlewarning]').hide();
           $('[id$=scissors]').hide();
+          $('[id$=choosepic]').hide();
+          $('[id$=choosenote]').hide();
+          $('[id$=choosevid]').hide();
         }
 
         if(p==="shout")
@@ -776,16 +837,19 @@ let constraintObj2 = {
           $('[id$=titlewarning]').hide();
           $('[id$=scissors]').hide();
           $('[id$=stickerchoices]').hide();
+          $('[id$=choosepic]').hide();
+          $('[id$=choosenote]').hide();
+          $('[id$=choosevid]').hide();
         }
         
         if(p==="reply")
         {
           $('[id$=addwarning]').hide();
-          $('[id$=btnStart]').show();
-          $('[id$=btnStart2]').show();
-          $('[id$=img-label]').show();
-          $('[id$=audio-label]').show();
-          $('[id$=video-label]').show();
+          // $('[id$=btnStart]').show();
+          // $('[id$=btnStart2]').show();
+          // $('[id$=img-label]').show();
+          // $('[id$=audio-label]').show();
+          // $('[id$=video-label]').show();
           $('[id$=attachment-preview]').show();
           $('[id$=reply]').val(1);
           $('[id$=post-title]').val(" ");
