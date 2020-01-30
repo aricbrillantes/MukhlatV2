@@ -151,7 +151,7 @@
 <!-- Nav Bar Script -->
 <script type="text/javascript" src="<?php echo base_url("/js/nav_bar.js"); ?>"></script>
 
-<body class = "sign-in" style="overflow-y: hidden">
+<body class = "sign-in">
     <div class = "container col-md-10 col-sm-12 col-xs-12 col-md-offset-1" style = "">
         
         <div class = "row" >

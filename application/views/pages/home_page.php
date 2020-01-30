@@ -217,7 +217,7 @@
         function scrollFunction() {
             if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
                 document.getElementById("topbut").style.display = "block";
-                document.getElementById('topbut').className = 'balloon';
+                document.getElementById('topbut').className = ''; //balloon
             } else {
                 document.getElementById("topbut").style.display = "none";
                 document.getElementById('topbut').className = '';
@@ -239,7 +239,7 @@
                 whistleup.play();
             }
             function botFunction() {                
-                var fallrock = new Audio('<?php echo base_url('images/falling rocks.mp3'); ?>');
+                var fallrock = new Audio('<?php echo base_url('images/Slide Whistle Down.mp3'); ?>');
                 window.scroll({
                   top: 100000000,
                   behavior: 'smooth' 
@@ -255,11 +255,55 @@
         });</script>
         
         <script type="text/javascript" src="<?php echo base_url("/js/search.js"); ?>"></script>
+
+        <style>
+            .downarrow{
+                width:120px;
+              height:120px;
+              position: fixed;
+              top: 100px;
+              right: 50px;
+            }
+            .downarrow:hover{
+                cursor:pointer;
+            }
+
+            .downanimation{
+                transition: 2s ease;
+            }
+
+            .downanimation:hover{
+            transform: rotate(1080deg);
+            }
+
+            .uparrow{
+              width:120px;
+              height:120px;
+              position: fixed;
+              top: 600px;
+              right: 50px;
+            }
+            .uparrow:hover{
+                cursor:pointer;
+            }
+
+            .upanimation{
+                transition: 2s ease;
+            }
+
+            .upanimation:hover{
+            transform: rotate(1080deg);
+            }
+            
+        </style>
         <!--back to top and go to bottom buttons-->
 
         
-            <div onclick="topFunction()" id="topbut" style="text-align:center;"><p style="padding-top:50%;cursor:pointer;">Up!</p></div>
-            <div onclick="botFunction()" id="botbut"><img class="rock1 goingdown" src = "<?php echo base_url('images/rock bottom.png'); ?>"/><p class="centeredbot">Bottom!</p></div>
+        <!-- <div onclick="topFunction()" id="topbut" style="text-align:center;"><p style="padding-top:50%;cursor:pointer;">Up!</p></div> -->
+        <!-- <div onclick="botFunction()" id="botbut"><img class="rock1 goingdown" src = "<?php echo base_url('images/rock bottom.png'); ?>"/><p class="centeredbot">Bottom!</p></div> -->
+
+        <div onclick="botFunction()" id="botbut"><img class="downarrow downanimation" src = "<?php echo base_url('images/down_arrow.png'); ?>"/><p class="centeredbot"></p></div>
+        <div style="display:none" onclick="topFunction()" id="topbut"><img class="uparrow upanimation" src = "<?php echo base_url('images/up_arrow.png'); ?>"/><p class=""></p></div>
 
     <?php endif;?>
 
