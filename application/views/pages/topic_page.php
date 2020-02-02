@@ -110,7 +110,15 @@
             </div>
             <div class="col-sm-12 col-md-12 col-xs-12 col-lg-12 col-xl-12"> 
             <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 white-board hider" style="min-height:300px; max-height:300px">
-            <?php 
+            <?php if ($c_topic->creator_id === $logged_user->user_id): ?><ul class="nav nav-pills nav-justified" style = "margin-bottom: 10px;">
+                    <li class = "active"><a data-toggle="pill" href="#teachers"><strong style="cursor: pointer">Teachers</strong></a></li>
+                    <li><a data-toggle="pill" href="#parents"><strong style="cursor: pointer">Parents</strong></a></li>
+
+            </ul>
+                <?php endif;?>
+                <div class="tab-content">
+                    <div id="teachers" class="tab-pane fade in active">
+                        <?php 
                     //load models
                     $CI =&get_instance();
                     $CI->load->model('topic_model');
@@ -131,9 +139,28 @@
 
                     <li class = "">
                         <h4 class = "no-padding admin-list-name">Teacher <?php echo $teacher->first_name?> says: </h4> 
-                        <h3 class = "no-padding admin-list-name">"<?php echo utf8_decode($announcement->announcement) ?>"</h3>
+                        <h5 class = "no-padding admin-list-name">"<?php echo utf8_decode($announcement->announcement) ?>"</h5>
                     </li>
                     <?php  endforeach; endforeach; ?>
+                    </div>
+                    <div id="parents" class="tab-pane fade in">
+                        
+                        <?php 
+                    $CI =&get_instance();
+                    $CI->load->model('user_model'); //load models
+                    $notes = $CI->user_model->get_notes($logged_user->user_id); //get notes
+
+                    foreach (array_reverse($notes) as $note): ?>
+
+                    <div class = "">
+                        <h4 class = "no-padding admin-list-name"><?php echo $teacher->first_name?> says: </h4> 
+                        <h4 class = " admin-list-name"><?php echo utf8_decode($note->note) ?></h4>
+                    </div>
+                                                       
+                <?php endforeach; ?>
+                    </div>
+                </div>
+                
             </div>
                 <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3 col-xl-3"> <div class="hider"><br><br></div>
                 <a class="picture" href="#room_media_modal" data-toggle = "modal" style="color: black">
@@ -178,7 +205,7 @@
             
         </div>
             
-            <div class="col-sm-12 col-md-12 col-xs-12 col-lg-12 col-xl-12"> 
+<!--            <div class="col-sm-12 col-md-12 col-xs-12 col-lg-12 col-xl-12"> 
                 <?php if ($c_topic->creator_id === $logged_user->user_id): ?>
             <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3 col-xl-3 hider">
 
@@ -201,9 +228,9 @@
                 </div>
             </div>
             <?php endif;?>
-            <!--Pictures-->
+            Pictures
             
-<!--            <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 col-xl-3 hider">
+            <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 col-xl-3 hider">
                 <div class="mystuffpreview">
             <?php 
                             foreach ($c_topic->posts as $post):
@@ -223,12 +250,12 @@
 
                         <?php endif; endforeach; ?>
                 </div>
-              </div>-->
+              </div>
                 
                 
                 
-                <!--regular text, emojis and stickers-->
-<!--                <div> <div class="hideinbig"><br><br><br><br><br><br><br><br><br></div>
+                regular text, emojis and stickers
+                <div> <div class="hideinbig"><br><br><br><br><br><br><br><br><br></div>
                 <div id="chalkb" class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 pull-right chalkboard" style="min-height:300px; max-height:300px;">
                     <?php
                         foreach ($c_topic->posts as $post):
@@ -244,8 +271,8 @@
                     </div>
             <?php if ($c_topic->creator_id === $logged_user->user_id): ?>
                     <center> <button onmouseenter="playclip()" onclick="toggleButton('text')" id="crettop" class = "btn btn-primary buttonsbgcolor textoutliner" href="#create-post-modal" data-toggle = "modal" style="font-size:22px;margin-left: 58%;margin-top: 1%">My Board</button></center><br><br>
-                <?php endif;?></div>-->
-            </div>  
+                <?php endif;?></div>
+            </div>  -->
         </div>
         
 <div class="" >
