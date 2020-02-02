@@ -15,9 +15,10 @@
             
             <div class="modal-body content-container container-fluid">
                 <div class = "row col-md-12"><center>
-                        <?php
+                        <?php $shoutoutcount=0;
                             foreach ($c_topic->posts as $post):
-                                if($post->shout==1):?>
+                                if($post->shout==1):
+                                    $shoutoutcount++;?>
                         <div class="col-md-3">
                             <ul class="stickynote">
                                 <li class="stickytext">
@@ -53,7 +54,11 @@
                                                 ?> -->
                                                 
                         </div>
-                        <?php endif; endforeach; ?>
+                        <?php endif; endforeach; 
+                        if($shoutoutcount==0):?>
+                        <h2>There's no shout outs yet.</h2>
+                        <?php endif;?>
+                        
                     
                     
                     </center>

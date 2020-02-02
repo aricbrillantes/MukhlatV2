@@ -284,9 +284,10 @@
     <div id="messageb" class = "topic-post-list col-xs-12 col-sm-12 col-md-12 col-lg-3 col-xl-3" style = "padding-top:70px">
         <!--<div class = "list-group" style = "padding-top: 15%">-->
            <!--List Entry--> 
-           <?php
+           <?php $chatcount=0;
            foreach ($c_topic->posts as $post):
                                     if($post->reply==1):
+                                        $chatcount++;
             ?>
             <!--<a href = "javascript: void(0);" class = "btn btn-link list-group-item list-entry no-up-down-pad topic-post-entry" data-value = "<?php echo $post->post_id; ?>">-->
           
@@ -337,7 +338,10 @@
                     <!--                                </a>-->
                     <?php 
                 endif;
-                endforeach; ?>
+                endforeach; 
+                if($chatcount==0):?>
+                    <center><h2 class="messagereceiver">Be the first to say something.</h2></center>
+                <?php endif;?>
                 <!--</div>-->
             </div>
         <div>
@@ -537,7 +541,6 @@
            
 </div>
 </div>
-   </div>
     
     
     <!--for deletion in the future-->

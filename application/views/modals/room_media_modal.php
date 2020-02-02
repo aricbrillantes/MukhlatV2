@@ -19,14 +19,14 @@
             
             <div class="modal-body content-container container-fluid">
                 <div class="mediapreview" style="display: block;">
-                <?php $previewcount=1;
+                <?php $previewcount=1; $mediacount=0;
                             foreach ($c_topic->posts as $post):
                                 if($post->reply==0):?>
                             <?php $attachments = $CI->attachment_model->get_post_attachments($post->post_id);?>
 
                                 <?php foreach ($attachments as $attachment):
                                     if ($attachment->attachment_type_id === '1'):?>
-                                    <img class="dot blocks3 clicker" onclick="currentSlide(<?php echo $previewcount ?>)" src = "<?= base_url($attachment->file_url); ?>" width = "10%" height="10%" style="margin-top: -80px;" />
+                                    <img class="dot blocks3 clicker" onclick="currentSlide(<?php echo $previewcount ?>)" src = "<?= base_url($attachment->file_url); ?>" width = "10%" height="10%" style="vertical-align:baseline" />
                                 <?php elseif ($attachment->attachment_type_id === '2'): ?>
                                         <audio class="dot blocks3 clicker" onclick="currentSlide(<?php echo $previewcount ?>)" src = "<?= base_url($attachment->file_url); ?>" style="width:8%"  controls></audio>
                                 <?php elseif ($attachment->attachment_type_id === '3'): ?>
@@ -34,15 +34,21 @@
                                 <?php 
                                     endif;
                                     $previewcount++;
+                                    $mediacount++;
                                 endforeach; ?>
 
-                        <?php endif; endforeach; ?>
+                        <?php endif; endforeach; 
+                        if($mediacount==0):?>
+                            <center><h2>There's no stuff yet.</h2></center>
+                        <?php endif;?>
                 </div>
                 <br>
                 <center>
+                <?php if($mediacount>1):?>
                 <button id="crettop" class = "btn btn-primary buttonsbgcolor textoutliner" onclick="minusSlides(1)" style="font-size:22px">< Previous</button>
                 <!--<p><?php echo $previewcount+1?></p>    total number of media posts-->
                 <button id="crettop" class = "btn btn-primary buttonsbgcolor textoutliner" onclick="plusSlides(1)" style="font-size:22px">Next ></button>
+                <?php endif;?>
                 </center>
                 <div id="Mposts" class = "row col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                          <?php
@@ -107,8 +113,10 @@
                     
                 </div>
                 <center>
+                <?php if($mediacount>1):?>
                 <button id="crettop" class = "btn btn-primary buttonsbgcolor textoutliner" onclick="minusSlides(1)" style="font-size:22px">< Previous</button>
                 <button id="crettop" class = "btn btn-primary buttonsbgcolor textoutliner" onclick="plusSlides(1)" style="font-size:22px">Next ></button>
+                <?php endif;?>
                 </center>
                 <script>
                     document.addEventListener('keydown', function(eve) {
