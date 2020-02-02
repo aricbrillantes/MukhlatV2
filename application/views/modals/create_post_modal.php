@@ -231,7 +231,7 @@ $topic = $_SESSION['current_topic'];
                     </div>
                     
                     
-                    <div id="stickerchoices">     
+            <div id="stickerchoices">     
                 <ul class="nav nav-pills nav-justified" style = "margin-bottom: 10px;">
                     <li class = "active"><a data-toggle="pill" href="#emoticats"><strong style="cursor: pointer"><img width="50%" height="auto" src="<?php echo base_url('images/stickers/happy.png'); ?>"/> EmotiCats</strong></a></li>
                                 <li><a data-toggle="pill" href="#textiful"><strong style="cursor: pointer"><img width="80%" height="auto" src="<?php echo base_url('images/stickers/amazing.png'); ?>"/> Textiful</strong></a></li>
@@ -274,6 +274,7 @@ $topic = $_SESSION['current_topic'];
                         <img class="stickerhov iconin" width="30%" height="auto"src="<?php echo base_url('images/stickers/sweet.png'); ?>" onclick="var keep= $('[id$=post-content]').val();doBack();emojisICON();keeper(keep, ';sweet;');"/>
                     </div>
                 </div>
+            </div>
                     
                    <!-- <div class="profanityWarning" id="profanityWarning"><center>Hey there! It looks like you used a bad word!</center></div> -->
 
@@ -385,9 +386,9 @@ $topic = $_SESSION['current_topic'];
                     <button class="drawnbutton lined thick"><a id = "create-post-btn" style="font-size: 30px;text-decoration: none;" data-toggle = "modal" onclick="shareclick()" >Share</a></button>
                 </div>
                 
-
-            </form>
             </div>
+            </form>
+            
         </div>
     </div>
 </div>
