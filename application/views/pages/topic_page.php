@@ -178,7 +178,7 @@
                 </a>
                 
                 <?php if ($c_topic->creator_id === $logged_user->user_id): ?>
-                    <button onmouseenter="playclip()" onclick="toggleButton('media')" id="crettop" class = "btn btn-primary buttonsbgcolor textoutliner" href="#create-post-modal" data-toggle = "modal" style="font-size:22px;margin-top:210px; margin-left: 75px">My Stuff</button><br><br>
+                    <button onmouseenter="playclip()" onclick="toggleButton('media')" id="crettop" class = "btn btn-primary buttonsbgcolor textoutliner" href="#create-post-modal" data-toggle = "modal" style="font-size:22px;margin-top:210px; margin-left: 75px">My Album</button><br><br>
                 <?php endif;?>
 
             </div>

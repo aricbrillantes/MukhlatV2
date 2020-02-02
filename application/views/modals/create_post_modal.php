@@ -792,7 +792,7 @@ let constraintObj2 = {
           $('[id$=choosenote]').show();
           $('[id$=choosevid]').show();
           $('[id$=attachment-preview]').show();
-          $('[id$=modaltitle]').text("Add stuff");
+          $('[id$=modaltitle]').text("Add to Album");
           $('[id$=post-title]').val(" ");
           
           // $('[id$=btnStart]').show();
