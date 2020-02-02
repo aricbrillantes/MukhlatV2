@@ -91,7 +91,7 @@ You can change it later.</strong>
                         <option value="19">Theme 19</option>
                     </select>
 
-                    <select style="width:150px; height:40px;"  class="form-control" name="topic_nameframe" id="topic-nameframe" onclick="">
+                    <select style="width:150px; height:40px;display: none"  class="form-control" name="topic_nameframe" id="topic-nameframe" onclick="">
                     <option value="1">nameframe 1</option>
                     <option value="2">nameframe 2</option>
                     <option value="3">nameframe 3</option>
@@ -99,7 +99,7 @@ You can change it later.</strong>
                     <option value="5">nameframe 5</option>
                 </select>
 
-                <select style="width:150px; height:40px;"  class="form-control" name="topic_board" id="topic-board" onclick="">
+                <select style="width:150px; height:40px;display: none"  class="form-control" name="topic_board" id="topic-board" onclick="">
                     <option value="1">board 1</option>
                     <option value="2">board 2</option>
                     <option value="3">board 3</option>
@@ -107,7 +107,7 @@ You can change it later.</strong>
                     <option value="5">board 5</option>
                 </select>
 
-                <select style="width:150px; height:40px;"  class="form-control" name="topic_bulletin" id="topic-bulletin" onclick="">
+                <select style="width:150px; height:40px;display: none"  class="form-control" name="topic_bulletin" id="topic-bulletin" onclick="">
                     <option value="1">bulletin 1</option>
                     <option value="2">bulletin 2</option>
                     <option value="3">bulletin 3</option>
@@ -115,7 +115,7 @@ You can change it later.</strong>
                     <option value="5">bulletin 5</option>
                 </select>
 
-                <select style="width:150px; height:40px;"  class="form-control" name="topic_shoutout" id="topic-shoutout" onclick="">
+                <select style="width:150px; height:40px;display: none"  class="form-control" name="topic_shoutout" id="topic-shoutout" onclick="">
                     <option value="1">shoutout 1</option>
                     <option value="2">shoutout 2</option>
                     <option value="3">shoutout 3</option>
@@ -123,7 +123,7 @@ You can change it later.</strong>
                     <option value="5">shoutout 5</option>
                 </select>
 
-                <select style="width:150px; height:40px;"  class="form-control" name="topic_media" id="topic-media" onclick="">
+                <select style="width:150px; height:40px;display: none"  class="form-control" name="topic_media" id="topic-media" onclick="">
                     <option value="1">media 1</option>
                     <option value="2">media 2</option>
                     <option value="3">media 3</option>
@@ -131,7 +131,7 @@ You can change it later.</strong>
                     <option value="5">media 5</option>
                 </select>
 
-                <select style="width:150px; height:40px;"  class="form-control" name="topic_chatbox" id="topic-chatbox" onclick="">
+                <select style="width:150px; height:40px;display: none"  class="form-control" name="topic_chatbox" id="topic-chatbox" onclick="">
                     <option value="1">chatbox 1</option>
                     <option value="2">chatbox 2</option>
                     <option value="3">chatbox 3</option>
