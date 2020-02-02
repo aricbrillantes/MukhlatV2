@@ -123,7 +123,13 @@ class Topic extends CI_Controller {
             'creator_id' => $logged_user->user_id,
             'topic_name' => utf8_encode(htmlspecialchars($input->post('topic_name'))),
             'topic_description' => utf8_encode(htmlspecialchars($input->post('topic_description'))),
-            'theme' => utf8_encode(htmlspecialchars($input->post('topic_theme')))
+            'theme' => utf8_encode(htmlspecialchars($input->post('topic_theme'))),
+            'nameframe' => utf8_encode(htmlspecialchars($input->post('topic_nameframe'))),
+            'board' => utf8_encode(htmlspecialchars($input->post('topic_board'))),
+            'bulletin' => utf8_encode(htmlspecialchars($input->post('topic_bulletin'))),
+            'shoutout' => utf8_encode(htmlspecialchars($input->post('topic_shoutout'))),
+            'media' => utf8_encode(htmlspecialchars($input->post('topic_media'))),
+            'chatbox' => utf8_encode(htmlspecialchars($input->post('topic_chatbox'))),
         );
 
         $this->db->set('date_created', 'NOW()', FALSE);
@@ -763,14 +769,31 @@ class Topic extends CI_Controller {
         redirect(base_url('topic/thread/' . $post->root_id));
     }
 
-    public function edit_topic() {
+    public function edit_topic() 
+    {
         $topic_id = $this->uri->segment(3);
         $theme = $this->input->post('change_topic_theme', TRUE);
+        $nameframe = $this->input->post('change_topic_nameframe', TRUE);
+        $board = $this->input->post('change_topic_board', TRUE);
+        $bulletin = $this->input->post('change_topic_bulletin', TRUE);
+        $shoutout = $this->input->post('change_topic_shoutout', TRUE);
+        $media = $this->input->post('change_topic_media', TRUE);
+        $chatbox = $this->input->post('change_topic_chatbox', TRUE);
+
         // $description = $this->input->post('topic_description', TRUE);
 
         $this->load->model("topic_model", "topics");
 
-        $data = array('theme' => $theme);
+        $data = array
+        (
+            'theme' => $theme,
+            'nameframe' => $nameframe,
+            'board' => $board,
+            'bulletin' => $bulletin,
+            'shoutout' => $shoutout,
+            'media' => $media,
+            'chatbox' => $chatbox
+        );
         // $data = array('topic_description' => utf8_encode(htmlspecialchars($description)));
 
         $this->topics->update_topic($topic_id, $data);

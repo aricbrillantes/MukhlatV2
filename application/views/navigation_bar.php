@@ -600,7 +600,6 @@
     
     addEventListener("mousemove", function() 
     {
-    
         //reset timer and hide AFK popup
         StartTimer();
         $('#afkpopup').modal('hide'); 
@@ -631,7 +630,7 @@
         dis.innerHTML = "Time Left: " + Math.max(timeLeft/1000,0);
         timeoutID = window.setTimeout(Update, 100);
 
-        if(timeLeft<=480*1000) //display AFK popup after 2 minutes
+        if(timeLeft<=300*1000) //display AFK popup after 5 minutes
         {
             $('#afkpopup').modal('show'); 
         }

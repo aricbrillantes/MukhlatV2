@@ -67,7 +67,8 @@
             <td><div  class="editroomthemes roomtheme-crosseddot blocks2" style="" onclick="roomtheme(19)"></div></td>
         </tr>
     </table>
-</div><br><br><br><br><br><br><br><br><br><br><br><br><br><br>  <div class="hider"><br><br></div>
+</div><br><br><br><br><br><br><br><br><br><br><br><br><br><br>  
+    <div class="hider"><br><br></div>
                     <select style="width:110px; height:40px;display: none"  class="form-control" name="change_topic_theme" id="change-topic-theme" onclick="">
                         <option value="1">Theme 1</option>
                         <option value="2">Theme 2</option>
@@ -91,6 +92,55 @@
                     </select>
 
                 </div>
+
+                <select style="width:150px; height:40px;"  class="form-control" name="change_topic_nameframe" id="change-topic-nameframe" onclick="">
+                    <option value="1">nameframe 1</option>
+                    <option value="2">nameframe 2</option>
+                    <option value="3">nameframe 3</option>
+                    <option value="4">nameframe 4</option>
+                    <option value="5">nameframe 5</option>
+                </select>
+
+                <select style="width:150px; height:40px;"  class="form-control" name="change_topic_board" id="change-topic-board" onclick="">
+                    <option value="1">board 1</option>
+                    <option value="2">board 2</option>
+                    <option value="3">board 3</option>
+                    <option value="4">board 4</option>
+                    <option value="5">board 5</option>
+                </select>
+
+                <select style="width:150px; height:40px;"  class="form-control" name="change_topic_bulletin" id="change-topic-bulletin" onclick="">
+                    <option value="1">bulletin 1</option>
+                    <option value="2">bulletin 2</option>
+                    <option value="3">bulletin 3</option>
+                    <option value="4">bulletin 4</option>
+                    <option value="5">bulletin 5</option>
+                </select>
+
+                <select style="width:150px; height:40px;"  class="form-control" name="change_topic_shoutout" id="change-topic-shoutout" onclick="">
+                    <option value="1">shoutout 1</option>
+                    <option value="2">shoutout 2</option>
+                    <option value="3">shoutout 3</option>
+                    <option value="4">shoutout 4</option>
+                    <option value="5">shoutout 5</option>
+                </select>
+
+                <select style="width:150px; height:40px;"  class="form-control" name="change_topic_media" id="change-topic-media" onclick="">
+                    <option value="1">media 1</option>
+                    <option value="2">media 2</option>
+                    <option value="3">media 3</option>
+                    <option value="4">media 4</option>
+                    <option value="5">media 5</option>
+                </select>
+
+                <select style="width:150px; height:40px;"  class="form-control" name="change_topic_chatbox" id="change-topic-chatbox" onclick="">
+                    <option value="1">chatbox 1</option>
+                    <option value="2">chatbox 2</option>
+                    <option value="3">chatbox 3</option>
+                    <option value="4">chatbox 4</option>
+                    <option value="5">chatbox 5</option>
+                </select><br>
+
                 <div class = "" style = "padding: 5px; border-top: none; padding-bottom: 10px; padding-right: 10px;text-align: center;transform: scale(2);">
                     <button onmouseenter="playclip()" value = "<?php echo $c_topic->topic_id ?>" id = "edit-topic-save" class = "btn btn-primary btn-sm buttonsbgcolor">Done!</button>
                 </div>
