@@ -111,11 +111,24 @@
                                         <img class = "img-circle" style = "margin: 10px 0px;" width = "40px" height = "40px" src = "<?php echo $post->profile_url ? base_url($post->profile_url) : base_url('images/default.jpg'); ?>"/> 
                                         
                                         <?php if($post->creator_id === $logged_user->user_id): ?>
-                                            <a class = "text1color" href = "<?php echo base_url('user/profile/' . $post->user_id); ?>">
-                                                <strong class="clicker" style = "font-size: 21px;">You</strong>
-                                            </a> 
-                                            <p style="font-size: 24px; display:inline"> decorated </p>
-                                            <a style="max-width: 500px; overflow: hidden; text-overflow: ellipsis; display:inline " class = "" href = "<?php echo base_url('topic/view/' . $post->topic_id); ?>">your room! </a>
+                                            <?php if($post->user_id === $logged_user->user_id): ?>
+                                                <a class = "text1color" href = "<?php echo base_url('user/profile/' . $post->user_id); ?>">
+                                                    <strong class="clicker" style = "font-size: 21px;">You</strong>
+                                                </a> 
+
+                                                <p style="font-size: 24px; display:inline"> decorated </p>
+                                                <a style="max-width: 500px; overflow: hidden; text-overflow: ellipsis; display:inline " class = "" href = "<?php echo base_url('topic/view/' . $post->topic_id); ?>">your room! </a>
+
+                                            <?php elseif($post->user_id !== $logged_user->user_id): ?>
+                                                <a class = "text1color" href = "<?php echo base_url('user/profile/' . $post->user_id); ?>">
+                                                    <strong class="clicker" style = "font-size: 21px;"><?php echo $post->first_name;?></strong>
+                                                </a> 
+
+                                                <p style="font-size: 24px; display:inline"> posted in </p>
+                                                <a style="max-width: 500px; overflow: hidden; text-overflow: ellipsis; display:inline " class = "" href = "<?php echo base_url('topic/view/' . $post->topic_id); ?>">your room! </a>
+
+                                            <?php endif; ?>
+                                            
 
                                         <?php elseif($post->creator_id === $post->user_id): ?>
                                             <a class = "text1color" href = "<?php echo base_url('user/profile/' . $post->user_id); ?>">

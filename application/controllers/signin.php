@@ -44,7 +44,7 @@ class Signin extends CI_Controller {
             return 0;
         }
 
-        else if ((!$user || empty($user)) && $input->post('sign_up_role', TRUE == 2)) 
+        else if ((!$user || empty($user)) && $input->post('sign_up_role', TRUE) == 2) 
         {
             if(empty($parentExists->get()->result()) || empty($input->post('sign_up_email_parent', TRUE)) || $input->post('sign_up_email_parent', TRUE) == '')
             {
@@ -85,13 +85,14 @@ class Signin extends CI_Controller {
             }
         } 
 
-        else if (!$user && $input->post('sign_up_role', TRUE == 1) || $input->post('sign_up_role', TRUE == 3)) 
+        else if (!$user && $input->post('sign_up_role', TRUE) == 1 || $input->post('sign_up_role', TRUE) == 3) 
         {
             $data = array(
                 'first_name' => utf8_encode(htmlspecialchars($input->post('first_name', TRUE))),
                 'last_name' => utf8_encode(htmlspecialchars($input->post('last_name', TRUE))),
                 'email' => htmlspecialchars($input->post('sign_up_email', TRUE)),
                 'password' => hash('sha256', htmlspecialchars($input->post('sign_up_password', TRUE))),
+                'birthdate' => htmlspecialchars($input->post('sign_up_birthday', TRUE)),
                 'role_id' => htmlspecialchars($input->post('sign_up_role', TRUE)),
                 'is_enabled' => false,
             );
