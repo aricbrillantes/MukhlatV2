@@ -259,53 +259,53 @@
                         </h3><br>
                     </div>
 
-                    <div class="col-md-4 col-sm-4 col-xs-4" style="border-right: 1px solid #dedede">
-                        <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Total posts: </h4></strong> <br><h3 class = "" style = "display: inline-block;"><?php echo $totalPosts; ?></h3>
-                    </div>
+                   <div class="col-md-3 col-sm-3 col-xs-3" style="border-right: 1px solid #dedede">
+                            <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Total posts </h4></strong> <br><h3 class = "" style = "display: inline-block;"><?php echo $totalPosts; ?></h3>
+                        </div>
 
-                    <div class="col-md-4 col-sm-4 col-xs-4" style="border-right: 1px solid #dedede">
-                        <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Posts in room: </h4></strong> <br><h3 class = "" style = "display: inline-block;"><?php echo $totalRoomPosts; ?></h3>
-                    </div>
+                        <div class="col-md-4 col-sm-4 col-xs-4" style="border-right: 1px solid #dedede">
+                            <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Posts in room </h4></strong> <br><h3 class = "" style = "display: inline-block;"><?php echo $totalRoomPosts; ?></h3>
+                        </div>
 
-                    <div class="col-md-4 col-sm-4 col-xs-4">
-                        <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>In other rooms:</h4></strong> <br><h3 class = "" style = "display: inline-block;"><?php echo $otherPosts; ?></h3>
-                    </div>
+                        <div class=" col-md-5 col-sm-5 col-xs-5">
+                            <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Comments (in room) </h4></strong><br> <h3 class = "" style = "display: inline-block;"><?php echo $roomPosts; ?></h3>
+                        </div>
 
-                    <div class=" col-md-12 col-sm-12 col-xs-12">
-                        <br>
-                    </div>
+                        <div class=" col-md-12 col-sm-12 col-xs-12" style="visibility: hidden">
+                            <br>
+                        </div>
 
-                    <div class=" col-md-4 col-sm-4 col-xs-4" style="border-right: 1px solid #dedede">
-                        <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Replies in room: </h4></strong><br> <h3 class = "" style = "display: inline-block;"><?php echo $roomPosts; ?></h3>
-                    </div>
+                        <div class=" col-md-3 col-sm-3 col-xs-3" style="border-right: 1px solid #dedede">
+                            <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Shout-outs </h4></strong><br> <h3 class = "" style = "display: inline-block;"><?php echo $shoutOuts; ?></h3>
+                        </div>
 
-                    <div class=" col-md-4 col-sm-4 col-xs-4" style="border-right: 1px solid #dedede">
-                        <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Shout-outs: </h4></strong><br> <h3 class = "" style = "display: inline-block;"><?php echo $shoutOuts; ?></h3>
-                    </div>
+                        <div class="col-md-4 col-sm-4 col-xs-4" style="border-right: 1px solid #dedede"> 
+                            <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Media uploaded </h4></strong><br> <h3 class = "" style = "display: inline-block;"><?php echo $selfPosts; ?></h3>
+                        </div>
 
-                    <div class="col-md-4 col-sm-4 col-xs-4">
-                        <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Media uploaded: </h4></strong><br> <h3 class = "" style = "display: inline-block;"><?php echo $selfPosts; ?></h3>
-                    </div>
+                        <div class="col-md-5 col-sm-5 col-xs-4">
+                            <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Comments (other rooms)</h4></strong> <br><h3 class = "" style = "display: inline-block;"><?php echo $otherPosts; ?></h3>
+                        </div>
 
-                    <div class=" col-md-12 col-sm-12 col-xs-12">
-                        <hr class="style1" style="border-top: 1px solid #dedede;">
-                    </div>
+                        <div class=" col-md-12 col-sm-12 col-xs-12">
+                            <hr class="style1" style="border-top: 1px solid #dedede;">
+                        </div>
 
-                    <!-- <div class=" col-md-12 col-sm-12 col-xs-12">
-                        <i><small class = "" style = "display: inline-block; margin-right: 20px">(Last updated: <?php echo date_format(date_create($child->updated),"m/d/Y"); ?> )</small></i>
-                    </div><br> -->
-                    
-                    <div class="col-md-4 col-sm-4 col-xs-4" style="border-right: 1px solid #dedede">
-                        <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Swears this week: </h4></strong><br> <h3 class = "" style = "display: inline-block;"><?php echo $child->current_total; ?></h3><br><br>
-                    </div>
+                       <!--  <div class=" col-md-12 col-sm-12 col-xs-12">
+                            <i><small class = "" style = "display: inline-block; margin-right: 20px">(Last updated: <?php echo date_format(date_create($child->updated),"m/d/Y"); ?> )</small></i>
+                        </div><br><br> -->
 
-                    <div class=" col-md-4 col-sm-4 col-xs-4" style="border-right: 1px solid #dedede">
-                        <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Swears last week: </h4></strong><br> <h3 class = "" style = "display: inline-block;"><?php echo $child->last_total; ?></h3>
-                    </div>
+                         <div class="col-md-4 col-sm-4 col-xs-4" style="border-right: 1px solid #dedede">
+                            <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Swears this week </h4></strong><br> <h3 class = "" style = "display: inline-block;"><?php echo $child->current_total; ?></h3><br>
+                        </div>
 
-                    <div class=" col-md-4 col-sm-4 col-xs-4">
-                        <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Lifetime total: </h4></strong><br> <h3 class = "" style = "display: inline-block;"><?php echo $child->overall_total; ?></h3>
-                    </div>
+                        <div class=" col-md-4 col-sm-4 col-xs-4" style="border-right: 1px solid #dedede">
+                            <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Swears last week </h4></strong><br> <h3 class = "" style = "display: inline-block;"><?php echo $child->last_total; ?></h3>
+                        </div>
+
+                        <div class=" col-md-4 col-sm-4 col-xs-4">
+                            <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Total swears (lifetime) </h4></strong><br> <h3 class = "" style = "display: inline-block;"><?php echo $child->overall_total; ?></h3>
+                        </div>
                     
                 </div>
 

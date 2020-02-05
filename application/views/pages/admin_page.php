@@ -87,7 +87,7 @@
                     <ul class="nav nav-pills nav-justified" style="">
                         <li class="active"><a data-toggle="pill" href="#user-list-1">Children</a></li>
                         <li class=""><a data-toggle="pill" href="#user-list-2">Parents</a></li>
-                        <li class=""><a data-toggle="pill" href="#user-list-3">Administrators</a></li>
+                        <li class=""><a data-toggle="pill" href="#user-list-3">Teachers</a></li>
                         <!-- <li class=""><a data-toggle="pill" href="#announcements">Announcements</a></li> -->
                     </ul>
                 </div>
