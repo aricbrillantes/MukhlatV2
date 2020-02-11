@@ -65,18 +65,19 @@ class Admin extends CI_Controller {
                 
                 if($lastDate <= $satLastWeek)
                 {
+                    $tempID = $infractions->row()->id;
                     $data = array
                     (
+                        'id' => $tempID,
                         'user_id' => $user_id,
                         'last_total' => $currentWeekInfractions,
                         'current_total' => 0,
                         'updated' => date('Y-m-d')
                     );
 
-                    $this->db->select('*');
-                    $this->db->from('tbl_infractions');
-                    $this->db->where('user_id', $user_id);
-                    $this->db->update('tbl_infractions', $data); 
+                    $this->db->delete('tbl_infractions', array('user_id' => $user_id)); 
+
+                    $this->db->insert('tbl_infractions', $data);
                 }
                 
                 else if($lastDate < $sunLastWeek)
