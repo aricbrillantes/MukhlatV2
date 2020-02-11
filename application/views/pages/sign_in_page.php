@@ -2,7 +2,7 @@
     include(APPPATH . 'views/header.php');
 
     //added an '@' to disable errors
-    @$logged_user = $_SESSION['logged_user']; 
+    @$logged_user = $_SESSION['logged_user'];
     if(!empty($logged_user))
     {
         $homeURL = base_url('home');
@@ -13,7 +13,7 @@
 <script src="<?php echo base_url('zxcvbn-master/dist/zxcvbn.js'); ?>"></script>
 
 <!-- browser tab icon -->
-<link rel="icon" href="<?php echo base_url('./images/logo/mukhlatlogo_icon.png'); ?>" sizes="32x32"> 
+<link rel="icon" href="<?php echo base_url('./images/logo/mukhlatlogo_icon.png'); ?>" sizes="32x32">
 <link rel="stylesheet" href="<?php echo base_url("/css/sign_in.css"); ?>" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -32,7 +32,7 @@
                         </div>
 
                     <form class = "form-inline text-center" id = "log-in-form" onsubmit = "return log_in()" method = "post">
-                        
+
                         <div class = "row" style = "">
                             <div class = "form-group content-container container-fluid" style = "">
                                 <input readonly onfocus="this.removeAttribute('readonly');" id = "log-in-email" type = "text" required name = "log_in_email" class = "secure form-control sign-in-field col-md-6 col-sm-12 col-xs-12" placeholder = "Email"/>
@@ -41,7 +41,7 @@
                                 <input type="password" name="password_fake" id="password_fake" value="" style="display:none;" />
                                 <input readonly onfocus="this.removeAttribute('readonly');" id = "log-in-password" type = "password" required name = "log_in_password"  class = "secure form-control sign-in-field col-md-6 col-sm-12col-xs-12" placeholder = "Password"/>
                             </div>
-                            
+
                             <div class = "form-group text-center content-container container-fluid">
                                 <button type="submit" class="btn btn-primary buttonsgo col-md-2 col-sm-12 col-xs-12"  id="loginbutton" style = "width: 100%;font-size:24px;">Log In</button>
                             </div>
@@ -278,7 +278,7 @@
                                 <div id="parent-email" class = "col-xs-12 col-sm-6 col-md-6 form-group register-field content-container container-fluid" style="visibility: visible">
                                     <input readonly onfocus="this.removeAttribute('readonly');" type = "email" id = "sign_up_email_parent" name = "sign_up_email_parent" class = "form-control sign-in-field col-md-4 col-md-offset-0" placeholder = "Parent's Email" maxlength = "45">
                                 </div><br> <br>
-                                                           
+
                                 <meter max="4" id="password-strength-meter" style="width:100%;"></meter>
                                 <p id="password-strength-text"></p>
 
@@ -292,7 +292,7 @@
                     </div>
                 </div>
             </div>
-            
+
         </div>
     </div>
 
@@ -316,10 +316,10 @@
 
 <script>
 
-    document.cookie = "sessionWarning=0;" + ";path=/"; 
-    document.cookie = "cookiewarning=0;" + ";path=/"; 
-   
-   function choosebday() 
+    document.cookie = "sessionWarning=0;" + ";path=/";
+    document.cookie = "cookiewarning=0;" + ";path=/";
+
+   function choosebday()
     {
         var date1 = document.getElementById("DOBDay");
         var month1 = document.getElementById("DOBMonth");
@@ -335,8 +335,8 @@
     var i;
     for(i=1;i<101;i++)
         document.getElementById("DOBYear").options[i].style.display= "none";
-    
-    document.getElementById('sign_up_role').onchange = function() 
+
+    document.getElementById('sign_up_role').onchange = function()
     {
         if(this.value === "2")
         {
@@ -373,7 +373,7 @@
         }
     };
 
-    document.getElementById('DOBMonth').onchange = function() 
+    document.getElementById('DOBMonth').onchange = function()
     {
         if(this.value === "02")
         {
@@ -413,12 +413,12 @@
 
     var toggle = 0;
 
-    function changeUI() 
+    function changeUI()
     {
         var background = document.getElementById("mainbody").style.background;
         // alert(background);
-        
-        if (toggle==1) 
+
+        if (toggle==1)
         {
             document.getElementById("mainbody").style.background = "#daf0eb";
             document.getElementById("sign-up").style.display = "none";
@@ -426,9 +426,9 @@
             document.getElementById("change-sign-in-1").style.display = "block";
             document.getElementById("login").innerHTML = "Hello! Welcome to Mukhlat!";
             toggle=0;
-        } 
+        }
 
-        else 
+        else
         {
             document.getElementById("mainbody").style.background = "#f2f2f2";
             document.getElementById("sign-up").style.display = "block";
