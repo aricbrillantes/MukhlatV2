@@ -95,6 +95,7 @@ include(APPPATH . 'views/header.php');
                         
                                 <?php 
                                     foreach ($topics as $topic): 
+                                        $wallpaper="";
                                         if($topic->theme==1): $theme="roomthemes roomtheme-arrow";
                                         elseif($topic->theme==2): $theme="roomthemes roomtheme-zigzag";
                                         elseif($topic->theme==3): $theme="roomthemes roomtheme-scales";
@@ -114,12 +115,12 @@ include(APPPATH . 'views/header.php');
                                         elseif($topic->theme==17): $theme="roomthemes roomtheme-honeycomb";
                                         elseif($topic->theme==18): $theme="roomthemes roomtheme-chocolateweave";
                                         elseif($topic->theme==19): $theme="roomthemes roomtheme-crosseddot";
-                                        else: $theme="topic-grid1 col-md-3";
+                                        else: $theme="topic-grid1 col-md-3";$wallpaper="background-color: #".$topic->theme;
                                         endif;
                                     ?>  
                         
                                    <div>
-                                        <a class="<?php echo $theme?> elements-resizer"  href = "<?php echo base_url('topic/view/' . $topic->topic_id); ?>">
+                                       <a class="<?php echo $theme?> elements-resizer"  href = "<?php echo base_url('topic/view/' . $topic->topic_id); ?>" style="<?php echo $wallpaper?>">
                                             <h4 class = "text-info no-padding text1color topicheader clicker" style="margin-top:50px;margin-left: 13px"><?php echo utf8_decode($topic->topic_name); ?></h4><br>
                                         </a>
                                    </div>

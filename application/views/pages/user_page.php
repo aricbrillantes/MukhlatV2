@@ -155,7 +155,8 @@ include(APPPATH . 'views/header.php');
 
                                     <?php 
 
-                                    foreach ($posts_chunks[$index] as $post): ?> <?php if($post->theme==1): $theme="roomtheme-arrow";
+                                    foreach ($posts_chunks[$index] as $post): ?> <?php $wallpaper="";
+                                        if($post->theme==1): $theme="roomtheme-arrow";
                                         elseif($post->theme==2): $theme="roomtheme-zigzag";
                                         elseif($post->theme==3): $theme="roomtheme-scales";
                                         elseif($post->theme==4): $theme="roomtheme-halfrhombe";
@@ -174,9 +175,9 @@ include(APPPATH . 'views/header.php');
                                         elseif($post->theme==17): $theme="roomtheme-honeycomb";
                                         elseif($post->theme==18): $theme="roomtheme-chocolateweave";
                                         elseif($post->theme==19): $theme="roomtheme-crosseddot";
-                                        else: $theme="";
+                                        else: $theme="";$wallpaper="background-color: #".$post->theme;
                                         endif;?>
-                                    <div class = "polaroid homepostsborder elements-resizer col-xs-12 col-sm-12 <?php echo $theme?>" style = "margin-bottom: 10px; border-radius: 20px;margin-right: 1%;">
+                                    <div class = "polaroid homepostsborder elements-resizer col-xs-12 col-sm-12 <?php echo $theme?>" style = "margin-bottom: 10px; border-radius: 20px;margin-right: 1%;<?php echo $wallpaper?>">
                                         <div class = "user-post-heading" style="border-radius: 20px 20px 0px 0px;background-color: white">
                                             <img class = "img-circle" style = "margin: 10px 0px;" width = "40px" height = "40px" src = "<?php echo $post->profile_url ? base_url($post->profile_url) : base_url('images/default.jpg'); ?>"/> 
                                             
@@ -257,7 +258,8 @@ include(APPPATH . 'views/header.php');
                                     <?php 
 
                                     foreach ($posts_chunks[$index] as $post): ?> 
-                                        <?php if($post->theme==1): $theme="roomtheme-arrow";
+                                        <?php $wallpaper="";
+                                        if($post->theme==1): $theme="roomtheme-arrow";
                                         elseif($post->theme==2): $theme="roomtheme-zigzag";
                                         elseif($post->theme==3): $theme="roomtheme-scales";
                                         elseif($post->theme==4): $theme="roomtheme-halfrhombe";
@@ -276,9 +278,9 @@ include(APPPATH . 'views/header.php');
                                         elseif($post->theme==17): $theme="roomtheme-honeycomb";
                                         elseif($post->theme==18): $theme="roomtheme-chocolateweave";
                                         elseif($post->theme==19): $theme="roomtheme-crosseddot";
-                                        else: $theme="";
+                                        else: $theme="";$wallpaper="background-color: #".$post->theme;
                                         endif;?>
-                                    <div class = "polaroid homepostsborder elements-resizer col-xs-12 col-sm-12 <?php echo $theme?>" style = "margin-bottom: 10px; border-radius: 20px;margin-right: 1%;">
+                                    <div class = "polaroid homepostsborder elements-resizer col-xs-12 col-sm-12 <?php echo $theme?>" style = "margin-bottom: 10px; border-radius: 20px;margin-right: 1%;<?php echo $wallpaper?>">
                                         <div class = "user-post-heading" style="border-radius: 20px 20px 0px 0px;background-color: white">
                                             <img class = "img-circle" style = "margin: 10px 0px;" width = "40px" height = "40px" src = "<?php echo $post->profile_url ? base_url($post->profile_url) : base_url('images/default.jpg'); ?>"/> 
                                             

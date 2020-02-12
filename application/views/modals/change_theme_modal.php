@@ -69,7 +69,7 @@
     </table>
 </div><br><br><br><br><br><br><br><br><br><br><br><br><br><br>  
     <div class="hider"><br><br></div>
-                <input type="text" style="width:110px; height:40px;display: none"  class="form-control" name="change_topic_theme" id="change-topic-theme" onclick="" value="<?php echo $c_topic->theme?>"/>
+                <input type="text" style="width:110px; height:40px;"  class="form-control jscolor" name="change_topic_theme" id="change-topic-theme" onclick="" value="<?php echo $c_topic->theme?>"/>
 
                 <input type="text" style="height: 50px;" required class="form-control jscolor" name = "change_topic_nameframe" maxlength="35" id = "change-topic-nameframe" value="<?php echo $c_topic->nameframe?>"/>
 
