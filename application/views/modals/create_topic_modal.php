@@ -69,79 +69,26 @@ You can change it later.</strong>
         </tr>
     </table>
 </div><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-                    <select style="width:110px; height:40px;display: none"  class="form-control" name="topic_theme" id="topic-theme" onclick="">
-                        <option value="1">Theme 1</option>
-                        <option value="2">Theme 2</option>
-                        <option value="3">Theme 3</option>
-                        <option value="4">Theme 4</option>
-                        <option value="5">Theme 5</option>
-                        <option value="6">Theme 6</option>
-                        <option value="7">Theme 7</option>
-                        <option value="8">Theme 8</option>
-                        <option value="9">Theme 9</option>
-                        <option value="10">Theme 10</option>
-                        <option value="11">Theme 11</option>
-                        <option value="12">Theme 12</option>
-                        <option value="13">Theme 13</option>
-                        <option value="14">Theme 14</option>
-                        <option value="15">Theme 15</option>
-                        <option value="16">Theme 16</option>
-                        <option value="17">Theme 17</option>
-                        <option value="18">Theme 18</option>
-                        <option value="19">Theme 19</option>
-                    </select>
+                    
+                <input type="text" style="width:110px; height:40px;"  class="form-control jscolor" name="topic_theme" id="topic-theme" onclick="" value="1"/>
 
-                    <select style="width:150px; height:40px;display: none"  class="form-control" name="topic_nameframe" id="topic-nameframe" onclick="">
-                    <option value="1">nameframe 1</option>
-                    <option value="2">nameframe 2</option>
-                    <option value="3">nameframe 3</option>
-                    <option value="4">nameframe 4</option>
-                    <option value="5">nameframe 5</option>
-                </select>
+                <input type="text" style="height: 50px;" required class="form-control jscolor" name = "topic_nameframe" maxlength="35" id = "topic-nameframe" value="EEEEEE"/>
 
-                <select style="width:150px; height:40px;display: none"  class="form-control" name="topic_board" id="topic-board" onclick="">
-                    <option value="1">board 1</option>
-                    <option value="2">board 2</option>
-                    <option value="3">board 3</option>
-                    <option value="4">board 4</option>
-                    <option value="5">board 5</option>
-                </select>
+                <input type="text" style="height: 50px;" required class="form-control jscolor" name = "topic_board" maxlength="35" id = "topic-board" value="B78240"/>
 
-                <select style="width:150px; height:40px;display: none"  class="form-control" name="topic_bulletin" id="topic-bulletin" onclick="">
-                    <option value="1">bulletin 1</option>
-                    <option value="2">bulletin 2</option>
-                    <option value="3">bulletin 3</option>
-                    <option value="4">bulletin 4</option>
-                    <option value="5">bulletin 5</option>
-                </select>
+                <input type="text" style="height: 50px;" required class="form-control jscolor" name = "topic_bulletin" maxlength="35" id = "topic-bulletin" value="ADB2BD"/>
 
-                <select style="width:150px; height:40px;display: none"  class="form-control" name="topic_shoutout" id="topic-shoutout" onclick="">
-                    <option value="1">shoutout 1</option>
-                    <option value="2">shoutout 2</option>
-                    <option value="3">shoutout 3</option>
-                    <option value="4">shoutout 4</option>
-                    <option value="5">shoutout 5</option>
-                </select>
+                <input type="text" style="height: 50px;" required class="form-control jscolor" name = "topic_shoutout" maxlength="35" id = "topic-shoutout" value="FFFFCC"/>
+                
+                <input type="text" style="height: 50px;" required class="form-control jscolor" name = "topic_media" maxlength="35" id = "topic-media" value="33CC54"/>
 
-                <select style="width:150px; height:40px;display: none"  class="form-control" name="topic_media" id="topic-media" onclick="">
-                    <option value="1">media 1</option>
-                    <option value="2">media 2</option>
-                    <option value="3">media 3</option>
-                    <option value="4">media 4</option>
-                    <option value="5">media 5</option>
-                </select>
-
-                <select style="width:150px; height:40px;display: none"  class="form-control" name="topic_chatbox" id="topic-chatbox" onclick="">
-                    <option value="1">chatbox 1</option>
-                    <option value="2">chatbox 2</option>
-                    <option value="3">chatbox 3</option>
-                    <option value="4">chatbox 4</option>
-                    <option value="5">chatbox 5</option>
-                </select><br>
-
-                </div>
+                <input type="text" style="height: 50px;" required class="form-control jscolor" name = "topic_chatbox" maxlength="35" id = "topic-chatbox"  value="ECEFF1"/>
+                <br>
+                
                 <div class = "" style = "padding: 5px; border-top: none; padding-bottom: 10px; padding-right: 10px;text-align: center;transform: scale(2);">
                     <a id = "create-topic-btn" class ="btn btn-primary buttonsbgcolor" data-toggle = "modal">Make your room</a>
+                    <a class = "btn btn-primary btn-sm buttonsbgcolor" onclick="defaultcolor()">Default</a>
+                </div>
                 </div>
             </form>
             
@@ -245,6 +192,14 @@ You can change it later.</strong>
 <script>
         function roomtheme(v){
             $('[id$=topic-theme]').val(v);
+        }
+        function defaultcolor(){
+            $('[id$=topic-nameframe]').val("EEEEEE");
+            $('[id$=topic-board]').val("B78240");
+            $('[id$=topic-bulletin]').val("ADB2BD");
+            $('[id$=topic-media]').val("33CC54");
+            $('[id$=topic-shoutout]').val("FFFFCC");
+            $('[id$=topic-chatbox]').val("ECEFF1");
         }
     </script>
     

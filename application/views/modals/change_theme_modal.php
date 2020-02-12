@@ -86,7 +86,7 @@
 
                 <div class = "" style = "padding: 5px; border-top: none; padding-bottom: 10px; padding-right: 10px;text-align: center;transform: scale(2);">
                     <button onmouseenter="playclip()" value = "<?php echo $c_topic->topic_id ?>" id = "edit-topic-save" class = "btn btn-primary btn-sm buttonsbgcolor">Done!</button>
-                    <button class = "btn btn-primary btn-sm buttonsbgcolor" onclick="defaultcolor()">Default</button>
+                    <a class = "btn btn-primary btn-sm buttonsbgcolor" onclick="defaultcolor()">Default</a>
                 </div>
                 </div>
             </form>
