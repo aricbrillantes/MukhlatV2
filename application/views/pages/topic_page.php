@@ -30,7 +30,28 @@
 
     <?php
         include(APPPATH . 'views/navigation_bar.php'); ?>
-       <?php if($c_topic->theme==1): $theme="roomtheme-arrow";
+       <?php 
+        $nameframe ="#".$c_topic->nameframe;
+//        if(strlen(dechex(hexdec($c_topic->nameframe)+6190))==6 && strlen(dechex(hexdec($c_topic->nameframe)-6190))==6):
+//        $nameframe2 ="#". dechex(hexdec($c_topic->nameframe)+6190);
+//        $nameframe3 ="#". dechex(hexdec($c_topic->nameframe)-6190);
+//        else:
+//        $nameframe2 = $nameframe;          
+//        $nameframe3 = $nameframe;
+//        endif;
+        $chatbox ="#".$c_topic->chatbox;
+        $memo ="#".$c_topic->shoutout;
+        $board="#".$c_topic->board;
+        $bulletin ="#".$c_topic->bulletin;
+        $media ="#". $c_topic->media;
+        if(strlen(dechex(hexdec($c_topic->media)+6190))==6 && strlen(dechex(hexdec($c_topic->media)-6190))==6):
+        $media2 ="#". dechex(hexdec($c_topic->media)+6190);
+        $media3 ="#". dechex(hexdec($c_topic->media)-6190);
+        else:
+        $media2 = $media;          
+        $media3 = $media;
+        endif;
+        if($c_topic->theme==1): $theme="roomtheme-arrow";
         elseif($c_topic->theme==2): $theme="roomtheme-zigzag";
         elseif($c_topic->theme==3): $theme="roomtheme-scales";
         elseif($c_topic->theme==4): $theme="roomtheme-halfrhombe";
@@ -59,7 +80,7 @@
         <div class="col-sm-12 col-md-12 col-xs-12 col-lg-12 col-xl-12"> 
             
             <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
-                <div class="nameframe" style="margin-top:62px; margin-left: -10px;margin-bottom: 15px">
+                <div class="nameframe" style="margin-top:62px; margin-left: -10px;margin-bottom: 15px; border-color: <?php echo $nameframe?>">
                     <br>
             <h4><strong><?php echo utf8_decode($c_topic->user->first_name); ?>'s Room</strong></h4>
             </div>
@@ -69,7 +90,7 @@
                 <a onmouseenter="playclip()" id="crettop" class ="btn btn-primary buttonsbgcolor textoutliner" href="#edit-topic-modal" data-toggle = "modal" style="min-width:20%"><img  src = "<?php echo base_url('icons/pencil.png'); ?>" style="width:10%;height:auto;cursor: pointer"/> Change Wallpaper</a>
             <?php endif;?>
                 </div>
-            <div id="chalkb" class="col-xs-12 col-sm-12 col-md-9 col-lg-9 col-xl-9 chalkboard" style="min-height:250px; max-height:250px;margin-top: 60px">
+            <div id="chalkb" class="col-xs-12 col-sm-12 col-md-9 col-lg-9 col-xl-9 chalkboard" style="min-height:250px; max-height:250px;margin-top: 60px;border-color: <?php echo $board?>">
                     <?php
                         foreach ($c_topic->posts as $post):
                             if($post->shout==0 && $post->reply==0):?>
@@ -109,7 +130,7 @@
                 
             </div>
             <div class="col-sm-12 col-md-12 col-xs-12 col-lg-12 col-xl-12"> 
-            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 white-board hider" style="min-height:300px; max-height:300px">
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 white-board hider" style="min-height:300px; max-height:300px;border-color: <?php echo $bulletin?>">
             <?php if ($c_topic->creator_id === $logged_user->user_id): ?><ul class="nav nav-pills nav-justified" style = "margin-bottom: 10px;">
                     <li class = "active"><a data-toggle="pill" href="#teachers"><strong style="cursor: pointer">Teachers</strong></a></li>
                     <li><a data-toggle="pill" href="#parents"><strong style="cursor: pointer">Parents</strong></a></li>
@@ -165,9 +186,9 @@
                 <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3 col-xl-3"> <div class="hider"><br><br></div>
                 <a class="picture" href="#room_media_modal" data-toggle = "modal" style="color: black">
                     <div style="margin-left: 60px;">
-                        <figure class="boxside boxtop"><i class = "glyphicon glyphicon-picture fa-2x" style="margin-top: 25px"></i></figure>
-                    <figure class="boxside boxleft"><i class = "glyphicon glyphicon-volume-up fa-2x" style="margin-top: 25px"></i></figure>
-                    <figure class="boxside boxright"><i class = "fa fa-play fa-2x" style="margin-top: 25px"></i></figure>
+                        <figure class="boxside boxtop" style="background-color: <?php echo $media2?>"><i class = "glyphicon glyphicon-picture fa-2x" style="margin-top: 25px"></i></figure>
+                    <figure class="boxside boxleft" style="background-color: <?php echo $media?>"><i class = "glyphicon glyphicon-volume-up fa-2x" style="margin-top: 25px"></i></figure>
+                    <figure class="boxside boxright" style="background-color: <?php echo $media3?>"><i class = "fa fa-play fa-2x" style="margin-top: 25px"></i></figure>
                     </div>
                     <!--<div class="hook"></div>-->
 <!--                    <div class="frame">
@@ -186,7 +207,7 @@
                 <!--Shout out-->
             <ul class="stickynote col-xs-12 col-sm-4 col-md-3 col-lg-3 col-xl-3">
                <li class="stickytext">
-                   <a href="#room_shout_modal" data-toggle = "modal" class="stickyact">
+                   <a href="#room_shout_modal" data-toggle = "modal" class="stickyact" style="background: <?php echo $memo?>">
                         <?php
                             foreach ($c_topic->posts as $post):
                                 if($post->shout==1):?>
@@ -275,13 +296,13 @@
             </div>  -->
         </div>
         
-<div class="" >
+        <div class="" >
     <!--<div class = "home-sidebar content-container" style="background:darkgray;">-->
     <!--Header-->
 
     <!-- Topic Post List -->
                     
-    <div id="messageb" class = "topic-post-list col-xs-12 col-sm-12 col-md-12 col-lg-3 col-xl-3" style = "padding-top:70px">
+    <div id="messageb" class = "topic-post-list col-xs-12 col-sm-12 col-md-12 col-lg-3 col-xl-3" style = "padding-top:70px; background-color: <?php echo $chatbox?>">
         <!--<div class = "list-group" style = "padding-top: 15%">-->
            <!--List Entry--> 
            <?php $chatcount=0;
@@ -304,6 +325,7 @@
                 <a href="<?php echo base_url('user/profile/' . $post->user_id); ?>"><img class = "img-circle nav-prof-pic iconin" src = "<?php echo $post->user->profile_url ? base_url($post->user->profile_url) : base_url('images/default.jpg'); ?>"/></a>
                 <h4 class = "ellipsis"><strong><?php echo utf8_decode($post->post_title); ?></strong> 
                     <small><a href="<?php echo base_url('user/profile/' . $post->user_id); ?>"><?php echo $post->user->first_name . " " . $post->user->last_name; ?></a></small></h4>
+                    <hr>
                 <p style="white-space: pre-wrap;"><?php echo utf8_decode($post->post_content); ?></p>
             </div>
         <!--                                    <div class = "col-xs-3 text-center" style = "padding: 0px;">

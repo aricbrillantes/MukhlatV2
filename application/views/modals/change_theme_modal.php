@@ -69,80 +69,25 @@
     </table>
 </div><br><br><br><br><br><br><br><br><br><br><br><br><br><br>  
     <div class="hider"><br><br></div>
-                    <select style="width:110px; height:40px;display: none"  class="form-control" name="change_topic_theme" id="change-topic-theme" onclick="">
-                        <option value="1">Theme 1</option>
-                        <option value="2">Theme 2</option>
-                        <option value="3">Theme 3</option>
-                        <option value="4">Theme 4</option>
-                        <option value="5">Theme 5</option>
-                        <option value="6">Theme 6</option>
-                        <option value="7">Theme 7</option>
-                        <option value="8">Theme 8</option>
-                        <option value="9">Theme 9</option>
-                        <option value="10">Theme 10</option>
-                        <option value="11">Theme 11</option>
-                        <option value="12">Theme 12</option>
-                        <option value="13">Theme 13</option>
-                        <option value="14">Theme 14</option>
-                        <option value="15">Theme 15</option>
-                        <option value="16">Theme 16</option>
-                        <option value="17">Theme 17</option>
-                        <option value="18">Theme 18</option>
-                        <option value="19">Theme 19</option>
-                    </select>
+                <input type="text" style="width:110px; height:40px;display: none"  class="form-control" name="change_topic_theme" id="change-topic-theme" onclick="" value="<?php echo $c_topic->theme?>"/>
 
-                </div>
+                <input type="text" style="height: 50px;" required class="form-control jscolor" name = "change_topic_nameframe" maxlength="35" id = "change-topic-nameframe" value="<?php echo $c_topic->nameframe?>"/>
 
-                <select style="width:150px; height:40px;display: none"  class="form-control" name="change_topic_nameframe" id="change-topic-nameframe" onclick="">
-                    <option value="1">nameframe 1</option>
-                    <option value="2">nameframe 2</option>
-                    <option value="3">nameframe 3</option>
-                    <option value="4">nameframe 4</option>
-                    <option value="5">nameframe 5</option>
-                </select>
+                <input type="text" style="height: 50px;" required class="form-control jscolor" name = "change_topic_board" maxlength="35" id = "change-topic-board" value="<?php echo $c_topic->board?>"/>
 
-                <select style="width:150px; height:40px;display: none"  class="form-control" name="change_topic_board" id="change-topic-board" onclick="">
-                    <option value="1">board 1</option>
-                    <option value="2">board 2</option>
-                    <option value="3">board 3</option>
-                    <option value="4">board 4</option>
-                    <option value="5">board 5</option>
-                </select>
+                <input type="text" style="height: 50px;" required class="form-control jscolor" name = "change_topic_bulletin" maxlength="35" id = "change-topic-bulletin" value="<?php echo $c_topic->bulletin?>"/>
 
-                <select style="width:150px; height:40px;display: none"  class="form-control" name="change_topic_bulletin" id="change-topic-bulletin" onclick="">
-                    <option value="1">bulletin 1</option>
-                    <option value="2">bulletin 2</option>
-                    <option value="3">bulletin 3</option>
-                    <option value="4">bulletin 4</option>
-                    <option value="5">bulletin 5</option>
-                </select>
+                <input type="text" style="height: 50px;" required class="form-control jscolor" name = "change_topic_shoutout" maxlength="35" id = "change-topic-shoutout" value="<?php echo $c_topic->shoutout?>"/>
+                
+                <input type="text" style="height: 50px;" required class="form-control jscolor" name = "change_topic_media" maxlength="35" id = "change-topic-media" value="<?php echo $c_topic->media?>"/>
 
-                <select style="width:150px; height:40px;display: none"  class="form-control" name="change_topic_shoutout" id="change-topic-shoutout" onclick="">
-                    <option value="1">shoutout 1</option>
-                    <option value="2">shoutout 2</option>
-                    <option value="3">shoutout 3</option>
-                    <option value="4">shoutout 4</option>
-                    <option value="5">shoutout 5</option>
-                </select>
-
-                <select style="width:150px; height:40px;display: none"  class="form-control" name="change_topic_media" id="change-topic-media" onclick="">
-                    <option value="1">media 1</option>
-                    <option value="2">media 2</option>
-                    <option value="3">media 3</option>
-                    <option value="4">media 4</option>
-                    <option value="5">media 5</option>
-                </select>
-
-                <select style="width:150px; height:40px;display: none"  class="form-control" name="change_topic_chatbox" id="change-topic-chatbox" onclick="">
-                    <option value="1">chatbox 1</option>
-                    <option value="2">chatbox 2</option>
-                    <option value="3">chatbox 3</option>
-                    <option value="4">chatbox 4</option>
-                    <option value="5">chatbox 5</option>
-                </select><br>
+                <input type="text" style="height: 50px;" required class="form-control jscolor" name = "change_topic_chatbox" maxlength="35" id = "change-topic-chatbox"  value="<?php echo $c_topic->chatbox?>"/>
+                <br>
 
                 <div class = "" style = "padding: 5px; border-top: none; padding-bottom: 10px; padding-right: 10px;text-align: center;transform: scale(2);">
                     <button onmouseenter="playclip()" value = "<?php echo $c_topic->topic_id ?>" id = "edit-topic-save" class = "btn btn-primary btn-sm buttonsbgcolor">Done!</button>
+                    <button class = "btn btn-primary btn-sm buttonsbgcolor" onclick="defaultcolor()">Default</button>
+                </div>
                 </div>
             </form>
             
@@ -153,5 +98,13 @@
     <script>
         function roomtheme(v){
             $('[id$=change-topic-theme]').val(v);
+        }
+        function defaultcolor(){
+            $('[id$=change-topic-nameframe]').val("EEEEEE");
+            $('[id$=change-topic-board]').val("B78240");
+            $('[id$=change-topic-bulletin]').val("ADB2BD");
+            $('[id$=change-topic-media]').val("33CC54");
+            $('[id$=change-topic-shoutout]').val("FFFFCC");
+            $('[id$=change-topic-chatbox]').val("ECEFF1");
         }
     </script>

@@ -2102,7 +2102,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 .nameframe {
-  background-color:#ddc;
+  background-color:#fff;
   border:solid 5vmin #eee;
   border-bottom-color:#fff;
   border-left-color:#eee;
@@ -2311,23 +2311,36 @@ body::-webkit-scrollbar-thumb {
 
 .speech-bubble {
 	position: relative;
-	background: #00aabb;
+	background: #FFF;
 	border-radius: .4em;
+        
 }
 
 .speech-bubble:after {
 	content: '';
 	position: absolute;
-	left: 0;
-	top: 50%;
+	top: 0;
+	left: 10%;
 	width: 0;
 	height: 0;
-	border: 28px solid transparent;
-	border-right-color: #00aabb;
-	border-left: 0;
-	border-bottom: 0;
-	margin-top: -14px;
-	margin-left: -28px;
+	border: 12px solid transparent;
+	border-bottom-color: #000;
+	border-top: 0;
+	margin-left: -12px;
+	margin-top: -12px;
+}
+.speech-bubble:before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 90%;
+	width: 0;
+	height: 0;
+	border: 12px solid transparent;
+	border-bottom-color: #FFF;
+	border-top: 0;
+	margin-left: -12px;
+	margin-top: -12px;
 }
 
 #margin {
@@ -2833,7 +2846,7 @@ border: 2px outset  #000;
 			red 22.5px,
 			red 30px);
 	transform: translateX(-20%) translateY(-20%) rotate(-45deg);
-	animation: animate 20s linear infinite;
+	/*animation: animate 20s linear infinite;*/
 }
 
 .cane .canecontent {

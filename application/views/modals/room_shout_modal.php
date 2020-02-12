@@ -22,7 +22,7 @@
                         <div class="col-md-3">
                             <ul class="stickynote">
                                 <li class="stickytext">
-                                    <a href="#" data-toggle = "modal" class="stickyact">
+                                    <a href="#" data-toggle = "modal" class="stickyact" style="background: <?php echo $memo?>">
                                         <h2><?php echo utf8_decode($post->post_title); ?></h2>
                                         <p><?php echo utf8_decode($post->post_content); ?></p>
 
