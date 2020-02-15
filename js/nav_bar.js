@@ -312,5 +312,24 @@ else if(w>=768 && w<1200){
 $('#navtoggler').on('click', function() {
 		$('body').toggleClass('open-nav');
 	});
-
+        
+        
+        $('[id$=topic-nameframe]').change(function(){
+            document.getElementById("nameframeinput").style.borderColor = "#"+document.getElementById("topic-nameframe").value;
+        });
+        $('[id$=topic-board]').change(function(){
+            document.getElementById("chboardinput").style.borderColor = "#"+document.getElementById("topic-board").value;
+        });
+        $('[id$=topic-bulletin]').change(function(){
+            document.getElementById("bulboardinput").style.borderColor = "#"+document.getElementById("topic-bulletin").value;
+        });
+        $('[id$=topic-shoutout]').change(function(){
+            document.getElementById("stickyinput").style.backgroundColor = "#"+document.getElementById("topic-shoutout").value;
+        });
+        $('[id$=topic-media]').change(function(){
+            document.getElementById("mediainput").style.backgroundColor = "#"+document.getElementById("topic-media").value;
+        });
+        $('[id$=topic-chatbox]').change(function(){
+            document.getElementById("chatinput").style.backgroundColor = "#"+document.getElementById("topic-chatbox").value;
+        });
 });

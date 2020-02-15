@@ -187,7 +187,7 @@
                 <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3 col-xl-3"> <div class="hider"><br><br></div>
                 <a class="picture" href="#room_media_modal" data-toggle = "modal" style="color: black">
                     <div style="margin-left: 60px;">
-                        <figure class="boxside boxtop" style="background-color: <?php echo $media2?>"><i class = "glyphicon glyphicon-picture fa-2x" style="margin-top: 25px"></i></figure>
+                    <figure class="boxside boxtop" style="background-color: <?php echo $media2?>"><i class = "glyphicon glyphicon-picture fa-2x" style="margin-top: 25px"></i></figure>
                     <figure class="boxside boxleft" style="background-color: <?php echo $media?>"><i class = "glyphicon glyphicon-volume-up fa-2x" style="margin-top: 25px"></i></figure>
                     <figure class="boxside boxright" style="background-color: <?php echo $media3?>"><i class = "fa fa-play fa-2x" style="margin-top: 25px"></i></figure>
                     </div>

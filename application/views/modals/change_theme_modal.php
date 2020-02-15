@@ -69,19 +69,19 @@
     </table>
 </div><br><br><br><br><br><br><br><br><br><br><br><br><br><br>  
     <div class="hider"><br><br></div>
-                <input type="text" style="width:110px; height:40px;"  class="form-control jscolor" name="change_topic_theme" id="change-topic-theme" onclick="" value="<?php echo $c_topic->theme?>"/>
+                <input type="text" style="width:110px; height:40px;"  class="form-control jscolor" name="change_topic_theme" id="change-topic-theme" onclick="" value="<?php echo $c_topic->theme?>" readonly/>
 
-                <input type="text" style="height: 50px;" required class="form-control jscolor" name = "change_topic_nameframe" maxlength="35" id = "change-topic-nameframe" value="<?php echo $c_topic->nameframe?>"/>
+                <input type="text" style="height: 50px;" required class="form-control jscolor" name = "change_topic_nameframe" maxlength="35" id = "change-topic-nameframe" value="<?php echo $c_topic->nameframe?>" readonly/>
 
-                <input type="text" style="height: 50px;" required class="form-control jscolor" name = "change_topic_board" maxlength="35" id = "change-topic-board" value="<?php echo $c_topic->board?>"/>
+                <input type="text" style="height: 50px;" required class="form-control jscolor" name = "change_topic_board" maxlength="35" id = "change-topic-board" value="<?php echo $c_topic->board?>" readonly/>
 
-                <input type="text" style="height: 50px;" required class="form-control jscolor" name = "change_topic_bulletin" maxlength="35" id = "change-topic-bulletin" value="<?php echo $c_topic->bulletin?>"/>
+                <input type="text" style="height: 50px;" required class="form-control jscolor" name = "change_topic_bulletin" maxlength="35" id = "change-topic-bulletin" value="<?php echo $c_topic->bulletin?>" readonly/>
 
-                <input type="text" style="height: 50px;" required class="form-control jscolor" name = "change_topic_shoutout" maxlength="35" id = "change-topic-shoutout" value="<?php echo $c_topic->shoutout?>"/>
+                <input type="text" style="height: 50px;" required class="form-control jscolor" name = "change_topic_shoutout" maxlength="35" id = "change-topic-shoutout" value="<?php echo $c_topic->shoutout?>" readonly/>
                 
-                <input type="text" style="height: 50px;" required class="form-control jscolor" name = "change_topic_media" maxlength="35" id = "change-topic-media" value="<?php echo $c_topic->media?>"/>
+                <input type="text" style="height: 50px;" required class="form-control jscolor" name = "change_topic_media" maxlength="35" id = "change-topic-media" value="<?php echo $c_topic->media?>" readonly/>
 
-                <input type="text" style="height: 50px;" required class="form-control jscolor" name = "change_topic_chatbox" maxlength="35" id = "change-topic-chatbox"  value="<?php echo $c_topic->chatbox?>"/>
+                <input type="text" style="height: 50px;" required class="form-control jscolor" name = "change_topic_chatbox" maxlength="35" id = "change-topic-chatbox"  value="<?php echo $c_topic->chatbox?>" readonly/>
                 <br>
 
                 <div class = "" style = "padding: 5px; border-top: none; padding-bottom: 10px; padding-right: 10px;text-align: center;transform: scale(2);">
