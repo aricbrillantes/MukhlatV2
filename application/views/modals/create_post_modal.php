@@ -143,11 +143,11 @@ $topic = $_SESSION['current_topic'];
       } 
       .drawnbutton.lined.thick{
          border:solid 4px #009900;
-         width:30%;
+         width:100%;
       }
       .drawnbutton.lined.thick.gray{
          border:solid 4px #a9a9a9;
-         width:30%;
+         width:100%;
       }
       .drawnbutton.dotted.thick{
          border:dotted 5px #41403E;
@@ -291,97 +291,90 @@ $topic = $_SESSION['current_topic'];
                                 </div>
                             </div></center>
                         </div>-->
-                        
-                        <div style="text-align:center" id="choose">
-            
-            
-            <button type="button" id="choosepic" class="drawnbutton lined thick" onclick="chosepic()"><img src="<?php echo base_url('icons/pic.png'); ?>" style="display:block;margin: 0 auto;width:100%"> Pix </button>
-            <button type="button" id="choosenote" class="drawnbutton lined thick" onclick="chosenote()"><img src="<?php echo base_url('icons/note.png'); ?>" style="display:block;margin: 0 auto;width:100%"> Sound </button>
-            <button type="button" id="choosevid" class="drawnbutton lined thick" onclick="chosevid()"><img src="<?php echo base_url('icons/video.png'); ?>" style="display:block;margin: 0 auto;width:100%"> Vids </button>
-            <br>
-            <div style="text-align:center" >
-            <button type="button" id="btnStart" class="drawnbutton lined thin" onclick="recordaudio();"style = "display: none;"><img src="<?php echo base_url('icons/mic.png'); ?>" style="display:block;margin: 0 auto;margin-bottom: 15px;margin-top: 10px"></img>Tick Talk!</button>
-            <button type="button" id="btnStart2" class="drawnbutton lined thin" onclick="recordvideo();"style = "display: none;"><img src="<?php echo base_url('icons/Recordvid.png'); ?>"></img>Video Time!</button>
-            
-            <h4 id="startrec" style="display: none;text-align:center;">You are now recording!</h4>
+                        <h2 id="addwarning" style="display:none;color:red;" ><i class="arrow up"></i> add something to share! </h2>
+                        <h4 id="startrec" style="display: none;text-align:center;">You are now recording!</h4>
+                  <div id="uploadmedia">
+                    <ul class="nav nav-pills nav-justified" style = "margin-bottom: 10px;">
+                      <li class = "active"><button type="button" data-toggle="pill" href="#picturetab" id="choosepic" class="drawnbutton lined thick gray" onclick="chosepic()"><img src="<?php echo base_url('icons/pic.png'); ?>" style="display:block;margin: 0 auto;width:100%"> Pix </button></li>
+                      <li><button type="button" id="choosenote" data-toggle="pill" href="#audiotab" class="drawnbutton lined thick" onclick="chosenote()"><img src="<?php echo base_url('icons/note.png'); ?>" style="display:block;margin: 0 auto;width:100%"> Sound </button></li>
+                      <li><button type="button" id="choosevid" data-toggle="pill" href="#videotab" class="drawnbutton lined thick" onclick="chosevid()"><img src="<?php echo base_url('icons/video.png'); ?>" style="display:block;margin: 0 auto;width:100%"> Vids </button></li>
 
-              <div id="recaud" style="display: none">
-                      
-                      
-          
-                      
-                      <audio id="aud1" controls></audio><br>
-                      <div style="text-align: center;">
-                      <button type="button" id="btnStop" class="drawnbutton dashed thick">Im done recording!</button>
-                      <button id="dlbutton" class="drawnbutton dashed thick"  style="display: none;"><a id="dl" download="My Voice">Save my Voice</a></button>
-                      </div>
-              </div>
-              
-              <div id="recvid" style="display: none">
-                      <video width="400" id="vidprev"  controls muted></video><br>
-                      
-          
-                      
-                      <video width="400" id="vid1" style="display: none" controls></video><br>
-                      <div style="text-align: center;">
-                      <button type="button" id="btnStop2" class="drawnbutton dashed thick">Im done recording!</button>
-                      <button id="dl2button" class="drawnbutton dashed thick"  style="display: none;"><a id="dl2"  download="My Video" style="text-decoration: none;">Save my Video</a></button>
+                    </ul>
+                    <div class="tab-content">
+                      <div id="picturetab" class="tab-pane fade in active">
+                          <div id = "attachment-buttons" class = "form-group"style="text-align:center">
+                          <!--<img id="target"/>-->
+                            <!-- Attach a file: -->
+                            <!--IMAGE-->
+                            <label id = "img-label" class="drawnbutton dotted thin" >
+                                <input id = "attach-img" accept = "image/*" type="file" name = "post_image" style = "display: none;" onchange="fileAdded();readURL(this);">
+                                <p id = "image-text" class = "attach-btn-text" style="text-align: center;"><img src="<?php echo base_url('icons/pic.png'); ?>" style="display:block;margin: 0 auto;"> Choose Pix </p>
+                            </label>
+                          </div>
+                          <img id="pic" src="#"  width="100%" />
+                          <h2 id="pic_h" style="display: none">The picture you used is too big, sorry!</h2>
+
                       </div>
 
-              </div>
-            </div>
-            <br>
-            
-            
-           
-            
-                         
-                         
-                    <div id = "attachment-buttons" class = "form-group"style="text-align:center">
-                      <!--<img id="target"/>-->
-                        <!-- Attach a file: -->
-                        <!--IMAGE-->
-                        <label id = "img-label" class="drawnbutton dotted thin" style = "display: none;">
-                            <input id = "attach-img" accept = "image/*" type="file" name = "post_image" style = "display: none;" onchange="fileAdded();readURL(this);">
-                            <p id = "image-text" class = "attach-btn-text" style="text-align: center;"><img src="<?php echo base_url('icons/pic.png'); ?>" style="display:block;margin: 0 auto;"> Choose Pix </p>
-                        </label>
+                      <div id="audiotab" class="tab-pane fade in">
+                          <div style="text-align:center">
+                          <button type="button" id="btnStart" class="drawnbutton lined thin" onclick="recordaudio();"><img src="<?php echo base_url('icons/mic.png'); ?>" style="display:block;margin: 0 auto;margin-bottom: 15px;margin-top: 10px"></img>Tick Talk!</button>
+                          </div>
+                          <div id="recaud" style="display: none">
 
-                        <!--AUDIO-->
-                        <label id = "audio-label" class="drawnbutton dotted thin" style = "display: none;">
-                            <input id = "attach-audio" accept = "audio/*" type="file" name = "post_audio" style = "display: none;" onchange="fileAdded();readAud(this);">
-                            <p id = "audio-text" class = "attach-btn-text" style="text-align: center;"><img src="<?php echo base_url('icons/note.png'); ?>" style="display:block;margin: 0 auto;"> Choose Sounds </p>
- 
-                        </label>
+                          <audio id="aud1" controls></audio><br>
+                            <div style="text-align: center;">
+                            <button type="button" id="btnStop" class="drawnbutton dashed thick">Im done recording!</button>
+                            <button id="dlbutton" class="drawnbutton dashed thick"  style="display: none;"><a id="dl" download="My Voice">Save my Voice</a></button>
+                            </div>
+                          </div>
+                          <div id = "attachment-buttons" class = "form-group"style="text-align:center">
 
-                        <!--VIDEO-->
-                        <label id = "video-label" class="drawnbutton dotted thin" style = "display: none;">
-                            <input id = "attach-video" accept = "video/*" type="file" name = "post_video" style = "display: none;" onchange="fileAdded();readVid(this);">
-                            <p id = "video-text" class = "attach-btn-text" style="text-align: center;"><img src="<?php echo base_url('icons/video.png'); ?>" style="display:block;margin: 0 auto;"> Choose Vids </p>
-                        </label>
+                            <label id = "audio-label" class="drawnbutton dotted thin">
+                              <input id = "attach-audio" accept = "audio/*" type="file" name = "post_audio" style = "display: none;" onchange="fileAdded();readAud(this);">
+                              <p id = "audio-text" class = "attach-btn-text" style="text-align: center;"><img src="<?php echo base_url('icons/note.png'); ?>" style="display:block;margin: 0 auto;"> Choose Sounds </p>
+  
+                            </label>
+                          </div>
+                          <audio id="aud" width="100%" controls>
+                          <source src="#" id="audio_here">
+                          </audio>
+                          <h2 id="snd_h" style="display: none">The audio you used is too big, sorry!</h2>
 
-                        <!--FILE-->
-                        <!-- <label id = "file-label" class="btn btn-primary buttonsbgcolor">
-                            <input id = "attach-file" type="file" name = "post_file" style = "display: none;">
-                            <p id = "file-text" class = "attach-btn-text"><i class = "fa fa-file-o"></i> Add File</p>
-                        </label> -->
+                      </div>
 
+                      <div id="videotab" class="tab-pane fade in">
+                          <div style="text-align:center">
+                          <button type="button" id="btnStart2" class="drawnbutton lined thin" onclick="recordvideo();"><img src="<?php echo base_url('icons/Recordvid.png'); ?>"></img>Video Time!</button>
+                          </div>
+                          <div id="recvid" style="display: none">
+                          <video width="400" id="vidprev"  controls muted></video><br>
+                          <video width="400" id="vid1" style="display: none" controls></video><br>
+                            <div style="text-align: center;">
+                            <button type="button" id="btnStop2" class="drawnbutton dashed thick">Im done recording!</button>
+                            <button id="dl2button" class="drawnbutton dashed thick"  style="display: none;"><a id="dl2"  download="My Video" style="text-decoration: none;">Save my Video</a></button>
+                            </div>
+
+                          </div>
+                          <div id = "attachment-buttons" class = "form-group"style="text-align:center">
+                      
+                            <label id = "video-label" class="drawnbutton dotted thin">
+                                <input id = "attach-video" accept = "video/*" type="file" name = "post_video" style = "display: none;" onchange="fileAdded();readVid(this);">
+                                <p id = "video-text" class = "attach-btn-text" style="text-align: center;"><img src="<?php echo base_url('icons/video.png'); ?>" style="display:block;margin: 0 auto;"> Choose Vids </p>
+                            </label>
+                          </div>
+                          <video id="vid" width="100%" controls>
+                              <source src="#" id="video_here">
+                              
+                          </video> 
+                          <h2 id="vid_h" style="display: none">The video you used is too big, sorry!</h2>
+
+                      </div>
                     </div>
-                    <img id="pic" src="#" style="display: none" width="100%" />
-              <audio id="aud" width="100%" style="display: none" controls>
-              <source src="#" id="audio_here">
-              hi
-              </audio>
-              <video id="vid" width="100%" style="display: none" controls>
-                  <source src="#" id="video_here">
-                  hi
-              </video>  
-              <h2 id="addwarning" style="display:none;color:red;" ><i class="arrow up"></i> add something to share! </h2>
-              <h2 id="pic_h" style="display: none">The picture you used is too big, sorry!</h2>
-              <h2 id="vid_h" style="display: none">The video you used is too big, sorry!</h2>
-              <h2 id="snd_h" style="display: none">The sound you used is too big, sorry!</h2>
-              
-              
-                </div>
+                  </div>
+
+               
+            
                 <div class = "modal-footer" style = "padding: 5px; border-top: none; padding-bottom: 10px; padding-right: 10px;">
                     <button class="drawnbutton lined thick"><a id = "create-post-btn" style="font-size: 30px;text-decoration: none;" data-toggle = "modal" onclick="shareclick()" >Share</a></button>
                 </div>
@@ -444,13 +437,7 @@ function recordvideo()
 
 function chosepic()
 {
-  $('[id$=img-label]').show();
-  $('[id$=audio-label]').hide();
-  $('[id$=btnStart]').hide();
-  $('[id$=video-label]').hide();
-  $('[id$=btnStart2]').hide();
-  $('[id$=recvid]').hide();
-  $('[id$=recaud]').hide();
+ 
   document.getElementById("choosepic").className = "drawnbutton lined thick gray";
   document.getElementById("choosenote").className = "drawnbutton lined thick";
   document.getElementById("choosevid").className = "drawnbutton lined thick";
@@ -458,24 +445,14 @@ function chosepic()
 }
 function chosenote()
 {
-  $('[id$=audio-label]').show();
-  $('[id$=btnStart]').show();
-  $('[id$=img-label]').hide();
-  $('[id$=video-label]').hide();
-  $('[id$=btnStart2]').hide();
-  $('[id$=recvid]').hide();
+  
   document.getElementById("choosenote").className = "drawnbutton lined thick gray";
   document.getElementById("choosepic").className = "drawnbutton lined thick";
   document.getElementById("choosevid").className = "drawnbutton lined thick";
 }
 function chosevid()
 {
-  $('[id$=video-label]').show();
-  $('[id$=btnStart2]').show();
-  $('[id$=audio-label]').hide();
-  $('[id$=btnStart]').hide();
-  $('[id$=img-label]').hide();
-  $('[id$=recaud]').hide();
+  
   document.getElementById("choosevid").className = "drawnbutton lined thick gray";
   document.getElementById("choosenote").className = "drawnbutton lined thick";
   document.getElementById("choosepic").className = "drawnbutton lined thick";
@@ -579,8 +556,6 @@ function readURL(input) {
   $('[id$=attach-video]').val("");
   
   
-  $('[id$=aud]').hide();
-  $('[id$=vid]').hide();
   $('[id$=pic_h]').hide();
   $('[id$=vid_h]').hide();
   $('[id$=snd_h]').hide();
@@ -602,10 +577,9 @@ function readURL(input) {
     
         reader.readAsDataURL(input.files[0]);
         }
-  $('[id$=pic]').show(); 
     } else {
       $('[id$=pic_h]').show();
-      $('[id$=pic]').hide();
+
       
     }
   }
@@ -619,8 +593,7 @@ function readVid(input){
   $('[id$=attach-img]').val("");
   $('[id$=video-text]').text('Change Video');
   
-  $('[id$=aud]').hide();
-  $('[id$=pic]').hide();
+
   $('[id$=pic_h]').hide();
   $('[id$=vid_h]').hide();
   $('[id$=snd_h]').hide();
@@ -633,10 +606,10 @@ function readVid(input){
         var $source = $('#video_here');
   $source[0].src = URL.createObjectURL(input.files[0]);
   $source.parent()[0].load();
-  $('[id$=vid]').show();        
+        
     } else {
       $('[id$=vid_h]').show();
-      $('[id$=vid]').hide();
+ 
       
     }
 
@@ -648,8 +621,7 @@ function readAud(input){
   $('[id$=attach-img]').val("");
   $('[id$=audio-text]').text('Change Sound');
  
-  $('[id$=pic]').hide();
-  $('[id$=vid]').hide();
+  
   $('[id$=pic_h]').hide();
   $('[id$=vid_h]').hide();
   $('[id$=snd_h]').hide();
@@ -662,10 +634,9 @@ function readAud(input){
         var $source = $('#audio_here');
   $source[0].src = URL.createObjectURL(input.files[0]);
   $source.parent()[0].load();
-  $('[id$=aud]').show();   
     } else {
       $('[id$=snd_h]').show();
-      $('[id$=aud]').hide();
+
       
     }
     
@@ -767,9 +738,7 @@ let constraintObj2 = {
 
     function toggleButton(p)
     {
-        $('[id$=img-label]').hide();
-        $('[id$=audio-label]').hide();
-        $('[id$=video-label]').hide();
+        
         $('[id$=attachment-preview]').hide();
         $('[id$=post-title-container]').hide();
         $('[id$=reply]').val(0);
@@ -778,6 +747,7 @@ let constraintObj2 = {
         $('[id$=titlewarning]').hide();
         $('[id$=contentwarning]').hide();
         $('[id$=stickerchoices]').show();
+        $('[id$=uploadmedia]').hide();
         
         toggle=p;
         emojisICON();
@@ -788,16 +758,16 @@ let constraintObj2 = {
           // $('[id$=img-label]').show();
           // $('[id$=audio-label]').show();
           // $('[id$=video-label]').show();
-          $('[id$=choosepic]').show();
-          $('[id$=choosenote]').show();
-          $('[id$=choosevid]').show();
+          // $('[id$=choosepic]').show();
+          // $('[id$=choosenote]').show();
+          // $('[id$=choosevid]').show();
           $('[id$=attachment-preview]').show();
           $('[id$=modaltitle]').text("Add to Album");
           $('[id$=post-title]').val(" ");
           
           // $('[id$=btnStart]').show();
           // $('[id$=btnStart2]').show();
-          $('[id$=scissors]').show();
+          $('[id$=uploadmedia]').show();
 
         }
 
@@ -822,14 +792,10 @@ let constraintObj2 = {
           $('[id$=modaltitle]').text("Add to board");
           $('[id$=post-title]').val(" ");
           $('[id$=addwarning]').hide();
-          $('[id$=btnStart]').hide();
-          $('[id$=btnStart2]').hide();
+          
           $('[id$=contentwarning]').hide();
           $('[id$=titlewarning]').hide();
-          $('[id$=scissors]').hide();
-          $('[id$=choosepic]').hide();
-          $('[id$=choosenote]').hide();
-          $('[id$=choosevid]').hide();
+       
         }
 
         if(p==="shout")
@@ -838,14 +804,11 @@ let constraintObj2 = {
           $('[id$=shout]').val(1);
           $('[id$=modaltitle]').text("Give a shout out!");
           $('[id$=addwarning]').hide();
-          $('[id$=btnStart]').hide();
-          $('[id$=btnStart2]').hide();
+          
           $('[id$=titlewarning]').hide();
           $('[id$=scissors]').hide();
           $('[id$=stickerchoices]').hide();
-          $('[id$=choosepic]').hide();
-          $('[id$=choosenote]').hide();
-          $('[id$=choosevid]').hide();
+          
         }
         
         if(p==="reply")
