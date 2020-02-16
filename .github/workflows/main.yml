@@ -1,0 +1,20 @@
+name: Deploy to Live Server
+on:
+  push:
+    branches:    
+      - staging 
+
+jobs:
+  build:
+    name: SSH Deploy
+    runs-on: ubuntu-latest
+    steps:
+    - name: executing remote ssh commands using password
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        key: ${{ secrets.PRIVATE_KEY }}
+        script: |
+          echo "Testing Github Actions SSH"
+          git --version
