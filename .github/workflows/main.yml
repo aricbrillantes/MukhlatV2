@@ -17,7 +17,12 @@ jobs:
         passphrase: ${{ secrets.PASSPHRASE }}
         key: ${{ secrets.PRIVATE_KEY }}
         script: |
+          echo "Changing directory to /var/www/MukhlatV2"
           cd /var/www/MukhlatV2
+          pwd 
+          echo "Fetch changes from origin..."
           git fetch origin
+          echo "Pulling changes from origin..."
           git pull origin staging
+          echo "Reloading Nginx"
           systemctl restart nginx
