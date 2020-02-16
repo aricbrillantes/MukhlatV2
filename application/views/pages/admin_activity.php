@@ -295,16 +295,16 @@
                             <i><small class = "" style = "display: inline-block; margin-right: 20px">(Last updated: <?php echo date_format(date_create($child->updated),"m/d/Y"); ?> )</small></i>
                         </div><br><br> -->
 
-                         <div class="col-md-4 col-sm-4 col-xs-4" style="border-right: 1px solid #dedede">
-                            <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Swears this week </h4></strong><br> <h3 class = "" style = "display: inline-block;"><?php echo $child->current_total; ?></h3><br>
+                        <div class="col-md-4 col-sm-4 col-xs-4" style="border-right: 1px solid #dedede">
+                            <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Bad words<br>(this week) </h4></strong><br> <h3 class = "" style = "display: inline-block;"><?php echo $child->current_total; ?></h3><br>
                         </div>
 
                         <div class=" col-md-4 col-sm-4 col-xs-4" style="border-right: 1px solid #dedede">
-                            <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Swears last week </h4></strong><br> <h3 class = "" style = "display: inline-block;"><?php echo $child->last_total; ?></h3>
+                            <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Bad words<br>(last week) </h4></strong><br> <h3 class = "" style = "display: inline-block;"><?php echo $child->last_total; ?></h3>
                         </div>
 
                         <div class=" col-md-4 col-sm-4 col-xs-4">
-                            <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Total swears (lifetime) </h4></strong><br> <h3 class = "" style = "display: inline-block;"><?php echo $child->overall_total; ?></h3>
+                            <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Bad words<br>Total) </h4></strong><br> <h3 class = "" style = "display: inline-block;"><?php echo $child->overall_total; ?></h3>
                         </div>
                     
                 </div>
@@ -312,7 +312,7 @@
                 <!-- Activity -->
                 <div class = "col-xs-12 col-md-6 col-sm-6 col-md-offset-0 content-container container-fluid tab-content" style = "margin-bottom: 0px; margin-left: 0px">
                     <h3 class = "text-info text-center user-activities-header">
-                        <strong><?php echo $child->first_name; ?>'s Posts</strong>
+                        <strong><?php echo $child->first_name; ?>'s Activity</strong>
                     </h3>
                     
                     <br>
@@ -341,7 +341,7 @@
                                 $y = 0;
                                 $z = 0;
 
-                                for ($x = 0; $x <= $totalPosts; $x+=40): $y++; ?>
+                                for ($x = 0; $x < $totalPosts; $x+=40): $y++; ?>
 
                                     <?php if($totalPosts>40):
 
@@ -379,10 +379,16 @@
                                         <div class = "user-post-heading no-margin">
                                             
                                             <?php if ($topic->topic_id == $post->topic_id): ?>
-                                                <span>posted to <strong>their room</strong> </span>
+                                                <?php if ($post->reply == 1): ?>
+                                                    <span>commented on <strong>their room</strong> </span>
+                                                
+                                                <?php else: ?>
+                                                    <span>posted to <strong>their room</strong> </span>
+
+                                                <?php endif; ?>
 
                                             <?php else: ?>
-                                                <span>posted in <strong><?php echo $post->topic_name; ?></strong> </span> 
+                                                <span>commented on <strong><?php echo $post->topic_name; ?></strong> </span> 
 
                                             <?php endif; ?>
                                             
@@ -438,7 +444,7 @@
                                 $y = 0;
                                 $z = 0;
 
-                                for ($x = 0; $x <= $totalRoomPosts; $x+=40): $y++; ?>
+                                for ($x = 0; $x < $totalRoomPosts; $x+=40): $y++; ?>
 
                                     <?php if($totalRoomPosts>40):
 
@@ -485,8 +491,14 @@
 
                                     <div id="" class = "col-xs-12 no-padding post-container " style = "margin-top: 10px;">
                                         <div class = "user-post-heading no-margin">
-                                        
-                                            <span>posted to <strong>their room</strong> </span>
+                                            
+                                            <?php if ($post->reply == 1): ?>
+                                                <span>commented in <strong>their room</strong> </span>
+                                            
+                                            <?php else: ?>
+                                                <span>posted to <strong>their room</strong> </span>
+
+                                            <?php endif; ?>
 
                                             <span class = "text-muted"> <i style = "font-size: 11px">(<?php echo date("M-d-y - H:i", strtotime($post->date_posted)); ?>)</i></span>
                                            
@@ -541,7 +553,7 @@
                                 $y = 0;
                                 $z = 0;
 
-                                for ($x = 0; $x <= $otherPosts; $x+=40): $y++; ?>
+                                for ($x = 0; $x < $otherPosts; $x+=40): $y++; ?>
 
                                     <?php if($otherPosts>40):
 
@@ -587,55 +599,59 @@
                                     
                                     $others_chunks = array_chunk($othersArray, 40);
 
-                                    foreach ($others_chunks[$index] as $post): $i++;
+                                    if($others_chunks):
 
-                                    if ($topic->topic_id != $post->topic_id):?> 
+                                        foreach ($others_chunks[$index] as $post): $i++;
 
-                                    <div id="" class = "col-xs-12 no-padding post-container " style = "margin-top: 10px;">
-                                        <div class = "user-post-heading no-margin">
-                                        
-                                            <span>posted in <strong><?php echo $post->topic_name; ?></strong> </span>
+                                        if ($topic->topic_id != $post->topic_id):?> 
 
-                                            <span class = "text-muted"> <i style = "font-size: 11px">(<?php echo date("M-d-y - H:i", strtotime($post->date_posted)); ?>)</i></span>
-                                           
-                                        </div>
-                                        <div class = "col-xs-12 user-post-content no-padding">
+                                        <div id="" class = "col-xs-12 no-padding post-container " style = "margin-top: 10px;">
+                                            <div class = "user-post-heading no-margin">
                                             
-                                            <div class = "col-xs-10 no-padding" style = "margin-top: 1vw; margin-left: 1vw;">
-                                                <?php if (!empty($post->post_title)): ?>
-                                                    <h5 class = "no-padding no-margin text-muted wrap"><strong><?php echo utf8_decode($post->post_title); ?></strong></h5>
-                                                    
-                                                <?php else: ?>
-                                                    <!-- <h5 class = "no-padding no-margin text-muted wrap"><a class = "btn btn-link no-padding no-margin"><strong><?php echo $post->first_name . " " . $post->last_name; ?></strong></a></h5> -->
+                                                <span>commented on <strong><?php echo $post->topic_name; ?></strong> </span>
 
-                                                <?php endif; ?>
+                                                <span class = "text-muted"> <i style = "font-size: 11px">(<?php echo date("M-d-y - H:i", strtotime($post->date_posted)); ?>)</i></span>
+                                               
+                                            </div>
+                                            <div class = "col-xs-12 user-post-content no-padding">
                                                 
-                                                <p class = "home-content-body" style = "border-right: none;"><?php echo utf8_decode($post->post_content); ?></p>
+                                                <div class = "col-xs-10 no-padding" style = "margin-top: 1vw; margin-left: 1vw;">
+                                                    <?php if (!empty($post->post_title)): ?>
+                                                        <h5 class = "no-padding no-margin text-muted wrap"><strong><?php echo utf8_decode($post->post_title); ?></strong></h5>
+                                                        
+                                                    <?php else: ?>
+                                                        <!-- <h5 class = "no-padding no-margin text-muted wrap"><a class = "btn btn-link no-padding no-margin"><strong><?php echo $post->first_name . " " . $post->last_name; ?></strong></a></h5> -->
 
-                                                <?php $attachments = $CI->attachment_model->get_post_attachments($post->post_id);?>
+                                                    <?php endif; ?>
+                                                    
+                                                    <p class = "home-content-body" style = "border-right: none;"><?php echo utf8_decode($post->post_content); ?></p>
 
-                                                <?php foreach ($attachments as $attachment):
-                                                    if ($attachment->attachment_type_id === '1'):?>
-                                                        <img src = "<?= base_url($attachment->file_url); ?>" width = "75%"  style="position:relative; width:auto; max-height: 200px; max-width: 300px;" />
+                                                    <?php $attachments = $CI->attachment_model->get_post_attachments($post->post_id);?>
+
+                                                    <?php foreach ($attachments as $attachment):
+                                                        if ($attachment->attachment_type_id === '1'):?>
+                                                            <img src = "<?= base_url($attachment->file_url); ?>" width = "75%"  style="position:relative; width:auto; max-height: 200px; max-width: 300px;" />
+                                                            
+
+                                                        <?php elseif ($attachment->attachment_type_id === '2'): ?>
+                                                            <audio src = "<?= base_url($attachment->file_url); ?>" style="width: 100%" controls></audio>
+                                                            
+
+                                                        <?php elseif ($attachment->attachment_type_id === '3'): ?>
+                                                            <video src = "<?= base_url($attachment->file_url); ?>" width = "100%" style="height: 100%; width:auto; max-height: 250px;" controls/></video>
                                                         
 
-                                                    <?php elseif ($attachment->attachment_type_id === '2'): ?>
-                                                        <audio src = "<?= base_url($attachment->file_url); ?>" style="width: 100%" controls></audio>
+                                                        <?php elseif ($attachment->attachment_type_id === '4'): ?>
+                                                            <a href = "<?= base_url($attachment->file_url); ?>" download><i class = "fa fa-file-o"></i> <i class = "text" style = "font-size: 12px;"><?= utf8_decode($attachment->caption); ?></i></a>
                                                         
-
-                                                    <?php elseif ($attachment->attachment_type_id === '3'): ?>
-                                                        <video src = "<?= base_url($attachment->file_url); ?>" width = "100%" style="height: 100%; width:auto; max-height: 250px;" controls/></video>
-                                                    
-
-                                                    <?php elseif ($attachment->attachment_type_id === '4'): ?>
-                                                        <a href = "<?= base_url($attachment->file_url); ?>" download><i class = "fa fa-file-o"></i> <i class = "text" style = "font-size: 12px;"><?= utf8_decode($attachment->caption); ?></i></a>
-                                                    
-                                                <?php endif; endforeach; ?>
+                                                    <?php endif; endforeach; ?>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                <?php 
-                                    endif; endforeach; ?>
+                                    <?php 
+                                        endif; 
+                                        endforeach; 
+                                    endif;?>
                                 </div>
                                 <?php endfor;?>
                             </div>
@@ -660,7 +676,7 @@
 </html>
 
 <?php
-    // include(APPPATH . 'views/modals/child_activity_modal_parents.php');
+    include(APPPATH . 'views/modals/child_activity_modal_parents.php');
     include(APPPATH . 'views/modals/network_view_modal.php');
     include(APPPATH . 'views/modals/logout_confirm_modal_parents.php');
 ?>
