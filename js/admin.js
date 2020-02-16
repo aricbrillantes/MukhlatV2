@@ -38,7 +38,7 @@ $(document).ready(function () {
         }
         var val = $(this).val();
         $.ajax({
-            url: window.location.origin + '/MukhlatV2/admin/view_user/' + val,
+            url: window.location.origin + '/admin/view_user/' + val,
             success: function (html) {
                 $("#record-modal").remove();
                 $("#admin-page").append(html);

@@ -80,7 +80,7 @@ $(document).ready(function () {
         });
 
         //get post preview
-        $.post(window.location.origin + "/MukhlatV2/topic/preview/" + post_id,
+        $.post(window.location.origin + "/topic/preview/" + post_id,
                 function (html) {
                     $(html).hide().prependTo("#preview-div").show("slow");
                 }
@@ -93,7 +93,7 @@ $(document).ready(function () {
         var topic_id = follow_btn.val();
         $(".follow-label").remove();
         $.ajax({
-            url: window.location.origin + "/MukhlatV2/topic/follow/" + topic_id,
+            url: window.location.origin + "/topic/follow/" + topic_id,
             type: "POST",
             success: function () {
                 if (follow_btn.hasClass("btn-primary")) {
@@ -115,14 +115,14 @@ $(document).ready(function () {
     $(".reply-btn").on("click", function () {
         var post_id = $(this).val();
         $.ajax({
-            url: window.location.origin + "/MukhlatV2/topic/load_post/reply",
+            url: window.location.origin + "/topic/load_post/reply",
             type: "POST",
             dataType: "json",
             data: {post_id: post_id},
             success: function (data) {
                 $("#reply-user").html("<strong>Reply to " + data.first_name + "</strong>");
                 $("#send-reply-user").html("<strong>Send reply to " + data.first_name + "</strong>");
-                $("#create-reply-form").attr("action", window.location.origin + "/MukhlatV2/topic/reply/" + data.post_id);
+                $("#create-reply-form").attr("action", window.location.origin + "/topic/reply/" + data.post_id);
                 $("#create-reply-modal").modal("show");
             }
         });
@@ -199,13 +199,13 @@ $(document).ready(function () {
         };
 
        $.ajax({
-            url: window.location.origin + '/MukhlatV2/topic/edit_topic/' + id,
+            url: window.location.origin + '/topic/edit_topic/' + id,
             type: 'POST',
             data: themeData,
             success: function (data) 
             {
                 // alert ();
-                window.location.href = "http://localhost/MukhlatV2/topic/view/" + id;
+                window.location.href = "/topic/view/" + id;
             }
             // data: {topic_description: desc},
             // success: function (data) {
@@ -230,7 +230,7 @@ $(document).ready(function () {
 
         if (apply_btn.hasClass("btn-primary")) {
             $.ajax({
-                url: window.location.origin + '/MukhlatV2/topic/apply',
+                url: window.location.origin + '/topic/apply',
                 success: function () {
                     apply_btn.removeClass("btn-primary");
                     apply_btn.addClass("btn-gray");
@@ -239,7 +239,7 @@ $(document).ready(function () {
             });
         } else {
             $.ajax({
-                url: window.location.origin + '/MukhlatV2/topic/apply',
+                url: window.location.origin + '/topic/apply',
                 success: function () {
                     apply_btn.removeClass("btn-danger");
                     apply_btn.removeClass("btn-gray");
@@ -269,7 +269,7 @@ $(document).ready(function () {
     $(".remove-follower-btn").on("click", function () {
         var val = $(this).val();
         $.ajax({
-            url: window.location.origin + '/MukhlatV2/topic/load_remove/' + val + "/1",
+            url: window.location.origin + '/topic/load_remove/' + val + "/1",
             success: function (html) {
                 $('#remove-member-confirm').remove();
                 $('#topic-page').append(html);
@@ -281,7 +281,7 @@ $(document).ready(function () {
     $(".remove-mod-btn").on("click", function () {
         var val = $(this).val();
         $.ajax({
-            url: window.location.origin + '/MukhlatV2/topic/load_remove/' + val + "/2",
+            url: window.location.origin + '/topic/load_remove/' + val + "/2",
             success: function (html) {
                 $('#remove-member-confirm').remove();
                 $('#topic-page').append(html);
@@ -293,7 +293,7 @@ $(document).ready(function () {
     $(".remove-creator-btn").on("click", function () {
         var val = $(this).val();
         $.ajax({
-            url: window.location.origin + '/MukhlatV2/topic/load_remove/' + val + "/3",
+            url: window.location.origin + '/topic/load_remove/' + val + "/3",
             success: function (html) {
                 $('#remove-member-confirm').remove();
                 $('#topic-page').append(html);
@@ -305,23 +305,23 @@ $(document).ready(function () {
     $(document).on('click', '#remove-follower-proceed', function () {
         var val = $('#remove-follower-proceed').val();
         $.ajax({
-            url: window.location.origin + '/MukhlatV2/topic/remove_member/' + val + "/1",
+            url: window.location.origin + '/topic/remove_member/' + val + "/1",
         });
     });
 
     $(document).on('click', '#remove-moderator-proceed', function () {
         var val = $('#remove-moderator-proceed').val();
         $.ajax({
-            url: window.location.origin + '/MukhlatV2/topic/remove_member/' + val + "/2",
+            url: window.location.origin + '/topic/remove_member/' + val + "/2",
         });
     });
 
     $(document).on('click', '#remove-creator-proceed', function () {
         var val = $('#remove-creator-proceed').val();
         $.ajax({
-            url: window.location.origin + '/MukhlatV2/topic/remove_member/' + val + "/3",
+            url: window.location.origin + '/topic/remove_member/' + val + "/3",
             success: function () {
-                window.location = window.location.origin + '/MukhlatV2/topic/';
+                window.location = window.location.origin + '/topic/';
             }
         });
     });
@@ -424,25 +424,25 @@ $(document).ready(function () {
 
     $(document).on('change', '#attach-img', function () {
         //disable attachment buttons
-        $("#image-text").html('<img src="http://localhost/MukhlatV2/icons/pic.png" style="display:block;margin: 0 auto;"> Change Pix ');
-        $("#audio-text").html('<img src="http://localhost/MukhlatV2/icons/note.png" style="display:block;margin: 0 auto;"> Sound ');
-        $("#video-text").html('<img src="http://localhost/MukhlatV2/icons/video.png" style="display:block;margin: 0 auto;"> Vid ');
+        $("#image-text").html('<img src="/icons/pic.png" style="display:block;margin: 0 auto;"> Change Pix ');
+        $("#audio-text").html('<img src="/icons/note.png" style="display:block;margin: 0 auto;"> Sound ');
+        $("#video-text").html('<img src="/icons/video.png" style="display:block;margin: 0 auto;"> Vid ');
         changeAttachment();
     });
 
     $(document).on('change', '#attach-audio', function () {
         //disable attachment buttons
-        $("#image-text").html('<img src="http://localhost/MukhlatV2/icons/pic.png" style="display:block;margin: 0 auto;"> Pix ');
-        $("#audio-text").html('<img src="http://localhost/MukhlatV2/icons/note.png" style="display:block;margin: 0 auto;">Change Sound ');
-        $("#video-text").html('<img src="http://localhost/MukhlatV2/icons/video.png" style="display:block;margin: 0 auto;"> Vid ');
+        $("#image-text").html('<img src="/icons/pic.png" style="display:block;margin: 0 auto;"> Pix ');
+        $("#audio-text").html('<img src="/icons/note.png" style="display:block;margin: 0 auto;">Change Sound ');
+        $("#video-text").html('<img src="/icons/video.png" style="display:block;margin: 0 auto;"> Vid ');
         changeAttachment();
     });
 
     $(document).on('change', '#attach-video', function () {
         //disable attachment buttons
-        $("#image-text").html('<img src="http://localhost/MukhlatV2/icons/pic.png" style="display:block;margin: 0 auto;"> Pix ');
-        $("#audio-text").html('<img src="http://localhost/MukhlatV2/icons/note.png" style="display:block;margin: 0 auto;"> Sound ');
-        $("#video-text").html('<img src="http://localhost/MukhlatV2/icons/video.png" style="display:block;margin: 0 auto;"> Change Vid ');
+        $("#image-text").html('<img src="/icons/pic.png" style="display:block;margin: 0 auto;"> Pix ');
+        $("#audio-text").html('<img src="/icons/note.png" style="display:block;margin: 0 auto;"> Sound ');
+        $("#video-text").html('<img src="/icons/video.png" style="display:block;margin: 0 auto;"> Change Vid ');
         changeAttachment();
     });
 
@@ -462,7 +462,7 @@ $(document).ready(function () {
     $('#sort-dropdown li a').click(function () {
         var sort_type = $(this).data('value');
         $.ajax({
-            url: window.location.origin + '/MukhlatV2/topic/sort',
+            url: window.location.origin + '/topic/sort',
             type: 'POST',
             data: {sort_type: sort_type, keyword: $('#search-topic-list').val()},
             success: function (html) {

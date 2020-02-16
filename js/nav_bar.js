@@ -1,26 +1,26 @@
 $(document).ready(function() {
     $.ajax({
-        url: window.location.origin + "/MukhlatV2/notifications",
+        url: window.location.origin + "/notifications",
         context: document.body
     });
 
     $.ajax({
-        url: window.location.origin + "/MukhlatV2/topic/refresh",
+        url: window.location.origin + "/topic/refresh",
         context: document.body
     });
     
     $("#nav-logo").on("mouseover", function() {
-        $(this).attr('src', window.location.origin + '/MukhlatV2/images/logo/mukhlatlogo on the sideb.png');
+        $(this).attr('src', window.location.origin + '/images/logo/mukhlatlogo on the sideb.png');
     });
 
     $("#nav-logo").on("mouseout", function() {
-        $(this).attr('src', window.location.origin + '/MukhlatV2/images/logo/mukhlatlogo on the sideb.png');
+        $(this).attr('src', window.location.origin + '/images/logo/mukhlatlogo on the sideb.png');
     });
 
     $("#notif-btn").on("click", function() {
         var notif_count = $("#notif-btn").data("value");
         $.ajax({
-            url: window.location.origin + "/MukhlatV2/notifications/read",
+            url: window.location.origin + "/notifications/read",
             success: function() {
                 $("#notif-badge").remove();
                 var new_notif_count = $("#notif-label").html() - notif_count;
@@ -37,14 +37,14 @@ $(document).ready(function() {
         var inv_btn = $(this);
         var id = inv_btn.val();
         $.ajax({
-            url: window.location.origin + "/MukhlatV2/invite/accept/invite/" + id,
+            url: window.location.origin + "/invite/accept/invite/" + id,
             success: function(data) {
                 //return data of user and topic
                 var add_span = "<div class = 'invite-action text-success col-xs-12' style = 'padding: 15px; font-size: 12px;'>" +
                         "<i class = 'fa fa-check'></i> You have accepted the invite of " +
-                        "<a class = 'btn btn-link btn-xs no-padding no-margin' style = 'padding-bottom: 3px;' href = '" + window.location.origin + "/MukhlatV2/user/profile/" + data.user_id + "'>"
+                        "<a class = 'btn btn-link btn-xs no-padding no-margin' style = 'padding-bottom: 3px;' href = '" + window.location.origin + "/user/profile/" + data.user_id + "'>"
                         + "<strong>" + data.first_name + " " + data.last_name + "</strong></a>. " +
-                        "Check out <a class = 'btn btn-link btn-xs no-padding no-margin' style = 'padding-bottom: 3px;' href = '" + window.location.origin + "/MukhlatV2/topic/view/" + data.topic_id + "'>"
+                        "Check out <a class = 'btn btn-link btn-xs no-padding no-margin' style = 'padding-bottom: 3px;' href = '" + window.location.origin + "/topic/view/" + data.topic_id + "'>"
                         + "<strong>" + data.topic_name + "</strong></a>!</div>";
                 var list_item = inv_btn.closest('.notif-item');
                 list_item.html(add_span);
@@ -57,13 +57,13 @@ $(document).ready(function() {
         var inv_btn = $(this);
         var id = inv_btn.val();
         $.ajax({
-            url: window.location.origin + "/MukhlatV2/invite/decline/invite/" + id,
+            url: window.location.origin + "/invite/decline/invite/" + id,
             success: function(data) {
                 var add_span = "<div class = 'invite-action text-danger col-xs-12' style = 'padding: 15px; font-size: 12px;'>" +
                         "<i class = 'fa fa-close'></i> You have declined the invite of " +
-                        "<a class = 'btn btn-link btn-xs no-padding no-margin' style = 'padding-bottom: 3px;' href = '" + window.location.origin + "/MukhlatV2/user/profile/" + data.user_id + "'>"
+                        "<a class = 'btn btn-link btn-xs no-padding no-margin' style = 'padding-bottom: 3px;' href = '" + window.location.origin + "/user/profile/" + data.user_id + "'>"
                         + "<strong>" + data.first_name + " " + data.last_name + "</strong></a> to moderate" +
-                        " <a class = 'btn btn-link btn-xs no-padding no-margin' style = 'padding-bottom: 3px;' href = '" + window.location.origin + "/MukhlatV2/topic/view/" + data.topic_id + "'>"
+                        " <a class = 'btn btn-link btn-xs no-padding no-margin' style = 'padding-bottom: 3px;' href = '" + window.location.origin + "/topic/view/" + data.topic_id + "'>"
                         + "<strong>" + data.topic_name + "</strong></a>!</div>";
                 var list_item = inv_btn.closest('.notif-item');
                 list_item.html(add_span);
@@ -77,13 +77,13 @@ $(document).ready(function() {
         var id = inv_btn.val();
 
         $.ajax({
-            url: window.location.origin + "/MukhlatV2/invite/accept/request/" + id,
+            url: window.location.origin + "/invite/accept/request/" + id,
             success: function(data) {
                 var add_span = "<div class = 'invite-action text-success col-xs-12' style = 'padding: 15px; font-size: 12px;'>" +
                         "<i class = 'fa fa-check'></i> You have accepted the request of " +
-                        "<a class = 'btn btn-link btn-xs no-padding no-margin' style = 'padding-bottom: 3px;' href = '" + window.location.origin + "/MukhlatV2/user/profile/" + data.user_id + "'>"
+                        "<a class = 'btn btn-link btn-xs no-padding no-margin' style = 'padding-bottom: 3px;' href = '" + window.location.origin + "/user/profile/" + data.user_id + "'>"
                         + "<strong>" + data.first_name + " " + data.last_name + "</strong></a> in " +
-                        " <a class = 'btn btn-link btn-xs no-padding no-margin' style = 'padding-bottom: 3px;' href = '" + window.location.origin + "/MukhlatV2/topic/view/" + data.topic_id + "'>"
+                        " <a class = 'btn btn-link btn-xs no-padding no-margin' style = 'padding-bottom: 3px;' href = '" + window.location.origin + "/topic/view/" + data.topic_id + "'>"
                         + "<strong>" + data.topic_name + "</strong></a>!</div>";
                 var list_item = inv_btn.closest('.notif-item');
                 list_item.html(add_span);
@@ -97,13 +97,13 @@ $(document).ready(function() {
         var id = inv_btn.val();
         
         $.ajax({
-            url: window.location.origin + "/MukhlatV2/invite/decline/request/" + id,
+            url: window.location.origin + "/invite/decline/request/" + id,
             success: function(data) {
                 var add_span = "<div class = 'invite-action text-danger col-xs-12' style = 'padding: 15px; font-size: 12px;'>" +
                         "<i class = 'fa fa-close'></i> You have declined the request of " +
-                        "<a class = 'btn btn-link btn-xs no-padding no-margin' style = 'padding-bottom: 3px;' href = '" + window.location.origin + "/MukhlatV2/user/profile/" + data.user_id + "'>"
+                        "<a class = 'btn btn-link btn-xs no-padding no-margin' style = 'padding-bottom: 3px;' href = '" + window.location.origin + "/user/profile/" + data.user_id + "'>"
                         + "<strong>" + data.first_name + " " + data.last_name + "</strong></a> in" +
-                        " <a class = 'btn btn-link btn-xs no-padding no-margin' style = 'padding-bottom: 3px;' href = '" + window.location.origin + "/MukhlatV2/topic/view/" + data.topic_id + "'>"
+                        " <a class = 'btn btn-link btn-xs no-padding no-margin' style = 'padding-bottom: 3px;' href = '" + window.location.origin + "/topic/view/" + data.topic_id + "'>"
                         + "<strong>" + data.topic_name + "</strong></a>!</div>";
                 var list_item = inv_btn.closest('.notif-item');
                 list_item.html(add_span);
@@ -125,29 +125,29 @@ if(document.getElementById("chalkb") && document.getElementById("Mposts") && doc
 if(oneonly===0){oneonly=1;
 //alert(oneonly);
 var list = new Array();
-list[0] = ";love 2;^<img  width='30%' src='" + "/MukhlatV2/images/stickers/love 2.png'>";
-list[1] = ";laughing crying;^<img  width='30%' src='" + "/MukhlatV2/images/stickers/laughing crying.png'>";
-list[2] = ";love;^<img  width='30%' src='" + "/MukhlatV2/images/stickers/love.png'>";
-list[3] = ";sad;^<img  width='30%' src='" + "/MukhlatV2/images/stickers/sad.png'>";
-list[4] = ";angry;^<img  width='30%' src='" + "/MukhlatV2/images/stickers/angry.png'>";
-list[5] = ";yuck;^<img  width='30%' src='" + "/MukhlatV2/images/stickers/yuck.png'>";
-list[6] = ";happy;^<img  width='30%' src='" + "/MukhlatV2/images/stickers/happy.png'>";
-list[7] = ";what;^<img  width='30%' src='" + "/MukhlatV2/images/stickers/what.png'>";
-list[8] = ";haha;^<img  width='30%' src='" + "/MukhlatV2/images/stickers/haha.png'>";
-list[9] = ";amazing;^<img  width='30%' src='" + "/MukhlatV2/images/stickers/amazing.png'>";
-list[10] = ";joke;^<img  width='30%' src='" + "/MukhlatV2/images/stickers/joke.png'>";
-list[11] = ";zzz;^<img  width='30%' src='" + "/MukhlatV2/images/stickers/zzz.png'>";
-list[12] = ";eww;^<img  width='30%' src='" + "/MukhlatV2/images/stickers/eww.png'>";
-list[13] = ";cool;^<img  width='30%' src='" + "/MukhlatV2/images/stickers/cool.png'>";
-list[14] = ";woohoo;^<img  width='30%' src='" + "/MukhlatV2/images/stickers/woohoo.png'>";
-list[15] = ";pretty;^<img  width='30%' src='" + "/MukhlatV2/images/stickers/pretty.gif'>";
-list[16] = ";yum;^<img  width='30%' src='" + "/MukhlatV2/images/stickers/yum.png'>";
-list[17] = ";wenk hi;^<img  width='30%' src='" + "/MukhlatV2/images/stickers/wenk hi.png'>";
-list[18] = ";wenk facepalm;^<img  width='30%' src='" + "/MukhlatV2/images/stickers/wenk facepalm.png'>";
-list[19] = ";wenk haha;^<img  width='30%' src='" + "/MukhlatV2/images/stickers/wenk haha.png'>";
-list[20] = ";spidab;^<img  width='30%' src='" + "/MukhlatV2/images/stickers/spidab.png'>";
-list[21] = ";busy;^<img  width='30%' src='" + "/MukhlatV2/images/stickers/busy.png'>";
-list[2] = ";sweet;^<img  width='30%' src='" + "/MukhlatV2/images/stickers/sweet.png'>";
+list[0] = ";love 2;^<img  width='30%' src='" + "/images/stickers/love 2.png'>";
+list[1] = ";laughing crying;^<img  width='30%' src='" + "/images/stickers/laughing crying.png'>";
+list[2] = ";love;^<img  width='30%' src='" + "/images/stickers/love.png'>";
+list[3] = ";sad;^<img  width='30%' src='" + "/images/stickers/sad.png'>";
+list[4] = ";angry;^<img  width='30%' src='" + "/images/stickers/angry.png'>";
+list[5] = ";yuck;^<img  width='30%' src='" + "/images/stickers/yuck.png'>";
+list[6] = ";happy;^<img  width='30%' src='" + "/images/stickers/happy.png'>";
+list[7] = ";what;^<img  width='30%' src='" + "/images/stickers/what.png'>";
+list[8] = ";haha;^<img  width='30%' src='" + "/images/stickers/haha.png'>";
+list[9] = ";amazing;^<img  width='30%' src='" + "/images/stickers/amazing.png'>";
+list[10] = ";joke;^<img  width='30%' src='" + "/images/stickers/joke.png'>";
+list[11] = ";zzz;^<img  width='30%' src='" + "/images/stickers/zzz.png'>";
+list[12] = ";eww;^<img  width='30%' src='" + "/images/stickers/eww.png'>";
+list[13] = ";cool;^<img  width='30%' src='" + "/images/stickers/cool.png'>";
+list[14] = ";woohoo;^<img  width='30%' src='" + "/images/stickers/woohoo.png'>";
+list[15] = ";pretty;^<img  width='30%' src='" + "/images/stickers/pretty.gif'>";
+list[16] = ";yum;^<img  width='30%' src='" + "/images/stickers/yum.png'>";
+list[17] = ";wenk hi;^<img  width='30%' src='" + "/images/stickers/wenk hi.png'>";
+list[18] = ";wenk facepalm;^<img  width='30%' src='" + "/images/stickers/wenk facepalm.png'>";
+list[19] = ";wenk haha;^<img  width='30%' src='" + "/images/stickers/wenk haha.png'>";
+list[20] = ";spidab;^<img  width='30%' src='" + "/images/stickers/spidab.png'>";
+list[21] = ";busy;^<img  width='30%' src='" + "/images/stickers/busy.png'>";
+list[2] = ";sweet;^<img  width='30%' src='" + "/images/stickers/sweet.png'>";
 var j, k, find, item, repl;
 if(document.getElementById("chalkb") && document.getElementById("Mposts") && document.getElementById("messageb")){
     page = document.getElementById("chalkb").innerHTML;
@@ -312,5 +312,6 @@ else if(w>=768 && w<1200){
 $('#navtoggler').on('click', function() {
 		$('body').toggleClass('open-nav');
 	});
-
+        
+        
 });

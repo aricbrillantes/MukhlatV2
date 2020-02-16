@@ -36,6 +36,7 @@
                      </div>-->
 <strong style="font-size: 24px;">Choose what you like.
 You can change it later.</strong>
+<strong style="font-size: 24px;background-color: white !important;border: 4px solid black;border-radius: 15px;padding-left: 5px">Choose a wallpaper:</strong><br>
 <div class="themesmodal">
     <table>
         <tr>
@@ -66,28 +67,29 @@ You can change it later.</strong>
             <td><div  class="editroomthemes roomtheme-honeycomb blocks2" style="" onclick="roomtheme(17)"></div></td>
             <td><div  class="editroomthemes roomtheme-chocolateweave blocks2" style="" onclick="roomtheme(18)"></div></td>
             <td><div  class="editroomthemes roomtheme-crosseddot blocks2" style="" onclick="roomtheme(19)"></div></td>
+            <td><strong style="position: absolute;top:1080px;left:82%;transform: scale(2);z-index: 10000;text-shadow:-1px -1px 0 #FFF,1px -1px 0 #FFF,-1px 1px 0 #FFF,1px 1px 0 #FFF;color: black">More...</strong><input type="text" style="width:110px; height:110px;font-size: 0px !important;position: absolute;top:1177px;left:82%;transform: scale(2);"  class="form-control jscolor editroomthemes" name="topic_theme" id="topic-theme" onclick="" value="1" readonly/></td>
         </tr>
     </table>
-</div><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-                    
-                <input type="text" style="width:110px; height:40px;"  class="form-control jscolor" name="topic_theme" id="topic-theme" onclick="" value="1"/>
-
-                <input type="text" style="height: 50px;" required class="form-control jscolor" name = "topic_nameframe" maxlength="35" id = "topic-nameframe" value="EEEEEE"/>
-
-                <input type="text" style="height: 50px;" required class="form-control jscolor" name = "topic_board" maxlength="35" id = "topic-board" value="B78240"/>
-
-                <input type="text" style="height: 50px;" required class="form-control jscolor" name = "topic_bulletin" maxlength="35" id = "topic-bulletin" value="ADB2BD"/>
-
-                <input type="text" style="height: 50px;" required class="form-control jscolor" name = "topic_shoutout" maxlength="35" id = "topic-shoutout" value="FFFFCC"/>
+</div><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
                 
-                <input type="text" style="height: 50px;" required class="form-control jscolor" name = "topic_media" maxlength="35" id = "topic-media" value="33CC54"/>
-
-                <input type="text" style="height: 50px;" required class="form-control jscolor" name = "topic_chatbox" maxlength="35" id = "topic-chatbox"  value="ECEFF1"/>
+                <strong id="nameframeinput" class="nameframe" style="font-size: 24px;">Choose a color you like.</strong>
+                <input type="text" style="height: 50px;font-size: 0px !important;" required class="form-control jscolor" name = "topic_nameframe" maxlength="35" id = "topic-nameframe" value="EEEEEE" readonly/> <div class="clicker" style="pointer-events:none;margin-top: -40px;margin-left: 10px;font-weight: bold;text-shadow:-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000;color: white;">Click here</div>
+                <strong id="chboardinput" class="chalkboard cursornone" style="font-size: 24px;">Choose a color for your chalkboard.</strong>
+                <input type="text" style="height: 50px;font-size: 0px !important;" required class="form-control jscolor" name = "topic_board" maxlength="35" id = "topic-board" value="B78240" readonly/><div class="clicker" style="pointer-events:none;margin-top: -40px;margin-left: 10px;font-weight: bold;text-shadow:-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000;color: white;">Click here</div>
+                <strong id="bulboardinput" class="whiteboard2 cursornone" style="font-size: 24px;">Choose a color for your bulletin board.</strong>
+                <input type="text" style="height: 50px;font-size: 0px !important;" required class="form-control jscolor" name = "topic_bulletin" maxlength="35" id = "topic-bulletin" value="ADB2BD" readonly/><div class="clicker" style="pointer-events:none;margin-top: -40px;margin-left: 10px;font-weight: bold;text-shadow:-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000;color: white;">Click here</div>
+                <center><strong id="stickyinput" class="stickynote stickytext stickyact cursornone" style="font-size: 24px;">Choose a color for your memo.</strong></center>
+                <input type="text" style="height: 50px;font-size: 0px !important;" required class="form-control jscolor" name = "topic_shoutout" maxlength="35" id = "topic-shoutout" value="FFFFCC" readonly/><div class="clicker" style="pointer-events:none;margin-top: -40px;margin-left: 10px;font-weight: bold;text-shadow:-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000;color: white;">Click here</div>
+                <center><strong id="mediainput" class="mediabox cursornone" style="font-size: 24px;">Choose a color for your album.</strong></center>
+                <input type="text" style="height: 50px;font-size: 0px !important;" required class="form-control jscolor" name = "topic_media" maxlength="35" id = "topic-media" value="33CC54" readonly/><div class="clicker" style="pointer-events:none;margin-top: -40px;margin-left: 10px;font-weight: bold;text-shadow:-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000;color: white;">Click here</div>
+                <br>
+                <div id="chatinput" class="commentsectionbg"><br><div class="messagereceiver cursornone" style="font-size: 24px;">Choose another color you like.</div></div>
+                <input type="text" style="height: 50px;font-size: 0px !important;" required class="form-control jscolor" name = "topic_chatbox" maxlength="35" id = "topic-chatbox"  value="ECEFF1" readonly/><div class="clicker" style="pointer-events:none;margin-top: -40px;margin-left: 10px;font-weight: bold;text-shadow:-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000;color: white;">Click here</div>
                 <br>
                 
                 <div class = "" style = "padding: 5px; border-top: none; padding-bottom: 10px; padding-right: 10px;text-align: center;transform: scale(2);">
                     <a id = "create-topic-btn" class ="btn btn-primary buttonsbgcolor" data-toggle = "modal">Make your room</a>
-                    <a class = "btn btn-primary btn-sm buttonsbgcolor" onclick="defaultcolor()">Default</a>
+                    <!--<a class = "btn btn-primary btn-sm buttonsbgcolor" onclick="defaultcolor()">Default</a>-->
                 </div>
                 </div>
             </form>
@@ -201,6 +203,25 @@ You can change it later.</strong>
             $('[id$=topic-shoutout]').val("FFFFCC");
             $('[id$=topic-chatbox]').val("ECEFF1");
         }
+        $('[id$=topic-nameframe]').change(function(){
+            document.getElementById("nameframeinput").style.borderColor = "#"+document.getElementById("topic-nameframe").value;
+        });
+        $('[id$=topic-board]').change(function(){
+            document.getElementById("chboardinput").style.borderColor = "#"+document.getElementById("topic-board").value;
+        });
+        $('[id$=topic-bulletin]').change(function(){
+            document.getElementById("bulboardinput").style.borderColor = "#"+document.getElementById("topic-bulletin").value;
+        });
+        $('[id$=topic-shoutout]').change(function(){
+            document.getElementById("stickyinput").style.backgroundColor = "#"+document.getElementById("topic-shoutout").value;
+        });
+        $('[id$=topic-media]').change(function(){
+            document.getElementById("mediainput").style.backgroundColor = "#"+document.getElementById("topic-media").value;
+        });
+        $('[id$=topic-chatbox]').change(function(){
+            document.getElementById("chatinput").style.backgroundColor = "#"+document.getElementById("topic-chatbox").value;
+        });
+        
     </script>
     
 <!-- END SCRIPTS -->

@@ -20,7 +20,7 @@ jobs:
           echo "Changing directory to /var/www/MukhlatV2"
           cd /var/www/MukhlatV2
           pwd 
-          echo "Fetch changes from origin..."
+          echo "Fetching changes from origin..."
           git fetch origin
           echo "Pulling changes from origin..."
           git pull origin staging
