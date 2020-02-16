@@ -84,25 +84,25 @@
                             ?>
                                     <!--<div class=" " style="position: relative;  height: auto;  min-height: 100% !important;">-->
                                      <?php $wallpaper="";
-                                        if($post->theme==1): $theme="roomtheme-arrow";
-                                        elseif($post->theme==2): $theme="roomtheme-zigzag";
-                                        elseif($post->theme==3): $theme="roomtheme-scales";
-                                        elseif($post->theme==4): $theme="roomtheme-halfrhombe";
-                                        elseif($post->theme==5): $theme="roomtheme-marrakesh";
-                                        elseif($post->theme==6): $theme="roomtheme-hearts";
-                                        elseif($post->theme==7): $theme="roomtheme-stars";
-                                        elseif($post->theme==8): $theme="roomtheme-seigaiha";
-                                        elseif($post->theme==9): $theme="roomtheme-bricks";
-                                        elseif($post->theme==10): $theme="roomtheme-diacheckerboard";
-                                        elseif($post->theme==11): $theme="roomtheme-tablecloth";
-                                        elseif($post->theme==12): $theme="roomtheme-brady";
-                                        elseif($post->theme==13): $theme="roomtheme-argyle";
-                                        elseif($post->theme==14): $theme="roomtheme-shippo";
-                                        elseif($post->theme==15): $theme="roomtheme-waves";
-                                        elseif($post->theme==16): $theme="roomtheme-polkadot";
-                                        elseif($post->theme==17): $theme="roomtheme-honeycomb";
-                                        elseif($post->theme==18): $theme="roomtheme-chocolateweave";
-                                        elseif($post->theme==19): $theme="roomtheme-crosseddot";
+                                        if($post->theme=="1"): $theme="roomtheme-arrow";
+                                        elseif($post->theme=="2"): $theme="roomtheme-zigzag";
+                                        elseif($post->theme=="3"): $theme="roomtheme-scales";
+                                        elseif($post->theme=="4"): $theme="roomtheme-halfrhombe";
+                                        elseif($post->theme=="5"): $theme="roomtheme-marrakesh";
+                                        elseif($post->theme=="6"): $theme="roomtheme-hearts";
+                                        elseif($post->theme=="7"): $theme="roomtheme-stars";
+                                        elseif($post->theme=="8"): $theme="roomtheme-seigaiha";
+                                        elseif($post->theme=="9"): $theme="roomtheme-bricks";
+                                        elseif($post->theme=="10"): $theme="roomtheme-diacheckerboard";
+                                        elseif($post->theme=="11"): $theme="roomtheme-tablecloth";
+                                        elseif($post->theme=="12"): $theme="roomtheme-brady";
+                                        elseif($post->theme=="13"): $theme="roomtheme-argyle";
+                                        elseif($post->theme=="14"): $theme="roomtheme-shippo";
+                                        elseif($post->theme=="15"): $theme="roomtheme-waves";
+                                        elseif($post->theme=="16"): $theme="roomtheme-polkadot";
+                                        elseif($post->theme=="17"): $theme="roomtheme-honeycomb";
+                                        elseif($post->theme=="18"): $theme="roomtheme-chocolateweave";
+                                        elseif($post->theme=="19"): $theme="roomtheme-crosseddot";
                                         else: $theme="";$wallpaper="background-color: #".$post->theme;
                                         endif;?>
 

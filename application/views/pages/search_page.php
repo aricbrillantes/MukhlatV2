@@ -32,25 +32,25 @@
                             if (!empty($topics)):
                                 foreach ($topics as $topic):
                                     ?><?php $wallpaper="";
-                        if($topic->theme==1): $theme="roomthemes roomtheme-arrow";
-                        elseif($topic->theme==2): $theme="roomthemes roomtheme-zigzag";
-                        elseif($topic->theme==3): $theme="roomthemes roomtheme-scales";
-                        elseif($topic->theme==4): $theme="roomthemes roomtheme-halfrhombe";
-                        elseif($topic->theme==5): $theme="roomthemes roomtheme-marrakesh";
-                        elseif($topic->theme==6): $theme="roomthemes roomtheme-hearts";
-                        elseif($topic->theme==7): $theme="roomthemes roomtheme-stars";
-                        elseif($topic->theme==8): $theme="roomthemes roomtheme-seigaiha";
-                        elseif($topic->theme==9): $theme="roomthemes roomtheme-bricks";
-                        elseif($topic->theme==10): $theme="roomthemes roomtheme-diacheckerboard";
-                        elseif($topic->theme==11): $theme="roomthemes roomtheme-tablecloth";
-                        elseif($topic->theme==12): $theme="roomthemes roomtheme-brady";
-                        elseif($topic->theme==13): $theme="roomthemes roomtheme-argyle";
-                        elseif($topic->theme==14): $theme="roomthemes roomtheme-shippo";
-                        elseif($topic->theme==15): $theme="roomthemes roomtheme-waves";
-                        elseif($topic->theme==16): $theme="roomthemes roomtheme-polkadot";
-                        elseif($topic->theme==17): $theme="roomthemes roomtheme-honeycomb";
-                        elseif($topic->theme==18): $theme="roomthemes roomtheme-chocolateweave";
-                        elseif($topic->theme==19): $theme="roomthemes roomtheme-crosseddot";
+                        if($topic->theme=="1"): $theme="roomthemes roomtheme-arrow";
+                        elseif($topic->theme=="2"): $theme="roomthemes roomtheme-zigzag";
+                        elseif($topic->theme=="3"): $theme="roomthemes roomtheme-scales";
+                        elseif($topic->theme=="4"): $theme="roomthemes roomtheme-halfrhombe";
+                        elseif($topic->theme=="5"): $theme="roomthemes roomtheme-marrakesh";
+                        elseif($topic->theme=="6"): $theme="roomthemes roomtheme-hearts";
+                        elseif($topic->theme=="7"): $theme="roomthemes roomtheme-stars";
+                        elseif($topic->theme=="8"): $theme="roomthemes roomtheme-seigaiha";
+                        elseif($topic->theme=="9"): $theme="roomthemes roomtheme-bricks";
+                        elseif($topic->theme=="10"): $theme="roomthemes roomtheme-diacheckerboard";
+                        elseif($topic->theme=="11"): $theme="roomthemes roomtheme-tablecloth";
+                        elseif($topic->theme=="12"): $theme="roomthemes roomtheme-brady";
+                        elseif($topic->theme=="13"): $theme="roomthemes roomtheme-argyle";
+                        elseif($topic->theme=="14"): $theme="roomthemes roomtheme-shippo";
+                        elseif($topic->theme=="15"): $theme="roomthemes roomtheme-waves";
+                        elseif($topic->theme=="16"): $theme="roomthemes roomtheme-polkadot";
+                        elseif($topic->theme=="17"): $theme="roomthemes roomtheme-honeycomb";
+                        elseif($topic->theme=="18"): $theme="roomthemes roomtheme-chocolateweave";
+                        elseif($topic->theme=="19"): $theme="roomthemes roomtheme-crosseddot";
                         else: $theme="topic-grid1 col-md-3";$wallpaper="background-color: #".$topic->theme;
                         endif;?> 
                             <a class = "roomthemes elements-resizer <?php echo $theme?>" href = "topic/view/<?php echo $topic->topic_id; ?>" style="<?php echo $wallpaper?>">

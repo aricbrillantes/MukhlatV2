@@ -52,25 +52,25 @@
         $media3 = $media;
         endif;
         $wallpaper="";
-        if($c_topic->theme==1): $theme="roomtheme-arrow";
-        elseif($c_topic->theme==2): $theme="roomtheme-zigzag";
-        elseif($c_topic->theme==3): $theme="roomtheme-scales";
-        elseif($c_topic->theme==4): $theme="roomtheme-halfrhombe";
-        elseif($c_topic->theme==5): $theme="roomtheme-marrakesh";
-        elseif($c_topic->theme==6): $theme="roomtheme-hearts";
-        elseif($c_topic->theme==7): $theme="roomtheme-stars";
-        elseif($c_topic->theme==8): $theme="roomtheme-seigaiha";
-        elseif($c_topic->theme==9): $theme="roomtheme-bricks";
-        elseif($c_topic->theme==10): $theme="roomtheme-diacheckerboard";
-        elseif($c_topic->theme==11): $theme="roomtheme-tablecloth";
-        elseif($c_topic->theme==12): $theme="roomtheme-brady";
-        elseif($c_topic->theme==13): $theme="roomtheme-argyle";
-        elseif($c_topic->theme==14): $theme="roomtheme-shippo";
-        elseif($c_topic->theme==15): $theme="roomtheme-waves";
-        elseif($c_topic->theme==16): $theme="roomtheme-polkadot";
-        elseif($c_topic->theme==17): $theme="roomtheme-honeycomb";
-        elseif($c_topic->theme==18): $theme="roomtheme-chocolateweave";
-        elseif($c_topic->theme==19): $theme="roomtheme-crosseddot";
+        if($c_topic->theme=="1"): $theme="roomtheme-arrow";
+        elseif($c_topic->theme=="2"): $theme="roomtheme-zigzag";
+        elseif($c_topic->theme=="3"): $theme="roomtheme-scales";
+        elseif($c_topic->theme=="4"): $theme="roomtheme-halfrhombe";
+        elseif($c_topic->theme=="5"): $theme="roomtheme-marrakesh";
+        elseif($c_topic->theme=="6"): $theme="roomtheme-hearts";
+        elseif($c_topic->theme=="7"): $theme="roomtheme-stars";
+        elseif($c_topic->theme=="8"): $theme="roomtheme-seigaiha";
+        elseif($c_topic->theme=="9"): $theme="roomtheme-bricks";
+        elseif($c_topic->theme=="10"): $theme="roomtheme-diacheckerboard";
+        elseif($c_topic->theme=="11"): $theme="roomtheme-tablecloth";
+        elseif($c_topic->theme=="12"): $theme="roomtheme-brady";
+        elseif($c_topic->theme=="13"): $theme="roomtheme-argyle";
+        elseif($c_topic->theme=="14"): $theme="roomtheme-shippo";
+        elseif($c_topic->theme=="15"): $theme="roomtheme-waves";
+        elseif($c_topic->theme=="16"): $theme="roomtheme-polkadot";
+        elseif($c_topic->theme=="17"): $theme="roomtheme-honeycomb";
+        elseif($c_topic->theme=="18"): $theme="roomtheme-chocolateweave";
+        elseif($c_topic->theme=="19"): $theme="roomtheme-crosseddot";
         else: $theme="dooroom"; $wallpaper="background-color: #".$c_topic->theme;
         endif;?>
     <div class = "<?php echo $theme?> col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12" style="margin-top:20px;<?php echo $wallpaper?>"> 
@@ -88,7 +88,7 @@
                     <br>
 <!--<strong>Theme: <?php echo utf8_decode($c_topic->theme); ?></strong>-->
             <?php if ($c_topic->creator_id === $logged_user->user_id): ?>
-                <a onmouseenter="playclip()" id="crettop" class ="btn btn-primary buttonsbgcolor textoutliner" href="#edit-topic-modal" data-toggle = "modal" style="min-width:20%"><img  src = "<?php echo base_url('icons/pencil.png'); ?>" style="width:10%;height:auto;cursor: pointer"/> Change Wallpaper</a>
+                <a onmouseenter="playclip()" id="crettop" class ="btn btn-primary buttonsbgcolor textoutliner" href="#edit-topic-modal" data-toggle = "modal" style="min-width:20%"><img  src = "<?php echo base_url('icons/pencil.png'); ?>" style="width:10%;height:auto;cursor: pointer"/> Redecorate room</a>
             <?php endif;?>
                 </div>
             <div id="chalkb" class="col-xs-12 col-sm-12 col-md-9 col-lg-9 col-xl-9 chalkboard" style="min-height:250px; max-height:250px;margin-top: 60px;border-color: <?php echo $board?>">
