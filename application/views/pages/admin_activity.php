@@ -280,7 +280,7 @@
                         </div>
 
                         <div class="col-md-4 col-sm-4 col-xs-4" style="border-right: 1px solid #dedede"> 
-                            <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Media uploaded </h4></strong><br> <h3 class = "" style = "display: inline-block;"><?php echo $selfPosts; ?></h3>
+                            <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Files uploaded </h4></strong><br> <h3 class = "" style = "display: inline-block;"><?php echo $selfPosts; ?></h3>
                         </div>
 
                         <div class="col-md-5 col-sm-5 col-xs-4">
@@ -304,7 +304,7 @@
                         </div>
 
                         <div class=" col-md-4 col-sm-4 col-xs-4">
-                            <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Bad words<br>Total) </h4></strong><br> <h3 class = "" style = "display: inline-block;"><?php echo $child->overall_total; ?></h3>
+                            <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Bad words<br>(total) </h4></strong><br> <h3 class = "" style = "display: inline-block;"><?php echo $child->overall_total; ?></h3>
                         </div>
                     
                 </div>
@@ -320,7 +320,7 @@
                         <li class="active"><a data-toggle="pill" href="#all-posts">All</a></li>
                         <li class=""><a data-toggle="pill" href="#room-posts">In Room</a></li>
                         <li class=""><a data-toggle="pill" href="#other-posts">In Other Rooms</a></li>
-                        <li class=""><a data-toggle="modal" href="#child-activity-modal-parents">Media</a></li>
+                        <li class=""><a data-toggle="modal" href="#child-activity-modal-parents">Files</a></li>
                     </ul><br>
 
                     <div id="UHposts" class="tab-content" style="max-height:500px;">
