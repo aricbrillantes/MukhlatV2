@@ -21,7 +21,7 @@ class Home extends CI_Controller
                 $data['posts'] = $this->posts->get_home_posts($logged_user->user_id);
 
                 $this->load->model('user_model', 'user');
-                $this->users->get_usertimes($logged_user->user_id);
+                // $this->users->get_usertimes($logged_user->user_id);
 
                 $this->load->view('pages/home_page', $data);
 
