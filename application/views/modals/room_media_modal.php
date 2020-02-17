@@ -155,7 +155,8 @@
                       for (i = 0; i < dots.length; i++) {
                           dots[i].className = dots[i].className.replace(" selected3", "");
                       }
-                      slides[slideIndex-1].style.display = "block";  
+                      if(slides[slideIndex-1] !== null)
+                        slides[slideIndex-1].style.display = "block";  
                       dots[slideIndex-1].className += " selected3";  
                     //  slideIndex++;
                     //  if (slideIndex > slides.length) {slideIndex = 1};
