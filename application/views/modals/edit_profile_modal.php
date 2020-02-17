@@ -59,10 +59,10 @@
                                 <input required type = "email" name = "edit_email" maxlength = "45" class = "form-control" placeholder = "Email Address" value = "<?php echo $logged_user->email; ?>">
                             </div> -->
 
-                            <div class = "col-xs-12 col-sm-6 col-md-6 no-padding">   
+                           <!--  <div class = "col-xs-12 col-sm-6 col-md-6 no-padding">   
                                 <span class = "text-muted"><strong>Parent/Guardian's Email: </strong></span> 
                                 <input required type = "email" name = "edit_parent_email" maxlength = "45" class = "form-control" placeholder = "Parent's Email" value = "<?php echo $logged_user->parent; ?>">
-                            </div>
+                            </div> -->
                             
                         </div>
 

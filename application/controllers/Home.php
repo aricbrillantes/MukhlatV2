@@ -19,9 +19,13 @@ class Home extends CI_Controller
             {
                 $this->load->model('post_model', 'posts');
                 $data['posts'] = $this->posts->get_home_posts($logged_user->user_id);
-                $this->load->view('pages/home_page', $data);
 
                 $this->load->model('user_model', 'user');
+                $this->users->get_usertimes($logged_user->user_id);
+
+                $this->load->view('pages/home_page', $data);
+
+                // $this->load->model('user_model', 'user');
 
                 // $usertimes = $this->user->get_usertimes($logged_user->user_id);
                 // echo print_r($usertimes->result());
