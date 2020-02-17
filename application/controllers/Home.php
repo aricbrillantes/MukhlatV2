@@ -22,7 +22,7 @@ class Home extends CI_Controller
 
                 $this->db->select('*');
                 $this->db->from('tbl_usertimes');
-                $this->db->where(array('tbl_usertimes.user_id' => $user_id));
+                $this->db->where(array('tbl_usertimes.user_id' => $logged_user->user_id));
                 
                 $query = $this->db->get();
                 
@@ -43,7 +43,7 @@ class Home extends CI_Controller
 
                     $data = array
                     (
-                        'user_id' => $user_id,
+                        'user_id' => $logged_user->user_id,
                         'time_setting'=> $settings,
                         // 'warning' => $warning,
                         // 'keep' => $keep,
