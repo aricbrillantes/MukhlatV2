@@ -93,7 +93,7 @@ class User extends CI_Controller {
        
         if($user->role_id=='2')
         {
-            $parent = utf8_encode(htmlspecialchars($input->post('edit_parent_email')));
+            // $parent = utf8_encode(htmlspecialchars($input->post('edit_parent_email')));
             $description = utf8_encode(htmlspecialchars($input->post('edit_description')));
 
             $data = array
@@ -103,7 +103,7 @@ class User extends CI_Controller {
                 'password' => $edit_pass,
                 'description' => $description,
                 // 'email' => $email,
-                'parent' => $parent,
+                // 'parent' => $parent,
                 'profile_url' => $path
             );
         }
