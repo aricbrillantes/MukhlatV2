@@ -26,7 +26,7 @@
     
 ?>
 
-<body class="row">
+<body class="row" style=";overflow-x: hidden">
 
     <?php
         include(APPPATH . 'views/navigation_bar.php'); ?>
