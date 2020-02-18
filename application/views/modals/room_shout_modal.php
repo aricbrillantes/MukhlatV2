@@ -10,7 +10,7 @@
         <div class="modal-content">
             <div class="modal-header modal-heading modalbg">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title text-center textoutliner"><strong>Shout outs</strong></h4>
+                <h4 class="modal-title text-center textoutliner"><strong>My Memos</strong></h4>
             </div>
             
             <div class="modal-body content-container container-fluid">

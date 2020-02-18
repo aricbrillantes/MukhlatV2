@@ -108,6 +108,12 @@
             $('[id$=change-topic-media]').val("33CC54");
             $('[id$=change-topic-shoutout]').val("FFFFCC");
             $('[id$=change-topic-chatbox]').val("ECEFF1");
+            document.getElementById("nameframeinput").style.borderColor = "#EEEEEE";
+            document.getElementById("chboardinput").style.borderColor = "#B78240";
+            document.getElementById("bulboardinput").style.borderColor = "#ADB2BD";
+            document.getElementById("stickyinput").style.backgroundColor = "#FFFFCC";
+            document.getElementById("mediainput").style.backgroundColor = "#33CC54";
+            document.getElementById("chatinput").style.backgroundColor = "#ECEFF1";
         }
         $('[id$=change-topic-nameframe]').change(function(){
             document.getElementById("nameframeinput").style.borderColor = "#"+document.getElementById("change-topic-nameframe").value;
