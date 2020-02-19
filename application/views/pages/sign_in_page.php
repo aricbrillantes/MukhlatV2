@@ -424,7 +424,7 @@
             document.getElementById("sign-up").style.display = "none";
             document.getElementById("change-sign-in-2").style.display = "none";
             document.getElementById("change-sign-in-1").style.display = "block";
-            document.getElementById("login").innerHTML = "Hello! Welcome to Mukhlat!";
+            // document.getElementById("login").innerHTML = "Hello! Welcome to Mukhlat!";
             toggle=0;
         }
 
@@ -434,7 +434,7 @@
             document.getElementById("sign-up").style.display = "block";
             document.getElementById("change-sign-in-1").style.display = "none";
             document.getElementById("change-sign-in-2").style.display = "block";
-            document.getElementById("login").innerHTML = "Log In";
+            // document.getElementById("login").innerHTML = "Log In";
             toggle=1;
         }
 

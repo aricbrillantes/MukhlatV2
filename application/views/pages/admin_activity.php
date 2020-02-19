@@ -388,7 +388,7 @@
                                                     <?php endif; ?>
 
                                                 <?php else: ?>
-                                                    <span>commented on <strong><?php echo $post->topic_name; ?></strong> </span> 
+                                                    <span>commented on <strong><?php echo $post->topic_name; ?>'s Room</strong> </span> 
 
                                                 <?php endif; ?>
                                                 
@@ -610,7 +610,7 @@
                                         <div id="" class = "col-xs-12 no-padding post-container " style = "margin-top: 10px;">
                                             <div class = "user-post-heading no-margin">
                                             
-                                                <span>commented on <strong><?php echo $post->topic_name; ?></strong> </span>
+                                                <span>commented on <strong><?php echo $post->topic_name; ?>'s Room</strong> </span>
 
                                                 <span class = "text-muted"> <i style = "font-size: 11px">(<?php echo date("M-d-y - H:i", strtotime($post->date_posted)); ?>)</i></span>
                                                
