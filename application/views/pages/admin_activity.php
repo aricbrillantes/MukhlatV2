@@ -276,7 +276,7 @@
                         </div>
 
                         <div class=" col-md-3 col-sm-3 col-xs-3" style="border-right: 1px solid #dedede">
-                            <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Shout-outs </h4></strong><br> <h3 class = "" style = "display: inline-block;"><?php echo $shoutOuts; ?></h3>
+                            <strong class = "" style = "display: inline-block; margin-right: 20px"><h4>Memos </h4></strong><br> <h3 class = "" style = "display: inline-block;"><?php echo $shoutOuts; ?></h3>
                         </div>
 
                         <div class="col-md-4 col-sm-4 col-xs-4" style="border-right: 1px solid #dedede"> 

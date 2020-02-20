@@ -276,30 +276,33 @@ class Topic extends CI_Controller {
 
         //update swear infractions in database
         $swears = 
-        substr_count($input->post('post_content'), 'wtf') +
-        substr_count($input->post('post_content'), 'stfu') +
-        substr_count($input->post('post_content'), 'gtfo') +
-        substr_count($input->post('post_content'), 'lmfao') +
-        substr_count($input->post('post_content'), 'lmao') +
-        substr_count($input->post('post_content'), 'fuck') +
-        substr_count($input->post('post_content'), 'shit') +
-        substr_count($input->post('post_content'), 'damn') +
-        substr_count($input->post('post_content'), 'faggot') +
-        substr_count($input->post('post_content'), 'queer') +
-        substr_count($input->post('post_content'), 'twat') +
-        substr_count($input->post('post_content'), 'tits') +
-        substr_count($input->post('post_content'), 'cunt') +
-        substr_count($input->post('post_content'), 'asshole') +
-        substr_count($input->post('post_content'), 'nigger') +
-        substr_count($input->post('post_content'), 'nigga') +
-        substr_count($input->post('post_content'), 'retard') +
-        substr_count($input->post('post_content'), 'bobo') +
-        substr_count($input->post('post_content'), 'tanga') +
-        substr_count($input->post('post_content'), 'gago') +
-        substr_count($input->post('post_content'), 'tangina') +
-        substr_count($input->post('post_content'), 'puta') +
-        substr_count($input->post('post_content'), 'putcha') +
-        substr_count($input->post('post_content'), 'inamo');
+        substr_count(strtolower($input->post('post_content')), 'wtf') +
+        substr_count(strtolower($input->post('post_content')), 'stfu') +
+        substr_count(strtolower($input->post('post_content')), 'gtfo') +
+        substr_count(strtolower($input->post('post_content')), 'lmfao') +
+        substr_count(strtolower($input->post('post_content')), 'lmao') +
+        substr_count(strtolower($input->post('post_content')), 'fuck') +
+        substr_count(strtolower($input->post('post_content')), 'shit') +
+        substr_count(strtolower($input->post('post_content')), 'damn') +
+        substr_count(strtolower($input->post('post_content')), 'vagina') +
+        substr_count(strtolower($input->post('post_content')), 'penis') +
+        substr_count(strtolower($input->post('post_content')), 'fag') +
+        substr_count(strtolower($input->post('post_content')), 'faggot') +
+        substr_count(strtolower($input->post('post_content')), 'queer') +
+        substr_count(strtolower($input->post('post_content')), 'twat') +
+        substr_count(strtolower($input->post('post_content')), 'tits') +
+        substr_count(strtolower($input->post('post_content')), 'cunt') +
+        substr_count(strtolower($input->post('post_content')), 'asshole') +
+        substr_count(strtolower($input->post('post_content')), 'nigger') +
+        substr_count(strtolower($input->post('post_content')), 'nigga') +
+        substr_count(strtolower($input->post('post_content')), 'retard') +
+        substr_count(strtolower($input->post('post_content')), 'bobo') +
+        substr_count(strtolower($input->post('post_content')), 'tanga') +
+        substr_count(strtolower($input->post('post_content')), 'gago') +
+        substr_count(strtolower($input->post('post_content')), 'tangina') +
+        substr_count(strtolower($input->post('post_content')), 'puta') +
+        substr_count(strtolower($input->post('post_content')), 'putcha') +
+        substr_count(strtolower($input->post('post_content')), 'inamo');
 
         $this->db->select('*');
         $this->db->from('tbl_infractions');

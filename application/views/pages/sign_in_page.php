@@ -74,7 +74,7 @@
                                     <div class = "col-xs-12 col-sm-3 col-md-3 form-group register-field content-container container-fluid" >
                                         <select class = "form-control" name = "sign_up_role" id = "sign_up_role" style="font-size: 13px">
                                             <option value="2">Child</option>
-                                            <option value="1">Administrator</option>
+                                            <option value="1">Teacher</option>
                                             <option value="3">Parent</option>
                                         </select>
                                     </div>
