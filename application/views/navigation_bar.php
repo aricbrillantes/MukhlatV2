@@ -77,8 +77,8 @@
         else
         {
             // print("you cant use xd ");
-            // $restrict = base_url('restrict');
-            // header("Location: $restrict");
+            $restrict = base_url('restrict');
+            header("Location: $restrict");
         }            
     }
 
