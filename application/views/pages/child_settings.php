@@ -345,10 +345,10 @@
 
                     <div class = "content-container container-fluid col-md-10 col-md-offset-1 col-sm-offset-1 col-sm-10 col-xs-offset-1 col-xs-10">
                         <ul class="nav nav-pills nav-justified" style="">
-                            <li class="" style="background-color: #f0f0f0"><a style="" data-toggle="pill" href="#timetable-1">12:00 AM to 06:00 AM</a></li>
-                            <li class="active" style="background-color: #f0f0f0"><a style="" data-toggle="pill" href="#timetable-2">06:00 AM to 12:00 PM</a></li>
-                            <li class="" style="background-color: #f0f0f0"><a style="" data-toggle="pill" href="#timetable-3">12:00 PM to 06:00 PM</a></li>
-                            <li class="" style="background-color: #f0f0f0"><a style="" data-toggle="pill" href="#timetable-4">06:00 PM to 12:00 AM</a></li>
+                            <li class="" style="background-color: #f0f0f0"><a style="" data-toggle="pill" href="#timetable-1">12:00 Midnight to 06:00 AM</a></li>
+                            <li class="active" style="background-color: #f0f0f0"><a style="" data-toggle="pill" href="#timetable-2">06:00 AM to 12:00 Noon</a></li>
+                            <li class="" style="background-color: #f0f0f0"><a style="" data-toggle="pill" href="#timetable-3">12:00 Noon to 06:00 PM</a></li>
+                            <li class="" style="background-color: #f0f0f0"><a style="" data-toggle="pill" href="#timetable-4">06:00 PM to 12:00 Midnight</a></li>
                             <!-- <li class="" style="background-color: #f0f0f0"><a style="padding: 10px;" data-toggle="pill" href="#timetable-5">Night</a></li>
                             <li class="" style="background-color: #f0f0f0"><a style="padding: 10px;" data-toggle="pill" href="#timetable-6">Late Night</a></li> -->
                             
