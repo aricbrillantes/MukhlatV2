@@ -373,7 +373,7 @@
                                 <?php 
 
                                     $activities_chunks = array_chunk($activities, 40);
-                                    if($roomArray_chunks):
+                                    if($activities_chunks):
                                         foreach ($activities_chunks[$index] as $n=>$post): $i++;?> 
                                         <div id="" class = "col-xs-12 no-padding post-container " style = "margin-top: 10px;">
                                             <div class = "user-post-heading no-margin">
