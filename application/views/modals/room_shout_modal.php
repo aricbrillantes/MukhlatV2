@@ -10,7 +10,7 @@
         <div class="modal-content">
             <div class="modal-header modal-heading modalbg">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title text-center textoutliner"><strong>Shout outs</strong></h4>
+                <h4 class="modal-title text-center textoutliner"><strong>Sticky notes</strong></h4>
             </div>
             
             <div class="modal-body content-container container-fluid">
@@ -56,7 +56,7 @@
                         </div>
                         <?php endif; endforeach; 
                         if($shoutoutcount==0):?>
-                        <h2>There's no shout outs yet.</h2>
+                        <h2>There are no sticky notes yet.</h2>
                         <?php endif;?>
                         
                     
