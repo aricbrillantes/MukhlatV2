@@ -731,7 +731,7 @@
             document.write('<style type="text/css">.trail{display:block;}<\/style>');
         
     if(getCookie("bubblesbg1")==='block')
-        document.write('<style type="text/css"> #logom .bubbletooltip{visibility:visible;}<\/style>');
+        document.write('<style type="text/css"> #logom .bubbletooltip{display:block;}<\/style>');
         
    else
         document.write('<style type="text/css"> #logom .bubbletooltip{visibility:hidden;}<\/style>');
