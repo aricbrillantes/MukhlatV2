@@ -26,7 +26,7 @@
     
 ?>
 
-<body class="row">
+
 
     <?php
         include(APPPATH . 'views/navigation_bar.php'); ?>
@@ -73,7 +73,8 @@
         elseif($c_topic->theme=="19"): $theme="roomtheme-crosseddot";
         else: $theme="dooroom"; $wallpaper="background-color: #".$c_topic->theme;
         endif;?>
-    <div class = "<?php echo $theme?> col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12" style="margin-top:20px;<?php echo $wallpaper?>"> 
+<body class="row <?php echo $theme?> " style=";overflow-x: hidden;<?php echo $wallpaper?>;">
+    <div class = "col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12" style="margin-top:20px;"> 
         <!--<div id = "topic-page" class = "container page" style = "min-height: 100%; height: 100%;">test</div>-->
         
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-9 col-xl-9">

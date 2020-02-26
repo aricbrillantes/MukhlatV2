@@ -11,9 +11,9 @@
             <div class="modal-header modal-heading modalbg">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                 <?php if ($c_topic->creator_id === $logged_user->user_id): ?>
-                <h4 class="modal-title text-center textoutliner"><strong>My Stuff</strong></h4>
+                <h4 class="modal-title text-center textoutliner"><strong>My Album</strong></h4>
                 <?php else: ?>
-                <h4 class="modal-title text-center textoutliner"><strong><?php echo utf8_decode($c_topic->user->first_name); ?>'s Stuff</strong></h4>
+                <h4 class="modal-title text-center textoutliner"><strong><?php echo utf8_decode($c_topic->user->first_name); ?>'s Album</strong></h4>
                 <?php endif; ?>
             </div>
             
@@ -156,7 +156,7 @@
                           dots[i].className = dots[i].className.replace(" selected3", "");
                       }
                       if(slides[slideIndex-1] !== null)
-                        slides[slideIndex-1].style.display = "block";   
+                        slides[slideIndex-1].style.display = "block";  
                       dots[slideIndex-1].className += " selected3";  
                     //  slideIndex++;
                     //  if (slideIndex > slides.length) {slideIndex = 1};

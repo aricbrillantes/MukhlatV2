@@ -115,7 +115,7 @@ include(APPPATH . 'views/header.php');
                                         elseif($topic->theme=="17"): $theme="roomthemes roomtheme-honeycomb";
                                         elseif($topic->theme=="18"): $theme="roomthemes roomtheme-chocolateweave";
                                         elseif($topic->theme=="19"): $theme="roomthemes roomtheme-crosseddot";
-                                        else: $theme="topic-grid1 col-md-3";$wallpaper="background-color: #".$topic->theme;
+                                        else: $theme="roomthemes";$wallpaper="background-color: #".$topic->theme;
                                         endif;
                                     ?>  
                         

@@ -51,7 +51,7 @@
                         elseif($topic->theme=="17"): $theme="roomthemes roomtheme-honeycomb";
                         elseif($topic->theme=="18"): $theme="roomthemes roomtheme-chocolateweave";
                         elseif($topic->theme=="19"): $theme="roomthemes roomtheme-crosseddot";
-                        else: $theme="topic-grid1 col-md-3";$wallpaper="background-color: #".$topic->theme;
+                        else: $theme="roomthemes";$wallpaper="background-color: #".$topic->theme;
                         endif;?> 
                             <a class = "roomthemes elements-resizer <?php echo $theme?>" href = "topic/view/<?php echo $topic->topic_id; ?>" style="<?php echo $wallpaper?>">
                                         <!--<img class = "img-circle" style = "margin: 10px 0px;" width = "40px" height = "40px" src = "<?php echo $topic->user->profile_url ? base_url($topic->user->profile_url) : base_url('images/default.jpg'); ?>"/>--> 
