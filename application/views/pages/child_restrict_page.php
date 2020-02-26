@@ -33,16 +33,17 @@
 
         $currentTimeSlot; $nextTimeSlot;
 
-        if( (int)date("i")>=00 && (int)date("i")<=30)
-        {
+        if( (int)date("G")<10 && (int)date("i")>=00 && (int)date("i")<=30)
+            $currentTimeSlot = "0".date("G")."00"." ".date("l");
+
+        else if( (int)date("G")>=10 && (int)date("i")>=00 && (int)date("i")<=30)
             $currentTimeSlot = date("G")."00"." ".date("l");
 
-        }    
+        else if( (int)date("G")<10 && (int)date("i")>=30)
+            $currentTimeSlot = "0".date("G")."30"." ".date("l");
 
-        else if( (int)date("i")>=30)
-        {
+        else if( (int)date("G")>=10 && (int)date("i")>=30)
             $currentTimeSlot = date("G")."30"." ".date("l");
-        }    
 
         // print($restrictions2[array_search($currentTimeSlot, $restrictions2)+1]);
 
@@ -50,7 +51,7 @@
         {
             //comment out this line for testing
             $home = base_url('home');
-            // header("Location: $home");
+            header("Location: $home");
         }    
 
         else if(!in_array($currentTimeSlot,$restrictions2))

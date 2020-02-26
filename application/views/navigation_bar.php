@@ -63,10 +63,16 @@
 
         $currentTimeSlot;
 
-        if( (int)date("i")>=00 && (int)date("i")<=30)
+        if( (int)date("G")<10 && (int)date("i")>=00 && (int)date("i")<=30)
+            $currentTimeSlot = "0".date("G")."00"." ".date("l");
+
+        else if( (int)date("G")>=10 && (int)date("i")>=00 && (int)date("i")<=30)
             $currentTimeSlot = date("G")."00"." ".date("l");
 
-        else if( (int)date("i")>=30)
+        else if( (int)date("G")<10 && (int)date("i")>=30)
+            $currentTimeSlot = "0".date("G")."30"." ".date("l");
+
+        else if( (int)date("G")>=10 && (int)date("i")>=30)
             $currentTimeSlot = date("G")."30"." ".date("l");
 
         if(in_array($currentTimeSlot,$restrictions2))
