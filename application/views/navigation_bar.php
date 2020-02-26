@@ -1026,7 +1026,7 @@
                     <img style="cursor: pointer" id = "nav-logo" src = "<?php echo base_url('images/logo/mukhlatlogo on the sideb.png'); ?>"/>
                     <img style="cursor: pointer" id = "nav-logo2" src = "<?php echo base_url('images/logo/bed mukhlat.png'); ?>"/>
                     <img style="cursor: pointer" id = "nav-logo3" class="hideme" src = "<?php echo base_url('images/logo/mukhlatlogo_basic.png'); ?>"/>
-                    <span class="bubbletooltip" id="bubblegame"style="">Score: </span>
+                    <span class="bubbletooltip" id="bubblegame" style="">Score: </span>
                 </a>
 <!--            <button type="button" class="btn btn-demo" data-toggle="modal" data-target="#myModal2">
 			Right Sidebar Modal
