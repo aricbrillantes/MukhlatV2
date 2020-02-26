@@ -63,7 +63,7 @@
 
         $currentTimeSlot;
 
-         if( (int)date("G")<10 && (int)date("i")>=00 && (int)date("i")<=30)
+        if( (int)date("G")<10 && (int)date("i")>=00 && (int)date("i")<=30)
             $currentTimeSlot = "0".date("G")."00"." ".date("l");
 
         else if( (int)date("G")>=10 && (int)date("i")>=00 && (int)date("i")<=30)
