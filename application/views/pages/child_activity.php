@@ -451,7 +451,7 @@
                                                         <span>commented on <strong>their room</strong> </span>
                                                     
                                                     <?php else: ?>
-                                                        <span>posted to <strong>their room</strong> </span>
+                                                        <span>posted in <strong>their room</strong> </span>
 
                                                     <?php endif; ?>
 
@@ -566,7 +566,7 @@
                                                     <span>commented on <strong>their room</strong> </span>
                                                 
                                                 <?php else: ?>
-                                                    <span>posted to <strong>their room</strong> </span>
+                                                    <span>posted in <strong>their room</strong> </span>
 
                                                 <?php endif; ?>
 
