@@ -1024,7 +1024,7 @@
                 
                 <a onmouseenter="playclip()" id ="logom" class = "draggable navbar-brand" href = "<?php echo base_url('home') ?>">
                     <img style="cursor: pointer" id = "nav-logo" src = "<?php echo base_url('images/logo/mukhlatlogo on the sideb.png'); ?>"/>
-                    <img style="cursor: pointer" id = "nav-logo2" src = "<?php echo base_url('images/logo/bed mukhlat.png'); ?>"/>
+                    <img style="cursor: pointer" id = "nav-logo2" class="hideme" src = "<?php echo base_url('images/logo/bed mukhlat.png'); ?>"/>
                     <img style="cursor: pointer" id = "nav-logo3" class="hideme" src = "<?php echo base_url('images/logo/mukhlatlogo_basic.png'); ?>"/>
                     <span class="bubbletooltip" id="bubblegame" style="display:none">Score: </span>
                 </a>
