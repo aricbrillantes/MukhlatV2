@@ -731,7 +731,7 @@
             document.write('<style type="text/css">.trail{display:block;}<\/style>');
         
     if(getCookie("bubblesbg1")==='block')
-        document.write('<style type="text/css"> #logom .bubbletooltip{visibility:visible;}<\/style>');
+        document.write('<style type="text/css"> #logom .bubbletooltip{display:block !important;}<\/style>');
         
    else
         document.write('<style type="text/css"> #logom .bubbletooltip{visibility:hidden;}<\/style>');
@@ -1026,7 +1026,7 @@
                     <img style="cursor: pointer" id = "nav-logo" src = "<?php echo base_url('images/logo/mukhlatlogo on the sideb.png'); ?>"/>
                     <img style="cursor: pointer" id = "nav-logo2" src = "<?php echo base_url('images/logo/bed mukhlat.png'); ?>"/>
                     <img style="cursor: pointer" id = "nav-logo3" class="hideme" src = "<?php echo base_url('images/logo/mukhlatlogo_basic.png'); ?>"/>
-                    <span class="bubbletooltip" id="bubblegame" style="">Score: </span>
+                    <span class="bubbletooltip" id="bubblegame" style="display:none">Score: </span>
                 </a>
 <!--            <button type="button" class="btn btn-demo" data-toggle="modal" data-target="#myModal2">
 			Right Sidebar Modal
