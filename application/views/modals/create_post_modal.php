@@ -201,7 +201,7 @@ $topic = $_SESSION['current_topic'];
                         <!--<label for = "title">Make a title for your post:</label>-->
                         <!--<p class="lead emoji-picker-container">-->
                         <h3 id="titlewarning" style="display: none;color:red;"><i class="arrow down"></i> Add a title here! <i class="arrow down"></i></h3>
-                        <p class="emoji-picker-container"><input class="title-text" type="text" style="height: 50px;background:transparent;outline:none;border:none;" maxlength = "100"  required class="form-control" name = "post_title" id = "post-title"  placeholder = "My title"  data-emojiable="true" value="" required /></p>
+                        <p class="emoji-picker-container"><input class="title-text" type="text" style="height: 50px;background:transparent;outline:none;border:none;" maxlength = "10"  required class="form-control" name = "post_title" id = "post-title"  placeholder = "My title"  data-emojiable="true" value="" required /></p>
                         <!--<p id="charsRemaining3">Characters Left: 100</p>-->
                         <div class="charLimitMessage" id="charLimitMessage3"><center>Oops! You've used up all the letters and numbers for your title!</center></div>
                         <!--<span id="start_button" onclick="startDictation2(event)" style="display: inline-block;"><img border="0" alt="Start" id="start_img" src="https://www.google.com/intl/en/chrome/assets/common/images/content/mic.gif"></span>-->
@@ -224,7 +224,7 @@ $topic = $_SESSION['current_topic'];
                         <!--<label for = "content">Make the content of your post:</label>-->
                         <!--<p class="lead emoji-picker-container">-->
                         <h3 id="contentwarning" style="display: none;color:red;"><i class="arrow down"></i> Write your thoughts here! <i class="arrow down"></i></h3>
-                        <p id="dobback" class="emoji-picker-container"><textarea class = "form-control" style="height: 100px;background:transparent;outline:none;border:none;" maxlength = "16000" required name = "post_content" id = "post-content" placeholder = "My thoughts" data-emojiable="true" required></textarea></p>
+                        <p id="dobback" class="emoji-picker-container"><textarea class = "form-control" style="height: 100px;background:transparent;outline:none;border:none;" maxlength = "500" required name = "post_content" id = "post-content" placeholder = "My thoughts" data-emojiable="true" required></textarea></p>
                         <textarea id="postester" style="display: none"></textarea>
                         <!--<p id="charsRemaining4">Characters Left: 16000</p>-->
                         <div class="charLimitMessage" id="charLimitMessage4"><center>Oops! You've used up all the letters and numbers for your message!</center></div>
@@ -565,7 +565,7 @@ function readURL(input) {
   if (input.files && input.files[0]) {
     
     
-    if(input.files[0] && input.files[0].size < 2000000) { 
+    if(input.files[0] && input.files[0].size < 256000000) { 
         //Submit form   
         $('[id$=pic_h]').hide();    
         if (input.files && input.files[0]) {
@@ -600,7 +600,7 @@ function readVid(input){
   document.getElementById("img-label").className = "drawnbutton dotted thin";
   document.getElementById("audio-label").className = "drawnbutton dotted thin";
   document.getElementById("video-label").className = "drawnbutton dotted thick";
-  if(input.files[0] && input.files[0].size < 2000000) { 
+  if(input.files[0] && input.files[0].size < 256000000) { 
         //Submit form
         $('[id$=vid_h]').hide();  
         var $source = $('#video_here');
@@ -628,7 +628,7 @@ function readAud(input){
   document.getElementById("video-label").className = "drawnbutton dotted thin";
   document.getElementById("img-label").className = "drawnbutton dotted thin";
   document.getElementById("audio-label").className = "drawnbutton dotted thick";
-  if(input.files[0] && input.files[0].size < 2000000) { 
+  if(input.files[0] && input.files[0].size < 256000000) { 
         //Submit form    
         $('[id$=snd_h]').hide();   
         var $source = $('#audio_here');
@@ -813,6 +813,7 @@ let constraintObj2 = {
         
         if(p==="reply")
         {
+          $('[id$=uploadmedia]').show();
           $('[id$=addwarning]').hide();
           // $('[id$=btnStart]').show();
           // $('[id$=btnStart2]').show();
