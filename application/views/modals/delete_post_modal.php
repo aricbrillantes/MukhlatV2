@@ -6,6 +6,11 @@
                 <h4 id = "post-confirm-topic" class="modal-title"><strong>Delete post?</strong></h4>
             </div>
             <div class="modal-body">
+                <div id="save-settings" class = "col-md-12 col-xs-12 text-center" style="font-size:22px; margin-top: 10px; margin-bottom: 10px;">
+                    This action cannot be undone.<br>
+                    Are you sure?<br><br>
+                </div>
+
                 <form id = "delete-post-form" method = "POST">
                     <button id = "delete-post-proceed" type = "submit" class = "btn btn-danger">Proceed</button>
                     <button class = "btn" data-dismiss="modal">Cancel</button>

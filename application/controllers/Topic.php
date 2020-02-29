@@ -757,6 +757,7 @@ class Topic extends CI_Controller {
 
     public function delete_post() {
         $post_id = $this->uri->segment(3);
+        $user_id = $this->uri->segment(4);
 
         $this->load->model("post_model", "posts");
 
@@ -766,7 +767,8 @@ class Topic extends CI_Controller {
 
         $this->posts->update_post($post_id, $data);
         $post = $this->posts->get_post(false, false, false, $post_id);
-        redirect(base_url('topic/thread/' . $post->root_id));
+        // redirect(base_url('topic/thread/' . $post->root_id));
+        redirect(base_url('admin/activity/' . $user_id));
     }
 
     public function edit_topic() 

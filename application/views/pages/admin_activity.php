@@ -377,7 +377,15 @@
                                     foreach ($activities_chunks[$index] as $n=>$post): $i++;?> 
                                     <div id="" class = "col-xs-12 no-padding post-container " style = "margin-top: 10px;">
                                         <div class = "user-post-heading no-margin">
+                                            <?php if ($post->is_deleted): ?>
+                                            <span class = "pull-right" style="color:#ce0000"><b>POST DELETED</b></span>
                                             
+                                            <?php else: ?>
+                                            <button style="height:20px" name="<?php echo $post->user_id ?>" value = "<?php echo $post->post_id ?>" class = "delete-btn pull-right btn btn-sm btn-danger no-padding"> <i class = "fa fa-trash"></i> Delete </button>
+                                            
+                                            <?php endif; ?>
+
+
                                             <?php if ($topic->topic_id == $post->topic_id): ?>
                                                 <?php if ($post->reply == 1): ?>
                                                     <span>commented on <strong>their room</strong> </span>
@@ -674,8 +682,9 @@
 
 </body>
 </html>
-
+<script type="text/javascript" src="<?php echo base_url("/js/post.js"); ?>"></script>
 <?php
+    include(APPPATH . 'views/modals/delete_post_modal.php');
     include(APPPATH . 'views/modals/child_activity_modal_parents.php');
     include(APPPATH . 'views/modals/network_view_modal.php');
     include(APPPATH . 'views/modals/logout_confirm_modal_parents.php');
