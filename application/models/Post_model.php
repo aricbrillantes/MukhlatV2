@@ -58,7 +58,7 @@ class Post_model extends CI_Model {
     }
 
     public function get_user_activities($user_id, $logged_user_id) {
-        $this->db->select('p.post_id, p.post_title, p.post_content, p.date_posted, p.root_id, p.parent_id, t.topic_id, t.topic_name, t.theme, u1.user_id, p.reply, p.shout, u1.first_name, u1.last_name, u1.profile_url');
+        $this->db->select('p.post_id, p.post_title, p.post_content, p.date_posted, p.root_id, p.parent_id, p.is_deleted, t.topic_id, t.topic_name, t.theme, u1.user_id, p.reply, p.shout, u1.first_name, u1.last_name, u1.profile_url');
         $this->db->from('tbl_posts as p');
         $this->db->join('tbl_users as u1', 'p.user_id = u1.user_id');
         $this->db->join('tbl_topics as t', 'p.topic_id = t.topic_id');
@@ -84,7 +84,7 @@ class Post_model extends CI_Model {
     }
 
     public function get_home_posts($user_id) {
-        $this->db->select('p.post_id, p.post_title, p.post_content, p.date_posted, t.topic_id, t.creator_id, t.topic_name, t.topic_description, t.theme, t.date_created, u1.user_id, u1.first_name, u1.last_name, u1.profile_url, u1.is_enabled');
+        $this->db->select('p.post_id, p.post_title, p.post_content, p.date_posted, p.is_deleted, t.topic_id, t.creator_id, t.topic_name, t.topic_description, t.theme, t.date_created, u1.user_id, u1.first_name, u1.last_name, u1.profile_url, u1.is_enabled');
         $this->db->from('tbl_posts as p');
         $this->db->join('tbl_users as u1', 'p.user_id = u1.user_id');
         $this->db->join('tbl_topics as t', 'p.topic_id = t.topic_id');

@@ -108,9 +108,12 @@ $(document).ready(function () {
 
     $(".delete-btn").on("click", function () {
         var val = $(this).val();
-        $("#delete-post-form").attr("action", window.location.origin + "/topic/delete_post/" + val);
+        var user = $(this).attr('name');
+        $("#delete-post-form").attr("action", window.location.origin + "/topic/delete_post/" + val + "/" + user);
 
         $("#post-delete-confirm").modal("show");
+
+        // $("#delete-post-form").attr("action", window.location.origin + "/admin/activity/" + user);
     });
 
     $(".attachment-btn").on("click", function () {

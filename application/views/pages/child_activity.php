@@ -445,6 +445,12 @@
                                         foreach ($activities_chunks[$index] as $n=>$post): $i++;?> 
                                         <div id="" class = "col-xs-12 no-padding post-container " style = "margin-top: 10px;">
                                             <div class = "user-post-heading no-margin">
+
+                                                <?php if ($post->is_deleted): ?>
+                                                <span class = "pull-right" style="color:#ce0000"><b>POST DELETED</b></span>
+                                                
+                                                <?php endif; ?>
+
                                                 
                                                 <?php if ($topic->topic_id == $post->topic_id): ?>
                                                     <?php if ($post->reply == 1): ?>
@@ -561,6 +567,11 @@
 
                                         <div id="" class = "col-xs-12 no-padding post-container " style = "margin-top: 10px;">
                                             <div class = "user-post-heading no-margin">
+
+                                                <?php if ($post->is_deleted): ?>
+                                                <span class = "pull-right" style="color:#ce0000"><b>POST DELETED</b></span>
+                                                
+                                                <?php endif; ?>
                                                 
                                                 <?php if ($post->reply == 1): ?>
                                                     <span>commented on <strong>their room</strong> </span>
@@ -678,6 +689,11 @@
 
                                         <div id="" class = "col-xs-12 no-padding post-container " style = "margin-top: 10px;">
                                             <div class = "user-post-heading no-margin">
+
+                                                <?php if ($post->is_deleted): ?>
+                                                <span class = "pull-right" style="color:#ce0000"><b>POST DELETED</b></span>
+                                                
+                                                <?php endif; ?>
                                             
                                                 <span>commented on <strong><?php echo $post->topic_name; ?>'s Room</strong> </span>
 
