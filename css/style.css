@@ -2802,7 +2802,6 @@ border: 2px outset  #000;
 .chalkboard {
   font-size: 40px;
   color: #E8E8E8;
-  font-family: KGChasingPavements !important;
   display: block;
   min-width: 40%;
   height: 40%;
@@ -2827,7 +2826,9 @@ border: 2px outset  #000;
   border-radius: 10px;
   border: #B78240 solid 10px;
   }
-  
+  .chalkboard p{
+      font-family: KGChasingPavements;
+  }
   .whiteboard2 {
   font-size: 40px;
   color: black;
