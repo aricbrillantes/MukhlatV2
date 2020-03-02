@@ -132,10 +132,10 @@
                 
             </div>
             <div class="col-sm-12 col-md-12 col-xs-12 col-lg-12 col-xl-12"> 
-            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 white-board hider" style="min-height:200px; max-height:200px;border-color: <?php echo $bulletin?>">
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3  hider" >
             
                 
-                    <div>
+                <div class="white-board" style="min-height:200px; max-height:200px;border-color: <?php echo $bulletin?>">
                         <?php 
                     //load models
                     $CI =&get_instance();
@@ -159,7 +159,24 @@
                         <h5 class = "no-padding admin-list-name">"<?php echo utf8_decode($announcement->announcement) ?>"</h5>
                     </li>
                     <?php  endforeach; endforeach; ?>
-                    </div>               
+                    </div>
+                
+                <div class="white-board" style="min-height:200px; max-height:200px;border-color: <?php echo $bulletin?>">
+                        
+                    <?php 
+                    $CI =&get_instance();
+                    $CI->load->model('user_model'); //load models
+                    $notes = $CI->user_model->get_notes($logged_user->user_id); //get notes
+
+                    foreach (array_reverse($notes) as $note): ?>
+
+                    <div class = "">
+                        <!--<h4 class = "no-padding admin-list-name"><?php echo $teacher->first_name?> says: </h4>--> 
+                        <h4 class = " admin-list-name"><?php echo utf8_decode($note->note) ?></h4>
+                    </div>
+                                                       
+                    <?php endforeach; ?>
+                    </div>
             </div>
             
                 <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3 col-xl-3" style="transform: scale(0.75)"> <div class="hider"><br><br></div>
@@ -203,26 +220,7 @@
                 <?php endif;?>
             </ul>
                 
-            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 white-board hider pull-right" style="min-height:200px; max-height:200px;border-color: <?php echo $bulletin?>">
             
-                
-            <div>
-                        
-                    <?php 
-                    $CI =&get_instance();
-                    $CI->load->model('user_model'); //load models
-                    $notes = $CI->user_model->get_notes($logged_user->user_id); //get notes
-
-                    foreach (array_reverse($notes) as $note): ?>
-
-                    <div class = "">
-                        <!--<h4 class = "no-padding admin-list-name"><?php echo $teacher->first_name?> says: </h4>--> 
-                        <h4 class = " admin-list-name"><?php echo utf8_decode($note->note) ?></h4>
-                    </div>
-                                                       
-                    <?php endforeach; ?>
-                    </div>         
-            </div>
             
         </div>
             
