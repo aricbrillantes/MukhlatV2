@@ -135,7 +135,7 @@
             <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3  hider" style="min-width: 450px !important;">
             
                 
-                <div class="white-board" style="min-height:50%;height:100%; max-height:295px;border-color: <?php echo $bulletin?>">
+                <div class="white-board" style="min-height:50%; max-height:195px;border-color: <?php echo $bulletin?>">
                         <?php 
                     //load models
                     $CI =&get_instance();
@@ -377,7 +377,7 @@
             </div>
         <div>
             
-                <button onmouseenter="playclip()" onclick="toggleButton('reply')" id="crettop" class = "btn btn-primary buttonsbgcolor textoutliner" href="#create-post-modal" data-toggle = "modal" style="font-size:22px">Say something</button>
+                <button onmouseenter="playclip()" onclick="toggleButton('reply')" id="crettop" class = "btn btn-primary buttonsbgcolor textoutliner pull-right" href="#create-post-modal" data-toggle = "modal" style="font-size:22px">Say something</button>
            
         </div>
            
