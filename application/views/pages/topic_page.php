@@ -74,7 +74,7 @@
         else: $theme="dooroom"; $wallpaper="background-color: #".$c_topic->theme;
         endif;?>
 <body class="row <?php echo $theme?> " style=";overflow-x: hidden;<?php echo $wallpaper?>;">
-    <div class = "col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12" style="margin-top:20px;"> 
+    <div class = "col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 <?php echo $theme?>" style="margin-top:20px;"> 
         <!--<div id = "topic-page" class = "container page" style = "min-height: 100%; height: 100%;">test</div>-->
         
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-9 col-xl-9">
