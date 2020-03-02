@@ -92,7 +92,7 @@
                 <a onmouseenter="playclip()" id="crettop" class ="btn btn-primary buttonsbgcolor textoutliner" href="#edit-topic-modal" data-toggle = "modal" style="min-width:20%"><img  src = "<?php echo base_url('icons/pencil.png'); ?>" style="width:10%;height:auto;cursor: pointer"/> Redecorate room</a>
             <?php endif;?>
                 </div>
-            <div id="chalkb" class="col-xs-12 col-sm-12 col-md-9 col-lg-9 col-xl-9 chalkboard" style="min-height:250px; max-height:250px;margin-top: 60px;border-color: <?php echo $board?>">
+            <div id="chalkb" class="col-xs-12 col-sm-12 col-md-9 col-lg-9 col-xl-9 chalkboard" style="min-height:200px; max-height:200px;margin-top: 60px;border-color: <?php echo $board?>">
                     <?php
                         foreach ($c_topic->posts as $post):
                             if($post->shout==0 && $post->reply==0):?>
