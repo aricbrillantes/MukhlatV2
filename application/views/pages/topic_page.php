@@ -30,6 +30,7 @@
 
     <?php
         include(APPPATH . 'views/navigation_bar.php'); ?>
+       <?php $roomowner="hidden"; if ($c_topic->creator_id === $logged_user->user_id): $roomowner="visible"; endif;?>
        <?php 
         $nameframe ="#".$c_topic->nameframe;
 //        if(strlen(dechex(hexdec($c_topic->nameframe)+6190))==6 && strlen(dechex(hexdec($c_topic->nameframe)-6190))==6):
@@ -105,9 +106,9 @@
                           endforeach; ?>
                             
                     </div>
-                <?php if ($c_topic->creator_id === $logged_user->user_id): ?>
-                    <button onmouseenter="playclip()" onclick="toggleButton('text')" id="crettop" class = "btn btn-primary buttonsbgcolor textoutliner pull-right" href="#create-post-modal" data-toggle = "modal" style="font-size:22px;">My Board</button><br><br>
-                <?php endif;?>
+               
+                    <button onmouseenter="playclip()" onclick="toggleButton('text')" id="crettop" class = "btn btn-primary buttonsbgcolor textoutliner pull-right" href="#create-post-modal" data-toggle = "modal" style="font-size:22px;visibility: <?php echo roomowner?>;">My Board</button><br><br>
+                
         </div>
             
             <div class="col-sm-12 col-md-12 col-xs-12 col-lg-12 col-xl-12">
@@ -205,9 +206,9 @@
                     </div>-->
                 </a>
                 
-                <?php if ($c_topic->creator_id === $logged_user->user_id): ?>
-                    <button onmouseenter="playclip()" onclick="toggleButton('media')" id="crettop" class = "btn btn-primary buttonsbgcolor textoutliner" href="#create-post-modal" data-toggle = "modal" style="font-size:22px;margin-top:210px; margin-left: 75px">My Album</button><br><br>
-                <?php endif;?>
+                
+                    <button onmouseenter="playclip()" onclick="toggleButton('media')" id="crettop" class = "btn btn-primary buttonsbgcolor textoutliner" href="#create-post-modal" data-toggle = "modal" style="font-size:22px;margin-top:210px; margin-left: 75px;visibility: <?php echo roomowner?>;">My Album</button><br><br>
+                
 
             </div>
                 
