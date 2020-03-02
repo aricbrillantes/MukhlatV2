@@ -132,10 +132,10 @@
                 
             </div>
             <div class="col-sm-12 col-md-12 col-xs-12 col-lg-12 col-xl-12"> 
-            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3  hider" style="min-width: 200px;">
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3  hider" style="min-width: 2000px !important;">
             
                 
-                <div class="white-board" style="min-width: 200px;min-height:200px; max-height:200px;border-color: <?php echo $bulletin?>">
+                <div class="white-board" style="min-height:200px; max-height:200px;border-color: <?php echo $bulletin?>">
                         <?php 
                     //load models
                     $CI =&get_instance();
@@ -161,7 +161,7 @@
                     <?php  endforeach; endforeach; ?>
                     </div>
                 
-                <div class="white-board" style="min-width: 200px; min-height:200px; max-height:200px;border-color: <?php echo $bulletin?>">
+                <div class="white-board" style="min-width: 200px !important; min-height:200px; max-height:200px;border-color: <?php echo $bulletin?>">
                         
                     <?php 
                     $CI =&get_instance();
