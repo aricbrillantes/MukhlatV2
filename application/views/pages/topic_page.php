@@ -133,14 +133,9 @@
             </div>
             <div class="col-sm-12 col-md-12 col-xs-12 col-lg-12 col-xl-12"> 
             <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 white-board hider" style="min-height:300px; max-height:300px;border-color: <?php echo $bulletin?>">
-            <?php if ($c_topic->creator_id === $logged_user->user_id): ?><ul class="nav nav-pills nav-justified" style = "margin-bottom: 10px;">
-                    <li class = "active"><a data-toggle="pill" href="#teachers"><strong style="cursor: pointer">Teachers</strong></a></li>
-                    <li><a data-toggle="pill" href="#parents"><strong style="cursor: pointer">Parents</strong></a></li>
-
-            </ul>
-                <?php endif;?>
-                <div class="tab-content">
-                    <div id="teachers" class="tab-pane fade in active">
+            
+                
+                    <div>
                         <?php 
                     //load models
                     $CI =&get_instance();
@@ -161,14 +156,18 @@
                 ?>
 
                     <li class = "">
-                        <h4 class = "no-padding admin-list-name">Teacher <?php echo $teacher->first_name?> says: </h4> 
+                        <!--<h4 class = "no-padding admin-list-name">Teacher <?php echo $teacher->first_name?> says: </h4>--> 
                         <h5 class = "no-padding admin-list-name">"<?php echo utf8_decode($announcement->announcement) ?>"</h5>
                     </li>
                     <?php  endforeach; endforeach; ?>
-                    </div>
-                    <div id="parents" class="tab-pane fade in">
+                    </div>               
+            </div>
+                <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 white-board hider" style="min-height:300px; max-height:300px;border-color: <?php echo $bulletin?>">
+            
+                
+            <div>
                         
-                        <?php 
+                    <?php 
                     $CI =&get_instance();
                     $CI->load->model('user_model'); //load models
                     $notes = $CI->user_model->get_notes($logged_user->user_id); //get notes
@@ -176,14 +175,12 @@
                     foreach (array_reverse($notes) as $note): ?>
 
                     <div class = "">
-                        <h4 class = "no-padding admin-list-name"><?php echo $teacher->first_name?> says: </h4> 
+                        <!--<h4 class = "no-padding admin-list-name"><?php echo $teacher->first_name?> says: </h4>--> 
                         <h4 class = " admin-list-name"><?php echo utf8_decode($note->note) ?></h4>
                     </div>
                                                        
-                <?php endforeach; ?>
-                    </div>
-                </div>
-                
+                    <?php endforeach; ?>
+                    </div>         
             </div>
                 <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3 col-xl-3"> <div class="hider"><br><br></div>
                 <a class="picture" href="#room_media_modal" data-toggle = "modal" style="color: black">
