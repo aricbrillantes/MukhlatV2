@@ -107,7 +107,7 @@
                             
                     </div>
                
-                    <button onmouseenter="playclip()" onclick="toggleButton('text')" id="crettop" class = "btn btn-primary buttonsbgcolor textoutliner pull-right" href="#create-post-modal" data-toggle = "modal" style="font-size:22px;visibility: <?php echo roomowner?>;">My Board</button><br><br>
+                    <button onmouseenter="playclip()" onclick="toggleButton('text')" id="crettop" class = "btn btn-primary buttonsbgcolor textoutliner pull-right" href="#create-post-modal" data-toggle = "modal" style="font-size:22px;visibility: <?php echo $roomowner?>;">My Board</button><br><br>
                 
         </div>
             
@@ -207,7 +207,7 @@
                 </a>
                 
                 
-                    <button onmouseenter="playclip()" onclick="toggleButton('media')" id="crettop" class = "btn btn-primary buttonsbgcolor textoutliner" href="#create-post-modal" data-toggle = "modal" style="font-size:22px;margin-top:210px; margin-left: 75px;visibility: <?php echo roomowner?>;">My Album</button><br><br>
+                    <button onmouseenter="playclip()" onclick="toggleButton('media')" id="crettop" class = "btn btn-primary buttonsbgcolor textoutliner" href="#create-post-modal" data-toggle = "modal" style="font-size:22px;margin-top:210px; margin-left: 75px;visibility: <?php echo $roomowner?>;">My Album</button><br><br>
                 
 
             </div>
