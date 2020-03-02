@@ -164,28 +164,9 @@
             </div>
             </div>
             <div class="col-sm-12 col-md-12 col-xs-12 col-lg-12 col-xl-12">
-                <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 white-board hider" style="min-height:300px; max-height:300px;border-color: <?php echo $bulletin?>">
             
-                
-            <div>
-                        
-                    <?php 
-                    $CI =&get_instance();
-                    $CI->load->model('user_model'); //load models
-                    $notes = $CI->user_model->get_notes($logged_user->user_id); //get notes
-
-                    foreach (array_reverse($notes) as $note): ?>
-
-                    <div class = "">
-                        <!--<h4 class = "no-padding admin-list-name"><?php echo $teacher->first_name?> says: </h4>--> 
-                        <h4 class = " admin-list-name"><?php echo utf8_decode($note->note) ?></h4>
-                    </div>
-                                                       
-                    <?php endforeach; ?>
-                    </div>         
-            </div>
                 <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3 col-xl-3"> <div class="hider"><br><br></div>
-                <a class="picture" href="#room_media_modal" data-toggle = "modal" style="color: black">
+                <a class="picture" href="#room_media_modal" data-toggle = "modal" style="color: black;transform:scale(0.75);">
                     <div style="margin-left: 60px;">
                     <figure class="boxside boxtop" style="background-color: <?php echo $media2?>"><i class = "glyphicon glyphicon-picture fa-2x" style="margin-top: 25px"></i></figure>
                     <figure class="boxside boxleft" style="background-color: <?php echo $media?>"><i class = "glyphicon glyphicon-volume-up fa-2x" style="margin-top: 25px"></i></figure>
@@ -208,7 +189,7 @@
                 <!--Shout out-->
             <ul class="stickynote col-xs-12 col-sm-4 col-md-3 col-lg-3 col-xl-3">
                <li class="stickytext">
-                   <a href="#room_shout_modal" data-toggle = "modal" class="stickyact" style="background: <?php echo $memo?>">
+                   <a href="#room_shout_modal" data-toggle = "modal" class="stickyact" style="background: <?php echo $memo?>;transform:scale(0.75);">
                         <?php
                             foreach ($c_topic->posts as $post):
                                 if($post->shout==1):?>
@@ -224,6 +205,27 @@
                 <button onmouseenter="playclip()" onclick="toggleButton('shout')" id="crettop" class = "btn btn-primary buttonsbgcolor textoutliner" href="#create-post-modal" data-toggle = "modal" style="font-size:22px;margin-top: 2%;margin-left: 50px; margin-right: 100%">My Sticky Notes</button><br><br>
                 <?php endif;?>
             </ul>
+                
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 white-board hider" style="min-height:200px; max-height:200px;border-color: <?php echo $bulletin?>">
+            
+                
+            <div>
+                        
+                    <?php 
+                    $CI =&get_instance();
+                    $CI->load->model('user_model'); //load models
+                    $notes = $CI->user_model->get_notes($logged_user->user_id); //get notes
+
+                    foreach (array_reverse($notes) as $note): ?>
+
+                    <div class = "">
+                        <!--<h4 class = "no-padding admin-list-name"><?php echo $teacher->first_name?> says: </h4>--> 
+                        <h4 class = " admin-list-name"><?php echo utf8_decode($note->note) ?></h4>
+                    </div>
+                                                       
+                    <?php endforeach; ?>
+                    </div>         
+            </div>
             
         </div>
             
