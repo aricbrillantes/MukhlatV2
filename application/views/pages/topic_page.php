@@ -73,7 +73,7 @@
         elseif($c_topic->theme=="19"): $theme="roomtheme-crosseddot";
         else: $theme="dooroom"; $wallpaper="background-color: #".$c_topic->theme;
         endif;?>
-<div class="row <?php echo $theme?> " style=";overflow-x: hidden;<?php echo $wallpaper?>;position:fixed; padding:0; margin:0 top:0 left:0;width: 100%;height: 100%;">
+<div class="row <?php echo $theme?> " style=";overflow-x: hidden;<?php echo $wallpaper?>;position:fixed; padding:0; margin:0; top:0; left:0;width: 100%;height: 100%;">
     <div class = "col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12" style="margin-top:20px;"> 
         <!--<div id = "topic-page" class = "container page" style = "min-height: 100%; height: 100%;">test</div>-->
         
