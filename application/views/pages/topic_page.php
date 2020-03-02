@@ -98,7 +98,7 @@
                             if($post->shout==0 && $post->reply==0):?>
                     <?php $attachments = $CI->attachment_model->get_post_attachments($post->post_id);?>
                     <?php if(!$attachments):?>
-                            <p style = "border-right: none; max-width: 714px;padding: 3%;max-height: 50%;font-family: KGChasingPavements"><?php echo utf8_decode($post->post_content); ?>
+                            <p style = "border-right: none; max-width: 714px;padding: 3%;max-height: 50%"><?php echo utf8_decode($post->post_content); ?>
                                                 <button class = "btn btn-primary pull-right" id="text2speak" style = "margin-right: 3px;border-radius: 20px;" onclick="readcontent('<?php $stringy = utf8_decode($post->post_content); $stringy1 = str_replace('\'', '`', $stringy); echo trim(preg_replace('/[^A-Za-z0-9()#,%\/?@$*.:+=_~`-]/', ' ', $stringy1)); ?>')"><i class="glyphicon glyphicon-volume-up" style="padding-top: 5px;"></i></button></p>
                     <?php endif;
                           endif;
@@ -132,7 +132,7 @@
                 
             </div>
             <div class="col-sm-12 col-md-12 col-xs-12 col-lg-12 col-xl-12"> 
-            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 white-board hider" style="min-height:300px; max-height:300px;border-color: <?php echo $bulletin?>">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 white-board hider" style="min-height:200px; max-height:200px;border-color: <?php echo $bulletin?>">
             
                 
                     <div>
