@@ -132,7 +132,7 @@
                 
             </div>
             <div class="col-sm-12 col-md-12 col-xs-12 col-lg-12 col-xl-12"> 
-            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3  hider" style="min-width: 350px !important;">
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3  hider" style="min-width: 450px !important;">
             
                 
                 <div class="white-board" style="min-height:195px; max-height:195px;border-color: <?php echo $bulletin?>">
@@ -165,7 +165,7 @@
                     </li>
                     <?php  endforeach; endforeach; ?>
                     </div>
-                
+                <?php if ($c_topic->creator_id === $logged_user->user_id): ?>
                 <div class="white-board" style=" min-height:195px; max-height:195px;border-color: <?php echo $bulletin?>">
                         
                     <?php 
@@ -187,6 +187,7 @@
                                                        
                     <?php endforeach; ?>
                     </div>
+                <?php endif;?>
             </div>
             
                 <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3 col-xl-3"> <div class="hider"><br><br></div>
