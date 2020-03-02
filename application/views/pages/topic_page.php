@@ -135,7 +135,7 @@
             <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3  hider" style="min-width: 450px !important;">
             
                 
-                <div class="white-board" style="min-height:100%; max-height:195px;border-color: <?php echo $bulletin?>">
+                <div class="white-board" style="min-height:50%;height:100%; max-height:295px;border-color: <?php echo $bulletin?>">
                         <?php 
                     //load models
                     $CI =&get_instance();
@@ -166,7 +166,7 @@
                     <?php  endforeach; endforeach; ?>
                     </div>
                 <?php if ($c_topic->creator_id === $logged_user->user_id): ?>
-                <div class="white-board" style=" min-height:100%; max-height:195px;border-color: <?php echo $bulletin?>">
+                <div class="white-board" style=" min-height:50%; max-height:195px;border-color: <?php echo $bulletin?>">
                         
                     <?php 
                     $CI =&get_instance();
