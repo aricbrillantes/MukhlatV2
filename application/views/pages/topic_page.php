@@ -132,7 +132,7 @@
                 
             </div>
             <div class="col-sm-12 col-md-12 col-xs-12 col-lg-12 col-xl-12"> 
-<!--            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3  hider" style="min-width: 450px !important;">
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3  hider" style="min-width: 450px !important;">
             
                 
                 <div class="white-board" style="min-height:50%; max-height:195px;border-color: <?php echo $bulletin?>">
@@ -160,7 +160,7 @@
                         
                 ?>
 
-                    <li class = ""><h4 class = "no-padding admin-list-name">Teacher <?php echo $teacher->first_name?> says: </h4> 
+                    <li class = ""><!--<h4 class = "no-padding admin-list-name">Teacher <?php echo $teacher->first_name?> says: </h4>--> 
                         <h5 class = "no-padding admin-list-name">"<?php echo utf8_decode($announcement->announcement) ?>"</h5>
                     </li>
                     <?php  endforeach; endforeach; ?>
@@ -181,14 +181,14 @@
                     foreach (array_reverse($notes) as $note): ?>
 
                     <div class = "">
-                        <h4 class = "no-padding admin-list-name"><?php echo $teacher->first_name?> says: </h4> 
+                        <!--<h4 class = "no-padding admin-list-name"><?php echo $teacher->first_name?> says: </h4>--> 
                         <h4 class = " admin-list-name"><?php echo utf8_decode($note->note) ?></h4>
                     </div>
                                                        
                     <?php endforeach; ?>
                     </div>
                 <?php endif;?>
-            </div>-->
+            </div>
             
                 <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3 col-xl-3"> <div class="hider"><br><br></div>
                 <a class="picture" href="#room_media_modal" data-toggle = "modal" style="color: black">
