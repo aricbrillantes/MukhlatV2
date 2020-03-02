@@ -135,7 +135,7 @@
             <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3  hider" >
             
                 
-                <div class="white-board" style="min-height:200px; max-height:200px;border-color: <?php echo $bulletin?>">
+                <div class="white-board" style="min-width: 200px;min-height:200px; max-height:200px;border-color: <?php echo $bulletin?>">
                         <?php 
                     //load models
                     $CI =&get_instance();
@@ -161,7 +161,7 @@
                     <?php  endforeach; endforeach; ?>
                     </div>
                 
-                <div class="white-board" style="min-height:200px; max-height:200px;border-color: <?php echo $bulletin?>">
+                <div class="white-board" style="min-width: 200px; min-height:200px; max-height:200px;border-color: <?php echo $bulletin?>">
                         
                     <?php 
                     $CI =&get_instance();
@@ -179,7 +179,7 @@
                     </div>
             </div>
             
-                <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3 col-xl-3" style="transform: scale(0.75)"> <div class="hider"><br><br></div>
+                <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3 col-xl-3"> <div class="hider"><br><br></div>
                 <a class="picture" href="#room_media_modal" data-toggle = "modal" style="color: black">
                     <div style="margin-left: 60px;">
                     <figure class="boxside boxtop" style="background-color: <?php echo $media2?>"><i class = "glyphicon glyphicon-picture fa-2x" style="margin-top: 25px"></i></figure>
@@ -201,7 +201,7 @@
             </div>
                 
                 <!--Shout out-->
-            <ul class="stickynote col-xs-12 col-sm-4 col-md-3 col-lg-3 col-xl-3" style="transform: scale(0.75)">
+            <ul class="stickynote col-xs-12 col-sm-4 col-md-3 col-lg-3 col-xl-3">
                <li class="stickytext">
                    <a href="#room_shout_modal" data-toggle = "modal" class="stickyact" style="background: <?php echo $memo?>">
                         <?php
