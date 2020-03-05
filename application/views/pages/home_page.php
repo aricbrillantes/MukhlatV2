@@ -167,7 +167,7 @@
                                             </a> -->
                                         <hr>
                                         <div class="polaroidwrapper">
-                                        <p class = "whitebg" style = ""><?php echo utf8_decode($post->post_content); ?></p>
+                                        <p class = "whitebg" style = "overflow-wrap: break-word;"><?php echo utf8_decode($post->post_content); ?></p>
                                         
                                         <?php $attachments = $CI->attachment_model->get_post_attachments($post->post_id);?>
                                         
