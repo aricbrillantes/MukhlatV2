@@ -138,7 +138,7 @@
             
                 
                 <div class="white-board" style="min-height:50%; max-height:195px;border-color: <?php echo $bulletin?>">
-                <mark>Teacher</mark>
+                    <mark class="buttonsbgcolor">Teacher</mark>
                         <?php 
                     //load models
                     $CI =&get_instance();
@@ -170,7 +170,7 @@
                     </div>
                 <?php if ($c_topic->creator_id === $logged_user->user_id): ?>
                 <div class="white-board" style=" min-height:50%; max-height:195px;border-color: <?php echo $bulletin2?>">
-                <mark>Guardians</mark>  
+                    <mark class="buttonsbgcolor" style="border-radius: 20px">Guardians</mark>  
                     <?php 
                     $CI =&get_instance();
                     $CI->load->model('user_model'); //load models
