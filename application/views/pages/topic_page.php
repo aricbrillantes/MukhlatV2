@@ -138,7 +138,7 @@
             
                 
                 <div class="white-board" style="min-height:50%; max-height:195px;border-color: <?php echo $bulletin?>;overflow-x:hidden;">
-                    <h3> <div class="textoutliner" style="border-radius: 20px;color:white;background-color: <?php echo $bulletin?>;margin:-15px;text-align:center">Teacher</div></h3> 
+                    <h3> <div class="textoutliner" style="border-radius: 20px;color:white;background-color: <?php echo $bulletin?>;margin:-18px;text-align:center">Teacher</div></h3> 
                         <?php 
                     //load models
                     $CI =&get_instance();
@@ -164,13 +164,13 @@
                 ?>
 
                     <li class = ""><!--<h4 class = "no-padding admin-list-name">Teacher <?php echo $teacher->first_name?> says: </h4>--> 
-                        <h5 class = "no-padding admin-list-name">"<?php echo utf8_decode($announcement->announcement) ?>"</h5>
+                        <h5 class = "no-padding admin-list-name"><?php echo utf8_decode($announcement->announcement) ?></h5>
                     </li>
                     <?php  endforeach; endforeach; ?>
                     </div>
                 <?php if ($c_topic->creator_id === $logged_user->user_id): ?>
                 <div class="white-board" style=" min-height:50%; max-height:195px;border-color: <?php echo $bulletin2?>;overflow-x:hidden;">
-                    <h3> <div class="textoutliner" style="border-radius: 20px;color:white;background-color: <?php echo $bulletin2?>;margin:-15px;text-align:center">Guardians</div></h3> 
+                    <h3> <div class="textoutliner" style="border-radius: 20px;color:white;background-color: <?php echo $bulletin2?>;margin:-18px;text-align:center">Guardians</div></h3> 
                     <?php 
                     $CI =&get_instance();
                     $CI->load->model('user_model'); //load models
@@ -183,10 +183,10 @@
                     <?php
                     foreach (array_reverse($notes) as $note): ?>
 
-                    <div class = "">
+                    <li class = "">
                         <!--<h4 class = "no-padding admin-list-name"><?php echo $teacher->first_name?> says: </h4>--> 
                         <h4 class = " admin-list-name"><?php echo utf8_decode($note->note) ?></h4>
-                    </div>
+                    </li>
                                                        
                     <?php endforeach; ?>
                     </div>
