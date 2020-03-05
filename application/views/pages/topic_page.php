@@ -136,7 +136,7 @@
             <div class="col-sm-12 col-md-12 col-xs-12 col-lg-12 col-xl-12"> 
             <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3  hider" style="min-width: 450px !important;">
             
-                <div class="btn">Teacher</div>
+                <div class="btn btn-primary">Teacher</div>
                 <div class="white-board" style="min-height:50%; max-height:195px;border-color: <?php echo $bulletin?>">
                         <?php 
                     //load models
@@ -214,7 +214,7 @@
             </div>
                 
                 <!--Shout out-->
-                <ul class="stickynote col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-3">
+                <ul class="stickynote col-xs-12 col-sm-12 col-md-4 col-lg-3 col-xl-3">
                <li class="stickytext">
                    <a href="#room_shout_modal" data-toggle = "modal" class="stickyact" style="background: <?php echo $memo?>">
                         <?php
