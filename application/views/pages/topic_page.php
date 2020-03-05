@@ -136,8 +136,9 @@
             <div class="col-sm-12 col-md-12 col-xs-12 col-lg-12 col-xl-12"> 
             <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3  hider" style="min-width: 450px !important;">
             
-                <div class="primary">Teacher</div>
+                
                 <div class="white-board" style="min-height:50%; max-height:195px;border-color: <?php echo $bulletin?>">
+                <div class="buttonsgocolor">Teacher</div>
                         <?php 
                     //load models
                     $CI =&get_instance();
@@ -169,7 +170,7 @@
                     </div>
                 <?php if ($c_topic->creator_id === $logged_user->user_id): ?>
                 <div class="white-board" style=" min-height:50%; max-height:195px;border-color: <?php echo $bulletin2?>">
-                        
+                <div class="buttonsgocolor">Guardians</div>  
                     <?php 
                     $CI =&get_instance();
                     $CI->load->model('user_model'); //load models
@@ -229,7 +230,7 @@
                 </li>
 
             <?php if ($c_topic->creator_id === $logged_user->user_id): ?>
-                <button onmouseenter="playclip()" onclick="toggleButton('shout')" id="crettop" class = "btn btn-primary buttonsbgcolor textoutliner pull-left" href="#create-post-modal" data-toggle = "modal" style="font-size:22px;margin-top: 2%;margin-left: 50px; margin-right: 100%">My Sticky Notes</button><br><br>
+                <button onmouseenter="playclip()" onclick="toggleButton('shout')" id="crettop" class = "btn btn-primary buttonsbgcolor textoutliner" href="#create-post-modal" data-toggle = "modal" style="font-size:22px;margin-top: 2%;margin-left: 50px; margin-right: 100%">My Sticky Notes</button><br><br>
                 <?php endif;?>
             </ul>
                 
