@@ -213,7 +213,7 @@
             </div>
                 
                 <!--Shout out-->
-            <ul class="stickynote col-xs-12 col-sm-4 col-md-3 col-lg-3 col-xl-3">
+                <ul class="stickynote col-xs-12 col-sm-4 col-md-3 col-lg-3 col-xl-3" style="z-index:100000">
                <li class="stickytext">
                    <a href="#room_shout_modal" data-toggle = "modal" class="stickyact" style="background: <?php echo $memo?>">
                         <?php
