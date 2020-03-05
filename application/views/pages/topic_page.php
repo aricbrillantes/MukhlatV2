@@ -137,8 +137,8 @@
             <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3  hider" style="min-width: 450px !important;">
             
                 
-                <div class="white-board" style="min-height:50%; max-height:195px;border-color: <?php echo $bulletin?>">
-                    <h3> <div class="textoutliner" style="border-radius: 20px;color:white;background-color: <?php echo $bulletin?>;margin:-10px;text-align:center">Teacher</div></h3> 
+                <div class="white-board" style="min-height:50%; max-height:195px;border-color: <?php echo $bulletin?>;overflow-x:hidden;">
+                    <h3> <div class="textoutliner" style="border-radius: 20px;color:white;background-color: <?php echo $bulletin?>;margin:-15px;text-align:center">Teacher</div></h3> 
                         <?php 
                     //load models
                     $CI =&get_instance();
@@ -169,8 +169,8 @@
                     <?php  endforeach; endforeach; ?>
                     </div>
                 <?php if ($c_topic->creator_id === $logged_user->user_id): ?>
-                <div class="white-board" style=" min-height:50%; max-height:195px;border-color: <?php echo $bulletin2?>">
-                    <h3> <div class="textoutliner" style="border-radius: 20px;color:white;background-color: <?php echo $bulletin2?>;margin:-10px;text-align:center">Guardians</div></h3> 
+                <div class="white-board" style=" min-height:50%; max-height:195px;border-color: <?php echo $bulletin2?>;overflow-x:hidden;">
+                    <h3> <div class="textoutliner" style="border-radius: 20px;color:white;background-color: <?php echo $bulletin2?>;margin:-15px;text-align:center">Guardians</div></h3> 
                     <?php 
                     $CI =&get_instance();
                     $CI->load->model('user_model'); //load models
