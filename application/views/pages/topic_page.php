@@ -44,7 +44,7 @@
         $memo ="#".$c_topic->shoutout;
         $board="#".$c_topic->board;
         $bulletin ="#".$c_topic->bulletin;
-        $bulletin2 ="#". dechex(hexdec($c_topic->bulletin)-1);
+        $bulletin2 ="#". dechex(hexdec($c_topic->bulletin)-6190);
         $media ="#". $c_topic->media;
         if(strlen(dechex(hexdec($c_topic->media)+6190))==6 && strlen(dechex(hexdec($c_topic->media)-6190))==6):
         $media2 ="#". dechex(hexdec($c_topic->media)+6190);
@@ -214,7 +214,7 @@
             </div>
                 
                 <!--Shout out-->
-                <ul class="stickynote col-xs-12 col-sm-4 col-md-3 col-lg-3 col-xl-3">
+                <ul class="stickynote col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
                <li class="stickytext">
                    <a href="#room_shout_modal" data-toggle = "modal" class="stickyact" style="background: <?php echo $memo?>; z-index:100000">
                         <?php
