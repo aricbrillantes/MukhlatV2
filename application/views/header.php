@@ -7,7 +7,7 @@ and open the template in the editor.
 <html>
     <head>
         <script>var base_url = "<?php echo base_url(); ?>"</script>
-        <link rel="apple-touch-icon" sizes="76x76" href="<?php echo base_url("/icons/apple-touch-icon.png"); ?>">
+        <link rel="green m book" sizes="76x76" href="<?php echo base_url("/icons/green m book.png"); ?>">
         <link rel="icon" type="image/png" href="<?php echo base_url("/icons/logo c nbk.png"); ?>" sizes="32x32">
         <link rel="icon" type="image/png" href="<?php echo base_url("/icons/green m book.png"); ?>" sizes="16x16">
         <link rel="manifest" href="<?php echo base_url("/icons/manifest.json"); ?>">
