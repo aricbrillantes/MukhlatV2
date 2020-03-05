@@ -1068,7 +1068,7 @@
                     </form>
                 </div>
         <!--voice search-->
-            <div id="voicedropdown" class="voice-dropdown-content navbarvoice" style="display:none;">
+<!--            <div id="voicedropdown" class="voice-dropdown-content navbarvoice" style="display:none;">
                                 <div class="compact marquee" id="div_language" style="display: inline-block;font-size: 22px">
                                     <select id="select_language">
                                         <option value="0" onclick="resetDictation(event)">English</option>
@@ -1086,9 +1086,9 @@
                                     <span id="snackbar">Speak to type is on now</span>
                                     <a href="#" class="voicesearch voicesearchtext tooltip1" id="voicesearch" onclick="stopDictation(event)" style="color:white;background: red;margin-left:5px;"><i style="font-size: 22px" class = "fa fa-microphone-slash"></i><span class="tooltiptext1" style="background:red;">Stop</span></a>
                                     <a href="#" class="voicesearch voicesearchtext tooltip1" id="voicesearch" onclick="resetDictation(event);" style="color:black;background:yellow;margin-left:5px;"><i style="font-size: 22px" class = "fa fa-refresh"></i><span class="tooltiptext1" style="background:yellow;color:black">Reset</span></a>
-                                   <!--<a href="#" class="voicesearch" id="voicesearch" onclick='responsiveVoice.speak(search.value,"UK English Male",{rate: 0.9, pitch: 1});' >PLAY</a>-->
+                                   <a href="#" class="voicesearch" id="voicesearch" onclick='responsiveVoice.speak(search.value,"UK English Male",{rate: 0.9, pitch: 1});' >PLAY</a>
                                 </div>
-                            </div>
+                            </div>-->
         
                             <div id="navbaricons2">
                                 <a onclick="window.speechSynthesis.cancel();" onmouseenter="playclip()" id="logout-btn" href="#logout-modal" data-toggle = "modal" class="navbaricons" href="<?php echo base_url('signin/logout'); ?>" style="margin-right:4%;"><p class="iconin" style="font-size:14px !important;text-align: left !important;"><img  src = "<?php echo base_url('icons/logout.png'); ?>" class="iconin" style="width:100%;height:auto"/><!Bye!></p>
@@ -1201,7 +1201,7 @@ function voiceIndicatorOFF() {
 </script>
 
 <!--voice commands script-->
-<script type="text/javascript">
+<!--<script type="text/javascript">
         var final_transcript3 = '';
         var recognizing3 = true;
         var meow = new Audio('<?php echo base_url('images/catmeow.mp3'); ?>');
@@ -1352,7 +1352,7 @@ function voiceIndicatorOFF() {
         startDictation3(event);
         
         
-    </script>
+    </script>-->
 <!--<script src="<?php echo base_url('js/eastereggs.js'); ?>"></script>-->
 <!--<script src="<?php echo base_url('js/usagetimer.js'); ?>"></script>-->
 <script>var $draggable = $('.draggable').draggabilly();</script>
