@@ -147,7 +147,7 @@ list[18] = ";wenk facepalm;^<img  width='30%' src='" + "/images/stickers/wenk fa
 list[19] = ";wenk haha;^<img  width='30%' src='" + "/images/stickers/wenk haha.png'>";
 list[20] = ";spidab;^<img  width='30%' src='" + "/images/stickers/spidab.png'>";
 list[21] = ";busy;^<img  width='30%' src='" + "/images/stickers/busy.png'>";
-list[2] = ";sweet;^<img  width='30%' src='" + "/images/stickers/sweet.png'>";
+list[22] = ";sweet;^<img  width='30%' src='" + "/images/stickers/sweet.png'>";
 var j, k, find, item, repl;
 if(document.getElementById("chalkb") && document.getElementById("Mposts") && document.getElementById("messageb")){
     page = document.getElementById("chalkb").innerHTML;
