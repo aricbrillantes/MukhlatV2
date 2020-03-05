@@ -2224,7 +2224,7 @@ body::-webkit-scrollbar-thumb {
   min-width: 40%;
   height: 80%;
   border-radius: 5px;
-  border: 10px solid #adb2bd;
+  border: 10px wave #adb2bd;
   box-shadow: inset -1px 2px 2px #404040 , 6px 9px 1px rgba(0, 0, 0, 0.1);
   overflow: auto;
   }
