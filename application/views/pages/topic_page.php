@@ -215,8 +215,8 @@
                 
                 <!--Shout out-->
                 <ul class="stickynote col-xs-12 col-sm-4 col-md-3 col-lg-3 col-xl-3">
-                    <li class="stickytext" style="overflow-y:auto">
-                   <a href="#room_shout_modal" data-toggle = "modal" class="stickyact" style="background: <?php echo $memo?>">
+                    <li class="stickytext" style="">
+                   <a href="#room_shout_modal" data-toggle = "modal" class="stickyact" style="background: <?php echo $memo?>;overflow-y:auto">
                         <?php
                             foreach ($c_topic->posts as $post):
                                 if($post->shout==1):?>
