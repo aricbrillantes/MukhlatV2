@@ -138,7 +138,7 @@
             
                 
                 <div class="white-board" style="min-height:50%; max-height:195px;border-color: <?php echo $bulletin?>">
-                    <h3> <div class="textoutliner" style="border-radius: 20px;color:white;background-color: <?php echo $bulletin?>;margin:0;text-align:center">Teacher</div></h3> 
+                    <h3> <div class="textoutliner" style="border-radius: 20px;color:white;background-color: <?php echo $bulletin?>;position:sticky;text-align:center">Teacher</div></h3> 
                         <?php 
                     //load models
                     $CI =&get_instance();
@@ -170,7 +170,7 @@
                     </div>
                 <?php if ($c_topic->creator_id === $logged_user->user_id): ?>
                 <div class="white-board" style=" min-height:50%; max-height:195px;border-color: <?php echo $bulletin2?>">
-                    <h3> <div class="textoutliner" style="border-radius: 20px;color:white;background-color: <?php echo $bulletin2?>">Guardians</div></h3> 
+                    <h3> <div class="textoutliner" style="border-radius: 20px;color:white;background-color: <?php echo $bulletin2?>;position:sticky;text-align:center">Guardians</div></h3> 
                     <?php 
                     $CI =&get_instance();
                     $CI->load->model('user_model'); //load models
