@@ -44,6 +44,7 @@
         $memo ="#".$c_topic->shoutout;
         $board="#".$c_topic->board;
         $bulletin ="#".$c_topic->bulletin;
+        $bulletin2 ="#". dechex(hexdec($c_topic->bulletin)-1);
         $media ="#". $c_topic->media;
         if(strlen(dechex(hexdec($c_topic->media)+6190))==6 && strlen(dechex(hexdec($c_topic->media)-6190))==6):
         $media2 ="#". dechex(hexdec($c_topic->media)+6190);
@@ -167,7 +168,7 @@
                     <?php  endforeach; endforeach; ?>
                     </div>
                 <?php if ($c_topic->creator_id === $logged_user->user_id): ?>
-                <div class="white-board" style=" min-height:50%; max-height:195px;border-color: <?php echo $bulletin?>">
+                <div class="white-board" style=" min-height:50%; max-height:195px;border-color: <?php echo $bulletin2?>">
                         
                     <?php 
                     $CI =&get_instance();
@@ -213,9 +214,9 @@
             </div>
                 
                 <!--Shout out-->
-                <ul class="stickynote col-xs-12 col-sm-4 col-md-3 col-lg-3 col-xl-3" style="z-index:100000">
+                <ul class="stickynote col-xs-12 col-sm-4 col-md-3 col-lg-3 col-xl-3">
                <li class="stickytext">
-                   <a href="#room_shout_modal" data-toggle = "modal" class="stickyact" style="background: <?php echo $memo?>">
+                   <a href="#room_shout_modal" data-toggle = "modal" class="stickyact" style="background: <?php echo $memo?>; z-index:100000">
                         <?php
                             foreach ($c_topic->posts as $post):
                                 if($post->shout==1):?>
