@@ -127,7 +127,7 @@ if(oneonly===0){oneonly=1;
 var list = new Array();
 list[0] = ";love 2;^<img  width='30%' src='" + "/images/stickers/love 2.png'>";
 list[1] = ";laughing crying;^<img  width='30%' src='" + "/images/stickers/laughing crying.png'>";
-list[2] = ";love;^<img  width='30%' src='" + "/images/stickers/love 2.png'>";
+list[2] = ";love 1;^<img  width='30%' src='" + "/images/stickers/love 2.png'>";
 list[3] = ";sad;^<img  width='30%' src='" + "/images/stickers/sad.png'>";
 list[4] = ";angry;^<img  width='30%' src='" + "/images/stickers/angry.png'>";
 list[5] = ";yuck;^<img  width='30%' src='" + "/images/stickers/yuck.png'>";
@@ -147,7 +147,7 @@ list[18] = ";wenk facepalm;^<img  width='30%' src='" + "/images/stickers/wenk fa
 list[19] = ";wenk haha;^<img  width='30%' src='" + "/images/stickers/wenk haha.png'>";
 list[20] = ";spidab;^<img  width='30%' src='" + "/images/stickers/spidab.png'>";
 list[21] = ";busy;^<img  width='30%' src='" + "/images/stickers/busy.png'>";
-list[23] = ";sweet;^<img  width='30%' src='" + "/images/stickers/sweet.png'>";
+list[22] = ";sweet;^<img  width='30%' src='" + "/images/stickers/sweet.png'>";
 var j, k, find, item, repl;
 if(document.getElementById("chalkb") && document.getElementById("Mposts") && document.getElementById("messageb")){
     page = document.getElementById("chalkb").innerHTML;
