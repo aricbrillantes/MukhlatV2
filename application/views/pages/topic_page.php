@@ -164,7 +164,7 @@
                 ?>
 
                     <li class = ""><!--<h4 class = "no-padding admin-list-name">Teacher <?php echo $teacher->first_name?> says: </h4>--> 
-                        <h5 class = "no-padding admin-list-name"><?php echo utf8_decode($announcement->announcement) ?></h5>
+                        <h5 class = "no-padding admin-list-name" style="overflow-wrap: break-word;"><?php echo utf8_decode($announcement->announcement) ?></h5>
                     </li>
                     <?php  endforeach; endforeach; ?>
                     </div>
@@ -185,7 +185,7 @@
 
                     <li class = "">
                         <!--<h4 class = "no-padding admin-list-name"><?php echo $teacher->first_name?> says: </h4>--> 
-                        <h4 class = " admin-list-name"><?php echo utf8_decode($note->note) ?></h4>
+                        <h4 class = " admin-list-name" style="overflow-wrap: break-word;"><?php echo utf8_decode($note->note) ?></h4>
                     </li>
                                                        
                     <?php endforeach; ?>
@@ -223,7 +223,7 @@
                                 if($post->is_deleted==0 && $post->shout==1):?>
                             
                     <h2><?php echo utf8_decode($post->post_title); ?></h2>
-                    <p><?php echo utf8_decode($post->post_content); ?></p>
+                    <p style="overflow-wrap: break-word;"><?php echo utf8_decode($post->post_content); ?></p>
                     <?php break; endif; endforeach; ?>
 
                   </a>
@@ -338,7 +338,7 @@
                 <h4 class = "ellipsis"><strong><?php echo utf8_decode($post->post_title); ?></strong> 
                     <small><a href="<?php echo base_url('user/profile/' . $post->user_id); ?>"><?php echo $post->user->first_name . " " . $post->user->last_name; ?></a></small></h4>
                     <hr>
-                <p style="white-space: pre-wrap;"><?php echo utf8_decode($post->post_content); ?></p>
+                <p style="white-space: pre-wrap;overflow-wrap: break-word;"><?php echo utf8_decode($post->post_content); ?></p>
             </div>
         <!--                                    <div class = "col-xs-3 text-center" style = "padding: 0px;">
         <p style = "padding-top: 10px; font-size: 18px !important;color: #78909C;"><i><?php echo date("F d, Y", strtotime($post->date_posted)); ?></i></p>

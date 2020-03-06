@@ -223,7 +223,7 @@ include(APPPATH . 'views/header.php');
                                                     <!--<span class = "text-muted pull-right"> <i style = "font-size: 18px;padding-right: 10px"><?php echo date("F d, Y", strtotime($post->date_posted)); ?></i></span>-->
                                                     <hr>
                                                     <div class="polaroidwrapper">
-                                                    <p class = "whitebg" style = ""><?php echo utf8_decode($post->post_content); ?></p>
+                                                    <p class = "whitebg" style = "overflow-wrap: break-word;"><?php echo utf8_decode($post->post_content); ?></p>
                                                     <?php $attachments = $CI->attachment_model->get_post_attachments($post->post_id);?>
                                                 
                                                         <?php //print_r($attachments); ?>
@@ -326,7 +326,7 @@ include(APPPATH . 'views/header.php');
                                                     <!--<span class = "text-muted pull-right"> <i style = "font-size: 18px;padding-right: 10px"><?php echo date("F d, Y", strtotime($post->date_posted)); ?></i></span>-->
                                                     <hr>
                                                     <div class="polaroidwrapper">
-                                                    <p class = "whitebg" style = ""><?php echo utf8_decode($post->post_content); ?></p>
+                                                    <p class = "whitebg" style = "overflow-wrap: break-word;"><?php echo utf8_decode($post->post_content); ?></p>
                                                     <?php $attachments = $CI->attachment_model->get_post_attachments($post->post_id);?>
                                                 
                                                         <?php //print_r($attachments); ?>
