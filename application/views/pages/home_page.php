@@ -168,7 +168,7 @@
                                             </a> -->
                                         <hr>
                                         <div class="polaroidwrapper">
-                                        <p class = "whitebg" style = "">
+                                        <p class = "whitebg" style = "overflow-wrap: break-word;">
                                             <?php echo utf8_decode(
                                                 str_ireplace(
                                                     array("cunt","fuck","nigger"),
