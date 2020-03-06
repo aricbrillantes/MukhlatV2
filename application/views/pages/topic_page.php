@@ -97,7 +97,7 @@
             <div id="chalkb" class="col-xs-12 col-sm-12 col-md-9 col-lg-9 col-xl-9 chalkboard" style="min-height:200px; max-height:200px;margin-top: 60px;border-color: <?php echo $board?>">
                     <?php
                         foreach ($c_topic->posts as $post):
-                            if($post->shout==0 && $post->reply==0):?>
+                            if($post->is_deleted==0 && $post->shout==0 && $post->reply==0):?>
                     <?php $attachments = $CI->attachment_model->get_post_attachments($post->post_id);?>
                     <?php if(!$attachments):?>
                             <p style = "border-right: none; max-width: 714px;padding: 3%;max-height: 50%;font-family: KGChasingPavements;"><?php echo utf8_decode($post->post_content); ?>
@@ -220,7 +220,7 @@
                    <a href="#room_shout_modal" data-toggle = "modal" class="stickyact" style="background: <?php echo $memo?>;overflow-y:auto">
                         <?php
                             foreach ($c_topic->posts as $post):
-                                if($post->shout==1):?>
+                                if($post->is_deleted==0 && $post->shout==1):?>
                             
                     <h2><?php echo utf8_decode($post->post_title); ?></h2>
                     <p><?php echo utf8_decode($post->post_content); ?></p>
@@ -319,8 +319,8 @@
            <!--List Entry--> 
            <?php $chatcount=0;
            foreach ($c_topic->posts as $post):
-                                    if($post->reply==1):
-                                        $chatcount++;
+                if($post->is_deleted==0 && $post->reply==1):
+                    $chatcount++;
             ?>
             <!--<a href = "javascript: void(0);" class = "btn btn-link list-group-item list-entry no-up-down-pad topic-post-entry" data-value = "<?php echo $post->post_id; ?>">-->
           

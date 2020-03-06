@@ -79,6 +79,7 @@
                             <?php
                             if (!empty($posts)):
                                 foreach ($posts as $post):
+                                    if(!$post->is_deleted):
                                     // echo utf8_decode($post->creator_id);
                                     // print_r($posts);
                             ?>
@@ -167,7 +168,13 @@
                                             </a> -->
                                         <hr>
                                         <div class="polaroidwrapper">
-                                        <p class = "whitebg" style = "overflow-wrap: break-word;"><?php echo utf8_decode($post->post_content); ?></p>
+                                        <p class = "whitebg" style = "">
+                                            <?php echo utf8_decode(
+                                                str_ireplace(
+                                                    array("cunt","fuck","nigger"),
+                                                    array("****", "****","******"),
+                                                $post->post_content)); ?> 
+                                        </p>
                                         
                                         <?php $attachments = $CI->attachment_model->get_post_attachments($post->post_id);?>
                                         
@@ -198,6 +205,7 @@
                                         </div></div></div>
 
                                     <?php
+                                    endif;
                                 endforeach;
                             //else:
                                 ?>
