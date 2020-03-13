@@ -365,8 +365,8 @@
                     <div class = "content-container container-fluid col-md-10 col-md-offset-1 col-sm-offset-1 col-sm-10 col-xs-offset-1 col-xs-10">
                         <ul class="nav nav-pills nav-justified" style="">
                             <li class="" style="background-color: #f0f0f0"><a style="" data-toggle="pill" href="#timetable-1">12:00 Midnight to 06:00 AM</a></li>
-                            <li class="active" style="background-color: #f0f0f0"><a style="" data-toggle="pill" href="#timetable-2">06:00 AM to 12:00 Noon</a></li>
-                            <li class="" style="background-color: #f0f0f0"><a style="" data-toggle="pill" href="#timetable-3">12:00 Noon to 06:00 PM</a></li>
+                            <li class="" style="background-color: #f0f0f0"><a style="" data-toggle="pill" href="#timetable-2">06:00 AM to 12:00 Noon</a></li>
+                            <li class="active" style="background-color: #f0f0f0"><a style="" data-toggle="pill" href="#timetable-3">12:00 Noon to 06:00 PM</a></li>
                             <li class="" style="background-color: #f0f0f0"><a style="" data-toggle="pill" href="#timetable-4">06:00 PM to 12:00 Midnight</a></li>
                             <!-- <li class="" style="background-color: #f0f0f0"><a style="padding: 10px;" data-toggle="pill" href="#timetable-5">Night</a></li>
                             <li class="" style="background-color: #f0f0f0"><a style="padding: 10px;" data-toggle="pill" href="#timetable-6">Late Night</a></li> -->
@@ -546,7 +546,7 @@
 
                     </table>
 
-                    <table id="timetable-2" class="myTable container-fluid tab-pane fade in active">
+                    <table id="timetable-2" class="myTable container-fluid tab-pane fade">
                         <tr>
                             <?php if ($mobile): ?>
                                 <th style="background-color: #a83b3b"><center>Time</center></th>
@@ -707,7 +707,7 @@
 
                     </table>
 
-                    <table id="timetable-3" class="myTable container-fluid tab-pane fade">
+                    <table id="timetable-3" class="myTable container-fluid tab-pane fade in active">
                         <tr>
                             <?php if ($mobile): ?>
                                 <th style="background-color: #a83b3b"><center>Time</center></th>
@@ -1135,15 +1135,15 @@
                                 <!-- <p class = "no-padding " style = "margin-bottom: 0px; margin-top: 0px;">Use Mukhlat's default settings of:<br></p> -->
                                     
                                 <p class = "no-padding " style = "margin-bottom: 0px; margin-top: 0px;">
-                                    <b>Monday-Friday: </b>05:30PM - 07:30PM, 08:00PM - 08:30PM
+                                    <b><u>Monday-Friday:</u> </b><br>05:30PM - 07:30PM<br>08:00PM - 08:30PM
                                 </p>
 
                                 <p class = "no-padding " style = "margin-bottom: 0px; margin-top: 0px;">
-                                    <b>Saturday: </b>01:00PM - 06:00PM, 08:00PM - 09:00PM
+                                    <b><u>Saturday:</u> </b><br>01:00PM - 06:00PM<br>08:00PM - 09:00PM
                                 </p>
 
                                 <p class = "no-padding " style = "margin-bottom: 0px; margin-top: 0px;">
-                                    <b>Sunday: </b>09:00AM - 12:00PM, 05:00PM - 07:00PM
+                                    <b><u>Sunday:</u> </b><br>09:00AM - 12:00PM<br>05:00PM - 07:00PM
                                 </p>
                                     
                                 
