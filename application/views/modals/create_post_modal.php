@@ -302,10 +302,22 @@ $topic = $_SESSION['current_topic'];
                     </ul>
                     <div class="tab-content">
                       <div id="picturetab" class="tab-pane fade in active">
+                          <div style="text-align:center">
+                          <button type="button" id="btnpic" class="drawnbutton lined thin" onclick="cameraclick();"><img src="<?php echo base_url('icons/mic.png'); ?>" style="display:block;margin: 0 auto;margin-bottom: 15px;margin-top: 10px"></img>Tick Talk!</button>
+                          </div>
+                            <div id="takepic" style="display: none">
+                              <video id="camera" width="640" height="480" autoplay></video>
+                              <button id="snap">Say cheese</button>
+                              <canvas id="canvas" width="640" height="480"></canvas>
+                              <button id="dlpicbutton" class="drawnbutton dashed thick"  style="display: none;"><a id="dlpic"  download="Mypic" style="text-decoration: none;">Save my pic</a></button>
+                            </div>
                           <div id = "attachment-buttons" class = "form-group"style="text-align:center">
                           <!--<img id="target"/>-->
                             <!-- Attach a file: -->
                             <!--IMAGE-->
+
+                            
+
                             <label id = "img-label" class="drawnbutton dotted thin" >
                                 <input id = "attach-img" accept = "image/*" type="file" name = "post_image" style = "display: none;" onchange="fileAdded();readURL(this);">
                                 <p id = "image-text" class = "attach-btn-text" style="text-align: center;"><img src="<?php echo base_url('icons/pic.png'); ?>" style="display:block;margin: 0 auto;"> Choose Pix </p>
@@ -428,6 +440,10 @@ function recordvideo()
   $('[id$=vidprev]').show();
   $('[id$=dl2button]').hide();
   $('[id$=btnStart]').hide();
+}
+function cameraclick()
+{
+  $('[id$=takepic]').show();
 }
 
 // close()
@@ -734,7 +750,36 @@ let constraintObj2 = {
             console.log(err.name, err.message); 
         });
 
-///////////////
+/////////////// camera part
+
+
+
+var video = document.getElementById('camera');
+
+if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+    navigator.mediaDevices.getUserMedia({ camera: true }).then(function(stream) {
+
+        camera.srcObject = stream;
+        camera.play();
+    });
+}
+
+// Elements for taking the snapshot
+var canvas = document.getElementById('canvas');
+var context = canvas.getContext('2d');
+
+
+// Trigger photo take
+document.getElementById("snap").addEventListener("click", function() {
+	context.drawImage(camera, 0, 0, 640, 480);
+  let dlpic = document.getElementById('dlpic');
+  dlpic.href=canvas.toDataURL();
+  $('[id$=dlpicbutton]').show();
+});
+
+
+
+/////////////
 
     function toggleButton(p)
     {
