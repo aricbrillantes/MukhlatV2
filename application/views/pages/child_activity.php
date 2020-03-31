@@ -226,7 +226,7 @@
                             <img id = "user-pic-display" class = "img-circle" width = "80px" height = "80px" src = "<?php echo $child->profile_url ? base_url($child->profile_url) : base_url('images/default.jpg') ?>" style = "margin-bottom: 5px;">
                             
                             <h3 class = "no-padding text-info" style = "margin-top: 5px; margin-bottom: 5px; "><strong><?php echo $child->first_name . " " . $child->last_name ?></strong></h3>
-                            <h5 class = "no-padding no-margin" style = "margin-top: 5px; margin-bottom: 5px; "><?php echo $child->email ?></h5>
+                            <h5 class = "no-padding no-margin" style = "margin-top: 5px; margin-bottom: 5px; "><i>@<?php echo $child->email ?></i></h5>
                             <h5 class = "no-padding no-margin" style = "margin-top: 5px; margin-bottom: 5px; "><?php echo date_format(date_create($child->birthdate),"M d, Y") ?></h5>
                             
                             <!-- <p class = "wrap text-muted" style = ""><i><?php echo $child->description ? $child->description : 'Hello World!'; ?></i></p> -->

@@ -224,7 +224,7 @@
                             <img id = "user-pic-display" class = "img-circle" width = "72px" height = "72px" src = "<?php echo $child->profile_url ? base_url($child->profile_url) : base_url('images/default.jpg') ?>" style = "margin-bottom: 0px;">
                             <br>
                             <h3 class = "no-padding text-info" style = "margin-top: 5px; margin-bottom: 5px; "><strong><?php echo $child->first_name . " " . $child->last_name ?></strong></h3>
-                            <h5 class = "no-padding no-margin"><?php echo $child->email ?></h5>
+                            <h5 class = "no-padding no-margin"><i>@<?php echo $child->email ?></i></h5>
                             <h5 class = "no-padding no-margin" style = "margin-top: 5px; margin-bottom: 5px; "><?php echo date_format(date_create($child->birthdate),"M d, Y") ?></h5>
                             <br>
                             <!-- <h5 class = "no-padding no-margin"><b>Parent's email: </b><?php echo $child->parent ?></h5> -->
@@ -239,13 +239,13 @@
                             ?>
 
                             <?php if($child->parent === "" || !($child->parent)):?>
-                                <h5 class = "no-padding no-margin" style="color:red;"><b>No Parent/Guardian Email</b></h5>
+                                <h5 class = "no-padding no-margin" style="color:red;"><b>No Parent/Guardian Account</b></h5>
 
                             <?php elseif(empty($parentExists)):?>
-                                <h5 class = "no-padding no-margin" style="color:red;"><b><?php echo $child->parent ?></b> is not a valid Parent/Guardian email</h5>
+                                <h5 class = "no-padding no-margin" style="color:red;"><b><?php echo $child->parent ?></b> is not a valid Parent/Guardian Account</h5>
 
                             <?php else:?>
-                                <h5 class = "no-padding no-margin"><b>Parent's email: </b><?php echo $child->parent ?></h5></h5>
+                                <h5 class = "no-padding no-margin"><b>Parent's account: </b><i>@<?php echo $child->parent ?></i></h5></h5>
                                                
                             <?php endif;?>
 
