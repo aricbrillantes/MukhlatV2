@@ -114,7 +114,7 @@
                                     <?php if (!($user->is_enabled)):?>
 
                                         <?php if($user->parent === "" || !($user->parent)):?>
-                                        <br><small class = "no-padding no-margin" style="color:red;"><b>(No Parent/Guardian Email)</b></small>
+                                        <br><small class = "no-padding no-margin" style="color:red;"><b>(No Parent/Guardian Account)</b></small>
 
                                         <?php else:?>
 
@@ -122,7 +122,7 @@
                                                 <br><small class = "no-padding no-margin">(Parent/Guardian: <?php echo $user->parent?>)</small>
 
                                             <?php else:?>
-                                                <br><small class = "no-padding no-margin" style="color:red;"><b><?php echo $user->parent?></b> is not a valid Parent/Guardian Email</small><br>
+                                                <br><small class = "no-padding no-margin" style="color:red;"><b><?php echo $user->parent?></b> is not a valid Parent/Guardian Account</small><br>
                                             
                                             <?php endif;?>
                                             
@@ -132,7 +132,7 @@
                                     <?php else:?>
 
                                         <?php if($user->parent === "" || !($user->parent)):?>
-                                        <br><small class = "no-padding no-margin" style="color:red;"><b>(No Parent/Guardian Email)</b></small>
+                                        <br><small class = "no-padding no-margin" style="color:red;"><b>(No Parent/Guardian Account)</b></small>
 
                                         <?php else:?>
 
@@ -140,7 +140,7 @@
                                                 <br><small class = "no-padding no-margin">(Parent/Guardian: <?php echo $user->parent?>)</small>
 
                                             <?php elseif (empty($parentExists)):?>
-                                                <br><small class = "no-padding no-margin" style="color:red;"><b><?php echo $user->parent?></b> is not a valid Parent/Guardian Email</small><br>
+                                                <br><small class = "no-padding no-margin" style="color:red;"><b><?php echo $user->parent?></b> is not a valid Parent/Guardian Account</small><br>
                                             
                                             <?php endif;?>
                                             

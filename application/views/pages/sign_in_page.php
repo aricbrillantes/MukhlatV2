@@ -87,7 +87,7 @@
                                     <input type = "text" required name = "last_name" class = "form-control sign-in-field col-md-4 col-md-offset-0" placeholder = "Last Name" maxlength = "25">
                                 </div>
                                 <div class = "col-xs-12 col-sm-6 col-md-6 form-group register-field content-container container-fluid" style = "height: 54px">
-                                    <input readonly onfocus="this.removeAttribute('readonly');" type = "email" required id = "sign_up_email" name = "sign_up_email" class = "form-control sign-in-field col-md-4 col-md-offset-0" placeholder = "Email Address" maxlength = "45">
+                                    <input readonly onfocus="this.removeAttribute('readonly');" type = "text" required id = "sign_up_email" name = "sign_up_email" class = "form-control sign-in-field col-md-4 col-md-offset-0" placeholder = "Username" maxlength = "45">
                                 </div>
 
                                 <div id = "sign-up-birthday" class = "col-xs-12 col-sm-6 col-md-6 form-group register-field content-container container-fluid row" style = "height:auto; min-height: 54px; margin-left:0px">
@@ -276,7 +276,7 @@
                                 </div>
 
                                 <div id="parent-email" class = "col-xs-12 col-sm-6 col-md-6 form-group register-field content-container container-fluid" style="visibility: visible">
-                                    <input readonly onfocus="this.removeAttribute('readonly');" type = "email" id = "sign_up_email_parent" name = "sign_up_email_parent" class = "form-control sign-in-field col-md-4 col-md-offset-0" placeholder = "Parent's Email" maxlength = "45">
+                                    <input readonly onfocus="this.removeAttribute('readonly');" type = "text" id = "sign_up_email_parent" name = "sign_up_email_parent" class = "form-control sign-in-field col-md-4 col-md-offset-0" placeholder = "Parent's Username" maxlength = "45">
                                 </div><br> <br>
 
                                 <meter max="4" id="password-strength-meter" style="width:100%;"></meter>
