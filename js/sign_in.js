@@ -60,13 +60,13 @@ function sign_up() {
 
                 else if (data == '5')
                 {
-                    $("<div id = \"sign-up-message\" class = \"col-md-12 text-center\" style = \"padding-bottom: 10px;\"><span class = \"text-warning\"><i class = \"fa fa-warning\"></i> <i>Oops! That parent email does not exist!</i></span></div>").hide()
+                    $("<div id = \"sign-up-message\" class = \"col-md-12 text-center\" style = \"padding-bottom: 10px;\"><span class = \"text-warning\"><i class = \"fa fa-warning\"></i> <i>Oops! That parent user account does not exist!</i></span></div>").hide()
                         .appendTo("#sign-up-container").show("fast");
                 }
 
                 else if (data == '0')
                 {
-                    $("<div id = \"sign-up-message\" class = \"col-md-12 text-center\" style = \"padding-bottom: 10px;\"><span class = \"text-warning\"><i class = \"fa fa-warning\"></i> <i>Oops! The e-mail address you entered is already taken!</i></span></div>").hide()
+                    $("<div id = \"sign-up-message\" class = \"col-md-12 text-center\" style = \"padding-bottom: 10px;\"><span class = \"text-warning\"><i class = \"fa fa-warning\"></i> <i>Oops! The username you entered is already taken!</i></span></div>").hide()
                         .appendTo("#sign-up-container").show("fast");
                 }
             }

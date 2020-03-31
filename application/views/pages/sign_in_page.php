@@ -35,7 +35,7 @@
 
                         <div class = "row" style = "">
                             <div class = "form-group content-container container-fluid" style = "">
-                                <input readonly onfocus="this.removeAttribute('readonly');" id = "log-in-email" type = "text" required name = "log_in_email" class = "secure form-control sign-in-field col-md-6 col-sm-12 col-xs-12" placeholder = "Email"/>
+                                <input readonly onfocus="this.removeAttribute('readonly');" id = "log-in-email" type = "text" required name = "log_in_email" class = "secure form-control sign-in-field col-md-6 col-sm-12 col-xs-12" placeholder = "Username"/>
                             </div>
                             <div class = "form-group content-container container-fluid" style = "">
                                 <input type="password" name="password_fake" id="password_fake" value="" style="display:none;" />
