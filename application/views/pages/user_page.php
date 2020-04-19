@@ -56,8 +56,8 @@ include(APPPATH . 'views/header.php');
                             </div>
                             <div class = "col-xs-6 no-padding no-margin">
                                 <p class = "no-padding text-info" style = "margin-bottom: 0px;margin-top: 20px;"><strong><?php echo $user->first_name . " " . $user->last_name ?></strong></p>
-                                <small class = "no-padding no-margin"><?php echo $user->email ?></small>
-                                <p class = "wrap text-muted" style = "font-size: 12px;"><i><?php echo $user->description ? $user->description : 'Hello World!'; ?></i></p>
+                                <small class = "no-padding no-margin"><i>@<?php echo $user->email ?></i></small>
+                                <p class = "wrap text-muted" style = "font-size: 12px;"><i><?php echo $user->description ? $user->description : ' '; ?></i></p>
                                 <?php //feature unavailable - hide buttons 
                                 //echo '<button class = "btn btn-success btn-sm"><i class = "fa fa-phone"></i></button>
                                 //<button class = "btn btn-success btn-sm"><i class = "fa fa-comment"></i></button>' ?>
