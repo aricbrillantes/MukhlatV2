@@ -187,50 +187,18 @@ include(APPPATH . 'views/header.php');
                                                 <a class = "text1color" href = "<?php echo base_url('user/profile/' . $post->user_id); ?>">
                                                     <strong class="clicker" style = "font-size: 21px"><?php echo $post->first_name; ?></strong>
                                                 </a> 
-                                                <?php if($post->creator_id === $logged_user->user_id): ?>
-                                            <?php if($post->user_id === $logged_user->user_id): ?>
-                                                <a class = "text1color" href = "<?php echo base_url('user/profile/' . $post->user_id); ?>">
-                                                    <strong class="clicker" style = "font-size: 21px;">You</strong>
-                                                </a> 
-
-                                                <p style="font-size: 24px; display:inline"> posted in</p>
-                                                <a style="max-width: 500px; overflow: hidden; text-overflow: ellipsis; display:inline " class = "" href = "<?php echo base_url('topic/view/' . $post->topic_id); ?>">your room! </a>
-
-                                            <?php elseif($post->user_id !== $logged_user->user_id): ?>
-                                                <a class = "text1color" href = "<?php echo base_url('user/profile/' . $post->user_id); ?>">
-                                                    <strong class="clicker" style = "font-size: 21px;"><?php echo $post->first_name;?></strong>
-                                                </a> 
-
-                                                <p style="font-size: 24px; display:inline"> posted in </p>
-                                                <a style="max-width: 500px; overflow: hidden; text-overflow: ellipsis; display:inline " class = "" href = "<?php echo base_url('topic/view/' . $post->topic_id); ?>">your room! </a>
-
-                                            <?php endif; ?>
-                                            
-
-                                        <?php elseif($post->creator_id === $post->user_id): ?>
-                                            <a class = "text1color" href = "<?php echo base_url('user/profile/' . $post->user_id); ?>">
-                                                <strong class="clicker" style = "font-size: 21px"><?php echo $post->first_name;?></strong>
-                                            </a>
-                                            <p style="font-size: 24px; display:inline"> posted in</p> 
-                                            <a style="max-width: 500px; overflow: hidden; text-overflow: ellipsis; display:inline " class = "" href = "<?php echo base_url('topic/view/' . $post->topic_id); ?>">their room! </a>
-
-                                        <?php else: ?>
-                                            <p style="font-size: 19px; display:inline">In </p>
-
-                                            <?php if($post->topic_id === $logged_user->user_id):?>
-                                                <a style="max-width: 500px; overflow: hidden; text-overflow: ellipsis; display:inline " class = "" href = "<?php echo base_url('topic/view/' . $post->topic_id); ?>"> your room, </a>
-
-                                            <?php elseif($post->creator_id !== $post->user_id):?>
-                                                <a style="max-width: 500px; overflow: hidden; text-overflow: ellipsis; display:inline " class = "" href = "<?php echo base_url('topic/view/' . $post->topic_id); ?>"> <?php echo utf8_decode($post->topic_name); ?>'s Room, </a>
-                                            
-                                            <?php endif;?>
-                                            <a class = "text1color" href = "<?php echo base_url('user/profile/' . $post->user_id); ?>">
-                                                <strong class="clicker" style = "font-size: 21px"><?php echo $post->first_name;?></strong>
-                                            </a>
-                                            <p style="font-size: 24px; display:inline"> says:</p>
-                                        
-                                        <?php endif; ?>
-                                                
+                                                <?php if (empty($post->parent)): ?>
+                                                <span style="color:black">said in</span> 
+                                                <?php else: ?>
+                                                    <span style="color:black">said in</span> 
+                                                <?php endif; ?>
+                                                <a class = "text1color" href = "<?php echo base_url('topic/view/' . $post->topic_id); ?>">
+                                                    <strong class="clicker" style = "font-size: 22px"><?php echo utf8_decode($post->topic_name); ?>'s room</strong>
+                                                </a>
+                                                <?php if (!empty($post->parent)): ?>
+                                                    <span class = "text-muted" style = "font-size: 18px;">( <i class = "fa fa-reply"></i> <i>in reply to <a class = "btn btn-link btn-xs no-padding no-margin text1color" href = "<?php echo base_url('user/profile/' . $post->parent->user->user_id); ?>"><?php echo $post->parent->user->first_name . " " . $post->parent->user->last_name; ?></a> )</i></span>
+                                                <?php endif; ?>
+                                                :
                                                 <br>
                                                 
                                                     <span class = "text-muted"> <i style = "font-size: 18px;padding-left: 10px"><?php echo date("F d, Y", strtotime($post->date_posted)); ?></i></span>
@@ -322,49 +290,18 @@ include(APPPATH . 'views/header.php');
                                                 <a class = "text1color" href = "<?php echo base_url('user/profile/' . $post->user_id); ?>">
                                                     <strong class="clicker" style = "font-size: 21px"><?php echo $post->first_name; ?></strong>
                                                 </a> 
-                                                <?php if($post->creator_id === $logged_user->user_id): ?>
-                                            <?php if($post->user_id === $logged_user->user_id): ?>
-                                                <a class = "text1color" href = "<?php echo base_url('user/profile/' . $post->user_id); ?>">
-                                                    <strong class="clicker" style = "font-size: 21px;">You</strong>
-                                                </a> 
-
-                                                <p style="font-size: 24px; display:inline"> posted in</p>
-                                                <a style="max-width: 500px; overflow: hidden; text-overflow: ellipsis; display:inline " class = "" href = "<?php echo base_url('topic/view/' . $post->topic_id); ?>">your room! </a>
-
-                                            <?php elseif($post->user_id !== $logged_user->user_id): ?>
-                                                <a class = "text1color" href = "<?php echo base_url('user/profile/' . $post->user_id); ?>">
-                                                    <strong class="clicker" style = "font-size: 21px;"><?php echo $post->first_name;?></strong>
-                                                </a> 
-
-                                                <p style="font-size: 24px; display:inline"> posted in </p>
-                                                <a style="max-width: 500px; overflow: hidden; text-overflow: ellipsis; display:inline " class = "" href = "<?php echo base_url('topic/view/' . $post->topic_id); ?>">your room! </a>
-
-                                            <?php endif; ?>
-                                            
-
-                                        <?php elseif($post->creator_id === $post->user_id): ?>
-                                            <a class = "text1color" href = "<?php echo base_url('user/profile/' . $post->user_id); ?>">
-                                                <strong class="clicker" style = "font-size: 21px"><?php echo $post->first_name;?></strong>
-                                            </a>
-                                            <p style="font-size: 24px; display:inline"> posted in</p> 
-                                            <a style="max-width: 500px; overflow: hidden; text-overflow: ellipsis; display:inline " class = "" href = "<?php echo base_url('topic/view/' . $post->topic_id); ?>">their room! </a>
-
-                                        <?php else: ?>
-                                            <p style="font-size: 19px; display:inline">In </p>
-
-                                            <?php if($post->topic_id === $logged_user->user_id):?>
-                                                <a style="max-width: 500px; overflow: hidden; text-overflow: ellipsis; display:inline " class = "" href = "<?php echo base_url('topic/view/' . $post->topic_id); ?>"> your room, </a>
-
-                                            <?php elseif($post->creator_id !== $post->user_id):?>
-                                                <a style="max-width: 500px; overflow: hidden; text-overflow: ellipsis; display:inline " class = "" href = "<?php echo base_url('topic/view/' . $post->topic_id); ?>"> <?php echo utf8_decode($post->topic_name); ?>'s Room, </a>
-                                            
-                                            <?php endif;?>
-                                            <a class = "text1color" href = "<?php echo base_url('user/profile/' . $post->user_id); ?>">
-                                                <strong class="clicker" style = "font-size: 21px"><?php echo $post->first_name;?></strong>
-                                            </a>
-                                            <p style="font-size: 24px; display:inline"> says:</p>
-                                        
-                                        <?php endif; ?>
+                                                <?php if (empty($post->parent)): ?>
+                                                <span style="color:black">said in</span> 
+                                                <?php else: ?>
+                                                    <span style="color:black">said in</span> 
+                                                <?php endif; ?>
+                                                <a class = "text1color" href = "<?php echo base_url('topic/view/' . $post->topic_id); ?>">
+                                                    <strong class="clicker" style = "font-size: 22px"><?php echo utf8_decode($post->topic_name); ?>'s room</strong>
+                                                </a>
+                                                <?php if (!empty($post->parent)): ?>
+                                                    <span class = "text-muted" style = "font-size: 18px;">( <i class = "fa fa-reply"></i> <i>in reply to <a class = "btn btn-link btn-xs no-padding no-margin text1color" href = "<?php echo base_url('user/profile/' . $post->parent->user->user_id); ?>"><?php echo $post->parent->user->first_name . " " . $post->parent->user->last_name; ?></a> )</i></span>
+                                                <?php endif; ?>
+                                                :
                                                 <br>
                                                 
                                                     <span class = "text-muted"> <i style = "font-size: 18px;padding-left: 10px"><?php echo date("F d, Y", strtotime($post->date_posted)); ?></i></span>
