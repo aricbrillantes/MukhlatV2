@@ -231,7 +231,7 @@ $topic = $_SESSION['current_topic'];
                     </div>
                     
                     
-            <div id="stickerchoices" style="margin-bottom: 30px;">     
+            <div id="stickerchoices" style="margin-bottom: 30px;">        
                 <ul class="nav nav-pills nav-justified" style = "margin-bottom: 10px;">
                     <li class = "active"><a data-toggle="pill" href="#emoticats"><strong style="cursor: pointer"><img width="50%" height="auto" src="<?php echo base_url('images/stickers/happy.png'); ?>"/> EmotiCats</strong></a></li>
                                 <li><a data-toggle="pill" href="#textiful"><strong style="cursor: pointer"><img width="80%" height="auto" src="<?php echo base_url('images/stickers/amazing.png'); ?>"/> Textiful</strong></a></li>
@@ -807,7 +807,7 @@ document.getElementById("snap").addEventListener("click", function() {
           // $('[id$=choosenote]').show();
           // $('[id$=choosevid]').show();
           $('[id$=attachment-preview]').show();
-          $('[id$=modaltitle]').text("Post to your album!");
+          $('[id$=modaltitle]').text("Add to Album");
           $('[id$=post-title]').val(" ");
           
           // $('[id$=btnStart]').show();
@@ -820,7 +820,7 @@ document.getElementById("snap").addEventListener("click", function() {
         {
           $('[id$=audio-label]').show();
           $('[id$=attachment-preview]').show();
-          $('[id$=modaltitle]').text("Post to your sound album!");
+          $('[id$=modaltitle]').text("Add to your sound album");
           $('[id$=post-title]').val(" ");
         }
 
@@ -828,13 +828,13 @@ document.getElementById("snap").addEventListener("click", function() {
         {
           $('[id$=video-label]').show();
           $('[id$=attachment-preview]').show();
-          $('[id$=modaltitle]').text("Post to your video album"!);
+          $('[id$=modaltitle]').text("Add to your video album");
           $('[id$=post-title]').val(" ");
         }
         
         if(p==="text")
         {
-          $('[id$=modaltitle]').text("Post on your board!");
+          $('[id$=modaltitle]').text("Post on your board");
           $('[id$=post-title]').val(" ");
           $('[id$=addwarning]').hide();
           
