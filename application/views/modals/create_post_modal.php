@@ -231,7 +231,7 @@ $topic = $_SESSION['current_topic'];
                     </div>
                     
                     
-            <div id="stickerchoices">     
+            <div id="stickerchoices" style="margin-bottom: 30px;">     
                 <ul class="nav nav-pills nav-justified" style = "margin-bottom: 10px;">
                     <li class = "active"><a data-toggle="pill" href="#emoticats"><strong style="cursor: pointer"><img width="50%" height="auto" src="<?php echo base_url('images/stickers/happy.png'); ?>"/> EmotiCats</strong></a></li>
                                 <li><a data-toggle="pill" href="#textiful"><strong style="cursor: pointer"><img width="80%" height="auto" src="<?php echo base_url('images/stickers/amazing.png'); ?>"/> Textiful</strong></a></li>
@@ -294,7 +294,7 @@ $topic = $_SESSION['current_topic'];
                         <h2 id="addwarning" style="display:none;color:red;" ><i class="arrow up"></i> add something to share! </h2>
                         <h4 id="startrec" style="display: none;text-align:center;">You are now recording!</h4>
                   <div id="uploadmedia">
-                    <ul class="nav nav-pills nav-justified" style = "margin-bottom: 10px;">
+                    <ul class="nav nav-pills nav-justified" style = "margin-bottom: 30px;">
                       <li class = "active"><button type="button" data-toggle="pill" href="#picturetab" id="choosepic" class="drawnbutton lined thick gray" onclick="chosepic()"><img src="<?php echo base_url('icons/pic.png'); ?>" style="display:block;margin: 0 auto;width:100%"> Pix </button></li>
                       <li><button type="button" id="choosenote" data-toggle="pill" href="#audiotab" class="drawnbutton lined thick" onclick="chosenote()"><img src="<?php echo base_url('icons/note.png'); ?>" style="display:block;margin: 0 auto;width:100%"> Sound </button></li>
                       <li><button type="button" id="choosevid" data-toggle="pill" href="#videotab" class="drawnbutton lined thick" onclick="chosevid()"><img src="<?php echo base_url('icons/video.png'); ?>" style="display:block;margin: 0 auto;width:100%"> Vids </button></li>
@@ -807,7 +807,7 @@ document.getElementById("snap").addEventListener("click", function() {
           // $('[id$=choosenote]').show();
           // $('[id$=choosevid]').show();
           $('[id$=attachment-preview]').show();
-          $('[id$=modaltitle]').text("Add to Album");
+          $('[id$=modaltitle]').text("Post to your album!");
           $('[id$=post-title]').val(" ");
           
           // $('[id$=btnStart]').show();
@@ -820,7 +820,7 @@ document.getElementById("snap").addEventListener("click", function() {
         {
           $('[id$=audio-label]').show();
           $('[id$=attachment-preview]').show();
-          $('[id$=modaltitle]').text("Add to your sound album");
+          $('[id$=modaltitle]').text("Post to your sound album!");
           $('[id$=post-title]').val(" ");
         }
 
@@ -828,13 +828,13 @@ document.getElementById("snap").addEventListener("click", function() {
         {
           $('[id$=video-label]').show();
           $('[id$=attachment-preview]').show();
-          $('[id$=modaltitle]').text("Add to your video album");
+          $('[id$=modaltitle]').text("Post to your video album"!);
           $('[id$=post-title]').val(" ");
         }
         
         if(p==="text")
         {
-          $('[id$=modaltitle]').text("Add to board");
+          $('[id$=modaltitle]').text("Post on your board!");
           $('[id$=post-title]').val(" ");
           $('[id$=addwarning]').hide();
           
@@ -847,7 +847,7 @@ document.getElementById("snap").addEventListener("click", function() {
         {
           $('[id$=post-title-container]').show();
           $('[id$=shout]').val(1);
-          $('[id$=modaltitle]').text("Give a shout out!");
+          $('[id$=modaltitle]').text("Post a sticky note!");
           $('[id$=addwarning]').hide();
           
           $('[id$=titlewarning]').hide();
@@ -868,7 +868,7 @@ document.getElementById("snap").addEventListener("click", function() {
           $('[id$=attachment-preview]').show();
           $('[id$=reply]').val(1);
           $('[id$=post-title]').val(" ");
-          $('[id$=modaltitle]').text("Share it on the chat room");
+          $('[id$=modaltitle]').text("Post a comment!");
           $('[id$=titlewarning]').hide();
           $('[id$=scissors]').show();
         }
