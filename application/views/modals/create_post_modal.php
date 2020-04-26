@@ -303,7 +303,7 @@ $topic = $_SESSION['current_topic'];
                     <div class="tab-content">
                       <div id="picturetab" class="tab-pane fade in active">
                           <div style="text-align:center">
-                          <button type="button" id="btnpic" class="drawnbutton lined thin" onclick="cameraclick();"><img src="<?php echo base_url('icons/mic.png'); ?>" style="display:block;margin: 0 auto;margin-bottom: 15px;margin-top: 10px"></img>Take a Pic!</button>
+                          <button type="button" id="btnpic" class="drawnbutton lined thin" onclick="cameraclick();"><img src="<?php echo base_url('icons/Camera.png'); ?>" style="display:block;margin: 0 auto;margin-bottom: 15px;margin-top: 10px"></img>Take a Pic!</button>
                           </div>
                             <div id="takepic" style="display: none">
                               <video id="camera" width="640" height="480" autoplay></video>
