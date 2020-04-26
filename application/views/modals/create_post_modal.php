@@ -807,7 +807,7 @@ document.getElementById("snap").addEventListener("click", function() {
           // $('[id$=choosenote]').show();
           // $('[id$=choosevid]').show();
           $('[id$=attachment-preview]').show();
-          $('[id$=modaltitle]').text("Add to Album");
+          $('[id$=modaltitle]').text("Post to your album!");
           $('[id$=post-title]').val(" ");
           
           // $('[id$=btnStart]').show();
@@ -820,7 +820,7 @@ document.getElementById("snap").addEventListener("click", function() {
         {
           $('[id$=audio-label]').show();
           $('[id$=attachment-preview]').show();
-          $('[id$=modaltitle]').text("Add to your sound album");
+          $('[id$=modaltitle]').text("Post to your sound album!");
           $('[id$=post-title]').val(" ");
         }
 
@@ -828,13 +828,13 @@ document.getElementById("snap").addEventListener("click", function() {
         {
           $('[id$=video-label]').show();
           $('[id$=attachment-preview]').show();
-          $('[id$=modaltitle]').text("Add to your video album");
+          $('[id$=modaltitle]').text("Post to your video album!");
           $('[id$=post-title]').val(" ");
         }
         
         if(p==="text")
         {
-          $('[id$=modaltitle]').text("Post on your board");
+          $('[id$=modaltitle]').text("Post on your board!");
           $('[id$=post-title]').val(" ");
           $('[id$=addwarning]').hide();
           
